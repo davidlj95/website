@@ -1,2 +1,2 @@
-# davidlj95.github.io
-Personal presentation website
+# davidlj95's website
+The aim of this repository is to store the code for my personal website
