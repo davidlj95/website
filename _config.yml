@@ -21,8 +21,8 @@
 title: David LJ aka davidlj95
 email: mail@davidlj95.com
 description: /dev/random software engineer, geeky guy. Connecting technology & RealLife™. Get to know me better here
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: https://davidlj95.com
+baseurl: /
 lang: en
 
 # jekyll-seo-tag configurations
@@ -38,9 +38,12 @@ twitter:
   username: *username
   url: &twitter_url
     https://twitter.com/davidlj95
+# Filled with lots of things
+# https://github.com/jekyll/github-metadata/blob/v2.15.0/docs/site.github.md
 github:
+  repository: davidlj95/davidlj95.github.io
   username: *username
-  url: &github_url
+  profile_url: &github_url
     https://github.com/davidlj95
 facebook:
   admins: *username

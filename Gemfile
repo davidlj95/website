@@ -32,3 +32,7 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 gem "webrick", "~> 1.7"
 
 gem "jekyll-seo-tag", "~> 2.8"
+
+# Needed for authenticating github-metadata plugin via ~/.netrc
+# https://github.com/jekyll/github-metadata/blob/main/docs/authentication.md
+gem "netrc", "~> 0.11.0"
