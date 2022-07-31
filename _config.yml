@@ -18,20 +18,68 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+title: David LJ aka davidlj95
+email: mail@davidlj95.com
+description: /dev/random software engineer, geeky guy. Connecting technology & RealLife™. Get to know me better here
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 lang: en
-twitter_username: jekyllrb
-github_username:  jekyll
+
+# jekyll-seo-tag configurations
+# https://github.com/jekyll/jekyll-seo-tag/blob/v2.8.0/docs/usage.md
+# Also uses title & description
+tagline: A random software engineer, geeky guy
+author:
+  name: &username
+    davidlj95
+  url: https://davidlj95.com/
+twitter:
+  card: summary
+  username: *username
+  url: &twitter_url
+    https://twitter.com/davidlj95
+github:
+  username: *username
+  url: &github_url
+    https://github.com/davidlj95
+facebook:
+  admins: *username
+  url: &facebook_url
+    https://www.facebook.com/davidlj95
+instagram:
+  username: *username
+  url: &instagram_url
+    https://www.instagram.com/davidlj95
+linkedin:
+  username: *username
+  url: &linkedin_url
+    https://www.linkedin.com/in/davidlj95
+keybase:
+  username: *username
+  url: &keybase_url
+    https://keybase.io/davidlj95
+stackoverflow:
+  username: *username
+  url: &stackoverflow_url
+    https://stackoverflow.com/users/3263250/davidlj95
+
+social:
+  name: David LJ
+  links:
+    - *twitter_url
+    - *instagram_url
+    - *facebook_url
+    - *linkedin_url
+    - *github_url
+    - *keybase_url
+    - *stackoverflow_url
+
+webmaster_verifications:
+  facebook: 1299426610587748
 
 # Build settings
-# plugins:
+plugins:
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
