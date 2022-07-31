@@ -87,6 +87,10 @@ plugins:
 # Web app definitions
 theme_color: "#265c83"
 
+# Sass
+sass:
+  style: compressed
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
