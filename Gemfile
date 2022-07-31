@@ -3,3 +3,5 @@
 source "https://rubygems.org"
 
 # gem "rails"
+
+gem "jekyll", "~> 4.2", :group => :development
