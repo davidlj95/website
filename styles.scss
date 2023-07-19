@@ -1,5 +1,8 @@
 ---
 ---
+
+@import "theming.scss";
+
 html {
   height: 100%;
 }
@@ -9,35 +12,264 @@ body {
   font-family: sans-serif;
   min-height: 100%;
   margin: 0 auto;
-  background: white;
-  color: black;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.25em;
+  font-weight: normal;
 }
 
 main {
-  img {
-    height: 2em;
-  }
+  width: fit-content;
+  margin: 0 auto;
+}
 
-  img.profile {
-    height: 100px;
-  }
+.window .content {
+  padding: 1em;
+}
 
-  a {
-    transition: color .4s;
-    color: #265C83;
-  }
+.boxed {
+  border-style: solid;
+  border-width: 1px;
+}
+.box-item {
+  border-style: solid;
+  border-width: 1px;
+  border-bottom-style: none;
+}
+ul.box-item {
+  box-sizing: border-box;
+}
 
-  a:link,
-  a:visited {
-    color: #265C83;
-  }
+.last-box {
+  border-bottom-style: solid;
+}
+.toolbar {
+  padding: 3px 4px;
+  display: flex;
+  justify-content: end;
 
-  a:hover {
-    color: #7FDBFF;
-  }
+  button {
+    border-style: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    line-height: 1em;
 
-  a:active {
-    transition: color .3s;
-    color: #007BE6;
+    > * {
+      height: 18px;
+      width: 18px;
+    }
+  }
+  .theme-switcher {
   }
 }
+
+.social-networks {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: fit-content;
+
+  .icon {
+    padding: 0.5em;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    &.linkedin {
+      align-items: baseline;
+    }
+
+    img,
+    svg {
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+    }
+    span {
+      margin-left: 0.5ex;
+    }
+  }
+}
+
+#noscript {
+  p:first-child {
+    margin-top: 0;
+  }
+}
+
+ul {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  margin: 0;
+  margin-block: unset;
+  margin-inline: unset;
+  padding-inline: unset;
+  justify-content: space-around;
+  cursor: pointer;
+}
+ul > * {
+  display: inline-flex;
+  padding: 0.5em;
+  flex-grow: 1;
+  justify-content: center;
+  text-align: center;
+}
+.json-box {
+  display: flex;
+  justify-content: center;
+}
+.json {
+  text-align: left;
+  width: fit-content;
+  font-family: monospace;
+  font-size: 1.2em;
+
+  a {
+    text-decoration: underline;
+  }
+  .cta {
+    font-size: 0.77em;
+  }
+}
+
+@mixin app-color($theme) {
+  $background-palette: map-get($theme, background);
+  $text-palette: map-get($theme, text);
+
+  img {
+    filter: grayscale(map-get($theme, img-grayscale));
+  }
+
+  .page-content {
+    background: map-get($background-palette, z0);
+    color: map-get($text-palette, primary);
+  }
+
+  .toolbar {
+    .theme-switcher {
+      fill: map-get($theme, icon);
+
+      &:hover {
+        fill: map-get($text-palette, primary);
+      }
+    }
+  }
+
+  .window {
+    background: map-get($background-palette, z1);
+  }
+
+  .boxed {
+    border-color: map-get($theme, hairline);
+  }
+  .box-item {
+    border-color: map-get($theme, hairline);
+  }
+
+  $tabs-palette: map-get($theme, tabs);
+  ul {
+    background-color: map-get($tabs-palette, background);
+    color: map-get($tabs-palette, foreground);
+
+    > .selected {
+      background-color: map-get($tabs-palette, selected-background);
+      color: map-get($tabs-palette, selected-foreground);
+      border-bottom: map-get($tabs-palette, selected-border-bottom);
+    }
+    > :not(.selected):hover {
+      background-color: map-get($tabs-palette, hover-background);
+      color: map-get($tabs-palette, hover-foreground);
+    }
+  }
+
+  $json-palette: map-get($theme, json);
+
+  .json {
+    color: map-get($json-palette, foreground);
+    .key {
+      color: map-get($json-palette, key);
+    }
+    .value-string {
+      color: map-get($json-palette, value-string);
+    }
+  }
+
+  $social-theme: map-get($theme, social);
+  .social-networks {
+    color: map-get($social-theme, foreground);
+
+    .icon {
+      > svg {
+        fill: map-get($social-theme, foreground);
+      }
+      &:hover {
+        background-color: map-get($social-theme, hover-background);
+      }
+    }
+  }
+
+  $accent: map-get($theme, accent);
+
+  //a {
+  //  color: $accent;
+  //  text-decoration: none;
+
+  //  &:visited {
+  //    color: adjust_color($accent, $lightness: -10);
+  //  }
+
+  //  &:hover {
+  //    color: adjust_color($accent, $lightness: 10);
+  //  }
+
+  //  &:active {
+  //    color: adjust_color($accent, $lightness: 15);
+  //  }
+  //}
+  // TODO: cool effect for hovering
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      color: inherit;
+    }
+
+    &:active {
+      color: inherit;
+    }
+  }
+}
+
+// Load all themes
+@each $theme-name, $theme in $themes {
+  @include color-themed($theme-name) {
+    @include app-color($theme);
+  }
+}
+
+main {
+  .description {
+    img.profile {
+      height: 100px;
+    }
+  }
+}
+
+//a {
+//  transition: color 0.4s;
+//
+//  &:active {
+//    transition: color 0.3s;
+//  }
+//}

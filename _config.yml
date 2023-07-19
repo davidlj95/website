@@ -19,6 +19,9 @@
 # in the templates via {{ site.myvariable }}.
 
 title: David LJ aka davidlj95
+title_first: David LJ
+title_second: aka davidlj95
+subtitle: <code>/dev/random</code> software engineer, geeky guy. Connecting technology & RealLife™
 email: mail@davidlj95.com
 description: /dev/random software engineer, geeky guy. Connecting technology & RealLife™. Get to know me better here
 url: https://davidlj95.com
@@ -89,7 +92,8 @@ theme_color: "#265c83"
 
 # Sass
 sass:
-  style: compressed
+  sass_dir: _sass
+  style: "expanded"
 
 # Exclude from processing.
 # The following items will not be processed, by default.

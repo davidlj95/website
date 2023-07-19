@@ -36,3 +36,5 @@ gem "jekyll-seo-tag", "~> 2.8"
 # Needed for authenticating github-metadata plugin via ~/.netrc
 # https://github.com/jekyll/github-metadata/blob/main/docs/authentication.md
 gem "netrc", "~> 0.11.0"
+
+gem "prettier", "~> 3.2"
