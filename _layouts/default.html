@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+{%- include head.html -%}
+<style>
+    .page-content {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        display: table;
+    }
+
+    .wrapper {
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+    }
+</style>
+<body>
+<div class="page-content" aria-label="Content">
+    <div class="wrapper">
+        {{ content }}
+    </div>
+</div>
+</body>
+</html>
