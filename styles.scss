@@ -64,8 +64,6 @@ ul.box-item {
       width: 18px;
     }
   }
-  .theme-switcher {
-  }
 }
 
 .social-networks {
@@ -80,6 +78,7 @@ ul.box-item {
     border-radius: 2px;
     display: flex;
     align-items: center;
+
     &.linkedin {
       align-items: baseline;
     }
@@ -132,9 +131,6 @@ ul > * {
 
   a {
     text-decoration: underline;
-  }
-  .cta {
-    font-size: 0.77em;
   }
 }
 
@@ -232,22 +228,6 @@ main {
 
   $accent: map-get($theme, accent);
 
-  //a {
-  //  color: $accent;
-  //  text-decoration: none;
-
-  //  &:visited {
-  //    color: adjust_color($accent, $lightness: -10);
-  //  }
-
-  //  &:hover {
-  //    color: adjust_color($accent, $lightness: 10);
-  //  }
-
-  //  &:active {
-  //    color: adjust_color($accent, $lightness: 15);
-  //  }
-  //}
   // TODO: cool effect for hovering
   a {
     color: inherit;
@@ -273,13 +253,3 @@ main {
     @include app-color($theme);
   }
 }
-
-
-
-//a {
-//  transition: color 0.4s;
-//
-//  &:active {
-//    transition: color 0.3s;
-//  }
-//}
