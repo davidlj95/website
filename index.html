@@ -9,7 +9,7 @@ alt: A portrait of davidlj95. Slightly smiling and wearing geek'ish glasses
 <main>
     <div class="window">
         <div class="toolbar box-item" id="toolbar" style="display: none">
-            <button class="theme-switcher" id="theme-switcher" >
+            <button class="theme-switcher" id="theme-switcher" aria-label="Dark/light theme switch">
                 <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21.85 44q-1.2 0-2.1-.875-.9-.875-.9-2.125V31H11q-1.2 0-2.1-.9Q8 29.2 8 28V12.85q0-2.75 1.975-4.8T14.75 6H40v22q0 1.2-.9 2.1-.9.9-2.1.9h-7.85v10q0 1.25-.9 2.125t-2.1.875ZM11 20.3h26V9h-2.8v8.55h-3V9h-3.55v4.25h-3V9h-9.9q-1.6 0-2.675 1.15Q11 11.3 11 12.85Zm0 7.7h26v-4.7H11V28Zm0-4.7V28Z"/>
                 </svg>
@@ -42,14 +42,12 @@ alt: A portrait of davidlj95. Slightly smiling and wearing geek'ish glasses
         <ul class="box-item" style="display: none">
             <li>Contact</li>
             <li>Social media</li>
-            <a href="https://resume.davidlj95.com" target="_blank">
-                <li>CV</li>
-            </a>
+            <li><a href="https://resume.davidlj95.com" target="_blank">CV</a></li>
         </ul>
         <div class="box-item content tab-content json-box last-box">
             <div class="json">
                 {<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;"<span class="key">email</span>": "<span class="value-string"><a href="mailto:mail@davidlj95.com" target="_blank">mail@davidlj95.com</a></span>"</a>,<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"<span class="key">email</span>": "<span class="value-string"><a href="mailto:mail@davidlj95.com" target="_blank">mail@davidlj95.com</a></span>",<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;"<span class="key">phone</span>": "<span class="value-string"><a href="tel:+34644449360" target="_blank">+34 644 449 360</a></span>"
                 <br/>}
             </div>
@@ -116,7 +114,8 @@ alt: A portrait of davidlj95. Slightly smiling and wearing geek'ish glasses
             const tabItems = Array.from(tabBar.children);
             tabItems.at(selectedByDefault).classList.add('selected');
             tabItems.forEach((item, index) => {
-                if(item.tagName.toLowerCase() === "a") {
+                // Ignore if linking to another place
+                if(item.children.length > 0 && item.children[0].tagName.toLowerCase() === "a") {
                     return;
                 }
                 item.addEventListener("click", () => {

@@ -26,7 +26,14 @@ main {
   width: fit-content;
   margin: 0 auto;
 }
-
+.window {
+  max-width: calc(600px - 2em);
+}
+@media screen and (max-width: 599px) {
+  .window {
+    margin: 1em;
+  }
+}
 .window .content {
   padding: 1em;
 }
@@ -42,6 +49,11 @@ main {
 }
 ul.box-item {
   box-sizing: border-box;
+}
+ul > li > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 
 .last-box {
