@@ -138,12 +138,28 @@ ul > * {
   }
 }
 
+main {
+  .description {
+    img.profile {
+      height: 128px;
+      border-radius: 128px;
+      border-style: solid;
+      border-width: 1px;
+    }
+  }
+}
+
 @mixin app-color($theme) {
   $background-palette: map-get($theme, background);
   $text-palette: map-get($theme, text);
 
   img {
     filter: grayscale(map-get($theme, img-grayscale));
+  }
+
+  img.profile {
+    background-color: map-get($background-palette, z2);
+    border-color: map-get($theme, hairline);
   }
 
   .page-content {
@@ -258,13 +274,7 @@ ul > * {
   }
 }
 
-main {
-  .description {
-    img.profile {
-      height: 100px;
-    }
-  }
-}
+
 
 //a {
 //  transition: color 0.4s;
