@@ -25,7 +25,7 @@ subtitle: <code>/dev/random</code> software engineer, geeky guy. Connecting tech
 email: mail@davidlj95.com
 description: /dev/random software engineer, geeky guy. Connecting technology & RealLife™. Get to know me better here
 url: https://davidlj95.com
-baseurl: /
+baseurl: ""
 lang: en
 
 # jekyll-seo-tag configurations
