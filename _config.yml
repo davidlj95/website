@@ -18,9 +18,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: David LJ aka davidlj95
-title_first: David LJ
-title_second: aka davidlj95
+title: David LJ 🔗 @davidlj95
+realname: David LJ
+nickname: davidlj95
 subtitle: <code>/dev/random</code> software engineer, geeky guy. Connecting technology & RealLife™
 email: mail@davidlj95.com
 description: /dev/random software engineer, geeky guy. Connecting technology & RealLife™. Get to know me better here
