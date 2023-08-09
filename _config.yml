@@ -21,9 +21,9 @@
 title: David LJ 🔗 @davidlj95
 realname: David LJ
 nickname: davidlj95
-subtitle: <code>/dev/random</code> software engineer, geeky guy. Connecting technology & RealLife™
+subtitle: <code>/dev/random</code> software engineer 🧑‍💻 Connecting technology & RealLife™ 🔌 Padel frequent player 🎾
 email: mail@davidlj95.com
-description: /dev/random software engineer, geeky guy. Connecting technology & RealLife™. Get to know me better here
+description: /dev/random software engineer. Connecting technology & RealLife™. Padel frequent player. Get to know me better here
 url: https://davidlj95.com
 baseurl: ""
 lang: en
@@ -31,7 +31,7 @@ lang: en
 # jekyll-seo-tag configurations
 # https://github.com/jekyll/jekyll-seo-tag/blob/v2.8.0/docs/usage.md
 # Also uses title & description
-tagline: A random software engineer, geeky guy
+tagline: A random software engineer
 author:
   name: &username
     davidlj95
@@ -93,7 +93,7 @@ theme_color: "#265c83"
 # Sass
 sass:
   sass_dir: _sass
-  style: "expanded"
+  style: "compressed"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
