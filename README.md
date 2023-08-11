@@ -1,29 +1,27 @@
-# davidlj95's website
-The aim of this repository is to store the code for my personal website
+# @davidlj95/website
 
-## Development
-### IDE
-Project was developed using [RubyMine](https://www.jetbrains.com/ruby/).
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
-There are some tasks available 
+## Development server
 
-### SCSS Formatter
-In order to format the SCSS file properly, [Prettier](https://prettier.io/) is used.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-#### Run formatter via Ruby's gem
-You can run the formatter via the installed [`prettier`](https://github.com/prettier/plugin-ruby) gem.
+## Code scaffolding
 
-```
-bundle exec rbprettier --write '**/*.scss'
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-There is also a task configured for RubyMine to run it easily.
+## Build
 
-#### Run formatter via Ruby's gem
-For a better development experience, you can integrate it with RubyMine's [Prettier plugin](https://plugins.jetbrains.com/plugin/10456-prettier).
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-Install it using `npm` & [configure `Prettier` to format those files](https://www.jetbrains.com/help/ruby/prettier.html#ws_prettier_install)
+## Running unit tests
 
- Files to look for: `{**/*,*}.{scss}`
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Very recommendable to enable "_On 'Reformat code' action_" & "_On save_" options
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
