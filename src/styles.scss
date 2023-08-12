@@ -19,6 +19,10 @@ h2 {
   font-weight: normal;
 }
 
+.hideIfNoScript {
+  display: none;
+}
+
 main {
   width: fit-content;
   margin: 0 auto;
