@@ -39,7 +39,7 @@ author:
 twitter:
   card: summary
   username: *username
-  url: &twitter_url
+  profile_url: &twitter_url
     https://twitter.com/davidlj95
 # Filled with lots of things
 # https://github.com/jekyll/github-metadata/blob/v2.15.0/docs/site.github.md
@@ -50,23 +50,23 @@ github:
     https://github.com/davidlj95
 facebook:
   admins: *username
-  url: &facebook_url
+  profile_url: &facebook_url
     https://www.facebook.com/davidlj95
 instagram:
   username: *username
-  url: &instagram_url
+  profile_url: &instagram_url
     https://www.instagram.com/davidlj95
 linkedin:
   username: *username
-  url: &linkedin_url
+  profile_url: &linkedin_url
     https://www.linkedin.com/in/davidlj95
 keybase:
   username: *username
-  url: &keybase_url
+  profile_url: &keybase_url
     https://keybase.io/davidlj95
 stackoverflow:
   username: *username
-  url: &stackoverflow_url
+  profile_url: &stackoverflow_url
     https://stackoverflow.com/users/3263250/davidlj95
 
 social:
