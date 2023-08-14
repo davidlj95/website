@@ -28,7 +28,10 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/browserconfig.xml",
+              "src/profile.jpg",
+              "src/.well-known"
             ],
             "styles": [
               "src/styles.scss"
@@ -92,7 +95,10 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/browserconfig.xml",
+              "src/profile.jpg",
+              "src/.well-known"
             ],
             "styles": [
               "src/styles.scss"
