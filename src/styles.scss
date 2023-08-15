@@ -14,6 +14,7 @@ body {
 h1 {
   font-size: 2em;
 }
+
 h2 {
   font-size: 1.25em;
   font-weight: normal;
@@ -27,14 +28,17 @@ main {
   width: fit-content;
   margin: 0 auto;
 }
+
 .window {
   max-width: calc(600px - 2em);
 }
+
 @media screen and (max-width: 599px) {
   .window {
     margin: 1em;
   }
 }
+
 .window .content {
   padding: 1em;
 }
@@ -43,14 +47,17 @@ main {
   border-style: solid;
   border-width: 1px;
 }
+
 .box-item {
   border-style: solid;
   border-width: 1px;
   border-bottom-style: none;
 }
+
 ul.box-item {
   box-sizing: border-box;
 }
+
 ul > li > a {
   display: inline-block;
   width: 100%;
@@ -60,6 +67,7 @@ ul > li > a {
 .last-box {
   border-bottom-style: solid;
 }
+
 .toolbar {
   padding: 3px 4px;
   display: flex;
@@ -102,6 +110,7 @@ ul > li > a {
       height: 1em;
       width: 1em;
     }
+
     span {
       margin-left: 0.5ex;
     }
@@ -125,6 +134,7 @@ ul {
   justify-content: space-around;
   cursor: pointer;
 }
+
 ul > * {
   display: inline-flex;
   padding: 0.5em;
@@ -132,10 +142,12 @@ ul > * {
   justify-content: center;
   text-align: center;
 }
+
 .json-box {
   display: flex;
   justify-content: center;
 }
+
 .json {
   text-align: left;
   width: fit-content;
@@ -207,6 +219,7 @@ main {
       color: map-get($tabs-palette, selected-foreground);
       border-bottom: map-get($tabs-palette, selected-border-bottom);
     }
+
     > :not(.selected):hover {
       background-color: map-get($tabs-palette, hover-background);
       color: map-get($tabs-palette, hover-foreground);
@@ -217,9 +230,11 @@ main {
 
   .json {
     color: map-get($json-palette, foreground);
+
     .key {
       color: map-get($json-palette, key);
     }
+
     .value-string {
       color: map-get($json-palette, value-string);
     }
@@ -233,6 +248,7 @@ main {
       > svg {
         fill: map-get($social-theme, foreground);
       }
+
       &:hover {
         background-color: map-get($social-theme, hover-background);
       }
