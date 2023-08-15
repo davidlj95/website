@@ -31,7 +31,8 @@
               "src/manifest.json",
               "src/browserconfig.xml",
               "src/profile.jpg",
-              "src/.well-known"
+              "src/.well-known",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss"
@@ -98,7 +99,8 @@
               "src/manifest.json",
               "src/browserconfig.xml",
               "src/profile.jpg",
-              "src/.well-known"
+              "src/.well-known",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss"
