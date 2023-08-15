@@ -1,3 +1,4 @@
+@use 'app/toolbar/toolbar-theme' as toolbar;
 @import "theming.scss";
 
 html {
@@ -66,25 +67,6 @@ ul > li > a {
 
 .last-box {
   border-bottom-style: solid;
-}
-
-.toolbar {
-  padding: 3px 4px;
-  display: flex;
-  justify-content: flex-end;
-
-  button {
-    border-style: none;
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    line-height: 1em;
-
-    > * {
-      height: 18px;
-      width: 18px;
-    }
-  }
 }
 
 .social-networks {
@@ -187,15 +169,7 @@ main {
     color: map-get($text-palette, primary);
   }
 
-  .toolbar {
-    .theme-switcher {
-      fill: map-get($theme, icon);
-
-      &:hover {
-        fill: map-get($text-palette, primary);
-      }
-    }
-  }
+  @include toolbar.theme($theme);
 
   .window {
     background: map-get($background-palette, z1);

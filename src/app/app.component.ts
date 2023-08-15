@@ -40,13 +40,5 @@ export class AppComponent implements OnInit {
     });
   }
 
-  toggleTheme() {
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const body = this.document.body;
-    if (prefersDark) {
-      body.classList.toggle('light');
-    } else {
-      body.classList.toggle('dark');
-    }
-  }
+
 }
