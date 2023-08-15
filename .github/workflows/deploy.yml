@@ -1,7 +1,7 @@
 # Template from GitHub Actions starter workflows. GitHub Pages section. "Static" starter.
 # https://github.com/actions/starter-workflows/blob/1c61cfc44d2a372d82735888ab06bc9491e1e3d6/pages/static.yml
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Build and deploy prerendered Angular app to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -35,11 +35,24 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.node-version'
+          cache: 'yarn'
+      - name: Install dependencies
+        # Actually the "--immutable" is enabled by default on CI envs
+        # setup-node action uses "--frozen-lockfile" but that is backwards comp and will be removed
+        # https://github.com/actions/setup-node/blob/5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d/docs/advanced-usage.md#caching-packages-data
+        run: yarn install --immutable
+      - name: Build Angular app
+        run: yarn run build
+      - name: Prerender app
+        run: yarn run prerender
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          # Upload entire repository
-          path: '.'
+          path: 'dist/@davidlj95/website/browser'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
