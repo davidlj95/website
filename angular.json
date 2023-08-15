@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/davidlj95/website",
+            "outputPath": "dist/@davidlj95/website/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -105,6 +105,61 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/@davidlj95/website/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "@davidlj95/website:build:development",
+              "serverTarget": "@davidlj95/website:server:development"
+            },
+            "production": {
+              "browserTarget": "@davidlj95/website:build:production",
+              "serverTarget": "@davidlj95/website:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "@davidlj95/website:build:production",
+              "serverTarget": "@davidlj95/website:server:production"
+            },
+            "development": {
+              "browserTarget": "@davidlj95/website:build:development",
+              "serverTarget": "@davidlj95/website:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

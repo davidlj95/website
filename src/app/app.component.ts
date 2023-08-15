@@ -29,10 +29,11 @@ export class AppComponent implements OnInit {
   }
 
   private displayJavascriptPoweredElements() {
-    const scriptPoweredElements = this.document.querySelectorAll(`.${this.noScriptCssClass}`);
-    scriptPoweredElements.forEach((element) => {
-      element.classList.remove(this.noScriptCssClass);
-    });
+    // TODO: set for client only
+    //const scriptPoweredElements = this.document.querySelectorAll(`.${this.noScriptCssClass}`);
+    //scriptPoweredElements.forEach((element) => {
+    //  element.classList.remove(this.noScriptCssClass);
+    //});
   }
 
   toggleTheme() {
