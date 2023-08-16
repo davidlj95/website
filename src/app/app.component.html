@@ -1,16 +1,7 @@
 <main>
   <div class="window">
     <app-toolbar class="box-item hideIfNoScript"></app-toolbar>
-    <div class="content box-item description">
-      <img alt="A portrait of davidlj95. Slightly smiling and wearing geek'ish glasses" class="profile"
-           ngSrc="assets/img/profile.png" width="128" height="128" priority>
-      <h1>{{ realname }}<br/><code>@{{ nickname }}</code></h1>
-      <h2>
-        <code>/dev/random</code> software engineer 🧑‍💻
-        Connecting technology & RealLife™ 🔌
-        Padel frequent player 🎾
-      </h2>
-    </div>
+    <app-profile class="box-item content"></app-profile>
     <noscript class="box-item content">
       <p><b>🤔 Seems you don't have Javascript enabled 👀</b></p>
       You are viewing a simplified version of the website <br/>
