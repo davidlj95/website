@@ -12,21 +12,24 @@
     justify-content: center;
 
     li {
-      display: flex;
-      padding: paddings.$s;
       border-radius: 2px;
       border-style: solid;
       border-width: 1px;
-      gap: margins.$s;
 
-      span {
-        display: inline-block;
-        height: 1em;
-        width: 1em;
+      a {
+        display: flex;
+        gap: margins.$s;
+        padding: paddings.$s;
 
-        svg {
-          height: 100%;
-          width: 100%;
+        span:first-child {
+          display: inline-block;
+          height: 1em;
+          width: 1em;
+
+          svg {
+            height: 100%;
+            width: 100%;
+          }
         }
       }
     }
