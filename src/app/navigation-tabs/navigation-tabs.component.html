@@ -1,9 +1,7 @@
 <ul>
   <li *ngFor="let item of items" [class.selected]="tab === item.id">
     <ng-container *ngIf="!item.externalUrl; else externalLink">
-      <span (click)="onTabTap(item.id)">
-        {{ item.displayName }}
-      </span>
+      <a [href]="'#'+item.id">{{ item.displayName }}</a>
     </ng-container>
     <ng-template #externalLink>
       <a [href]="item.externalUrl" target="_blank">

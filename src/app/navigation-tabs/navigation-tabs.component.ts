@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navigation-tabs',
@@ -6,7 +6,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./navigation-tabs.component.scss']
 })
 export class NavigationTabsComponent {
-  public items: ReadonlyArray<TabItem> = [
+  public static readonly IDS = ['contact', 'social-media', 'cv'] as const;
+  readonly items: ReadonlyArray<TabItem> = [
     {
       id: 'contact',
       displayName: 'Contact',
@@ -20,14 +21,9 @@ export class NavigationTabsComponent {
       displayName: 'CV',
       externalUrl: 'https://resume.davidlj95.com',
     }
-  ];
+  ] as const;
 
   @Input({required: true}) tab!: TabId;
-  @Output() tabChange = new EventEmitter<TabId>();
-
-  onTabTap(id: TabId) {
-    this.tabChange.emit(id);
-  }
 }
 
 interface TabItem {
@@ -36,4 +32,8 @@ interface TabItem {
   externalUrl?: string;
 }
 
-export type TabId = 'contact' | 'social-media' | 'cv';
+export type TabId = typeof NavigationTabsComponent.IDS[number];
+
+export function isTabId(id: string): id is TabId {
+  return NavigationTabsComponent.IDS.includes(id as TabId);
+}
