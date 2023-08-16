@@ -1,0 +1,33 @@
+<app-toolbar class="hideIfNoScript"></app-toolbar>
+<app-profile class="content"></app-profile>
+<app-no-script class="content"></app-no-script>
+<app-navigation-tabs class="hideIfNoScript"></app-navigation-tabs>
+<app-contacts class="content tab-content"></app-contacts>
+<app-social-networks class="content tab-content"></app-social-networks>
+<script>
+  const tabBar = document.getElementsByTagName("ul").item(0);
+  tabBar.setAttribute('style', '');
+  const tabContents = Array.from(document.getElementsByClassName("tab-content"));
+  const selectedByDefault = 0;
+  tabContents.forEach((item, index) => {
+    if (index === selectedByDefault) {
+      return;
+    }
+    item.setAttribute('style', 'display: none');
+  });
+  const tabItems = Array.from(tabBar.children);
+  tabItems.at(selectedByDefault).classList.add('selected');
+  tabItems.forEach((item, index) => {
+    // Ignore if linking to another place
+    if (item.children.length > 0 && item.children[0].tagName.toLowerCase() === "a") {
+      return;
+    }
+    item.addEventListener("click", () => {
+      const selectedIndex = tabItems.findIndex((tabItem) => tabItem.classList.contains("selected"));
+      tabContents.at(selectedIndex).setAttribute('style', 'display: none');
+      tabContents.at(index).setAttribute('style', '');
+      tabItems.at(selectedIndex).classList.remove('selected');
+      item.classList.add('selected');
+    });
+  });
+</script>

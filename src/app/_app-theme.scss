@@ -1,0 +1,13 @@
+@mixin color($theme) {
+  $background-palette: map-get($theme, background);
+  $text-palette: map-get($theme, text);
+
+  app-root {
+    background: map-get($background-palette, z0);
+    color: map-get($text-palette, primary);
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme)
+}

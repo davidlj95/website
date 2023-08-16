@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  max-width: calc(600px - 2em);
+
+  @media screen and (max-width: 599px) {
+    margin: 1em;
+  }
+
+  > * {
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-style: none;
+  }
+
+  > *:last-child {
+    border-bottom-style: solid;
+  }
+
+  .hideIfNoScript {
+    display: none;
+  }
+
+  .content {
+    padding: 1em;
+  }
+
+
+}

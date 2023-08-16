@@ -1,6 +1,7 @@
 :host {
   padding: 3px 4px;
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
 
   button {

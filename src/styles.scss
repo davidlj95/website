@@ -1,3 +1,5 @@
+@use 'app/app-theme' as root;
+@use 'app/window/window-theme' as window;
 @use 'app/profile/profile-theme' as profile;
 @use 'app/toolbar/toolbar-theme' as toolbar;
 @use 'app/navigation-tabs/navigation-tabs-theme' as navigation-tabs;
@@ -5,86 +7,19 @@
 @use 'app/social-networks/social-networks-theme' as social-networks;
 @import "theming.scss";
 
-html {
-  height: 100%;
-}
-
 body {
-  text-align: center;
   font-family: sans-serif;
-  min-height: 100%;
-  margin: 0 auto;
-}
-
-.hideIfNoScript {
-  display: none;
-}
-
-main {
-  width: fit-content;
-  margin: 0 auto;
-}
-
-.window {
-  max-width: calc(600px - 2em);
-}
-
-@media screen and (max-width: 599px) {
-  .window {
-    margin: 1em;
-  }
-}
-
-.window .content {
-  padding: 1em;
-}
-
-.window > * {
-  display: block;
-}
-
-.boxed {
-  border-style: solid;
-  border-width: 1px;
-}
-
-.box-item {
-  border-style: solid;
-  border-width: 1px;
-  border-bottom-style: none;
-}
-
-.last-box {
-  border-bottom-style: solid;
+  margin: 0;
 }
 
 @mixin app-color($theme) {
-  $background-palette: map-get($theme, background);
-  $text-palette: map-get($theme, text);
-
-  .page-content {
-    background: map-get($background-palette, z0);
-    color: map-get($text-palette, primary);
-  }
-
-  @include profile.theme($theme);
-  @include toolbar.theme($theme);
-  @include navigation-tabs.theme($theme);
-  @include contacts.theme($theme);
-  @include social-networks.theme($theme);
-
-  .window {
-    background: map-get($background-palette, z1);
-  }
-
-  .boxed {
-    border-color: map-get($theme, hairline);
-  }
-  .box-item {
-    border-color: map-get($theme, hairline);
-  }
-
-  $accent: map-get($theme, accent);
+  @include root.color($theme);
+  @include window.color($theme);
+  @include profile.color($theme);
+  @include toolbar.color($theme);
+  @include navigation-tabs.color($theme);
+  @include contacts.color($theme);
+  @include social-networks.color($theme);
 
   // TODO: cool effect for hovering
   a {
@@ -105,7 +40,7 @@ main {
   }
 }
 
-// Load all themes
+// Render all color themes
 @each $theme-name, $theme in $themes {
   @include color-themed($theme-name) {
     @include app-color($theme);

@@ -1,0 +1,15 @@
+@mixin color($theme) {
+  $background-palette: map-get($theme, background);
+
+  app-window {
+    background: map-get($background-palette, z1);
+
+    > * {
+      border-color: map-get($theme, hairline);
+    }
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme);
+}
