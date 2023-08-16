@@ -7,9 +7,11 @@
 @use 'app/social-networks/social-networks-theme' as social-networks;
 @import "theming.scss";
 
+// CSS reset & normalization
+@import "gardevoir/dist/mini.min.css";
+
 body {
   font-family: sans-serif;
-  margin: 0;
 }
 
 @mixin app-color($theme) {

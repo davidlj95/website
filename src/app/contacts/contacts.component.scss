@@ -9,7 +9,6 @@
     text-align: left;
     font-family: monospace;
     font-size: 1.2em;
-    margin: 0;
 
     dt:before {
       content:'    "';
@@ -27,12 +26,6 @@
     }
     dd,dt {
       display: inline-block;
-    }
-    dt {
-      margin: 0;
-    }
-    dd {
-      margin: 0;
     }
 
     a {

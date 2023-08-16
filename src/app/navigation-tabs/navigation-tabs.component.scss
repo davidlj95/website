@@ -1,21 +1,16 @@
+@use "src/paddings" as paddings;
+
 :host {
   display: block;
 
   ul {
-    list-style: none;
-    width: 100%;
     display: flex;
-    margin: 0;
-    margin-block: unset;
-    margin-inline: unset;
-    padding-inline: unset;
     justify-content: space-around;
     cursor: pointer;
-    box-sizing: border-box;
 
     li {
       display: inline-flex;
-      padding: 0.5em;
+      padding: paddings.$s;
       flex-grow: 1;
       justify-content: center;
       text-align: center;

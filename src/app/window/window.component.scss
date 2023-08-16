@@ -1,9 +1,11 @@
+@use "src/margins" as margins;
+
 :host {
   display: block;
-  max-width: calc(600px - 2em);
+  max-width: calc(600px - #{margins.$m} - #{margins.$m});
 
   @media screen and (max-width: 599px) {
-    margin: 1em;
+    margin: margins.$m;
   }
 
   > * {
@@ -12,12 +14,12 @@
     border-bottom-style: none;
   }
 
-  noscript {
-    display: block;
-  }
-
   > *:last-child {
     border-bottom-style: solid;
+  }
+
+  noscript {
+    display: block;
   }
 
   .hideIfNoScript {
