@@ -307,4 +307,8 @@ modules.xml
 .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,vim,node,visualstudiocode,yarn,webstorm+iml
+# Manual changes:
+# - Duplicated Yarn config in node,yarn. Removed Node one.
+# - Yarn config to not use zero installs.
+# - Remove .idea from angular, we want some settings in the repo
 
