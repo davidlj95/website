@@ -2,6 +2,7 @@
   $background-palette: map-get($theme, background);
   $text-palette: map-get($theme, text);
 
+  // TODO: if we apply this here and not to "body", when dragging the content in dark mode you'll see white background
   app-root {
     background: map-get($background-palette, z0);
     color: map-get($text-palette, primary);
