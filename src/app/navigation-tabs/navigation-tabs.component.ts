@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navigation-tabs',
@@ -6,5 +6,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation-tabs.component.scss']
 })
 export class NavigationTabsComponent {
-  public resume_url = 'https://resume.davidlj95.com';
+  public items: ReadonlyArray<TabItem> = [
+    {
+      id: 'contact',
+      displayName: 'Contact',
+    },
+    {
+      id: 'social-media',
+      displayName: 'Social media',
+    },
+    {
+      id: 'cv',
+      displayName: 'CV',
+      externalUrl: 'https://resume.davidlj95.com',
+    }
+  ];
+
+  @Input({required: true}) tab!: TabId;
+  @Output() tabChange = new EventEmitter<TabId>();
+
+  onTabTap(id: TabId) {
+    this.tabChange.emit(id);
+  }
 }
+
+interface TabItem {
+  id: TabId;
+  displayName: string;
+  externalUrl?: string;
+}
+
+export type TabId = 'contact' | 'social-media' | 'cv';

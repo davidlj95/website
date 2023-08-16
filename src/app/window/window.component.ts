@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from "@angular/common";
+import { TabId } from "../navigation-tabs/navigation-tabs.component";
 
 @Component({
   selector: 'app-window',
@@ -8,6 +9,7 @@ import { DOCUMENT, isPlatformBrowser } from "@angular/common";
 })
 export class WindowComponent implements OnInit {
   public noScriptCssClass = 'hideIfNoScript';
+  public selectedTab: TabId = 'contact';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,

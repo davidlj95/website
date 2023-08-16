@@ -1,5 +1,14 @@
 <ul>
-  <li>Contact</li>
-  <li>Social media</li>
-  <li><a href="{{ resume_url }}" target="_blank">CV</a></li>
+  <li *ngFor="let item of items" [class.selected]="tab === item.id">
+    <ng-container *ngIf="!item.externalUrl; else externalLink">
+      <span (click)="onTabTap(item.id)">
+        {{ item.displayName }}
+      </span>
+    </ng-container>
+    <ng-template #externalLink>
+      <a [href]="item.externalUrl" target="_blank">
+        {{ item.displayName }}
+      </a>
+    </ng-template>
+  </li>
 </ul>
