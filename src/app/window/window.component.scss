@@ -1,10 +1,11 @@
+@use "src/breakpoints" as breakpoints;
 @use "src/margins" as margins;
 
 :host {
   display: block;
   max-width: calc(600px - #{margins.$m} - #{margins.$m});
 
-  @media screen and (max-width: 599px) {
+  @include breakpoints.xs {
     margin: margins.$m;
   }
 
