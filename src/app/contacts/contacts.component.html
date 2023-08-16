@@ -1,11 +1,12 @@
-<dl>
-  {{ '{' }}<br/>
-  <ng-container *ngFor="let item of items">
-    <dt>{{item.key}}</dt>
-    <dd>
-      <a href="{{item.uriPrefix}}{{item.value}}" target="_blank">{{item.value}}</a>
-    </dd>
-    <br>
-  </ng-container>
+<div>
+  {{ '{' }}<br>
+  <dl>
+    <div *ngFor="let item of items">
+      <dt>{{item.key}}</dt>
+      <dd>
+        <a href="{{item.uriPrefix}}{{item.value}}" target="_blank">{{item.value}}</a>
+      </dd>
+    </div>
+  </dl>
   {{ '}' }}<br>
-</dl>
+</div>
