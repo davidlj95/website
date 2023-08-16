@@ -37,6 +37,4 @@ export class AppComponent implements OnInit {
       element.classList.remove(this.noScriptCssClass);
     });
   }
-
-
 }
