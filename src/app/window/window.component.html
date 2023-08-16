@@ -4,5 +4,6 @@
   <app-no-script></app-no-script>
 </noscript>
 <app-navigation-tabs [(tab)]="selectedTab" class="hideIfNoScript"></app-navigation-tabs>
-<app-contacts *ngIf="selectedTab === 'contact'"></app-contacts>
-<app-social-networks *ngIf="selectedTab === 'social-media'"></app-social-networks>
+<app-contacts [class.active]="selectedTab === 'contact'" class="tab-item showIfNoScript"></app-contacts>
+<app-social-networks [class.active]="selectedTab === 'social-media'"
+                     class="tab-item showIfNoScript"></app-social-networks>

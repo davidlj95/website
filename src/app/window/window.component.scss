@@ -14,7 +14,7 @@
     border-bottom-style: none;
   }
 
-  > *:last-child {
+  > *:last-child, > .active {
     border-bottom-style: solid;
   }
 
@@ -22,7 +22,11 @@
     display: block;
   }
 
-  .hideIfNoScript {
+  .tab-item {
     display: none;
+
+    &.active {
+      display: block !important;
+    }
   }
 }
