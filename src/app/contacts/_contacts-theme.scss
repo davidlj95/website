@@ -1,0 +1,23 @@
+@mixin color($theme) {
+  $json-palette: map-get($theme, json);
+
+  dl {
+    color: map-get($json-palette, foreground);
+
+    dt:before,dt:after,dd:before,dd:after {
+      color: map-get($json-palette, foreground);
+    }
+
+    dt {
+      color: map-get($json-palette, key);
+    }
+
+    dd {
+      color: map-get($json-palette, value-string);
+    }
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme);
+}

@@ -1,5 +1,6 @@
 @use 'app/profile/profile-theme' as profile;
 @use 'app/toolbar/toolbar-theme' as toolbar;
+@use 'app/contacts/contacts-theme' as contacts;
 @import "theming.scss";
 
 html {
@@ -112,22 +113,6 @@ ul > li > a {
   height: 100%;
 }
 
-.json-box {
-  display: flex;
-  justify-content: center;
-}
-
-.json {
-  text-align: left;
-  width: fit-content;
-  font-family: monospace;
-  font-size: 1.2em;
-
-  a {
-    text-decoration: underline;
-  }
-}
-
 @mixin app-color($theme) {
   $background-palette: map-get($theme, background);
   $text-palette: map-get($theme, text);
@@ -139,6 +124,7 @@ ul > li > a {
 
   @include profile.theme($theme);
   @include toolbar.theme($theme);
+  @include contacts.theme($theme);
 
   .window {
     background: map-get($background-palette, z1);
@@ -165,20 +151,6 @@ ul > li > a {
     > :not(.selected):hover {
       background-color: map-get($tabs-palette, hover-background);
       color: map-get($tabs-palette, hover-foreground);
-    }
-  }
-
-  $json-palette: map-get($theme, json);
-
-  .json {
-    color: map-get($json-palette, foreground);
-
-    .key {
-      color: map-get($json-palette, key);
-    }
-
-    .value-string {
-      color: map-get($json-palette, value-string);
     }
   }
 

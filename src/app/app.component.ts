@@ -7,8 +7,6 @@ import { DOCUMENT, isPlatformBrowser } from "@angular/common";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  phone = '+34 644 449 360';
-  email = 'mail@davidlj95.com';
   github_url = 'https://github.com/davidlj95';
   stackoverflow_url = 'https://stackoverflow.com/users/3263250/davidlj95';
   linkedin_url = 'https://www.linkedin.com/in/davidlj95';

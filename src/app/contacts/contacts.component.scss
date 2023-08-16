@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  justify-content: center;
+
+  dl {
+    text-align: left;
+    font-family: monospace;
+    font-size: 1.2em;
+    margin: 0;
+
+    dt:before {
+      content:'    "';
+      white-space: pre;
+    }
+    dt:after {
+      content:'":'
+    }
+    dd:before {
+      content: ' "';
+      white-space: pre;
+    }
+    dd:after {
+      content: '",'
+    }
+    dd,dt {
+      display: inline-block;
+    }
+    dt {
+      margin: 0;
+    }
+    dd {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}

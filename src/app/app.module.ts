@@ -7,6 +7,7 @@ import { NgOptimizedImage } from "@angular/common";
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NoScriptComponent } from './no-script/no-script.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NoScriptComponent } from './no-script/no-script.component';
     ToolbarComponent,
     ProfileComponent,
     NoScriptComponent,
+    ContactsComponent,
   ],
   imports: [
     BrowserModule,

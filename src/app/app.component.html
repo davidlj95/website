@@ -8,16 +8,7 @@
       <li>Social media</li>
       <li><a href="{{ resume_url }}" target="_blank">CV</a></li>
     </ul>
-    <div class="box-item content tab-content json-box last-box">
-      <div class="json">
-        {{ '{' }}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;"<span class="key">email</span>": "<span class="value-string"><a
-        href="mailto:{{ email }}" target="_blank">{{ email }}</a></span>",<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;"<span class="key">phone</span>": "<span class="value-string"><a href="tel:{{ phone }}"
-                                                                                                 target="_blank">{{ phone }}</a></span>"<br/>
-        {{ '}' }}
-      </div>
-    </div>
+    <app-contacts class="box-item content tab-content last-box"></app-contacts>
     <div class="box-item content tab-content social-networks last-box">
       <a href="{{ github_url }}" target="_blank">
         <div class="icon boxed">
