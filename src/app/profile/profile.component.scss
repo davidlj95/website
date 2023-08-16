@@ -1,6 +1,9 @@
+@use "src/paddings" as paddings;
+
 :host {
   display: block;
   text-align: center;
+  padding: paddings.$m;
 
   img {
     border-radius: 128px;

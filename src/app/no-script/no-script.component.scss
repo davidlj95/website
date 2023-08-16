@@ -1,5 +1,9 @@
+@use "src/paddings" as paddings;
+
 :host {
   display: block;
+  padding: paddings.$m;
+  text-align: center;
 
   p:first-child {
     margin-top: 0;

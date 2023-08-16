@@ -1,5 +1,8 @@
+@use "src/paddings" as paddings;
+
 :host {
   display: block;
+  padding: paddings.$m;
 
   ul {
     display: flex;

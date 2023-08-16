@@ -1,6 +1,9 @@
+@use "src/paddings" as paddings;
+
 :host {
   display: flex;
   justify-content: center;
+  padding: paddings.$m;
 
   dl {
     text-align: left;
