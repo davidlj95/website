@@ -1,6 +1,7 @@
 @use 'app/profile/profile-theme' as profile;
 @use 'app/toolbar/toolbar-theme' as toolbar;
 @use 'app/contacts/contacts-theme' as contacts;
+@use 'app/social-networks/social-networks-theme' as social-networks;
 @import "theming.scss";
 
 html {
@@ -56,36 +57,6 @@ main {
   border-bottom-style: solid;
 }
 
-.social-networks {
-  display: flex;
-  gap: 1em;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: fit-content;
-
-  .icon {
-    padding: 0.5em;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-
-    &.linkedin {
-      align-items: baseline;
-    }
-
-    img,
-    svg {
-      display: inline-block;
-      height: 1em;
-      width: 1em;
-    }
-
-    span {
-      margin-left: 0.5ex;
-    }
-  }
-}
-
 ul.box-item {
   list-style: none;
   width: 100%;
@@ -99,7 +70,7 @@ ul.box-item {
   box-sizing: border-box;
 }
 
-ul > * {
+ul.box-item > * {
   display: inline-flex;
   padding: 0.5em;
   flex-grow: 1;
@@ -107,7 +78,7 @@ ul > * {
   text-align: center;
 }
 
-ul > li > a {
+ul.box-item > li > a {
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -125,6 +96,7 @@ ul > li > a {
   @include profile.theme($theme);
   @include toolbar.theme($theme);
   @include contacts.theme($theme);
+  @include social-networks.theme($theme);
 
   .window {
     background: map-get($background-palette, z1);
@@ -151,21 +123,6 @@ ul > li > a {
     > :not(.selected):hover {
       background-color: map-get($tabs-palette, hover-background);
       color: map-get($tabs-palette, hover-foreground);
-    }
-  }
-
-  $social-theme: map-get($theme, social);
-  .social-networks {
-    color: map-get($social-theme, foreground);
-
-    .icon {
-      > svg {
-        fill: map-get($social-theme, foreground);
-      }
-
-      &:hover {
-        background-color: map-get($social-theme, hover-background);
-      }
     }
   }
 

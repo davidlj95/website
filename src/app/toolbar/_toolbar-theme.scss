@@ -1,11 +1,13 @@
 @mixin color($theme) {
   $text-palette: map-get($theme, text);
 
-  .theme-switcher {
-    fill: map-get($theme, icon);
+  app-toolbar {
+    .theme-switcher {
+      fill: map-get($theme, icon);
 
-    &:hover {
-      fill: map-get($text-palette, primary);
+      &:hover {
+        fill: map-get($text-palette, primary);
+      }
     }
   }
 }

@@ -1,0 +1,21 @@
+@mixin color($theme) {
+  $social-theme: map-get($theme, social);
+
+  app-social-networks {
+    color: map-get($social-theme, foreground);
+
+    ul > li {
+      &:hover {
+        background-color: map-get($social-theme, hover-background);
+      }
+    }
+
+    svg {
+      fill: map-get($social-theme, foreground);
+    }
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme);
+}

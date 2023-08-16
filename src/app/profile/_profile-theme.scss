@@ -1,10 +1,12 @@
 @mixin color($theme) {
   $background-palette: map-get($theme, background);
 
-  img.profile {
-    filter: grayscale(map-get($theme, img-grayscale));
-    background-color: map-get($background-palette, z2);
-    border-color: map-get($theme, hairline);
+  app-profile {
+    img {
+      filter: grayscale(map-get($theme, img-grayscale));
+      background-color: map-get($background-palette, z2);
+      border-color: map-get($theme, hairline);
+    }
   }
 }
 

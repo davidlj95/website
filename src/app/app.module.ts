@@ -8,6 +8,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NoScriptComponent } from './no-script/no-script.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { SocialNetworksComponent } from './social-networks/social-networks.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ContactsComponent } from './contacts/contacts.component';
     ProfileComponent,
     NoScriptComponent,
     ContactsComponent,
+    SocialNetworksComponent,
   ],
   imports: [
     BrowserModule,

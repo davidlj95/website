@@ -7,13 +7,6 @@ import { DOCUMENT, isPlatformBrowser } from "@angular/common";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  github_url = 'https://github.com/davidlj95';
-  stackoverflow_url = 'https://stackoverflow.com/users/3263250/davidlj95';
-  linkedin_url = 'https://www.linkedin.com/in/davidlj95';
-  keybase_url = 'https://keybase.io/davidlj95';
-  twitter_url = 'https://twitter.com.com/davidlj95';
-  instagram_url = 'https://www.instagram.com/davidlj95';
-  facebook_url = 'https://www.facebook.com/davidlj95';
   resume_url = 'https://resume.davidlj95.com';
   noScriptCssClass = 'hideIfNoScript';
 
