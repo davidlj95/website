@@ -1,4 +1,5 @@
 @use "src/paddings" as paddings;
+@use "src/typographies" as typographies;
 
 :host {
   display: flex;
@@ -7,24 +8,28 @@
 
   dl {
     text-align: left;
-    font-family: monospace;
-    font-size: 1.2em;
+    @include typographies.monospace-font;
+    font-size: 1.1em;
 
     dt:before {
-      content:'    "';
+      content: '    "';
       white-space: pre;
     }
+
     dt:after {
-      content:'":'
+      content: '":'
     }
+
     dd:before {
       content: ' "';
       white-space: pre;
     }
+
     dd:after {
       content: '",'
     }
-    dd,dt {
+
+    dd, dt {
       display: inline-block;
     }
 

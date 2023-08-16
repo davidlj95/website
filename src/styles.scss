@@ -5,13 +5,18 @@
 @use 'app/navigation-tabs/navigation-tabs-theme' as navigation-tabs;
 @use 'app/contacts/contacts-theme' as contacts;
 @use 'app/social-networks/social-networks-theme' as social-networks;
-@import "theming.scss";
+@import "theming";
+@import "typographies";
 
 // CSS reset & normalization
 @import "gardevoir/dist/mini.min.css";
 
 body {
   font-family: sans-serif;
+}
+
+code, pre {
+  @include monospace-font();
 }
 
 @mixin app-color($theme) {
