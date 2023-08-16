@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let item of items" class="boxed">
+    <span [innerHtml]="item.svg"></span>
     <a href="{{item.url}}" target="_blank">{{item.name}}</a>
-    <!-- TODO: add SVGs -->
   </li>
 </ul>
