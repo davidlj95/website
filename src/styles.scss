@@ -1,5 +1,6 @@
 @use 'app/profile/profile-theme' as profile;
 @use 'app/toolbar/toolbar-theme' as toolbar;
+@use 'app/navigation-tabs/navigation-tabs-theme' as navigation-tabs;
 @use 'app/contacts/contacts-theme' as contacts;
 @use 'app/social-networks/social-networks-theme' as social-networks;
 @import "theming.scss";
@@ -57,33 +58,6 @@ main {
   border-bottom-style: solid;
 }
 
-ul.box-item {
-  list-style: none;
-  width: 100%;
-  display: flex;
-  margin: 0;
-  margin-block: unset;
-  margin-inline: unset;
-  padding-inline: unset;
-  justify-content: space-around;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-ul.box-item > * {
-  display: inline-flex;
-  padding: 0.5em;
-  flex-grow: 1;
-  justify-content: center;
-  text-align: center;
-}
-
-ul.box-item > li > a {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-
 @mixin app-color($theme) {
   $background-palette: map-get($theme, background);
   $text-palette: map-get($theme, text);
@@ -95,6 +69,7 @@ ul.box-item > li > a {
 
   @include profile.theme($theme);
   @include toolbar.theme($theme);
+  @include navigation-tabs.theme($theme);
   @include contacts.theme($theme);
   @include social-networks.theme($theme);
 
@@ -107,23 +82,6 @@ ul.box-item > li > a {
   }
   .box-item {
     border-color: map-get($theme, hairline);
-  }
-
-  $tabs-palette: map-get($theme, tabs);
-  ul {
-    background-color: map-get($tabs-palette, background);
-    color: map-get($tabs-palette, foreground);
-
-    > .selected {
-      background-color: map-get($tabs-palette, selected-background);
-      color: map-get($tabs-palette, selected-foreground);
-      border-bottom: map-get($tabs-palette, selected-border-bottom);
-    }
-
-    > :not(.selected):hover {
-      background-color: map-get($tabs-palette, hover-background);
-      color: map-get($tabs-palette, hover-foreground);
-    }
   }
 
   $accent: map-get($theme, accent);

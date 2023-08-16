@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NoScriptComponent } from './no-script/no-script.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SocialNetworksComponent } from './social-networks/social-networks.component';
+import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SocialNetworksComponent } from './social-networks/social-networks.compo
     NoScriptComponent,
     ContactsComponent,
     SocialNetworksComponent,
+    NavigationTabsComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,6 @@ import { DOCUMENT, isPlatformBrowser } from "@angular/common";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  resume_url = 'https://resume.davidlj95.com';
   noScriptCssClass = 'hideIfNoScript';
 
   constructor(

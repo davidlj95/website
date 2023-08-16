@@ -1,0 +1,24 @@
+@mixin color($theme) {
+  $tabs-palette: map-get($theme, tabs);
+
+  ul {
+    background-color: map-get($tabs-palette, background);
+    color: map-get($tabs-palette, foreground);
+
+    > .selected {
+      background-color: map-get($tabs-palette, selected-background);
+      color: map-get($tabs-palette, selected-foreground);
+      border-bottom: map-get($tabs-palette, selected-border-bottom);
+    }
+
+    > :not(.selected):hover {
+      background-color: map-get($tabs-palette, hover-background);
+      color: map-get($tabs-palette, hover-foreground);
+    }
+  }
+
+}
+
+@mixin theme($theme) {
+  @include color($theme)
+}
