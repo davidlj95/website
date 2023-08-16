@@ -12,6 +12,10 @@
     border-bottom-style: none;
   }
 
+  noscript {
+    display: block;
+  }
+
   > *:last-child {
     border-bottom-style: solid;
   }
