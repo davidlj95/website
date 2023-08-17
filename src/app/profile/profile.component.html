@@ -6,8 +6,6 @@
     <code>@{{ nickname }}</code>
 </h1>
 <div class="descriptions">
-    <h2>🧑‍💻 <code>/dev/random</code> software engineer</h2>
-    <h2>🔌 Connecting technology & RealLife™</h2>
-    <h2>🎾 Padel frequent player</h2>
+    <h2 *ngFor="let descriptionLine of descriptionLines" [innerHtml]="descriptionLine"></h2>
 </div>
 
