@@ -3,7 +3,7 @@
 
 :host {
   display: block;
-  max-width: calc(600px - #{margins.$m} - #{margins.$m});
+  max-width: calc(600px - #{margins.$m * 2});
   margin: margins.$m;
 
   > * {
