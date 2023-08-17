@@ -5,19 +5,22 @@
  * If that theme is the default one, will generate the CSS so that the content is applied by default
  *
  * Selection may happen due to:
- *  - "body" tag containing class with given name
+ *  - "html" tag specifying theme attribute
  *  - prefers-color-scheme matching theme name
  */
 @mixin color-themed($theme-name) {
   @if $theme-name == light {
+    // Default (no color scheme preference) styles are light ones
     @content;
   }
   @if $theme-name == dark {
+    // Switch to dark if user prefers that
     @media (prefers-color-scheme: $theme-name) {
       @content;
     }
   }
-  body.#{$theme-name} {
+  // Switch dynamically by setting theme
+  html[data-theme=#{$theme-name}] {
     @content;
   }
 }

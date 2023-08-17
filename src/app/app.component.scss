@@ -11,6 +11,8 @@
   left: 0;
   right: 0;
 
+  // Weird things happen if the root acts as flex container
+  // Given the root is fixed to take full screen, but isn't prepared to overflow
   main {
     display: flex;
     justify-content: center;

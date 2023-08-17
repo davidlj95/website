@@ -7,6 +7,8 @@ import { Component, Inject } from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
+  private static readonly THEME_ATTRIBUTE = 'data-theme';
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
   ) {
@@ -14,11 +16,15 @@ export class ToolbarComponent {
 
   toggleTheme() {
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const body = this.document.body;
-    if (prefersDark) {
-      body.classList.toggle('light');
+    prefersDark ? this.toggleHtmlTheme('light') : this.toggleHtmlTheme('dark');
+  }
+
+  private toggleHtmlTheme(theme: string) {
+    const htmlElement = this.document.documentElement;
+    if (htmlElement.getAttribute(ToolbarComponent.THEME_ATTRIBUTE)) {
+      htmlElement.removeAttribute(ToolbarComponent.THEME_ATTRIBUTE)
     } else {
-      body.classList.toggle('dark');
+      htmlElement.setAttribute(ToolbarComponent.THEME_ATTRIBUTE, theme);
     }
   }
 }
