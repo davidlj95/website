@@ -33,7 +33,11 @@
     }
 
     dd, dt {
-      display: inline-block;
+      display: inline;
+    }
+
+    dd {
+      word-break: break-all;
     }
 
     a {

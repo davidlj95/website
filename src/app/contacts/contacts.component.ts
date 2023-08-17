@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
-  public items : ReadonlyArray<ContactItem>= [
+  public items: ReadonlyArray<ContactItem> = [
     {
       key: "email",
       value: "mail@davidlj95.com",
