@@ -4,10 +4,8 @@
 :host {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   padding: paddings.$m;
-  gap: margins.$s;
+  gap: margins.$m;
 
   img {
     border-radius: 128px;
@@ -16,11 +14,20 @@
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    line-height: 1em;
+  }
+
+  div.descriptions {
+    display: flex;
+    flex-direction: column;
+    gap: margins.$s;
   }
 
   h2 {
-    font-size: 1.25em;
+    font-size: 1.1em;
     text-align: left;
     width: fit-content;
   }
