@@ -1,7 +1,17 @@
 :host {
+  // You may wonder: why aren't you just using "min-height: 100vh"? Well, good question.
+  // Seems that choosing "vh" as units isn't a wise choice. Given the viewport height can change due to
+  // mostly mobile phone world quirks: virtual keyboards, URL bars...
+  //
+  // Concretely, had this issue with my Android phone and switch to this way after that
+  // https://blog.logrocket.com/improving-mobile-design-latest-css-viewport-units/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
   display: flex;
-  min-height: 100vh;
-  min-width: 100vw;
   justify-content: center;
   align-items: center;
 }
