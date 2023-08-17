@@ -1,7 +1,7 @@
 @mixin color($theme) {
   $social-theme: map-get($theme, social);
 
-  app-social-networks {
+  app-social {
     color: map-get($social-theme, foreground);
 
     ul > li {

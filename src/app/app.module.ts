@@ -8,7 +8,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NoScriptComponent } from './no-script/no-script.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { SocialNetworksComponent } from './social-networks/social-networks.component';
+import { SocialComponent } from './social/social.component';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { WindowComponent } from './window/window.component';
 import { SeoModule } from "@ngaox/seo";
@@ -24,7 +24,7 @@ const siteName = `${realname} 🔗 @${nickname}`;
     ProfileComponent,
     NoScriptComponent,
     ContactsComponent,
-    SocialNetworksComponent,
+    SocialComponent,
     NavigationTabsComponent,
     WindowComponent,
   ],

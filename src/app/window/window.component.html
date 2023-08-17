@@ -1,9 +1,8 @@
 <app-toolbar class="hideIfNoScript"></app-toolbar>
 <app-profile></app-profile>
 <noscript>
-  <app-no-script></app-no-script>
+    <app-no-script></app-no-script>
 </noscript>
 <app-navigation-tabs [tab]="selectedTab" class="hideIfNoScript"></app-navigation-tabs>
 <app-contacts [class.active]="selectedTab === 'contact'" class="tab-item showIfNoScript"></app-contacts>
-<app-social-networks [class.active]="selectedTab === 'social-media'"
-                     class="tab-item showIfNoScript"></app-social-networks>
+<app-social [class.active]="selectedTab === 'social'" class="tab-item showIfNoScript"></app-social>

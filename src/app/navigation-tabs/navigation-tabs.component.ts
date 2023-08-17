@@ -6,14 +6,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./navigation-tabs.component.scss']
 })
 export class NavigationTabsComponent {
-  public static readonly IDS = ['contact', 'social-media', 'cv'] as const;
+  public static readonly IDS = ['contact', 'social', 'cv'] as const;
   readonly items: ReadonlyArray<TabItem> = [
     {
       id: 'contact',
       displayName: 'Contact',
     },
     {
-      id: 'social-media',
+      id: 'social',
       displayName: 'Social media',
     },
     {

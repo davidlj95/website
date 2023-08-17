@@ -4,7 +4,7 @@
 @use 'app/toolbar/toolbar-theme' as toolbar;
 @use 'app/navigation-tabs/navigation-tabs-theme' as navigation-tabs;
 @use 'app/contacts/contacts-theme' as contacts;
-@use 'app/social-networks/social-networks-theme' as social-networks;
+@use 'app/social/social-theme' as social;
 @import "theming";
 @import "typographies";
 
@@ -26,7 +26,7 @@ code, pre {
   @include toolbar.color($theme);
   @include navigation-tabs.color($theme);
   @include contacts.color($theme);
-  @include social-networks.color($theme);
+  @include social.color($theme);
 
   // TODO: cool effect for hovering
   a {

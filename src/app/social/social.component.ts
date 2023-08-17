@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-social-networks',
-  templateUrl: './social-networks.component.html',
-  styleUrls: ['./social-networks.component.scss']
+  selector: 'app-social',
+  templateUrl: './social.component.html',
+  styleUrls: ['./social.component.scss']
 })
-export class SocialNetworksComponent {
+export class SocialComponent {
   constructor(private sanitizer: DomSanitizer) {
   }
 
