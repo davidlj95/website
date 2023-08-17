@@ -2,9 +2,12 @@
 @use "src/typographies" as typographies;
 
 :host {
-  display: flex;
-  justify-content: center;
-  padding: paddings.$m;
+  // See HTML for reason why this can't be set directly to host component
+  div.flex-box {
+    display: flex;
+    justify-content: center;
+    padding: paddings.$m;
+  }
 
   dl {
     text-align: left;
