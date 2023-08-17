@@ -4,10 +4,7 @@
 :host {
   display: block;
   max-width: calc(600px - #{margins.$m} - #{margins.$m});
-
-  @include breakpoints.xs {
-    margin: margins.$m;
-  }
+  margin: margins.$m;
 
   > * {
     border-style: solid;
