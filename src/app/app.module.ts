@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, VERSION } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SeoModule } from "@ngaox/seo";
 
@@ -52,7 +52,8 @@ import { WindowComponent } from './window/window.component';
         {name: 'author', content: NICKNAME,},
         {property: 'og:locale', content: 'en',},
         {property: 'fb:admins', content: NICKNAME,},
-        {name: 'facebook-domain-verification', content: '1299426610587748'}
+        {name: 'facebook-domain-verification', content: '1299426610587748'},
+        {name: 'generator', content: `Angular ${VERSION.full}`}
       ]
     })
   ],
