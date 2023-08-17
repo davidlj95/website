@@ -1,3 +1,7 @@
+@mixin body-font {
+  font-family: "Tahoma", Helvetica, sans-serif;
+}
+
 @mixin monospace-font {
   font-family: "Courier New", monospace;
 }

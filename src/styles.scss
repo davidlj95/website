@@ -12,7 +12,7 @@
 @import "gardevoir/dist/mini.min.css";
 
 body {
-  font-family: sans-serif;
+  @include body-font();
 }
 
 code, pre {
