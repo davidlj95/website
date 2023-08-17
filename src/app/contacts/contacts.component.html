@@ -1,15 +1,15 @@
 <!-- Component can't set display:flex due to JS always show setting display to block -->
 <div class="flex-box">
-    <div>
-        {{ '{' }}<br>
-        <dl>
-            <div *ngFor="let item of items">
-                <dt>{{item.key}}</dt>
-                <dd>
-                    <a href="{{item.uriPrefix}}{{item.value}}" target="_blank">{{item.value}}</a>
-                </dd>
-            </div>
-        </dl>
-        {{ '}' }}<br>
-    </div>
+  <div>
+    {{ '{' }}<br>
+    <dl>
+      <div *ngFor="let item of items">
+        <dt>{{item.key}}</dt>
+        <dd>
+          <a href="{{item.uriPrefix}}{{item.value}}" target="_blank">{{item.value}}</a>
+        </dd>
+      </div>
+    </dl>
+    {{ '}' }}<br>
+  </div>
 </div>

@@ -2,69 +2,69 @@
 <!--suppress HtmlRequiredTitleElement . Angular will insert it dynamically -->
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
-    <link rel="manifest" href="manifest.json">
-    <meta name="msapplication-TileColor" content="#265c83">
-    <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#265c83">
-    <noscript>
-        <!--suppress CssUnusedSymbol (used in inner components, but WebStorm doesn't go so far :P) -->
-        <style>
-            /**
-             * So we can show or hide features if JS is not enabled. If we did this with JS, we may add some flickering.
-             * For instance, some items could be shown to later be hidden with JS is enabled and using ".showIfNoScript".
-             * Specifically, the navigation tabs and the active tab items. Or displaying the toolbar and navigation tabs if
-             * JS is enabled.
-             **/
-            .showIfNoScript {
-                display: block !important;
-            }
-
-            .hideIfNoScript {
-                display: none !important;
-            }
-        </style>
-    </noscript>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "author": {
-                "@type": "Person",
-                "name": "davidlj95",
-                "url": "https://davidlj95.com/"
-            },
-            "description": "/dev/random software engineer. Connecting technology &amp; RealLife™. Padel frequent player. Get to know me better here",
-            "headline": "David LJ 🔗 @davidlj95",
-            "name": "David LJ",
-            "sameAs": [
-                "https://twitter.com/davidlj95",
-                "https://www.instagram.com/davidlj95",
-                "https://www.facebook.com/davidlj95",
-                "https://www.linkedin.com/in/davidlj95",
-                "https://github.com/davidlj95",
-                "https://gitlab.com/davidlj95",
-                "https://stackoverflow.com/users/3263250/davidlj95"
-            ],
-            "url": "https://v2.davidlj95.com"
+  <meta charset="utf-8">
+  <base href="/">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="favicon.ico" rel="icon" type="image/x-icon">
+  <link href="assets/img/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+  <link href="assets/img/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+  <link href="assets/img/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+  <link href="assets/img/favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+  <link href="assets/img/favicons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+  <link href="assets/img/favicons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+  <link href="assets/img/favicons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+  <link href="assets/img/favicons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="assets/img/favicons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="assets/img/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+  <link href="assets/img/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link href="assets/img/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+  <link href="assets/img/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+  <link href="manifest.json" rel="manifest">
+  <meta content="#265c83" name="msapplication-TileColor">
+  <meta content="assets/img/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
+  <meta content="#265c83" name="theme-color">
+  <noscript>
+    <!--suppress CssUnusedSymbol (used in inner components, but WebStorm doesn't go so far :P) -->
+    <style>
+        /**
+         * So we can show or hide features if JS is not enabled. If we did this with JS, we may add some flickering.
+         * For instance, some items could be shown to later be hidden with JS is enabled and using ".showIfNoScript".
+         * Specifically, the navigation tabs and the active tab items. Or displaying the toolbar and navigation tabs if
+         * JS is enabled.
+         **/
+        .showIfNoScript {
+            display: block !important;
         }
-    </script>
+
+        .hideIfNoScript {
+            display: none !important;
+        }
+    </style>
+  </noscript>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "author": {
+        "@type": "Person",
+        "name": "davidlj95",
+        "url": "https://davidlj95.com/"
+      },
+      "description": "/dev/random software engineer. Connecting technology &amp; RealLife™. Padel frequent player. Get to know me better here",
+      "headline": "David LJ 🔗 @davidlj95",
+      "name": "David LJ",
+      "sameAs": [
+        "https://twitter.com/davidlj95",
+        "https://www.instagram.com/davidlj95",
+        "https://www.facebook.com/davidlj95",
+        "https://www.linkedin.com/in/davidlj95",
+        "https://github.com/davidlj95",
+        "https://gitlab.com/davidlj95",
+        "https://stackoverflow.com/users/3263250/davidlj95"
+      ],
+      "url": "https://v2.davidlj95.com"
+    }
+  </script>
 </head>
 <body>
 <app-root></app-root>

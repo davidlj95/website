@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import { isTabId, TabId } from "../navigation-tabs/navigation-tabs.component";
 import { ActivatedRoute } from "@angular/router";
+import { isTabId, TabId } from "../navigation-tabs/navigation-tabs.component";
 
 @Component({
   selector: 'app-window',
