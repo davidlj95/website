@@ -6,6 +6,7 @@ import { SeoModule } from "@ngaox/seo";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
 import { DESCRIPTION, NICKNAME, REALNAME, SITENAME, URL } from './metadata';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from './no-script/no-script.component';
@@ -24,6 +25,7 @@ import { WindowComponent } from './window/window.component';
     SocialComponent,
     NavigationTabsComponent,
     WindowComponent,
+    JsonldMetadataComponent,
   ],
   imports: [
     BrowserModule,
