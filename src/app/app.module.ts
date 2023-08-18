@@ -2,12 +2,13 @@ import { NgOptimizedImage } from '@angular/common';
 import { NgModule, VERSION } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SeoModule } from "@ngaox/seo";
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
-import { DESCRIPTION, NICKNAME, REALNAME, SITENAME, URL } from './metadata';
+import { DESCRIPTION, NICKNAME, REALNAME, SITENAME } from './metadata';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from './no-script/no-script.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -35,10 +36,10 @@ import { WindowComponent } from './window/window.component';
       title: SITENAME,
       keywords: `${NICKNAME}, website, ${REALNAME}, portfolio, cv, resume, projects, info, contact`,
       description: DESCRIPTION,
-      url: `${URL}/`,
+      url: environment.canonicalUrl.toString(),
       type: 'website',
       image: {
-        url: `${URL}/assets/img/og.jpg`,
+        url: new URL('assets/img/og.jpg', environment.canonicalUrl).toString(),
         alt: `A portrait of ${REALNAME}. Slightly smiling and wearing geek'ish glasses`,
         width: 875,
         height: 875,
