@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { DESCRIPTION_LINES, NICKNAME, REALNAME } from "../metadata";
+import { DESCRIPTION_LINES, NICKNAME, REAL_NAME } from "../metadata";
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +8,7 @@ import { DESCRIPTION_LINES, NICKNAME, REALNAME } from "../metadata";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  public realname = REALNAME;
+  public realName = REAL_NAME;
   public nickname = NICKNAME;
   public descriptionLines: ReadonlyArray<SafeHtml> = DESCRIPTION_LINES
     .map((descriptionLine) =>

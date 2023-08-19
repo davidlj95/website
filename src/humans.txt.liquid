@@ -1,10 +1,8 @@
-Hi, I'm David LJ. Also known as davidlj95 in the cyberspace. I happen to be the author of my own site too.
+Hi, I'm {{ realName }}. Also known as {{ nickname }} in the cyberspace. I happen to be the author of my own site too.
 Would you have guessed that? Well if you knew I'm a software engineer, maybe you did! Some things about me:
 
-* 👨‍💻 <code>/dev/random</code> software engineer
-* 🔌 Connecting technology & RealLife™
-* 🎾 Padel regular player
-
+{% for descriptionLine in descriptionLines %}* {{ descriptionLine.emoji }} {{ descriptionLine.text }}
+{% endfor %}
 Visit the website for more info!
 
 You may wonder: why this thing is here? Well was reading about "robots.txt" in Wikipedia when building this site and

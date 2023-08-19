@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
-import { DESCRIPTION, NICKNAME, REALNAME, SITENAME } from './metadata';
+import { DESCRIPTION, NICKNAME, REAL_NAME, SITE_NAME } from './metadata';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from './no-script/no-script.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -33,14 +33,14 @@ import { WindowComponent } from './window/window.component';
     AppRoutingModule,
     NgOptimizedImage,
     SeoModule.forRoot({
-      title: SITENAME,
-      keywords: `${NICKNAME}, website, ${REALNAME}, portfolio, cv, resume, projects, info, contact`,
+      title: SITE_NAME,
+      keywords: `${NICKNAME}, website, ${REAL_NAME}, portfolio, cv, resume, projects, info, contact`,
       description: DESCRIPTION,
       url: environment.canonicalUrl.toString(),
       type: 'website',
       image: {
         url: new URL('assets/img/og.jpg', environment.canonicalUrl).toString(),
-        alt: `A portrait of ${REALNAME}. Slightly smiling and wearing geek'ish glasses`,
+        alt: `A portrait of ${REAL_NAME}. Slightly smiling and wearing geek'ish glasses`,
         width: 875,
         height: 875,
         // mimeType: "Not setting it. So you can change the image without needing to worry about updating this l8r",
@@ -50,7 +50,7 @@ import { WindowComponent } from './window/window.component';
         creator: `@${NICKNAME}`,
         site: `@${NICKNAME}`,
       },
-      siteName: SITENAME,
+      siteName: SITE_NAME,
       extra: [
         {name: 'author', content: NICKNAME,},
         {property: 'og:locale', content: 'en',},

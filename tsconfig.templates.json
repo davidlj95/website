@@ -1,0 +1,17 @@
+/* Source is copy/paste of "tsconfig.server.json" */
+/* Dedicated to run the template rendering script with ts-node */
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "src/generate-templated-files.ts"
+  ],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}
