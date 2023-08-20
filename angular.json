@@ -34,8 +34,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              "src/favicon.svg",
               "src/assets",
-              "src/manifest.json",
+              "src/site.webmanifest",
               "src/browserconfig.xml",
               "src/profile.jpg",
               "src/.well-known",
@@ -109,8 +110,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              "src/favicon.svg",
               "src/assets",
-              "src/manifest.json",
+              "src/site.webmanifest",
               "src/browserconfig.xml",
               "src/profile.jpg",
               "src/.well-known",

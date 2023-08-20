@@ -1,0 +1,22 @@
+<svg height="512" viewBox="0 5 7.111 7.111" width="512" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#7a7a85" font-family="Tahoma, Helvetica, sans-serif" font-size="4.9416px" stroke-width=".013889">
+    <text x="-0.36434573" xml:space="preserve" y="10.351893"><tspan font-size="4.9416px" stroke-width=".013889" x="-0.36434573" y="10.351893">D</tspan></text>
+    <text
+      x="2.7182312" xml:space="preserve" y="10.351893"><tspan font-size="4.9416px" stroke-width=".013889" x="2.7182312" y="10.351893">L</tspan></text>
+    <text
+      x="5.3930254" xml:space="preserve" y="10.326558"><tspan stroke-width=".013889" x="5.3930254" y="10.326558">J</tspan></text>
+  </g>
+  <style>
+    @media (prefers-color-scheme: light) {
+      text {
+        fill: #202124;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      text {
+        fill: #e8eaedff;
+      }
+    }
+  </style>
+</svg>

@@ -1,0 +1,25 @@
+{
+  "name": "{{ siteName }}",
+  "short_name": "{{ nickname }}",
+  "description": "{{ description }}",
+  "theme_color": "{{ themeColor }}",
+  "icons": [
+    {%  for icon in manifestJsonDensityIcons %}{
+      "src": "assets/favicons/android-icon-{{ icon.size }}x{{ icon.size }}.png",
+      "sizes": "{{ icon.size }}x{{ icon.size }}",
+      "type": "image/png",
+      "density": "{{ icon.density }}"
+    },
+    {%  endfor %}{%  for iconSize in manifestJsonMaskableIconSizes %}{
+      "src": "assets/favicons/maskable-icon-x{{ iconSize }}.png",
+      "sizes": "{{ iconSize }}x{{ iconSize }}",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {%  endfor %}{
+      "src": "assets/favicons/maskable-icon.png",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
