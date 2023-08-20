@@ -8,7 +8,8 @@
     ]
   },
   "files": [
-    "scripts/generate-templated-files.ts"
+    "scripts/generate-templated-files.ts",
+    "scripts/generate-security-txt.ts"
   ],
   "ts-node": {
     "esm": true,
