@@ -56,7 +56,9 @@ import { WindowComponent } from './window/window.component';
         {property: 'og:locale', content: 'en',},
         {property: 'fb:admins', content: NICKNAME,},
         {name: 'facebook-domain-verification', content: '1299426610587748'},
-        {name: 'generator', content: `Angular ${VERSION.full}`}
+        {name: 'generator', content: `Angular ${VERSION.full}`},
+        // See more in favicons doc. Related to Internet Explorer / Microsoft metro tiles
+        {name: 'application-name', content: SITE_NAME}
       ]
     })
   ],

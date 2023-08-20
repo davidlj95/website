@@ -114,7 +114,6 @@ Provided by [Maskable.app](https://maskable.app). That bit of JSON was typed by 
 
 ## Microsoft tiles
 
-[browserconfig.xml](..%2F..%2F..%2F..%2F..%2FDownloads%2Ffavicon_package_v0.16%20%281%29%2Fbrowserconfig.xml)
 A `browserconfig.xml` file is created to provided tiles for legacy Windows Phone and Microsoft 8/10 tiles.
 
 ```xml
@@ -135,6 +134,17 @@ A `browserconfig.xml` file is created to provided tiles for legacy Windows Phone
 Those icons are created by [Favicomatic][favicomatic]. However, the file code is from [FaviconGenerator.org][favicon-generator-org]. Given [Favicomatic][favicomatic] puts the code as `meta` tags in the `index.html` `head` tag. But I find having a separate `browserconfig.xml` file better, to keep the index cleaner. And avoid offering info that may not be needed (you don't care at all about tiles if using macOS + Chrome for instance). One
 
 > Both [Favicomatic][favicomatic] and [FaviconGenerator.org][favicon-generator-org] generate same sizes of icons. However, [Favicomatic][favicomatic] includes a wide tile. That one is added manually in the `browserconfig.xml` from the shape of the `meta` tag that [Favicomatic][favicomatic] provides.
+
+However, as per [favicometer][favicometer], seems that at least the tile app, color and image are needed for IE10 pinned sites. So we need a bit more tags in our `index.html`
+
+```html
+
+<meta name="application-name" content="David LJ 🔗 @davidlj95">
+<meta name="msapplication-TileColor" content="#202023"/>
+<meta name="msapplication-TileImage" content="assets/favicons/mstile-144x144.png"/>
+```
+
+Check [Microsoft docs](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/samples/dn455106(v=vs.85)?redirectedfrom=MSDN) for more info.
 
 ## SVG light/dark theme
 
@@ -172,10 +182,12 @@ I've used:
 
 # Checkers
 
-- [Favic-o-matic's favic-o-meter](https://favicomatic.com/)
+- [Favic-o-matic's favic-o-meter][favicometer]
 
 [favicon-generator-org]: https://www.favicon-generator.org/
 
-[Favicomatic]: https://favicomatic.com/
+[favicomatic]: https://favicomatic.com/
 
 [real-favicon-generator]: https://realfavicongenerator.net/
+
+[favicometer]: https://favicomatic.com/favicon-test
