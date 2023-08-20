@@ -2352,6 +2352,7 @@ __metadata:
     "@types/node": ^16.11.7
     express: ^4.15.2
     gardevoir: ^1.0.0
+    glob: ^10.3.3
     jasmine-core: ~4.6.0
     karma: ~6.4.0
     karma-chrome-launcher: ~3.2.0
@@ -6926,7 +6927,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.2.2":
+"glob@npm:^10.2.2, glob@npm:^10.3.3":
   version: 10.3.3
   resolution: "glob@npm:10.3.3"
   dependencies:
