@@ -1,16 +1,14 @@
 import * as path from 'path';
 import * as process from 'process';
-import { fileURLToPath } from 'url';
 
 export function getRepositoryRootDir() {
-  return path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  return path.resolve(__dirname, '..');
 }
 
 export const SECURITY_TXT_REL_PATH = path.join('.well-known', 'security.txt');
 
-// https://stackoverflow.com/a/63193714/3263250
-export function isMain(moduleUrl: string) {
-  return process.argv[1] === fileURLToPath(moduleUrl)
+export function isMain(module: NodeModule) {
+  return process.argv[1] == module.filename;
 }
 
 export class Log implements Partial<Console> {

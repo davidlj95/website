@@ -22,10 +22,10 @@ async function generateSecurityTxt() {
 
   Log.info('Writing signed file');
   await fs.writeFile(securityTxtFile, result['stdout']);
-
-  Log.ok('Security.txt generated');
 }
 
-if (isMain(import.meta.url)) {
-  await generateSecurityTxt();
+if (isMain(module)) {
+  generateSecurityTxt().then(() => {
+    Log.ok('Done')
+  });
 }

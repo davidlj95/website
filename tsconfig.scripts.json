@@ -1,18 +1,8 @@
-/* Source is copy/paste of "tsconfig.server.json" */
 /* Dedicated to run several dev scripts with ts-node */
 {
-  "extends": "./tsconfig.app.json",
-  "compilerOptions": {
-    "types": [
-      "node"
-    ]
-  },
+  "extends": "@tsconfig/node16/tsconfig.json",
   "files": [
     "scripts/generate-templated-files.ts",
     "scripts/generate-security-txt.ts"
-  ],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  }
+  ]
 }

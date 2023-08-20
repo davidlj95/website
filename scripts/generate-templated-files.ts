@@ -110,6 +110,8 @@ function getContext() {
   return CONTEXT;
 }
 
-if (isMain(import.meta.url)) {
-  await generateTemplatedFiles();
+if (isMain(module)) {
+  generateTemplatedFiles().then(() => {
+    Log.ok('Done');
+  })
 }
