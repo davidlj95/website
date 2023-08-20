@@ -39,7 +39,8 @@
               "src/browserconfig.xml",
               "src/profile.jpg",
               "src/.well-known",
-              "src/robots.txt"
+              "src/robots.txt",
+              "src/humans.txt"
             ],
             "styles": [
               "src/styles.scss"
@@ -113,7 +114,8 @@
               "src/browserconfig.xml",
               "src/profile.jpg",
               "src/.well-known",
-              "src/robots.txt"
+              "src/robots.txt",
+              "src/humans.txt"
             ],
             "styles": [
               "src/styles.scss"
