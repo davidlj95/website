@@ -107,8 +107,9 @@ $themes: (
     json: (
       // --color-text-primary
       foreground: #e8eaedff,
-      // --color-text-secondary,
-      key: #9aa0a6ff,
+      // --color-text-secondary: #9aa0a6ff,
+      // Replaced as not enough contrast. Decreased luminance in HSL
+      key: #b6babe,
       // --color-syntax-1
       value-string: #35d4c7ff,
       // cta
