@@ -191,6 +191,10 @@
   },
   "cli": {
     "analytics": "a28ec86a-9ba5-4c73-941c-3c72f535d983",
+    "cache": {
+      "environment": "all",
+      "path": ".angular/cache"
+    },
     "packageManager": "yarn"
   }
 }

@@ -50,7 +50,7 @@ jobs:
         env:
           cache-name: angular-dist
         with:
-          path: dist
+          path: .angular/cache
           key: ${{ env.cache-name }}-${{ github.ref }}
           restore-keys: |
             ${{ env.cache-name }}
