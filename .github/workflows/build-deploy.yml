@@ -54,9 +54,7 @@ jobs:
           key: ${{ env.cache-name }}-${{ github.ref }}
           restore-keys: |
             ${{ env.cache-name }}
-      - name: Build Angular app
-        run: yarn run build
-      - name: Prerender app
+      - name: Build and prerender app
         run: yarn run prerender
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
