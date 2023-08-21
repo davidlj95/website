@@ -7,12 +7,15 @@
   padding: paddings.$m;
   gap: margins.$m;
 
+  $picture-size: 128px;
+
   .picture {
     position: relative;
-    width: 128px;
+    width: $picture-size;
+    border-radius: $picture-size;
 
     img {
-      border-radius: 128px;
+      border-radius: $picture-size;
       border-style: solid;
       border-width: 1px;
     }
@@ -93,7 +96,7 @@
           position: absolute;
           border-left: 8px solid transparent;
           border-top: 0;
-          top: calc(128px + 12px);
+          top: calc($picture-size + 12px);
           left: 50%;
           margin-left: -8px;
         }
