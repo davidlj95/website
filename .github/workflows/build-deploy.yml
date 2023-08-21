@@ -45,6 +45,15 @@ jobs:
         # setup-node action uses "--frozen-lockfile" but that is backwards comp and will be removed
         # https://github.com/actions/setup-node/blob/5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d/docs/advanced-usage.md#caching-packages-data
         run: yarn install --immutable
+      - name: Cache Angular build
+        uses: actions/cache@v3
+        env:
+          cache-name: angular-dist
+        with:
+          path: dist
+          key: ${{ env.cache-name }}-${{ github.ref }}
+          restore-keys: |
+            ${{ env.cache-name }}
       - name: Build Angular app
         run: yarn run build
       - name: Prerender app
