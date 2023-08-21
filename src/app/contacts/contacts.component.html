@@ -1,12 +1,15 @@
-<!-- Component can't set display:flex due to JS always show setting display to block -->
 <div class="flex-box">
   <div>
     {{ '{' }}<br>
     <dl>
-      <div *ngFor="let item of items">
-        <dt>{{item.key}}</dt>
+      <div *ngFor="let item of items; let last = last">
+        <dt>
+          <span>&nbsp;&nbsp;"</span>{{item.key}}<span>":&nbsp;</span>
+        </dt>
         <dd>
+          <span>"</span>
           <a href="{{item.uriPrefix}}{{item.value}}" target="_blank">{{item.value}}</a>
+          <span>"<ng-container *ngIf="!last">,</ng-container></span>
         </dd>
       </div>
     </dl>

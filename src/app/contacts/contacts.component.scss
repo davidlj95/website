@@ -2,7 +2,7 @@
 @use "src/typographies" as typographies;
 
 :host {
-  // See HTML for reason why this can't be set directly to host component
+  // Component can't set display:flex due to JS always show setting display to block
   div.flex-box {
     display: flex;
     justify-content: center;
@@ -12,25 +12,8 @@
 
   dl {
     text-align: left;
+    line-height: 1.85em;
     @include typographies.monospace-font;
-
-    dt:before {
-      content: '  "';
-      white-space: pre;
-    }
-
-    dt:after {
-      content: '":'
-    }
-
-    dd:before {
-      content: ' "';
-      white-space: pre;
-    }
-
-    dd:after {
-      content: '",'
-    }
 
     dd, dt {
       display: inline;
