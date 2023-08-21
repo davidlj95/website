@@ -9,6 +9,7 @@
 
   .picture {
     position: relative;
+    width: 128px;
 
     img {
       border-radius: 128px;
@@ -17,7 +18,7 @@
     }
 
     .main {
-      transition: opacity .5s;
+      transition: opacity .75s;
     }
 
     .huh {
@@ -28,17 +29,20 @@
       bottom: 0;
       opacity: 0;
 
-      transition: opacity .5s;
+      transition: opacity .75s;
     }
 
     .comment {
+      visibility: hidden;
       opacity: 0;
-      transition: opacity .5s;
+      transition: opacity .75s, visibility .75s;
 
       position: absolute;
 
       top: 66px;
       left: 88px;
+
+      width: max-content;
 
       padding: paddings.$s;
       border-radius: paddings.$s;
@@ -72,6 +76,7 @@
 
     &:hover {
       .comment {
+        visibility: visible;
         opacity: 1;
       }
 
