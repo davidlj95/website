@@ -46,6 +46,12 @@ won't be in sync.
 
 [npm-pre-post-scripts]: https://docs.npmjs.com/cli/v9/using-npm/scripts#pre--post-scripts
 
+## Quirks
+
+### Symlinked static assets don't work when serving locally
+
+When using Angular's development server (either regular or SSR one), symbolic links seem not to work for static assets. So for instance `/profile.jpg` which is symlinked to `/assets/img/og.jpg` won't be served. And the server will redirect you towards main page (`/`). It works when building though, so it will appear in the built version.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out

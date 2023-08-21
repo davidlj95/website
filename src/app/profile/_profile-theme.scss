@@ -6,7 +6,6 @@
       img {
         background-color: map-get($background-palette, z2);
         border-color: map-get($theme, hairline);
-        filter: grayscale(map-get($theme, img-grayscale));
       }
 
       .comment {
