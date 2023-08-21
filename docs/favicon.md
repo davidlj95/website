@@ -86,6 +86,8 @@ Then, some extra favicon sizes, provided by [Favicomatic][favicomatic]
 
 I first used the ones by [FaviconGenerator.org][favicon-generator-org]. But they miss the 196, 128 version and are ordered in a different manner. Also [Favicomatic][favicomatic] ones are lighter.
 
+> The 196 version fixed the "Android M31" test in [Favicometer][favicometer]
+
 > Eventually added `24` and `64` sizes to make [Favicometer][favicometer] happy (using an online service). But totally unneeded IMO. Just to get the 100% score in there.
 
 # Web manifest
