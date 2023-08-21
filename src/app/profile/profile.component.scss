@@ -1,5 +1,6 @@
 @use "src/margins" as margins;
 @use "src/paddings" as paddings;
+@use "src/touch-or-pointer" as touchOrPointer;
 
 :host {
   display: flex;
@@ -67,8 +68,7 @@
         display: none
       }
 
-      // https://stackoverflow.com/a/52854585/3263250
-      @media (hover: none) {
+      @include touchOrPointer.primaryInputCannotHover {
         .touch {
           display: inline-block;
         }
