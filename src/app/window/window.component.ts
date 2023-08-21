@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 import { isTabId, TabId } from "../navigation-tabs/navigation-tabs.component";
 
 @Component({
