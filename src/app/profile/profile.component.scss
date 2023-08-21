@@ -50,9 +50,10 @@
       // Speech bubble by
       // https://freefrontend.com/css-speech-bubbles/
       &:before {
+        position: absolute;
         content: "";
         border: 8px solid transparent;
-        position: absolute;
+
         border-left: 0;
         left: -8px;
         top: 50%;
@@ -74,10 +75,42 @@
       }
     }
 
+    // Reduce comment on small screens, doesn't fit width
+    @media screen and (max-width: 350px) {
+      .comment {
+        width: 128px;
+      }
+    }
+
+    // Place it below picture in super small screens
+    @media screen and (max-width: 279.98px) {
+      .comment {
+        margin-top: margins.$s;
+        position: static;
+        display: none;
+
+        &:before {
+          position: absolute;
+          border-left: 8px solid transparent;
+          border-top: 0;
+          top: calc(128px + 12px);
+          left: 50%;
+          margin-left: -8px;
+        }
+      }
+    }
+
     &:hover {
       .comment {
         visibility: visible;
         opacity: 1;
+      }
+
+      // On small screens, element is fully hidden to avoid layout issues, given it is positioned below
+      @media screen and (max-width: 279.98px) {
+        .comment {
+          display: block;
+        }
       }
 
       .main {

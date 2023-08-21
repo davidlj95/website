@@ -16,6 +16,14 @@
           border-right-color: map-get($background-palette, z3) !important;
         }
       }
+
+      // Bubble speech is at top on super small screens
+      @media screen and (max-width: 279.98px) {
+        .comment:before {
+          border-right-color: transparent !important;
+          border-bottom-color: map-get($background-palette, z3) !important;
+        }
+      }
     }
   }
 }
