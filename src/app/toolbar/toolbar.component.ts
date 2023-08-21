@@ -1,5 +1,5 @@
 import { DOCUMENT } from "@angular/common";
-import { Component, Inject } from '@angular/core';
+import { Component, HostBinding, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,6 +8,8 @@ import { Component, Inject } from '@angular/core';
 })
 export class ToolbarComponent {
   private static readonly THEME_ATTRIBUTE = 'data-theme';
+
+  @HostBinding('attr.role') ariaRole = 'toolbar';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
