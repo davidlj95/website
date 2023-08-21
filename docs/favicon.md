@@ -145,7 +145,9 @@ However, as per [favicometer][favicometer], seems that at least the tile app, co
 
 Check [Microsoft docs](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/samples/dn455106(v=vs.85)?redirectedfrom=MSDN) for more info.
 
-## SVG light/dark theme
+## SVG optimisations
+
+### Light / dark theme
 
 Some code is manually added to the SVG file so that color is different depending on the dark/light theme preference of the user to provide better contrast. Colors of the theme are manually picked.
 
@@ -165,6 +167,12 @@ Some code is manually added to the SVG file so that color is different depending
   }
 </style>
 ```
+
+### Text to path
+
+In my Android's Chrome, the text in the SVG was overflowing the viewbox. Seems because a font rendering issue. I'm suspecting because `Tahoma` isn't available, then another font is used and therefore sizes do not match. So converted texts into paths to ensure consistent rendering across devices.
+
+In Inkscape, source file has both texts and paths. Had to manually remove the texts from the generated SVG. Given despite hidden in Inkscape, it exports those anyway.
 
 # Generators
 
