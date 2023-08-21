@@ -2,7 +2,7 @@
   $background-palette: map-get($theme, background);
 
   app-window {
-    background: map-get($background-palette, z1);
+    background: map-get($background-palette, z0);
 
     > * {
       border-color: map-get($theme, hairline);

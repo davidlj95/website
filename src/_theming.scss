@@ -34,28 +34,22 @@
 $themes: (
   light: (
     background: (
+      // Invented tweaking luminance in HSL
+      main: #fcfdfd,
       z0: #f8f9f9ff,
       z1: #f1f3f4ff,
       z2: #dee1e6ff,
-      // Invented for comment
-      z3: #d2d4d8,
     ),
     text: (
       primary: #202124ff,
       secondary: #5f6368ff,
     ),
     tabs: (
+      // --legacy-tab-selected-fg-color
       selected-foreground: #333333ff,
-      selected-background: #dee1e6ff,
+      selected-background: transparent,
       // --legacy-accent-color
       selected-border-bottom: 2px solid #1a73e8,
-      background: #f1f3f4ff,
-      // --color-text-secondary
-      foreground: #5f6368ff,
-      // --color-text-primary
-      hover-foreground: #202124ff,
-      // --color-background-elevation-2
-      hover-background: #dee1e6ff,
     ),
     social: (
       // --color-text-secondary
@@ -74,11 +68,11 @@ $themes: (
   ),
   dark: (
     background: (
+      // Invented tweaking luminance in HSL
+      main: #141415,
       z0: #202023ff,
       z1: #292a2dff,
       z2: #35363aff,
-      // Invented
-      z3: #3f4044,
     ),
     text: (
       primary: #e8eaedff,
@@ -96,12 +90,6 @@ $themes: (
       selected-foreground: #eaeaea,
       selected-background: #000000,
       selected-border-bottom: none,
-      // --color-text-primary
-      hover-foreground: #e8eaedff,
-      // --color-background-elevation-2
-      hover-background: #35363aff,
-      background: #292a2dff,
-      foreground: #bdc6cfff,
     ),
     icon: #919191ff,
     json: (

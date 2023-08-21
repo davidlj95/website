@@ -4,15 +4,15 @@
   app-profile {
     .picture {
       img {
-        background-color: map-get($background-palette, z2);
+        background-color: map-get($background-palette, z1);
         border-color: map-get($theme, hairline);
       }
 
       .comment {
-        background-color: map-get($background-palette, z3);
+        background-color: map-get($background-palette, z2);
 
         &:before {
-          border-right-color: map-get($background-palette, z3) !important;
+          border-right-color: map-get($background-palette, z2) !important;
         }
       }
 
@@ -20,7 +20,7 @@
       @media screen and (max-width: 279.98px) {
         .comment:before {
           border-right-color: transparent !important;
-          border-bottom-color: map-get($background-palette, z3) !important;
+          border-bottom-color: map-get($background-palette, z2) !important;
         }
       }
     }

@@ -3,7 +3,7 @@
   $text-palette: map-get($theme, text);
 
   body {
-    background: map-get($background-palette, z0);
+    background: map-get($background-palette, main);
     color: map-get($text-palette, primary);
   }
 }
