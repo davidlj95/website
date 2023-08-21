@@ -43,6 +43,8 @@
       padding: paddings.$s;
       border-radius: paddings.$s;
 
+      // Speech bubble by
+      // https://freefrontend.com/css-speech-bubbles/
       &:before {
         content: "";
         border: 8px solid transparent;
