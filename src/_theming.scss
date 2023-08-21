@@ -105,11 +105,12 @@ $themes: (
     ),
     icon: #919191ff,
     json: (
-      // --color-text-primary
-      foreground: #e8eaedff,
+      // foreground & key are swapped regarding to DevTools. So key is more important (more contrast)
       // --color-text-secondary: #9aa0a6ff,
       // Replaced as not enough contrast. Decreased luminance in HSL
-      key: #b6babe,
+      foreground: #a6abb0,
+      // --color-text-primary
+      key: #e8eaedff,
       // --color-syntax-1
       value-string: #35d4c7ff,
       // cta

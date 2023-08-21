@@ -2,9 +2,9 @@
   $json-palette: map-get($theme, json);
 
   app-contacts {
-    dl {
-      color: map-get($json-palette, foreground);
+    color: map-get($json-palette, foreground);
 
+    dl {
       span {
         color: map-get($json-palette, foreground);
       }
