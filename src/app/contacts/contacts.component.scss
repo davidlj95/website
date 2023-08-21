@@ -2,6 +2,8 @@
 @use "src/typographies" as typographies;
 
 :host {
+  @include typographies.monospace-font;
+
   // Component can't set display:flex due to JS always show setting display to block
   div.flex-box {
     display: flex;
@@ -13,7 +15,6 @@
   dl {
     text-align: left;
     line-height: 1.85em;
-    @include typographies.monospace-font;
 
     dd, dt {
       display: inline;
