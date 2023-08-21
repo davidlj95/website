@@ -93,16 +93,8 @@ function getContext() {
   const today = new Date();
   const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6));
   const EXTRA_CONTEXT = {
-    manifestJsonDensityIcons: [
-      {size: 36, density: '0.75'},
-      {size: 48, density: '1.0'},
-      {size: 72, density: '1.5'},
-      {size: 96, density: '2.0'},
-      {size: 144, density: '3.0'},
-      {size: 192, density: '4.0'},
-    ],
     manifestJsonMaskableIconSizes: [
-      48, 72, 96, 128, 192, 384, 512
+      48, 72, 96, 128, 192, 384, 512,
     ],
     browserconfigIconSquareSizes: [70, 150, 310],
     securityTxtExpiration: sixMonthsFromToday,
