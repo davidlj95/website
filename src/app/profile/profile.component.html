@@ -1,6 +1,13 @@
 <!--suppress HtmlUnknownBooleanAttribute (priority attr doesn't need a value!), CheckImageSize -->
-<img alt="A portrait of {{ realName }}. Slightly smiling and wearing geek'ish glasses"
-     ngSrc="assets/img/profile.png" width="128" height="128" priority>
+<div class="picture">
+  <img alt="A portrait of {{ realName }}. Appears surprised" class="huh"
+       height="128" ngSrc="assets/img/profile_huh.png" width="128">
+  <img alt="A portrait of {{ realName }}. Slightly smiling and wearing geek'ish glasses" class="main"
+       height="128" ngSrc="assets/img/profile.png" priority width="128">
+  <div class="comment">
+    Hey! 👋 Did you <span class="touch">tap</span><span class="hover">hover</span> me?
+  </div>
+</div>
 <h1>
   <span>{{ realName }}</span>
   <code>@{{ nickname }}</code>

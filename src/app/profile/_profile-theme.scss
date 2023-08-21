@@ -2,10 +2,20 @@
   $background-palette: map-get($theme, background);
 
   app-profile {
-    img {
-      filter: grayscale(map-get($theme, img-grayscale));
-      background-color: map-get($background-palette, z2);
-      border-color: map-get($theme, hairline);
+    .picture {
+      img {
+        background-color: map-get($background-palette, z2);
+        border-color: map-get($theme, hairline);
+        filter: grayscale(map-get($theme, img-grayscale));
+      }
+
+      .comment {
+        background-color: map-get($background-palette, z3);
+
+        &:before {
+          border-right-color: map-get($background-palette, z3) !important;
+        }
+      }
     }
   }
 }

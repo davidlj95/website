@@ -7,10 +7,81 @@
   padding: paddings.$m;
   gap: margins.$m;
 
-  img {
-    border-radius: 128px;
-    border-style: solid;
-    border-width: 1px;
+  .picture {
+    position: relative;
+
+    img {
+      border-radius: 128px;
+      border-style: solid;
+      border-width: 1px;
+    }
+
+    .main {
+      transition: opacity .5s;
+    }
+
+    .huh {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+
+      transition: opacity .5s;
+    }
+
+    .comment {
+      opacity: 0;
+      transition: opacity .5s;
+
+      position: absolute;
+
+      top: 66px;
+      left: 88px;
+      transform: rotateY(-50%);
+
+      padding: paddings.$s;
+      border-radius: paddings.$s;
+
+      &:before {
+        content: "";
+        border: 8px solid transparent;
+        position: absolute;
+        border-left: 0;
+        left: -8px;
+        top: 50%;
+        margin-top: -8px;
+      }
+
+      .touch {
+        display: none
+      }
+
+      // https://stackoverflow.com/a/52854585/3263250
+      @media (hover: none) {
+        .touch {
+          display: inline-block;
+        }
+        .hover {
+          display: none;
+        }
+      }
+    }
+
+    &:hover {
+      .comment {
+        opacity: 1;
+      }
+
+      .main {
+        opacity: 0;
+      }
+
+      .huh {
+        opacity: 1;
+      }
+    }
   }
 
   h1 {
