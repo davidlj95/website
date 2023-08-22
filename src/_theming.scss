@@ -5,8 +5,8 @@
  * If that theme is the default one, will generate the CSS so that the content is applied by default
  *
  * Selection may happen due to:
- *  - "html" tag specifying theme attribute
- *  - prefers-color-scheme matching theme name
+ *  - "html" tag specifying color scheme attribute
+ *  - prefers-color-scheme media query matching theme name
  */
 @mixin color-themed($theme-name) {
   @if $theme-name == light {
