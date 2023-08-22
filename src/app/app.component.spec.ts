@@ -11,7 +11,7 @@ describe('AppComponent', () => {
   let component: AppComponent;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [
         AppComponent,
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
           WindowComponent,
         ),
       ],
-    }).compileComponents()
+    });
 
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
