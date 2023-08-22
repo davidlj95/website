@@ -47,6 +47,9 @@ $themes: (
       z1: #f1f3f4ff,
       z2: #dee1e6ff,
     ),
+    image: (
+      filter: unset,
+    ),
     text: (
       primary: #202124ff,
       secondary: #5f6368ff,
@@ -84,6 +87,9 @@ $themes: (
     text: (
       primary: #e8eaedff,
       secondary: #9aa0a6ff,
+    ),
+    image: (
+      filter: grayscale(.5),
     ),
     social: (
       foreground: #bdc6cfff,
