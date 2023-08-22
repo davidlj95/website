@@ -11,19 +11,25 @@
 @mixin color-themed($theme-name) {
   @if $theme-name == light {
     // Default (no color scheme preference) styles are light ones
-    @content;
-  }
-  @if $theme-name == dark {
-    // Switch to dark if user prefers that
-    @media (prefers-color-scheme: $theme-name) {
+    html, html[data-color-scheme=#{$theme-name}] {
       @content;
     }
+  } @else {
+    @if $theme-name == dark {
+      // Switch to dark if user prefers that
+      @media (prefers-color-scheme: $theme-name) {
+        html {
+          @content
+        }
+      }
+      // Switch dynamically by setting color scheme
+      // Ensure this HTML attribute matches the one set in ColorSchemeService
+      html[data-color-scheme=#{$theme-name}] {
+        @content;
+      }
+    }
   }
-  // Switch dynamically by setting color scheme
-  // Ensure this HTML attribute matches the one set in ColorSchemeService
-  html[data-color-scheme=#{$theme-name}] {
-    @content;
-  }
+
 }
 
 /**
