@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { MockComponent } from 'ng-mocks';
+import { MockComponents } from 'ng-mocks';
 import { ensureHasComponents } from '../../../test/helpers';
 import { ContactsComponent } from '../contacts/contacts.component';
 import { NavigationTabsComponent } from '../navigation-tabs/navigation-tabs.component';
@@ -21,12 +21,14 @@ describe('WindowComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         WindowComponent,
-        MockComponent(ToolbarComponent),
-        MockComponent(ProfileComponent),
-        MockComponent(NoScriptComponent),
-        MockComponent(NavigationTabsComponent),
-        MockComponent(ContactsComponent),
-        MockComponent(SocialComponent),
+        MockComponents(
+          ToolbarComponent,
+          ProfileComponent,
+          NoScriptComponent,
+          NavigationTabsComponent,
+          ContactsComponent,
+          SocialComponent,
+        ),
       ],
       providers: [
         {provide: ActivatedRoute, useValue: {fragment: fragment$}}
