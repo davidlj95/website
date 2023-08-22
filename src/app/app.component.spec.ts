@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponent } from 'ng-mocks';
-import { ensureHasComponent } from '../../test/helpers';
+import { ensureHasComponents } from '../../test/helpers';
 import { AppComponent } from './app.component';
 import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
 import { WindowComponent } from './window/window.component';
@@ -29,6 +29,5 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  ensureHasComponent(() => fixture, JsonldMetadataComponent)
-  ensureHasComponent(() => fixture, WindowComponent)
+  ensureHasComponents(() => fixture, JsonldMetadataComponent, WindowComponent)
 });

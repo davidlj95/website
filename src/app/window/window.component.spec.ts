@@ -2,7 +2,7 @@ import { EventEmitter } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { MockComponent } from 'ng-mocks';
-import { ensureHasComponent } from '../../../test/helpers';
+import { ensureHasComponents } from '../../../test/helpers';
 import { ContactsComponent } from '../contacts/contacts.component';
 import { NavigationTabsComponent } from '../navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from '../no-script/no-script.component';
@@ -41,9 +41,7 @@ describe('WindowComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  ensureHasComponent(() => fixture, ToolbarComponent)
-  ensureHasComponent(() => fixture, ProfileComponent)
-  ensureHasComponent(() => fixture, NavigationTabsComponent)
-  ensureHasComponent(() => fixture, ContactsComponent)
-  ensureHasComponent(() => fixture, SocialComponent)
+  ensureHasComponents(() => fixture,
+    ToolbarComponent, ProfileComponent, NavigationTabsComponent, ContactsComponent, SocialComponent,
+  );
 });
