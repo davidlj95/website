@@ -19,8 +19,9 @@
       @content;
     }
   }
-  // Switch dynamically by setting theme
-  html[data-theme=#{$theme-name}] {
+  // Switch dynamically by setting color scheme
+  // Ensure this HTML attribute matches the one set in ColorSchemeService
+  html[data-color-scheme=#{$theme-name}] {
     @content;
   }
 }
