@@ -48,8 +48,8 @@ code, pre {
 }
 
 // Render all color themes
-@each $theme-name, $theme in $themes {
-  @include color-themed($theme-name) {
-    @include app-color($theme);
+@each $colorTheme in $colorThemes {
+  @include define-color-theme($colorTheme) {
+    @include app-color(map-get($colorTheme, theme));
   }
 }

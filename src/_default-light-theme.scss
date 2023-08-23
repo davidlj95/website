@@ -1,0 +1,38 @@
+$default-light-theme: (
+  background: (
+    // Invented tweaking luminance in HSL
+    main: #fcfdfd,
+    z0: #f8f9f9ff,
+    z1: #f1f3f4ff,
+    z2: #dee1e6ff,
+  ),
+  image: (
+    filter: null,
+  ),
+  text: (
+    primary: #202124ff,
+    secondary: #5f6368ff,
+  ),
+  tabs: (
+    // --legacy-tab-selected-fg-color
+    selected-foreground: #333333ff,
+    selected-background: transparent,
+    // --legacy-accent-color
+    selected-border-bottom: 2px solid #1a73e8,
+  ),
+  social: (
+    // --color-text-secondary
+    foreground: #5f6368ff,
+    // --legacy-toolbar-hover-bg-color
+    hover-background: #eaeaea,
+  ),
+  accent: #8ab4f8,
+  hairline: #cacdd1ff,
+  icon: #6e6e6eff,
+  json: (
+    foreground: #202124ff,
+    key: #5f6368ff,
+    value-string: #c80000ff,
+  ),
+);
+
