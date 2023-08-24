@@ -27,7 +27,7 @@ describe('ToolbarComponent', () => {
   describe('when pressing scheme switcher icon', () => {
     it('should call dark / light scheme toggle', () => {
       const colorSchemeService = TestBed.inject(ColorSchemeService);
-      ngMocks.click('.theme-switcher');
+      ngMocks.click('.dark-light-scheme-toggle');
 
       expect(colorSchemeService.toggleDarkLight).toHaveBeenCalled();
     })
