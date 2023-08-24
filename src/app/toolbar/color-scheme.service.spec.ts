@@ -5,8 +5,8 @@ import { WINDOW } from '../common/window-injection-token';
 import { ColorSchemeService, Schemes } from './color-scheme.service';
 
 describe('ColorSchemeService', () => {
-  let service: ColorSchemeService;
-  let document: Document;
+  let sut: ColorSchemeService;
+  let documentElement: HTMLElement;
   let mockMatchMedia: typeof Window.prototype.matchMedia =
     (query) => {
       // Most future-friendly way is to ask whether user prefers dark or not
@@ -26,52 +26,91 @@ describe('ColorSchemeService', () => {
       ]
     });
 
-    service = TestBed.inject(ColorSchemeService);
-    document = TestBed.inject(DOCUMENT);
+    sut = TestBed.inject(ColorSchemeService);
+    documentElement = TestBed.inject(DOCUMENT).documentElement;
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 
   describe('#toggleDarkLight', () => {
     afterEach(() => {
-      document.documentElement.removeAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+      documentElement.removeAttribute(ColorSchemeService.HTML_ATTRIBUTE);
     })
-    describe('when a color scheme has been manually set', () => {
+    describe('when user does not prefer dark color scheme', () => {
       beforeEach(() => {
-        document.documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Dark)
-      })
-      it('should remove the manual color scheme set', () => {
-        service.toggleDarkLight();
-
-        const schemeAttributeValue = document.documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
-        expect(schemeAttributeValue).toBeNull()
+        prefersDark = false;
       });
-    });
-    describe('when no color scheme has been manually set', () => {
-      describe('when user does not prefer dark color scheme', () => {
-        beforeEach(() => {
-          prefersDark = false;
-        });
+      describe('when no color scheme is manually set', () => {
         it('should manually set the scheme to dark', () => {
-          service.toggleDarkLight();
+          sut.toggleDarkLight();
 
-          const schemeAttributeValue = document.documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+          const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
           expect(schemeAttributeValue).toBe(Schemes.Dark)
         });
       });
-      describe('when user prefers dark color scheme', () => {
-        beforeEach(() => {
-          prefersDark = true;
-        });
-        it('should manually set the scheme to light', () => {
-          service.toggleDarkLight();
+      describe('when color scheme is manually set', () => {
+        describe('when set to light', () => {
+          beforeEach(() => {
+            documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Light);
+          })
+          it('should manually set the scheme to dark', () => {
+            sut.toggleDarkLight();
 
-          const schemeAttributeValue = document.documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+            const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+            expect(schemeAttributeValue).toBe(Schemes.Dark)
+          });
+        });
+        describe('when set to dark', () => {
+          beforeEach(() => {
+            documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Dark);
+          })
+          it('should remove the manual scheme preference to go back to light', () => {
+            sut.toggleDarkLight();
+
+            const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+            expect(schemeAttributeValue).toBeNull()
+          });
+        });
+      });
+    });
+    describe('when user prefers dark color scheme', () => {
+      beforeEach(() => {
+        prefersDark = true;
+      });
+      describe('when no color scheme is manually set', () => {
+        it('should manually set the scheme to light', () => {
+          sut.toggleDarkLight();
+
+          const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
           expect(schemeAttributeValue).toBe(Schemes.Light)
         });
       });
-    })
+      describe('when color scheme is manually set', () => {
+        describe('when set to light', () => {
+          beforeEach(() => {
+            documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Light);
+          })
+          it('should remove the manual scheme preference to go back to light', () => {
+            sut.toggleDarkLight();
+
+            const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+            expect(schemeAttributeValue).toBeNull()
+          });
+        });
+        describe('when set to dark', () => {
+          beforeEach(() => {
+            documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Dark);
+          })
+          it('should manually set the scheme to light', () => {
+            sut.toggleDarkLight();
+
+            const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+            expect(schemeAttributeValue).toBe(Schemes.Light)
+          });
+        });
+      });
+    });
   });
 });

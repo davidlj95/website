@@ -24,15 +24,24 @@ export class ColorSchemeService {
     this.documentElement = document.documentElement;
   }
 
+  private get userPreference(): Schemes {
+    return this.userPrefersDark ? Schemes.Dark : Schemes.Light
+  }
+
+  private get userPrefersDark(): boolean {
+    return this.window.matchMedia && this.window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+
   toggleDarkLight() {
-    // Remove manually toggled scheme if set
-    if (this.documentElement.hasAttribute(ColorSchemeService.HTML_ATTRIBUTE)) {
-      this.documentElement.removeAttribute(ColorSchemeService.HTML_ATTRIBUTE)
-      return
+    const manuallySetScheme = this.documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+    if (manuallySetScheme && manuallySetScheme !== this.userPreference) {
+      this.documentElement.removeAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+      return;
     }
 
-    // Set manual scheme
-    const prefersDark = this.window.matchMedia && this.window.matchMedia('(prefers-color-scheme: dark)').matches
-    this.documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, prefersDark ? Schemes.Light : Schemes.Dark);
+    this.documentElement.setAttribute(
+      ColorSchemeService.HTML_ATTRIBUTE,
+      this.userPrefersDark ? Schemes.Light : Schemes.Dark
+    );
   }
 }
