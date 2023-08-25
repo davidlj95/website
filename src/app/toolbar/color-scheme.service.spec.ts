@@ -43,11 +43,10 @@ describe('ColorSchemeService', () => {
     mockWindow = ({matchMedia: mockMatchMedia} as Pick<Window, "matchMedia">) as Window;
     TestBed.configureTestingModule({
       providers: [
-        MockProvider(WINDOW, mockWindow),
+        MockProvider(WINDOW, () => mockWindow, "useFactory"),
       ]
     });
     documentElement = TestBed.inject(DOCUMENT).documentElement;
-    sut = TestBed.inject(ColorSchemeService);
   });
   afterEach(() => {
     prefersDarkMatchMediaSubscriptions.forEach((subscription) => subscription.unsubscribe());
@@ -61,21 +60,42 @@ describe('ColorSchemeService', () => {
   describe('when user preference changes', () => {
     let manuallySetScheme = Schemes.Dark;
 
-    beforeEach(() => {
-      documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
-    })
-    it('should remove the manual scheme preference to reflect change (if applies)', () => {
-      expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
+    describe('when can detect system preference', () => {
+      beforeEach(() => {
+        sut = TestBed.inject(ColorSchemeService);
+        documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
+      })
+      it('should remove the manual scheme preference to reflect change (if applies)', () => {
+        expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
 
-      prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent);
+        prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent);
 
-      expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+        expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+      });
+    });
+
+    describe('when cannot detect system preference', () => {
+      beforeEach(() => {
+        mockWindow = {} as Window;
+        sut = TestBed.inject(ColorSchemeService);
+        documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
+      })
+      it('should do nothing', () => {
+        expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
+
+        prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent);
+
+        expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
+      });
     });
   })
 
   describe('#toggleDarkLight', () => {
+    beforeEach(() => {
+      sut = TestBed.inject(ColorSchemeService);
+    })
     describe('when no color scheme has been manually set', () => {
-      describe('when cannot detect user preference', () => {
+      describe('when cannot detect system preference', () => {
         beforeEach(() => {
           mockWindow = {} as Window;
         });
