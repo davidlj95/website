@@ -13,7 +13,7 @@ export enum Schemes {
 })
 export class ColorSchemeService {
   // Ensure in SCSS styles that this attribute in <html> changes color schemes accordingly
-  public static readonly HTML_ATTRIBUTE = 'data-color-scheme';
+  public htmlAttribute = 'data-color-scheme';
 
   private documentElement: HTMLElement;
 
@@ -22,26 +22,36 @@ export class ColorSchemeService {
     @Inject(WINDOW) private window: Window,
   ) {
     this.documentElement = document.documentElement;
-  }
-
-  private get userPreference(): Schemes {
-    return this.userPrefersDark ? Schemes.Dark : Schemes.Light
+    this.listenForMatchMediaPreferenceChanges();
   }
 
   private get userPrefersDark(): boolean {
-    return this.window.matchMedia && this.window.matchMedia('(prefers-color-scheme: dark)').matches
+    return !!this.matchMediaQuery && this.matchMediaQuery.matches;
+  }
+
+  private get matchMediaQuery() {
+    if (!this.window.matchMedia) {
+      return null;
+    }
+    return this.window.matchMedia('(prefers-color-scheme: dark)');
   }
 
   toggleDarkLight() {
-    const manuallySetScheme = this.documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
-    if (manuallySetScheme && manuallySetScheme !== this.userPreference) {
-      this.documentElement.removeAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+    const manuallySetScheme = this.documentElement.getAttribute(this.htmlAttribute);
+    if (!manuallySetScheme) {
+      this.documentElement.setAttribute(this.htmlAttribute, this.userPrefersDark ? Schemes.Light : Schemes.Dark);
       return;
     }
 
     this.documentElement.setAttribute(
-      ColorSchemeService.HTML_ATTRIBUTE,
-      this.userPrefersDark ? Schemes.Light : Schemes.Dark
+      this.htmlAttribute,
+      manuallySetScheme == Schemes.Light ? Schemes.Dark : Schemes.Light
     );
+  }
+
+  private listenForMatchMediaPreferenceChanges() {
+    this.matchMediaQuery?.addEventListener('change', () => {
+      this.documentElement.removeAttribute(this.htmlAttribute);
+    })
   }
 }

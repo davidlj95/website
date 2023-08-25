@@ -1,116 +1,137 @@
 import { DOCUMENT } from '@angular/common';
+import { EventEmitter } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MockProvider } from 'ng-mocks';
+import { Subscription } from 'rxjs';
 import { WINDOW } from '../common/window-injection-token';
 import { ColorSchemeService, Schemes } from './color-scheme.service';
 
 describe('ColorSchemeService', () => {
   let sut: ColorSchemeService;
   let documentElement: HTMLElement;
-  let mockMatchMedia: typeof Window.prototype.matchMedia =
-    (query) => {
-      // Most future-friendly way is to ask whether user prefers dark or not
-      // As other preferences (like sepia) may be introduced in the future.
-      // https://www.w3.org/TR/mediaqueries-5/#prefers-color-scheme
-      if (query === '(prefers-color-scheme: dark)') {
-        return {matches: prefersDark} as MediaQueryList
-      }
-      throw new Error('Media query not mocked')
+  let mockWindow: Window;
+  const mockMatchMedia: typeof Window.prototype.matchMedia = (query) => {
+    // Most future-friendly way is to ask whether user prefers dark or not
+    // As other preferences (like sepia) may be introduced in the future.
+    // https://www.w3.org/TR/mediaqueries-5/#prefers-color-scheme
+    if (query === '(prefers-color-scheme: dark)') {
+      return {
+        matches: prefersDark,
+        addEventListener: <K extends keyof MediaQueryListEventMap>(
+          type: K,
+          listener: (ev: MediaQueryListEventMap[K]) => any,
+          options?: boolean | AddEventListenerOptions) => {
+          if (type !== 'change' || options !== undefined || typeof listener !== 'function') {
+            throw new Error('Media query addEventListener cannot be mocked with this usage')
+          }
+          prefersDarkMatchMediaSubscriptions.push(
+            prefersDarkMatchMediaChangesEmitter.subscribe(listener)
+          )
+        },
+      } as MediaQueryList;
     }
-  let prefersDark = false;
+    throw new Error('Media query not mocked')
+  }
+  let prefersDark: boolean;
+  let prefersDarkMatchMediaChangesEmitter: EventEmitter<MediaQueryListEvent>;
+  let prefersDarkMatchMediaSubscriptions: Array<Subscription>;
 
   beforeEach(() => {
+    prefersDark = false;
+    prefersDarkMatchMediaChangesEmitter = new EventEmitter<MediaQueryListEvent>();
+    prefersDarkMatchMediaSubscriptions = [];
+    mockWindow = ({matchMedia: mockMatchMedia} as Pick<Window, "matchMedia">) as Window;
     TestBed.configureTestingModule({
       providers: [
-        MockProvider(WINDOW, {matchMedia: mockMatchMedia} as Pick<Window, 'matchMedia'>),
+        MockProvider(WINDOW, mockWindow),
       ]
     });
-
-    sut = TestBed.inject(ColorSchemeService);
     documentElement = TestBed.inject(DOCUMENT).documentElement;
+    sut = TestBed.inject(ColorSchemeService);
+  });
+  afterEach(() => {
+    prefersDarkMatchMediaSubscriptions.forEach((subscription) => subscription.unsubscribe());
+    documentElement.removeAttribute(sut.htmlAttribute);
   });
 
   it('should be created', () => {
     expect(sut).toBeTruthy();
   });
 
-  describe('#toggleDarkLight', () => {
-    afterEach(() => {
-      documentElement.removeAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+  describe('when user preference changes', () => {
+    let manuallySetScheme = Schemes.Dark;
+
+    beforeEach(() => {
+      documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
     })
-    describe('when user does not prefer dark color scheme', () => {
-      beforeEach(() => {
-        prefersDark = false;
-      });
-      describe('when no color scheme is manually set', () => {
-        it('should manually set the scheme to dark', () => {
+    it('should remove the manual scheme preference to reflect change (if applies)', () => {
+      expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
+
+      prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent);
+
+      expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+    });
+  })
+
+  describe('#toggleDarkLight', () => {
+    describe('when no color scheme has been manually set', () => {
+      describe('when cannot detect user preference', () => {
+        beforeEach(() => {
+          mockWindow = {} as Window;
+        });
+        it('should manually set the scheme to dark, given default is light', () => {
           sut.toggleDarkLight();
 
-          const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
           expect(schemeAttributeValue).toBe(Schemes.Dark)
         });
       });
-      describe('when color scheme is manually set', () => {
-        describe('when set to light', () => {
-          beforeEach(() => {
-            documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Light);
-          })
-          it('should manually set the scheme to dark', () => {
-            sut.toggleDarkLight();
-
-            const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
-            expect(schemeAttributeValue).toBe(Schemes.Dark)
-          });
+      describe('when user does not prefer dark color scheme', () => {
+        beforeEach(() => {
+          prefersDark = false;
         });
-        describe('when set to dark', () => {
-          beforeEach(() => {
-            documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Dark);
-          })
-          it('should remove the manual scheme preference to go back to light', () => {
-            sut.toggleDarkLight();
+        it('should manually set the scheme to dark', () => {
+          sut.toggleDarkLight();
 
-            const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
-            expect(schemeAttributeValue).toBeNull()
-          });
+          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
+          expect(schemeAttributeValue).toBe(Schemes.Dark)
         });
       });
-    });
-    describe('when user prefers dark color scheme', () => {
-      beforeEach(() => {
-        prefersDark = true;
-      });
-      describe('when no color scheme is manually set', () => {
+      describe('when user prefers dark color scheme', () => {
+        beforeEach(() => {
+          prefersDark = true;
+        });
         it('should manually set the scheme to light', () => {
           sut.toggleDarkLight();
 
-          const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
+          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
           expect(schemeAttributeValue).toBe(Schemes.Light)
         });
       });
-      describe('when color scheme is manually set', () => {
-        describe('when set to light', () => {
-          beforeEach(() => {
-            documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Light);
-          })
-          it('should remove the manual scheme preference to go back to light', () => {
-            sut.toggleDarkLight();
+    });
+    describe('when color scheme is manually set', () => {
+      describe('when set to light', () => {
+        beforeEach(() => {
+          documentElement.setAttribute(sut.htmlAttribute, Schemes.Light);
+        })
+        it('should manually set the scheme to dark', () => {
+          sut.toggleDarkLight();
 
-            const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
-            expect(schemeAttributeValue).toBeNull()
-          });
+          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
+          expect(schemeAttributeValue).toBe(Schemes.Dark)
         });
-        describe('when set to dark', () => {
-          beforeEach(() => {
-            documentElement.setAttribute(ColorSchemeService.HTML_ATTRIBUTE, Schemes.Dark);
-          })
-          it('should manually set the scheme to light', () => {
-            sut.toggleDarkLight();
+      });
+      describe('when set to dark', () => {
+        beforeEach(() => {
+          documentElement.setAttribute(sut.htmlAttribute, Schemes.Dark);
+        })
+        it('should manually set the scheme to light', () => {
+          sut.toggleDarkLight();
 
-            const schemeAttributeValue = documentElement.getAttribute(ColorSchemeService.HTML_ATTRIBUTE);
-            expect(schemeAttributeValue).toBe(Schemes.Light)
-          });
+          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
+          expect(schemeAttributeValue).toBe(Schemes.Light)
         });
       });
     });
   });
-});
+})
