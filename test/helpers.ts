@@ -1,6 +1,6 @@
 import { reflectComponentType, Type } from '@angular/core';
 import { ComponentFixture } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { By, SafeValue } from '@angular/platform-browser';
 
 const COMPONENT_CLASS_SUFFIX = 'Component';
 
@@ -71,4 +71,15 @@ function isClass(klass: any) {
     && klass.prototype.constructor.toString
     && klass.prototype.constructor.toString().substring(0, 5) === 'class'
   return isCtorClass || isPrototypeCtorClass
+}
+
+/**
+ * Useful to check for contents wrapped inside a SafeValue (SafeHtml, SafeScript, ...) as result of a DOM security
+ * bypass
+ *
+ * @see https://github.com/angular/angular/blob/16.2.0/packages/core/src/sanitization/bypass.ts#L63
+ */
+export function getSafeValueContent(safeValue: SafeValue): string {
+  // @ts-ignore
+  return safeValue.changingThisBreaksApplicationSecurity;
 }
