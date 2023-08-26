@@ -40,4 +40,27 @@ describe('NavigationTabsComponent', () => {
       expect(externalLink.attributes['target']).withContext(`External link ${index}`).toEqual('_blank');
     });
   })
+
+
+  it('should not mark unselected tabs as selected', () => {
+    const selectedTabElement = fixture.debugElement.query(By.css('li'));
+    expect(selectedTabElement.classes['selected']).withContext('does not have selected class').toBeFalsy();
+    expect(selectedTabElement.attributes['aria-selected'])
+      .withContext('does not have ARIA selected attr').toBe("false");
+    expect(selectedTabElement.attributes['tabindex']).withContext('has tabIndex -1').toBe("-1");
+  })
+
+  it('should mark the selected tab as selected', () => {
+    const selectedTabIndex = 0;
+    component.tab = NavigationTabsComponent.IDS[selectedTabIndex];
+
+    fixture.detectChanges();
+
+    const selectedTabElement = fixture.debugElement.query(
+      By.css(`li:nth-child(${selectedTabIndex + 1})`)
+    );
+    expect(selectedTabElement.classes['selected']).withContext('has selected class').toBe(true);
+    expect(selectedTabElement.attributes['aria-selected']).withContext('has ARIA selected attr').toBe("true");
+    expect(selectedTabElement.attributes['tabindex']).withContext('has tabIndex 0').toBe("0");
+  })
 });
