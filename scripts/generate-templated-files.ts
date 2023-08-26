@@ -3,16 +3,7 @@ import { glob } from 'glob';
 import { Liquid } from 'liquidjs';
 import * as path from 'path';
 import * as process from 'process';
-import {
-  AUTHOR_URL,
-  DESCRIPTION,
-  DESCRIPTION_LINES,
-  DOMAIN_NAME,
-  NICKNAME,
-  REAL_NAME,
-  SITE_NAME,
-  THEME_COLOR
-} from '../src/app/metadata';
+import { METADATA } from '../src/app/metadata';
 import { getRepositoryRootDir, isMain, Log, SECURITY_TXT_REL_PATH } from './utils';
 
 export const LIQUID_EXTENSION = '.liquid';
@@ -81,14 +72,7 @@ export async function generateTemplatedFile(
 
 function getContext() {
   const METADATA_CONTEXT = {
-    nickname: NICKNAME,
-    realName: REAL_NAME,
-    siteName: SITE_NAME,
-    description: DESCRIPTION,
-    descriptionLines: DESCRIPTION_LINES,
-    domainName: DOMAIN_NAME,
-    authorUrl: AUTHOR_URL.toString(),
-    themeColor: THEME_COLOR,
+    ...METADATA
   };
   const today = new Date();
   const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6));

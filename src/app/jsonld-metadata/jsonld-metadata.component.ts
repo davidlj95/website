@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { AUTHOR_URL, DESCRIPTION, REAL_NAME, SITE_NAME } from '../metadata';
+import { METADATA } from '../metadata';
 
 @Component({
   selector: 'app-jsonld-metadata',
@@ -13,11 +13,11 @@ export class JsonldMetadataComponent implements OnInit {
     '@type': 'WebSite',
     'author': {
       '@type': 'Person',
-      'name': REAL_NAME,
-      'url': AUTHOR_URL,
+      'name': METADATA.realName,
+      'url': METADATA.authorUrl,
     },
-    'name': SITE_NAME,
-    'headline': DESCRIPTION,
+    'name': METADATA.siteName,
+    'headline': METADATA.description,
     'url': environment.canonicalUrl,
   }
 

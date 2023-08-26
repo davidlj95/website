@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DOMAIN_NAME } from "../metadata";
+import { METADATA } from "../metadata";
 
 @Component({
   selector: 'app-navigation-tabs',
@@ -20,7 +20,7 @@ export class NavigationTabsComponent {
     {
       id: 'cv',
       displayName: 'CV',
-      externalUrl: `https://resume.${DOMAIN_NAME}`,
+      externalUrl: `https://resume.${METADATA.domainName}`,
     }
   ] as const;
 

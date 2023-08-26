@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DOMAIN_NAME } from "../metadata";
+import { METADATA } from "../metadata";
 
 @Component({
   selector: 'app-contacts',
@@ -10,7 +10,7 @@ export class ContactsComponent {
   public items: ReadonlyArray<ContactItem> = [
     {
       key: "email",
-      value: `mail@${DOMAIN_NAME}`,
+      value: `mail@${METADATA.domainName}`,
       uriPrefix: "mailto:"
     },
     {
