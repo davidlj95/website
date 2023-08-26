@@ -50,11 +50,11 @@ describe('ColorSchemeService', () => {
   });
   afterEach(() => {
     prefersDarkMatchMediaSubscriptions.forEach((subscription) => subscription.unsubscribe());
-    documentElement.removeAttribute(sut.htmlAttribute);
+    sut && documentElement.removeAttribute(sut.htmlAttribute);
   });
 
   it('should be created', () => {
-    expect(sut).toBeTruthy();
+    expect(TestBed.inject(ColorSchemeService)).toBeTruthy();
   });
 
   describe('when user preference changes', () => {
