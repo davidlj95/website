@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { METADATA } from "../metadata";
+import { Component, Inject } from '@angular/core';
+import { METADATA } from '../common/metadata-injection-token';
+import { Metadata } from '../metadata';
 
 @Component({
   selector: 'app-contacts',
@@ -7,10 +8,12 @@ import { METADATA } from "../metadata";
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
+  public static readonly EMAIL_KEY = 'email';
+  public static readonly EMAIL_LOCAL_PART = 'mail';
   public items: ReadonlyArray<ContactItem> = [
     {
-      key: "email",
-      value: `mail@${METADATA.domainName}`,
+      key: ContactsComponent.EMAIL_KEY,
+      value: `${ContactsComponent.EMAIL_LOCAL_PART}@${this.metadata.domainName}`,
       uriPrefix: "mailto:"
     },
     {
@@ -19,6 +22,11 @@ export class ContactsComponent {
       uriPrefix: "tel:"
     },
   ]
+
+  constructor(
+    @Inject(METADATA) private metadata: Metadata,
+  ) {
+  }
 }
 
 interface ContactItem {
