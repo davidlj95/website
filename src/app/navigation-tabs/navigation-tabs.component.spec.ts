@@ -29,7 +29,7 @@ describe('NavigationTabsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create the CV link using metadata\'s domain name', () => {
+  it('should create the CV link using metadata domain name', () => {
     const cvItem = component.items.find((item) => item.id === TabId.CV);
     expect(cvItem).toBeTruthy();
     expect(cvItem?.externalUrl).toContain(fakeMetadata.domainName)
@@ -49,7 +49,7 @@ describe('NavigationTabsComponent', () => {
   it('should open external links in new tab', () => {
     const links = fixture.debugElement.queryAll(By.css('a'));
     const externalLinks = links.filter(
-      (link) => !!link.attributes['href'] && !link.attributes['href'].startsWith('#')
+      (link) => !!link.attributes['href'] && !link.attributes['href'].startsWith('#'),
     )
     externalLinks.forEach((externalLink, index) => {
       expect(externalLink.attributes['target']).withContext(`External link ${index}`).toEqual('_blank');
@@ -72,7 +72,7 @@ describe('NavigationTabsComponent', () => {
     fixture.detectChanges();
 
     const selectedTabElement = fixture.debugElement.query(
-      By.css(`li:nth-child(${selectedTabIndex + 1})`)
+      By.css(`li:nth-child(${selectedTabIndex + 1})`),
     );
     expect(selectedTabElement.classes['selected']).withContext('has selected class').toBe(true);
     expect(selectedTabElement.attributes['aria-selected']).withContext('has ARIA selected attr').toBe("true");

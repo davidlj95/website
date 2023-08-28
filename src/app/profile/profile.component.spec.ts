@@ -13,9 +13,9 @@ describe('ProfileComponent', () => {
     nickname: 'bar',
     realName: 'Foo',
     descriptionLines: [
-      {emoji: '🧪', text: 'Foobar'},
-      {emoji: '👁️‍🗨️', text: 'Barfoo'},
-    ]
+      {emoji: '🧪', text: 'Foo bar'},
+      {emoji: '👁️‍🗨️', text: 'Bar foo'},
+    ],
   } as Pick<Metadata, 'nickname' | 'realName' | 'descriptionLines'>) as Metadata;
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('ProfileComponent', () => {
       declarations: [ProfileComponent],
       providers: [
         MockProvider(METADATA, fakeMetadata),
-      ]
+      ],
     });
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;

@@ -125,7 +125,7 @@ tags
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
-.idea/**/dictionaries
+!.idea/**/dictionaries
 .idea/**/shelf
 
 # AWS User-specific
@@ -251,3 +251,4 @@ $RECYCLE.BIN/
 # Manual changes:
 # - Yarn config to not use zero installs.
 # - Remove .idea from angular, we want some settings in the repo
+# - Include dictionaries

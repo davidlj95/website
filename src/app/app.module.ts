@@ -40,7 +40,7 @@ import { WindowComponent } from './window/window.component';
       type: 'website',
       image: {
         url: new URL('assets/img/og.jpg', environment.canonicalUrl).toString(),
-        alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek'ish glasses`,
+        alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
         width: 875,
         height: 875,
         // I wouldn't set it, but if I don't set it, then it appears as "undefined" :(
@@ -53,18 +53,18 @@ import { WindowComponent } from './window/window.component';
       },
       siteName: METADATA.siteName,
       extra: [
-        {name: 'author', content: METADATA.nickname,},
-        {property: 'og:locale', content: 'en',},
-        {property: 'fb:admins', content: METADATA.nickname,},
+        {name: 'author', content: METADATA.nickname},
+        {property: 'og:locale', content: 'en'},
+        {property: 'fb:admins', content: METADATA.nickname},
         {name: 'facebook-domain-verification', content: '1299426610587748'},
         {name: 'generator', content: `Angular ${VERSION.full}`},
         // See more in favicons doc. Related to Internet Explorer / Microsoft metro tiles
-        {name: 'application-name', content: METADATA.siteName}
-      ]
-    })
+        {name: 'application-name', content: METADATA.siteName},
+      ],
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

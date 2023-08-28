@@ -17,7 +17,7 @@ Eventually came with [a 2021 article](https://www.leereamsnyder.com/blog/favicon
 lead me to a [2023 updated article](https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7) which
 seems quite comprehensive.
 
-So using that guide generate the favicons. Eventually, I designed the favicon using Inkscape
+So using that guide, generate the favicons. Eventually, I designed the favicon using Inkscape
 in a 512x512 size (the biggest required from what I've seen). And exported it using SVG.
 
 Font is same as main body font of the site. And color is one with 50% luminance in the HSL scale. This way it looks
@@ -202,7 +202,7 @@ the user to provide better contrast. Colors of the theme are manually picked.
 
 ### Text to path
 
-In my Android's Chrome, the text in the SVG was overflowing the viewbox. Seems because a font rendering issue. I'm
+In my Android's Chrome, the text in the SVG was overflowing the `viewBox`. Seems because a font rendering issue. I'm
 suspecting because `Tahoma` isn't available, then another font is used and therefore sizes do not match. So converted
 texts into paths to ensure consistent rendering across devices.
 
@@ -214,17 +214,17 @@ despite hidden in Inkscape, it exports those anyway.
 I've used:
 
 - [Real Favicon Generator][real-favicon-generator]
-- [Favic-o-matic][favicomatic]. Doesn't support SVG😢 Doesn't generate the `.webmanifest`
+- [`Favic-o-matic`][favicomatic]. Doesn't support SVG😢 Doesn't generate the `.webmanifest`
 - [FaviconGenerator.org][favicon-generator-org]. Doesn't allow SVGs 😢
 
 ## Discarded
 
-- [Favicon.cc](https://www.favicon.cc/). 🕹️ Allows to design a 16x16 one only. Retro'ish.
+- [Favicon.cc](https://www.favicon.cc/). 🕹️ Allows to design a 16x16 one only. Retro-ish.
 - [Favicon.ico](https://favicon.io/favicon-converter/). Misses ability to customize maskable icons for Android/iOS.
 
 # Checkers
 
-- [Favic-o-matic's favic-o-meter][favicometer]
+- [`Favic-o-matic`'s `favic-o-meter`][favicometer]
 
 [favicon-generator-org]: https://www.favicon-generator.org/
 

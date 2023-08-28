@@ -40,7 +40,7 @@ won't be in sync.
 > [pre `npm` run scripts][npm-pre-post-scripts] left the `package.json` file quite cluttered. Also, won't work if
 > issuing `ng` commands. So decided to leave the task to update generated files to the developer. At some point a CI
 > check could be introduced to ensure generated files are up-to-date. Generated files are left in the repo because of
-> that reason (also so you can clone & run without issues). That metadata won't change often anyway.
+> that reason (and also so you can clone & run without issues). That metadata won't change often anyway.
 
 [angular-build-hooks-issue]: https://github.com/angular/angular-cli/issues/11787
 
@@ -50,7 +50,7 @@ won't be in sync.
 
 ### Symlinked static assets don't work when serving locally
 
-When using Angular's development server (either regular or SSR one), symbolic links seem not to work for static assets.
+When using Angular development server (either regular or SSR one), symbolic links seem not to work for static assets.
 So for instance `/profile.jpg` which is symlinked to `/assets/img/og.jpg` won't be served. And the server will redirect
 you towards main page (`/`). It works when building though, so it will appear in the built version.
 

@@ -33,7 +33,7 @@ export function ensureHasComponents<T>(fixtureGetter: () => ComponentFixture<T>,
 }
 
 /**
- * Useful to identify a component without hardcoding the component's HTML tag
+ * Useful to identify a component without hard-coding the component's HTML tag
  *
  * So instead of
  * ```
