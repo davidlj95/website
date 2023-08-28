@@ -52,7 +52,7 @@ describe('NavigationTabsComponent', () => {
 
   it('should mark the selected tab as selected', () => {
     const selectedTabIndex = 0;
-    component.tab = NavigationTabsComponent.IDS[selectedTabIndex];
+    component.tab = component.items[selectedTabIndex].id;
 
     fixture.detectChanges();
 

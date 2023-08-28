@@ -8,7 +8,7 @@ import { isTabId, TabId } from "../navigation-tabs/navigation-tabs.component";
   styleUrls: ['./window.component.scss']
 })
 export class WindowComponent implements OnDestroy {
-  static readonly DEFAULT_TAB_ID: TabId = 'contact';
+  static readonly DEFAULT_TAB_ID: TabId = TabId.Contact;
 
   public selectedTab: TabId = WindowComponent.DEFAULT_TAB_ID;
   private fragmentSubscription = this.activatedRoute.fragment.subscribe(

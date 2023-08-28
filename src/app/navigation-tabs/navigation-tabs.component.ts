@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { isSomeEnum } from '../../utils';
 import { METADATA } from "../metadata";
 
 @Component({
@@ -7,18 +8,17 @@ import { METADATA } from "../metadata";
   styleUrls: ['./navigation-tabs.component.scss']
 })
 export class NavigationTabsComponent {
-  public static readonly IDS = ['contact', 'social', 'cv'] as const;
   readonly items: ReadonlyArray<TabItem> = [
     {
-      id: 'contact',
+      id: TabId.Contact,
       displayName: 'Contact',
     },
     {
-      id: 'social',
+      id: TabId.Social,
       displayName: 'Social media',
     },
     {
-      id: 'cv',
+      id: TabId.CV,
       displayName: 'CV',
       externalUrl: `https://resume.${METADATA.domainName}`,
     }
@@ -33,8 +33,10 @@ interface TabItem {
   externalUrl?: string;
 }
 
-export type TabId = typeof NavigationTabsComponent.IDS[number];
-
-export function isTabId(id: string): id is TabId {
-  return NavigationTabsComponent.IDS.includes(id as TabId);
+export enum TabId {
+  Contact = 'contact',
+  Social = 'social',
+  CV = 'cv',
 }
+
+export const isTabId: (id: string) => id is TabId = isSomeEnum(TabId);
