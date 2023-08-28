@@ -13,8 +13,8 @@ describe('App SEO metadata', () => {
   let headElement: HTMLElement;
   // We can't fake it since it is configured at module level with imports as we can't use a service there
   // because the system hasn't started yet. Maybe it could be done somehow, though not sure how to at this point.
-  let metadata: Metadata = METADATA;
-  let environment: Environment = appEnv;
+  const metadata: Metadata = METADATA;
+  const environment: Environment = appEnv;
 
   beforeEach(async () => {
     const routerEventsEmitter = new EventEmitter<RouterEmittedEvent>();

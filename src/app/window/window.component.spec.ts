@@ -17,7 +17,7 @@ describe('WindowComponent', () => {
   let fixture: ComponentFixture<WindowComponent>;
 
   beforeEach(() => {
-    const fragment$ = new EventEmitter<String>();
+    const fragment$ = new EventEmitter<string>();
     TestBed.configureTestingModule({
       declarations: [
         WindowComponent,

@@ -9,7 +9,7 @@ import { NavigationTabsComponent, TabId } from './navigation-tabs.component';
 describe('NavigationTabsComponent', () => {
   let component: NavigationTabsComponent;
   let fixture: ComponentFixture<NavigationTabsComponent>;
-  let fakeMetadata: Metadata = {
+  const fakeMetadata: Metadata = {
     domainName: 'example.com',
   } as Pick<Metadata, 'domainName'> as Metadata
 

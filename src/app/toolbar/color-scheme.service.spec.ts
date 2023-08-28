@@ -58,7 +58,7 @@ describe('ColorSchemeService', () => {
   });
 
   describe('when user preference changes', () => {
-    let manuallySetScheme = Scheme.Dark;
+    const manuallySetScheme = Scheme.Dark;
 
     describe('when can detect system preference', () => {
       beforeEach(() => {

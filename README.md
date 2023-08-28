@@ -50,7 +50,9 @@ won't be in sync.
 
 ### Symlinked static assets don't work when serving locally
 
-When using Angular's development server (either regular or SSR one), symbolic links seem not to work for static assets. So for instance `/profile.jpg` which is symlinked to `/assets/img/og.jpg` won't be served. And the server will redirect you towards main page (`/`). It works when building though, so it will appear in the built version.
+When using Angular's development server (either regular or SSR one), symbolic links seem not to work for static assets.
+So for instance `/profile.jpg` which is symlinked to `/assets/img/og.jpg` won't be served. And the server will redirect
+you towards main page (`/`). It works when building though, so it will appear in the built version.
 
 ## Further help
 

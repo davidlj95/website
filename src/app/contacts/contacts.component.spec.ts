@@ -9,7 +9,7 @@ import { ContactsComponent } from './contacts.component';
 describe('ContactsComponent', () => {
   let component: ContactsComponent;
   let fixture: ComponentFixture<ContactsComponent>;
-  let fakeMetadata: Metadata = ({domainName: 'example.com'} as Pick<Metadata, 'domainName'>) as Metadata;
+  const fakeMetadata: Metadata = ({domainName: 'example.com'} as Pick<Metadata, 'domainName'>) as Metadata;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

@@ -9,7 +9,7 @@ import { ProfileComponent } from './profile.component';
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
-  let fakeMetadata: Metadata = ({
+  const fakeMetadata: Metadata = ({
     nickname: 'bar',
     realName: 'Foo',
     descriptionLines: [

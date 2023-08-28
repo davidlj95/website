@@ -11,13 +11,13 @@ describe('JsonldMetadataComponent', () => {
   let component: JsonldMetadataComponent;
   let fixture: ComponentFixture<JsonldMetadataComponent>;
   let headElement: HTMLHeadElement;
-  let fakeMetadata: Metadata = {
+  const fakeMetadata: Metadata = {
     realName: 'Foo',
     authorUrl: new URL('https://example.com/foo'),
     siteName: 'Foo | @foo',
     description: 'Foobar lorem ipsum',
   } as Pick<Metadata, 'realName' | 'authorUrl' | 'siteName' | 'description'> as Metadata;
-  let fakeEnvironment: Environment = {
+  const fakeEnvironment: Environment = {
     canonicalUrl: new URL('https://example.com/canonical'),
   } as Pick<Environment, 'canonicalUrl'> as Environment;
   const scriptSelector = 'script[type="application/ld+json"]'
