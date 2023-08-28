@@ -2,7 +2,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { NgModule, VERSION } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SeoModule } from "@ngaox/seo";
-import { environment } from '../environments/environment';
+import { environment } from '../environments';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
