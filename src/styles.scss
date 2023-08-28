@@ -5,18 +5,18 @@
 @use 'app/navigation-tabs/navigation-tabs-theme' as navigation-tabs;
 @use 'app/contacts/contacts-theme' as contacts;
 @use 'app/social/social-theme' as social;
-@import "scss/theming";
-@import "scss/typographies";
+@use "theming";
+@use "typographies";
 
 // CSS reset & normalization
 @import "gardevoir/dist/mini.min.css";
 
 body {
-  @include body-font();
+  @include typographies.body-font();
 }
 
 code, pre {
-  @include monospace-font();
+  @include typographies.monospace-font();
 }
 
 @mixin app-color($theme) {
@@ -48,8 +48,8 @@ code, pre {
 }
 
 // Render all color themes
-@each $colorTheme in $colorThemes {
-  @include define-color-theme($colorTheme) {
+@each $colorTheme in theming.$colorThemes {
+  @include theming.define-color-theme($colorTheme) {
     @include app-color(map-get($colorTheme, theme));
   }
 }

@@ -1,6 +1,6 @@
-@use "scss/margins" as margins;
-@use "scss/paddings" as paddings;
-@use "scss/touch-or-pointer" as touchOrPointer;
+@use "margins";
+@use "paddings";
+@use "touch-or-pointer";
 
 :host {
   display: flex;
@@ -68,7 +68,7 @@
         display: none
       }
 
-      @include touchOrPointer.primaryInputCannotHover {
+      @include touch-or-pointer.primaryInputCannotHover {
         .touch {
           display: inline-block;
         }

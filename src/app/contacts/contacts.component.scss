@@ -1,5 +1,5 @@
-@use "scss/paddings" as paddings;
-@use "scss/typographies" as typographies;
+@use "paddings";
+@use "typographies";
 
 :host {
   @include typographies.monospace-font;
