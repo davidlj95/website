@@ -3,11 +3,11 @@ import { EventEmitter, VERSION } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MetaDefinition } from '@angular/platform-browser';
 import { Event as RouterEmittedEvent, NavigationEnd, Router, RouterState } from '@angular/router';
-import { MockComponent, MockProvider } from 'ng-mocks';
-import { AppComponent } from '../app/app.component';
+import { MockProvider } from 'ng-mocks';
 import { AppModule } from '../app/app.module';
 import { Metadata, METADATA } from '../app/metadata';
 import { Environment, environment as appEnv } from '../environments';
+import { EmptyComponent } from './helpers/empty-component';
 
 describe('App SEO metadata', () => {
   let headElement: HTMLElement;
@@ -29,8 +29,8 @@ describe('App SEO metadata', () => {
       providers: [MockProvider(Router, mockRouter)],
     });
 
-    // Component not needed, so let's put a mock one
-    TestBed.createComponent(MockComponent(AppComponent));
+    // Component not needed, so let's put a dummy one
+    TestBed.createComponent(EmptyComponent);
 
     // So @ngaox/seo does its magic we need a "NavigationEnd" event triggered
     // Didn't know how to do it otherwise. Suggestions accepted :P

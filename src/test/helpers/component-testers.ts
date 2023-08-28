@@ -1,6 +1,7 @@
 import { reflectComponentType, Type } from '@angular/core';
 import { ComponentFixture } from '@angular/core/testing';
-import { By, SafeValue } from '@angular/platform-browser';
+import { By } from '@angular/platform-browser';
+import { isClass } from './types';
 
 const COMPONENT_CLASS_SUFFIX = 'Component';
 
@@ -54,32 +55,4 @@ export function getComponentSelector<C>(component: Type<C>) {
     throw new Error(`Selector not found for alleged component: ${component.constructor.name}`);
   }
   return selector;
-}
-
-/**
- * Useful to ensure something is a reference to a `class`
- *
- * @see https://stackoverflow.com/a/43197340/3263250
- */
-function isClass(klass: any) {
-  const isCtorClass = klass.constructor
-    && klass.constructor.toString().substring(0, 5) === 'class'
-  if (klass.prototype === undefined) {
-    return isCtorClass
-  }
-  const isPrototypeCtorClass = klass.prototype.constructor
-    && klass.prototype.constructor.toString
-    && klass.prototype.constructor.toString().substring(0, 5) === 'class'
-  return isCtorClass || isPrototypeCtorClass
-}
-
-/**
- * Useful to check for contents wrapped inside a SafeValue (SafeHtml, SafeScript, ...) as result of a DOM security
- * bypass
- *
- * @see https://github.com/angular/angular/blob/16.2.0/packages/core/src/sanitization/bypass.ts#L63
- */
-export function getSafeValueContent(safeValue: SafeValue): string {
-  // @ts-ignore
-  return safeValue.changingThisBreaksApplicationSecurity;
 }

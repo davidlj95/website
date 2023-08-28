@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponents } from 'ng-mocks';
-import { ensureHasComponents } from '../test/helpers';
+import { ensureHasComponents } from '../test/helpers/component-testers';
 import { AppComponent } from './app.component';
 import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
 import { WindowComponent } from './window/window.component';
