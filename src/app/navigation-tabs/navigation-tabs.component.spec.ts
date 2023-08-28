@@ -1,15 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { MockProvider } from 'ng-mocks';
+import { METADATA } from '../common/injection-tokens';
+import { Metadata } from '../metadata';
 
-import { NavigationTabsComponent } from './navigation-tabs.component';
+import { NavigationTabsComponent, TabId } from './navigation-tabs.component';
 
 describe('NavigationTabsComponent', () => {
   let component: NavigationTabsComponent;
   let fixture: ComponentFixture<NavigationTabsComponent>;
+  let fakeMetadata: Metadata = {
+    domainName: 'example.com',
+  } as Pick<Metadata, 'domainName'> as Metadata
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationTabsComponent]
+      declarations: [NavigationTabsComponent],
+      providers: [
+        MockProvider(METADATA, fakeMetadata),
+      ],
     });
     fixture = TestBed.createComponent(NavigationTabsComponent);
     component = fixture.componentInstance;
@@ -19,6 +28,12 @@ describe('NavigationTabsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create the CV link using metadata\'s domain name', () => {
+    const cvItem = component.items.find((item) => item.id === TabId.CV);
+    expect(cvItem).toBeTruthy();
+    expect(cvItem!.externalUrl).toContain(fakeMetadata.domainName)
+  })
 
   it('should contain all navigation items with their name and link', () => {
     const tabElements = fixture.debugElement.queryAll(By.css('li'))

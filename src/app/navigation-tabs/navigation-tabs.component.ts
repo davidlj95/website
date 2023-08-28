@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { isSomeEnum } from '../../utils';
-import { METADATA } from "../metadata";
+import { METADATA } from '../common/injection-tokens';
+import { Metadata } from '../metadata';
 
 @Component({
   selector: 'app-navigation-tabs',
@@ -20,11 +21,16 @@ export class NavigationTabsComponent {
     {
       id: TabId.CV,
       displayName: 'CV',
-      externalUrl: `https://resume.${METADATA.domainName}`,
+      externalUrl: `https://resume.${this.metadata.domainName}`,
     }
   ] as const;
 
   @Input({required: true}) tab!: TabId;
+
+  constructor(
+    @Inject(METADATA) private metadata: Metadata,
+  ) {
+  }
 }
 
 interface TabItem {
