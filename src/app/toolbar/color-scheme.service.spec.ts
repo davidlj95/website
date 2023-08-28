@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { MockProvider } from 'ng-mocks';
 import { Subscription } from 'rxjs';
 import { WINDOW } from '../common/injection-tokens';
-import { ColorSchemeService, Schemes } from './color-scheme.service';
+import { ColorSchemeService, Scheme } from './color-scheme.service';
 
 describe('ColorSchemeService', () => {
   let sut: ColorSchemeService;
@@ -58,7 +58,7 @@ describe('ColorSchemeService', () => {
   });
 
   describe('when user preference changes', () => {
-    let manuallySetScheme = Schemes.Dark;
+    let manuallySetScheme = Scheme.Dark;
 
     describe('when can detect system preference', () => {
       beforeEach(() => {
@@ -103,7 +103,7 @@ describe('ColorSchemeService', () => {
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
-          expect(schemeAttributeValue).toBe(Schemes.Dark)
+          expect(schemeAttributeValue).toBe(Scheme.Dark)
         });
       });
       describe('when user does not prefer dark color scheme', () => {
@@ -114,7 +114,7 @@ describe('ColorSchemeService', () => {
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
-          expect(schemeAttributeValue).toBe(Schemes.Dark)
+          expect(schemeAttributeValue).toBe(Scheme.Dark)
         });
       });
       describe('when user prefers dark color scheme', () => {
@@ -125,31 +125,31 @@ describe('ColorSchemeService', () => {
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
-          expect(schemeAttributeValue).toBe(Schemes.Light)
+          expect(schemeAttributeValue).toBe(Scheme.Light)
         });
       });
     });
     describe('when color scheme is manually set', () => {
       describe('when set to light', () => {
         beforeEach(() => {
-          documentElement.setAttribute(sut.htmlAttribute, Schemes.Light);
+          documentElement.setAttribute(sut.htmlAttribute, Scheme.Light);
         })
         it('should manually set the scheme to dark', () => {
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
-          expect(schemeAttributeValue).toBe(Schemes.Dark)
+          expect(schemeAttributeValue).toBe(Scheme.Dark)
         });
       });
       describe('when set to dark', () => {
         beforeEach(() => {
-          documentElement.setAttribute(sut.htmlAttribute, Schemes.Dark);
+          documentElement.setAttribute(sut.htmlAttribute, Scheme.Dark);
         })
         it('should manually set the scheme to light', () => {
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
-          expect(schemeAttributeValue).toBe(Schemes.Light)
+          expect(schemeAttributeValue).toBe(Scheme.Light)
         });
       });
     });
@@ -159,7 +159,7 @@ describe('ColorSchemeService', () => {
     it('should manually set the scheme as an HTML tag attribute', () => {
       sut = TestBed.inject(ColorSchemeService)
       expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
-      const randomScheme = Schemes.Dark;
+      const randomScheme = Scheme.Dark;
 
       sut.setColorScheme(randomScheme);
 
@@ -171,7 +171,7 @@ describe('ColorSchemeService', () => {
   describe('#setSystemColorScheme', () => {
     it('should remove the manually set scheme as an HTML tag attribute', () => {
       sut = TestBed.inject(ColorSchemeService)
-      const randomScheme = Schemes.Dark;
+      const randomScheme = Scheme.Dark;
       documentElement.setAttribute(sut.htmlAttribute, randomScheme)
 
       sut.setSystemColorScheme()

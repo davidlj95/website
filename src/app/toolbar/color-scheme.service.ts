@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { WINDOW } from '../common/injection-tokens';
 
 // Ensure in SCSS styles that these values alter the color scheme
-export enum Schemes {
+export enum Scheme {
   Light = 'light',
   Dark = 'dark',
 }
@@ -39,14 +39,14 @@ export class ColorSchemeService {
   toggleDarkLight() {
     const manuallySetScheme = this.documentElement.getAttribute(this.htmlAttribute);
     if (!manuallySetScheme) {
-      this.setColorScheme(this.userPrefersDark ? Schemes.Light : Schemes.Dark);
+      this.setColorScheme(this.userPrefersDark ? Scheme.Light : Scheme.Dark);
       return;
     }
 
-    this.setColorScheme(manuallySetScheme == Schemes.Light ? Schemes.Dark : Schemes.Light)
+    this.setColorScheme(manuallySetScheme == Scheme.Light ? Scheme.Dark : Scheme.Light)
   }
 
-  setColorScheme(scheme: Schemes) {
+  setColorScheme(scheme: Scheme) {
     this.documentElement.setAttribute(this.htmlAttribute, scheme)
   }
 
