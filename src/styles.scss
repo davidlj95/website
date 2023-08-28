@@ -1,10 +1,10 @@
-@use 'app/app-theme' as root;
-@use 'app/window/window-theme' as window;
-@use 'app/profile/profile-theme' as profile;
-@use 'app/toolbar/toolbar-theme' as toolbar;
-@use 'app/navigation-tabs/navigation-tabs-theme' as navigation-tabs;
-@use 'app/contacts/contacts-theme' as contacts;
-@use 'app/social/social-theme' as social;
+@use 'app/app-theme' as root-theme;
+@use 'app/window/window-theme';
+@use 'app/profile/profile-theme';
+@use 'app/toolbar/toolbar-theme';
+@use 'app/navigation-tabs/navigation-tabs-theme';
+@use 'app/contacts/contacts-theme';
+@use 'app/social/social-theme';
 @use "theming";
 @use "typographies";
 
@@ -20,13 +20,13 @@ code, pre {
 }
 
 @mixin app-color($theme) {
-  @include root.color($theme);
-  @include window.color($theme);
-  @include profile.color($theme);
-  @include toolbar.color($theme);
-  @include navigation-tabs.color($theme);
-  @include contacts.color($theme);
-  @include social.color($theme);
+  @include root-theme.color($theme);
+  @include window-theme.color($theme);
+  @include profile-theme.color($theme);
+  @include toolbar-theme.color($theme);
+  @include navigation-tabs-theme.color($theme);
+  @include contacts-theme.color($theme);
+  @include social-theme.color($theme);
 
   // TODO: cool effect for hovering
   a {
