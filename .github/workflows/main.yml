@@ -25,9 +25,9 @@ concurrency:
 
 jobs:
   setup:
-    uses: ./github/workflows/reusable/setup.yml
+    uses: ./.github/workflows/reusable/setup.yml
   build:
-    uses: ./github/workflows/reusable/build.yml
+    uses: ./.github/workflows/reusable/build.yml
     needs: setup
   deploy:
     needs: build
