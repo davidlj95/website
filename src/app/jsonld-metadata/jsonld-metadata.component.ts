@@ -1,8 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Environment } from '../../environments';
-import { ENVIRONMENT } from '../common/environment-injection-token';
-import { METADATA } from '../common/metadata-injection-token';
+import { ENVIRONMENT, METADATA } from '../common/injection-tokens';
 import { Metadata } from '../metadata';
 
 @Component({

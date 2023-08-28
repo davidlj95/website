@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { METADATA } from '../common/metadata-injection-token';
+import { METADATA } from '../common/injection-tokens';
 import { Metadata } from '../metadata';
 
 @Component({
