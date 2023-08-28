@@ -154,4 +154,29 @@ describe('ColorSchemeService', () => {
       });
     });
   });
+
+  describe('#setColorScheme', () => {
+    it('should manually set the scheme as an HTML tag attribute', () => {
+      sut = TestBed.inject(ColorSchemeService)
+      expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+      const randomScheme = Schemes.Dark;
+
+      sut.setColorScheme(randomScheme);
+
+      expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(randomScheme)
+    })
+  })
+
+
+  describe('#setSystemColorScheme', () => {
+    it('should remove the manually set scheme as an HTML tag attribute', () => {
+      sut = TestBed.inject(ColorSchemeService)
+      const randomScheme = Schemes.Dark;
+      documentElement.setAttribute(sut.htmlAttribute, randomScheme)
+
+      sut.setSystemColorScheme()
+
+      expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+    })
+  })
 })
