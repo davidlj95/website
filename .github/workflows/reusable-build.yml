@@ -4,14 +4,16 @@ on:
 
 jobs:
   build:
-    - name: Cache Angular build
-      uses: actions/cache@v3
-      env:
-        cache-name: angular-dist
-      with:
-        path: .angular/cache
-        key: ${{ env.cache-name }}-${{ github.ref }}
-        restore-keys: |
-          ${{ env.cache-name }}
-    - name: Build and prerender app
-      run: yarn run prerender
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Angular build
+        uses: actions/cache@v3
+        env:
+          cache-name: angular-dist
+        with:
+          path: .angular/cache
+          key: ${{ env.cache-name }}-${{ github.ref }}
+          restore-keys: |
+            ${{ env.cache-name }}
+      - name: Build and prerender app
+        run: yarn run prerender
