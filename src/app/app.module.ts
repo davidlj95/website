@@ -43,7 +43,8 @@ import { WindowComponent } from './window/window.component';
         alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek'ish glasses`,
         width: 875,
         height: 875,
-        // mimeType: "Not setting it. So you can change the image without needing to worry about updating this l8r",
+        // I wouldn't set it, but if I don't set it, then it appears as "undefined" :(
+        mimeType: "image/jpeg",
       },
       twitter: {
         card: 'summary',
