@@ -26,7 +26,7 @@ export function ensureHasComponent<T, U>(fixtureGetter: () => ComponentFixture<T
  *
  * @see ensureHasComponent
  */
-export function ensureHasComponents<T>(fixtureGetter: () => ComponentFixture<T>, ...components: Array<Type<any>>) {
+export function ensureHasComponents<T>(fixtureGetter: () => ComponentFixture<T>, ...components: Array<Type<unknown>>) {
   for (const component of components) {
     ensureHasComponent(fixtureGetter, component);
   }

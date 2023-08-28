@@ -19,7 +19,7 @@ async function generateTemplatedFiles() {
   Log.item("Directory: '%s'", globExpression);
   Log.item("Exclusions: %s", EXCLUSIONS);
 
-  let templateFiles = await glob(
+  const templateFiles = await glob(
     globExpression,
     {
       absolute: false,

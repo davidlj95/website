@@ -64,10 +64,10 @@ describe('App SEO metadata', () => {
     it("should include meta tag with name 'keywords' and a list of at least two comma separated items", () => {
       const keywordsMetaElement = headElement.querySelector(`meta[name="keywords"]`)
       expect(keywordsMetaElement).not.toBeNull()
-      const keywordsText = keywordsMetaElement!.getAttribute('content')
+      const keywordsText = keywordsMetaElement?.getAttribute('content')
       expect(keywordsText).not.toBeNull()
-      const keywords = keywordsText!.split(",")
-      expect(keywords.length).toBeGreaterThan(1)
+      const keywords = keywordsText?.split(",")
+      expect(keywords?.length).toBeGreaterThan(1)
     })
     ensureMetaTagPresentWithName(
       'author',
@@ -92,7 +92,7 @@ describe('App SEO metadata', () => {
     it("should include canonical URL link element with environment config", () => {
       const canonicalLinkElement = headElement.querySelector(`link[rel="canonical"]`)
       expect(canonicalLinkElement).not.toBeNull()
-      expect(canonicalLinkElement!.getAttribute('href')).toEqual(environment.canonicalUrl.toString());
+      expect(canonicalLinkElement?.getAttribute('href')).toEqual(environment.canonicalUrl.toString());
     })
   })
   describe('Open Graph', () => {
@@ -197,7 +197,7 @@ describe('App SEO metadata', () => {
       const metaElement = headElement.querySelector(`meta[${selectorAttribute}="${selectorValue}"]`)
       expect(metaElement).not.toBeNull()
       if (expectedContent) {
-        expect(metaElement!.getAttribute('content')).toEqual(expectedContent);
+        expect(metaElement?.getAttribute('content')).toEqual(expectedContent);
       }
     })
   }

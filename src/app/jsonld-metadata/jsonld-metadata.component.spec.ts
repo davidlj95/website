@@ -58,6 +58,6 @@ describe('JsonldMetadataComponent', () => {
   it("should append the JSON LD script to the document's head", () => {
     const script = headElement.querySelector(scriptSelector);
     expect(script).toBeTruthy();
-    expect(script!.innerHTML).toEqual(JSON.stringify(component.jsonLd));
+    expect(script?.innerHTML).toEqual(JSON.stringify(component.jsonLd));
   });
 });

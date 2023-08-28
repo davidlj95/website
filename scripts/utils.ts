@@ -12,19 +12,19 @@ export function isMain(module: NodeModule) {
 }
 
 export class Log implements Partial<Console> {
-  static info(message: string, ...params: any[]) {
+  static info(message: string, ...params: unknown[]) {
     console.info(`ℹ️ ${message}`, ...params);
   }
 
-  static item(message: string, ...params: any[]) {
+  static item(message: string, ...params: unknown[]) {
     console.info(`    - ${message}`, ...params);
   }
 
-  static warn(message: string, ...params: any[]) {
+  static warn(message: string, ...params: unknown[]) {
     console.warn(`⚠️ ${message}`, ...params);
   }
 
-  static group(label: string, ...params: any[]) {
+  static group(label: string, ...params: unknown[]) {
     console.group(`🏷️${label}`, ...params);
   }
 
@@ -32,7 +32,7 @@ export class Log implements Partial<Console> {
     console.groupEnd();
   }
 
-  static ok(message: string, ...params: any[]) {
+  static ok(message: string, ...params: unknown[]) {
     console.info(`✅  ${message}`, ...params);
   }
 }

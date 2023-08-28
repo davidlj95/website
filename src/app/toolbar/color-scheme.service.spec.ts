@@ -19,7 +19,7 @@ describe('ColorSchemeService', () => {
         matches: prefersDark,
         addEventListener: <K extends keyof MediaQueryListEventMap>(
           type: K,
-          listener: (ev: MediaQueryListEventMap[K]) => any,
+          listener: (ev: MediaQueryListEventMap[K]) => unknown,
           options?: boolean | AddEventListenerOptions) => {
           if (type !== 'change' || options !== undefined || typeof listener !== 'function') {
             throw new Error('Media query addEventListener cannot be mocked with this usage')

@@ -32,7 +32,7 @@ describe('NavigationTabsComponent', () => {
   it('should create the CV link using metadata\'s domain name', () => {
     const cvItem = component.items.find((item) => item.id === TabId.CV);
     expect(cvItem).toBeTruthy();
-    expect(cvItem!.externalUrl).toContain(fakeMetadata.domainName)
+    expect(cvItem?.externalUrl).toContain(fakeMetadata.domainName)
   })
 
   it('should contain all navigation items with their name and link', () => {

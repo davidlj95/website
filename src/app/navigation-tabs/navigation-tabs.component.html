@@ -1,7 +1,7 @@
 <ul aria-label="Panels" role="tablist">
   <li *ngFor="let item of items" [attr.aria-label]="item.displayName" [attr.aria-selected]="tab === item.id"
       [class.selected]="tab === item.id"
-      [tabindex]="item.id == tab ? 0 : -1" role="tab">
+      [tabindex]="item.id === tab ? 0 : -1" role="tab">
     <ng-container *ngIf="!item.externalUrl; else externalLink">
       <a [href]="'#'+item.id">{{ item.displayName }}</a>
     </ng-container>

@@ -32,7 +32,7 @@ describe('ContactsComponent', () => {
       (item) => item.key == ContactsComponent.EMAIL_KEY
     );
     expect(emailItem).toBeTruthy();
-    expect(emailItem!.value).toEqual(`${ContactsComponent.EMAIL_LOCAL_PART}@${fakeMetadata.domainName}`)
+    expect(emailItem?.value).toEqual(`${ContactsComponent.EMAIL_LOCAL_PART}@${fakeMetadata.domainName}`)
   });
 
   it('should render is if it was a JSON object, containing all contacts', () => {

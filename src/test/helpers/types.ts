@@ -3,7 +3,7 @@
  *
  * @see https://stackoverflow.com/a/43197340/3263250
  */
-export function isClass(klass: any) {
+export function isClass(klass: { new(): unknown }) {
   const isCtorClass = klass.constructor
     && klass.constructor.toString().substring(0, 5) === 'class'
   if (klass.prototype === undefined) {
