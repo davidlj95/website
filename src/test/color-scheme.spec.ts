@@ -1,7 +1,5 @@
 import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
-import { MockComponent } from 'ng-mocks';
-import { AppComponent } from '../app/app.component';
 import { AppModule } from '../app/app.module';
 import { ColorSchemeService, Scheme } from '../app/toolbar/color-scheme.service';
 
@@ -13,9 +11,6 @@ describe('App color scheme', () => {
     TestBed.configureTestingModule({
       imports: [AppModule],
     });
-
-    // Component not needed, so let's put a mock one
-    TestBed.createComponent(MockComponent(AppComponent));
 
     const document = TestBed.inject(DOCUMENT);
     colorSchemeService = TestBed.inject(ColorSchemeService);
