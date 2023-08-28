@@ -39,24 +39,24 @@ export class ColorSchemeService {
   toggleDarkLight() {
     const manuallySetScheme = this.documentElement.getAttribute(this.htmlAttribute);
     if (!manuallySetScheme) {
-      this.setColorScheme(this.userPrefersDark ? Scheme.Light : Scheme.Dark);
+      this.setManual(this.userPrefersDark ? Scheme.Light : Scheme.Dark);
       return;
     }
 
-    this.setColorScheme(manuallySetScheme == Scheme.Light ? Scheme.Dark : Scheme.Light)
+    this.setManual(manuallySetScheme == Scheme.Light ? Scheme.Dark : Scheme.Light)
   }
 
-  setColorScheme(scheme: Scheme) {
+  setManual(scheme: Scheme) {
     this.documentElement.setAttribute(this.htmlAttribute, scheme)
   }
 
-  setSystemColorScheme() {
+  setSystem() {
     this.documentElement.removeAttribute(this.htmlAttribute);
   }
 
   private listenForMatchMediaPreferenceChanges() {
     this.matchMediaQuery?.addEventListener('change', () => {
-      this.setSystemColorScheme()
+      this.setSystem()
     })
   }
 }

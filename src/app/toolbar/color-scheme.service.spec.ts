@@ -161,7 +161,7 @@ describe('ColorSchemeService', () => {
       expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
       const randomScheme = Scheme.Dark;
 
-      sut.setColorScheme(randomScheme);
+      sut.setManual(randomScheme);
 
       expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(randomScheme)
     })
@@ -174,7 +174,7 @@ describe('ColorSchemeService', () => {
       const randomScheme = Scheme.Dark;
       documentElement.setAttribute(sut.htmlAttribute, randomScheme)
 
-      sut.setSystemColorScheme()
+      sut.setSystem()
 
       expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
     })
