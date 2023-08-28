@@ -9,7 +9,7 @@ import { ProfileComponent } from './profile.component';
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
-  let mockMetadata: Metadata = ({
+  let fakeMetadata: Metadata = ({
     nickname: 'bar',
     realName: 'Foo',
     descriptionLines: [
@@ -22,7 +22,7 @@ describe('ProfileComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ProfileComponent],
       providers: [
-        MockProvider(METADATA, mockMetadata),
+        MockProvider(METADATA, fakeMetadata),
       ]
     });
     fixture = TestBed.createComponent(ProfileComponent);
@@ -53,18 +53,18 @@ describe('ProfileComponent', () => {
 
   it('should display real name in header', () => {
     const h1 = fixture.debugElement.query(By.css('h1'));
-    expect(h1.nativeElement.textContent).toContain(mockMetadata.realName);
+    expect(h1.nativeElement.textContent).toContain(fakeMetadata.realName);
   })
 
   it('should display nickname preceded by \'@\' in header', () => {
     const h1 = fixture.debugElement.query(By.css('h1'));
-    expect(h1.nativeElement.textContent).toContain(`@${mockMetadata.nickname}`);
+    expect(h1.nativeElement.textContent).toContain(`@${fakeMetadata.nickname}`);
   })
 
   it('should contain description lines as secondary headers', () => {
     const h2s = fixture.debugElement.queryAll(By.css('h2'));
     h2s.forEach((h2, index) => {
-      const descriptionLine = mockMetadata.descriptionLines[index];
+      const descriptionLine = fakeMetadata.descriptionLines[index];
       expect(h2.nativeElement.textContent).toEqual(`${descriptionLine.emoji} ${descriptionLine.text}`)
     });
   })
