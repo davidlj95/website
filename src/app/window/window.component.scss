@@ -1,5 +1,5 @@
-@use "src/breakpoints" as breakpoints;
-@use "src/margins" as margins;
+@use "scss/breakpoints" as breakpoints;
+@use "scss/margins" as margins;
 
 :host {
   display: block;

@@ -5,8 +5,8 @@
 @use 'app/navigation-tabs/navigation-tabs-theme' as navigation-tabs;
 @use 'app/contacts/contacts-theme' as contacts;
 @use 'app/social/social-theme' as social;
-@import "theming";
-@import "typographies";
+@import "scss/theming";
+@import "scss/typographies";
 
 // CSS reset & normalization
 @import "gardevoir/dist/mini.min.css";

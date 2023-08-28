@@ -1,6 +1,6 @@
-@use "src/margins" as margins;
-@use "src/paddings" as paddings;
-@use "src/touch-or-pointer" as touchOrPointer;
+@use "scss/margins" as margins;
+@use "scss/paddings" as paddings;
+@use "scss/touch-or-pointer" as touchOrPointer;
 
 :host {
   display: flex;

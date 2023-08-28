@@ -1,5 +1,5 @@
-@use "src/margins" as margins;
-@use "src/paddings" as paddings;
+@use "scss/margins" as margins;
+@use "scss/paddings" as paddings;
 
 :host {
   display: block;
