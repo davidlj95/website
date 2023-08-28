@@ -2,7 +2,7 @@ import { EventEmitter } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { MockComponents } from 'ng-mocks';
-import { ensureHasComponents } from '../../../test/helpers';
+import { ensureHasComponents } from '../../test/helpers';
 import { ContactsComponent } from '../contacts/contacts.component';
 import { NavigationTabsComponent } from '../navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from '../no-script/no-script.component';

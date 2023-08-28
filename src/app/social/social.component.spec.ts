@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { getSafeValueContent } from '../../../test/helpers';
+import { getSafeValueContent } from '../../test/helpers';
 
 import { SocialComponent } from './social.component';
 
