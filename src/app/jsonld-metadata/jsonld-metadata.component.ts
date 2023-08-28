@@ -1,32 +1,33 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, InjectionToken, OnInit } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { METADATA } from '../metadata';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Environment } from '../../environments';
+import { ENVIRONMENT } from '../common/environment-injection-token';
+import { METADATA } from '../common/metadata-injection-token';
+import { Metadata } from '../metadata';
 
 @Component({
   selector: 'app-jsonld-metadata',
   template: '',
 })
 export class JsonldMetadataComponent implements OnInit {
-  private static readonly JSON_LD = {
+  // @visibleForTesting
+  public readonly jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     'author': {
       '@type': 'Person',
-      'name': METADATA.realName,
-      'url': METADATA.authorUrl,
+      'name': this.metadata.realName,
+      'url': this.metadata.authorUrl,
     },
-    'name': METADATA.siteName,
-    'headline': METADATA.description,
-    'url': environment.canonicalUrl,
+    'name': this.metadata.siteName,
+    'headline': this.metadata.description,
+    'url': this.environment.canonicalUrl,
   }
-  public static readonly JSON_LD_IT = new InjectionToken<unknown>('JSON LD metadata', {
-    factory: () => JsonldMetadataComponent.JSON_LD
-  })
 
   constructor(
+    @Inject(METADATA) private metadata: Metadata,
+    @Inject(ENVIRONMENT) private environment: Environment,
     @Inject(DOCUMENT) private document: Document,
-    @Inject(JsonldMetadataComponent.JSON_LD_IT) private jsonLd: unknown,
   ) {
   }
 
