@@ -41,7 +41,6 @@ export class JsonldMetadataComponent implements OnInit {
     jsonLdScript.type = 'application/ld+json';
     jsonLdScript.innerHTML = JSON.stringify(this.jsonLd);
 
-    const head = this.document.getElementsByTagName('head')[0];
-    head.appendChild(jsonLdScript);
+    this.document.head.appendChild(jsonLdScript);
   }
 }

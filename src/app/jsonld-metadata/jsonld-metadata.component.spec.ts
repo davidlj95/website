@@ -10,7 +10,7 @@ import { JsonldMetadataComponent } from './jsonld-metadata.component';
 describe('JsonldMetadataComponent', () => {
   let component: JsonldMetadataComponent;
   let fixture: ComponentFixture<JsonldMetadataComponent>;
-  let documentElement: HTMLElement;
+  let headElement: HTMLHeadElement;
   let fakeMetadata: Metadata = {
     realName: 'Foo',
     authorUrl: new URL('https://example.com/foo'),
@@ -32,11 +32,11 @@ describe('JsonldMetadataComponent', () => {
     });
     fixture = TestBed.createComponent(JsonldMetadataComponent);
     component = fixture.componentInstance;
-    documentElement = TestBed.inject(DOCUMENT).documentElement;
+    headElement = TestBed.inject(DOCUMENT).head;
     fixture.detectChanges();
   });
   afterEach(() => {
-    documentElement.querySelector(scriptSelector)?.remove();
+    headElement.querySelector(scriptSelector)?.remove();
   })
 
   it('should create', () => {
@@ -56,7 +56,7 @@ describe('JsonldMetadataComponent', () => {
   })
 
   it("should append the JSON LD script to the document's head", () => {
-    const script = documentElement.querySelector(scriptSelector);
+    const script = headElement.querySelector(scriptSelector);
     expect(script).toBeTruthy();
     expect(script!.innerHTML).toEqual(JSON.stringify(component.jsonLd));
   });
