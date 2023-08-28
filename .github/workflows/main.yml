@@ -1,7 +1,7 @@
 # Template from GitHub Actions starter workflows. GitHub Pages section. "Static" starter.
 # https://github.com/actions/starter-workflows/blob/1c61cfc44d2a372d82735888ab06bc9491e1e3d6/pages/static.yml
 # Simple workflow for deploying static content to GitHub Pages
-name: Build & deploy
+name: Main build and deploy
 
 on:
   # Runs on pushes targeting the default branch
@@ -24,38 +24,20 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  setup:
+    uses: ./github/workflows/reusable/setup.yml
+  build:
+    uses: ./github/workflows/reusable/build.yml
+    needs: setup
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.node-version'
-          cache: 'yarn'
-      - name: Install dependencies
-        # Actually the "--immutable" is enabled by default on CI envs
-        # setup-node action uses "--frozen-lockfile" but that is backwards comp and will be removed
-        # https://github.com/actions/setup-node/blob/5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d/docs/advanced-usage.md#caching-packages-data
-        run: yarn install --immutable
-      - name: Cache Angular build
-        uses: actions/cache@v3
-        env:
-          cache-name: angular-dist
-        with:
-          path: .angular/cache
-          key: ${{ env.cache-name }}-${{ github.ref }}
-          restore-keys: |
-            ${{ env.cache-name }}
-      - name: Build and prerender app
-        run: yarn run prerender
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
