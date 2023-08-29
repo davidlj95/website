@@ -20,4 +20,4 @@ jobs:
         with:
           name: Karma tests
           path: 'junit-tests.xml'
-          reporter: jest-junit
+          reporter: java-junit
