@@ -23,3 +23,9 @@ jobs:
       - name: Run Lighthouse CI
         run: |
           yarn dlx @lhci/cli@0.12.x autorun
+      - name: Report results
+        if: success() || failure()
+        uses: manrueda/lighthouse-report-action@v1.0.1
+        with:
+          reports: '.lighthouseci'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
