@@ -22,6 +22,6 @@ jobs:
         uses: dorny/test-reporter@v1
         if: success() || failure()
         with:
-          name: Karma tests
+          name: Test results
           path: 'junit-tests.xml'
           reporter: java-junit
