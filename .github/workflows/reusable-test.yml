@@ -2,6 +2,10 @@ name: Test
 on:
   workflow_call:
 
+# https://github.com/dorny/test-reporter/issues/229
+permissions:
+  checks: write
+
 jobs:
   test:
     name: All tests
