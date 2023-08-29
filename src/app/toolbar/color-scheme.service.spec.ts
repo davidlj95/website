@@ -90,10 +90,8 @@ describe('ColorSchemeService', () => {
     })
     describe('when no color scheme has been manually set', () => {
       describe('when cannot detect system preference', () => {
-        beforeEach(() => {
-          mockWindow = {} as Window;
-        });
         it('should manually set the scheme to dark, given default is light', () => {
+          mockWindow = {} as Window;
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
@@ -101,10 +99,8 @@ describe('ColorSchemeService', () => {
         });
       });
       describe('when user does not prefer dark color scheme', () => {
-        beforeEach(() => {
-          prefersDark = false;
-        });
         it('should manually set the scheme to dark', () => {
+          prefersDark = false;
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
@@ -112,10 +108,8 @@ describe('ColorSchemeService', () => {
         });
       });
       describe('when user prefers dark color scheme', () => {
-        beforeEach(() => {
-          prefersDark = true;
-        });
         it('should manually set the scheme to light', () => {
+          prefersDark = true;
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
@@ -125,10 +119,8 @@ describe('ColorSchemeService', () => {
     });
     describe('when color scheme is manually set', () => {
       describe('when set to light', () => {
-        beforeEach(() => {
-          documentElement.setAttribute(sut.htmlAttribute, Scheme.Light);
-        })
         it('should manually set the scheme to dark', () => {
+          documentElement.setAttribute(sut.htmlAttribute, Scheme.Light);
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
@@ -136,10 +128,8 @@ describe('ColorSchemeService', () => {
         });
       });
       describe('when set to dark', () => {
-        beforeEach(() => {
-          documentElement.setAttribute(sut.htmlAttribute, Scheme.Dark);
-        })
         it('should manually set the scheme to light', () => {
+          documentElement.setAttribute(sut.htmlAttribute, Scheme.Dark);
           sut.toggleDarkLight();
 
           const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
