@@ -248,7 +248,9 @@ $RECYCLE.BIN/
 .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,yarn,webstorm+iml,macos,linux,windows
+junit-test.xml
 # Manual changes:
 # - Yarn config to not use zero installs.
 # - Remove .idea from angular, we want some settings in the repo
 # - Include dictionaries
+# - Add junit-test.xml generated for CI/CD purposes
