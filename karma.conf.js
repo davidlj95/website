@@ -29,8 +29,8 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/davidlj95/website'),
       subdir: '.',
       reporters: [
-        {type: 'html'},
-        {type: 'text-summary'}
+        {type: 'text-summary'},
+        {type: 'lcov'}
       ],
       check: {
         global: {

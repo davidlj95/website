@@ -18,6 +18,11 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run tests
         run: make -f .ci/Makefile test
+      - name: Report coverage
+        if: success() || failure()
+        uses: livewing/lcov-job-summary@v1.1.0
+        with:
+          lcov: coverage/davidlj95/website/lcov.info
       - name: Report tests
         uses: dorny/test-reporter@v1
         if: success() || failure()
