@@ -13,7 +13,8 @@
     "prerender": "ng run @davidlj95/website:prerender",
     "render-templates": "ts-node -P tsconfig.scripts.json scripts/generate-templated-files.ts",
     "security-txt": "ts-node -P tsconfig.scripts.json scripts/generate-security-txt.ts",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "ci:main": "act"
   },
   "private": true,
   "dependencies": {

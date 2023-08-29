@@ -54,6 +54,28 @@ When using Angular development server (either regular or SSR one), symbolic link
 So for instance `/profile.jpg` which is symlinked to `/assets/img/og.jpg` won't be served. And the server will redirect
 you towards main page (`/`). It works when building though, so it will appear in the built version.
 
+## Running GitHub Actions workflows locally
+
+You can use [`act`](https://github.com/nektos/act) to run GitHub Action workflows in your development machine. If using macOs, install it using `brew`:
+
+```shell
+brew install act
+```
+
+Then, use one of the many `ci:` run scripts to simulate a CI/CD workflow run. For instance:
+
+```shell
+yarn run ci:main
+```
+
+Simulates a push to `main` branch.
+
+> If you get a message related to Apple M-series chip:
+> ```shell
+> WARN  ⚠ You are using Apple M-series chip and you have not specified container architecture, you might encounter issues while running act. If so, try running it with '--container-architecture linux/amd64'. ⚠                      7s
+> ```
+> You can add ` --container-architecture linux/amd64` (notice a space when line begins) to your `~/.actrc` file. Create it if it doesn't exist.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out
