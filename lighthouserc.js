@@ -2,6 +2,9 @@ module.exports = {
     ci: {
         upload: {
             target: 'temporary-public-storage',
+            url: [
+                'http://localhost/',
+            ]
         },
         collect: {
             staticDistDir: !!process.env.CI ? 'browser' : 'dist/@davidlj95/website/browser'
