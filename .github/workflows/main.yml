@@ -29,9 +29,12 @@ jobs:
     uses: ./.github/workflows/reusable-build.yml
     with:
       artifact-name: build
+  test:
+    name: Test
+    uses: ./.github/workflows/reusable-test.yml
   deploy:
     name: Deploy
-    needs: build
+    needs: [build, test]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
