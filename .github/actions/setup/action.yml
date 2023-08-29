@@ -3,8 +3,6 @@ description: Checks out the repository and installs tooling
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v3
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
