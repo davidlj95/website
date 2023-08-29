@@ -1,15 +1,22 @@
 name: Build
 on:
   workflow_call:
+    inputs:
+      artifact-name:
+        required: false
+        type: string
+        default: ''
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Cache Angular build
         uses: actions/cache@v3
         env:
-          cache-name: angular-dist
+          cache-name: angular-cache
         with:
           path: .angular/cache
           key: ${{ env.cache-name }}-${{ github.ref }}
@@ -17,3 +24,10 @@ jobs:
             ${{ env.cache-name }}
       - name: Build and prerender app
         run: yarn run prerender
+      - name: Upload built app
+        if: ${{ inputs.artifact-name != '' }}
+        uses: actions/upload-artifact@3
+        with:
+          name: build
+          path: 'dist/@davidlj95/website'
+          retention-days: 5
