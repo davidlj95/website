@@ -12,4 +12,4 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run tests
-        run: yarn test
+        run: make -f .ci/Makefile test

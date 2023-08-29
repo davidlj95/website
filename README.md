@@ -54,7 +54,24 @@ When using Angular development server (either regular or SSR one), symbolic link
 So for instance `/profile.jpg` which is symlinked to `/assets/img/og.jpg` won't be served. And the server will redirect
 you towards main page (`/`). It works when building though, so it will appear in the built version.
 
-## Running GitHub Actions workflows locally
+## CI/CD
+
+GitHub Actions are used
+
+### Commands ran by CI/CD
+
+In order to ease running CI/CD commands locally, the `.ci` directory contains a `Makefile` intended to contain all commands that will be run in CI/CD pipelines. So you can test those locally easily
+
+Just:
+
+```shell
+cd .ci
+make test # for instance
+```
+
+And see how a command run in the CI/CD behaves locally. Notice your machine's state may differ from the CI/CD machine one.
+
+### Running GitHub Actions workflows locally
 
 You can use [`act`](https://github.com/nektos/act) to run GitHub Action workflows in your development machine. If using macOs, install it using `brew`:
 
@@ -62,13 +79,14 @@ You can use [`act`](https://github.com/nektos/act) to run GitHub Action workflow
 brew install act
 ```
 
-Then, use one of the many `ci:` run scripts to simulate a CI/CD workflow run. For instance:
+Then, use one of the many `run-` targets in the CI/CD `Makefile` to simulate a CI/CD workflow run. For instance:
 
 ```shell
-yarn run ci:main
+cd .ci
+make run-main
 ```
 
-Simulates a push to `main` branch.
+Simulates the workflow triggered by a push to `main` branch.
 
 > If you get a message related to Apple M-series chip:
 > ```shell
