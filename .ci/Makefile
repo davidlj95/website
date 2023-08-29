@@ -4,7 +4,7 @@ build:
 	yarn run prerender
 
 test:
-	yarn test --browsers=ChromeHeadless --watch=false --reporters junit
+	yarn test --browsers=ChromeHeadless --watch=false --reporters junit,progress
 
 run-main:
 	act
