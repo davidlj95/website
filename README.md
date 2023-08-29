@@ -94,6 +94,8 @@ Simulates the workflow triggered by a push to `main` branch.
 > ```
 > You can add ` --container-architecture linux/amd64` (notice a space when line begins) to your `~/.actrc` file. Create it if it doesn't exist.
 
+> ℹ️ Images are set to [`js-*` ones](https://github.com/catthehacker/docker_images) via the `.actrc` file as medium default ones don't include `yarn` `:sadparrot:`
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out
