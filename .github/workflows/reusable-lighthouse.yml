@@ -5,6 +5,9 @@ on:
       build-artifact-name:
         required: true
         type: string
+    secrets:
+      LHCI_GITHUB_APP_TOKEN:
+        required: true
 
 # https://github.com/dorny/test-reporter/issues/229
 permissions:
@@ -27,8 +30,7 @@ jobs:
       - name: Run Lighthouse CI
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-        run: |
-          yarn dlx @lhci/cli@0.12.x autorun
+        run: cd .ci && make lighthouse
       - name: Report results
         if: success() || failure()
         uses: manrueda/lighthouse-report-action@v1.1.2
