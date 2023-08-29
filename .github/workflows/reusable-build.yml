@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ env.cache-name }}
       - name: Build and prerender app
-        run: make -f .ci/Makefile build
+        run: cd .ci && make build
       - name: Upload built app
         if: ${{ inputs.artifact-name != '' }}
         uses: actions/upload-artifact@v3

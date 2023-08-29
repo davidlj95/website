@@ -29,7 +29,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run tests
-        run: make -f .ci/Makefile test
+        run: cd .ci && make test
       - name: Report coverage
         if: success() || failure()
         uses: livewing/lcov-job-summary@v1.1.0

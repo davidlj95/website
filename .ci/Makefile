@@ -16,7 +16,7 @@ test:
 	yarn test --browsers=ChromeHeadless --no-watch --no-progress --reporters junit,progress --code-coverage
 
 run-main:
-	act
+	cd .. && act
 
 reset:
 	docker ps -a --format '{{.Names}}' | grep -e '^act-' | xargs docker rm -f
