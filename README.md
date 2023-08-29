@@ -73,7 +73,7 @@ And see how a command run in the CI/CD behaves locally. Notice your machine's st
 
 ### Running GitHub Actions workflows locally
 
-You can use [`act`](https://github.com/nektos/act) to run GitHub Action workflows in your development machine. If using macOs, install it using `brew`:
+You can use [`act`](https://github.com/nektos/act) to run GitHub Action workflows in your development machine. If using macOS, install it using `brew`:
 
 ```shell
 brew install act

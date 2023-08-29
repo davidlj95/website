@@ -173,6 +173,7 @@ describe('ColorSchemeService', () => {
   })
 })
 
+// noinspection JSUnusedGlobalSymbols
 class MockHTMLElementWithAttributes implements Pick<HTMLElement, 'getAttribute' | 'setAttribute' | 'removeAttribute'> {
   private attributes = new Map<string, string>();
 
