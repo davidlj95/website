@@ -26,8 +26,8 @@ jobs:
         run: yarn run prerender
       - name: Upload built app
         if: ${{ inputs.artifact-name != '' }}
-        uses: actions/upload-artifact@3
+        uses: actions/upload-artifact@v3
         with:
-          name: build
+          name: ${{ inputs.artifact-name }}
           path: 'dist/@davidlj95/website'
           retention-days: 5
