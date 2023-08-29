@@ -6,6 +6,10 @@ on:
         required: true
         type: string
 
+# https://github.com/dorny/test-reporter/issues/229
+permissions:
+  checks: write
+
 jobs:
   lhci:
     name: Lighthouse

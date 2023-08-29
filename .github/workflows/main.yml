@@ -27,6 +27,8 @@ jobs:
     name: Lighthouse
     needs: build
     uses: ./.github/workflows/reusable-lighthouse.yml
+    permissions:
+      checks: write
     with:
       build-artifact-name: build
   deploy:
