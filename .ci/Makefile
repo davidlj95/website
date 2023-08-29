@@ -7,7 +7,7 @@ lint:
 	yarn lint --format eslint-formatter-multiple --max-warnings 0
 
 test:
-	yarn test --browsers=ChromeHeadless --watch=false --reporters junit,progress
+	yarn test --browsers=ChromeHeadless --watch=false --reporters junit,progress --code-coverage
 
 run-main:
 	act
