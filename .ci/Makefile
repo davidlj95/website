@@ -8,3 +8,6 @@ test:
 
 run-main:
 	act
+
+reset:
+	docker ps -a --format '{{.Names}}' | grep -e '^act-' | xargs docker rm -f
