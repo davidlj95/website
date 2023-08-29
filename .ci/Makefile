@@ -20,3 +20,6 @@ run-main:
 
 reset:
 	docker ps -a --format '{{.Names}}' | grep -e '^act-' | xargs docker rm -f
+
+lighthouse:
+	cd .. && yarn dlx @lhci/cli@0.12.x autorun

@@ -23,9 +23,15 @@ jobs:
     uses: ./.github/workflows/reusable-lint.yml
     permissions:
       checks: write
+  lighthouse:
+    name: Lighthouse
+    needs: build
+    uses: ./.github/workflows/reusable-lighthouse.yml
+    with:
+      build-artifact-name: build
   deploy:
     name: Deploy
-    needs: [build, lint, test]
+    needs: [build, lint, test, lighthouse]
     uses: ./.github/workflows/reusable-deploy.yml
     with:
       build-artifact-name: build

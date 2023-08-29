@@ -248,6 +248,15 @@ $RECYCLE.BIN/
 .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,yarn,webstorm+iml,macos,linux,windows
+# Created by https://www.toptal.com/developers/gitignore/api/lighthouseci                                                                                                                                                           18s
+# Edit at https://www.toptal.com/developers/gitignore?templates=lighthouseci
+
+### LighthouseCI ###
+# Lighthouse reports
+.lighthouseci/
+
+# End of https://www.toptal.com/developers/gitignore/api/lighthouseci
+## Manual files
 junit-test.xml
 junit-lint.xml
 # Manual changes:
@@ -255,3 +264,4 @@ junit-lint.xml
 # - Remove .idea from angular, we want some settings in the repo
 # - Include dictionaries
 # - Add junit-(lint|test).xml generated for CI/CD purposes
+# - Add Lighthouse CI (to avoid having to generate everything again)
