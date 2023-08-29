@@ -35,9 +35,12 @@ jobs:
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
+  lint:
+    name: Lint
+    uses: ./.github/workflows/reusable-lint.yml
   deploy:
     name: Deploy
-    needs: [build, test]
+    needs: [build, lint, test]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -2458,6 +2458,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.62.0
     "@typescript-eslint/parser": 5.62.0
     eslint: ^8.47.0
+    eslint-formatter-multiple: ^2.0.0
     express: ^4.15.2
     gardevoir: ^1.0.0
     glob: ^10.3.3
@@ -6965,6 +6966,15 @@ __metadata:
     escodegen: bin/escodegen.js
     esgenerate: bin/esgenerate.js
   checksum: 096696407e161305cd05aebb95134ad176708bc5cb13d0dcc89a5fcbb959b8ed757e7f2591a5f8036f8f4952d4a724de0df14cd419e29212729fa6df5ce16bf6
+  languageName: node
+  linkType: hard
+
+"eslint-formatter-multiple@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "eslint-formatter-multiple@npm:2.0.0"
+  dependencies:
+    mkdirp: ^1.0.4
+  checksum: 542ba0aeb1a408f0db415bc7aea387579be64c55f45c039df235f36f1b95af7bf3d7055eee9448107b02c41a956849d3e48a8a709811df865a67b132b980e557
   languageName: node
   linkType: hard
 
