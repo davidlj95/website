@@ -1,7 +1,7 @@
 # Template from GitHub Actions starter workflows. GitHub Pages section. "Static" starter.
 # https://github.com/actions/starter-workflows/blob/1c61cfc44d2a372d82735888ab06bc9491e1e3d6/pages/static.yml
 # Simple workflow for deploying static content to GitHub Pages
-name: Main build and deploy
+name: Push to main
 
 on:
   # Runs on pushes targeting the default branch
@@ -25,10 +25,12 @@ concurrency:
 
 jobs:
   build:
+    name: Build
     uses: ./.github/workflows/reusable-build.yml
     with:
       artifact-name: build
   deploy:
+    name: Deploy
     needs: build
     environment:
       name: github-pages
