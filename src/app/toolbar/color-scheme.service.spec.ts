@@ -7,7 +7,7 @@ import { WINDOW } from '../common/injection-tokens';
 import { ColorSchemeService, Scheme } from './color-scheme.service';
 
 describe('ColorSchemeService', () => {
-  let documentElement: HTMLElement;
+  let mockDocumentElement: HTMLElement;
   let mockWindow: Window;
   const mockMatchMedia: typeof Window.prototype.matchMedia = (query) => {
     // Most future-friendly way is to ask whether user prefers dark or not
@@ -40,16 +40,24 @@ describe('ColorSchemeService', () => {
     prefersDarkMatchMediaChangesEmitter = new EventEmitter<MediaQueryListEvent>();
     prefersDarkMatchMediaSubscriptions = [];
     mockWindow = ({matchMedia: mockMatchMedia} as Pick<Window, "matchMedia">) as Window;
+    mockDocumentElement = new MockHTMLElementWithAttributes() as unknown as HTMLElement;
+    const mockDocument = {
+      documentElement: mockDocumentElement,
+      // Make Angular testing tools happy :)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      querySelectorAll: (_selectors: unknown) => {
+        return {length: 0};
+      },
+    } as Pick<Document, 'documentElement' | 'querySelectorAll'>
     TestBed.configureTestingModule({
       providers: [
         MockProvider(WINDOW, () => mockWindow, "useFactory"),
+        MockProvider(DOCUMENT, mockDocument),
       ],
     });
-    documentElement = TestBed.inject(DOCUMENT).documentElement;
   });
   afterEach(() => {
     prefersDarkMatchMediaSubscriptions.forEach((subscription) => subscription.unsubscribe());
-    documentElement.removeAttribute(TestBed.inject(ColorSchemeService).htmlAttribute);
   });
 
   it('should be created', () => {
@@ -62,11 +70,11 @@ describe('ColorSchemeService', () => {
     describe('when can detect system preference', () => {
       it('should remove the manual scheme preference to reflect change (if applies)', () => {
         const sut = TestBed.inject(ColorSchemeService);
-        documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
+        mockDocumentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
 
         prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent);
 
-        expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+        expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBeNull()
       });
     });
 
@@ -74,11 +82,11 @@ describe('ColorSchemeService', () => {
       it('should do nothing', () => {
         mockWindow = {} as Window;
         const sut = TestBed.inject(ColorSchemeService);
-        documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
+        mockDocumentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
 
         prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent);
 
-        expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
+        expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
       });
     });
   })
@@ -94,7 +102,7 @@ describe('ColorSchemeService', () => {
           mockWindow = {} as Window;
           sut.toggleDarkLight();
 
-          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
+          const schemeAttributeValue = mockDocumentElement.getAttribute(sut.htmlAttribute);
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         });
       });
@@ -103,7 +111,7 @@ describe('ColorSchemeService', () => {
           prefersDark = false;
           sut.toggleDarkLight();
 
-          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
+          const schemeAttributeValue = mockDocumentElement.getAttribute(sut.htmlAttribute);
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         });
       });
@@ -112,7 +120,7 @@ describe('ColorSchemeService', () => {
           prefersDark = true;
           sut.toggleDarkLight();
 
-          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
+          const schemeAttributeValue = mockDocumentElement.getAttribute(sut.htmlAttribute);
           expect(schemeAttributeValue).toBe(Scheme.Light)
         });
       });
@@ -120,19 +128,19 @@ describe('ColorSchemeService', () => {
     describe('when color scheme is manually set', () => {
       describe('when set to light', () => {
         it('should manually set the scheme to dark', () => {
-          documentElement.setAttribute(sut.htmlAttribute, Scheme.Light);
+          mockDocumentElement.setAttribute(sut.htmlAttribute, Scheme.Light);
           sut.toggleDarkLight();
 
-          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
+          const schemeAttributeValue = mockDocumentElement.getAttribute(sut.htmlAttribute);
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         });
       });
       describe('when set to dark', () => {
         it('should manually set the scheme to light', () => {
-          documentElement.setAttribute(sut.htmlAttribute, Scheme.Dark);
+          mockDocumentElement.setAttribute(sut.htmlAttribute, Scheme.Dark);
           sut.toggleDarkLight();
 
-          const schemeAttributeValue = documentElement.getAttribute(sut.htmlAttribute);
+          const schemeAttributeValue = mockDocumentElement.getAttribute(sut.htmlAttribute);
           expect(schemeAttributeValue).toBe(Scheme.Light)
         });
       });
@@ -142,12 +150,12 @@ describe('ColorSchemeService', () => {
   describe('#setColorScheme', () => {
     it('should manually set the scheme as an HTML tag attribute', () => {
       const sut = TestBed.inject(ColorSchemeService)
-      expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+      expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBeNull()
       const randomScheme = Scheme.Dark;
 
       sut.setManual(randomScheme);
 
-      expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(randomScheme)
+      expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBe(randomScheme)
     })
   })
 
@@ -156,11 +164,27 @@ describe('ColorSchemeService', () => {
     it('should remove the manually set scheme as an HTML tag attribute', () => {
       const sut = TestBed.inject(ColorSchemeService)
       const randomScheme = Scheme.Dark;
-      documentElement.setAttribute(sut.htmlAttribute, randomScheme)
+      mockDocumentElement.setAttribute(sut.htmlAttribute, randomScheme)
 
       sut.setSystem()
 
-      expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+      expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBeNull()
     })
   })
 })
+
+class MockHTMLElementWithAttributes implements Pick<HTMLElement, 'getAttribute' | 'setAttribute' | 'removeAttribute'> {
+  private attributes = new Map<string, string>();
+
+  getAttribute(qualifiedName: string) {
+    return this.attributes.get(qualifiedName) ?? null;
+  }
+
+  setAttribute(qualifiedName: string, value: string) {
+    return this.attributes.set(qualifiedName, value);
+  }
+
+  removeAttribute(qualifiedName: string): void {
+    this.attributes.delete(qualifiedName);
+  }
+}
