@@ -7,7 +7,6 @@ import { WINDOW } from '../common/injection-tokens';
 import { ColorSchemeService, Scheme } from './color-scheme.service';
 
 describe('ColorSchemeService', () => {
-  let sut: ColorSchemeService;
   let documentElement: HTMLElement;
   let mockWindow: Window;
   const mockMatchMedia: typeof Window.prototype.matchMedia = (query) => {
@@ -25,7 +24,7 @@ describe('ColorSchemeService', () => {
             throw new Error('Media query addEventListener cannot be mocked with this usage')
           }
           prefersDarkMatchMediaSubscriptions.push(
-            prefersDarkMatchMediaChangesEmitter.subscribe(listener)
+            prefersDarkMatchMediaChangesEmitter.subscribe(listener),
           )
         },
       } as MediaQueryList;
@@ -44,13 +43,13 @@ describe('ColorSchemeService', () => {
     TestBed.configureTestingModule({
       providers: [
         MockProvider(WINDOW, () => mockWindow, "useFactory"),
-      ]
+      ],
     });
     documentElement = TestBed.inject(DOCUMENT).documentElement;
   });
   afterEach(() => {
     prefersDarkMatchMediaSubscriptions.forEach((subscription) => subscription.unsubscribe());
-    sut && documentElement.removeAttribute(sut.htmlAttribute);
+    documentElement.removeAttribute(TestBed.inject(ColorSchemeService).htmlAttribute);
   });
 
   it('should be created', () => {
@@ -61,12 +60,9 @@ describe('ColorSchemeService', () => {
     const manuallySetScheme = Scheme.Dark;
 
     describe('when can detect system preference', () => {
-      beforeEach(() => {
-        sut = TestBed.inject(ColorSchemeService);
-        documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
-      })
       it('should remove the manual scheme preference to reflect change (if applies)', () => {
-        expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
+        const sut = TestBed.inject(ColorSchemeService);
+        documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
 
         prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent);
 
@@ -75,13 +71,10 @@ describe('ColorSchemeService', () => {
     });
 
     describe('when cannot detect system preference', () => {
-      beforeEach(() => {
-        mockWindow = {} as Window;
-        sut = TestBed.inject(ColorSchemeService);
-        documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
-      })
       it('should do nothing', () => {
-        expect(documentElement.getAttribute(sut.htmlAttribute)).toBe(manuallySetScheme);
+        mockWindow = {} as Window;
+        const sut = TestBed.inject(ColorSchemeService);
+        documentElement.setAttribute(sut.htmlAttribute, manuallySetScheme);
 
         prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent);
 
@@ -91,6 +84,7 @@ describe('ColorSchemeService', () => {
   })
 
   describe('#toggleDarkLight', () => {
+    let sut: ColorSchemeService;
     beforeEach(() => {
       sut = TestBed.inject(ColorSchemeService);
     })
@@ -157,7 +151,7 @@ describe('ColorSchemeService', () => {
 
   describe('#setColorScheme', () => {
     it('should manually set the scheme as an HTML tag attribute', () => {
-      sut = TestBed.inject(ColorSchemeService)
+      const sut = TestBed.inject(ColorSchemeService)
       expect(documentElement.getAttribute(sut.htmlAttribute)).toBeNull()
       const randomScheme = Scheme.Dark;
 
@@ -170,7 +164,7 @@ describe('ColorSchemeService', () => {
 
   describe('#setSystemColorScheme', () => {
     it('should remove the manually set scheme as an HTML tag attribute', () => {
-      sut = TestBed.inject(ColorSchemeService)
+      const sut = TestBed.inject(ColorSchemeService)
       const randomScheme = Scheme.Dark;
       documentElement.setAttribute(sut.htmlAttribute, randomScheme)
 
