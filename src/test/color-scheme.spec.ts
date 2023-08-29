@@ -6,6 +6,8 @@ import { ColorSchemeService, Scheme } from '../app/toolbar/color-scheme.service'
 describe('App color scheme', () => {
   let bodyElement: HTMLElement;
   let colorSchemeService: ColorSchemeService;
+  const LIGHT_MIN_LUMINANCE = 0.75;
+  const DARK_MAX_LUMINANCE = 0.25;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -24,7 +26,12 @@ describe('App color scheme', () => {
     it('body should have a light background color (high luminance)', () => {
       const bodyBackgroundColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).backgroundColor);
       const bodyBackgroundColorLuminance = getRelativeLuminance(bodyBackgroundColor);
-      expect(bodyBackgroundColorLuminance).toBeGreaterThan(.75);
+      expect(bodyBackgroundColorLuminance).toBeGreaterThan(LIGHT_MIN_LUMINANCE);
+    })
+    it('body text should have a dark color (low luminance)', () => {
+      const bodyTextColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).color);
+      const bodyTextColorLuminance = getRelativeLuminance(bodyTextColor);
+      expect(bodyTextColorLuminance).toBeLessThan(DARK_MAX_LUMINANCE);
     })
   })
   describe('when dark color scheme is set', () => {
@@ -34,7 +41,12 @@ describe('App color scheme', () => {
     it('body should have a dark background color (low luminance)', () => {
       const bodyBackgroundColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).backgroundColor);
       const bodyBackgroundColorLuminance = getRelativeLuminance(bodyBackgroundColor);
-      expect(bodyBackgroundColorLuminance).toBeLessThan(.25);
+      expect(bodyBackgroundColorLuminance).toBeLessThan(DARK_MAX_LUMINANCE);
+    })
+    it('body text should have a light color (high luminance)', () => {
+      const bodyTextColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).color);
+      const bodyTextColorLuminance = getRelativeLuminance(bodyTextColor);
+      expect(bodyTextColorLuminance).toBeGreaterThan(LIGHT_MIN_LUMINANCE);
     })
   })
 
