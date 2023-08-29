@@ -7,14 +7,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-permissions:
-  # GitHub Pages starter workflow
-  contents: read
-  pages: write
-  id-token: write
-  # Test reporter
-  checks: write
-
 jobs:
   build:
     name: Build
@@ -24,12 +16,20 @@ jobs:
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
+    permissions:
+      checks: write
   lint:
     name: Lint
     uses: ./.github/workflows/reusable-lint.yml
+    permissions:
+      checks: write
   deploy:
     name: Deploy
     needs: [build, lint, test]
     uses: ./.github/workflows/reusable-deploy.yml
     with:
       build-artifact-name: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
