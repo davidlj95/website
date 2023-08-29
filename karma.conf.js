@@ -39,7 +39,7 @@ module.exports = function (config) {
     // https://www.npmjs.com/package/karma-junit-reporter#configuration
     junitReporter: {
       useBrowserName: false,
-      outputFile: 'junit-test.xml',
+      outputFile: 'junit-tests.xml',
     }
   });
 };
