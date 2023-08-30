@@ -84,3 +84,39 @@ $defaultColorSchemeThemes: (
     }
   }
 }
+
+/**
+ * Adds utility CSS classes to display or hide elements depending on the active color scheme
+ */
+@mixin display-hide-classes {
+  html, html[data-color-scheme=light] {
+    .light-only {
+      display: initial;
+    }
+
+    .dark-only {
+      display: none;
+    }
+  }
+  html[data-color-scheme=dark] {
+    .light-only {
+      display: none;
+    }
+
+    .dark-only {
+      display: initial;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      .light-only {
+        display: none;
+      }
+
+      .dark-only {
+        display: initial;
+      }
+    }
+  }
+}

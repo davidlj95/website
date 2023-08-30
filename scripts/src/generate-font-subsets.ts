@@ -10,9 +10,10 @@ async function generateFonts() {
   const fontBuffer = Buffer.from(materialSymbolsFont);
 
   const glyphs = [
-    'format_paint',
+    'dark_mode',
+    'light_mode',
   ];
-  Log.info("Glyphs to inlude in font")
+  Log.info("Glyphs to include in font")
   glyphs.forEach((glyph) => Log.item(glyph));
 
   const glyphText = glyphs.join('');
