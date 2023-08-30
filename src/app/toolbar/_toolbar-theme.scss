@@ -3,10 +3,10 @@
 
   app-toolbar {
     .dark-light-scheme-toggle {
-      fill: map-get($theme, icon);
+      color: map-get($theme, icon);
 
       &:hover {
-        fill: map-get($text-palette, primary);
+        color: map-get($text-palette, primary);
       }
     }
   }

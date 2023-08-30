@@ -1,0 +1,12 @@
+/* Dedicated to run several dev scripts with ts-node */
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  },
+  "files": [
+    "src/generate-templated-files.ts",
+    "scripts/generate-security-txt.ts",
+    "src/generate-font-subsets.ts"
+  ]
+}

@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
+## Rendering font subsets
+
+Some fonts included are a subset of a big font file. Before doing anything, please run
+
+```
+yarn run font-subsets
+```
+
+To generate them. Otherwise, those fonts won't be found and you may get some errors. Also, remember to run it if changing the glyphs included in each font. Or to add the new glyphs if you want to use more glyphs of a font.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you

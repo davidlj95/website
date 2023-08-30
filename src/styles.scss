@@ -19,6 +19,8 @@ code, pre {
   @include typographies.monospace-font();
 }
 
+@include typographies.material-symbols-font();
+
 @mixin app-color($theme) {
   @include root-theme.color($theme);
   @include window-theme.color($theme);

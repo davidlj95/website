@@ -259,9 +259,11 @@ $RECYCLE.BIN/
 ## Manual files
 junit-test.xml
 junit-lint.xml
+assets/*-subset.*
 # Manual changes:
 # - Yarn config to not use zero installs.
 # - Remove .idea from angular, we want some settings in the repo
 # - Include dictionaries
 # - Add junit-(lint|test).xml generated for CI/CD purposes
 # - Add Lighthouse CI (to avoid having to generate everything again)
+# - Add generated subset fonts

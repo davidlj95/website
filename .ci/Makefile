@@ -1,6 +1,7 @@
 .PHONY: *
 
 build:
+	yarn run font-subsets
 	yarn run prerender
 
 lint:

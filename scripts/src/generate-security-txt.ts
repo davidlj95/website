@@ -3,8 +3,8 @@ import * as fs from 'fs/promises';
 import { Liquid } from 'liquidjs';
 import * as path from 'path';
 import * as util from 'util';
+import { getRepositoryRootDir, isMain, Log, SECURITY_TXT_REL_PATH } from '../utils';
 import { generateTemplatedFile, LIQUID_EXTENSION } from './generate-templated-files';
-import { getRepositoryRootDir, isMain, Log, SECURITY_TXT_REL_PATH } from './utils';
 
 async function generateSecurityTxt() {
   Log.info('Rendering security.txt from template')

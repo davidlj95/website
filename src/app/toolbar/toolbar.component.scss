@@ -1,5 +1,7 @@
+@use "paddings";
+
 :host {
-  padding: 3px 4px;
+  padding: paddings.$xs;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -7,11 +9,9 @@
   button {
     border-style: none;
     background: transparent;
-    line-height: 1em;
 
-    > * {
-      height: 18px;
-      width: 18px;
+    span {
+      font-size: 24px;
     }
   }
 }

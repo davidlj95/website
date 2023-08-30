@@ -3,8 +3,8 @@ import { glob } from 'glob';
 import { Liquid } from 'liquidjs';
 import * as path from 'path';
 import * as process from 'process';
-import { METADATA } from '../src/app/metadata';
-import { getRepositoryRootDir, isMain, Log, SECURITY_TXT_REL_PATH } from './utils';
+import { METADATA } from '../../src/app/metadata';
+import { getRepositoryRootDir, isMain, Log, SECURITY_TXT_REL_PATH } from '../utils';
 
 export const LIQUID_EXTENSION = '.liquid';
 
@@ -26,7 +26,7 @@ async function generateTemplatedFiles() {
       cwd: repoRootDir,
       dot: true,
       ignore: EXCLUSIONS,
-    }
+    },
   );
 
   if (templateFiles.length == 0) {
@@ -53,7 +53,7 @@ export async function generateTemplatedFile(
   templateFile: string, opts: {
     context?: unknown,
     engine?: Liquid,
-  } = {}
+  } = {},
 ) {
   const context = opts.context ?? getContext();
   const engine = opts.engine ?? new Liquid();
@@ -72,7 +72,7 @@ export async function generateTemplatedFile(
 
 function getContext() {
   const METADATA_CONTEXT = {
-    ...METADATA
+    ...METADATA,
   };
   const today = new Date();
   const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6));
