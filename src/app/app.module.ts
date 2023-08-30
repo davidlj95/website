@@ -1,6 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { NgModule, VERSION } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SeoModule } from "@ngaox/seo";
 import { environment } from '../environments';
 
@@ -62,6 +63,7 @@ import { WindowComponent } from './window/window.component';
         {name: 'application-name', content: METADATA.siteName},
       ],
     }),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

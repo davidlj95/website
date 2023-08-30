@@ -1,7 +1,7 @@
 <ul>
   <li *ngFor="let item of items" class="boxed">
     <a href="{{item.url}}" target="_blank">
-      <span [innerHtml]="item.svg"></span>
+      <fa-icon [icon]="item.icon"></fa-icon>
       <span>{{item.name}}</span>
     </a>
   </li>

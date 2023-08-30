@@ -1,6 +1,9 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { getSafeValueContent } from '../../test/helpers/sanitizer';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
+import { getComponentSelector } from '../../test/helpers/component-testers';
 
 import { SocialComponent } from './social.component';
 
@@ -10,7 +13,10 @@ describe('SocialComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SocialComponent]
+      imports: [FontAwesomeTestingModule],
+      declarations: [
+        SocialComponent,
+      ],
     });
     fixture = TestBed.createComponent(SocialComponent);
     component = fixture.componentInstance;
@@ -34,13 +40,12 @@ describe('SocialComponent', () => {
       const link = socialElement.query(By.css('a'))
       expect(link.attributes['href']).withContext(`Social link ${index}`).toEqual(socialItem.url);
 
-      const svg = socialElement.query(By.css('svg'))
-      const svgContent = getSafeValueContent(socialItem.svg);
-      // Grabbing first chars only as ending <path> s are rendered differently than in source
-      const svgSliceSize = 40;
-      expect(svg.nativeElement.outerHTML.slice(0, svgSliceSize))
-        .withContext(`Social logo ${index}`)
-        .toEqual(svgContent.slice(0, svgSliceSize));
+      const icon = socialElement.query(By.css(getComponentSelector(FaIconComponent)));
+      expect(getIconNameFromFontAwesomeElement(icon)).withContext(`Social icon ${index}`).toEqual(socialItem.icon.iconName);
     });
   })
+
+  function getIconNameFromFontAwesomeElement(faElement: DebugElement): string {
+    return faElement.children[0].nativeElement.getAttribute('data-icon')
+  }
 });
