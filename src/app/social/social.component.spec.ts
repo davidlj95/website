@@ -27,6 +27,15 @@ describe('SocialComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  describe('#items', () => {
+    it('should contain icons related to their names', () => {
+      for (const item of component.items) {
+        const kebabCaseName = item.name.toLowerCase().replaceAll(' ', '-')
+        expect(item.icon.iconName).withContext(`Item ${item.name}`).toContain(kebabCaseName);
+      }
+    })
+  })
+
   it('should display all items with their names, logos and links', () => {
     const socialElements = fixture.debugElement.queryAll(By.css('li'))
     expect(socialElements).toHaveSize(component.items.length)
