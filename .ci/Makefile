@@ -14,6 +14,7 @@ ensure-no-pending-changes:
 	./ensure-no-pending-changes.sh
 
 test:
+	yarn run font-subsets
 	yarn test --browsers=ChromeHeadless --no-watch --no-progress --reporters junit,progress --code-coverage
 
 run-main:
