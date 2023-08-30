@@ -20,16 +20,17 @@ async function generateFonts() {
 
   Log.info("Output")
   const baseFilename = 'assets/material-symbols-outlined-subset';
-  const formats = ['woff', 'woff2']
+  const formats = ['ttf', 'woff', 'woff2']
   Log.item("Base filename: '%s'", baseFilename);
   Log.item("Formats: '%s'", formats);
 
   await generateFontSubsets(fontBuffer, {
     text: glyphText,
     // https://caniuse.com/woff2
-    // woff just to support IE users
+    // woff, ttf just to support IE users
     // https://caniuse.com/woff
-    formats: ['woff', 'woff2'],
+    // https://caniuse.com/ttf
+    formats: ['truetype', 'woff', 'woff2'],
     filename: baseFilename,
   });
 }
@@ -38,7 +39,7 @@ async function generateFontSubsets(fontBuffer: Buffer, {
   text,
   formats,
   filename,
-}: Omit<GenerateFontSubsetOptions, 'format'> & { formats: Array<GenerateFontSubsetOptions['format']> }) {
+}: Omit<GenerateFontSubsetOptions, 'format'> & { formats: Array<FontFormat> }) {
   await Promise.all(
     formats.map((format) => generateFontSubset(fontBuffer, {
       text: text,
@@ -50,13 +51,20 @@ async function generateFontSubsets(fontBuffer: Buffer, {
 
 interface GenerateFontSubsetOptions {
   text: string,
-  format: 'woff' | 'woff2', // any of the supported ones (see SubsetFontOptions type)
+  format: FontFormat,
   filename: string
 }
 
+type FontFormat = 'truetype' | 'woff' | 'woff2'; // any of the supported ones (see SubsetFontOptions type)
+
 async function generateFontSubset(fontBuffer: Buffer, {text, format, filename}: GenerateFontSubsetOptions) {
   const subsetBuffer = await subsetFont(fontBuffer, text, {targetFormat: format});
-  fs.writeFileSync(`${filename}.${format}`, subsetBuffer);
+  fs.writeFileSync(`${filename}.${getExtensionFromFormat(format)}`, subsetBuffer);
+}
+
+function getExtensionFromFormat(format: FontFormat): string {
+  if (format == 'truetype') return 'ttf';
+  return format;
 }
 
 if (isMain(module)) {
