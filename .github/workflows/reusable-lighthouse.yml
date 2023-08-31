@@ -32,8 +32,27 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         run: cd .ci && make lighthouse
       - name: Upload results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: success() || failure()
         with:
           name: lighthouse-results
           path: '.lighthouseci'
+  report:
+    needs: lhci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # https://github.com/dorny/test-reporter/issues/229
+    permissions:
+      checks: write
+    steps:
+      - name: Download results
+        uses: actions/download-artifact@v3
+        with:
+          name: lighthouse-results
+          path: '.lighthouseci'
+      - name: Test reporter
+        uses: manrueda/lighthouse-report-action@v1.1.2
+        with:
+          reports: '.lighthouseci'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
