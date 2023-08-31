@@ -35,7 +35,7 @@ jobs:
         if: (success() || failure()) && github.ref == 'refs/heads/main'
         with:
           name: Test results
-          path: junit-test.xml
+          path: '*.xml'
           reporter: java-junit
       - name: Report coverage
         uses: livewing/lcov-job-summary@v1.1.0

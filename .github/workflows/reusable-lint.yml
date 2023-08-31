@@ -23,5 +23,5 @@ jobs:
         if: (success() || failure()) && github.ref == 'refs/heads/main'
         with:
           name: Lint results
-          path: junit-lint.xml
+          path: '*.xml'
           reporter: java-junit
