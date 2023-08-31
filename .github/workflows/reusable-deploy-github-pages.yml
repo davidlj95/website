@@ -1,7 +1,7 @@
 # Template from GitHub Actions starter workflows. GitHub Pages section. "Static" starter.
 # https://github.com/actions/starter-workflows/blob/1c61cfc44d2a372d82735888ab06bc9491e1e3d6/pages/static.yml
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   workflow_call:
@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

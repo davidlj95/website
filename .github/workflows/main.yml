@@ -36,7 +36,7 @@ jobs:
   deploy:
     name: Deploy
     needs: [build, lint, test, performance]
-    uses: ./.github/workflows/reusable-deploy.yml
+    uses: ./.github/workflows/reusable-deploy-github-pages.yml
     with:
       build-artifact-name: build
     permissions:
