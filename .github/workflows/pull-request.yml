@@ -23,3 +23,15 @@ jobs:
       build-artifact-name: build
     secrets:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+  deploy-preview:
+    name: Deploy preview
+    needs: [build, lint, test, performance]
+    uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
+    with:
+      build-artifact-name: build
+    secrets:
+      cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    permissions:
+      contents: read
+      deployments: write
