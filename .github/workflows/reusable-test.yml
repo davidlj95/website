@@ -35,7 +35,7 @@ jobs:
         with:
           lcov: coverage/davidlj95/website/lcov.info
       - name: Report test results (as status check)
-        uses: ./.github/workflows/reusable-test-reporter.yml
+        uses: dorny/test-reporter@v1
         if: github.ref == 'refs/heads/main'
         with:
           name: Test results
