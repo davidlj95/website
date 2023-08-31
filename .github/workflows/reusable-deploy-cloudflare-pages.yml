@@ -33,3 +33,4 @@ jobs:
           projectName: 'davidlj95-v2'
           directory: 'browser'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'development'
