@@ -40,3 +40,4 @@ jobs:
         with:
           name: Test results
           path: junit-test.xml
+          reporter: java-junit
