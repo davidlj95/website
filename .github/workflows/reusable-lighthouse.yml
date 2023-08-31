@@ -19,14 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup
-        uses: ./.github/actions/setup
       - name: Download built app
         uses: actions/download-artifact@v3
         with:
           name: ${{ inputs.build-artifact-name }}
+      # No setup step needed: latest stable Node.js & npm comes included with GitHub runners
+      # https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md
       - name: Run Lighthouse CI
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
