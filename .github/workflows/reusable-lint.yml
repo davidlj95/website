@@ -2,9 +2,10 @@ name: Lint
 on:
   workflow_call:
 
+# Add those permissions if reporting test results
 # https://github.com/dorny/test-reporter/issues/229
-permissions:
-  checks: write
+# permissions:
+#   checks: write
 
 jobs:
   lint:
