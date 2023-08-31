@@ -1,0 +1,32 @@
+name: Tests Reporter
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      artifact-name:
+        required: true
+        type: string
+      path:
+        required: true
+        type: string
+
+# https://github.com/dorny/test-reporter/issues/229
+permissions:
+  checks: write
+
+jobs:
+  tests-reporter:
+    name: Tests reporter
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Test reporter
+        uses: dorny/test-reporter@v1
+        with:
+          name: ${{ inputs.name }}
+          artifact: ${{ inputs.artifact-name }}
+          path: ${{ inputs.path }}
+          reporter: java-junit

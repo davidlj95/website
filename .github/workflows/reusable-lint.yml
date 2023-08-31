@@ -18,10 +18,9 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run linter
         run: cd .ci && make lint
-      - name: Report tests
-        uses: dorny/test-reporter@v1
+      - name: Upload results
+        uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
-          name: Lint results
+          name: lint-results
           path: 'junit-lint.xml'
-          reporter: java-junit

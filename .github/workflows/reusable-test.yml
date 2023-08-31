@@ -35,10 +35,9 @@ jobs:
         uses: livewing/lcov-job-summary@v1.1.0
         with:
           lcov: coverage/davidlj95/website/lcov.info
-      - name: Report tests
-        uses: dorny/test-reporter@v1
+      - name: Upload results
+        uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
-          name: Test results
+          name: test-results
           path: 'junit-test.xml'
-          reporter: java-junit

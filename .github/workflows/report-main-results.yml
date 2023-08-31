@@ -1,0 +1,40 @@
+name: Main results reporter
+
+on:
+  workflow_run:
+    workflows: ['Push to main']
+    types:
+      - completed
+jobs:
+  report-test:
+    uses: ./.github/workflows/reusable-test-reporter.yml
+    with:
+      artifact-name: test-results
+      name: Test results
+      path: 'junit-test.xml'
+    permissions:
+      checks: write
+  report-lint:
+    uses: ./.github/workflows/reusable-test-reporter.yml
+    with:
+      artifact-name: lint-results
+      name: Lint results
+      path: 'junit-lint.xml'
+    permissions:
+      checks: write
+  report-lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # https://github.com/dorny/test-reporter/issues/229
+    permissions:
+      checks: write
+    steps:
+      - name: Download results
+        uses: actions/download-artifact@v2
+        with:
+          name: lighthouse-results
+      - name: Test reporter
+        uses: manrueda/lighthouse-report-action@v1.1.2
+        with:
+          reports: '.lighthouseci'
+          github-token: ${{ secrets.GITHUB_TOKEN }}

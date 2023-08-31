@@ -31,9 +31,9 @@ jobs:
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         run: cd .ci && make lighthouse
-      - name: Report results
+      - name: Upload results
+        uses: actions/upload-artifact@v2
         if: success() || failure()
-        uses: manrueda/lighthouse-report-action@v1.1.2
         with:
-          reports: '.lighthouseci'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: lighthouse-results
+          path: '.lighthouseci'
