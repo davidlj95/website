@@ -20,7 +20,7 @@ jobs:
         run: cd .ci && make lint
       - name: Report results (as status check)
         uses: dorny/test-reporter@v1
-        if: github.ref == 'refs/heads/main'
+        if: (success() || failure()) && github.ref == 'refs/heads/main'
         with:
           name: Lint results
           path: junit-lint.xml
