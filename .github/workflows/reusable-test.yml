@@ -30,36 +30,13 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run tests
         run: cd .ci && make test
-      - name: Upload results
-        uses: actions/upload-artifact@v3
-        if: success() || failure()
-        with:
-          name: test-results
-          path: |
-            coverage
-            junit-test.xml
-  report-coverage:
-    needs: test
-    name: Report coverage
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Download results
-        uses: actions/download-artifact@v3
-        with:
-          name: test-results
       - name: Report coverage
         uses: livewing/lcov-job-summary@v1.1.0
         with:
           lcov: coverage/davidlj95/website/lcov.info
-  report-results:
-    needs: test
-    name: Report test results (as status check)
-    uses: ./.github/workflows/reusable-test-reporter.yml
-    if: github.ref == 'refs/heads/main'
-    permissions:
-      checks: write
-    with:
-      artifact-name: test-results
-      name: Test results
-      path: junit-test.xml
+      - name: Report test results (as status check)
+        uses: ./.github/workflows/reusable-test-reporter.yml
+        if: github.ref == 'refs/heads/main'
+        with:
+          name: Test results
+          path: junit-test.xml

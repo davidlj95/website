@@ -18,20 +18,10 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run linter
         run: cd .ci && make lint
-      - name: Upload results
-        uses: actions/upload-artifact@v3
-        if: success() || failure()
+      - name: Report results (as status check)
+        uses: dorny/test-reporter@v1
+        if: github.ref == 'refs/heads/main'
         with:
-          name: lint-results
-          path: 'junit-lint.xml'
-  report:
-    needs: lint
-    name: Report lint results (as status check)
-    uses: ./.github/workflows/reusable-test-reporter.yml
-    if: github.ref == 'refs/heads/main'
-    permissions:
-      checks: write
-    with:
-      artifact-name: lint-results
-      name: Lint results
-      path: junit-lint.xml
+          name: Lint results
+          path: junit-lint.xml
+          reporter: java-junit
