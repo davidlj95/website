@@ -23,10 +23,10 @@ jobs:
     uses: ./.github/workflows/reusable-lint.yml
     permissions:
       checks: write
-  lighthouse:
-    name: Lighthouse
+  performance:
+    name: Performance
     needs: build
-    uses: ./.github/workflows/reusable-lighthouse.yml
+    uses: ./.github/workflows/reusable-performance.yml
     permissions:
       checks: write
     with:
@@ -35,7 +35,7 @@ jobs:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
   deploy:
     name: Deploy
-    needs: [build, lint, test, lighthouse]
+    needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy.yml
     with:
       build-artifact-name: build

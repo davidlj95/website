@@ -15,10 +15,10 @@ jobs:
   lint:
     name: Lint
     uses: ./.github/workflows/reusable-lint.yml
-  lighthouse:
-    name: Lighthouse
+  performance:
+    name: Performance
     needs: build
-    uses: ./.github/workflows/reusable-lighthouse.yml
+    uses: ./.github/workflows/reusable-performance.yml
     with:
       build-artifact-name: build
     secrets:

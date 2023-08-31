@@ -1,4 +1,4 @@
-name: Lighthouse
+name: Performance
 on:
   workflow_call:
     inputs:
