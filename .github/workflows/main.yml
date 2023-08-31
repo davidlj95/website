@@ -10,7 +10,6 @@ on:
 jobs:
   build:
     name: Build
-    if: false
     uses: ./.github/workflows/reusable-build.yml
     with:
       artifact-name: build
@@ -51,6 +50,7 @@ jobs:
   deploy-cloudflare-pages:
     name: Deploy
     #needs: [build, lint, test, performance]
+    needs: build
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
     with:
       build-artifact-name: build
