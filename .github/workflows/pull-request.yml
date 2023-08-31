@@ -1,0 +1,25 @@
+name: Pull request
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      artifact-name: build
+  test:
+    name: Test
+    uses: ./.github/workflows/reusable-test.yml
+  lint:
+    name: Lint
+    uses: ./.github/workflows/reusable-lint.yml
+  lighthouse:
+    name: Lighthouse
+    needs: build
+    uses: ./.github/workflows/reusable-lighthouse.yml
+    with:
+      build-artifact-name: build
+    secrets:
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
