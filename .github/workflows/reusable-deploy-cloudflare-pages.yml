@@ -30,7 +30,7 @@ jobs:
         with:
           name: ${{ inputs.build-artifact-name }}
         # This whole step was created to mitigate an error: Cloudflare Pages deploying failed as PR branch was removed
-        # https://github.com/davidlj95/website-v2/actions/runs/6052567030
+        # See https://github.com/davidlj95/website-v2/issues/8 for more info
         # If it gets unused, feel free (and I encourage you) to remove it!
       - name: Check if reference exists
         if: github.event_name == 'pull_request'
