@@ -27,6 +27,7 @@ jobs:
     name: Deploy preview
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
+    if: ! github.event.pull_request.head.repo.fork
     with:
       build-artifact-name: build
     secrets:
