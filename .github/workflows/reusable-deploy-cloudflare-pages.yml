@@ -16,6 +16,10 @@ permissions:
   contents: read
   deployments: write
 
+concurrency:
+  group: cloudflare-pages-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   deploy:
     name: Deploy to Cloudflare Pages
