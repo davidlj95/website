@@ -36,4 +36,3 @@ jobs:
           apiToken: ${{ secrets.cloudflare-api-token }}
           projectName: 'davidlj95-v2'
           directory: 'browser'
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
