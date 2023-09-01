@@ -29,9 +29,35 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ inputs.build-artifact-name }}
+        # This whole step was created to mitigate an error: Cloudflare Pages deploying failed as PR branch was removed
+        # https://github.com/davidlj95/website-v2/actions/runs/6052567030
+        # If it gets unused, feel free (and I encourage you) to remove it!
+      - name: Check if reference exists
+        if: github.event_name == 'pull_request'
+        id: ref-exists
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const ref = `heads/${context.payload.pull_request.head.ref}`
+            let response;
+            try {
+              response = await github.rest.git.getRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref,
+              })
+              console.log("Reference found")
+            } catch (error) {
+              if (error["status"] === 404) {
+                console.log("Reference not found")
+              } else {
+                throw error
+              }
+            }
+            return response !== undefined
       - name: Publish
+        if: "! (github.event_name == 'pull_request' && steps.ref-exists.outputs.result == 'false')"
         uses: cloudflare/pages-action@1
-        if: "! (github.event_name == 'pull_request' && github.event.pull_request.state == 'closed')"
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
           apiToken: ${{ secrets.cloudflare-api-token }}
