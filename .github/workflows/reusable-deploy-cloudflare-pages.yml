@@ -31,6 +31,7 @@ jobs:
           name: ${{ inputs.build-artifact-name }}
       - name: Publish
         uses: cloudflare/pages-action@1
+        if: "! (github.event_name == 'pull_request' && github.event.pull_request.state == 'closed')"
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
           apiToken: ${{ secrets.cloudflare-api-token }}
