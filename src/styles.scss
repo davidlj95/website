@@ -57,3 +57,9 @@ code, pre {
 }
 
 @include theming.display-hide-classes();
+
+// Add animations
+@include root-theme.motion;
+@include window-theme.motion;
+@include profile-theme.motion;
+@include navigation-tabs-theme.motion;

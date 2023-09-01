@@ -2,12 +2,15 @@ import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { AppModule } from '../app/app.module';
 import { ColorSchemeService, Scheme } from '../app/toolbar/color-scheme.service';
+import { sleep } from './helpers/sleep';
 
 describe('App color scheme', () => {
   let bodyElement: HTMLElement;
   let colorSchemeService: ColorSchemeService;
   const LIGHT_MIN_LUMINANCE = 0.75;
   const DARK_MAX_LUMINANCE = 0.25;
+  // TODO: if we respect no motion, we can go back to instant tests
+  const ANIMATION_MILLIS = 700;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -20,30 +23,27 @@ describe('App color scheme', () => {
   });
 
   describe('when light color scheme is set', () => {
-    beforeEach(() => {
+    it('body should have a light background color (high luminance), whilst text color should be a dark one (low luminance)', async () => {
       colorSchemeService.setManual(Scheme.Light);
-    })
-    it('body should have a light background color (high luminance)', () => {
+      await sleep(ANIMATION_MILLIS);
+
       const bodyBackgroundColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).backgroundColor);
       const bodyBackgroundColorLuminance = getRelativeLuminance(bodyBackgroundColor);
       expect(bodyBackgroundColorLuminance).toBeGreaterThan(LIGHT_MIN_LUMINANCE);
-    })
-    it('body text should have a dark color (low luminance)', () => {
       const bodyTextColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).color);
       const bodyTextColorLuminance = getRelativeLuminance(bodyTextColor);
       expect(bodyTextColorLuminance).toBeLessThan(DARK_MAX_LUMINANCE);
     })
   })
   describe('when dark color scheme is set', () => {
-    beforeEach(() => {
+    it('body should have a dark background color (low luminance), whilst text color should be a light one (high luminance)', async () => {
       colorSchemeService.setManual(Scheme.Dark);
-    })
-    it('body should have a dark background color (low luminance)', () => {
+      await sleep(ANIMATION_MILLIS);
+
       const bodyBackgroundColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).backgroundColor);
       const bodyBackgroundColorLuminance = getRelativeLuminance(bodyBackgroundColor);
       expect(bodyBackgroundColorLuminance).toBeLessThan(DARK_MAX_LUMINANCE);
-    })
-    it('body text should have a light color (high luminance)', () => {
+
       const bodyTextColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).color);
       const bodyTextColorLuminance = getRelativeLuminance(bodyTextColor);
       expect(bodyTextColorLuminance).toBeGreaterThan(LIGHT_MIN_LUMINANCE);

@@ -1,3 +1,5 @@
+@use "animations";
+
 @mixin color($theme) {
   $background-palette: map-get($theme, background);
 
@@ -7,6 +9,13 @@
     > * {
       border-color: map-get($theme, hairline);
     }
+  }
+}
+
+@mixin motion() {
+  app-window {
+    transition-property: background-color;
+    @include animations.transition(animations.$emphasized-style)
   }
 }
 

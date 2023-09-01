@@ -1,3 +1,5 @@
+@use "animations";
+
 @mixin color($theme) {
   $background-palette: map-get($theme, background);
   $color-palette: map-get($theme, text);
@@ -21,6 +23,18 @@
     }
   }
 
+}
+
+@mixin motion() {
+  app-navigation-tabs {
+    transition-property: background-color, color;
+    @include animations.transition(animations.$emphasized-style);
+
+    ul > .selected {
+      transition-property: background-color, color;
+      @include animations.transition(animations.$emphasized-style);
+    }
+  }
 }
 
 @mixin theme($theme) {

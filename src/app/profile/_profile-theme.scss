@@ -1,3 +1,5 @@
+@use "animations";
+
 @mixin color($theme) {
   $background-palette: map-get($theme, background);
   $image-opts: map-get($theme, image);
@@ -24,6 +26,23 @@
           border-right-color: transparent !important;
           border-bottom-color: map-get($background-palette, z2) !important;
         }
+      }
+    }
+  }
+}
+
+@mixin motion() {
+  app-profile {
+    .picture {
+      img {
+        transition: opacity animations.$standard-duration animations.$standard-easing;
+        transition-property: filter, background-color;
+        @include animations.transition(animations.$emphasized-style)
+      }
+
+      .comment {
+        transition-property: opacity, visibility;
+        @include animations.transition(animations.$standard-style)
       }
     }
   }
