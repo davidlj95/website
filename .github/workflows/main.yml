@@ -10,25 +10,21 @@ on:
 jobs:
   build:
     name: Build
-    if: false
     uses: ./.github/workflows/reusable-build.yml
     with:
       artifact-name: build
   test:
     name: Test
-    if: false
     uses: ./.github/workflows/reusable-test.yml
     permissions:
       checks: write
   lint:
     name: Lint
-    if: false
     uses: ./.github/workflows/reusable-lint.yml
     permissions:
       checks: write
   performance:
     name: Performance
-    if: false
     needs: build
     uses: ./.github/workflows/reusable-performance.yml
     permissions:
@@ -39,7 +35,6 @@ jobs:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
   deploy-gh-pages:
     name: Deploy
-    if: false
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-github-pages.yml
     with:
@@ -50,7 +45,6 @@ jobs:
       id-token: write
   deploy-cloudflare-pages:
     name: Deploy
-    if: false
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
     with:
@@ -63,7 +57,7 @@ jobs:
       deployments: write
   release:
     name: Release
-    #needs: [build, lint, test, performance]
+    needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-release.yml
     secrets:
       npm-token: ${{ secrets.NPM_TOKEN }}
