@@ -92,5 +92,8 @@
       }
     ]
   },
-  "repository": "github:davidlj95/website-v2"
+  "repository": "github:davidlj95/website-v2",
+  "publishConfig": {
+    "access": "public"
+  }
 }
