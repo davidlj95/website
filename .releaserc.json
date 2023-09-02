@@ -15,53 +15,49 @@
         ]
       }
     ],
-    [
-      "@semantic-release/release-notes-generator",
-      {
-        "presetConfig": {
-          "header": "CHANGELOG",
-          "types": [
-            {
-              "type": "feat",
-              "section": "Features"
-            },
-            {
-              "type": "fix",
-              "section": "Bug Fixes"
-            },
-            {
-              "type": "chore"
-            },
-            {
-              "type": "docs",
-              "section": "Documentation"
-            },
-            {
-              "type": "style"
-            },
-            {
-              "type": "refactor"
-            },
-            {
-              "type": "perf",
-              "section": "Performance"
-            },
-            {
-              "type": "test",
-              "section": "Testing"
-            },
-            {
-              "type": "build"
-            },
-            {
-              "type": "ci"
-            }
-          ]
-        }
-      }
-    ],
+    "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     "@semantic-release/github"
   ],
-  "preset": "conventionalcommits"
+  "preset": "conventionalcommits",
+  "presetConfig": {
+    "header": "CHANGELOG",
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore"
+      },
+      {
+        "type": "docs",
+        "section": "Documentation"
+      },
+      {
+        "type": "style"
+      },
+      {
+        "type": "refactor"
+      },
+      {
+        "type": "perf",
+        "section": "Performance"
+      },
+      {
+        "type": "test",
+        "section": "Testing"
+      },
+      {
+        "type": "build"
+      },
+      {
+        "type": "ci"
+      }
+    ]
+  }
 }
