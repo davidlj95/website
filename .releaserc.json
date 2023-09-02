@@ -3,8 +3,63 @@
     "main"
   ],
   "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [
+          {
+            "type": "build",
+            "scope": "semantic-release",
+            "release": "patch"
+          }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "presetConfig": {
+          "header": "CHANGELOG",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "chore"
+            },
+            {
+              "type": "docs",
+              "section": "Documentation"
+            },
+            {
+              "type": "style"
+            },
+            {
+              "type": "refactor"
+            },
+            {
+              "type": "perf",
+              "section": "Performance"
+            },
+            {
+              "type": "test",
+              "section": "Testing"
+            },
+            {
+              "type": "build"
+            },
+            {
+              "type": "ci"
+            }
+          ]
+        }
+      }
+    ],
     "@semantic-release/npm",
     "@semantic-release/github"
   ],
