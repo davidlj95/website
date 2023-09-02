@@ -18,7 +18,6 @@
     "git-hooks": "husky install",
     "commitlint-last": "commitlint --verbose --edit"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
     "@angular/common": "^16.2.0",
