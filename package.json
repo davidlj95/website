@@ -92,5 +92,6 @@
         "path": "junit-lint.xml"
       }
     ]
-  }
+  },
+  "repository": "github:davidlj95/website-v2"
 }
