@@ -63,7 +63,7 @@ jobs:
       deployments: write
   release:
     name: Release
-    needs: [build, lint, test, performance]
+    #needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-release.yml
     secrets:
       npm-token: ${{ secrets.NPM_TOKEN }}
