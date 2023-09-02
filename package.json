@@ -1,6 +1,6 @@
 {
   "name": "@davidlj95/website",
-  "version": "0.0.0",
+  "version": "0.0.0-PLACEHOLDER",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
