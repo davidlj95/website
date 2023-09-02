@@ -92,7 +92,10 @@
       }
     ]
   },
-  "repository": "github:davidlj95/website-v2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidlj95/website-v2.git"
+  },
   "publishConfig": {
     "access": "public"
   }
