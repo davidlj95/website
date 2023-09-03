@@ -81,8 +81,7 @@ It will generate a `release.json` file in the root of the repository containing 
 > run from a faked run, a `fake` property exists in that JSON.
 > The only faked properties are about next release (`nextRelease` and `releases` at the moment of writing this). Info
 > about last release
-> is correct even when faking the release to generate the output (`lastRelease`, `commits` at the moment of writing
-> this)
+> is correct even when faking the release to generate the output (`lastRelease` at the moment of writing this)
 
 ## Git hooks
 
