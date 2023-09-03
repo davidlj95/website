@@ -55,6 +55,35 @@ yarn run commitlint-last
 
 [commitlint]: https://github.com/conventional-changelog/commitlint
 
+## Release
+
+[Semantic Release][semantic-release] is used to automate the release process. Based on commit messages, a new major,
+minor or patch release is generated for every push to main branch. For every release, a Git tag will be created, a
+GitHub release will be created and a new version of the app will be published to `npm` public registry. All of this
+is managed automatically by [Semantic Release][semantic-release] and CI/CD pipelines.
+
+### Getting release info
+
+In order to embed release information in the app, a script was created to export that kind of information using
+[Semantic Release's JavaScript API](https://semantic-release.gitbook.io/semantic-release/developer-guide/js-api).
+
+To generate the release info, run
+
+```shell
+yarn run generate-release-file
+```
+
+It will generate a `release.json` file in the root of the repository containing all info about releases that
+[Semantic Release][semantic-release] provides.
+
+> ⚠️ The API only outputs information when a new release has to be generated. To workaround this, a fake
+> patch release is generated in case no release was needed so we get access to all that info. To distinguish a real
+> run from a faked run, a `fake` property exists in that JSON.
+> The only faked properties are about next release (`nextRelease` and `releases` at the moment of writing this). Info
+> about last release
+> is correct even when faking the release to generate the output (`lastRelease`, `commits` at the moment of writing
+> this)
+
 ## Git hooks
 
 Not a fan of, but it's useful to enforce conventional commits. Indeed, it's only one, a pre-commit hook. And checks your
@@ -156,6 +185,8 @@ Simulates the workflow triggered by a push to `main` branch.
 
 > ℹ️ Images are set to [`js-*` ones](https://github.com/catthehacker/docker_images) via the `.actrc` file as medium
 > default ones don't include `yarn` `:sadparrot:`
+
+## Release
 
 ## Further help
 
