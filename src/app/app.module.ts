@@ -13,6 +13,7 @@ import { METADATA } from './metadata';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from './no-script/no-script.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ReleaseInfoComponent } from './release-info/release-info.component';
 import { SocialComponent } from './social/social.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WindowComponent } from './window/window.component';
@@ -28,6 +29,7 @@ import { WindowComponent } from './window/window.component';
     NavigationTabsComponent,
     WindowComponent,
     JsonldMetadataComponent,
+    ReleaseInfoComponent,
   ],
   imports: [
     BrowserModule,
