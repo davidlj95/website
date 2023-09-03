@@ -1,14 +1,24 @@
 import * as path from 'path';
 import * as process from 'process';
+import * as url from 'url';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export function getRepositoryRootDir() {
-  return path.resolve(__dirname, '..');
+  return path.resolve(__dirname, '..', '..');
 }
 
 export const SECURITY_TXT_REL_PATH = path.join('.well-known', 'security.txt');
 
-export function isMain(module: NodeModule) {
-  return process.argv[1] == module.filename;
+/**
+ * isMain(import.meta.url)
+ * https://2ality.com/2022/07/nodejs-esm-main.html
+ */
+export function isMain(importMetaUrl: string) {
+  const modulePath = url.fileURLToPath(importMetaUrl);
+  return process.argv[1] === modulePath;
 }
 
 export class Log implements Partial<Console> {

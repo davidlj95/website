@@ -2,11 +2,12 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "module": "nodenext",
+    "moduleResolution": "nodenext"
   },
-  "files": [
-    "src/generate-templated-files.ts",
-    "scripts/generate-security-txt.ts",
-    "src/generate-font-subsets.ts"
-  ]
+  "ts-node": {
+    "esm": true
+  }
 }

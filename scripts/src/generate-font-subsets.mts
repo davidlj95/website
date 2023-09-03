@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import subsetFont from 'subset-font';
-import { isMain, Log } from '../utils';
+import { isMain, Log } from './utils.mjs';
 
 async function generateFonts() {
   Log.info("Generating font subset for Material Symbols Outlined")
@@ -67,10 +67,8 @@ function getExtensionFromFormat(format: FontFormat): string {
   return format;
 }
 
-if (isMain(module)) {
+if (isMain(import.meta.url)) {
   generateFonts().then(() => {
     Log.ok('Done')
   });
 }
-
-

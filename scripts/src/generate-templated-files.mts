@@ -3,8 +3,10 @@ import { glob } from 'glob';
 import { Liquid } from 'liquidjs';
 import * as path from 'path';
 import * as process from 'process';
-import { METADATA } from '../../src/app/metadata';
-import { getRepositoryRootDir, isMain, Log, SECURITY_TXT_REL_PATH } from '../utils';
+import metadata from '../../src/app/metadata.js';
+import { getRepositoryRootDir, isMain, Log, SECURITY_TXT_REL_PATH } from './utils.mjs';
+
+const {METADATA} = metadata;
 
 export const LIQUID_EXTENSION = '.liquid';
 
@@ -89,7 +91,7 @@ function getContext() {
   return CONTEXT;
 }
 
-if (isMain(module)) {
+if (isMain(import.meta.url)) {
   generateTemplatedFiles().then(() => {
     Log.ok('Done');
   })

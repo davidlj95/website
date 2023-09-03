@@ -11,9 +11,9 @@
     "serve:ssr": "node dist/@davidlj95/website/server/main.js",
     "build:ssr": "ng build && ng run @davidlj95/website:server",
     "prerender": "ng run @davidlj95/website:prerender",
-    "render-templates": "ts-node scripts/src/generate-templated-files.ts",
-    "security-txt": "ts-node scripts/src/generate-security-txt.ts",
-    "font-subsets": "ts-node scripts/src/generate-font-subsets.ts",
+    "render-templates": "ts-node scripts/src/generate-templated-files.mts",
+    "security-txt": "ts-node scripts/src/generate-security-txt.mts",
+    "font-subsets": "ts-node scripts/src/generate-font-subsets.mts",
     "lint": "ng lint",
     "git-hooks": "husky install",
     "commitlint-last": "commitlint --verbose --edit"
