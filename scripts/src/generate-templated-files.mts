@@ -49,6 +49,7 @@ async function generateTemplatedFiles() {
   for (const templateFile of templateFiles) {
     await generateTemplatedFile(templateFile, {context: context, engine: engine})
   }
+  Log.ok('Done')
 }
 
 export async function generateTemplatedFile(
@@ -92,7 +93,5 @@ function getContext() {
 }
 
 if (isMain(import.meta.url)) {
-  generateTemplatedFiles().then(() => {
-    Log.ok('Done');
-  })
+  await generateTemplatedFiles()
 }

@@ -33,6 +33,7 @@ async function generateFonts() {
     formats: ['truetype', 'woff', 'woff2'],
     filename: baseFilename,
   });
+  Log.ok('Done')
 }
 
 async function generateFontSubsets(fontBuffer: Buffer, {
@@ -68,7 +69,5 @@ function getExtensionFromFormat(format: FontFormat): string {
 }
 
 if (isMain(import.meta.url)) {
-  generateFonts().then(() => {
-    Log.ok('Done')
-  });
+  await generateFonts()
 }
