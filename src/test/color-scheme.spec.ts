@@ -2,15 +2,13 @@ import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { AppModule } from '../app/app.module';
 import { ColorSchemeService, Scheme } from '../app/toolbar/color-scheme.service';
-import { sleep } from './helpers/sleep';
 
 describe('App color scheme', () => {
   let bodyElement: HTMLElement;
   let colorSchemeService: ColorSchemeService;
   const LIGHT_MIN_LUMINANCE = 0.75;
   const DARK_MAX_LUMINANCE = 0.25;
-  // TODO: if we respect no motion, we can go back to instant tests
-  const ANIMATION_MILLIS = 700;
+  const NO_MOTION_ATTRIBUTE = 'data-no-motion';
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -18,14 +16,18 @@ describe('App color scheme', () => {
     });
 
     const document = TestBed.inject(DOCUMENT);
+    document.documentElement.setAttribute(NO_MOTION_ATTRIBUTE, '')
     colorSchemeService = TestBed.inject(ColorSchemeService);
     bodyElement = document.body;
   });
+  afterEach(() => {
+    document.documentElement.removeAttribute(NO_MOTION_ATTRIBUTE)
+    colorSchemeService.setSystem()
+  })
 
   describe('when light color scheme is set', () => {
     it('body should have a light background color (high luminance), whilst text color should be a dark one (low luminance)', async () => {
       colorSchemeService.setManual(Scheme.Light);
-      await sleep(ANIMATION_MILLIS);
 
       const bodyBackgroundColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).backgroundColor);
       const bodyBackgroundColorLuminance = getRelativeLuminance(bodyBackgroundColor);
@@ -38,7 +40,6 @@ describe('App color scheme', () => {
   describe('when dark color scheme is set', () => {
     it('body should have a dark background color (low luminance), whilst text color should be a light one (high luminance)', async () => {
       colorSchemeService.setManual(Scheme.Dark);
-      await sleep(ANIMATION_MILLIS);
 
       const bodyBackgroundColor = getRgbFromCssRgbColor(getComputedStyle(bodyElement).backgroundColor);
       const bodyBackgroundColorLuminance = getRelativeLuminance(bodyBackgroundColor);
