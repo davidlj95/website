@@ -76,7 +76,7 @@ yarn run generate-release-file
 It will generate a `release.json` file in the root of the repository containing all info about releases that
 [Semantic Release][semantic-release] provides.
 
-> ⚠️ The API only outputs information when a new release has to be generated. To workaround this, a fake
+> ⚠️ The API only outputs information when a new release has to be generated. As a workaround, a fake
 > patch release is generated in case no release was needed so we get access to all that info. To distinguish a real
 > run from a faked run, a `fake` property exists in that JSON.
 > The only faked properties are about next release (`nextRelease` and `releases` at the moment of writing this). Info
