@@ -257,9 +257,10 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/lighthouseci
 ## Manual files
-junit-test.xml
-junit-lint.xml
-assets/*-subset.*
+/junit-test.xml
+/junit-lint.xml
+/assets/*-subset.*
+/release.json
 # Manual changes:
 # - Yarn config to not use zero installs.
 # - Remove .idea from angular, we want some settings in the repo
@@ -267,3 +268,4 @@ assets/*-subset.*
 # - Add junit-(lint|test).xml generated for CI/CD purposes
 # - Add Lighthouse CI (to avoid having to generate everything again)
 # - Add generated subset fonts
+# - Add release file
