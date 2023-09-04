@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import * as RELEASE_OBJECT from '../../../release.json';
+import RELEASE_OBJECT from '../../../release.json';
 import { environment, Environment } from '../../environments';
 import { METADATA as METADATA_OBJECT, Metadata } from '../metadata';
 import { ReleaseInfo } from '../release-info/semantic-release';

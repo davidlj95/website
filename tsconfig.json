@@ -23,7 +23,9 @@
       "ES2022",
       "dom"
     ],
-    "resolveJsonModule": true
+    // Manually added to import release.json into app
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
