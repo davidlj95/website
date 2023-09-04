@@ -33,5 +33,5 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  ensureHasComponents(() => fixture, JsonldMetadataComponent, WindowComponent)
+  ensureHasComponents(() => fixture, JsonldMetadataComponent, WindowComponent, ReleaseInfoComponent)
 });
