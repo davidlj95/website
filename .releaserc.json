@@ -21,31 +21,40 @@
         "section": "Bug Fixes"
       },
       {
-        "type": "chore"
+        "type": "perf",
+        "section": "Performance Improvements"
+      },
+      {
+        "type": "revert",
+        "section": "Reverts"
       },
       {
         "type": "docs",
         "section": "Documentation"
       },
       {
-        "type": "style"
+        "type": "style",
+        "section": "Style"
       },
       {
-        "type": "refactor"
+        "type": "chore",
+        "section": "Miscellaneous Chores"
       },
       {
-        "type": "perf",
-        "section": "Performance"
+        "type": "refactor",
+        "section": "Code Refactoring"
       },
       {
         "type": "test",
-        "section": "Testing"
+        "section": "Tests"
       },
       {
-        "type": "build"
+        "type": "build",
+        "section": "Build System"
       },
       {
-        "type": "ci"
+        "type": "ci",
+        "section": "Continuous (Integration|Deployment)"
       }
     ]
   }

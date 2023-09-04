@@ -62,6 +62,15 @@ minor or patch release is generated for every push to main branch. For every rel
 GitHub release will be created and a new version of the app will be published to `npm` public registry. All of this
 is managed automatically by [Semantic Release][semantic-release] and CI/CD pipelines.
 
+> Config has been tweaked so all commits appear in the release notes. To do so, `types` of commits included are all
+> of those defined in [Conventional Changelog type defaults][conventional-changelog-type-defaults]. But none is
+> hidden. That list comprehends
+>
+all [commit types that `commitlint`](https://github.com/conventional-changelog/commitlint/blob/v17.7.1/%40commitlint/config-conventional/index.js#L22-L32)
+> will lint.
+
+[conventional-changelog-type-defaults]: https://github.com/conventional-changelog/conventional-changelog/blob/conventional-changelog-conventionalcommits-v7.0.1/packages/conventional-changelog-conventionalcommits/constants.js#L3
+
 ### Getting release info
 
 In order to embed release information in the app, a script was created to export that kind of information using
