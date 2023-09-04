@@ -12,7 +12,12 @@ export class ReleaseInfoComponent {
   }
 
   protected get releaseAsJsonString() {
-    return JSON.stringify(this.release, null, 2)
+    const nextRelease = this.release.nextRelease;
+    const nextReleaseWithoutNotes = {
+      ...nextRelease,
+      notes: undefined,
+    }
+    return JSON.stringify(nextReleaseWithoutNotes, null, 2)
   }
 }
 
