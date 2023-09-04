@@ -13,11 +13,13 @@ export class ReleaseInfoComponent {
 
   protected get releaseAsJsonString() {
     const nextRelease = this.release.nextRelease;
-    const nextReleaseWithoutNotes = {
+    const summary = {
       ...nextRelease,
       notes: undefined,
+      preview: this.release.preview,
+      fake: this.release.fake,
     }
-    return JSON.stringify(nextReleaseWithoutNotes, null, 2)
+    return JSON.stringify(summary, null, 2)
   }
 }
 

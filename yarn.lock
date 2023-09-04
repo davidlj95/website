@@ -2697,6 +2697,7 @@ __metadata:
     conventional-changelog-conventionalcommits: ^7.0.1
     eslint: ^8.47.0
     eslint-formatter-multiple: ^2.0.0
+    execa: ^8.0.1
     express: ^4.15.2
     gardevoir: ^1.0.0
     glob: ^10.3.3
@@ -8576,7 +8577,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^8.0.0":
+"execa@npm:^8.0.0, execa@npm:^8.0.1":
   version: 8.0.1
   resolution: "execa@npm:8.0.1"
   dependencies:

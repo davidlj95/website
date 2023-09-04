@@ -1,7 +1,15 @@
 // Getting hipster here 😎 Importing JSONs and type assertions are experimental
+import { execaSync } from "execa";
 import * as fs from 'fs';
 import path from 'path';
-import semanticRelease, { AnalyzeCommitsContext, Options, PluginSpec, ReleaseType, Result } from 'semantic-release';
+import semanticRelease, {
+  AnalyzeCommitsContext,
+  BranchObject,
+  Options,
+  PluginSpec,
+  ReleaseType,
+  Result,
+} from 'semantic-release';
 // But we get type safety given Typescript reads the JSON
 // We can always go back to an old boring read file sync if experiment goes wrong :P
 import realReleaseOptions from '../../.releaserc.json' assert { type: 'json' }
@@ -32,11 +40,6 @@ async function generateReleaseFile() {
   Log.ok('Done')
 }
 
-
-async function runSemanticRelease(options: Options): Promise<Result> {
-  return semanticRelease(options);
-}
-
 function getDryRunOptionsWithUnneededPlugins(options: Options): Options {
   const plugins = options.plugins ?? [];
   return {
@@ -60,7 +63,88 @@ const EXCLUDED_PLUGINS = [
   '@semantic-release/npm',
 ]
 
-async function runSemanticReleaseThatReturnsAFakeRelease(options: Options): Promise<FakeResultObject> {
+async function runSemanticRelease(options: Options): Promise<Result | PreviewResultObject> {
+  const currentBranch = await getCurrentBranch()
+  const env = {} as any;
+  const mainBranch = getMainBranch(options);
+  if (currentBranch != mainBranch) {
+    Log.info('Faking we are on main branch to generate a release')
+    env['env'] = {
+      'GITHUB_ACTIONS': true,
+      'GITHUB_REF': mainBranch,
+    }
+  }
+  const result = await semanticRelease(options, env);
+  if (result) {
+    return {
+      preview: true,
+      ...result,
+    }
+  }
+  return result;
+}
+
+type PreviewResultObject = ResultObject & { preview: true }
+
+// Same way as semantic release via `env-ci`
+// https://github.com/semantic-release/env-ci/blob/v9.1.1/lib/git.js#L11-L34
+// Use built-in Node.js child process though
+async function getCurrentBranch() {
+  try {
+    const headRef = execaSync(
+      "git",
+      ["rev-parse", "--abbrev-ref", "HEAD"],
+    ).stdout;
+
+    if (headRef === "HEAD") {
+      const branch = execaSync(
+        "git",
+        ["show", "-s", "--pretty=%d", "HEAD"],
+      )
+        .stdout.replace(/^\(|\)$/g, "")
+        .split(", ")
+        .find((branch) => branch.startsWith("origin/"));
+      return branch ? branch.match(/^origin\/(?<branch>.+)/)![1] : undefined;
+    }
+
+    return headRef;
+  } catch {
+    return undefined;
+  }
+}
+
+function getMainBranch(options: Options): string {
+  if (typeof options.branches === 'string') {
+    return options.branches;
+  }
+  if (Array.isArray(options.branches)) {
+    const COMMON_MAINS = ['main', 'master'];
+    const candidates: string[] = options.branches.map((branch) => {
+      if (typeof branch === 'string' && COMMON_MAINS.includes(branch)) {
+        return branch;
+      }
+      if (typeof branch == 'object' && !Array.isArray(branch) && branch !== null) {
+        const branchObj = branch as BranchObject;
+        if ((branchObj.channel === false || !branchObj.channel) && !branchObj.prerelease && !branchObj.range) {
+          return branchObj.name
+        }
+      }
+      return ''
+    }).filter((branch) => branch.length > 0);
+    for (const candidate of candidates) {
+      if (COMMON_MAINS.includes(candidate)) {
+        return candidate;
+      }
+    }
+  }
+  if (typeof options.branches === 'object' && options.branches !== null) {
+    return (options.branches as BranchObject).name;
+  }
+  // Good ol' default
+  return 'master';
+}
+
+async function runSemanticReleaseThatReturnsAFakeRelease(options: Options): Promise<FakeResultObject | PreviewResultObject> {
   const alwaysReleasePatchedOptions = {
     ...options,
     plugins: [

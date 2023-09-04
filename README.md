@@ -85,12 +85,30 @@ yarn run generate-release-file
 It will generate a `release.json` file in the root of the repository containing all info about releases that
 [Semantic Release][semantic-release] provides.
 
-> ⚠️ The API only outputs information when a new release has to be generated. As a workaround, a fake
-> patch release is generated in case no release was needed so we get access to all that info. To distinguish a real
-> run from a faked run, a `fake` property exists in that JSON.
-> The only faked properties are about next release (`nextRelease` and `releases` at the moment of writing this). Info
+> ⚠️ **Next release can be fake**
+>
+> The API only outputs information when a new release has to be generated. As a
+> workaround, a fake
+> patch release is generated in case no release was needed to get access to all that info.
+>
+> **To distinguish a real run from a faked run, a `fake` property exists in that JSON** with value set to `true`. The
+> only faked properties are about next release (`nextRelease` and `releases` at the moment of writing this). Info
 > about last release
-> is correct even when faking the release to generate the output (`lastRelease` at the moment of writing this)
+> remains correct even when faking the release to generate the output (`lastRelease` at the moment of writing this)
+
+> ⚠️ **Next release can be a preview**
+>
+> If running the script from a branch that's not configured to trigger releases, the default API behaviour is to
+> output no data. As a workaround, we simulate being on the `main` branch and see what would happen in that scenario
+> when including commits from the current branch.
+>
+> **To distinguish a real run from a faked run, a `preview` property exists in that JSON** with value set to `true`.
+> This is because it's a simulation of this branch being merged into main branch. But you could want to merge that
+> against another (the script could be smarter and simulate that too, but not yet :P).
+
+> ⚠️ **Next release can be fake and preview**
+> If both of previous situations happen at same time (commits of branch are not enough to trigger a release and
+> branch is not one configured for releases)
 
 ## Git hooks
 
