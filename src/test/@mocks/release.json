@@ -1,0 +1,371 @@
+{
+  "lastRelease": {
+    "version": "1.2.1",
+    "gitTag": "v1.2.1",
+    "channels": [
+      null
+    ],
+    "gitHead": "f0d70d48fa494cff292712295922a905d116ec27",
+    "name": "v1.2.1"
+  },
+  "commits": [
+    {
+      "commit": {
+        "long": "deaeae03453655963cfa897cd759b545f43bca84",
+        "short": "deaeae0"
+      },
+      "tree": {
+        "long": "0b55801a1b412cf8637d90864cf57294b24fa6c2",
+        "short": "0b55801"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-04T00:03:22.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-04T00:03:22.000Z"
+      },
+      "subject": "test: ensure release info is added in root comp",
+      "body": "",
+      "hash": "deaeae03453655963cfa897cd759b545f43bca84",
+      "committerDate": "2023-09-04T00:03:22.000Z",
+      "message": "test: ensure release info is added in root comp",
+      "gitTags": "(HEAD -> main)"
+    },
+    {
+      "commit": {
+        "long": "e46975304ae5fd6d7749745460762d68b989b736",
+        "short": "e469753"
+      },
+      "tree": {
+        "long": "8cbcb3ecf0145fc0931c17841c792ef2f2680272",
+        "short": "8cbcb3e"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-04T00:00:38.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-04T00:00:38.000Z"
+      },
+      "subject": "ci: fix build by adding content write permissions",
+      "body": "",
+      "hash": "e46975304ae5fd6d7749745460762d68b989b736",
+      "committerDate": "2023-09-04T00:00:38.000Z",
+      "message": "ci: fix build by adding content write permissions",
+      "gitTags": "(origin/main, origin/HEAD)"
+    },
+    {
+      "commit": {
+        "long": "1ed0ca29b7eb1b3be189397f828ba98e8f0bcea1",
+        "short": "1ed0ca2"
+      },
+      "tree": {
+        "long": "8ce34c5bbd30b9c96dc011bb2cefcd1066529156",
+        "short": "8ce34c5"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:54:24.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:54:24.000Z"
+      },
+      "subject": "test(color-scheme): improve integration test by removing motion",
+      "body": "",
+      "hash": "1ed0ca29b7eb1b3be189397f828ba98e8f0bcea1",
+      "committerDate": "2023-09-03T23:54:24.000Z",
+      "message": "test(color-scheme): improve integration test by removing motion",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "ad5e1767f7601f578289131b80e0a700c9e1c639",
+        "short": "ad5e176"
+      },
+      "tree": {
+        "long": "bdad66fdc0f899c3f47a4b1559637cc53796a8b1",
+        "short": "bdad66f"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:48:02.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:48:02.000Z"
+      },
+      "subject": "test: fix root component test, missing new release comp",
+      "body": "",
+      "hash": "ad5e1767f7601f578289131b80e0a700c9e1c639",
+      "committerDate": "2023-09-03T23:48:02.000Z",
+      "message": "test: fix root component test, missing new release comp",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "8c30664de08a60f9f16ba5a1c33825b36a6b8898",
+        "short": "8c30664"
+      },
+      "tree": {
+        "long": "b7a83e1a833e872898abc941efbf2d04f57d26c7",
+        "short": "b7a83e1"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:38:39.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:38:39.000Z"
+      },
+      "subject": "docs(release): grammar correction",
+      "body": "",
+      "hash": "8c30664de08a60f9f16ba5a1c33825b36a6b8898",
+      "committerDate": "2023-09-03T23:38:39.000Z",
+      "message": "docs(release): grammar correction",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "86c7ed48c596daee823268a38ef3b4dcfa4a3274",
+        "short": "86c7ed4"
+      },
+      "tree": {
+        "long": "4c8a7a6f2f0be4a29b939be860ad6a45dea29db1",
+        "short": "4c8a7a6"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:36:29.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:36:29.000Z"
+      },
+      "subject": "docs(release): minor correction about last release info",
+      "body": "",
+      "hash": "86c7ed48c596daee823268a38ef3b4dcfa4a3274",
+      "committerDate": "2023-09-03T23:36:29.000Z",
+      "message": "docs(release): minor correction about last release info",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "f9975c98d35f1d18945d354d118782ec005887da",
+        "short": "f9975c9"
+      },
+      "tree": {
+        "long": "6d542f3e47ac3d1f9790b7f8fbabe29cea319098",
+        "short": "6d542f3"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:35:21.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:35:21.000Z"
+      },
+      "subject": "docs(release): add release info in README",
+      "body": "",
+      "hash": "f9975c98d35f1d18945d354d118782ec005887da",
+      "committerDate": "2023-09-03T23:35:21.000Z",
+      "message": "docs(release): add release info in README",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "fbc3d7a064b75739dfd6334febce9ced94a9c8c7",
+        "short": "fbc3d7a"
+      },
+      "tree": {
+        "long": "225f268ea12799077a19623bd1d2c39413c0aaba",
+        "short": "225f268"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:25:31.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:25:31.000Z"
+      },
+      "subject": "feat(release): add release info in hidden <pre> block",
+      "body": "",
+      "hash": "fbc3d7a064b75739dfd6334febce9ced94a9c8c7",
+      "committerDate": "2023-09-03T23:25:31.000Z",
+      "message": "feat(release): add release info in hidden <pre> block",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "03fdde127939f9f72b5234ce52338abeb785fe49",
+        "short": "03fdde1"
+      },
+      "tree": {
+        "long": "56ed2bd720e3fd56f314d5393391ae632f635a13",
+        "short": "56ed2bd"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:22:14.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T23:22:14.000Z"
+      },
+      "subject": "build(semantic-release): export release info to display in app",
+      "body": "",
+      "hash": "03fdde127939f9f72b5234ce52338abeb785fe49",
+      "committerDate": "2023-09-03T23:22:14.000Z",
+      "message": "build(semantic-release): export release info to display in app",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "11f32912e2c7896c09c8e69211cae4ab987def24",
+        "short": "11f3291"
+      },
+      "tree": {
+        "long": "6ba2eae969d67cde58bf01b3383708b795921506",
+        "short": "6ba2eae"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T13:05:00.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T13:05:00.000Z"
+      },
+      "subject": "refactor: scripts to use top level await, yay!",
+      "body": "",
+      "hash": "11f32912e2c7896c09c8e69211cae4ab987def24",
+      "committerDate": "2023-09-03T13:05:00.000Z",
+      "message": "refactor: scripts to use top level await, yay!",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "adcd253ff50b1ab81a891f5602052e673a3b0029",
+        "short": "adcd253"
+      },
+      "tree": {
+        "long": "92b3a88715356212e61b03692d7988cf7d6b3002",
+        "short": "92b3a88"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T13:02:00.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-03T13:02:00.000Z"
+      },
+      "subject": "refactor: scripts to use ESM",
+      "body": "use \".mts\" extension (setting \"type\": \"module\" breaks Angular prerender)\nspecify extension when importing in scripts\nmove utils into \"src\" so it's included as part of tsconfig.json\nupdate tsconfig.json to use nodenext for ESM enablement\nupdate tsconfig.json to output to \"dist\" for debug js compilation\nupdate tsconfig.json to tell ts-node to enable ESM\nupdate utils to use ESM (isMain, __dirname subst)\nupdate import of metadata.js to use CommonJs compatibility\n",
+      "hash": "adcd253ff50b1ab81a891f5602052e673a3b0029",
+      "committerDate": "2023-09-03T13:02:00.000Z",
+      "message": "refactor: scripts to use ESM\n\nuse \".mts\" extension (setting \"type\": \"module\" breaks Angular prerender)\nspecify extension when importing in scripts\nmove utils into \"src\" so it's included as part of tsconfig.json\nupdate tsconfig.json to use nodenext for ESM enablement\nupdate tsconfig.json to output to \"dist\" for debug js compilation\nupdate tsconfig.json to tell ts-node to enable ESM\nupdate utils to use ESM (isMain, __dirname subst)\nupdate import of metadata.js to use CommonJs compatibility",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "e3b36cdda8e088e4f2508112f27790c23f4bece4",
+        "short": "e3b36cd"
+      },
+      "tree": {
+        "long": "1c54e5786f8c534e62c30176df8b2f12feb57286",
+        "short": "1c54e57"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-02T02:12:20.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-02T02:12:20.000Z"
+      },
+      "subject": "ci: restore main flow again",
+      "body": "",
+      "hash": "e3b36cdda8e088e4f2508112f27790c23f4bece4",
+      "committerDate": "2023-09-02T02:12:20.000Z",
+      "message": "ci: restore main flow again",
+      "gitTags": ""
+    },
+    {
+      "commit": {
+        "long": "ba13135f7bfe5a86d7289250fb84cf993647ff33",
+        "short": "ba13135"
+      },
+      "tree": {
+        "long": "3115e7b7ba607fde1cf713a95a820663e13d71d3",
+        "short": "3115e7b"
+      },
+      "author": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-02T02:08:32.000Z"
+      },
+      "committer": {
+        "name": "David LJ",
+        "email": "mail@davidlj95.com",
+        "date": "2023-09-02T02:08:32.000Z"
+      },
+      "subject": "build(semantic-release): do not release dummies",
+      "body": "",
+      "hash": "ba13135f7bfe5a86d7289250fb84cf993647ff33",
+      "committerDate": "2023-09-02T02:08:32.000Z",
+      "message": "build(semantic-release): do not release dummies",
+      "gitTags": ""
+    }
+  ],
+  "nextRelease": {
+    "type": "minor",
+    "channel": null,
+    "gitHead": "deaeae03453655963cfa897cd759b545f43bca84",
+    "version": "1.3.0",
+    "gitTag": "v1.3.0",
+    "name": "v1.3.0",
+    "notes": "## [1.3.0](https://github.com/davidlj95/website-v2/compare/v1.2.1...v1.3.0) (2023-09-04)\n\n\n* fix build by adding content write permissions ([e469753](https://github.com/davidlj95/website-v2/commit/e46975304ae5fd6d7749745460762d68b989b736))\n* restore main flow again ([e3b36cd](https://github.com/davidlj95/website-v2/commit/e3b36cdda8e088e4f2508112f27790c23f4bece4))\n* scripts to use ESM ([adcd253](https://github.com/davidlj95/website-v2/commit/adcd253ff50b1ab81a891f5602052e673a3b0029))\n* scripts to use top level await, yay! ([11f3291](https://github.com/davidlj95/website-v2/commit/11f32912e2c7896c09c8e69211cae4ab987def24))\n* **semantic-release:** do not release dummies ([ba13135](https://github.com/davidlj95/website-v2/commit/ba13135f7bfe5a86d7289250fb84cf993647ff33))\n* **semantic-release:** export release info to display in app ([03fdde1](https://github.com/davidlj95/website-v2/commit/03fdde127939f9f72b5234ce52338abeb785fe49))\n\n\n### Features\n\n* **release:** add release info in hidden <pre> block ([fbc3d7a](https://github.com/davidlj95/website-v2/commit/fbc3d7a064b75739dfd6334febce9ced94a9c8c7))\n\n\n### Documentation\n\n* **release:** add release info in README ([f9975c9](https://github.com/davidlj95/website-v2/commit/f9975c98d35f1d18945d354d118782ec005887da))\n* **release:** grammar correction ([8c30664](https://github.com/davidlj95/website-v2/commit/8c30664de08a60f9f16ba5a1c33825b36a6b8898))\n* **release:** minor correction about last release info ([86c7ed4](https://github.com/davidlj95/website-v2/commit/86c7ed48c596daee823268a38ef3b4dcfa4a3274))\n\n\n### Testing\n\n* **color-scheme:** improve integration test by removing motion ([1ed0ca2](https://github.com/davidlj95/website-v2/commit/1ed0ca29b7eb1b3be189397f828ba98e8f0bcea1))\n* ensure release info is added in root comp ([deaeae0](https://github.com/davidlj95/website-v2/commit/deaeae03453655963cfa897cd759b545f43bca84))\n* fix root component test, missing new release comp ([ad5e176](https://github.com/davidlj95/website-v2/commit/ad5e1767f7601f578289131b80e0a700c9e1c639))\n\n"
+  },
+  "releases": [
+    {
+      "type": "minor",
+      "channel": null,
+      "gitHead": "deaeae03453655963cfa897cd759b545f43bca84",
+      "version": "1.3.0",
+      "gitTag": "v1.3.0",
+      "name": "v1.3.0",
+      "notes": "## [1.3.0](https://github.com/davidlj95/website-v2/compare/v1.2.1...v1.3.0) (2023-09-04)\n\n\n* fix build by adding content write permissions ([e469753](https://github.com/davidlj95/website-v2/commit/e46975304ae5fd6d7749745460762d68b989b736))\n* restore main flow again ([e3b36cd](https://github.com/davidlj95/website-v2/commit/e3b36cdda8e088e4f2508112f27790c23f4bece4))\n* scripts to use ESM ([adcd253](https://github.com/davidlj95/website-v2/commit/adcd253ff50b1ab81a891f5602052e673a3b0029))\n* scripts to use top level await, yay! ([11f3291](https://github.com/davidlj95/website-v2/commit/11f32912e2c7896c09c8e69211cae4ab987def24))\n* **semantic-release:** do not release dummies ([ba13135](https://github.com/davidlj95/website-v2/commit/ba13135f7bfe5a86d7289250fb84cf993647ff33))\n* **semantic-release:** export release info to display in app ([03fdde1](https://github.com/davidlj95/website-v2/commit/03fdde127939f9f72b5234ce52338abeb785fe49))\n\n\n### Features\n\n* **release:** add release info in hidden <pre> block ([fbc3d7a](https://github.com/davidlj95/website-v2/commit/fbc3d7a064b75739dfd6334febce9ced94a9c8c7))\n\n\n### Documentation\n\n* **release:** add release info in README ([f9975c9](https://github.com/davidlj95/website-v2/commit/f9975c98d35f1d18945d354d118782ec005887da))\n* **release:** grammar correction ([8c30664](https://github.com/davidlj95/website-v2/commit/8c30664de08a60f9f16ba5a1c33825b36a6b8898))\n* **release:** minor correction about last release info ([86c7ed4](https://github.com/davidlj95/website-v2/commit/86c7ed48c596daee823268a38ef3b4dcfa4a3274))\n\n\n### Testing\n\n* **color-scheme:** improve integration test by removing motion ([1ed0ca2](https://github.com/davidlj95/website-v2/commit/1ed0ca29b7eb1b3be189397f828ba98e8f0bcea1))\n* ensure release info is added in root comp ([deaeae0](https://github.com/davidlj95/website-v2/commit/deaeae03453655963cfa897cd759b545f43bca84))\n* fix root component test, missing new release comp ([ad5e176](https://github.com/davidlj95/website-v2/commit/ad5e1767f7601f578289131b80e0a700c9e1c639))\n\n"
+    }
+  ]
+}

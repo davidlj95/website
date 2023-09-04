@@ -15,6 +15,10 @@ ensure-no-pending-changes:
 
 test:
 	yarn run font-subsets
+
+	# In CI, this file is not generated because should be mocked when testing
+	cp ../src/test/@mocks/release.json ..
+
 	yarn test --browsers=ChromeHeadless --no-watch --no-progress --reporters junit,progress --code-coverage
 
 run-main:
