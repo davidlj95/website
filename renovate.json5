@@ -8,7 +8,10 @@
   "prConcurrentLimit": 5,
   "schedule": [
     // Validate using https://codepen.io/rationaltiger24/full/ZExQEgK
-    "at 9am on first saturday of month",
+    // Though even if that says is valid, maybe invalid 🙃 as it wants 0 errors despite compiling
+    // So to be sure, `npm i later` on a tmp dir, `var later = require('later')' and check
+    // `later.parse.text('whatever schedule')` returns no errors (-1)
+    "at 9:00 am on the 1-7 day of the month on Saturday"
   ],
   "timezone": "Europe/Madrid",
   "labels": [
