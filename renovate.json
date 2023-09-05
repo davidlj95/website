@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "rangeStrategy": "pin",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 5,
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "semanticCommitType": "build"
+    },
+    {
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "semanticCommitType": "fix"
+    }
+  ]
+}
