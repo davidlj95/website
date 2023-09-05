@@ -1,54 +1,54 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base",
   ],
   "rangeStrategy": "pin",
   "prHourlyLimit": 0,
   "prConcurrentLimit": 5,
   "schedule": [
     // Validate using https://codepen.io/rationaltiger24/full/ZExQEgK
-    "at 9am on first saturday of month"
+    "at 9am on first saturday of month",
   ],
   "timezone": "Europe/Madrid",
   "labels": [
-    "dependencies"
+    "dependencies",
   ],
   "packageRules": [
     {
       "matchPackagePatterns": [
-        "*"
+        "*",
       ],
-      "semanticCommitType": "build"
+      "semanticCommitType": "build",
     },
     {
       "matchDepTypes": [
-        "dependencies"
+        "dependencies",
       ],
-      "semanticCommitType": "fix"
+      "semanticCommitType": "fix",
     },
     {
       "matchManagers": [
-        "github-actions"
+        "github-actions",
       ],
       "addLabels": [
-        "github-actions"
+        "github-actions",
       ]
     },
     {
       "matchCategories": [
-        "js"
+        "js",
       ],
       "addLabels": [
-        "javascript"
+        "javascript",
       ]
     },
     {
       "matchCategories": [
-        "node"
+        "node",
       ],
       "addLabels": [
-        "node"
+        "node",
       ]
     }
   ]
