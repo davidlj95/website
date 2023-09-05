@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         # No setup step needed: latest stable Node.js & npm comes included with GitHub runners
         # https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md
       - name: Download built app
