@@ -6,6 +6,11 @@
   "rangeStrategy": "pin",
   "prHourlyLimit": 0,
   "prConcurrentLimit": 5,
+  "schedule": [
+    // Validate using https://codepen.io/rationaltiger24/full/ZExQEgK
+    "at 9am on first saturday of month"
+  ],
+  "timezone": "Europe/Madrid",
   "labels": [
     "dependencies"
   ],
