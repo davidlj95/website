@@ -2127,8 +2127,8 @@ __metadata:
     "@commitlint/cli": 17.7.1
     "@commitlint/config-conventional": 17.7.0
     "@fortawesome/angular-fontawesome": 0.13.0
-    "@fortawesome/fontawesome-svg-core": ^6.4.0
-    "@fortawesome/free-brands-svg-icons": ^6.4.0
+    "@fortawesome/fontawesome-svg-core": 6.4.2
+    "@fortawesome/free-brands-svg-icons": 6.4.2
     "@ngaox/seo": 5.0.0
     "@nguniversal/builders": 16.2.0
     "@nguniversal/express-engine": 16.2.0
@@ -2545,7 +2545,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:^6.4.0":
+"@fortawesome/fontawesome-svg-core@npm:6.4.2":
   version: 6.4.2
   resolution: "@fortawesome/fontawesome-svg-core@npm:6.4.2"
   dependencies:
@@ -2554,7 +2554,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/free-brands-svg-icons@npm:^6.4.0":
+"@fortawesome/free-brands-svg-icons@npm:6.4.2":
   version: 6.4.2
   resolution: "@fortawesome/free-brands-svg-icons@npm:6.4.2"
   dependencies:
