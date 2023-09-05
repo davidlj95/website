@@ -6,6 +6,9 @@
   "rangeStrategy": "pin",
   "prHourlyLimit": 0,
   "prConcurrentLimit": 5,
+  "labels": [
+    "dependencies"
+  ],
   "packageRules": [
     {
       "matchPackagePatterns": [
@@ -18,6 +21,30 @@
         "dependencies"
       ],
       "semanticCommitType": "fix"
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "addLabels": [
+        "github-actions"
+      ]
+    },
+    {
+      "matchCategories": [
+        "js"
+      ],
+      "addLabels": [
+        "javascript"
+      ]
+    },
+    {
+      "matchCategories": [
+        "node"
+      ],
+      "addLabels": [
+        "node"
+      ]
     }
   ]
 }
