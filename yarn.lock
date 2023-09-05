@@ -32,7 +32,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular-devkit/build-angular@npm:^16.2.0":
+"@angular-devkit/build-angular@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular-devkit/build-angular@npm:16.2.0"
   dependencies:
@@ -276,7 +276,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/animations@npm:^16.2.0":
+"@angular/animations@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/animations@npm:16.2.0"
   dependencies:
@@ -287,7 +287,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/cli@npm:~16.2.0":
+"@angular/cli@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/cli@npm:16.2.0"
   dependencies:
@@ -315,7 +315,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/common@npm:^16.2.0":
+"@angular/common@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/common@npm:16.2.0"
   dependencies:
@@ -327,7 +327,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/compiler-cli@npm:^16.2.0":
+"@angular/compiler-cli@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/compiler-cli@npm:16.2.0"
   dependencies:
@@ -350,7 +350,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/compiler@npm:^16.2.0":
+"@angular/compiler@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/compiler@npm:16.2.0"
   dependencies:
@@ -364,7 +364,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/core@npm:^16.2.0":
+"@angular/core@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/core@npm:16.2.0"
   dependencies:
@@ -376,7 +376,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/forms@npm:^16.2.0":
+"@angular/forms@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/forms@npm:16.2.0"
   dependencies:
@@ -390,7 +390,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/platform-browser-dynamic@npm:^16.2.0":
+"@angular/platform-browser-dynamic@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/platform-browser-dynamic@npm:16.2.0"
   dependencies:
@@ -404,7 +404,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/platform-browser@npm:^16.2.0":
+"@angular/platform-browser@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/platform-browser@npm:16.2.0"
   dependencies:
@@ -420,7 +420,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/platform-server@npm:^16.2.0":
+"@angular/platform-server@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/platform-server@npm:16.2.0"
   dependencies:
@@ -436,7 +436,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/router@npm:^16.2.0":
+"@angular/router@npm:16.2.0":
   version: 16.2.0
   resolution: "@angular/router@npm:16.2.0"
   dependencies:
@@ -1897,7 +1897,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:^17.7.1":
+"@commitlint/cli@npm:17.7.1":
   version: 17.7.1
   resolution: "@commitlint/cli@npm:17.7.1"
   dependencies:
@@ -1917,7 +1917,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:^17.7.0":
+"@commitlint/config-conventional@npm:17.7.0":
   version: 17.7.0
   resolution: "@commitlint/config-conventional@npm:17.7.0"
   dependencies:
@@ -2107,65 +2107,65 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@davidlj95/website-v2@workspace:."
   dependencies:
-    "@angular-devkit/build-angular": ^16.2.0
+    "@angular-devkit/build-angular": 16.2.0
     "@angular-eslint/builder": 16.1.1
     "@angular-eslint/eslint-plugin": 16.1.1
     "@angular-eslint/eslint-plugin-template": 16.1.1
     "@angular-eslint/schematics": 16.1.1
     "@angular-eslint/template-parser": 16.1.1
-    "@angular/animations": ^16.2.0
-    "@angular/cli": ~16.2.0
-    "@angular/common": ^16.2.0
-    "@angular/compiler": ^16.2.0
-    "@angular/compiler-cli": ^16.2.0
-    "@angular/core": ^16.2.0
-    "@angular/forms": ^16.2.0
-    "@angular/platform-browser": ^16.2.0
-    "@angular/platform-browser-dynamic": ^16.2.0
-    "@angular/platform-server": ^16.2.0
-    "@angular/router": ^16.2.0
-    "@commitlint/cli": ^17.7.1
-    "@commitlint/config-conventional": ^17.7.0
+    "@angular/animations": 16.2.0
+    "@angular/cli": 16.2.0
+    "@angular/common": 16.2.0
+    "@angular/compiler": 16.2.0
+    "@angular/compiler-cli": 16.2.0
+    "@angular/core": 16.2.0
+    "@angular/forms": 16.2.0
+    "@angular/platform-browser": 16.2.0
+    "@angular/platform-browser-dynamic": 16.2.0
+    "@angular/platform-server": 16.2.0
+    "@angular/router": 16.2.0
+    "@commitlint/cli": 17.7.1
+    "@commitlint/config-conventional": 17.7.0
     "@fortawesome/angular-fontawesome": 0.13.0
     "@fortawesome/fontawesome-svg-core": ^6.4.0
     "@fortawesome/free-brands-svg-icons": ^6.4.0
     "@ngaox/seo": 5.0.0
-    "@nguniversal/builders": ^16.2.0
-    "@nguniversal/express-engine": ^16.2.0
-    "@types/compression": ^1.7.3
-    "@types/express": ^4.17.0
-    "@types/jasmine": ~4.3.0
-    "@types/node": ^20.5.9
-    "@types/signale": ^1.4.4
-    "@types/subset-font": ^1.4.0
+    "@nguniversal/builders": 16.2.0
+    "@nguniversal/express-engine": 16.2.0
+    "@types/compression": 1.7.3
+    "@types/express": 4.17.17
+    "@types/jasmine": 4.3.5
+    "@types/node": 20.5.9
+    "@types/signale": 1.4.4
+    "@types/subset-font": 1.4.0
     "@typescript-eslint/eslint-plugin": 6.6.0
     "@typescript-eslint/parser": 6.6.0
-    compression: ^1.7.4
-    concurrently: ^8.2.1
-    conventional-changelog-conventionalcommits: ^7.0.1
-    eslint: ^8.47.0
-    eslint-formatter-multiple: ^2.0.0
-    execa: ^8.0.1
-    express: ^4.15.2
-    gardevoir: ^1.0.0
-    glob: ^10.3.3
-    husky: ^8.0.3
-    jasmine-core: ~4.6.0
-    karma: ~6.4.0
-    karma-chrome-launcher: ~3.2.0
-    karma-coverage: ~2.2.0
-    karma-jasmine: ~5.1.0
-    karma-jasmine-html-reporter: ~2.1.0
-    karma-junit-reporter: ^2.0.1
-    liquidjs: ^10.8.4
-    ng-mocks: ^14.11.0
-    rxjs: ~7.8.0
-    semantic-release: ^21.1.1
-    subset-font: ^2.1.0
-    ts-node: ^10.9.1
-    tslib: ^2.6.2
-    typescript: ~5.1.3
-    zone.js: ~0.13.0
+    compression: 1.7.4
+    concurrently: 8.2.1
+    conventional-changelog-conventionalcommits: 7.0.1
+    eslint: 8.48.0
+    eslint-formatter-multiple: 2.0.0
+    execa: 8.0.1
+    express: 4.18.2
+    gardevoir: 1.0.0
+    glob: 10.3.3
+    husky: 8.0.3
+    jasmine-core: 4.6.0
+    karma: 6.4.2
+    karma-chrome-launcher: 3.2.0
+    karma-coverage: 2.2.1
+    karma-jasmine: 5.1.0
+    karma-jasmine-html-reporter: 2.1.0
+    karma-junit-reporter: 2.0.1
+    liquidjs: 10.8.4
+    ng-mocks: 14.11.0
+    rxjs: 7.8.1
+    semantic-release: 21.1.1
+    subset-font: 2.1.0
+    ts-node: 10.9.1
+    tslib: 2.6.2
+    typescript: 5.1.6
+    zone.js: 0.13.1
   languageName: unknown
   linkType: soft
 
@@ -2724,7 +2724,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nguniversal/builders@npm:^16.2.0":
+"@nguniversal/builders@npm:16.2.0":
   version: 16.2.0
   resolution: "@nguniversal/builders@npm:16.2.0"
   dependencies:
@@ -2759,7 +2759,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nguniversal/express-engine@npm:^16.2.0":
+"@nguniversal/express-engine@npm:16.2.0":
   version: 16.2.0
   resolution: "@nguniversal/express-engine@npm:16.2.0"
   dependencies:
@@ -3660,7 +3660,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/compression@npm:^1.7.3":
+"@types/compression@npm:1.7.3":
   version: 1.7.3
   resolution: "@types/compression@npm:1.7.3"
   dependencies:
@@ -3743,7 +3743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:*, @types/express@npm:^4.17.0, @types/express@npm:^4.17.13":
+"@types/express@npm:*, @types/express@npm:4.17.17, @types/express@npm:^4.17.13":
   version: 4.17.17
   resolution: "@types/express@npm:4.17.17"
   dependencies:
@@ -3771,7 +3771,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jasmine@npm:~4.3.0":
+"@types/jasmine@npm:4.3.5":
   version: 4.3.5
   resolution: "@types/jasmine@npm:4.3.5"
   checksum: 33839af6efd42bed948cb49de117821649de952228b3bf4743af09ef9d1736a6e9e9500750f04ffa74e308f00781f697092dadde4e038e2f041e741b087ceb9b
@@ -3820,7 +3820,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.5.9":
+"@types/node@npm:20.5.9":
   version: 20.5.9
   resolution: "@types/node@npm:20.5.9"
   checksum: 717490e94131722144878b4ca1a963ede1673bb8f2ef78c2f5b50b918df6dc9b35e7f8283e5c2a7a9f137730f7c08dc6228e53d4494a94c9ee16881e6ce6caed
@@ -3892,7 +3892,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/signale@npm:^1.4.4":
+"@types/signale@npm:1.4.4":
   version: 1.4.4
   resolution: "@types/signale@npm:1.4.4"
   dependencies:
@@ -3910,7 +3910,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/subset-font@npm:^1.4.0":
+"@types/subset-font@npm:1.4.0":
   version: 1.4.0
   resolution: "@types/subset-font@npm:1.4.0"
   dependencies:
@@ -5664,7 +5664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"compression@npm:^1.7.4":
+"compression@npm:1.7.4, compression@npm:^1.7.4":
   version: 1.7.4
   resolution: "compression@npm:1.7.4"
   dependencies:
@@ -5686,7 +5686,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^8.2.1":
+"concurrently@npm:8.2.1":
   version: 8.2.1
   resolution: "concurrently@npm:8.2.1"
   dependencies:
@@ -5786,21 +5786,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"conventional-changelog-conventionalcommits@npm:7.0.1":
+  version: 7.0.1
+  resolution: "conventional-changelog-conventionalcommits@npm:7.0.1"
+  dependencies:
+    compare-func: ^2.0.0
+  checksum: 9a3ec6dfbb608e805f72bdeda335db4348bcb35f507086dc77b347ea7e63839063ea1eb366ad4a050dce6920ae67299d93d33d2ffc26124563daab74d3fe2add
+  languageName: node
+  linkType: hard
+
 "conventional-changelog-conventionalcommits@npm:^6.1.0":
   version: 6.1.0
   resolution: "conventional-changelog-conventionalcommits@npm:6.1.0"
   dependencies:
     compare-func: ^2.0.0
   checksum: 4383a35cdf72f5964e194a1146e7f78276e301f73bd993b71627bb93586b6470d411b9613507ceb37e0fed0b023199c95e941541fa47172b4e6a7916fc3a53ff
-  languageName: node
-  linkType: hard
-
-"conventional-changelog-conventionalcommits@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "conventional-changelog-conventionalcommits@npm:7.0.1"
-  dependencies:
-    compare-func: ^2.0.0
-  checksum: 9a3ec6dfbb608e805f72bdeda335db4348bcb35f507086dc77b347ea7e63839063ea1eb366ad4a050dce6920ae67299d93d33d2ffc26124563daab74d3fe2add
   languageName: node
   linkType: hard
 
@@ -6968,7 +6968,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-formatter-multiple@npm:^2.0.0":
+"eslint-formatter-multiple@npm:2.0.0":
   version: 2.0.0
   resolution: "eslint-formatter-multiple@npm:2.0.0"
   dependencies:
@@ -7004,7 +7004,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.47.0":
+"eslint@npm:8.48.0":
   version: 8.48.0
   resolution: "eslint@npm:8.48.0"
   dependencies:
@@ -7146,6 +7146,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"execa@npm:8.0.1, execa@npm:^8.0.0":
+  version: 8.0.1
+  resolution: "execa@npm:8.0.1"
+  dependencies:
+    cross-spawn: ^7.0.3
+    get-stream: ^8.0.1
+    human-signals: ^5.0.0
+    is-stream: ^3.0.0
+    merge-stream: ^2.0.0
+    npm-run-path: ^5.1.0
+    onetime: ^6.0.0
+    signal-exit: ^4.1.0
+    strip-final-newline: ^3.0.0
+  checksum: cac1bf86589d1d9b73bdc5dda65c52012d1a9619c44c526891956745f7b366ca2603d29fe3f7460bacc2b48c6eab5d6a4f7afe0534b31473d3708d1265545e1f
+  languageName: node
+  linkType: hard
+
 "execa@npm:^5.0.0":
   version: 5.1.1
   resolution: "execa@npm:5.1.1"
@@ -7180,23 +7197,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^8.0.0, execa@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "execa@npm:8.0.1"
-  dependencies:
-    cross-spawn: ^7.0.3
-    get-stream: ^8.0.1
-    human-signals: ^5.0.0
-    is-stream: ^3.0.0
-    merge-stream: ^2.0.0
-    npm-run-path: ^5.1.0
-    onetime: ^6.0.0
-    signal-exit: ^4.1.0
-    strip-final-newline: ^3.0.0
-  checksum: cac1bf86589d1d9b73bdc5dda65c52012d1a9619c44c526891956745f7b366ca2603d29fe3f7460bacc2b48c6eab5d6a4f7afe0534b31473d3708d1265545e1f
-  languageName: node
-  linkType: hard
-
 "exponential-backoff@npm:^3.1.1":
   version: 3.1.1
   resolution: "exponential-backoff@npm:3.1.1"
@@ -7204,7 +7204,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^4.15.2, express@npm:^4.17.3, express@npm:^4.18.2":
+"express@npm:4.18.2, express@npm:^4.17.3, express@npm:^4.18.2":
   version: 4.18.2
   resolution: "express@npm:4.18.2"
   dependencies:
@@ -7724,7 +7724,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gardevoir@npm:^1.0.0":
+"gardevoir@npm:1.0.0":
   version: 1.0.0
   resolution: "gardevoir@npm:1.0.0"
   checksum: 93419eeaa4177645b5db71d4ff22bb5795f6c6f3eaadb8276ee463b988866d37ce81b6ecbfcfa715d785bdbea8f1a1b4a7e15b2dc13a7300b7891c689eb76356
@@ -7871,21 +7871,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:7.1.4":
-  version: 7.1.4
-  resolution: "glob@npm:7.1.4"
-  dependencies:
-    fs.realpath: ^1.0.0
-    inflight: ^1.0.4
-    inherits: 2
-    minimatch: ^3.0.4
-    once: ^1.3.0
-    path-is-absolute: ^1.0.0
-  checksum: f52480fc82b1e66e52990f0f2e7306447d12294c83fbbee0395e761ad1178172012a7cc0673dbf4810baac400fc09bf34484c08b5778c216403fd823db281716
-  languageName: node
-  linkType: hard
-
-"glob@npm:^10.2.2, glob@npm:^10.3.3":
+"glob@npm:10.3.3, glob@npm:^10.2.2":
   version: 10.3.3
   resolution: "glob@npm:10.3.3"
   dependencies:
@@ -7897,6 +7883,20 @@ __metadata:
   bin:
     glob: dist/cjs/src/bin.js
   checksum: 29190d3291f422da0cb40b77a72fc8d2c51a36524e99b8bf412548b7676a6627489528b57250429612b6eec2e6fe7826d328451d3e694a9d15e575389308ec53
+  languageName: node
+  linkType: hard
+
+"glob@npm:7.1.4":
+  version: 7.1.4
+  resolution: "glob@npm:7.1.4"
+  dependencies:
+    fs.realpath: ^1.0.0
+    inflight: ^1.0.4
+    inherits: 2
+    minimatch: ^3.0.4
+    once: ^1.3.0
+    path-is-absolute: ^1.0.0
+  checksum: f52480fc82b1e66e52990f0f2e7306447d12294c83fbbee0395e761ad1178172012a7cc0673dbf4810baac400fc09bf34484c08b5778c216403fd823db281716
   languageName: node
   linkType: hard
 
@@ -8402,7 +8402,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^8.0.3":
+"husky@npm:8.0.3":
   version: 8.0.3
   resolution: "husky@npm:8.0.3"
   bin:
@@ -9139,7 +9139,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jasmine-core@npm:^4.1.0, jasmine-core@npm:~4.6.0":
+"jasmine-core@npm:4.6.0, jasmine-core@npm:^4.1.0":
   version: 4.6.0
   resolution: "jasmine-core@npm:4.6.0"
   checksum: c5c5ce16c512cf0bc8b6b4f2d4f0ac7b23cae90624e0cd9d22da3baab3266e9a4da5a9363fb7937b16e0a4cf550bb79183cd74483ce55cfff4b6678434d599b7
@@ -9434,7 +9434,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma-chrome-launcher@npm:~3.2.0":
+"karma-chrome-launcher@npm:3.2.0":
   version: 3.2.0
   resolution: "karma-chrome-launcher@npm:3.2.0"
   dependencies:
@@ -9443,7 +9443,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma-coverage@npm:~2.2.0":
+"karma-coverage@npm:2.2.1":
   version: 2.2.1
   resolution: "karma-coverage@npm:2.2.1"
   dependencies:
@@ -9457,7 +9457,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma-jasmine-html-reporter@npm:~2.1.0":
+"karma-jasmine-html-reporter@npm:2.1.0":
   version: 2.1.0
   resolution: "karma-jasmine-html-reporter@npm:2.1.0"
   peerDependencies:
@@ -9468,7 +9468,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma-jasmine@npm:~5.1.0":
+"karma-jasmine@npm:5.1.0":
   version: 5.1.0
   resolution: "karma-jasmine@npm:5.1.0"
   dependencies:
@@ -9479,7 +9479,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma-junit-reporter@npm:^2.0.1":
+"karma-junit-reporter@npm:2.0.1":
   version: 2.0.1
   resolution: "karma-junit-reporter@npm:2.0.1"
   dependencies:
@@ -9500,7 +9500,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma@npm:~6.4.0":
+"karma@npm:6.4.2":
   version: 6.4.2
   resolution: "karma@npm:6.4.2"
   dependencies:
@@ -9794,7 +9794,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"liquidjs@npm:^10.8.4":
+"liquidjs@npm:10.8.4":
   version: 10.8.4
   resolution: "liquidjs@npm:10.8.4"
   dependencies:
@@ -10662,7 +10662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ng-mocks@npm:^14.11.0":
+"ng-mocks@npm:14.11.0":
   version: 14.11.0
   resolution: "ng-mocks@npm:14.11.0"
   peerDependencies:
@@ -12647,7 +12647,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:7.8.1, rxjs@npm:^7.0.0, rxjs@npm:^7.5.5, rxjs@npm:^7.8.1, rxjs@npm:~7.8.0":
+"rxjs@npm:7.8.1, rxjs@npm:^7.0.0, rxjs@npm:^7.5.5, rxjs@npm:^7.8.1":
   version: 7.8.1
   resolution: "rxjs@npm:7.8.1"
   dependencies:
@@ -12778,7 +12778,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:^21.1.1":
+"semantic-release@npm:21.1.1":
   version: 21.1.1
   resolution: "semantic-release@npm:21.1.1"
   dependencies:
@@ -13558,7 +13558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"subset-font@npm:^2.1.0":
+"subset-font@npm:2.1.0":
   version: 2.1.0
   resolution: "subset-font@npm:2.1.0"
   dependencies:
@@ -13906,7 +13906,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.8.1, ts-node@npm:^10.9.1":
+"ts-node@npm:10.9.1, ts-node@npm:^10.8.1":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
   dependencies:
@@ -13962,17 +13962,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:2.6.2, tslib@npm:^2.4.0, tslib@npm:^2.4.1":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^1.8.1":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "tslib@npm:2.6.2"
-  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
   languageName: node
   linkType: hard
 
@@ -14098,6 +14098,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:5.1.6":
+  version: 5.1.6
+  resolution: "typescript@npm:5.1.6"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: b2f2c35096035fe1f5facd1e38922ccb8558996331405eb00a5111cc948b2e733163cc22fab5db46992aba7dd520fff637f2c1df4996ff0e134e77d3249a7350
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^4.6.4 || ^5.0.0":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
@@ -14108,13 +14118,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~5.1.3":
+"typescript@patch:typescript@5.1.6#~builtin<compat/typescript>":
   version: 5.1.6
-  resolution: "typescript@npm:5.1.6"
+  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: b2f2c35096035fe1f5facd1e38922ccb8558996331405eb00a5111cc948b2e733163cc22fab5db46992aba7dd520fff637f2c1df4996ff0e134e77d3249a7350
+  checksum: f53bfe97f7c8b2b6d23cf572750d4e7d1e0c5fff1c36d859d0ec84556a827b8785077bc27676bf7e71fae538e517c3ecc0f37e7f593be913d884805d931bc8be
   languageName: node
   linkType: hard
 
@@ -14125,16 +14135,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 07106822b4305de3f22835cbba949a2b35451cad50888759b6818421290ff95d522b38ef7919e70fb381c5fe9c1c643d7dea22c8b31652a717ddbd57b7f4d554
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@~5.1.3#~builtin<compat/typescript>":
-  version: 5.1.6
-  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: f53bfe97f7c8b2b6d23cf572750d4e7d1e0c5fff1c36d859d0ec84556a827b8785077bc27676bf7e71fae538e517c3ecc0f37e7f593be913d884805d931bc8be
   languageName: node
   linkType: hard
 
@@ -15067,7 +15067,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zone.js@npm:~0.13.0":
+"zone.js@npm:0.13.1":
   version: 0.13.1
   resolution: "zone.js@npm:0.13.1"
   dependencies:
