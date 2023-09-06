@@ -67,15 +67,21 @@ async function runSemanticRelease(options: Options): Promise<Result | PreviewRes
   const currentBranch = await getCurrentBranch()
   const env = {} as any;
   const mainBranch = getMainBranch(options);
+  Log.info('Branch detection')
+  Log.item('Main branch as per release config: \'%s\'', mainBranch)
+  Log.item('Current branch: \'%s\'', currentBranch)
   if (currentBranch != mainBranch) {
-    Log.info('Faking we are on main branch to generate a release')
+    Log.warn('Faking we are on main branch to generate a release')
     env['env'] = {
       'GITHUB_ACTIONS': true,
       'GITHUB_REF': mainBranch,
     }
+  } else {
+    Log.info('No need to fake branch to trigger a release')
   }
   const result = await semanticRelease(options, env);
-  if (result) {
+  if (result && Object.keys(env).length != 0) {
+    Log.info('Adding preview given we are not in main branch')
     return {
       preview: true,
       ...result,
