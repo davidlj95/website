@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import path from 'path';
 import semanticRelease, {
   AnalyzeCommitsContext,
-  BranchObject,
+  BranchObject, NextRelease,
   Options,
   PluginSpec,
   ReleaseType,
@@ -16,6 +16,13 @@ import realReleaseOptions from '../../.releaserc.json' assert { type: 'json' }
 import { getRepositoryRootDir, isMain, Log } from './utils.mjs';
 
 async function generateReleaseFile() {
+  const tagsPointingAtHead = await getTagsPointingAtHead();
+  if (tagsPointingAtHead.length > 0) {
+    await fakeFileWithTagsPointingAtHead(tagsPointingAtHead);
+    process.exit(0);
+  }
+
+  Log.info('Running semantic release to generate release file')
   Log.info('Patching options')
   Log.item('Dry run: forced to true')
   Log.item('Excluded plugins: %s', EXCLUDED_PLUGINS)
@@ -34,11 +41,54 @@ async function generateReleaseFile() {
   Log.info('Final release info')
   console.log(result)
 
-  Log.info('Writing to file \'%s\'', RELEASE_FILE)
-  fs.writeFileSync(RELEASE_FILE, JSON.stringify(result, undefined, 2))
+  await writeToReleaseFile(result);
 
   Log.ok('Done')
 }
+
+async function getTagsPointingAtHead(): Promise<string[]> {
+  const tagsSeparatedByNewLines = execaSync('git', ['tag', '--points-at', 'HEAD']).stdout
+  if (!tagsSeparatedByNewLines) {
+    return []
+  }
+  return tagsSeparatedByNewLines.split('\n');
+}
+
+async function getGitHead(): Promise<string> {
+  return execaSync("git", ["rev-parse", "HEAD"]).stdout
+}
+
+async function fakeFileWithTagsPointingAtHead(tagsPointingAtHead: string[]) {
+  Log.info('Detected tags pointing to this commit')
+  tagsPointingAtHead.forEach((tag) => {
+    Log.item(tag)
+  })
+  const firstTag = tagsPointingAtHead[0];
+
+  // https://github.com/semantic-release/semantic-release/blob/v21.1.1/index.js#L90-L95
+  // Reason of 👇 is 👆
+  Log.warn('Faking release file, we cannot dry run semantic release on old tags')
+
+  const result: { nextRelease: PatchedNextRelease } & Pick<FakeResultObject, 'fake'> = {
+    nextRelease: {
+      type: "minor",
+      channel: null,
+      gitHead: await getGitHead(),
+      version: firstTag.replace('v', ''),
+      gitTag: firstTag,
+      name: firstTag,
+      notes: '',
+    },
+    fake: true,
+  }
+
+  Log.info('Faked release info')
+  console.log(result)
+
+  await writeToReleaseFile(result);
+}
+
+type PatchedNextRelease = Omit<NextRelease, 'channel'> & { channel: NextRelease['channel'] | null }
 
 function getDryRunOptionsWithUnneededPlugins(options: Options): Options {
   const plugins = options.plugins ?? [];
@@ -182,6 +232,11 @@ type ResultObject = Exclude<Result, false>
 type FakeResultObject = ResultObject & { fake: true }
 
 const RELEASE_FILE = path.join(getRepositoryRootDir(), 'release.json')
+
+async function writeToReleaseFile(result: unknown) {
+  Log.info('Writing to file \'%s\'', RELEASE_FILE)
+  fs.writeFileSync(RELEASE_FILE, JSON.stringify(result, undefined, 2))
+}
 
 if (isMain(import.meta.url)) {
   await generateReleaseFile()
