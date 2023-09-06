@@ -20,39 +20,54 @@
   "packageRules": [
     {
       "matchPackagePatterns": [
-        "*",
+        "*"
       ],
-      "semanticCommitType": "build",
+      "semanticCommitType": "build"
     },
     {
       "matchDepTypes": [
-        "dependencies",
+        "dependencies"
       ],
-      "semanticCommitType": "fix",
+      "semanticCommitType": "fix"
     },
     {
       "matchManagers": [
-        "github-actions",
+        "github-actions"
       ],
       "addLabels": [
-        "github-actions",
+        "github-actions"
       ]
     },
     {
       "matchCategories": [
-        "js",
+        "js"
       ],
       "addLabels": [
-        "javascript",
+        "javascript"
       ]
     },
     {
       "matchCategories": [
-        "node",
+        "node"
       ],
       "addLabels": [
-        "node",
+        "node"
       ]
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": "true"
+    },
+    {
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "automerge": "true"
     }
   ]
 }
