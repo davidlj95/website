@@ -36,7 +36,7 @@ jobs:
     secrets:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
   deploy-gh-pages:
-    name: Deploy
+    name: Deploy to GitHub Pages (latest)
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-github-pages.yml
     with:
@@ -46,7 +46,7 @@ jobs:
       pages: write
       id-token: write
   deploy-cloudflare-pages:
-    name: Deploy
+    name: Deploy to Cloudflare Pages (pro)
     if: fromJSON(vars.DEPLOY_TO_PRO_ON_MAIN)
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
