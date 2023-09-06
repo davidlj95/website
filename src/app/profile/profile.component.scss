@@ -1,0 +1,140 @@
+@use "margins";
+@use "paddings";
+@use "touch-or-pointer";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: paddings.$m;
+  gap: margins.$m;
+
+  $picture-size: 128px;
+
+  .picture {
+    position: relative;
+    width: $picture-size;
+    border-radius: $picture-size;
+
+    img {
+      border-radius: $picture-size;
+      border-style: solid;
+      border-width: 1px;
+    }
+
+    .huh {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+    }
+
+    .comment {
+      visibility: hidden;
+      opacity: 0;
+
+      position: absolute;
+
+      top: 49px;
+      left: 82px;
+
+      width: max-content;
+
+      padding: paddings.$s;
+      border-radius: paddings.$s;
+
+      // Speech bubble by
+      // https://freefrontend.com/css-speech-bubbles/
+      &:before {
+        position: absolute;
+        content: "";
+        border: 8px solid transparent;
+
+        border-left: 0;
+        left: -8px;
+        top: 50%;
+        margin-top: -8px;
+      }
+
+      .touch {
+        display: none
+      }
+
+      @include touch-or-pointer.primaryInputCannotHover {
+        .touch {
+          display: inline-block;
+        }
+        .hover {
+          display: none;
+        }
+      }
+    }
+
+    // Reduce comment on small screens, doesn't fit width
+    @media screen and (max-width: 350px) {
+      .comment {
+        width: 128px;
+      }
+    }
+
+    // Place it below picture in super small screens
+    @media screen and (max-width: 279.98px) {
+      .comment {
+        margin-top: margins.$s;
+        position: static;
+        display: none;
+
+        &:before {
+          position: absolute;
+          border-left: 8px solid transparent;
+          border-top: 0;
+          top: calc($picture-size + 12px);
+          left: 50%;
+          margin-left: -8px;
+        }
+      }
+    }
+
+    &:hover {
+      .comment {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      // On small screens, element is fully hidden to avoid layout issues, given it is positioned below
+      @media screen and (max-width: 279.98px) {
+        .comment {
+          display: block;
+        }
+      }
+
+      .main {
+        opacity: 0;
+      }
+
+      .huh {
+        opacity: 1;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    line-height: 1em;
+  }
+
+  div.descriptions {
+    display: flex;
+    flex-direction: column;
+    gap: margins.$s;
+  }
+
+  h2 {
+    font-size: 1.1em;
+    text-align: left;
+    width: fit-content;
+  }
+}

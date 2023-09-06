@@ -1,0 +1,15 @@
+Hi, I'm David LJ. Also known as davidlj95 in the cyberspace. I happen to be the author of my own site too.
+Would you have guessed that? Well if you knew I'm a software engineer, maybe you did! Some things about me:
+
+* 👨‍💻 <code>/dev/random</code> software engineer
+* 🔌 Connecting technology & RealLife™
+* 🎾 Padel regular player
+
+Visit the website for more info!
+
+You may wonder: why this thing is here? Well was reading about "robots.txt" in Wikipedia when building this site and
+found about "humans.txt" in the article: https://en.wikipedia.org/wiki/Robots.txt#Alternatives
+
+Saw that Google had one (https://google.com/humans.txt). And I wanted one for my site too :P
+
+More info about the file in https://humanstxt.org/

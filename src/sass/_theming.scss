@@ -1,0 +1,122 @@
+@import "themes/default-dark-theme";
+@import "themes/default-light-theme";
+
+/**
+ * List of available themes.
+ */
+$colorThemes: (
+  (
+    name: default,
+    theme: $default-light-theme,
+    scheme: light,
+  ),
+  (
+    name: default,
+    theme: $default-dark-theme,
+    scheme: dark,
+  )
+);
+
+/**
+ * Default themes for light/dark color schemes
+ *
+ * Default theme for light color scheme will also happen to be the default when no color scheme preference is detected.
+ * Given until color scheme preferences were available, websites used to be light themed.
+ * https://www.w3.org/TR/mediaqueries-5/#valdef-media-prefers-color-scheme-light
+ */
+$defaultColorSchemeThemes: (
+  light: default,
+  dark: default,
+);
+
+/**
+ * Given a color theme (see $colorThemes), includes the rendered theme colors so that the contents are enabled only
+ * when the named theme has been selected.
+ *
+ * If that theme is the default one for a color scheme, will generate the CSS color scheme preference media queries
+ * so that the content is applied by default. Default for light color scheme will also happen to be the default if
+ * no color scheme preference is set.
+ *
+ * Selection may happen due to (in order of preference):
+ *  - "html" tag specifying "data-theme" attribute
+ *  - "html" tag specifying "data-color-scheme" attribute
+ *  - "prefers-color-scheme" media query for default light & dark themes
+ *  - Light color scheme being the default theme.
+ */
+@mixin define-color-theme($theme) {
+  $theme-name: map-get($theme, name);
+  $theme-scheme: map-get($theme, scheme);
+
+  @if $theme-scheme == light {
+    @if map-get($defaultColorSchemeThemes, $theme-scheme) {
+      // Default light theme & default theme
+      html, html[data-color-scheme=light], html[data-theme=#{$theme-name}] {
+        @content
+      }
+    } @else {
+      html[data-theme=#{$theme-name}], html[data-theme=#{$theme-name}][data-color-scheme=#{$theme-scheme}] {
+        @content
+      }
+    }
+  } @else {
+    @if map-get($defaultColorSchemeThemes, $theme-scheme) == $theme-name {
+      @media (prefers-color-scheme: $theme-scheme) {
+        html, html[data-theme=#{$theme-name}] {
+          @content
+        }
+      }
+      html[data-color-scheme=#{$theme-scheme}] {
+        @content
+      }
+    } @else if $theme-scheme {
+      @media (prefers-color-scheme: $theme-scheme) {
+        html[data-theme=#{$theme-name}] {
+          @content
+        }
+      }
+      html[data-theme=#{$theme-name}][data-color-scheme=#{$theme-scheme}] {
+        @content
+      }
+    } @else {
+      html[data-theme=#{$theme-name}] {
+        @content;
+      }
+    }
+  }
+}
+
+/**
+ * Adds utility CSS classes to display or hide elements depending on the active color scheme
+ */
+@mixin display-hide-classes {
+  html, html[data-color-scheme=light] {
+    .light-only {
+      display: initial;
+    }
+
+    .dark-only {
+      display: none;
+    }
+  }
+  html[data-color-scheme=dark] {
+    .light-only {
+      display: none;
+    }
+
+    .dark-only {
+      display: initial;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      .light-only {
+        display: none;
+      }
+
+      .dark-only {
+        display: initial;
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+  ],
+  "rangeStrategy": "pin",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 5,
+  "schedule": [
+    // Validate using https://codepen.io/rationaltiger24/full/ZExQEgK
+    // Though even if that says is valid, maybe invalid 🙃 as it wants 0 errors despite compiling
+    // So to be sure, `npm i later` on a tmp dir, `var later = require('later')' and check
+    // `later.parse.text('whatever schedule')` returns no errors (-1)
+    "at 9:00 am on the 1-7 day of the month on Saturday"
+  ],
+  "timezone": "Europe/Madrid",
+  "labels": [
+    "dependencies",
+  ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "semanticCommitType": "build"
+    },
+    {
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "semanticCommitType": "fix"
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "addLabels": [
+        "github-actions"
+      ]
+    },
+    {
+      "matchCategories": [
+        "js"
+      ],
+      "addLabels": [
+        "javascript"
+      ]
+    },
+    {
+      "matchCategories": [
+        "node"
+      ],
+      "addLabels": [
+        "node"
+      ]
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": "true"
+    },
+    {
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "automerge": "true"
+    }
+  ]
+}

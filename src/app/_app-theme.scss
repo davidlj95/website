@@ -1,0 +1,22 @@
+@use "animations";
+
+@mixin color($theme) {
+  $background-palette: map-get($theme, background);
+  $text-palette: map-get($theme, text);
+
+  body {
+    background: map-get($background-palette, main);
+    color: map-get($text-palette, primary);
+  }
+}
+
+@mixin motion() {
+  body {
+    transition-property: color, background-color;
+    @include animations.transition(animations.$emphasized-style)
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme)
+}

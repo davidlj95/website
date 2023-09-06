@@ -1,0 +1,25 @@
+@mixin color($theme) {
+  $json-palette: map-get($theme, json);
+
+  app-contacts {
+    color: map-get($json-palette, foreground);
+
+    dl {
+      span {
+        color: map-get($json-palette, foreground);
+      }
+
+      dt {
+        color: map-get($json-palette, key);
+      }
+
+      dd {
+        color: map-get($json-palette, value-string);
+      }
+    }
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme);
+}

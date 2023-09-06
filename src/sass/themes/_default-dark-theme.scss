@@ -1,0 +1,40 @@
+$default-dark-theme: (
+  background: (
+    // Invented tweaking luminance in HSL
+    main: #141415,
+    z0: #202023ff,
+    z1: #292a2dff,
+    z2: #35363aff,
+  ),
+  text: (
+    primary: #e8eaedff,
+    secondary: #9aa0a6ff,
+  ),
+  image: (
+    filter: grayscale(.5),
+  ),
+  social: (
+    foreground: #bdc6cfff,
+    // --legacy-toolbar-hover-bg-color
+    hover-background: #202020,
+  ),
+  accent: #8ab4f8,
+  hairline: #494c50ff,
+  tabs: (
+    // --legacy-tab-selected-fg-color
+    selected-foreground: #eaeaea,
+    selected-background: #000000,
+    selected-border-bottom: none,
+  ),
+  icon: #919191ff,
+  json: (
+    // foreground & key are swapped regarding to DevTools. So key is more important (more contrast)
+    // --color-text-secondary: #9aa0a6ff,
+    // Replaced as not enough contrast. Decreased luminance in HSL
+    foreground: #a6abb0,
+    // --color-text-primary
+    key: #e8eaedff,
+    // --color-syntax-1
+    value-string: #35d4c7ff,
+  ),
+)

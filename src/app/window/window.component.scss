@@ -1,0 +1,30 @@
+@use "breakpoints";
+@use "margins";
+
+:host {
+  display: block;
+  max-width: calc(600px - #{margins.$m * 2});
+  margin: margins.$m;
+
+  > * {
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-style: none;
+  }
+
+  > *:last-child, > .active {
+    border-bottom-style: solid;
+  }
+
+  noscript {
+    display: block;
+  }
+
+  .tab-item {
+    display: none;
+
+    &.active {
+      display: block !important;
+    }
+  }
+}

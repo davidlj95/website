@@ -1,0 +1,24 @@
+@use "paddings";
+
+:host {
+  display: block;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      display: inline-flex;
+      flex-grow: 1;
+      justify-content: center;
+      text-align: center;
+
+      a, span {
+        display: inline-block;
+        padding: paddings.$s;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

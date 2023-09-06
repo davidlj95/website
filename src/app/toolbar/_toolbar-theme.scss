@@ -1,0 +1,18 @@
+@mixin color($theme) {
+  $text-palette: map-get($theme, text);
+
+  app-toolbar {
+    .dark-light-scheme-toggle {
+      color: map-get($theme, icon);
+
+      &:hover {
+        color: map-get($text-palette, primary);
+      }
+    }
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme);
+}
+

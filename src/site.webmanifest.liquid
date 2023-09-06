@@ -1,0 +1,21 @@
+{
+  "name": "{{ siteName }}",
+  "short_name": "{{ nickname }}",
+  "description": "{{ description }}",
+  "display": "browser",
+  "background_color": "{{ themeColor }}",
+  "theme_color": "{{ themeColor }}",
+  "icons": [
+    {%  for iconSize in manifestJsonMaskableIconSizes %}{
+      "src": "assets/favicons/maskable-icon-x{{ iconSize }}.png",
+      "sizes": "{{ iconSize }}x{{ iconSize }}",
+      "type": "image/png",
+      "purpose": "any maskable monochrome"
+    },
+    {%  endfor %}{
+      "src": "assets/favicons/maskable-icon.png",
+      "type": "image/png",
+      "purpose": "any maskable monochrome"
+    }
+  ]
+}

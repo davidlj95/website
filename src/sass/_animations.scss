@@ -1,0 +1,37 @@
+// https://m3.material.io/styles/motion
+$standard-style: standard;
+$emphasized-style: emphasized;
+$standard-easing: cubic-bezier(0.2, 0.0, 0, 1.0);
+
+$short-durations: (
+  1: 50ms,
+  2: 100ms,
+  3: 150ms,
+  4: 200ms,
+);
+$short-duration: map-get($short-durations, 2);
+$medium-durations: (
+  1: 250ms,
+  2: 300ms,
+  3: 350ms,
+  4: 400ms,
+);
+$medium-duration: map-get($medium-durations, 2);
+$standard-duration: $medium-duration;
+$long-durations: (
+  1: 450ms,
+  2: 500ms,
+  3: 550ms,
+  4: 600ms,
+);
+$long-duration: map-get($long-durations, 2);
+$emphasized-duration: $long-duration;
+
+@mixin transition($style: $standard-style) {
+  $duration: $standard-duration;
+  @if ($style: $emphasized-style) {
+    $duration: $emphasized-duration;
+  }
+  transition-duration: $duration;
+  transition-timing-function: $standard-easing;
+}

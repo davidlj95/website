@@ -1,0 +1,42 @@
+@use "animations";
+
+@mixin color($theme) {
+  $background-palette: map-get($theme, background);
+  $color-palette: map-get($theme, text);
+  $tabs-palette: map-get($theme, tabs);
+
+  app-navigation-tabs {
+    background-color: map-get($background-palette, z1);
+    color: map-get($color-palette, secondary);
+
+    ul {
+      > .selected {
+        background-color: map-get($tabs-palette, selected-background);
+        color: map-get($tabs-palette, selected-foreground);
+        border-bottom: map-get($tabs-palette, selected-border-bottom);
+      }
+
+      > :not(.selected):hover {
+        background-color: map-get($background-palette, z2);
+        color: map-get($color-palette, primary);
+      }
+    }
+  }
+
+}
+
+@mixin motion() {
+  app-navigation-tabs {
+    transition-property: background-color, color;
+    @include animations.transition(animations.$emphasized-style);
+
+    ul > .selected {
+      transition-property: background-color, color;
+      @include animations.transition(animations.$emphasized-style);
+    }
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme)
+}

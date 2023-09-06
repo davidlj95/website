@@ -1,0 +1,50 @@
+name: Lint
+on:
+  workflow_call:
+
+# Add those permissions if reporting test results
+# https://github.com/dorny/test-reporter/issues/229
+# permissions:
+#   checks: write
+
+jobs:
+  code:
+    name: Code
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Run linter
+        run: cd .ci && make lint
+      - name: Report results (as status check)
+        uses: dorny/test-reporter@v1
+        if: (success() || failure()) && github.ref == 'refs/heads/main'
+        with:
+          name: Lint results
+          path: '*.xml'
+          reporter: java-junit
+
+  commit-messages:
+    name: Commit messages
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Lint last commit
+        if: github.event_name == 'push'
+        run: yarn run commitlint --from HEAD~1 --to HEAD --verbose
+      - name: Lint all PR commits
+        if: github.event_name == 'pull_request'
+        run: |
+          yarn run commitlint \
+            --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} \
+            --to ${{ github.event.pull_request.head.sha }} \
+            --verbose

@@ -1,0 +1,10 @@
+Canonical: https://{{ domainName }}/.well-known/security.txt
+Contact: mailto:security@{{ domainName }}
+Encryption: openpgp4fpr:d214e5c66c18eec58b2111ce1441fa435de6ac64
+Expires: {{ securityTxtExpiration | date }}
+Preferred-Languages: en, es, ca
+
+# Not in standard, but found it in
+# https://vdp.cabinetoffice.gov.uk/.well-known/security.txt
+# https://github.com/alphagov/security.txt/blob/f7ab027ac26bae3fee2e5d51703d6fecc512e67c/Makefile
+Last-Updated: {{ "now" | date }}

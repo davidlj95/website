@@ -1,0 +1,67 @@
+@use 'app/app-theme' as root-theme;
+@use 'app/window/window-theme';
+@use 'app/profile/profile-theme';
+@use 'app/toolbar/toolbar-theme';
+@use 'app/navigation-tabs/navigation-tabs-theme';
+@use 'app/contacts/contacts-theme';
+@use 'app/social/social-theme';
+@use "theming";
+@use "typographies";
+
+// CSS reset & normalization
+@import "gardevoir/dist/mini.min.css";
+
+body {
+  @include typographies.body-font();
+}
+
+code, pre {
+  @include typographies.monospace-font();
+}
+
+@include typographies.material-symbols-font();
+
+@mixin app-color($theme) {
+  @include root-theme.color($theme);
+  @include window-theme.color($theme);
+  @include profile-theme.color($theme);
+  @include toolbar-theme.color($theme);
+  @include navigation-tabs-theme.color($theme);
+  @include contacts-theme.color($theme);
+  @include social-theme.color($theme);
+
+  // TODO: cool effect for hovering
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      color: inherit;
+    }
+
+    &:active {
+      color: inherit;
+    }
+  }
+}
+
+// Render all color themes
+@each $colorTheme in theming.$colorThemes {
+  @include theming.define-color-theme($colorTheme) {
+    @include app-color(map-get($colorTheme, theme));
+  }
+}
+
+@include theming.display-hide-classes();
+
+// Add animations
+html:not([data-no-motion]) {
+  @include root-theme.motion;
+  @include window-theme.motion;
+  @include profile-theme.motion;
+  @include navigation-tabs-theme.motion;
+}

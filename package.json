@@ -1,0 +1,107 @@
+{
+  "name": "@davidlj95/website",
+  "version": "0.0.0-PLACEHOLDER",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "prebuild": "concurrently \"yarn run font-subsets\" \"yarn run release-file\"",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "dev:ssr": "ng run @davidlj95/website:serve-ssr",
+    "serve:ssr": "node dist/@davidlj95/website/server/main.js",
+    "build:ssr": "ng build && ng run @davidlj95/website:server",
+    "prerender": "ng run @davidlj95/website:prerender",
+    "render-templates": "ts-node scripts/src/generate-templated-files.mts",
+    "security-txt": "ts-node scripts/src/generate-security-txt.mts",
+    "font-subsets": "ts-node scripts/src/generate-font-subsets.mts",
+    "lint": "ng lint",
+    "git-hooks": "husky install",
+    "commitlint-last": "commitlint --verbose --edit",
+    "release-file": "ts-node scripts/src/generate-release-file.mts"
+  },
+  "dependencies": {
+    "@angular/animations": "16.2.3",
+    "@angular/common": "16.2.3",
+    "@angular/compiler": "16.2.3",
+    "@angular/core": "16.2.3",
+    "@angular/forms": "16.2.3",
+    "@angular/platform-browser": "16.2.3",
+    "@angular/platform-browser-dynamic": "16.2.3",
+    "@angular/platform-server": "16.2.3",
+    "@angular/router": "16.2.3",
+    "@fortawesome/angular-fontawesome": "0.13.0",
+    "@fortawesome/fontawesome-svg-core": "6.4.2",
+    "@fortawesome/free-brands-svg-icons": "6.4.2",
+    "@ngaox/seo": "5.0.0",
+    "@nguniversal/express-engine": "16.2.0",
+    "compression": "1.7.4",
+    "express": "4.18.2",
+    "gardevoir": "1.0.0",
+    "rxjs": "7.8.1",
+    "tslib": "2.6.2",
+    "zone.js": "0.13.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "16.2.1",
+    "@angular-eslint/builder": "16.1.2",
+    "@angular-eslint/eslint-plugin": "16.1.2",
+    "@angular-eslint/eslint-plugin-template": "16.1.2",
+    "@angular-eslint/schematics": "16.1.2",
+    "@angular-eslint/template-parser": "16.1.2",
+    "@angular/cli": "16.2.1",
+    "@angular/compiler-cli": "16.2.3",
+    "@commitlint/cli": "17.7.1",
+    "@commitlint/config-conventional": "17.7.0",
+    "@nguniversal/builders": "16.2.0",
+    "@types/compression": "1.7.3",
+    "@types/express": "4.17.17",
+    "@types/jasmine": "4.3.5",
+    "@types/node": "20.5.9",
+    "@types/signale": "1.4.4",
+    "@types/subset-font": "1.4.0",
+    "@typescript-eslint/eslint-plugin": "6.6.0",
+    "@typescript-eslint/parser": "6.6.0",
+    "concurrently": "8.2.1",
+    "conventional-changelog-conventionalcommits": "7.0.1",
+    "eslint": "8.48.0",
+    "eslint-formatter-multiple": "2.0.0",
+    "execa": "8.0.1",
+    "glob": "10.3.4",
+    "husky": "8.0.3",
+    "jasmine-core": "5.1.1",
+    "karma": "6.4.2",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "2.2.1",
+    "karma-jasmine": "5.1.0",
+    "karma-jasmine-html-reporter": "2.1.0",
+    "karma-junit-reporter": "2.0.1",
+    "liquidjs": "10.9.2",
+    "ng-mocks": "14.11.0",
+    "semantic-release": "21.1.1",
+    "subset-font": "2.1.0",
+    "ts-node": "10.9.1",
+    "typescript": "5.1.6"
+  },
+  "packageManager": "yarn@3.6.3",
+  "eslint-formatter-multiple": {
+    "formatters": [
+      {
+        "name": "stylish",
+        "output": "console"
+      },
+      {
+        "name": "junit",
+        "output": "file",
+        "path": "junit-lint.xml"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidlj95/davidlj95.github.io.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
