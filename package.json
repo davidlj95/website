@@ -99,7 +99,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidlj95/davidlj95.github.io.git"
+    "url": "https://github.com/davidlj95/website.git"
   },
   "publishConfig": {
     "access": "public"
