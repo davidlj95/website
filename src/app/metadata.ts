@@ -39,8 +39,6 @@ export const METADATA = {
     .concat(['Get to know me better here'])
     .join('. '),
   domainName: DOMAIN_NAME,
-  // Given URL now is v2.davidlj95.com temporarily
-  // This is instead as canonical production URL for author
   authorUrl: new URL(`https://${DOMAIN_NAME}`),
   // Chosen dark theme background color z0 level (theming.scss)
   themeColor: '#202023',

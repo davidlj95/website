@@ -1,5 +1,5 @@
 {
-  "name": "@davidlj95/website-v2",
+  "name": "@davidlj95/website",
   "version": "0.0.0-PLACEHOLDER",
   "scripts": {
     "ng": "ng",
@@ -99,7 +99,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidlj95/website-v2.git"
+    "url": "https://github.com/davidlj95/davidlj95.github.io.git"
   },
   "publishConfig": {
     "access": "public"

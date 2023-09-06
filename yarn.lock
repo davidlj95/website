@@ -2132,9 +2132,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@davidlj95/website-v2@workspace:.":
+"@davidlj95/website@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@davidlj95/website-v2@workspace:."
+  resolution: "@davidlj95/website@workspace:."
   dependencies:
     "@angular-devkit/build-angular": 16.2.1
     "@angular-eslint/builder": 16.1.2

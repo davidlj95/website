@@ -61,6 +61,6 @@ jobs:
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
           apiToken: ${{ secrets.cloudflare-api-token }}
-          projectName: 'davidlj95-v2'
+          projectName: 'davidlj95'
           directory: 'browser'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
