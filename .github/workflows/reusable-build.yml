@@ -35,7 +35,7 @@ jobs:
           cache-name: angular-cache
         with:
           path: .angular/cache
-          key: ${{ env.cache-name }}-${{ github.ref }}
+          key: ${{ env.cache-name }}-${{ inputs.ref != '' && inputs.ref || github.ref }}
           restore-keys: |
             ${{ env.cache-name }}
       - name: Build and prerender app
