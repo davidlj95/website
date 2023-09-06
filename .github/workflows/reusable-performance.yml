@@ -5,6 +5,11 @@ on:
       build-artifact-name:
         required: true
         type: string
+    ref:
+      description: Git reference to checkout. Defaults to @actions/checkout default.
+      type: string
+      required: false
+      default: ''
     secrets:
       LHCI_GITHUB_APP_TOKEN:
         required: true
@@ -22,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
         # No setup step needed: latest stable Node.js & npm comes included with GitHub runners
         # https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md
       - name: Download built app
