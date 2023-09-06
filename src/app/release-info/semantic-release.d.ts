@@ -1,6 +1,7 @@
 import { Commit, LastRelease, NextRelease, Release, Result } from 'semantic-release';
 
 export type ReleaseInfo = PatchedResultObject & { fake?: true, preview?: true }
+export type ReleaseInfoSummary = Pick<ReleaseInfo, 'fake' | 'preview' | 'nextRelease'>
 
 type ResultObject = Exclude<Result, false>
 // Turns out the generated JSON contains different things from what was promised
