@@ -2,8 +2,8 @@ name: Deploy to production
 on:
   workflow_dispatch:
     inputs:
-      ref:
-        description: Git reference to checkout
+      tag:
+        description: Git tag to checkout. You could actually use any ref, but it would fail in build step as release file wouldn't be able to be generated.
         type: string
         required: true
         default: main
@@ -16,7 +16,8 @@ jobs:
       contents: write
     with:
       artifact-name: build
-      ref: ${{ inputs.ref }}
+      #ref: ${{ inputs.ref }}
+      ref: main
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
