@@ -76,7 +76,7 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
     "karma-junit-reporter": "2.0.1",
-    "liquidjs": "10.8.4",
+    "liquidjs": "10.9.2",
     "ng-mocks": "14.11.0",
     "semantic-release": "21.1.1",
     "subset-font": "2.1.0",
