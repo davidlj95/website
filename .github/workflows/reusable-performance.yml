@@ -5,11 +5,11 @@ on:
       build-artifact-name:
         required: true
         type: string
-    ref:
-      description: Git reference to checkout. Defaults to @actions/checkout default.
-      type: string
-      required: false
-      default: ''
+      ref:
+        description: Git reference to checkout. Defaults to @actions/checkout default.
+        type: string
+        required: false
+        default: ''
     secrets:
       LHCI_GITHUB_APP_TOKEN:
         required: true
