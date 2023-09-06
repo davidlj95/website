@@ -47,6 +47,7 @@ jobs:
       id-token: write
   deploy-cloudflare-pages:
     name: Deploy
+    if: vars.DEPLOY_TO_PRO_ON_MAIN
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
     with:
