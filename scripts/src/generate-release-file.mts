@@ -210,6 +210,10 @@ async function runSemanticReleaseThatReturnsAFakeRelease(options: Options): Prom
     ],
   }
   const result = await runSemanticRelease(alwaysReleasePatchedOptions) as ResultObject
+  if (!result) {
+    Log.error('Unable to generate release info. Check logs')
+    process.exit(1)
+  }
   return {
     fake: true,
     ...result,

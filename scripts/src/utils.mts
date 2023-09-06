@@ -45,4 +45,8 @@ export class Log implements Partial<Console> {
   static ok(message: string, ...params: unknown[]) {
     console.info(`✅  ${message}`, ...params);
   }
+
+  static error(message: string, ...params: unknown[]) {
+    console.error(`❌  ${message}`, ...params)
+  }
 }
