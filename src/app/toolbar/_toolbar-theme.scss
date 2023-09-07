@@ -1,3 +1,4 @@
+@use "touch-or-pointer";
 @mixin color($theme) {
   $text-palette: map-get($theme, text);
 
@@ -5,8 +6,10 @@
     .dark-light-scheme-toggle {
       color: map-get($theme, icon);
 
-      &:hover {
-        color: map-get($text-palette, primary);
+      @include touch-or-pointer.primaryInputCanHover {
+        &:hover {
+          color: map-get($text-palette, primary);
+        }
       }
     }
   }

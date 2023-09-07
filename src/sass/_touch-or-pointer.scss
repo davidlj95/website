@@ -4,3 +4,8 @@
     @content
   }
 }
+@mixin primaryInputCanHover {
+  @media (hover: hover) {
+    @content
+  }
+}
