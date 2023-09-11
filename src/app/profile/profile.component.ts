@@ -1,19 +1,21 @@
 import { Component, Inject } from '@angular/core';
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { DomSanitizer } from "@angular/platform-browser";
 import { METADATA } from '../common/injection-tokens';
 import { Metadata } from '../metadata';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
   public realName = this.metadata.realName;
   public nickname = this.metadata.nickname;
-  public descriptionLines: ReadonlyArray<SafeHtml> = this.metadata.descriptionLines
-    .map((descriptionLine) =>
-      this.sanitizer.bypassSecurityTrustHtml(`${descriptionLine.emoji} ${descriptionLine.text}`),
+  public descriptionLines = this.metadata.descriptionLines
+    .map((descriptionLine) => ({
+        ...descriptionLine,
+        text: this.sanitizer.bypassSecurityTrustHtml(descriptionLine.text),
+      }),
     );
 
   constructor(

@@ -14,6 +14,9 @@
   <code>@{{ nickname }}</code>
 </h1>
 <div class="descriptions">
-  <h2 *ngFor="let descriptionLine of descriptionLines" [innerHtml]="descriptionLine"></h2>
+  <h2 *ngFor="let descriptionLine of descriptionLines">
+    <span class="material-symbols-outlined">{{ descriptionLine.symbol }}</span>
+    <span [innerHTML]="descriptionLine.text"></span>
+  </h2>
 </div>
 

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MockProvider } from 'ng-mocks';
+import { MATERIAL_SYMBOLS_CLASS_SELECTOR } from '../../test/constants';
 import { METADATA } from '../common/injection-tokens';
 import { Metadata } from '../metadata';
 
@@ -13,8 +14,8 @@ describe('ProfileComponent', () => {
     nickname: 'bar',
     realName: 'Foo',
     descriptionLines: [
-      {emoji: '🧪', text: 'Foo bar'},
-      {emoji: '👁️‍🗨️', text: 'Bar foo'},
+      {symbol: 'code', text: 'Foo bar'},
+      {symbol: 'code', text: 'Bar foo'},
     ],
   } as Pick<Metadata, 'nickname' | 'realName' | 'descriptionLines'>) as Metadata;
 
@@ -61,11 +62,21 @@ describe('ProfileComponent', () => {
     expect(h1.nativeElement.textContent).toContain(`@${fakeMetadata.nickname}`);
   })
 
-  it('should contain description lines as secondary headers', () => {
+  it('should contain description lines with symbol as a Material Symbol', () => {
     const h2s = fixture.debugElement.queryAll(By.css('h2'));
     h2s.forEach((h2, index) => {
       const descriptionLine = fakeMetadata.descriptionLines[index];
-      expect(h2.nativeElement.textContent).toEqual(`${descriptionLine.emoji} ${descriptionLine.text}`)
+      const materialSymbolSpan = h2.query(MATERIAL_SYMBOLS_CLASS_SELECTOR)
+      expect(materialSymbolSpan.nativeElement.textContent).toEqual(descriptionLine.symbol)
+    });
+  })
+
+  it('should contain description lines with text', () => {
+    const h2s = fixture.debugElement.queryAll(By.css('h2'));
+    h2s.forEach((h2, index) => {
+      const descriptionLine = fakeMetadata.descriptionLines[index];
+      const textSpan = h2.query(By.css('span:nth-child(2)'))
+      expect(textSpan.nativeElement.textContent).toEqual(descriptionLine.text)
     });
   })
 });
