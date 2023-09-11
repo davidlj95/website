@@ -1,9 +1,11 @@
 Hi, I'm David LJ. Also known as davidlj95 in the cyberspace. I happen to be the author of my own site too.
 Would you have guessed that? Well if you knew I'm a software engineer, maybe you did! Some things about me:
 
-* 👨‍💻 <code>/dev/random</code> software engineer
-* 🔌 Connecting technology & RealLife™
-* 🎾 Padel regular player
+*  Full stack software engineer
+*  9+ years of experience
+*  Web apps & hybrid mobile apps
+*  REST APIs backends
+*  CI/CD, DevOps, Cloud
 
 Visit the website for more info!
 
