@@ -5,23 +5,38 @@
  */
 const NICKNAME = 'davidlj95';
 const REAL_NAME = 'David LJ';
+// PoliceTranslator the earliest code found at 2023. But I started the project / did more things earlier!
+const FIRST_JOB_START_DATE = new Date('2014-06-19')
+const TIMESTAMP_DIFF = Date.now() - FIRST_JOB_START_DATE.getTime();
+const YEARS_OF_EXPERIENCE = Math.abs(
+  // Oh dear JavaScript, why you make things so difficult? https://stackoverflow.com/a/24181701/3263250
+  new Date(TIMESTAMP_DIFF).getUTCFullYear() - 1970,
+)
 const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
   {
-    emoji: '👨‍💻',
-    text: '<code>/dev/random</code> software engineer',
+    symbol: 'code',
+    text: 'Full stack software engineer',
   },
   {
-    emoji: '🔌',
-    text: 'Connecting technology & RealLife™',
+    symbol: 'history',
+    text: `${YEARS_OF_EXPERIENCE}+ years of experience`,
   },
   {
-    emoji: '🎾',
-    text: 'Padel regular player',
+    symbol: 'apps',
+    text: 'Web apps & hybrid mobile apps',
+  },
+  {
+    symbol: 'api',
+    text: 'REST APIs backends',
+  },
+  {
+    symbol: 'build',
+    text: 'CI/CD, DevOps, Cloud',
   },
 ]
 
 export interface DescriptionLine {
-  emoji: string;
+  symbol: string;
   text: string;
 }
 

@@ -12,6 +12,11 @@ async function generateFonts() {
   const glyphs = [
     'dark_mode',
     'light_mode',
+    'code',
+    'history',
+    'apps',
+    'api',
+    'build',
   ];
   Log.info("Glyphs to include in font")
   glyphs.forEach((glyph) => Log.item(glyph));
