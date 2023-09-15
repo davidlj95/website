@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="No spellcheck" pattern="file:src/.well-known/keybase.txt||file:src/.well-known/security.txt||file:assets/favicon_inkscape.svg||file:release.json||file:src/test/*mocks/release.json||file:src/assets/favicons/safari-pinned-tab.svg||file:scripts/tsconfig.json" />
+</component>
