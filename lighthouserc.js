@@ -7,7 +7,7 @@ module.exports = {
             ]
         },
         collect: {
-            staticDistDir: !!process.env.CI ? 'browser' : 'dist/@davidlj95/website/browser'
+            staticDistDir: process.env.CI ? 'browser' : 'dist/@davidlj95/website/browser'
         },
         assert: {
             preset: 'lighthouse:no-pwa',
