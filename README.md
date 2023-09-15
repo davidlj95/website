@@ -45,7 +45,7 @@ semantic versioning release process using [semantic release][semantic-release]
 ### Commit message lint
 
 To enforce that, [`commitlint`][commitlint] is used. It reads the commit messages on a PR and ensures they follow
-the [conventional commits][conventional-commits] convention.
+[conventional commits][conventional-commits] convention.
 
 You can use the following run script to ensure the last commit follows the guidelines:
 
