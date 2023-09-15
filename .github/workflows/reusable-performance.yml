@@ -44,6 +44,7 @@ jobs:
         run: cd .ci && make lighthouse
       - name: Report results (as status check)
         if: github.ref == 'refs/heads/main'
+        # noinspection SpellCheckingInspection
         uses: manrueda/lighthouse-report-action@v1.1.2
         with:
           reports: '.lighthouseci'

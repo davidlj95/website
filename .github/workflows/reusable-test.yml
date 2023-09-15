@@ -49,6 +49,7 @@ jobs:
           path: '*.xml'
           reporter: java-junit
       - name: Report coverage
+        # noinspection SpellCheckingInspection
         uses: livewing/lcov-job-summary@v1.1.0
         if: success() || failure()
         with:
