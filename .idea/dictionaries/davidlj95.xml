@@ -5,11 +5,14 @@
       <w>browserconfig</w>
       <w>catthehacker</w>
       <w>commitlint</w>
+      <w>conventionalcommits</w>
       <w>davidlj</w>
       <w>dorny</w>
       <w>favicomatic</w>
       <w>favicometer</w>
       <w>kjhtml</w>
+      <w>lhci</w>
+      <w>lighthouseci</w>
       <w>msapplication</w>
       <w>mstile</w>
       <w>ngaox</w>
@@ -17,6 +20,7 @@
       <w>padel</w>
       <w>subdir</w>
       <w>truetype</w>
+      <w>unstaged</w>
       <w>webmanifest</w>
     </words>
   </dictionary>
