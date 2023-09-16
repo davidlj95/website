@@ -2,6 +2,9 @@
   <profile version="1.0">
     <option name="myName" value="Project Default" />
     <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="HtmlRequiredTitleElement" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Angular index.html" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
     <inspection_tool class="JsonStandardCompliance" enabled="true" level="ERROR" enabled_by_default="true">
       <scope name="VSCode settings" level="INFORMATION" enabled="true" editorAttributes="WARNING_ATTRIBUTES" />
     </inspection_tool>
