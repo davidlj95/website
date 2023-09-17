@@ -1,0 +1,20 @@
+@use "sass:list";
+@use "sass:map";
+
+$panel-width: 1px;
+
+@function panel-color($theme) {
+  @return map.get($theme, hairline);
+}
+
+@mixin panel-style-width($side) {
+  $panel-style: solid;
+
+  @if ($side == all) {
+    border-width: $panel-width;
+    border-style: $panel-style;
+  } @else {
+    border-#{$side}-style: $panel-style;
+    border-#{$side}-width: $panel-width;
+  }
+}

@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { AppModule } from '../app/app.module';
-import { ColorSchemeService, Scheme } from '../app/toolbar/color-scheme.service';
+import { ColorSchemeService, Scheme } from '../app/header/color-scheme.service';
 
 describe('App color scheme', () => {
   let bodyElement: HTMLElement;

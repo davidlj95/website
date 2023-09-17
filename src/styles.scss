@@ -1,7 +1,7 @@
 @use 'app/app-theme' as root-theme;
-@use 'app/window/window-theme';
-@use 'app/profile/profile-theme';
-@use 'app/toolbar/toolbar-theme';
+@use 'app/about/about-theme';
+@use 'app/header/header-theme';
+@use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
 @use 'app/contacts/contacts-theme';
 @use 'app/social/social-theme';
@@ -13,6 +13,8 @@
 
 body {
   @include typographies.body-font();
+  // Do not allow scroll past boundaries
+  overscroll-behavior-y: none;
 }
 
 code, pre {
@@ -23,9 +25,9 @@ code, pre {
 
 @mixin app-color($theme) {
   @include root-theme.color($theme);
-  @include window-theme.color($theme);
-  @include profile-theme.color($theme);
-  @include toolbar-theme.color($theme);
+  @include header-theme.color($theme);
+  @include no-script-theme.color($theme);
+  @include about-theme.color($theme);
   @include navigation-tabs-theme.color($theme);
   @include contacts-theme.color($theme);
   @include social-theme.color($theme);
@@ -61,7 +63,6 @@ code, pre {
 // Add animations
 html:not([data-no-motion]) {
   @include root-theme.motion;
-  @include window-theme.motion;
-  @include profile-theme.motion;
+  @include about-theme.motion;
   @include navigation-tabs-theme.motion;
 }

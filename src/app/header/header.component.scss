@@ -1,0 +1,30 @@
+@use "borders";
+@use "paddings";
+@use "header";
+@use "z-index";
+
+
+:host {
+  position: fixed;
+  width: 100%;
+  @include borders.panel-style-width(bottom);
+  z-index: z-index.$header;
+
+  .bar {
+    display: flex;
+    padding: header.$vertical-padding;
+    flex-direction: row;
+    justify-content: flex-end;
+    min-height: header.$icons-height + header.$vertical-padding-height;
+
+    .buttons {
+      height: header.$icons-height;
+
+      button {
+        border-style: none;
+        background: transparent;
+        font-size: header.$icons-height;
+      }
+    }
+  }
+}

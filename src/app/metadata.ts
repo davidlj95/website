@@ -14,23 +14,23 @@ const YEARS_OF_EXPERIENCE = Math.abs(
 )
 const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
   {
-    symbol: 'code',
+    symbol: '\ue86f',
     text: 'Full stack software engineer',
   },
   {
-    symbol: 'history',
+    symbol: '\ue889',
     text: `${YEARS_OF_EXPERIENCE}+ years of experience`,
   },
   {
-    symbol: 'apps',
+    symbol: '\ue5c3',
     text: 'Web apps & hybrid mobile apps',
   },
   {
-    symbol: 'api',
+    symbol: '\uf1b7',
     text: 'REST APIs backends',
   },
   {
-    symbol: 'build',
+    symbol: '\ue869',
     text: 'CI/CD, DevOps, Cloud',
   },
 ]
