@@ -3,8 +3,12 @@
 
 :host {
   ul {
+    @include breakpoints.xs {
+      margin-left: 0;
+    }
+
     // Position in same place as Material Symbols from app-contact-traditional-icons
-    margin-left: 3.5px;
+    margin-left: 2.75px;
     display: flex;
     flex-direction: row;
     gap: margins.$m;
