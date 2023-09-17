@@ -2,7 +2,8 @@ $default-light-theme: (
   background: (
     // Invented tweaking luminance in HSL
     main: #fcfdfd,
-    z0: #f8f9f9ff,
+    //z0: #f8f9f9ff,
+    z0: white,
     z1: #f1f3f4ff,
     z2: #dee1e6ff,
   ),
@@ -10,7 +11,9 @@ $default-light-theme: (
     filter: none,
   ),
   text: (
-    primary: #202124ff,
+    // Seems this one is overridden for macOs and Linux
+    //primary: #202124ff,
+    primary: #303942ff,
     secondary: #5f6368ff,
   ),
   tabs: (

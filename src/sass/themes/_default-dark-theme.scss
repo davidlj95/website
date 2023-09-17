@@ -7,7 +7,9 @@ $default-dark-theme: (
     z2: #35363aff,
   ),
   text: (
-    primary: #e8eaedff,
+    // Seems this one is overridden for macOs and Linux
+    // primary: #e8eaedff,
+    primary: #bdc6cfff,
     secondary: #9aa0a6ff,
   ),
   image: (
