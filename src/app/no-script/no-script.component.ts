@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Warning } from '../material-symbols';
 
 @Component({
   selector: 'app-no-script',
@@ -8,6 +9,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class NoScriptComponent {
   protected Icons = {
-    Warning: '\ue002',
+    Warning: Warning,
   }
 }

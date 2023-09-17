@@ -1,4 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
+import { DarkTheme, LightTheme } from '../material-symbols';
 import { ColorSchemeService } from './color-scheme.service';
 
 @Component({
@@ -9,8 +10,8 @@ import { ColorSchemeService } from './color-scheme.service';
 export class HeaderComponent {
   @HostBinding('attr.role') ariaRole = 'toolbar';
   public Icons = {
-    DarkTheme: '\ue51c',
-    LightTheme: '\ue518',
+    DarkTheme: DarkTheme,
+    LightTheme: LightTheme,
   };
 
   constructor(

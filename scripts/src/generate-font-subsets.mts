@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import subsetFont from 'subset-font';
 import { isMain, Log } from './utils.mjs';
+import MaterialSymbols from '../../src/app/material-symbols.js';
 
 async function generateFonts() {
   Log.info("Generating font subset for Material Symbols Outlined")
@@ -8,19 +9,7 @@ async function generateFonts() {
   const fontBuffer = Buffer.from(materialSymbolsFont);
 
   // If using ligatures, file size increases by mystery
-  const glyphs = [
-    '\ue51c', // dark_mode,
-    '\ue518', // light_mode,
-    '\ue86f', // code,
-    '\ue889', // history,
-    '\ue5c3', // apps,
-    '\uf1b7', // api,
-    '\ue869', // build,
-    '\ue002', // warning
-    '\ue158', // mail
-    '\ue0b0', // call
-    '\ue55c', // my_location
-  ];
+  const glyphs = Object.values(MaterialSymbols);
   Log.info("%d glyphs to include in font", glyphs.length)
 
   const glyphText = glyphs.join('');
