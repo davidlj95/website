@@ -1,0 +1,11 @@
+@mixin color($theme) {
+  $text-palette: map-get($theme, text);
+
+  app-contact-traditional-icons {
+    color: map-get($theme, icon);
+
+    li:hover {
+      color: map-get($text-palette, secondary);
+    }
+  }
+}

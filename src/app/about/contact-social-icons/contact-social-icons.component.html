@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let item of items">
+    <a [href]="item.url" [attr.aria-label]="item.name">
+      <fa-icon [icon]="item.icon"></fa-icon>
+    </a>
+  </li>
+</ul>

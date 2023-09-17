@@ -12,24 +12,30 @@ import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.compo
 import { METADATA } from './metadata';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from './no-script/no-script.component';
-import { ProfileComponent } from './profile/profile.component';
+import { AboutComponent } from './about/about.component';
 import { ReleaseInfoComponent } from './release-info/release-info.component';
 import { SocialComponent } from './social/social.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { WindowComponent } from './window/window.component';
+import { HeaderComponent } from './header/header.component';
+import { ProfilePictureComponent } from './about/profile-picture/profile-picture.component';
+import { ContactTraditionalIconsComponent } from './about/contact-traditional-icons/contact-traditional-icons.component';
+import { ContactSocialIconsComponent } from './about/contact-social-icons/contact-social-icons.component';
+import { DescriptionComponent } from './about/description/description.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
-    ProfileComponent,
+    HeaderComponent,
+    AboutComponent,
     NoScriptComponent,
     ContactsComponent,
     SocialComponent,
     NavigationTabsComponent,
-    WindowComponent,
     JsonldMetadataComponent,
     ReleaseInfoComponent,
+    ProfilePictureComponent,
+    ContactTraditionalIconsComponent,
+    ContactSocialIconsComponent,
+    DescriptionComponent,
   ],
   imports: [
     BrowserModule,

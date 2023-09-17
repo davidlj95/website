@@ -1,8 +1,14 @@
 @use "touch-or-pointer";
+@use "borders";
+
 @mixin color($theme) {
   $text-palette: map-get($theme, text);
+  $background-palette: map-get($theme, background);
 
-  app-toolbar {
+  app-header {
+    background-color: map-get($background-palette, z1);
+    border-bottom-color: borders.panel-color($theme);
+
     .dark-light-scheme-toggle {
       color: map-get($theme, icon);
 

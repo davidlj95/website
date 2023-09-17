@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let item of items">
+    <a [href]="item.url" [attr.aria-label]="item.name" class="material-symbols-outlined">{{ item.icon }}</a>
+  </li>
+</ul>

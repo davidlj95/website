@@ -5,7 +5,7 @@
   $text-palette: map-get($theme, text);
 
   body {
-    background: map-get($background-palette, main);
+    background: map-get($background-palette, z0);
     color: map-get($text-palette, primary);
   }
 }

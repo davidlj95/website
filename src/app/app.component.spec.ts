@@ -2,10 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponents } from 'ng-mocks';
 import { ensureHasComponents } from '../test/helpers/component-testers';
+import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
 import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
+import { NoScriptComponent } from './no-script/no-script.component';
 import { ReleaseInfoComponent } from './release-info/release-info.component';
-import { WindowComponent } from './window/window.component';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -18,8 +20,10 @@ describe('AppComponent', () => {
         AppComponent,
         MockComponents(
           JsonldMetadataComponent,
-          WindowComponent,
           ReleaseInfoComponent,
+          NoScriptComponent,
+          HeaderComponent,
+          AboutComponent,
         ),
       ],
     });
@@ -33,5 +37,8 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  ensureHasComponents(() => fixture, JsonldMetadataComponent, WindowComponent, ReleaseInfoComponent)
+  ensureHasComponents(() => fixture,
+    JsonldMetadataComponent, ReleaseInfoComponent,
+    NoScriptComponent, HeaderComponent, AboutComponent,
+  )
 });

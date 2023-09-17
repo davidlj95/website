@@ -1,0 +1,4 @@
+<h2 *ngFor="let descriptionLine of descriptionLines">
+  <span class="material-symbols-outlined">{{ descriptionLine.symbol }}</span>
+  <span [innerHTML]="descriptionLine.text"></span>
+</h2>

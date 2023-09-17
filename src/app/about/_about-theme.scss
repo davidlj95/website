@@ -1,0 +1,22 @@
+@use "animations";
+@use "profile-picture/profile-picture-theme";
+@use "contact-social-icons/contact-social-icons-theme";
+@use "contact-traditional-icons/contact-traditional-icons-theme";
+
+@mixin color($theme) {
+  app-about {
+    @include profile-picture-theme.color($theme);
+    @include contact-traditional-icons-theme.color($theme);
+    @include contact-social-icons-theme.color($theme);
+  }
+}
+
+@mixin motion() {
+  app-about {
+    @include profile-picture-theme.motion()
+  }
+}
+
+@mixin theme($theme) {
+  @include color($theme);
+}

@@ -1,0 +1,21 @@
+@use "margins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: margins.$s;
+
+  h2 {
+    font-size: 1.1em;
+    text-align: left;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: margins.$s;
+
+    > span {
+      font-size: 1em;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@use "borders";
+
+@mixin color($theme) {
+  $background-palette: map-get($theme, background);
+
+  app-no-script {
+    background: map-get($background-palette, z1);
+    border-bottom-color: borders.panel-color($theme);
+  }
+}

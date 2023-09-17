@@ -1,0 +1,28 @@
+@use "breakpoints";
+@use "margins";
+
+:host {
+  ul {
+    @include breakpoints.xs {
+      margin-left: 0;
+    }
+
+    // Position in same place as Material Symbols from app-contact-traditional-icons
+    margin-left: 2.75px;
+    display: flex;
+    flex-direction: row;
+    gap: margins.$m;
+
+    @include breakpoints.xs() {
+      justify-content: center;
+    }
+
+    li {
+      height: 32px;
+    }
+
+    fa-icon {
+      font-size: 26.5px; // to take 32px height;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { Api, Apps, Build, Code, History } from './material-symbols';
+
 /**
  * Metadata used around the app. Either in the Angular app or accessory files.
  *
@@ -14,23 +16,23 @@ const YEARS_OF_EXPERIENCE = Math.abs(
 )
 const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
   {
-    symbol: 'code',
+    symbol: Code,
     text: 'Full stack software engineer',
   },
   {
-    symbol: 'history',
+    symbol: History,
     text: `${YEARS_OF_EXPERIENCE}+ years of experience`,
   },
   {
-    symbol: 'apps',
+    symbol: Apps,
     text: 'Web apps & hybrid mobile apps',
   },
   {
-    symbol: 'api',
+    symbol: Api,
     text: 'REST APIs backends',
   },
   {
-    symbol: 'build',
+    symbol: Build,
     text: 'CI/CD, DevOps, Cloud',
   },
 ]
