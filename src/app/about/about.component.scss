@@ -43,18 +43,12 @@
         display: flex;
         gap: margins.$m;
         flex-wrap: wrap;
+        flex-direction: column;
 
         @include breakpoints.xs {
           flex-basis: 100%;
           justify-content: center;
-        }
-
-        > * {
-          flex-basis: 50%;
-
-          @include breakpoints.xs {
-            flex-basis: unset;
-          }
+          flex-direction: row;
         }
       }
     }
