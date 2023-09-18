@@ -150,12 +150,6 @@ won't be in sync.
 
 ## Quirks
 
-### Symlinked static assets don't work when serving locally
-
-When using Angular development server (either regular or SSR one), symbolic links seem not to work for static assets.
-So for instance `/profile.jpg` which is symlinked to `/assets/img/og.jpg` won't be served. And the server will redirect
-you towards main page (`/`). It works when building though, so it will appear in the built version.
-
 ## Rendering font subsets
 
 Some fonts included are a subset of a big font file. Before doing anything, please run

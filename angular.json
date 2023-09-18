@@ -38,7 +38,12 @@
               "src/assets",
               "src/site.webmanifest",
               "src/browserconfig.xml",
-              "src/profile.jpg",
+              {
+                "glob": "profile.jpg",
+                "input": "src/",
+                "output": "/",
+                "followSymlinks": true
+              },
               "src/.well-known",
               "src/robots.txt",
               "src/humans.txt"
