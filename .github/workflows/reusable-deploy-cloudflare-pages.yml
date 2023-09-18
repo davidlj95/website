@@ -61,6 +61,8 @@ jobs:
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
           apiToken: ${{ secrets.cloudflare-api-token }}
+          # Somehow if this is not set, it deploys to production when building on a PR
+          branch:  ${{ github.head_ref || github.ref }}
           projectName: 'davidlj95'
           directory: 'browser'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
