@@ -53,7 +53,8 @@ const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
   ),
   new DescriptionLineImpl({
       symbol: History,
-      html: `${YEARS_OF_EXPERIENCE}+ years <a class="craft" href="https://manifesto.softwarecraftsmanship.org/">crafting</a>:`,
+      html: `${YEARS_OF_EXPERIENCE}+ years \
+<a class="craft" href="https://manifesto.softwarecraftsmanship.org/">crafting</a>:`,
     }, [
       new DescriptionLineImpl({
           symbol: Apps,
@@ -80,7 +81,8 @@ const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
         }),
         new DescriptionLineImpl({
           symbol: Login,
-          html: '<a href="https://www.cloudflare.com/en-gb/learning/access-management/authn-vs-authz/">AuthNZ</a>: <a href="https://oauth.net/2/">OAuth 2</a> & <a href="">SSO</a>',
+          html: `<a href="https://www.cloudflare.com/en-gb/learning/access-management/authn-vs-authz/">AuthNZ</a>: \
+<a href="https://oauth.net/2/">OAuth 2</a> & <a href="https://www.okta.com/blog/2021/02/single-sign-on-sso/">SSO</a>`,
         }),
       ]),
       new DescriptionLineImpl({
@@ -101,7 +103,8 @@ const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
         }),
         new DescriptionLineImpl({
           symbol: Cloud,
-          html: '<a href="https://github.com/cncf/toc/blob/main/DEFINITION.md">Cloud native</a> & <a href="https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac">IaC</a>',
+          html: `<a href="https://github.com/cncf/toc/blob/main/DEFINITION.md">Cloud native</a> & \
+<a href="https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac">IaC</a>`,
         }),
       ]),
     ],
