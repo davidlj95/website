@@ -1,0 +1,55 @@
+@use "margins";
+
+app-description-line {
+  div.item {
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+    font-size: 1.5rem;
+
+    a {
+      text-decoration-line: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    .symbol {
+      margin-right: margins.$s;
+    }
+
+    .material-symbols-outlined {
+      font-size: 1em;
+      font-variation-settings: 'FILL' 1,
+      'wght' 700,
+      'GRAD' 0,
+      'opsz' 24
+    }
+
+    button {
+      background: transparent;
+      color: inherit;
+      border: none;
+      cursor: pointer;
+      vertical-align: -3px;
+    }
+  }
+
+  ul > li {
+    display: flex;
+    flex-direction: column;
+    gap: margins.$m;
+
+    > app-description-line {
+      margin-left: margins.$l;
+    }
+  }
+
+  &:has(> ul):not([data-indent-level="0"]) {
+    > .item {
+      cursor: pointer;
+    }
+
+    > button {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,24 +1,5 @@
 <ul>
-  <ng-container *ngFor="let descriptionLine of descriptionLines"
-                [ngTemplateOutlet]="lineTemplate"
-                [ngTemplateOutletContext]="{line:descriptionLine}"
-  >
-  </ng-container>
-  <ng-template #lineTemplate let-line='line'>
-
-    <li>
-      <div class="item">
-        <span class="material-symbols-outlined">{{ line.symbol }}</span>
-        <span [innerHtml]="line.html">></span>
-      </div>
-      <ul *ngIf="line.lines">
-        <!--suppress TypeScriptValidateJSTypes -->
-        <ng-container *ngFor="let subLine of line.lines"
-                      [ngTemplateOutlet]="lineTemplate"
-                      [ngTemplateOutletContext]="{line:subLine}"
-        >
-        </ng-container>
-      </ul>
-    </li>
-  </ng-template>
+  <li *ngFor="let descriptionLine of metadata.descriptionLines">
+    <app-description-line [line]="descriptionLine"></app-description-line>
+  </li>
 </ul>

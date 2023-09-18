@@ -1,5 +1,4 @@
-import { Component, Inject } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { METADATA } from '../../common/injection-tokens';
 import { Metadata } from '../../metadata';
 
@@ -7,17 +6,11 @@ import { Metadata } from '../../metadata';
   selector: 'app-description',
   templateUrl: './description.component.html',
   styleUrls: ['./description.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DescriptionComponent {
-  public descriptionLines = this.metadata.descriptionLines
-    .map((descriptionLine) => ({
-      ...descriptionLine,
-      html: this.sanitizer.bypassSecurityTrustHtml(descriptionLine.html),
-    }))
-
   constructor(
-    @Inject(METADATA) private metadata: Metadata,
-    private sanitizer: DomSanitizer,
+    @Inject(METADATA) protected metadata: Metadata,
   ) {
   }
 }
