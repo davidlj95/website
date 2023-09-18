@@ -2,18 +2,19 @@ Hi, I'm David LJ. Also known as davidlj95 in the cyberspace. I happen to be the 
 Would you have guessed that? Well if you knew I'm a software engineer, maybe you did! Some things about me:
 
 ┌ Senior software engineer
-└ 9+ years crafting:
-  ├ Frontends
-  │ ├ Cross-platform mobile apps
-  │ └ Websites and web apps
-  ├ Backends
-  │ ├ Relational databases
-  │ └ AuthNZ: OAuth 2 & SSO
-  └ Infrastructure & tooling
-    ├ CI/CD pipelines
-    ├ Shell scripting
-    ├ Containerization
-    └ Cloud native & IaC
+├ 9+ years crafting:
+│ ├ Frontends
+│ │ ├ Cross-platform mobile apps
+│ │ └ Websites and web apps
+│ ├ Backends
+│ │ ├ Relational databases
+│ │ └ AuthNZ: OAuth 2 & SSO
+│ └ Infrastructure & tooling
+│   ├ CI/CD pipelines
+│   ├ Shell scripting
+│   ├ Containerization
+│   └ Cloud native & IaC
+└ With security in mind
 
 Visit the website for more info!
 

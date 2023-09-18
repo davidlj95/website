@@ -6,7 +6,7 @@ import {
   Dns,
   History,
   Login,
-  Robot2,
+  Robot2, Security,
   Smartphone,
   Terminal,
   Web,
@@ -109,6 +109,10 @@ const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
       ]),
     ],
   ),
+  new DescriptionLineImpl({
+    symbol: Security,
+    html: `With <a href="https://www.cisa.gov/securebydesign#:~:text=What%20is%20Secure%20by%20Design%3F">security in mind</a>`,
+  }),
 ]
 
 export interface DescriptionLine {
@@ -121,20 +125,16 @@ export interface DescriptionLine {
 const DOMAIN_NAME = `${NICKNAME}.com`;
 
 const descriptionLinesToText = (lines: ReadonlyArray<DescriptionLine>): string => {
-  let text = '';
-  lines.forEach((line, index) => {
-    text += line.text
-    if (index != lines.length - 1) {
-      text += '. '
-    }
-    if (line.lines && line.lines.length > 0) {
-      const formatter = new Intl.ListFormat('en')
-      text += ' ' + formatter.format(
+  const formatter = new Intl.ListFormat('en')
+  return lines.flatMap((line, index) =>
+    [
+      line.text.replace(/:$/, ''),
+      line.lines && line.lines.length ? ' ' + formatter.format(
         line.lines.map((subLine) => subLine.text.toLowerCase()),
-      )
-    }
-  })
-  return text
+      ) : '',
+      index != lines.length - 1 ? '. ' : '',
+    ],
+  ).join('')
 }
 export const METADATA = {
   nickname: NICKNAME,

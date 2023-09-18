@@ -12,7 +12,7 @@ for line in descriptionLines
   endif
   echo ' ' | append: line.text | append: '\n'
   for subline in line.lines
-    echo '  '
+    echo '│ '
     unless forloop.last
       echo '├'
     else
@@ -21,7 +21,7 @@ for line in descriptionLines
     echo ' ' | append: subline.text | append: '\n'
     assign last_subline = forloop.last
     for subsubline in subline.lines
-      echo '  '
+      echo '│ '
       if last_subline
         echo ' '
       else
