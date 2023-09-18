@@ -1,8 +1,43 @@
 Hi, I'm {{ realName }}. Also known as {{ nickname }} in the cyberspace. I happen to be the author of my own site too.
 Would you have guessed that? Well if you knew I'm a software engineer, maybe you did! Some things about me:
 
-{% for descriptionLine in descriptionLines %}* {{ descriptionLine.emoji }} {{ descriptionLine.text }}
-{% endfor %}
+{% liquid
+for line in descriptionLines
+  if forloop.first
+    echo '┌'
+  elsif forloop.last
+    echo '└'
+  else
+    echo '├'
+  endif
+  echo ' ' | append: line.text | append: '\n'
+  for subline in line.lines
+    echo '  '
+    unless forloop.last
+      echo '├'
+    else
+      echo '└'
+    endunless
+    echo ' ' | append: subline.text | append: '\n'
+    assign last_subline = forloop.last
+    for subsubline in subline.lines
+      echo '  '
+      if last_subline
+        echo ' '
+      else
+        echo '│'
+      endif
+      echo ' '
+      unless forloop.last
+        echo '├'
+      else
+        echo '└'
+      endunless
+      echo ' ' | append: subsubline.text | append: '\n'
+    endfor
+  endfor
+endfor
+%}
 Visit the website for more info!
 
 You may wonder: why this thing is here? Well was reading about "robots.txt" in Wikipedia when building this site and

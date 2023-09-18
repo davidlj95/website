@@ -1,4 +1,16 @@
-import { Api, Apps, Build, Code, History } from './material-symbols';
+import {
+  Apps,
+  Build, Cloud,
+  Code,
+  Database, DeployedCode,
+  Dns,
+  History,
+  Login,
+  Robot2,
+  Smartphone,
+  Terminal,
+  Web,
+} from './material-symbols';
 
 /**
  * Metadata used around the app. Either in the Angular app or accessory files.
@@ -14,47 +26,120 @@ const YEARS_OF_EXPERIENCE = Math.abs(
   // Oh dear JavaScript, why you make things so difficult? https://stackoverflow.com/a/24181701/3263250
   new Date(TIMESTAMP_DIFF).getUTCFullYear() - 1970,
 )
+
+class DescriptionLineImpl implements DescriptionLine {
+  public symbol: string;
+  public html: string;
+  public text: string;
+
+  constructor({symbol, html, text}: {
+    symbol: string,
+    html: string,
+    text?: string
+  }, public lines?: ReadonlyArray<DescriptionLine>) {
+    this.symbol = symbol;
+    this.html = html;
+    this.text = text ??
+      // Strip HTML tags
+      html.replace(/(<([^>]+)>)/gi, '');
+  }
+}
+
 const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
-  {
-    symbol: Code,
-    text: 'Full stack software engineer',
-  },
-  {
-    symbol: History,
-    text: `${YEARS_OF_EXPERIENCE}+ years of experience`,
-  },
-  {
-    symbol: Apps,
-    text: 'Web apps & hybrid mobile apps',
-  },
-  {
-    symbol: Api,
-    text: 'REST APIs backends',
-  },
-  {
-    symbol: Build,
-    text: 'CI/CD, DevOps, Cloud',
-  },
+  new DescriptionLineImpl({
+      symbol: Code,
+      html: 'Senior software engineer',
+    },
+  ),
+  new DescriptionLineImpl({
+      symbol: History,
+      html: `${YEARS_OF_EXPERIENCE}+ years <a class="craft" href="https://manifesto.softwarecraftsmanship.org/">crafting</a>:`,
+    }, [
+      new DescriptionLineImpl({
+          symbol: Apps,
+          html: 'Frontends',
+        },
+        [
+          new DescriptionLineImpl({
+            symbol: Smartphone,
+            html: '<a href="https://www.linfo.org/cross-platform.html">Cross-platform</a> mobile apps',
+          }),
+          new DescriptionLineImpl({
+            symbol: Web,
+            html: 'Websites and web apps',
+          }),
+        ],
+      ),
+      new DescriptionLineImpl({
+        symbol: Dns,
+        html: 'Backends',
+      }, [
+        new DescriptionLineImpl({
+          symbol: Database,
+          html: 'Relational databases',
+        }),
+        new DescriptionLineImpl({
+          symbol: Login,
+          html: '<a href="https://www.cloudflare.com/en-gb/learning/access-management/authn-vs-authz/">AuthNZ</a>: <a href="https://oauth.net/2/">OAuth 2</a> & <a href="">SSO</a>',
+        }),
+      ]),
+      new DescriptionLineImpl({
+        symbol: Build,
+        html: 'Infrastructure & tooling',
+      }, [
+        new DescriptionLineImpl({
+          symbol: Robot2,
+          html: '<a href="https://about.gitlab.com/topics/ci-cd/">CI/CD</a> pipelines',
+        }),
+        new DescriptionLineImpl({
+          symbol: Terminal,
+          html: 'Shell scripting',
+        }),
+        new DescriptionLineImpl({
+          symbol: DeployedCode,
+          html: '<a href="https://aws.amazon.com/what-is/containerization/">Containerization</a>',
+        }),
+        new DescriptionLineImpl({
+          symbol: Cloud,
+          html: '<a href="https://github.com/cncf/toc/blob/main/DEFINITION.md">Cloud native</a> & <a href="https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac">IaC</a>',
+        }),
+      ]),
+    ],
+  ),
 ]
 
 export interface DescriptionLine {
   symbol: string;
-  text: string;
+  html: string;
+  text: string,
+  lines?: ReadonlyArray<DescriptionLine>;
 }
 
 const DOMAIN_NAME = `${NICKNAME}.com`;
 
+const descriptionLinesToText = (lines: ReadonlyArray<DescriptionLine>): string => {
+  let text = '';
+  lines.forEach((line, index) => {
+    text += line.text
+    if (index != lines.length - 1) {
+      text += '. '
+    }
+    if (line.lines && line.lines.length > 0) {
+      const formatter = new Intl.ListFormat('en')
+      text += ' ' + formatter.format(
+        line.lines.map((subLine) => subLine.text.toLowerCase()),
+      )
+    }
+  })
+  return text
+}
 export const METADATA = {
   nickname: NICKNAME,
   realName: REAL_NAME,
   siteName: `${REAL_NAME} 🔗 @${NICKNAME}`,
   descriptionLines: DESCRIPTION_LINES,
-  description: DESCRIPTION_LINES
-    .map((descriptionLine) => descriptionLine.text)
-    // Strip HTML tags
-    .map((lineText) => lineText.replace(/(<([^>]+)>)/gi, ''))
-    .concat(['Get to know me better here'])
-    .join('. '),
+  description: descriptionLinesToText(DESCRIPTION_LINES)
+    .concat('. Get to know me more here'),
   domainName: DOMAIN_NAME,
   authorUrl: new URL(`https://${DOMAIN_NAME}`),
   // Chosen dark theme background color z0 level (theming.scss)

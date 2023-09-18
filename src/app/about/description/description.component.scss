@@ -1,21 +1,55 @@
 @use "margins";
+@use "paddings";
 
 :host {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: margins.$s;
+  padding: paddings.$m;
 
-  h2 > span {
-    font-size: 1.1rem;
-    text-align: left;
-    width: fit-content;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: margins.$m;
+  }
+
+  div.item {
     display: flex;
     align-items: center;
-    gap: margins.$s;
+    column-gap: margins.$s;
+    row-gap: margins.$m;
+    word-break: break-word;
 
-    > span {
-      font-size: 1em;
+    ::ng-deep a {
+      text-decoration-line: underline;
+      text-decoration-thickness: 1px;
     }
+    ::ng-deep a.craft {
+      text-decoration-line: underline;
+      text-decoration-color: currentColor;
+    }
+  }
+
+  ul > li {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: margins.$m;
+
+    > ul {
+      margin-left: margins.$l;
+    }
+  }
+
+  > ul > li > ul > li > .item {
+    font-weight: bold;
+  }
+
+  .material-symbols-outlined {
+    font-size: 1em;
+    font-variation-settings: 'FILL' 1,
+    'wght' 700,
+    'GRAD' 0,
+    'opsz' 24
   }
 }
