@@ -7,6 +7,7 @@ Would you have guessed that? Well if you knew I'm a software engineer, maybe you
 │ │ ├ Cross-platform mobile apps
 │ │ └ Websites and web apps
 │ ├ Backends
+│ │ ├ HTTP REST APIs
 │ │ ├ Relational databases
 │ │ └ AuthNZ: OAuth 2 & SSO
 │ └ Infrastructure & tooling

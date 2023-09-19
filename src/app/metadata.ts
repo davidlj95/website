@@ -1,4 +1,5 @@
 import {
+  Api,
   Apps,
   Build, Cloud,
   Code,
@@ -75,6 +76,10 @@ const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
         symbol: Dns,
         html: 'Backends',
       }, [
+        new DescriptionLineImpl({
+          symbol: Api,
+          html: `HTTP <a href="https://www.ibm.com/topics/rest-apis">REST APIs</a>`,
+        }),
         new DescriptionLineImpl({
           symbol: Database,
           html: 'Relational databases',
