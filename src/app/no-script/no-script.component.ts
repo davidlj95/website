@@ -8,7 +8,7 @@ import { Warning } from '../material-symbols';
   encapsulation: ViewEncapsulation.None,
 })
 export class NoScriptComponent {
-  protected Icons = {
-    Warning: Warning,
+  protected MaterialSymbol = {
+    Warning,
   }
 }

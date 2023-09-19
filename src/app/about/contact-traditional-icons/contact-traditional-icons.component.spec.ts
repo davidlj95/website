@@ -26,7 +26,7 @@ describe('ContactTraditionalIconsComponent', () => {
     component.items.forEach((item, index) => {
       const itemElement = itemElements[index];
       const iconText = itemElement.nativeElement.textContent;
-      expect(iconText).withContext(`item ${index} icon`).toEqual(item.icon);
+      expect(iconText).withContext(`item ${index} icon`).toEqual(item.materialSymbol);
 
       // noinspection DuplicatedCode
       const anchorElement = itemElement.query(By.css('a'));

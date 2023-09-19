@@ -9,9 +9,10 @@ import { ColorSchemeService } from './color-scheme.service';
 })
 export class HeaderComponent {
   @HostBinding('attr.role') ariaRole = 'toolbar';
-  public Icons = {
-    DarkTheme: DarkTheme,
-    LightTheme: LightTheme,
+
+  protected MaterialSymbol = {
+    DarkTheme,
+    LightTheme,
   };
 
   constructor(
