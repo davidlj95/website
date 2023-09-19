@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { MockComponent, MockProvider } from 'ng-mocks';
-import { getComponentSelector } from '../../../test/helpers/component-testers';
+import { MockProvider } from 'ng-mocks';
+import { MATERIAL_SYMBOLS_CLASS } from '../../../test/constants';
 import { METADATA } from '../../common/injection-tokens';
 import { Build, Code, History } from '../../material-symbols';
 import { DescriptionLine, Metadata } from '../../metadata';
-import { DescriptionLineComponent } from './description-line/description-line.component';
 
 import { DescriptionComponent } from './description.component';
 
@@ -20,6 +19,8 @@ describe('DescriptionComponent', () => {
       ],
     },
   ]
+  const allFakeDescriptionLines = fakeDescriptionLines
+    .flatMap((line) => line.lines && line.lines.length ? [line, ...line.lines] : line)
   const fakeMetadata: Metadata = ({
     descriptionLines: fakeDescriptionLines,
   } as Pick<Metadata, 'descriptionLines'>) as Metadata;
@@ -28,7 +29,6 @@ describe('DescriptionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         DescriptionComponent,
-        MockComponent(DescriptionLineComponent),
       ],
       providers: [
         MockProvider(METADATA, fakeMetadata),
@@ -43,11 +43,17 @@ describe('DescriptionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render all parent description lines with the component', () => {
-    const lineElements = fixture.debugElement.queryAll(By.css(getComponentSelector(DescriptionLineComponent)));
-    expect(lineElements.length).toBe(fakeDescriptionLines.length);
+  it('should contain all description lines with its symbol and text', () => {
+    const lineElements = fixture.debugElement.queryAll(By.css('.line'));
+    expect(lineElements.length).toBe(allFakeDescriptionLines.length);
     lineElements.forEach((lineElement, index) => {
-      expect(lineElement.componentInstance.line).withContext(`line ${index}`).toEqual(fakeDescriptionLines[index])
+      const descriptionLine= allFakeDescriptionLines[index];
+
+      const materialSymbolSpan = lineElement.query(By.css( `.${MATERIAL_SYMBOLS_CLASS}`))
+      expect(materialSymbolSpan.nativeElement.textContent).withContext(`item ${index} symbol`).toEqual(descriptionLine.symbol)
+
+      const textSpan = lineElement.query(By.css('.content'))
+      expect(textSpan.nativeElement.innerHTML).withContext(`item ${index} html`).toEqual(descriptionLine.html)
     });
   })
 });

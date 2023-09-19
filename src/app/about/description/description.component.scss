@@ -1,25 +1,59 @@
 @use "margins";
 @use "paddings";
 
-app-description {
+:host {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: paddings.$m;
 
-  ul, app-description-line {
+  ul {
     display: flex;
     flex-direction: column;
     gap: margins.$m;
   }
 
+  ul > li {
+    display: flex;
+    flex-direction: column;
+    gap: margins.$m;
+  }
+
+  // Indentation for nested lists
+  ul ul {
+    margin-left: margins.$l;
+  }
+
+  .line {
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+    font-size: 1.5rem;
+
+    ::ng-deep a {
+      text-decoration-line: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    .symbol {
+      margin-right: margins.$s;
+    }
+
+    .material-symbols-outlined {
+      font-size: 1em;
+      font-variation-settings: 'FILL' 1,
+      'wght' 700,
+      'GRAD' 200,
+      'opsz' 24
+    }
+  }
+
   // Content-specific customizations
-  a.craft {
+  ::ng-deep a.craft {
     text-decoration-line: underline;
     text-decoration-color: currentColor;
   }
 
-  app-description-line[ng-reflect-indent-level="1"] > .item {
+  > ul > li > ul > li > .line {
     font-weight: bold;
   }
 }

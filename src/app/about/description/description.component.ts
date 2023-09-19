@@ -1,4 +1,5 @@
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { METADATA } from '../../common/injection-tokens';
 import { Metadata } from '../../metadata';
 
@@ -6,11 +7,11 @@ import { Metadata } from '../../metadata';
   selector: 'app-description',
   templateUrl: './description.component.html',
   styleUrls: ['./description.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class DescriptionComponent {
   constructor(
     @Inject(METADATA) protected metadata: Metadata,
+    protected sanitizer: DomSanitizer,
   ) {
   }
 }

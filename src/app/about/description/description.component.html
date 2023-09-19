@@ -1,5 +1,17 @@
-<ul>
-  <li *ngFor="let descriptionLine of metadata.descriptionLines">
-    <app-description-line [line]="descriptionLine"></app-description-line>
-  </li>
-</ul>
+<ng-container [ngTemplateOutlet]="linesTemplate"
+              [ngTemplateOutletContext]="{lines:metadata.descriptionLines}">
+</ng-container>
+<ng-template #linesTemplate let-lines='lines'>
+  <ul>
+    <li *ngFor="let line of lines">
+      <div class="line">
+        <span class="symbol material-symbols-outlined">{{ line.symbol }}</span>
+        <span class="content" [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.html)"></span>
+      </div>
+      <ng-container *ngIf="line.lines"
+                    [ngTemplateOutlet]="linesTemplate"
+                    [ngTemplateOutletContext]="{lines:line.lines}">
+      </ng-container>
+    </li>
+  </ul>
+</ng-template>

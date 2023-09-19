@@ -20,7 +20,6 @@ import { ProfilePictureComponent } from './about/profile-picture/profile-picture
 import { ContactTraditionalIconsComponent } from './about/contact-traditional-icons/contact-traditional-icons.component';
 import { ContactSocialIconsComponent } from './about/contact-social-icons/contact-social-icons.component';
 import { DescriptionComponent } from './about/description/description.component';
-import { DescriptionLineComponent } from './about/description/description-line/description-line.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { DescriptionLineComponent } from './about/description/description-line/d
     ContactTraditionalIconsComponent,
     ContactSocialIconsComponent,
     DescriptionComponent,
-    DescriptionLineComponent,
   ],
   imports: [
     BrowserModule,
