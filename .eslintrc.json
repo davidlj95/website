@@ -4,19 +4,6 @@
     "projects/**/*"
   ],
   "overrides": [
-    // Introduced when adding an arrow function for "ignores" in commitlint.config.js
-    {
-      "files": [
-        "*.js"
-      ],
-      "extends": [
-        "eslint:recommended"
-      ],
-      "env": {
-        "es6": true,
-        "node": true
-      }
-    },
     {
       "files": [
         "*.ts"
