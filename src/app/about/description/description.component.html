@@ -1,4 +1,7 @@
 <h2 *ngFor="let descriptionLine of descriptionLines">
-  <span class="material-symbols-outlined">{{ descriptionLine.symbol }}</span>
-  <span [innerHTML]="descriptionLine.text"></span>
+  <span aria-hidden="true">
+    <span class="material-symbols-outlined">{{ descriptionLine.symbol }}</span>
+    <span [innerHTML]="descriptionLine.text"></span>
+  </span>
+  <span class="sr-only" [innerHtml]="descriptionLine.text"></span>
 </h2>

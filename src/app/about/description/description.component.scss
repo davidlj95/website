@@ -6,8 +6,8 @@
   justify-content: center;
   gap: margins.$s;
 
-  h2 {
-    font-size: 1.1em;
+  h2 > span {
+    font-size: 1.1rem;
     text-align: left;
     width: fit-content;
     display: flex;
