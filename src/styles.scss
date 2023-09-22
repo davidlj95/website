@@ -21,6 +21,9 @@ code, pre {
   @include typographies.monospace-font();
 }
 
+// This comes with Font Awesome already, but we need it in our app for accessibility
+.sr-only {}
+
 @include typographies.material-symbols-font();
 
 @mixin app-color($theme) {
