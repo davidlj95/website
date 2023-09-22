@@ -2,8 +2,16 @@
   <div class="profile">
     <app-profile-picture></app-profile-picture>
     <h1>
-      <span>{{ realName }}</span>
-      <code>@{{ nickname }}</code>
+      <span aria-hidden="true">
+        <span>{{ realName }}</span>
+        <code>@{{ nickname }}</code>
+      </span>
+      <!-- Duplicated for accessibility
+        Otherwise, it was read twice: first as a group, then each element (<span>/<code>) separately.
+        https://stackoverflow.com/a/76001309/3263250 -->
+      <span class="sr-only">
+        {{ realName }} @{{ nickname }}
+      </span>
     </h1>
     <div class="contacts">
       <app-contact-traditional-icons></app-contact-traditional-icons>
