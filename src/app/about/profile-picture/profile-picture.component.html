@@ -4,7 +4,13 @@
      height="128" ngSrc="assets/img/profile_huh.png" width="128">
 <img alt="A portrait of {{ realName }}. Slightly smiling. Wears 80'ish glasses and a green and black plaid shirt"
      class="main"
-     height="128" ngSrc="assets/img/profile.png" priority width="128">
+     height="128" ngSrc="assets/img/profile.png" priority width="128" [tabindex]="hasBeenFocused ? -1 : 0"
+     (focus)="onFocus()">
 <div class="comment">
-  Hey! 👋 Did you <span class="touch">tap</span><span class="hover">hover</span> me?
+  <span aria-hidden="true">
+    Hey! 👋 Did you <span class="touch">tap</span><span class="hover">hover</span> me?
+  </span>
+  <span class="sr-only">
+    Hey! 👋 Nice to see you again
+  </span>
 </div>

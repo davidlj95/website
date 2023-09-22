@@ -22,6 +22,7 @@ $picture-size: 128px;
     right: 0;
     bottom: 0;
     opacity: 0;
+    visibility: hidden;
   }
 
   .comment {
@@ -90,7 +91,7 @@ $picture-size: 128px;
     }
   }
 
-  &:hover {
+  &:hover, &[data-has-been-focused]:focus {
     .comment {
       visibility: visible;
       opacity: 1;
@@ -105,10 +106,12 @@ $picture-size: 128px;
 
     .main {
       opacity: 0;
+      visibility: hidden;
     }
 
     .huh {
       opacity: 1;
+      visibility: visible;
     }
   }
 }
