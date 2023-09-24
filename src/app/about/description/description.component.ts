@@ -47,10 +47,6 @@ export class DescriptionComponent {
       .replace(/^\d/, '')
   }
 
-  toggleCollapsible() {
-    this.isExpanded ? this.collapse() : this.expand()
-  }
-
   collapse() {
     this.isExpanded = false
   }
