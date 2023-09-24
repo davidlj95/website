@@ -14,7 +14,7 @@ Would you have guessed that? Well if you knew I'm a software engineer, maybe you
 │   ├ CI/CD pipelines
 │   ├ Shell scripting
 │   ├ Containerization
-│   └ Cloud native & IaC
+│   └ Cloud native and Infrastructure as Code (IaC)
 └ With security in mind
 
 Visit the website for more info!

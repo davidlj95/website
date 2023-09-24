@@ -2,17 +2,7 @@
 @use "paddings";
 
 :host {
-  display: flex;
-  flex-direction: column;
-  padding: paddings.$m;
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: margins.$m;
-  }
-
-  ul > li {
+  &, ul {
     display: flex;
     flex-direction: column;
     gap: margins.$m;
@@ -23,28 +13,40 @@
     margin-left: margins.$l;
   }
 
-  .line {
+  .data{
     display: flex;
+    flex-direction: row;
     align-items: center;
     word-break: break-word;
     font-size: 1.5rem;
+    gap: margins.$s;
+  }
 
-    ::ng-deep a {
-      text-decoration-line: underline;
-      text-decoration-thickness: 1px;
-    }
+  ::ng-deep a {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+  }
 
-    .symbol {
-      margin-right: margins.$s;
-    }
+  .material-symbols-outlined {
+    font-size: 1em;
+    font-variation-settings: 'FILL' 1,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 24
+  }
 
-    .material-symbols-outlined {
-      font-size: 1em;
-      font-variation-settings: 'FILL' 1,
-      'wght' 700,
-      'GRAD' 200,
-      'opsz' 24
-    }
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-weight: bold;
+  }
+
+  .caret {
+    font-size: .5em;
+    width: .75em;
   }
 
   // Content-specific customizations
@@ -53,7 +55,7 @@
     text-decoration-color: currentColor;
   }
 
-  > ul > li > ul > li > .line {
-    font-weight: bold;
+  .data[aria-expanded="false"] + ul {
+    display: none;
   }
 }

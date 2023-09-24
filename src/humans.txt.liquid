@@ -10,17 +10,17 @@ for line in descriptionLines
   else
     echo '├'
   endif
-  echo ' ' | append: line.text | append: '\n'
-  for subline in line.lines
+  echo ' ' | append: line.data.text | append: '\n'
+  for subline in line.children
     echo '│ '
     unless forloop.last
       echo '├'
     else
       echo '└'
     endunless
-    echo ' ' | append: subline.text | append: '\n'
+    echo ' ' | append: subline.data.text | append: '\n'
     assign last_subline = forloop.last
-    for subsubline in subline.lines
+    for subsubline in subline.children
       echo '│ '
       if last_subline
         echo ' '
@@ -33,7 +33,7 @@ for line in descriptionLines
       else
         echo '└'
       endunless
-      echo ' ' | append: subsubline.text | append: '\n'
+      echo ' ' | append: subsubline.data.text | append: '\n'
     endfor
   endfor
 endfor

@@ -1,7 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, InjectionToken, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { METADATA } from '../../common/injection-tokens';
-import { Metadata } from '../../metadata';
+import { DescriptionLine } from '../../metadata';
 
 @Component({
   selector: 'app-description',
@@ -9,9 +8,66 @@ import { Metadata } from '../../metadata';
   styleUrls: ['./description.component.scss'],
 })
 export class DescriptionComponent {
+  @Input({required: true}) public line!: DescriptionLine
+  @Input() public depth: number = 0
+
+  protected EXPANDED_DEFAULT = true
+  public isExpanded = this.EXPANDED_DEFAULT
+
   constructor(
-    @Inject(METADATA) protected metadata: Metadata,
     protected sanitizer: DomSanitizer,
+    @Inject(COLLAPSIBLE_CONFIG) protected config: CollapsibleConfiguration,
   ) {
   }
+
+  public get isCollapsible() {
+    return this.depth >= this.config.collapsibleStartAtDepth && this.line.children.length
+  }
+
+  public get sluggedId(): string | undefined {
+    if (!this.isCollapsible) {
+      return
+    }
+    return this.config.listIdPrefix + this.line.data?.text.toString().toLowerCase()
+      .replace(/\s+/g, '-')         // Replace spaces with -
+      .replace(/[^\w-]+/g, '')      // Remove all non-word chars
+      .replace(/--+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')           // Trim - from start of text
+      .replace(/-+$/, '')           // Trim - from end of text
+      .replace(/^\d/, '')
+  }
+
+  toggleCollapsible() {
+    this.isExpanded ? this.collapse() : this.expand()
+  }
+
+  collapse() {
+    this.isExpanded = false
+  }
+
+  expand() {
+    this.isExpanded = true
+  }
 }
+
+export interface CollapsibleConfiguration {
+  collapsibleStartAtDepth: number
+  collapsedIcon: string
+  expandedIcon: string
+  listIdPrefix: string
+}
+
+/* istanbul ignore next */
+export const COLLAPSIBLE_CONFIG = new InjectionToken<CollapsibleConfiguration>(
+  'Collapsible configuration for description component', {
+    factory: () => DEFAULT_COLLAPSIBLE_CONFIG,
+  },
+)
+
+const DEFAULT_COLLAPSIBLE_CONFIG: CollapsibleConfiguration = {
+  collapsibleStartAtDepth: 2,
+  collapsedIcon: '▶',
+  expandedIcon: '▼',
+  listIdPrefix: 'description-',
+}
+

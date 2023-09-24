@@ -1,13 +1,16 @@
 import {
   Api,
   Apps,
-  Build, Cloud,
+  Build,
+  Cloud,
   Code,
-  Database, DeployedCode,
+  Database,
+  DeployedCode,
   Dns,
   History,
   Login,
-  Robot2, Security,
+  Robot2,
+  Security,
   Smartphone,
   Terminal,
   Web,
@@ -28,18 +31,33 @@ const YEARS_OF_EXPERIENCE = Math.abs(
   new Date(TIMESTAMP_DIFF).getUTCFullYear() - 1970,
 )
 
-class DescriptionLineImpl implements DescriptionLine {
-  public symbol: string;
-  public html: string;
-  public text: string;
+export class DescriptionLine {
+  public readonly data?: DescriptionLineData
+  public readonly children: ReadonlyArray<DescriptionLine>
 
-  constructor({symbol, html, text}: {
-    symbol: string,
-    html: string,
-    text?: string
-  }, public lines?: ReadonlyArray<DescriptionLine>) {
-    this.symbol = symbol;
-    this.html = html;
+  public constructor(
+    data?: DescriptionLineData,
+    children?: ReadonlyArray<DescriptionLine>,
+  ) {
+    this.data = data
+    this.children = children ?? []
+  }
+
+  public static fromData(dataArg: ConstructorParameters<typeof DescriptionLineData>[0], children?: ReadonlyArray<DescriptionLine>) {
+    return new this(new DescriptionLineData(dataArg), children)
+  }
+}
+
+export class DescriptionLineData {
+  public readonly symbol: string
+  public readonly html: string
+  public readonly text: string
+
+  public constructor(
+    {symbol, html, text}: { symbol: string, html: string, text?: string },
+  ) {
+    this.symbol = symbol
+    this.html = html
     this.text = text ??
       // Strip HTML tags
       html.replace(/(<([^>]+)>)/gi, '');
@@ -47,85 +65,81 @@ class DescriptionLineImpl implements DescriptionLine {
 }
 
 const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
-  new DescriptionLineImpl({
+  DescriptionLine.fromData({
       symbol: Code,
       html: 'Senior software engineer',
     },
   ),
-  new DescriptionLineImpl({
+  DescriptionLine.fromData({
       symbol: History,
       html: `${YEARS_OF_EXPERIENCE}+ years \
 <a class="craft" href="https://manifesto.softwarecraftsmanship.org/">crafting</a>:`,
     }, [
-      new DescriptionLineImpl({
+      DescriptionLine.fromData({
           symbol: Apps,
           html: 'Frontends',
         },
         [
-          new DescriptionLineImpl({
+          DescriptionLine.fromData({
             symbol: Smartphone,
             html: '<a href="https://www.linfo.org/cross-platform.html">Cross-platform</a> mobile apps',
           }),
-          new DescriptionLineImpl({
+          DescriptionLine.fromData({
             symbol: Web,
             html: 'Websites and web apps',
           }),
         ],
       ),
-      new DescriptionLineImpl({
+      DescriptionLine.fromData({
         symbol: Dns,
         html: 'Backends',
       }, [
-        new DescriptionLineImpl({
+        DescriptionLine.fromData({
           symbol: Api,
           html: `HTTP <a href="https://www.ibm.com/topics/rest-apis">REST APIs</a>`,
         }),
-        new DescriptionLineImpl({
+        DescriptionLine.fromData({
           symbol: Database,
           html: 'Relational databases',
         }),
-        new DescriptionLineImpl({
+        DescriptionLine.fromData({
           symbol: Login,
           html: `<a href="https://www.cloudflare.com/en-gb/learning/access-management/authn-vs-authz/">AuthNZ</a>: \
 <a href="https://oauth.net/2/">OAuth 2</a> & <a href="https://www.okta.com/blog/2021/02/single-sign-on-sso/">SSO</a>`,
         }),
       ]),
-      new DescriptionLineImpl({
+      DescriptionLine.fromData({
         symbol: Build,
         html: 'Infrastructure & tooling',
       }, [
-        new DescriptionLineImpl({
+        DescriptionLine.fromData({
           symbol: Robot2,
           html: '<a href="https://about.gitlab.com/topics/ci-cd/">CI/CD</a> pipelines',
         }),
-        new DescriptionLineImpl({
+        DescriptionLine.fromData({
           symbol: Terminal,
           html: 'Shell scripting',
         }),
-        new DescriptionLineImpl({
+        DescriptionLine.fromData({
           symbol: DeployedCode,
           html: '<a href="https://aws.amazon.com/what-is/containerization/">Containerization</a>',
         }),
-        new DescriptionLineImpl({
+        DescriptionLine.fromData({
           symbol: Cloud,
-          html: `<a href="https://github.com/cncf/toc/blob/main/DEFINITION.md">Cloud native</a> & \
-<a href="https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac">IaC</a>`,
+          html: `<a href="https://github.com/cncf/toc/blob/main/DEFINITION.md">Cloud native</a> \
+<span class="sr-only">and</span><span aria-hidden="true">&</span> \
+<a href="https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac" \
+aria-label="Infrastructure as Code">IaC</a>`,
+          text: `Cloud native and Infrastructure as Code (IaC)`
         }),
       ]),
     ],
   ),
-  new DescriptionLineImpl({
+  DescriptionLine.fromData({
     symbol: Security,
     html: `With <a href="https://www.cisa.gov/securebydesign#:~:text=What%20is%20Secure%20by%20Design%3F">security in mind</a>`,
   }),
 ]
-
-export interface DescriptionLine {
-  symbol: string;
-  html: string;
-  text: string,
-  lines?: ReadonlyArray<DescriptionLine>;
-}
 
 const DOMAIN_NAME = `${NICKNAME}.com`;
 
@@ -133,9 +147,9 @@ const descriptionLinesToText = (lines: ReadonlyArray<DescriptionLine>): string =
   const formatter = new Intl.ListFormat('en')
   return lines.flatMap((line, index) =>
     [
-      line.text.replace(/:$/, ''),
-      line.lines && line.lines.length ? ' ' + formatter.format(
-        line.lines.map((subLine) => subLine.text.toLowerCase()),
+      line.data?.text.replace(/:$/, '') ?? '',
+      line.children.length ? ' ' + formatter.format(
+        line.children.map((subLine) => subLine.data?.text.toLowerCase() ?? ''),
       ) : '',
       index != lines.length - 1 ? '. ' : '',
     ],

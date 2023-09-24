@@ -1,59 +1,251 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MockProvider } from 'ng-mocks';
-import { MATERIAL_SYMBOLS_CLASS } from '../../../test/constants';
-import { METADATA } from '../../common/injection-tokens';
-import { Build, Code, History } from '../../material-symbols';
-import { DescriptionLine, Metadata } from '../../metadata';
+import { getComponentSelector } from '../../../test/helpers/component-testers';
+import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols';
+import { expectIsHidden, expectIsVisible } from '../../../test/helpers/visibility';
+import { DescriptionLine } from '../../metadata';
 
-import { DescriptionComponent } from './description.component';
+import { COLLAPSIBLE_CONFIG, CollapsibleConfiguration, DescriptionComponent } from './description.component';
 
 describe('DescriptionComponent', () => {
   let component: DescriptionComponent;
   let fixture: ComponentFixture<DescriptionComponent>;
-  const fakeDescriptionLines: ReadonlyArray<DescriptionLine> = [
-    {symbol: Code, html: 'Line 1 HTML', text: 'Line 1 Text'},
-    {
-      symbol: Build, html: 'Line 2 HTML', text: 'Line 2 Text', lines: [
-        {symbol: History, html: 'Line 2.1 HTML', text: 'Line 2.1 Text'},
-      ],
-    },
-  ]
-  const allFakeDescriptionLines = fakeDescriptionLines
-    .flatMap((line) => line.lines && line.lines.length ? [line, ...line.lines] : line)
-  const fakeMetadata: Metadata = ({
-    descriptionLines: fakeDescriptionLines,
-  } as Pick<Metadata, 'descriptionLines'>) as Metadata;
+  const DATA_CLASS_SELECTOR = By.css('.data')
+  const LIST_SELECTOR = By.css('ul')
+  const CARET_SELECTOR = By.css('.caret')
+  const fakeConfig: CollapsibleConfiguration = {
+    collapsibleStartAtDepth: 1,
+    collapsedIcon: 'C -',
+    expandedIcon: 'E -',
+    listIdPrefix: 'fakePrefix-',
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        DescriptionComponent,
-      ],
+      declarations: [DescriptionComponent],
       providers: [
-        MockProvider(METADATA, fakeMetadata),
+        MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
       ],
     });
     fixture = TestBed.createComponent(DescriptionComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain all description lines with its symbol and text', () => {
-    const lineElements = fixture.debugElement.queryAll(By.css('.line'));
-    expect(lineElements.length).toBe(allFakeDescriptionLines.length);
-    lineElements.forEach((lineElement, index) => {
-      const descriptionLine= allFakeDescriptionLines[index];
+  function testShouldDisplaySymbolAndHtmlContent(fakeLine: DescriptionLine) {
+    it('should display the symbol and html content', () => {
+      const lineElement = fixture.debugElement.query(DATA_CLASS_SELECTOR);
 
-      const materialSymbolSpan = lineElement.query(By.css( `.${MATERIAL_SYMBOLS_CLASS}`))
-      expect(materialSymbolSpan.nativeElement.textContent).withContext(`item ${index} symbol`).toEqual(descriptionLine.symbol)
+      const materialSymbolSpan = lineElement.query(MATERIAL_SYMBOLS_SELECTOR)
+      expect(materialSymbolSpan.nativeElement.textContent).withContext('symbol').toEqual(fakeLine.data!.symbol)
+      expect(materialSymbolSpan.attributes['aria-hidden'])
+        .withContext('symbol is hidden from screen readers')
+        .toBe(true.toString())
 
-      const textSpan = lineElement.query(By.css('.content'))
-      expect(textSpan.nativeElement.innerHTML).withContext(`item ${index} html`).toEqual(descriptionLine.html)
-    });
+      const htmlSpan = lineElement.query(By.css('.content'))
+      expect(htmlSpan.nativeElement.innerHTML).withContext('html').toEqual(fakeLine.data!.html)
+    })
+  }
+
+  describe('data', () => {
+    describe('when line does not have data', () => {
+      beforeEach(() => {
+        component.line = new DescriptionLine(undefined)
+        fixture.detectChanges()
+      })
+      it('should not add the data element', () => {
+        expect(fixture.debugElement.query(DATA_CLASS_SELECTOR)).toBeNull()
+      })
+    })
+    describe('when line has data', () => {
+      const fakeLine: DescriptionLine = DescriptionLine.fromData({
+        symbol: 'foo', text: 'Fake text', html: 'Fake html',
+      })
+      beforeEach(() => {
+        component.line = fakeLine
+        fixture.detectChanges()
+      })
+      testShouldDisplaySymbolAndHtmlContent(fakeLine)
+    })
   })
-});
+
+  describe('children', () => {
+    describe('when does not have children', () => {
+      const fakeLine: DescriptionLine = new DescriptionLine(undefined, [])
+
+      beforeEach(() => {
+        component.line = fakeLine
+        fixture.detectChanges()
+      })
+
+      it('should not include the list element', () => {
+        expect(fixture.debugElement.query(LIST_SELECTOR)).toBeNull()
+      })
+    })
+    describe('when has children', () => {
+      const fakeLineWithChildren: DescriptionLine = new DescriptionLine(undefined, [
+        DescriptionLine.fromData({symbol: '', html: 'Child line 1'}),
+        DescriptionLine.fromData({symbol: '', html: 'Child line 2'}),
+        DescriptionLine.fromData({symbol: '', html: 'Child line 3'}),
+      ])
+      const fakeDepth = 2
+
+      beforeEach(() => {
+        component.line = fakeLineWithChildren
+        component.depth = fakeDepth
+        fixture.detectChanges()
+      })
+
+      it('should include the list element with all children lines', () => {
+        const listElement = fixture.debugElement.query(LIST_SELECTOR)
+        expect(listElement).toBeTruthy()
+
+        const childrenElements = listElement.queryAll(By.css('li'))
+        expect(childrenElements.length).toBe(fakeLineWithChildren.children.length)
+
+        childrenElements.forEach((childElement, index) => {
+          // Contains line element
+          const childLineElement = childElement.query(By.css(getComponentSelector(DescriptionComponent)))
+          expect(childLineElement)
+            .withContext(`child ${index} line element`).toBeTruthy()
+
+          // Line passed is the child one
+          expect(childLineElement.nativeElement.textContent).withContext(`child ${index} line`)
+            .toContain(fakeLineWithChildren.children[index].data!.html)
+
+          // Depth is increased by one
+          expect(childLineElement.attributes['ng-reflect-depth']).withContext(`child ${index} depth`)
+            .toBe((fakeDepth + 1).toString())
+        })
+      })
+    })
+  })
+
+  function testShouldNotDisplayCollapsibleControls() {
+    it('should not display collapsible controls', () => {
+      const lineElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
+      expect(lineElement).toBeTruthy()
+      expect(lineElement.name).not.toBe('button')
+
+      const caretElement = lineElement.query(CARET_SELECTOR)
+      expect(caretElement).toBeNull()
+    })
+  }
+
+  describe('collapsible', () => {
+    describe('when line has no children', () => {
+      const fakeLine: DescriptionLine = DescriptionLine.fromData({
+        symbol: 'foo', text: 'Fake text', html: 'Fake html',
+      })
+      beforeEach(() => {
+        component.line = fakeLine
+        fixture.detectChanges()
+      })
+      testShouldNotDisplayCollapsibleControls()
+      testShouldDisplaySymbolAndHtmlContent(fakeLine)
+    })
+    describe('when line has children', () => {
+      const fakeLine: DescriptionLine = DescriptionLine.fromData({
+        symbol: 'foo', text: 'Fake text', html: 'Fake html',
+      }, [
+        new DescriptionLine(),
+      ])
+
+      describe('when depth is below configured depth to start a collapsible', () => {
+        beforeEach(() => {
+          component.depth = fakeConfig.collapsibleStartAtDepth - 1
+          component.line = fakeLine
+          fixture.detectChanges()
+        })
+        testShouldNotDisplayCollapsibleControls()
+        testShouldDisplaySymbolAndHtmlContent(fakeLine)
+        it('should not add id to list', () => {
+          const listElement = fixture.debugElement.query(LIST_SELECTOR)
+          expect(Object.keys(listElement.attributes)).not.toContain('id')
+        })
+      })
+      describe('when depth is set to configured depth to start a collapsible', () => {
+        let lineElement: DebugElement
+        let caretElement: DebugElement
+        let listElement: DebugElement
+
+        beforeEach(() => {
+          component.depth = fakeConfig.collapsibleStartAtDepth
+          component.line = fakeLine
+
+          fixture.detectChanges()
+
+          lineElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
+          caretElement = lineElement.query(CARET_SELECTOR)
+          listElement = fixture.debugElement.query(LIST_SELECTOR)
+        })
+        it('should display collapsible controls', () => {
+          expect(lineElement).toBeTruthy()
+          expect(lineElement.name).toBe('button')
+          expect(Object.keys(lineElement.attributes)).toContain('aria-expanded')
+
+          expect(caretElement).toBeTruthy()
+          expect(caretElement.attributes['aria-hidden'])
+            .withContext('caret is hidden from screen readers')
+            .toBe(true.toString())
+        })
+        testShouldDisplaySymbolAndHtmlContent(fakeLine)
+        it('should add slug id to list', () => {
+          const listElement = fixture.debugElement.query(LIST_SELECTOR)
+          expect(Object.keys(listElement.attributes)).toContain('id')
+
+          const expectedId = `${fakeConfig.listIdPrefix}fake-text`
+          expect(listElement.attributes['id']).toBe(expectedId)
+        })
+
+        function testShouldBeExpanded() {
+          it('should be expanded', () => {
+            expect(lineElement).toBeTruthy()
+            expect(lineElement.attributes['aria-expanded']).toBe(true.toString())
+
+            expect(caretElement.nativeElement.textContent).toBe(fakeConfig.expandedIcon)
+
+            expectIsVisible(listElement.nativeElement)
+          })
+        }
+
+        function testShouldBeCollapsed() {
+          it('should be collapsed', () => {
+            expect(lineElement).toBeTruthy()
+            expect(lineElement.attributes['aria-expanded']).toBe(false.toString())
+
+            expect(caretElement.nativeElement.textContent).toBe(fakeConfig.collapsedIcon)
+
+            expectIsHidden(listElement.nativeElement)
+          })
+        }
+
+        describe('by default', () => {
+          testShouldBeExpanded()
+        })
+        describe('when clicking the line', () => {
+          beforeEach(() => {
+            lineElement.triggerEventHandler('click')
+            fixture.detectChanges()
+          })
+          testShouldBeCollapsed()
+        })
+        describe('when clicking the line twice', () => {
+          beforeEach(() => {
+            lineElement.triggerEventHandler('click')
+            fixture.detectChanges()
+
+            lineElement.triggerEventHandler('click')
+            fixture.detectChanges()
+          })
+          testShouldBeExpanded()
+        })
+      })
+    })
+  })
+})

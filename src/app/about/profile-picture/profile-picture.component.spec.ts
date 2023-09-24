@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { expectIsHidden } from '../../../test/helpers/visibility';
 
 import { ProfilePictureComponent } from './profile-picture.component';
 
@@ -35,10 +36,9 @@ describe('ProfilePictureComponent', () => {
     expect(huhProfilePic).toBeTruthy();
     expect(huhProfilePic.attributes['ngSrc']).toBeDefined();
     expect(huhProfilePic.attributes['ngSrc']).toContain('profile_huh.png');
+    expectIsHidden(huhProfilePic.nativeElement)
     const styles = getComputedStyle(huhProfilePic.nativeElement);
-    expect(styles).toBeTruthy();
     expect(styles.opacity).toEqual('0');
-    expect(styles.visibility).toEqual('hidden');
   })
 
   describe('accessible easter egg', () => {
