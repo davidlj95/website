@@ -1,25 +1,28 @@
 import { NgOptimizedImage } from '@angular/common';
 import { NgModule, VERSION } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SeoModule } from "@ngaox/seo";
 import { environment } from '../environments';
+import { AboutComponent } from './about/about.component';
+import { ContactSocialIconsComponent } from './about/contact-social-icons/contact-social-icons.component';
+import {
+  ContactTraditionalIconsComponent,
+} from './about/contact-traditional-icons/contact-traditional-icons.component';
+import { DescriptionComponent } from './about/description/description.component';
+import { ProfilePictureComponent } from './about/profile-picture/profile-picture.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { HeaderComponent } from './header/header.component';
 import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
 import { METADATA } from './metadata';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from './no-script/no-script.component';
-import { AboutComponent } from './about/about.component';
 import { ReleaseInfoComponent } from './release-info/release-info.component';
 import { SocialComponent } from './social/social.component';
-import { HeaderComponent } from './header/header.component';
-import { ProfilePictureComponent } from './about/profile-picture/profile-picture.component';
-import { ContactTraditionalIconsComponent } from './about/contact-traditional-icons/contact-traditional-icons.component';
-import { ContactSocialIconsComponent } from './about/contact-social-icons/contact-social-icons.component';
-import { DescriptionComponent } from './about/description/description.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,7 @@ import { DescriptionComponent } from './about/description/description.component'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgOptimizedImage,
     SeoModule.forRoot({

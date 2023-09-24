@@ -2,7 +2,7 @@
 @use "paddings";
 
 :host {
-  &, ul {
+  ul {
     display: flex;
     flex-direction: column;
     gap: margins.$m;
@@ -13,7 +13,11 @@
     margin-left: margins.$l;
   }
 
-  .data{
+  ul > li:first-child {
+    margin-top: margins.$m;
+  }
+
+  .data {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -56,6 +60,6 @@
   }
 
   .data[aria-expanded="false"] + ul {
-    display: none;
+    overflow: hidden;
   }
 }

@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MockProvider } from 'ng-mocks';
 import { getComponentSelector } from '../../../test/helpers/component-testers';
 import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols';
@@ -28,6 +29,7 @@ describe('DescriptionComponent', () => {
       providers: [
         MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
       ],
+      imports: [NoopAnimationsModule],
     });
     fixture = TestBed.createComponent(DescriptionComponent);
     component = fixture.componentInstance;
@@ -229,20 +231,25 @@ describe('DescriptionComponent', () => {
           testShouldBeExpanded()
         })
         describe('when clicking the line', () => {
-          beforeEach(() => {
+          beforeEach(fakeAsync(() => {
             lineElement.triggerEventHandler('click')
+
+            tick() // animation to complete
+
             fixture.detectChanges()
-          })
+          }))
           testShouldBeCollapsed()
         })
         describe('when clicking the line twice', () => {
-          beforeEach(() => {
+          beforeEach(fakeAsync(() => {
             lineElement.triggerEventHandler('click')
+            tick() // animation to complete
             fixture.detectChanges()
 
             lineElement.triggerEventHandler('click')
+            tick() // animation to complete
             fixture.detectChanges()
-          })
+          }))
           testShouldBeExpanded()
         })
       })

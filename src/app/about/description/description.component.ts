@@ -1,11 +1,21 @@
+import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 import { Component, Inject, InjectionToken, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '../../common/animations';
 import { DescriptionLine } from '../../metadata';
 
 @Component({
   selector: 'app-description',
   templateUrl: './description.component.html',
   styleUrls: ['./description.component.scss'],
+  animations: [
+    trigger('expanded', [
+      state('true', style({height: AUTO_STYLE, visibility: AUTO_STYLE})),
+      state('false', style({height: '0', visibility: 'hidden'})),
+      transition('true => false', animate(`${EMPHASIZED_DURATION_MS}ms ${TIMING_FUNCTION}`)),
+      transition('false => true', animate(`${EMPHASIZED_DURATION_MS}ms ${TIMING_FUNCTION}`)),
+    ]),
+  ],
 })
 export class DescriptionComponent {
   @Input({required: true}) public line!: DescriptionLine

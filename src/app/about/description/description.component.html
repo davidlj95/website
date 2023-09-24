@@ -5,7 +5,7 @@
 </ng-container>
 <ng-template #collapsibleTemplate>
   <button class="data" type="button" [attr.aria-expanded]="isExpanded" [attr.aria-controls]="sluggedId"
-          (click)="toggleCollapsible()"
+          (click)="isExpanded ? this.collapse() : this.expand()"
   >
     <span class="caret" aria-hidden="true">{{ isExpanded ? config.expandedIcon : config.collapsedIcon }}</span>
     <ng-container [ngTemplateOutlet]="dataTemplate"></ng-container>
@@ -15,7 +15,7 @@
   <span class="symbol material-symbols-outlined" aria-hidden="true" *ngIf="line.data">{{ line.data.symbol }}</span>
   <span class="content" [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.data?.html ?? '')"></span>
 </ng-template>
-<ul *ngIf="line.children.length" [attr.id]="sluggedId">
+<ul *ngIf="line.children.length" [attr.id]="sluggedId" [@expanded]="isExpanded">
   <li *ngFor="let line of line.children">
     <app-description [line]="line" [depth]="depth+1">
     </app-description>
