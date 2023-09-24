@@ -21,7 +21,9 @@ code, pre {
   @include typographies.monospace-font();
 }
 
-// This comes with Font Awesome already, but we need it in our app for accessibility
+// Needed for some accessibility tricks around
+// It's empty as Font Awesome already provides this class
+// But at least declaring it explicitly in case we remove it and need to implement it ourselves
 .sr-only {}
 
 @include typographies.material-symbols-font();
