@@ -24,11 +24,12 @@
     word-break: break-word;
     font-size: 1.5rem;
     gap: margins.$s;
-  }
 
-  ::ng-deep a {
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
+    // If we move it outside this selector, conflicts with root <a> styles
+    ::ng-deep a {
+      text-decoration-line: underline;
+      text-decoration-thickness: 1px;
+    }
   }
 
   .material-symbols-outlined {
