@@ -2166,7 +2166,7 @@ __metadata:
     "@types/jasmine": 4.3.6
     "@types/node": 20.6.5
     "@types/signale": 1.4.5
-    "@types/subset-font": 1.4.0
+    "@types/subset-font": 1.4.1
     "@typescript-eslint/eslint-plugin": 6.6.0
     "@typescript-eslint/parser": 6.6.0
     compression: 1.7.4
@@ -3951,12 +3951,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/subset-font@npm:1.4.0":
-  version: 1.4.0
-  resolution: "@types/subset-font@npm:1.4.0"
+"@types/subset-font@npm:1.4.1":
+  version: 1.4.1
+  resolution: "@types/subset-font@npm:1.4.1"
   dependencies:
     "@types/node": "*"
-  checksum: 11ba27916b662815149fc7ed6064b6d4e087b589e489325b3d39dc42b2c9aa1d3e851644b95b353fbc6d66b443a3b7ad979b49b8d63b9a9bab84ca9cc08cc652
+  checksum: b7de2d62e254b032a10dec60570bed2265f09a855a3dfbeb0f078ede164ac660f063ec8c6120127622157d5c5f628fe73c4355a1758b19cfa5372b9d57a291c0
   languageName: node
   linkType: hard
 
