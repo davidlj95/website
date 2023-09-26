@@ -21,15 +21,15 @@
     "release-file": "ts-node scripts/src/generate-release-file.mts"
   },
   "dependencies": {
-    "@angular/animations": "16.2.3",
-    "@angular/common": "16.2.3",
-    "@angular/compiler": "16.2.3",
-    "@angular/core": "16.2.3",
-    "@angular/forms": "16.2.3",
-    "@angular/platform-browser": "16.2.3",
-    "@angular/platform-browser-dynamic": "16.2.3",
-    "@angular/platform-server": "16.2.3",
-    "@angular/router": "16.2.3",
+    "@angular/animations": "16.2.6",
+    "@angular/common": "16.2.6",
+    "@angular/compiler": "16.2.6",
+    "@angular/core": "16.2.6",
+    "@angular/forms": "16.2.6",
+    "@angular/platform-browser": "16.2.6",
+    "@angular/platform-browser-dynamic": "16.2.6",
+    "@angular/platform-server": "16.2.6",
+    "@angular/router": "16.2.6",
     "@fortawesome/angular-fontawesome": "0.13.0",
     "@fortawesome/fontawesome-svg-core": "6.4.2",
     "@fortawesome/free-brands-svg-icons": "6.4.2",
@@ -40,7 +40,7 @@
     "gardevoir": "1.0.0",
     "rxjs": "7.8.1",
     "tslib": "2.6.2",
-    "zone.js": "0.13.1"
+    "zone.js": "0.14.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "16.2.3",
@@ -50,7 +50,7 @@
     "@angular-eslint/schematics": "16.1.2",
     "@angular-eslint/template-parser": "16.1.2",
     "@angular/cli": "16.2.3",
-    "@angular/compiler-cli": "16.2.3",
+    "@angular/compiler-cli": "16.2.6",
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
     "@nguniversal/builders": "16.2.0",
