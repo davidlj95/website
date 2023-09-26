@@ -68,6 +68,13 @@
         "devDependencies"
       ],
       "automerge": "true"
+    },
+    // We cannot upgrade to latest Typescript until Angular supports it
+    // Otherwise, we'll get an error
+    // https://angular.io/guide/versions
+    {
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": ">=4.9.3 <5.2.0"
     }
   ]
 }
