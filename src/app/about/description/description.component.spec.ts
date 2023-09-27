@@ -1,10 +1,11 @@
-import { DebugElement } from '@angular/core';
+import { DebugElement, PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MockProvider } from 'ng-mocks';
 import { getComponentSelector } from '../../../test/helpers/component-testers';
 import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols';
+import { PLATFORM_BROWSER_ID, PLATFORM_SERVER_ID } from '../../../test/helpers/platform-ids';
 import { expectIsHidden, expectIsVisible } from '../../../test/helpers/visibility';
 import { DescriptionLine } from '../../metadata';
 
@@ -16,26 +17,9 @@ describe('DescriptionComponent', () => {
   const DATA_CLASS_SELECTOR = By.css('.data')
   const LIST_SELECTOR = By.css('ul')
   const CARET_SELECTOR = By.css('.caret')
-  const fakeConfig: CollapsibleConfiguration = {
-    collapsibleStartAtDepth: 1,
-    collapsedIcon: 'C -',
-    expandedIcon: 'E -',
-    listIdPrefix: 'fakePrefix-',
-  }
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [DescriptionComponent],
-      providers: [
-        MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
-      ],
-      imports: [NoopAnimationsModule],
-    });
-    fixture = TestBed.createComponent(DescriptionComponent);
-    component = fixture.componentInstance;
-  });
 
   it('should create', () => {
+    [fixture, component] = makeSut()
     expect(component).toBeTruthy();
   });
 
@@ -55,6 +39,10 @@ describe('DescriptionComponent', () => {
   }
 
   describe('data', () => {
+    beforeEach(() => {
+      [fixture, component] = makeSut()
+    })
+
     describe('when line does not have data', () => {
       beforeEach(() => {
         component.line = new DescriptionLine(undefined)
@@ -77,6 +65,10 @@ describe('DescriptionComponent', () => {
   })
 
   describe('children', () => {
+    beforeEach(() => {
+      [fixture, component] = makeSut()
+    })
+
     describe('when does not have children', () => {
       const fakeLine: DescriptionLine = new DescriptionLine(undefined, [])
 
@@ -145,6 +137,7 @@ describe('DescriptionComponent', () => {
         symbol: 'foo', text: 'Fake text', html: 'Fake html',
       })
       beforeEach(() => {
+        [fixture, component] = makeSut()
         component.line = fakeLine
         fixture.detectChanges()
       })
@@ -160,6 +153,7 @@ describe('DescriptionComponent', () => {
 
       describe('when depth is below configured depth to start a collapsible', () => {
         beforeEach(() => {
+          [fixture, component] = makeSut()
           component.depth = fakeConfig.collapsibleStartAtDepth - 1
           component.line = fakeLine
           fixture.detectChanges()
@@ -172,87 +166,157 @@ describe('DescriptionComponent', () => {
         })
       })
       describe('when depth is set to configured depth to start a collapsible', () => {
-        let lineElement: DebugElement
-        let caretElement: DebugElement
-        let listElement: DebugElement
 
-        beforeEach(() => {
+        function configureToBeCollapsible(component: DescriptionComponent) {
           component.depth = fakeConfig.collapsibleStartAtDepth
           component.line = fakeLine
-
-          fixture.detectChanges()
-
-          lineElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
-          caretElement = lineElement.query(CARET_SELECTOR)
-          listElement = fixture.debugElement.query(LIST_SELECTOR)
-        })
-        it('should display collapsible controls', () => {
-          expect(lineElement).toBeTruthy()
-          expect(lineElement.name).toBe('button')
-          expect(Object.keys(lineElement.attributes)).toContain('aria-expanded')
-
-          expect(caretElement).toBeTruthy()
-          expect(caretElement.attributes['aria-hidden'])
-            .withContext('caret is hidden from screen readers')
-            .toBe(true.toString())
-        })
-        testShouldDisplaySymbolAndHtmlContent(fakeLine)
-        it('should add slug id to list', () => {
-          const listElement = fixture.debugElement.query(LIST_SELECTOR)
-          expect(Object.keys(listElement.attributes)).toContain('id')
-
-          const expectedId = `${fakeConfig.listIdPrefix}fake-text`
-          expect(listElement.attributes['id']).toBe(expectedId)
-        })
-
-        function testShouldBeExpanded() {
-          it('should be expanded', () => {
-            expect(lineElement).toBeTruthy()
-            expect(lineElement.attributes['aria-expanded']).toBe(true.toString())
-
-            expect(caretElement.nativeElement.textContent).toBe(fakeConfig.expandedIcon)
-
-            expectIsVisible(listElement.nativeElement)
-          })
         }
 
-        function testShouldBeCollapsed() {
-          it('should be collapsed', () => {
-            expect(lineElement).toBeTruthy()
-            expect(lineElement.attributes['aria-expanded']).toBe(false.toString())
+        describe('data', () => {
+          let dataElement: DebugElement
+          let caretElement: DebugElement
 
-            expect(caretElement.nativeElement.textContent).toBe(fakeConfig.collapsedIcon)
+          beforeEach(() => {
+            [fixture, component] = makeSut()
+            configureToBeCollapsible(component)
 
-            expectIsHidden(listElement.nativeElement)
+            fixture.detectChanges()
+
+            dataElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
+            caretElement = dataElement.query(CARET_SELECTOR)
           })
-        }
+          it('should display collapsible controls', () => {
+            expect(dataElement).toBeTruthy()
+            expect(dataElement.name).toBe('button')
+            expect(Object.keys(dataElement.attributes)).toContain('aria-expanded')
 
-        describe('by default', () => {
-          testShouldBeCollapsed()
+            expect(caretElement).toBeTruthy()
+            expect(caretElement.attributes['aria-hidden'])
+              .withContext('caret is hidden from screen readers')
+              .toBe(true.toString())
+          })
+          testShouldDisplaySymbolAndHtmlContent(fakeLine)
+          it('should add slug id to list', () => {
+            const listElement = fixture.debugElement.query(LIST_SELECTOR)
+            expect(Object.keys(listElement.attributes)).toContain('id')
+
+            const expectedId = `${fakeConfig.listIdPrefix}fake-text`
+            expect(listElement.attributes['id']).toBe(expectedId)
+          })
         })
-        describe('when clicking the line', () => {
-          beforeEach(fakeAsync(() => {
-            lineElement.triggerEventHandler('click')
+        describe('expand / collapse', () => {
+          let dataElement: DebugElement
+          let caretElement: DebugElement
+          let listElement: DebugElement
 
-            tick() // animation to complete
+          function testShouldBeExpanded(checkVisibility: boolean = true) {
+            it('should be expanded', () => {
+              expect(dataElement).toBeTruthy()
+              expect(dataElement.attributes['aria-expanded']).toBe(true.toString())
 
-            fixture.detectChanges()
-          }))
-          testShouldBeExpanded()
-        })
-        describe('when clicking the line twice', () => {
-          beforeEach(fakeAsync(() => {
-            lineElement.triggerEventHandler('click')
-            tick() // animation to complete
-            fixture.detectChanges()
+              expect(caretElement.nativeElement.textContent).toBe(fakeConfig.expandedIcon)
 
-            lineElement.triggerEventHandler('click')
-            tick() // animation to complete
-            fixture.detectChanges()
-          }))
-          testShouldBeCollapsed()
+              if (checkVisibility) {
+                expectIsVisible(listElement.nativeElement)
+              }
+            })
+          }
+
+          function testShouldBeCollapsed() {
+            it('should be collapsed', () => {
+              expect(dataElement).toBeTruthy()
+              expect(dataElement.attributes['aria-expanded']).toBe(false.toString())
+
+              expect(caretElement.nativeElement.textContent).toBe(fakeConfig.collapsedIcon)
+
+              expectIsHidden(listElement.nativeElement)
+            })
+          }
+
+          describe('when rendering on server', () => {
+            beforeEach(() => {
+              [fixture, component] = makeSut({platformId: PLATFORM_SERVER_ID})
+              configureToBeCollapsible(component)
+
+              fixture.detectChanges()
+
+              dataElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
+              caretElement = dataElement.query(CARET_SELECTOR)
+              listElement = fixture.debugElement.query(LIST_SELECTOR)
+            })
+            testShouldBeExpanded(false)
+
+            // to avoid layout shifts
+            it('should be hidden', () => {
+              expectIsHidden(fixture.debugElement.nativeElement)
+            })
+          })
+
+          describe('when rendering on client', () => {
+            beforeEach(() => {
+              [fixture, component] = makeSut()
+              configureToBeCollapsible(component)
+
+              fixture.detectChanges()
+
+              dataElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
+              caretElement = dataElement.query(CARET_SELECTOR)
+              listElement = fixture.debugElement.query(LIST_SELECTOR)
+            })
+            describe('by default', () => {
+              testShouldBeCollapsed()
+              it('should make the component visible', () => {
+                expectIsVisible(fixture.debugElement.nativeElement)
+              })
+            })
+            describe('when clicking', () => {
+              beforeEach(fakeAsync(() => {
+                dataElement.triggerEventHandler('click')
+
+                tick() // animation to complete
+
+                fixture.detectChanges()
+              }))
+              testShouldBeExpanded()
+            })
+            describe('when clicking twice', () => {
+              beforeEach(fakeAsync(() => {
+                dataElement.triggerEventHandler('click')
+                tick() // animation to complete
+                fixture.detectChanges()
+
+                dataElement.triggerEventHandler('click')
+                tick() // animation to complete
+                fixture.detectChanges()
+              }))
+              testShouldBeCollapsed()
+            })
+          })
         })
       })
     })
   })
 })
+
+function makeSut(
+  {platformId}: {
+    platformId?: typeof PLATFORM_BROWSER_ID | typeof PLATFORM_SERVER_ID
+  } = {}): [ComponentFixture<DescriptionComponent>, DescriptionComponent] {
+  TestBed.configureTestingModule({
+    declarations: [DescriptionComponent],
+    providers: [
+      MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
+      MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID),
+    ],
+    imports: [NoopAnimationsModule],
+  })
+  const fixture = TestBed.createComponent(DescriptionComponent)
+  return [fixture, fixture.componentInstance]
+}
+
+const fakeConfig: CollapsibleConfiguration = {
+  collapsibleStartAtDepth: 1,
+  collapsedIcon: 'C -',
+  expandedIcon: 'E -',
+  listIdPrefix: 'fakePrefix-',
+}

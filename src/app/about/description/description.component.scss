@@ -2,6 +2,10 @@
 @use "paddings";
 
 :host {
+  &.hidden {
+    visibility: hidden;
+  }
+
   ul {
     display: flex;
     flex-direction: column;

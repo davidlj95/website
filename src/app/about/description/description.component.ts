@@ -1,5 +1,6 @@
 import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
-import { Component, Inject, InjectionToken, Input } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, HostBinding, Inject, InjectionToken, Input, PLATFORM_ID } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '../../common/animations';
 import { DescriptionLine } from '../../metadata';
@@ -20,14 +21,22 @@ import { DescriptionLine } from '../../metadata';
 export class DescriptionComponent {
   @Input({required: true}) public line!: DescriptionLine
   @Input() public depth: number = 0
+  @HostBinding('class.showIfNoScript') private showIfNoScript = true
+  @HostBinding('class.hidden') private hidden = true
 
-  protected EXPANDED_DEFAULT = false
-  public isExpanded = this.EXPANDED_DEFAULT
+  private EXPANDED_DEFAULT_NO_JS = true
+  private EXPANDED_DEFAULT_JS_ENABLED = false
+  public isExpanded = this.EXPANDED_DEFAULT_NO_JS
 
   constructor(
     protected sanitizer: DomSanitizer,
     @Inject(COLLAPSIBLE_CONFIG) protected config: CollapsibleConfiguration,
+    @Inject(PLATFORM_ID) private platformId: object,
   ) {
+    if(isPlatformBrowser(this.platformId)) {
+      this.isExpanded = this.EXPANDED_DEFAULT_JS_ENABLED
+      this.hidden = false
+    }
   }
 
   public get isCollapsible(): boolean {
