@@ -7,7 +7,7 @@
   <button class="data" type="button" [attr.aria-expanded]="isExpanded" [attr.aria-controls]="sluggedId"
           (click)="isExpanded ? this.collapse() : this.expand()"
   >
-    <span class="caret" aria-hidden="true">{{ isExpanded ? config.expandedIcon : config.collapsedIcon }}</span>
+    <span class="caret displayNoneIfNoScript" aria-hidden="true">{{ isExpanded ? config.expandedIcon : config.collapsedIcon }}</span>
     <ng-container [ngTemplateOutlet]="dataTemplate"></ng-container>
   </button>
 </ng-template>

@@ -21,7 +21,7 @@ import { DescriptionLine } from '../../metadata';
 export class DescriptionComponent {
   @Input({required: true}) public line!: DescriptionLine
   @Input() public depth: number = 0
-  @HostBinding('class.showIfNoScript') private showIfNoScript = true
+  @HostBinding('class.visibleIfNoScript') private visibleIfNoScript = true
   @HostBinding('class.hidden') private hidden = true
 
   private EXPANDED_DEFAULT_NO_JS = true
