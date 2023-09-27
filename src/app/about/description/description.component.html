@@ -15,7 +15,7 @@
   <span class="symbol material-symbols-outlined" aria-hidden="true" *ngIf="line.data">{{ line.data.symbol }}</span>
   <span class="content" [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.data?.html ?? '')"></span>
 </ng-template>
-<ul *ngIf="line.children.length" [attr.id]="sluggedId" [@expanded]="isExpanded">
+<ul *ngIf="line.children.length" [attr.id]="sluggedId" [@expanded]="isCollapsible ? isExpanded : true">
   <li *ngFor="let line of line.children">
     <app-description [line]="line" [depth]="depth+1">
     </app-description>

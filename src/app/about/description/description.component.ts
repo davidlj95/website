@@ -30,8 +30,8 @@ export class DescriptionComponent {
   ) {
   }
 
-  public get isCollapsible() {
-    return this.depth >= this.config.collapsibleStartAtDepth && this.line.children.length
+  public get isCollapsible(): boolean {
+    return this.depth >= this.config.collapsibleStartAtDepth && this.line.children.length > 0
   }
 
   public get sluggedId(): string | undefined {
