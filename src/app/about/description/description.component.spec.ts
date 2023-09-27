@@ -228,7 +228,7 @@ describe('DescriptionComponent', () => {
         }
 
         describe('by default', () => {
-          testShouldBeExpanded()
+          testShouldBeCollapsed()
         })
         describe('when clicking the line', () => {
           beforeEach(fakeAsync(() => {
@@ -238,7 +238,7 @@ describe('DescriptionComponent', () => {
 
             fixture.detectChanges()
           }))
-          testShouldBeCollapsed()
+          testShouldBeExpanded()
         })
         describe('when clicking the line twice', () => {
           beforeEach(fakeAsync(() => {
@@ -250,7 +250,7 @@ describe('DescriptionComponent', () => {
             tick() // animation to complete
             fixture.detectChanges()
           }))
-          testShouldBeExpanded()
+          testShouldBeCollapsed()
         })
       })
     })

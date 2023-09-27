@@ -21,7 +21,7 @@ export class DescriptionComponent {
   @Input({required: true}) public line!: DescriptionLine
   @Input() public depth: number = 0
 
-  protected EXPANDED_DEFAULT = true
+  protected EXPANDED_DEFAULT = false
   public isExpanded = this.EXPANDED_DEFAULT
 
   constructor(
