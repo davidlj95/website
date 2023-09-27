@@ -2,7 +2,7 @@ Hi, I'm David LJ. Also known as davidlj95 in the cyberspace. I happen to be the 
 Would you have guessed that? Well if you knew I'm a software engineer, maybe you did! Some things about me:
 
 ┌ Senior software engineer
-├ 9+ years crafting:
+├ 9+ years crafting
 │ ├ Frontends
 │ │ ├ Cross-platform mobile apps
 │ │ └ Websites and web apps

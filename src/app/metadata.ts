@@ -73,7 +73,7 @@ const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
   DescriptionLine.fromData({
       symbol: History,
       html: `${YEARS_OF_EXPERIENCE}+ years \
-<a class="craft" href="https://manifesto.softwarecraftsmanship.org/">crafting</a>:`,
+<a class="craft" href="https://manifesto.softwarecraftsmanship.org/">crafting</a>`,
     }, [
       DescriptionLine.fromData({
           symbol: Apps,
