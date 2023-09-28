@@ -1,9 +1,9 @@
-<section class="about">
+<section>
   <div class="profile">
     <app-profile-picture></app-profile-picture>
     <h1>
-      <span aria-hidden="true">
-        <span>{{ realName }}</span>
+      <span class="visible-header" aria-hidden="true">
+        <span class="real-name">{{ realName }}</span>
         <code>@{{ nickname }}</code>
       </span>
       <!-- Duplicated for accessibility
@@ -13,10 +13,11 @@
         {{ realName }} @{{ nickname }}
       </span>
     </h1>
+    <h2>{{ title }}</h2>
     <div class="contacts">
       <app-contact-traditional-icons></app-contact-traditional-icons>
       <app-contact-social-icons></app-contact-social-icons>
     </div>
   </div>
-  <app-description></app-description>
+  <app-description [line]="rootLine"></app-description>
 </section>

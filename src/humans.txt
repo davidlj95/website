@@ -1,11 +1,22 @@
-Hi, I'm David LJ. Also known as davidlj95 in the cyberspace. I happen to be the author of my own site too.
-Would you have guessed that? Well if you knew I'm a software engineer, maybe you did! Some things about me:
+Hi, I'm David LJ. Also known as davidlj95 in the cyberspace. Your trustworthy senior software engineer
+I happen to be the author of my own site too.
 
-*  Full stack software engineer
-*  9+ years of experience
-*  Web apps & hybrid mobile apps
-*  REST APIs backends
-*  CI/CD, DevOps, Cloud
+Some things about me:
+
+┌ 9+ years crafting
+│ ├ Frontends
+│ │ ├ Cross-platform mobile apps
+│ │ └ Websites and web apps
+│ ├ Backends
+│ │ ├ HTTP REST APIs
+│ │ ├ Relational databases
+│ │ └ AuthNZ: OAuth 2 & SSO
+│ └ Infrastructure and tooling
+│   ├ CI/CD pipelines
+│   ├ Shell scripting
+│   ├ Containerization
+│   └ Cloud native and Infrastructure as Code (IaC)
+└ With security in mind
 
 Visit the website for more info!
 

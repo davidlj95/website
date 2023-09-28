@@ -1,7 +1,23 @@
-<h2 *ngFor="let descriptionLine of descriptionLines">
-  <span aria-hidden="true">
-    <span class="material-symbols-outlined">{{ descriptionLine.symbol }}</span>
-    <span [innerHTML]="descriptionLine.text"></span>
-  </span>
-  <span class="sr-only" [innerHtml]="descriptionLine.text"></span>
-</h2>
+<ng-container *ngIf="!isCollapsible; else collapsibleTemplate">
+  <div class="data" *ngIf="line.data">
+    <ng-container [ngTemplateOutlet]="dataTemplate"></ng-container>
+  </div>
+</ng-container>
+<ng-template #collapsibleTemplate>
+  <button class="data" type="button" [attr.aria-expanded]="isExpanded" [attr.aria-controls]="sluggedId"
+          (click)="isExpanded ? this.collapse() : this.expand()"
+  >
+    <span class="caret displayNoneIfNoScript" aria-hidden="true">{{ isExpanded ? config.expandedIcon : config.collapsedIcon }}</span>
+    <ng-container [ngTemplateOutlet]="dataTemplate"></ng-container>
+  </button>
+</ng-template>
+<ng-template #dataTemplate>
+  <span class="symbol material-symbols-outlined" aria-hidden="true" *ngIf="line.data">{{ line.data.symbol }}</span>
+  <span class="content" [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.data?.html ?? '')"></span>
+</ng-template>
+<ul *ngIf="line.children.length" [attr.id]="sluggedId" [@expanded]="isCollapsible ? isExpanded : true">
+  <li *ngFor="let line of line.children">
+    <app-description [line]="line" [depth]="depth+1">
+    </app-description>
+  </li>
+</ul>

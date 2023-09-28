@@ -2,12 +2,14 @@
 @use "profile-picture/profile-picture-theme";
 @use "contact-social-icons/contact-social-icons-theme";
 @use "contact-traditional-icons/contact-traditional-icons-theme";
+@use "description/description-theme";
 
 @mixin color($theme) {
   app-about {
     @include profile-picture-theme.color($theme);
     @include contact-traditional-icons-theme.color($theme);
     @include contact-social-icons-theme.color($theme);
+    @include description-theme.color($theme);
   }
 }
 

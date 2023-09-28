@@ -22,9 +22,21 @@ code, pre {
 }
 
 // Needed for some accessibility tricks around
-// It's empty as Font Awesome already provides this class
-// But at least declaring it explicitly in case we remove it and need to implement it ourselves
-.sr-only {}
+// Font Awesome already provides this class, but it's copy/pasted to have it when:
+//  CSS loads, but JS hasn't loaded yet and style isn't there yet (it's injected by JS)
+//  No JS
+// https://github.com/FortAwesome/Font-Awesome/blob/6.4.2/scss/_mixins.scss#L22-L35
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
 @include typographies.material-symbols-font();
 

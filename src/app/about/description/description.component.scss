@@ -1,21 +1,74 @@
 @use "margins";
+@use "paddings";
 
 :host {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: margins.$s;
+  &.hidden {
+    visibility: hidden;
+  }
 
-  h2 > span {
-    font-size: 1.1rem;
-    text-align: left;
-    width: fit-content;
+  ul {
     display: flex;
-    align-items: center;
-    gap: margins.$s;
+    flex-direction: column;
+    gap: margins.$m;
+  }
 
-    > span {
-      font-size: 1em;
+  // Indentation for nested lists
+  ul ul {
+    margin-left: margins.$l;
+  }
+
+  ul ul > li:first-child {
+    margin-top: margins.$m;
+  }
+
+  .data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    word-break: break-word;
+    font-size: 1.5rem;
+    gap: margins.$s;
+    text-align: left;
+
+    // If we move it outside this selector, conflicts with root <a> styles
+    ::ng-deep a {
+      text-decoration-line: underline;
+      text-decoration-thickness: 1px;
     }
+  }
+
+  .material-symbols-outlined {
+    font-size: 1em;
+    font-variation-settings: 'FILL' 1,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 24
+  }
+
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+  }
+
+  .caret {
+    font-size: .5em;
+    width: .75em;
+  }
+
+  // Content-specific customizations
+  ::ng-deep a.craft {
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+  }
+
+  .data[aria-expanded="false"] + ul {
+    overflow: hidden;
+  }
+
+  .data[aria-expanded] + ul .data {
+    font-size: 1.25rem;
   }
 }
