@@ -3,7 +3,6 @@ import {
   Apps,
   Build,
   Cloud,
-  Code,
   Database,
   DeployedCode,
   Dns,
@@ -23,6 +22,7 @@ import {
  */
 const NICKNAME = 'davidlj95';
 const REAL_NAME = 'David LJ';
+const TITLE = 'Senior software engineer'
 // PoliceTranslator the earliest code found at 2023. But I started the project / did more things earlier!
 const FIRST_JOB_START_DATE = new Date('2014-06-19')
 const TIMESTAMP_DIFF = Date.now() - FIRST_JOB_START_DATE.getTime();
@@ -66,11 +66,6 @@ export class DescriptionLineData {
 
 const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
   DescriptionLine.fromData({
-      symbol: Code,
-      html: 'Senior software engineer',
-    },
-  ),
-  DescriptionLine.fromData({
       symbol: History,
       html: `${YEARS_OF_EXPERIENCE}+ years \
 <a class="craft" href="https://manifesto.softwarecraftsmanship.org/">crafting</a>`,
@@ -110,7 +105,7 @@ const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
       ]),
       DescriptionLine.fromData({
         symbol: Build,
-        html: 'Infrastructure & tooling',
+        html: 'Infrastructure and tooling',
       }, [
         DescriptionLine.fromData({
           symbol: Robot2,
@@ -130,7 +125,7 @@ const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
 <span class="sr-only">and</span><span aria-hidden="true">&</span> \
 <a href="https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac" \
 aria-label="Infrastructure as Code">IaC</a>`,
-          text: `Cloud native and Infrastructure as Code (IaC)`
+          text: `Cloud native and Infrastructure as Code (IaC)`,
         }),
       ]),
     ],
@@ -143,9 +138,9 @@ aria-label="Infrastructure as Code">IaC</a>`,
 
 const DOMAIN_NAME = `${NICKNAME}.com`;
 
-const descriptionLinesToText = (lines: ReadonlyArray<DescriptionLine>): string => {
+const getDescriptionFromTitleAndLines = (title: string, lines: ReadonlyArray<DescriptionLine>): string => {
   const formatter = new Intl.ListFormat('en')
-  return lines.flatMap((line, index) =>
+  return [`${title}. `].concat(lines.flatMap((line, index) =>
     [
       line.data?.text.replace(/:$/, '') ?? '',
       line.children.length ? ' ' + formatter.format(
@@ -153,14 +148,15 @@ const descriptionLinesToText = (lines: ReadonlyArray<DescriptionLine>): string =
       ) : '',
       index != lines.length - 1 ? '. ' : '',
     ],
-  ).join('')
+  )).join('')
 }
 export const METADATA = {
   nickname: NICKNAME,
   realName: REAL_NAME,
+  title: TITLE,
   siteName: `${REAL_NAME} 🔗 @${NICKNAME}`,
   descriptionLines: DESCRIPTION_LINES,
-  description: descriptionLinesToText(DESCRIPTION_LINES)
+  description: getDescriptionFromTitleAndLines(TITLE, DESCRIPTION_LINES)
     .concat('. Get to know me more here'),
   domainName: DOMAIN_NAME,
   authorUrl: new URL(`https://${DOMAIN_NAME}`),

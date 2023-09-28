@@ -15,9 +15,10 @@ describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
   const fakeMetadata: Metadata = ({
-    nickname: 'bar',
-    realName: 'Foo',
-  } as Pick<Metadata, 'nickname' | 'realName'>) as Metadata;
+    nickname: 'Fake nickname',
+    realName: 'Fake real name',
+    title: 'Fake title',
+  } as Pick<Metadata, 'nickname' | 'realName' | 'title'>) as Metadata;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -43,14 +44,19 @@ describe('AboutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display real name in header', () => {
+  it('should display real name in primary header', () => {
     const h1 = fixture.debugElement.query(By.css('h1'));
     expect(h1.nativeElement.textContent).toContain(fakeMetadata.realName);
   })
 
-  it('should display nickname preceded by \'@\' in header', () => {
+  it('should display nickname preceded by \'@\' in primary header', () => {
     const h1 = fixture.debugElement.query(By.css('h1'));
     expect(h1.nativeElement.textContent).toContain(`@${fakeMetadata.nickname}`);
+  })
+
+  it('should display title in secondary header', () => {
+    const h2 = fixture.debugElement.query(By.css('h2'));
+    expect(h2.nativeElement.textContent).toEqual(fakeMetadata.title);
   })
 
   ensureHasComponents(() => fixture,

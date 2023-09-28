@@ -10,6 +10,7 @@ import { DescriptionLine, Metadata } from '../metadata';
 export class AboutComponent {
   public readonly realName = this.metadata.realName
   public readonly nickname = this.metadata.nickname
+  public readonly title = this.metadata.title
   public readonly rootLine = new DescriptionLine(
     undefined,
     this.metadata.descriptionLines
