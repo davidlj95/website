@@ -1,16 +1,16 @@
-import * as path from "path";
-import * as process from "process";
-import * as url from "url";
-import { fileURLToPath } from "url";
+import * as path from 'path';
+import * as process from 'process';
+import * as url from 'url';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export function getRepositoryRootDir() {
-  return path.resolve(__dirname, "..", "..");
+  return path.resolve(__dirname, '..', '..');
 }
 
-export const SECURITY_TXT_REL_PATH = path.join(".well-known", "security.txt");
+export const SECURITY_TXT_REL_PATH = path.join('.well-known', 'security.txt');
 
 /**
  * isMain(import.meta.url)

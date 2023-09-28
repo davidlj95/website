@@ -6,7 +6,7 @@ on:
         description: Git reference to checkout. Defaults to @actions/checkout default.
         type: string
         required: false
-        default: ""
+        default: ''
 
 # Add those permissions if reporting test results
 # https://github.com/dorny/test-reporter/issues/229
@@ -46,7 +46,7 @@ jobs:
         if: (success() || failure()) && github.ref == 'refs/heads/main'
         with:
           name: Test results
-          path: "*.xml"
+          path: '*.xml'
           reporter: java-junit
       - name: Report coverage
         # noinspection SpellCheckingInspection

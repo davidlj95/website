@@ -3,15 +3,15 @@
 
 module.exports = function (config) {
   config.set({
-    basePath: "",
-    frameworks: ["jasmine", "@angular-devkit/build-angular"],
+    basePath: '',
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
-      require("karma-jasmine"),
-      require("karma-chrome-launcher"),
-      require("karma-jasmine-html-reporter"),
-      require("karma-junit-reporter"),
-      require("karma-coverage"),
-      require("@angular-devkit/build-angular/plugins/karma"),
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-junit-reporter'),
+      require('karma-coverage'),
+      require('@angular-devkit/build-angular/plugins/karma'),
     ],
     client: {
       jasmine: {
@@ -26,9 +26,9 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require("path").join(__dirname, "./coverage/davidlj95/website"),
-      subdir: ".",
-      reporters: [{ type: "text-summary" }, { type: "lcov" }],
+      dir: require('path').join(__dirname, './coverage/davidlj95/website'),
+      subdir: '.',
+      reporters: [{ type: 'text-summary' }, { type: 'lcov' }],
       check: {
         global: {
           statements: 80,
@@ -38,13 +38,13 @@ module.exports = function (config) {
         },
       },
     },
-    reporters: ["progress", "kjhtml"],
-    browsers: ["Chrome"],
+    reporters: ['progress', 'kjhtml'],
+    browsers: ['Chrome'],
     restartOnFileChange: true,
     // https://www.npmjs.com/package/karma-junit-reporter#configuration
     junitReporter: {
       useBrowserName: false,
-      outputFile: "junit-test.xml",
+      outputFile: 'junit-test.xml',
     },
   });
 };

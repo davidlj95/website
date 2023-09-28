@@ -1,24 +1,24 @@
-import * as fs from "fs";
-import subsetFont from "subset-font";
-import MaterialSymbols from "../../src/app/material-symbols.js";
-import { isMain, Log } from "./utils.mjs";
+import * as fs from 'fs';
+import subsetFont from 'subset-font';
+import MaterialSymbols from '../../src/app/material-symbols.js';
+import { isMain, Log } from './utils.mjs';
 
 async function generateFonts() {
-  Log.info("Generating font subset for Material Symbols Outlined");
+  Log.info('Generating font subset for Material Symbols Outlined');
   const materialSymbolsFont = fs.readFileSync(
-    "assets/material-symbols-outlined.woff2",
+    'assets/material-symbols-outlined.woff2',
   );
   const fontBuffer = Buffer.from(materialSymbolsFont);
 
   // If using ligatures, file size increases by mystery
   const glyphs = Object.values(MaterialSymbols);
-  Log.info("%d glyphs to include in font", glyphs.length);
+  Log.info('%d glyphs to include in font', glyphs.length);
 
-  const glyphText = glyphs.join("");
+  const glyphText = glyphs.join('');
 
-  Log.info("Output");
-  const baseFilename = "assets/material-symbols-outlined-subset";
-  const formats = ["ttf", "woff", "woff2"];
+  Log.info('Output');
+  const baseFilename = 'assets/material-symbols-outlined-subset';
+  const formats = ['ttf', 'woff', 'woff2'];
   Log.item("Base filename: '%s'", baseFilename);
   Log.item("Formats: '%s'", formats);
 
@@ -28,10 +28,10 @@ async function generateFonts() {
     // woff, ttf just to support IE users
     // https://caniuse.com/woff
     // https://caniuse.com/ttf
-    formats: ["truetype", "woff", "woff2"],
+    formats: ['truetype', 'woff', 'woff2'],
     filename: baseFilename,
   });
-  Log.ok("Done");
+  Log.ok('Done');
 }
 
 async function generateFontSubsets(
@@ -40,7 +40,7 @@ async function generateFontSubsets(
     text,
     formats,
     filename,
-  }: Omit<GenerateFontSubsetOptions, "format"> & { formats: Array<FontFormat> },
+  }: Omit<GenerateFontSubsetOptions, 'format'> & { formats: Array<FontFormat> },
 ) {
   await Promise.all(
     formats.map((format) =>
@@ -59,7 +59,7 @@ interface GenerateFontSubsetOptions {
   filename: string;
 }
 
-type FontFormat = "truetype" | "woff" | "woff2"; // any of the supported ones (see SubsetFontOptions type)
+type FontFormat = 'truetype' | 'woff' | 'woff2'; // any of the supported ones (see SubsetFontOptions type)
 
 async function generateFontSubset(
   fontBuffer: Buffer,
@@ -75,7 +75,7 @@ async function generateFontSubset(
 }
 
 function getExtensionFromFormat(format: FontFormat): string {
-  if (format == "truetype") return "ttf";
+  if (format == 'truetype') return 'ttf';
   return format;
 }
 
