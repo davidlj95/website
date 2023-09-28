@@ -25,6 +25,9 @@ jobs:
     uses: ./.github/workflows/reusable-lint.yml
     permissions:
       checks: write
+  style:
+    name: Style
+    uses: ./.github/workflows/reusable-style.yml
   performance:
     name: Performance
     needs: build
