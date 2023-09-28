@@ -21,7 +21,9 @@
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --verbose --from HEAD~1",
     "release-file": "ts-node scripts/src/generate-release-file.mts",
-    "validate-renovate-config": "yarn dlx -p renovate renovate-config-validator"
+    "validate-renovate-config": "yarn dlx -p renovate renovate-config-validator",
+    "format-check": "prettier --check .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@angular/animations": "16.2.6",
@@ -70,6 +72,7 @@
     "concurrently": "8.2.1",
     "conventional-changelog-conventionalcommits": "7.0.2",
     "eslint": "8.50.0",
+    "eslint-config-prettier": "9.0.0",
     "eslint-formatter-multiple": "2.0.0",
     "execa": "8.0.1",
     "glob": "10.3.10",
@@ -83,6 +86,7 @@
     "karma-junit-reporter": "2.0.1",
     "liquidjs": "10.9.2",
     "ng-mocks": "14.11.0",
+    "prettier": "3.0.3",
     "semantic-release": "22.0.5",
     "subset-font": "2.1.0",
     "ts-node": "10.9.1",
