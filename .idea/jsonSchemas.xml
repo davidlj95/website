@@ -40,6 +40,22 @@
             </SchemaInfo>
           </value>
         </entry>
+        <entry key="lint-staged">
+          <value>
+            <SchemaInfo>
+              <option name="generatedName" value="New Schema" />
+              <option name="name" value="lint-staged" />
+              <option name="relativePathToSchema" value="https://json.schemastore.org/lintstagedrc.schema.json" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value=".lintstagedrc.json" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
       </map>
     </state>
   </component>

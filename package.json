@@ -22,8 +22,10 @@
     "commitlint-last": "commitlint --verbose --from HEAD~1",
     "release-file": "ts-node scripts/src/generate-release-file.mts",
     "validate-renovate-config": "yarn dlx -p renovate renovate-config-validator",
-    "format-check": "prettier --check .",
-    "format": "prettier --write .",
+    "format-check": "prettier --check",
+    "format-check-all": "yarn run format-check -- .",
+    "format": "prettier --ignore-unknown --write",
+    "format-all": "yarn run format -- .",
     "generate-prettierignore": "cp .gitignore .prettierignore && cat .part.prettierignore >> .prettierignore"
   },
   "dependencies": {
@@ -85,6 +87,7 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
     "karma-junit-reporter": "2.0.1",
+    "lint-staged": "14.0.1",
     "liquidjs": "10.9.2",
     "ng-mocks": "14.11.0",
     "prettier": "3.0.3",

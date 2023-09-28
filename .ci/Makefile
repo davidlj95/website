@@ -28,7 +28,7 @@ reset:
 	docker ps -a --format '{{.Names}}' | grep -e '^act-' | xargs docker rm -f
 
 format-check:
-	cd .. && yarn run format-check
+	cd .. && yarn run format-check-all
 
 lighthouse:
 	cd .. && npx --yes @lhci/cli@0.12.x autorun
