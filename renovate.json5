@@ -1,90 +1,78 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    // https://github.com/renovatebot/renovate/blob/37.0.2/lib/config/presets/internal/config.ts
-    "config:best-practices",
-    "config:js-app",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'config:best-practices',
+    'config:js-app',
   ],
-  "prHourlyLimit": 0,
-  "prConcurrentLimit": 5,
-  "schedule": [
-    // Validate using https://codepen.io/rationaltiger24/full/ZExQEgK
-    // Though even if that says is valid, maybe invalid 🙃 as it wants 0 errors despite compiling
-    // So to be sure, `npm i later` on a tmp dir, `var later = require('later')' and check
-    // `later.parse.text('whatever schedule')` returns no errors (-1)
-    "at 9:00 am on the 1-7 day of the month on Saturday"
+  prHourlyLimit: 0,
+  prConcurrentLimit: 5,
+  schedule: [
+    'at 9:00 am on the 1-7 day of the month on Saturday',
   ],
-  "timezone": "Europe/Madrid",
-  "labels": [
-    "dependencies",
+  timezone: 'Europe/Madrid',
+  labels: [
+    'dependencies',
   ],
-  "packageRules": [
-    // Commit messages. Mock @dependabot ones:
-    // build(deps) for production dependencies, build(deps-dev) for dev dependencies
+  packageRules: [
     {
-      "matchPackagePatterns": [
-        "dependencies"
+      matchPackagePatterns: [
+        'dependencies',
       ],
-      "semanticCommitType": "build",
-      "semanticCommitScope": "deps"
+      semanticCommitType: 'build',
+      semanticCommitScope: 'deps',
     },
     {
-      "matchDepTypes": [
-        "devDependencies"
+      matchDepTypes: [
+        'devDependencies',
       ],
-      "semanticCommitType": "build",
-      "semanticCommitScope": "deps-dev"
-    },
-    // Tagging
-    {
-      "matchManagers": [
-        "github-actions"
-      ],
-      "addLabels": [
-        "github-actions"
-      ]
+      semanticCommitType: 'build',
+      semanticCommitScope: 'deps-dev',
     },
     {
-      "matchCategories": [
-        "js"
+      matchManagers: [
+        'github-actions',
       ],
-      "addLabels": [
-        "javascript"
-      ]
+      addLabels: [
+        'github-actions',
+      ],
     },
     {
-      "matchCategories": [
-        "node"
+      matchCategories: [
+        'js',
       ],
-      "addLabels": [
-        "node"
-      ]
-    },
-    // Automerge minor/patch production ones & dev dependencies
-    {
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
+      addLabels: [
+        'javascript',
       ],
-      "automerge": "true"
     },
     {
-      "matchDepTypes": [
-        "devDependencies"
+      matchCategories: [
+        'node',
       ],
-      "automerge": "true"
+      addLabels: [
+        'node',
+      ],
     },
-    // We cannot upgrade to latest Typescript until Angular supports it
-    // Otherwise, we'll get an error
-    // https://angular.io/guide/versions
     {
-      "matchPackageNames": [
-        "typescript"
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'pin',
+        'digest',
       ],
-      "allowedVersions": ">=4.9.3 <5.2.0"
-    }
-  ]
+      automerge: true,
+    },
+    {
+      matchDepTypes: [
+        'devDependencies',
+      ],
+      automerge: true,
+    },
+    {
+      matchPackageNames: [
+        'typescript',
+      ],
+      allowedVersions: '>=4.9.3 <5.2.0',
+    },
+  ],
 }
