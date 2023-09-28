@@ -15,7 +15,6 @@ import { ProfilePictureComponent } from './about/profile-picture/profile-picture
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
 import { HeaderComponent } from './header/header.component';
 import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
 import { METADATA } from './metadata';
@@ -30,7 +29,6 @@ import { SocialComponent } from './social/social.component';
     HeaderComponent,
     AboutComponent,
     NoScriptComponent,
-    ContactsComponent,
     SocialComponent,
     NavigationTabsComponent,
     JsonldMetadataComponent,
