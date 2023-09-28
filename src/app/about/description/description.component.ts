@@ -1,6 +1,15 @@
 import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, HostBinding, Inject, InjectionToken, Input, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Inject,
+  InjectionToken,
+  Input,
+  PLATFORM_ID,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '../../common/animations';
 import { DescriptionLine } from '../../metadata';
@@ -26,6 +35,8 @@ import { DescriptionLine } from '../../metadata';
 export class DescriptionComponent {
   @Input({required: true}) public line!: DescriptionLine
   @Input() public depth: number = 0
+  @Input() protected parent?: DescriptionComponent
+
   // 👇 Using `protected` to avoid being marked as unused
   @HostBinding('class.visibleIfNoScript') protected visibleIfNoScript = true
   @HostBinding('class.hidden') protected hidden = true
@@ -33,6 +44,9 @@ export class DescriptionComponent {
   private EXPANDED_DEFAULT_NO_JS = true
   private EXPANDED_DEFAULT_JS_ENABLED = false
   public isExpanded = this.EXPANDED_DEFAULT_NO_JS
+
+ @ViewChildren(DescriptionComponent)
+  private children!: QueryList<DescriptionComponent>
 
   constructor(
     protected sanitizer: DomSanitizer,
@@ -68,6 +82,15 @@ export class DescriptionComponent {
 
   expand() {
     this.isExpanded = true
+    this.parent?.collapseAllChildren({except: this})
+  }
+
+  collapseAllChildren({except}: {except?: DescriptionComponent} = {}) {
+    const childrenToCollapse = this.children
+      .filter((child) => child !== except)
+    for(const child of childrenToCollapse) {
+      child.collapse()
+    }
   }
 }
 

@@ -7,7 +7,7 @@ import { getComponentSelector } from '../../../test/helpers/component-testers';
 import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols';
 import { PLATFORM_BROWSER_ID, PLATFORM_SERVER_ID } from '../../../test/helpers/platform-ids';
 import { expectIsHidden, expectIsVisible } from '../../../test/helpers/visibility';
-import { DescriptionLine } from '../../metadata';
+import { DescriptionLine, DescriptionLineData } from '../../metadata';
 
 import { COLLAPSIBLE_CONFIG, CollapsibleConfiguration, DescriptionComponent } from './description.component';
 
@@ -167,9 +167,9 @@ describe('DescriptionComponent', () => {
       })
       describe('when depth is set to configured depth to start a collapsible', () => {
 
-        function configureToBeCollapsible(component: DescriptionComponent) {
+        function configureToBeCollapsible(component: DescriptionComponent, line?: DescriptionLine) {
           component.depth = fakeConfig.collapsibleStartAtDepth
-          component.line = fakeLine
+          component.line = line ?? fakeLine
         }
 
         describe('data', () => {
@@ -290,6 +290,63 @@ describe('DescriptionComponent', () => {
                 fixture.detectChanges()
               }))
               testShouldBeCollapsed()
+            })
+          })
+
+          describe('when expanding a child item', () => {
+            const fakeLineWithManyChildren = new DescriptionLine(
+              new DescriptionLineData({symbol: '', html: 'Root'}), [
+                new DescriptionLine(new DescriptionLineData({symbol: '', html: 'Child 1'}), [
+                  new DescriptionLine(),
+                ]),
+                new DescriptionLine(new DescriptionLineData({symbol: '', html: 'Child 2'}), [
+                  new DescriptionLine(),
+                ]),
+                new DescriptionLine(new DescriptionLineData({symbol: '', html: 'Child 3'}), [
+                  new DescriptionLine(),
+                ]),
+              ])
+            beforeEach(() => {
+              [fixture, component] = makeSut()
+              configureToBeCollapsible(component, fakeLineWithManyChildren)
+
+              fixture.detectChanges()
+
+              listElement = fixture.debugElement.query(LIST_SELECTOR)
+            })
+            it('should collapse sibling items', () => {
+              const listItemElements = listElement.children
+              expect(listItemElements.length).toBe(fakeLineWithManyChildren.children.length)
+
+              // Everything is collapsed
+              listItemElements.forEach((listItemElement, index) => {
+                const child = fakeLineWithManyChildren.children[index]
+                const childDataElement = listItemElement.query(DATA_CLASS_SELECTOR)
+                expect(childDataElement.attributes['aria-expanded'])
+                  .withContext(`item ${child.data?.text} is collapsed`)
+                  .toBe(false.toString())
+              })
+
+              // Expand first item and ensure is expanded
+              const firstListItemDataElement = listItemElements[0].query(DATA_CLASS_SELECTOR)
+              firstListItemDataElement.triggerEventHandler('click')
+              fixture.detectChanges()
+              expect(firstListItemDataElement.attributes['aria-expanded'])
+                .withContext('first item should now be expanded')
+                .toBe(true.toString())
+
+              // Expand second item
+              const secondListItemDataElement = listItemElements[1].query(DATA_CLASS_SELECTOR)
+              secondListItemDataElement.triggerEventHandler('click')
+              fixture.detectChanges()
+              expect(secondListItemDataElement.attributes['aria-expanded'])
+                .withContext('second item should now be expanded')
+                .toBe(true.toString())
+
+              // Now first item should be collapsed
+              expect(firstListItemDataElement.attributes['aria-expanded'])
+                .withContext('first item should finally be magically collapsed')
+                .toBe(false.toString())
             })
           })
         })
