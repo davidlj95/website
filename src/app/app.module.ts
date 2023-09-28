@@ -21,7 +21,6 @@ import { METADATA } from './metadata';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from './no-script/no-script.component';
 import { ReleaseInfoComponent } from './release-info/release-info.component';
-import { SocialComponent } from './social/social.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { SocialComponent } from './social/social.component';
     HeaderComponent,
     AboutComponent,
     NoScriptComponent,
-    SocialComponent,
     NavigationTabsComponent,
     JsonldMetadataComponent,
     ReleaseInfoComponent,
