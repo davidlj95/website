@@ -3,11 +3,11 @@
 @use 'app/header/header-theme';
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
-@use "theming";
-@use "typographies";
+@use 'theming';
+@use 'typographies';
 
 // CSS reset & normalization
-@import "gardevoir/dist/mini.min.css";
+@import 'gardevoir/dist/mini.min.css';
 
 body {
   @include typographies.body-font();
@@ -15,7 +15,8 @@ body {
   overscroll-behavior-y: none;
 }
 
-code, pre {
+code,
+pre {
   @include typographies.monospace-font();
 }
 

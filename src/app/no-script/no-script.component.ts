@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { Warning } from '../material-symbols';
+import { Component, ViewEncapsulation } from '@angular/core'
+import { Warning } from '../material-symbols'
 
 @Component({
   selector: 'app-no-script',

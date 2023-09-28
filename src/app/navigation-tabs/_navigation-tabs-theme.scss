@@ -1,4 +1,4 @@
-@use "animations";
+@use 'animations';
 
 @mixin color($theme) {
   $background-palette: map-get($theme, background);
@@ -22,7 +22,6 @@
       }
     }
   }
-
 }
 
 @mixin motion() {
@@ -38,5 +37,5 @@
 }
 
 @mixin theme($theme) {
-  @include color($theme)
+  @include color($theme);
 }

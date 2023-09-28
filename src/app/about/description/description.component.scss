@@ -1,5 +1,5 @@
-@use "margins";
-@use "paddings";
+@use 'margins';
+@use 'paddings';
 
 :host {
   &.hidden {
@@ -39,10 +39,11 @@
 
   .material-symbols-outlined {
     font-size: 1em;
-    font-variation-settings: 'FILL' 1,
-    'wght' 700,
-    'GRAD' 200,
-    'opsz' 24
+    font-variation-settings:
+      'FILL' 1,
+      'wght' 700,
+      'GRAD' 200,
+      'opsz' 24;
   }
 
   button {
@@ -54,8 +55,8 @@
   }
 
   .caret {
-    font-size: .5em;
-    width: .75em;
+    font-size: 0.5em;
+    width: 0.75em;
   }
 
   // Content-specific customizations
@@ -64,7 +65,7 @@
     text-decoration-color: currentColor;
   }
 
-  .data[aria-expanded="false"] + ul {
+  .data[aria-expanded='false'] + ul {
     overflow: hidden;
   }
 

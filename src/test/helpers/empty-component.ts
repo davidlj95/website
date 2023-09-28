@@ -1,8 +1,7 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core'
 
 // noinspection AngularMissingOrInvalidDeclarationInModule
 @Component({
-  template: ''
+  template: '',
 })
-export class EmptyComponent {
-}
+export class EmptyComponent {}

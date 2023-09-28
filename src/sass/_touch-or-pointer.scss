@@ -1,11 +1,11 @@
 // https://stackoverflow.com/a/52854585/3263250
 @mixin primaryInputCannotHover {
   @media (hover: none) {
-    @content
+    @content;
   }
 }
 @mixin primaryInputCanHover {
   @media (hover: hover) {
-    @content
+    @content;
   }
 }

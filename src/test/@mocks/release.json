@@ -2,9 +2,7 @@
   "lastRelease": {
     "version": "1.2.1",
     "gitTag": "v1.2.1",
-    "channels": [
-      null
-    ],
+    "channels": [null],
     "gitHead": "f0d70d48fa494cff292712295922a905d116ec27",
     "name": "v1.2.1"
   },

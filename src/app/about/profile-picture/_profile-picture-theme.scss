@@ -1,4 +1,4 @@
-@use "animations";
+@use 'animations';
 
 @mixin color($theme) {
   $background-palette: map-get($theme, background);
@@ -32,14 +32,15 @@
 @mixin motion() {
   app-profile-picture {
     img {
-      transition: opacity animations.$standard-duration animations.$standard-easing;
+      transition: opacity animations.$standard-duration
+        animations.$standard-easing;
       transition-property: filter, background-color;
-      @include animations.transition(animations.$emphasized-style)
+      @include animations.transition(animations.$emphasized-style);
     }
 
     .comment {
       transition-property: opacity, visibility;
-      @include animations.transition(animations.$standard-style)
+      @include animations.transition(animations.$standard-style);
     }
   }
 }

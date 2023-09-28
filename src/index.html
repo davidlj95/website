@@ -1,33 +1,97 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <base href="/" target="_blank">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link href="favicon.ico" rel="icon" sizes="48x48">
-  <link href="favicon.svg" rel="icon" sizes="any" type="image/svg+xml">
-  <link href="assets/favicons/apple-touch-icon.png" rel="apple-touch-icon"/>
-  <link href="site.webmanifest" rel="manifest"/>
-  <link color="#202023" href="assets/favicons/safari-pinned-tab.svg" rel="mask-icon">
-  <meta content="#202023" name="theme-color">
-  <link href="assets/favicons/apple-touch-icon-57x57.png" rel="apple-touch-icon-precomposed" sizes="57x57"/>
-  <link href="assets/favicons/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114"/>
-  <link href="assets/favicons/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72"/>
-  <link href="assets/favicons/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144"/>
-  <link href="assets/favicons/apple-touch-icon-60x60.png" rel="apple-touch-icon-precomposed" sizes="60x60"/>
-  <link href="assets/favicons/apple-touch-icon-120x120.png" rel="apple-touch-icon-precomposed" sizes="120x120"/>
-  <link href="assets/favicons/apple-touch-icon-76x76.png" rel="apple-touch-icon-precomposed" sizes="76x76"/>
-  <link href="assets/favicons/apple-touch-icon-152x152.png" rel="apple-touch-icon-precomposed" sizes="152x152"/>
-  <link href="assets/favicons/favicon-196x196.png" rel="icon" sizes="196x196" type="image/png">
-  <link href="assets/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
-  <link href="assets/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
-  <link href="assets/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-  <link href="assets/favicons/favicon-128x128.png" rel="icon" sizes="128x128" type="image/png">
-  <meta content="#202023" name="msapplication-TileColor"/>
-  <meta content="assets/favicons/mstile-144x144.png" name="msapplication-TileImage"/>
-  <noscript>
-    <!--suppress CssUnusedSymbol (used in inner components, but WebStorm doesn't go so far :P) -->
-    <style>
+  <head>
+    <meta charset="utf-8" />
+    <base href="/" target="_blank" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="favicon.ico" rel="icon" sizes="48x48" />
+    <link href="favicon.svg" rel="icon" sizes="any" type="image/svg+xml" />
+    <link href="assets/favicons/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="site.webmanifest" rel="manifest" />
+    <link
+      color="#202023"
+      href="assets/favicons/safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+    <meta content="#202023" name="theme-color" />
+    <link
+      href="assets/favicons/apple-touch-icon-57x57.png"
+      rel="apple-touch-icon-precomposed"
+      sizes="57x57"
+    />
+    <link
+      href="assets/favicons/apple-touch-icon-114x114.png"
+      rel="apple-touch-icon-precomposed"
+      sizes="114x114"
+    />
+    <link
+      href="assets/favicons/apple-touch-icon-72x72.png"
+      rel="apple-touch-icon-precomposed"
+      sizes="72x72"
+    />
+    <link
+      href="assets/favicons/apple-touch-icon-144x144.png"
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+    />
+    <link
+      href="assets/favicons/apple-touch-icon-60x60.png"
+      rel="apple-touch-icon-precomposed"
+      sizes="60x60"
+    />
+    <link
+      href="assets/favicons/apple-touch-icon-120x120.png"
+      rel="apple-touch-icon-precomposed"
+      sizes="120x120"
+    />
+    <link
+      href="assets/favicons/apple-touch-icon-76x76.png"
+      rel="apple-touch-icon-precomposed"
+      sizes="76x76"
+    />
+    <link
+      href="assets/favicons/apple-touch-icon-152x152.png"
+      rel="apple-touch-icon-precomposed"
+      sizes="152x152"
+    />
+    <link
+      href="assets/favicons/favicon-196x196.png"
+      rel="icon"
+      sizes="196x196"
+      type="image/png"
+    />
+    <link
+      href="assets/favicons/favicon-96x96.png"
+      rel="icon"
+      sizes="96x96"
+      type="image/png"
+    />
+    <link
+      href="assets/favicons/favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="assets/favicons/favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      href="assets/favicons/favicon-128x128.png"
+      rel="icon"
+      sizes="128x128"
+      type="image/png"
+    />
+    <meta content="#202023" name="msapplication-TileColor" />
+    <meta
+      content="assets/favicons/mstile-144x144.png"
+      name="msapplication-TileImage"
+    />
+    <noscript>
+      <!--suppress CssUnusedSymbol (used in inner components, but WebStorm doesn't go so far :P) -->
+      <style>
         /**
          * So we can show or hide features if JS is not enabled. If we did this with JS, we may add some flickering.
          * For instance, some items could be shown to later be hidden with JS is enabled and using ".showIfNoScript".
@@ -35,26 +99,26 @@
          * JS is enabled.
          **/
         .visibleIfNoScript {
-            visibility: visible !important;
+          visibility: visible !important;
         }
 
         .displayNoneIfNoScript {
-            display: none !important;
+          display: none !important;
         }
 
         main > div.contents {
-            /** Must be kept in sync with app-no-script component **/
-            top: 100px;
-            min-height: calc(100% - 100px) !important;
+          /** Must be kept in sync with app-no-script component **/
+          top: 100px;
+          min-height: calc(100% - 100px) !important;
         }
         fa-icon > svg {
-            /* Otherwise, doesn't display when JavaScript is disabled */
-            height: 100%;
+          /* Otherwise, doesn't display when JavaScript is disabled */
+          height: 100%;
         }
-    </style>
-  </noscript>
-</head>
-<body>
-<app-root></app-root>
-</body>
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

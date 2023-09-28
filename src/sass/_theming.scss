@@ -1,5 +1,5 @@
-@import "themes/default-dark-theme";
-@import "themes/default-light-theme";
+@import 'themes/default-dark-theme';
+@import 'themes/default-light-theme';
 
 /**
  * List of available themes.
@@ -50,35 +50,39 @@ $defaultColorSchemeThemes: (
   @if $theme-scheme == light {
     @if map-get($defaultColorSchemeThemes, $theme-scheme) {
       // Default light theme & default theme
-      html, html[data-color-scheme=light], html[data-theme=#{$theme-name}] {
-        @content
+      html,
+      html[data-color-scheme='light'],
+      html[data-theme='#{$theme-name}'] {
+        @content;
       }
     } @else {
-      html[data-theme=#{$theme-name}], html[data-theme=#{$theme-name}][data-color-scheme=#{$theme-scheme}] {
-        @content
+      html[data-theme='#{$theme-name}'],
+      html[data-theme='#{$theme-name}'][data-color-scheme='#{$theme-scheme}'] {
+        @content;
       }
     }
   } @else {
     @if map-get($defaultColorSchemeThemes, $theme-scheme) == $theme-name {
       @media (prefers-color-scheme: $theme-scheme) {
-        html, html[data-theme=#{$theme-name}] {
-          @content
+        html,
+        html[data-theme='#{$theme-name}'] {
+          @content;
         }
       }
-      html[data-color-scheme=#{$theme-scheme}] {
-        @content
+      html[data-color-scheme='#{$theme-scheme}'] {
+        @content;
       }
     } @else if $theme-scheme {
       @media (prefers-color-scheme: $theme-scheme) {
-        html[data-theme=#{$theme-name}] {
-          @content
+        html[data-theme='#{$theme-name}'] {
+          @content;
         }
       }
-      html[data-theme=#{$theme-name}][data-color-scheme=#{$theme-scheme}] {
-        @content
+      html[data-theme='#{$theme-name}'][data-color-scheme='#{$theme-scheme}'] {
+        @content;
       }
     } @else {
-      html[data-theme=#{$theme-name}] {
+      html[data-theme='#{$theme-name}'] {
         @content;
       }
     }
@@ -89,7 +93,8 @@ $defaultColorSchemeThemes: (
  * Adds utility CSS classes to display or hide elements depending on the active color scheme
  */
 @mixin display-hide-classes {
-  html, html[data-color-scheme=light] {
+  html,
+  html[data-color-scheme='light'] {
     .light-only {
       display: initial;
     }
@@ -98,7 +103,7 @@ $defaultColorSchemeThemes: (
       display: none;
     }
   }
-  html[data-color-scheme=dark] {
+  html[data-color-scheme='dark'] {
     .light-only {
       display: none;
     }

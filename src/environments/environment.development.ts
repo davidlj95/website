@@ -1,4 +1,4 @@
-import { Environment } from './environment-interface';
+import { Environment } from './environment-interface'
 
 export const environment: Environment = {
   production: false,
@@ -6,4 +6,4 @@ export const environment: Environment = {
   //    However, given was built with production profile, canonical URL will be production's one.
   //    Nothing too bad happens right now given it's used just for SEO metadata. But to bear in mind.
   canonicalUrl: new URL('http://localhost:4200'),
-};
+}

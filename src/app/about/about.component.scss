@@ -1,7 +1,7 @@
-@use "borders";
-@use "margins";
-@use "paddings";
-@use "breakpoints";
+@use 'borders';
+@use 'margins';
+@use 'paddings';
+@use 'breakpoints';
 
 :host {
   position: absolute;

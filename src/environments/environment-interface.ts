@@ -1,4 +1,4 @@
 export interface Environment {
-  production: boolean;
-  canonicalUrl: URL;
+  production: boolean
+  canonicalUrl: URL
 }

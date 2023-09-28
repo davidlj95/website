@@ -1,8 +1,7 @@
-@use "borders";
-@use "paddings";
-@use "header";
-@use "z-index";
-
+@use 'borders';
+@use 'paddings';
+@use 'header';
+@use 'z-index';
 
 :host {
   position: fixed;
@@ -28,7 +27,11 @@
 
       .material-symbols-outlined {
         font-size: 1em;
-        font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" header.$icons-height-pixels;
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 200,
+          'GRAD' 0,
+          'opsz' header.$icons-height-pixels;
       }
     }
   }

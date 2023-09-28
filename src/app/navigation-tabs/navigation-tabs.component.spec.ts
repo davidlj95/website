@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { MockProvider } from 'ng-mocks';
-import { METADATA } from '../common/injection-tokens';
-import { Metadata } from '../metadata';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { By } from '@angular/platform-browser'
+import { MockProvider } from 'ng-mocks'
+import { METADATA } from '../common/injection-tokens'
+import { Metadata } from '../metadata'
 
-import { NavigationTabsComponent, TabId } from './navigation-tabs.component';
+import { NavigationTabsComponent, TabId } from './navigation-tabs.component'
 
 describe('NavigationTabsComponent', () => {
-  let component: NavigationTabsComponent;
-  let fixture: ComponentFixture<NavigationTabsComponent>;
+  let component: NavigationTabsComponent
+  let fixture: ComponentFixture<NavigationTabsComponent>
   const fakeMetadata: Metadata = {
     domainName: 'example.com',
   } as Pick<Metadata, 'domainName'> as Metadata
@@ -16,66 +16,81 @@ describe('NavigationTabsComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NavigationTabsComponent],
-      providers: [
-        MockProvider(METADATA, fakeMetadata),
-      ],
-    });
-    fixture = TestBed.createComponent(NavigationTabsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+      providers: [MockProvider(METADATA, fakeMetadata)],
+    })
+    fixture = TestBed.createComponent(NavigationTabsComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    expect(component).toBeTruthy()
+  })
 
   it('should create the CV link using metadata domain name', () => {
-    const cvItem = component.items.find((item) => item.id === TabId.CV);
-    expect(cvItem).toBeTruthy();
+    const cvItem = component.items.find((item) => item.id === TabId.CV)
+    expect(cvItem).toBeTruthy()
     expect(cvItem?.externalUrl).toContain(fakeMetadata.domainName)
   })
 
   it('should contain all navigation items with their name and link', () => {
     const tabElements = fixture.debugElement.queryAll(By.css('li'))
-    expect(tabElements).toHaveSize(component.items.length);
+    expect(tabElements).toHaveSize(component.items.length)
     tabElements.forEach((tabElement, index) => {
-      const tabItem = component.items[index];
-      expect(tabElement.nativeElement.textContent.trim()).withContext(`Tab ${index} text`).toEqual(tabItem.displayName);
-      const link = tabElement.query(By.css('a'));
-      expect(link.attributes['href']).withContext(`Tab ${index} link`).toEqual(tabItem.externalUrl ?? `#${tabItem.id}`);
-    });
-  });
-
-  it('should open external links in new tab', () => {
-    const links = fixture.debugElement.queryAll(By.css('a'));
-    const externalLinks = links.filter(
-      (link) => !!link.attributes['href'] && !link.attributes['href'].startsWith('#'),
-    )
-    externalLinks.forEach((externalLink, index) => {
-      expect(externalLink.attributes['target']).withContext(`External link ${index}`).toEqual('_blank');
-    });
+      const tabItem = component.items[index]
+      expect(tabElement.nativeElement.textContent.trim())
+        .withContext(`Tab ${index} text`)
+        .toEqual(tabItem.displayName)
+      const link = tabElement.query(By.css('a'))
+      expect(link.attributes['href'])
+        .withContext(`Tab ${index} link`)
+        .toEqual(tabItem.externalUrl ?? `#${tabItem.id}`)
+    })
   })
 
+  it('should open external links in new tab', () => {
+    const links = fixture.debugElement.queryAll(By.css('a'))
+    const externalLinks = links.filter(
+      (link) =>
+        !!link.attributes['href'] && !link.attributes['href'].startsWith('#'),
+    )
+    externalLinks.forEach((externalLink, index) => {
+      expect(externalLink.attributes['target'])
+        .withContext(`External link ${index}`)
+        .toEqual('_blank')
+    })
+  })
 
   it('should not mark unselected tabs as selected', () => {
-    const selectedTabElement = fixture.debugElement.query(By.css('li'));
-    expect(selectedTabElement.classes['selected']).withContext('does not have selected class').toBeFalsy();
+    const selectedTabElement = fixture.debugElement.query(By.css('li'))
+    expect(selectedTabElement.classes['selected'])
+      .withContext('does not have selected class')
+      .toBeFalsy()
     expect(selectedTabElement.attributes['aria-selected'])
-      .withContext('does not have ARIA selected attr').toBe("false");
-    expect(selectedTabElement.attributes['tabindex']).withContext('has tabIndex -1').toBe("-1");
+      .withContext('does not have ARIA selected attr')
+      .toBe('false')
+    expect(selectedTabElement.attributes['tabindex'])
+      .withContext('has tabIndex -1')
+      .toBe('-1')
   })
 
   it('should mark the selected tab as selected', () => {
-    const selectedTabIndex = 0;
-    component.tab = component.items[selectedTabIndex].id;
+    const selectedTabIndex = 0
+    component.tab = component.items[selectedTabIndex].id
 
-    fixture.detectChanges();
+    fixture.detectChanges()
 
     const selectedTabElement = fixture.debugElement.query(
       By.css(`li:nth-child(${selectedTabIndex + 1})`),
-    );
-    expect(selectedTabElement.classes['selected']).withContext('has selected class').toBe(true);
-    expect(selectedTabElement.attributes['aria-selected']).withContext('has ARIA selected attr').toBe("true");
-    expect(selectedTabElement.attributes['tabindex']).withContext('has tabIndex 0').toBe("0");
+    )
+    expect(selectedTabElement.classes['selected'])
+      .withContext('has selected class')
+      .toBe(true)
+    expect(selectedTabElement.attributes['aria-selected'])
+      .withContext('has ARIA selected attr')
+      .toBe('true')
+    expect(selectedTabElement.attributes['tabindex'])
+      .withContext('has tabIndex 0')
+      .toBe('0')
   })
-});
+})
