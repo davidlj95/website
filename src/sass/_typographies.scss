@@ -1,9 +1,13 @@
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/700.css";
+@import "@fontsource/roboto-mono/400.css";
+
 @mixin body-font {
-  font-family: Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica", sans-serif;
 }
 
 @mixin monospace-font {
-  font-family: "Courier New", monospace;
+  font-family: "Roboto Mono", "Courier New", monospace;
 }
 
 @mixin material-symbols-font {

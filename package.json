@@ -33,6 +33,8 @@
     "@angular/platform-browser-dynamic": "16.2.6",
     "@angular/platform-server": "16.2.6",
     "@angular/router": "16.2.6",
+    "@fontsource/roboto": "^5.0.8",
+    "@fontsource/roboto-mono": "^5.0.8",
     "@fortawesome/angular-fontawesome": "0.13.0",
     "@fortawesome/fontawesome-svg-core": "6.4.2",
     "@fortawesome/free-brands-svg-icons": "6.4.2",

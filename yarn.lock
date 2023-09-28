@@ -2155,6 +2155,8 @@ __metadata:
     "@angular/router": 16.2.6
     "@commitlint/cli": 17.7.1
     "@commitlint/config-conventional": 17.7.0
+    "@fontsource/roboto": ^5.0.8
+    "@fontsource/roboto-mono": ^5.0.8
     "@fortawesome/angular-fontawesome": 0.13.0
     "@fortawesome/fontawesome-svg-core": 6.4.2
     "@fortawesome/free-brands-svg-icons": 6.4.2
@@ -2552,6 +2554,20 @@ __metadata:
   version: 8.50.0
   resolution: "@eslint/js@npm:8.50.0"
   checksum: 302478f2acaaa7228729ec6a04f56641590185e1d8cd1c836a6db8a6b8009f80a57349341be9fbb9aa1721a7a569d1be3ffc598a33300d22816f11832095386c
+  languageName: node
+  linkType: hard
+
+"@fontsource/roboto-mono@npm:^5.0.8":
+  version: 5.0.8
+  resolution: "@fontsource/roboto-mono@npm:5.0.8"
+  checksum: 9f0078c116f2d5d2ed9fb29b56129820f08091e052bd3befa6fb82fe7f6755c2f6f3f80fdedd37c1a27de0f2613ed0ca03257ab9d0e8c283e572986b88317c54
+  languageName: node
+  linkType: hard
+
+"@fontsource/roboto@npm:^5.0.8":
+  version: 5.0.8
+  resolution: "@fontsource/roboto@npm:5.0.8"
+  checksum: 8aa9c1557ea9489db0eb47f849094e53b644e9d7f60008c7d514481d00ff132726da67f350b63c76943ace6a49ac4de5983b9f92acb05c55b622b4ab4a2a19c6
   languageName: node
   linkType: hard
 
