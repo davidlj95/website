@@ -33,7 +33,7 @@ jobs:
     # https://developers.cloudflare.com/pages/platform/known-issues/
     # Quote to avoid YAML issues with "!" at the beginning
     # https://github.com/actions/runner/issues/753
-    if: "! github.event.pull_request.head.repo.fork"
+    if: '! github.event.pull_request.head.repo.fork'
     with:
       build-artifact-name: build
     secrets:

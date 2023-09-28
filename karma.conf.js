@@ -20,26 +20,23 @@ module.exports = function (config) {
         // for example, you can disable the random execution with `random: false`
         // or set a specific seed with `seed: 4321`
       },
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
     },
     jasmineHtmlReporter: {
-      suppressAll: true // removes the duplicated traces
+      suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/davidlj95/website'),
       subdir: '.',
-      reporters: [
-        {type: 'text-summary'},
-        {type: 'lcov'}
-      ],
+      reporters: [{ type: 'text-summary' }, { type: 'lcov' }],
       check: {
         global: {
           statements: 80,
           branches: 80,
           functions: 80,
-          lines: 80
-        }
-      }
+          lines: 80,
+        },
+      },
     },
     reporters: ['progress', 'kjhtml'],
     browsers: ['Chrome'],
@@ -48,6 +45,6 @@ module.exports = function (config) {
     junitReporter: {
       useBrowserName: false,
       outputFile: 'junit-test.xml',
-    }
-  });
-};
+    },
+  })
+}

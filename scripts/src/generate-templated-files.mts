@@ -1,95 +1,102 @@
-import * as fs from 'fs/promises';
-import { glob } from 'glob';
-import { Liquid } from 'liquidjs';
-import * as path from 'path';
-import * as process from 'process';
-import metadata from '../../src/app/metadata.js';
-import { getRepositoryRootDir, isMain, Log, SECURITY_TXT_REL_PATH } from './utils.mjs';
+import * as fs from 'fs/promises'
+import { glob } from 'glob'
+import { Liquid } from 'liquidjs'
+import * as path from 'path'
+import * as process from 'process'
+import metadata from '../../src/app/metadata.js'
+import {
+  getRepositoryRootDir,
+  isMain,
+  Log,
+  SECURITY_TXT_REL_PATH,
+} from './utils.mjs'
 
-const {METADATA} = metadata;
+const { METADATA } = metadata
 
-export const LIQUID_EXTENSION = '.liquid';
+export const LIQUID_EXTENSION = '.liquid'
 
 async function generateTemplatedFiles() {
-  const EXCLUSIONS = [
-    SECURITY_TXT_REL_PATH,
-  ].map((exclusion) => `**/${exclusion}${LIQUID_EXTENSION}`);
-  const repoRootDir = getRepositoryRootDir();
-  const globExpression = path.resolve('src', '**', `*${LIQUID_EXTENSION}`);
-  Log.info('Looking for Liquid files...');
-  Log.item("Extension: '%s'", LIQUID_EXTENSION);
-  Log.item("Directory: '%s'", globExpression);
-  Log.item("Exclusions: %s", EXCLUSIONS);
+  const EXCLUSIONS = [SECURITY_TXT_REL_PATH].map(
+    (exclusion) => `**/${exclusion}${LIQUID_EXTENSION}`,
+  )
+  const repoRootDir = getRepositoryRootDir()
+  const globExpression = path.resolve('src', '**', `*${LIQUID_EXTENSION}`)
+  Log.info('Looking for Liquid files...')
+  Log.item("Extension: '%s'", LIQUID_EXTENSION)
+  Log.item("Directory: '%s'", globExpression)
+  Log.item('Exclusions: %s', EXCLUSIONS)
 
-  const templateFiles = await glob(
-    globExpression,
-    {
-      absolute: false,
-      cwd: repoRootDir,
-      dot: true,
-      ignore: EXCLUSIONS,
-    },
-  );
+  const templateFiles = await glob(globExpression, {
+    absolute: false,
+    cwd: repoRootDir,
+    dot: true,
+    ignore: EXCLUSIONS,
+  })
 
   if (templateFiles.length == 0) {
-    Log.warn('No files with Liquid extension found');
-    process.exit();
+    Log.warn('No files with Liquid extension found')
+    process.exit()
   }
 
-  Log.info('Found %d template file(s)', templateFiles.length);
+  Log.info('Found %d template file(s)', templateFiles.length)
   for (const templateFile of templateFiles) {
-    Log.item("'%s'", templateFile);
+    Log.item("'%s'", templateFile)
   }
 
-  const context = getContext();
+  const context = getContext()
 
-  Log.info('Rendering files from templates...');
-  const engine = new Liquid({root: repoRootDir});
+  Log.info('Rendering files from templates...')
+  const engine = new Liquid({ root: repoRootDir })
 
   for (const templateFile of templateFiles) {
-    await generateTemplatedFile(templateFile, {context: context, engine: engine})
+    await generateTemplatedFile(templateFile, {
+      context: context,
+      engine: engine,
+    })
   }
   Log.ok('Done')
 }
 
 export async function generateTemplatedFile(
-  templateFile: string, opts: {
-    context?: unknown,
-    engine?: Liquid,
+  templateFile: string,
+  opts: {
+    context?: unknown
+    engine?: Liquid
   } = {},
 ) {
-  const context = opts.context ?? getContext();
-  const engine = opts.engine ?? new Liquid();
+  const context = opts.context ?? getContext()
+  const engine = opts.engine ?? new Liquid()
 
-  Log.group("Rendering '%s'", templateFile);
+  Log.group("Rendering '%s'", templateFile)
 
-  const renderedContents = await engine.renderFile(templateFile, context);
-  Log.ok("Rendered successfully")
+  const renderedContents = await engine.renderFile(templateFile, context)
+  Log.ok('Rendered successfully')
 
-  const outputFile = templateFile.substring(0, templateFile.lastIndexOf("."))
-  await fs.writeFile(path.resolve(engine.options.root[0], outputFile), renderedContents);
-  Log.ok("Output saved to '%s'", outputFile);
+  const outputFile = templateFile.substring(0, templateFile.lastIndexOf('.'))
+  await fs.writeFile(
+    path.resolve(engine.options.root[0], outputFile),
+    renderedContents,
+  )
+  Log.ok("Output saved to '%s'", outputFile)
 
-  Log.groupEnd();
+  Log.groupEnd()
 }
 
 function getContext() {
   const METADATA_CONTEXT = {
     ...METADATA,
-  };
-  const today = new Date();
-  const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6));
+  }
+  const today = new Date()
+  const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6))
   const EXTRA_CONTEXT = {
-    manifestJsonMaskableIconSizes: [
-      48, 72, 96, 128, 192, 384, 512,
-    ],
+    manifestJsonMaskableIconSizes: [48, 72, 96, 128, 192, 384, 512],
     browserconfigIconSquareSizes: [70, 150, 310],
     securityTxtExpiration: sixMonthsFromToday,
-  };
-  const CONTEXT = {...METADATA_CONTEXT, ...EXTRA_CONTEXT}
-  Log.info('Context for rendering');
+  }
+  const CONTEXT = { ...METADATA_CONTEXT, ...EXTRA_CONTEXT }
+  Log.info('Context for rendering')
   Log.info(JSON.stringify(CONTEXT, null, 4))
-  return CONTEXT;
+  return CONTEXT
 }
 
 if (isMain(import.meta.url)) {

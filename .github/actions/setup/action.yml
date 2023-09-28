@@ -1,7 +1,7 @@
 name: Setup
 description: Checks out the repository and installs tooling
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Setup Node.js
       uses: actions/setup-node@v3
