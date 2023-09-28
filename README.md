@@ -39,7 +39,6 @@ Commit messages follow the [conventional commits][conventional-commits] guidelin
 semantic versioning release process using [semantic release][semantic-release]
 
 [conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
-
 [semantic-release]: https://semantic-release.gitbook.io/semantic-release/
 
 ### Commit message lint
@@ -65,8 +64,7 @@ is managed automatically by [Semantic Release][semantic-release] and CI/CD pipel
 > Config has been tweaked so all commits appear in the release notes. To do so, `types` of commits included are all
 > of those defined in [Conventional Changelog type defaults][conventional-changelog-type-defaults]. But none is
 > hidden. That list comprehends
->
-all [commit types that `commitlint`](https://github.com/conventional-changelog/commitlint/blob/v17.7.1/%40commitlint/config-conventional/index.js#L22-L32)
+> all [commit types that `commitlint`](https://github.com/conventional-changelog/commitlint/blob/v17.7.1/%40commitlint/config-conventional/index.js#L22-L32)
 > will lint.
 
 [conventional-changelog-type-defaults]: https://github.com/conventional-changelog/conventional-changelog/blob/conventional-changelog-conventionalcommits-v7.0.1/packages/conventional-changelog-conventionalcommits/constants.js#L3
@@ -145,7 +143,6 @@ won't be in sync.
 > that reason (and also so you can clone & run without issues). That metadata won't change often anyway.
 
 [angular-build-hooks-issue]: https://github.com/angular/angular-cli/issues/11787
-
 [npm-pre-post-scripts]: https://docs.npmjs.com/cli/v9/using-npm/scripts#pre--post-scripts
 
 ## Quirks
@@ -197,9 +194,11 @@ cd .ci && make run-main
 Simulates the workflow triggered by a push to `main` branch.
 
 > If you get a message related to Apple M-series chip:
+>
 > ```shell
 > WARN  ⚠ You are using Apple M-series chip and you have not specified container architecture, you might encounter issues while running act. If so, try running it with '--container-architecture linux/amd64'. ⚠                      7s
 > ```
+>
 > You can add ` --container-architecture linux/amd64` (notice a space when line begins) to your `~/.actrc` file. Create
 > it if it doesn't exist.
 
