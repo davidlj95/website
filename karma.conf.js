@@ -46,5 +46,5 @@ module.exports = function (config) {
       useBrowserName: false,
       outputFile: 'junit-test.xml',
     },
-  });
-};
+  })
+}
