@@ -2,8 +2,10 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
+    // https://github.com/renovatebot/renovate/blob/37.0.2/lib/config/presets/internal/config.ts
+    "config:best-practices",
+    "config:js-app",
   ],
-  "rangeStrategy": "pin",
   "prHourlyLimit": 0,
   "prConcurrentLimit": 5,
   "schedule": [
