@@ -17,7 +17,7 @@
 </ng-template>
 <ul *ngIf="line.children.length" [attr.id]="sluggedId" [@expanded]="isCollapsible ? isExpanded : true">
   <li *ngFor="let line of line.children">
-    <app-description [line]="line" [depth]="depth+1">
+    <app-description [line]="line" [depth]="depth+1" [parent]="this">
     </app-description>
   </li>
 </ul>
