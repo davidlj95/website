@@ -6,8 +6,8 @@ runs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version-file: '.node-version'
-        cache: 'yarn'
+        node-version-file: ".node-version"
+        cache: "yarn"
     - name: Install dependencies
       # Actually the "--immutable" is enabled by default on CI envs
       # setup-node action uses "--frozen-lockfile" but that is backwards comp and will be removed

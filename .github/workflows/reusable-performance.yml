@@ -9,7 +9,7 @@ on:
         description: Git reference to checkout. Defaults to @actions/checkout default.
         type: string
         required: false
-        default: ''
+        default: ""
     secrets:
       LHCI_GITHUB_APP_TOKEN:
         required: true
@@ -47,5 +47,5 @@ jobs:
         # noinspection SpellCheckingInspection
         uses: manrueda/lighthouse-report-action@v1.1.2
         with:
-          reports: '.lighthouseci'
+          reports: ".lighthouseci"
           github-token: ${{ secrets.GITHUB_TOKEN }}

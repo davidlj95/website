@@ -9,7 +9,7 @@ on:
         description: Git reference to checkout. Defaults to @actions/checkout default.
         type: string
         required: false
-        default: ''
+        default: ""
 
 # Needed for prebuild step: dry run a release.
 # Git permissions are checked even in dry run mode 🙃
@@ -45,5 +45,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ inputs.artifact-name }}
-          path: 'dist/@davidlj95/website'
+          path: "dist/@davidlj95/website"
           retention-days: 5

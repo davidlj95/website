@@ -63,7 +63,7 @@ jobs:
           apiToken: ${{ secrets.cloudflare-api-token }}
           # Somehow if this is not set, it deploys to production when building on a PR
           # https://github.com/cloudflare/pages-action/issues/97
-          branch:  ${{ github.head_ref || github.ref_name }}
-          projectName: 'davidlj95'
-          directory: 'browser'
+          branch: ${{ github.head_ref || github.ref_name }}
+          projectName: "davidlj95"
+          directory: "browser"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
