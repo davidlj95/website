@@ -17,6 +17,7 @@
     "security-txt": "ts-node scripts/src/generate-security-txt.mts",
     "font-subsets": "ts-node scripts/src/generate-font-subsets.mts",
     "lint": "ng lint",
+    "lint-staged": "lint-staged",
     "git-hooks": "husky install",
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --verbose --from HEAD~1",
