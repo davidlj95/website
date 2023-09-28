@@ -15,14 +15,12 @@ import { ProfilePictureComponent } from './about/profile-picture/profile-picture
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
 import { HeaderComponent } from './header/header.component';
 import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component';
 import { METADATA } from './metadata';
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component';
 import { NoScriptComponent } from './no-script/no-script.component';
 import { ReleaseInfoComponent } from './release-info/release-info.component';
-import { SocialComponent } from './social/social.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +28,6 @@ import { SocialComponent } from './social/social.component';
     HeaderComponent,
     AboutComponent,
     NoScriptComponent,
-    ContactsComponent,
-    SocialComponent,
     NavigationTabsComponent,
     JsonldMetadataComponent,
     ReleaseInfoComponent,

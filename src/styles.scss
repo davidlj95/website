@@ -3,8 +3,6 @@
 @use 'app/header/header-theme';
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
-@use 'app/contacts/contacts-theme';
-@use 'app/social/social-theme';
 @use "theming";
 @use "typographies";
 
@@ -46,8 +44,6 @@ code, pre {
   @include no-script-theme.color($theme);
   @include about-theme.color($theme);
   @include navigation-tabs-theme.color($theme);
-  @include contacts-theme.color($theme);
-  @include social-theme.color($theme);
 
   // TODO: cool effect for hovering
   a {
