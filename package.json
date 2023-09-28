@@ -17,7 +17,8 @@
     "font-subsets": "ts-node scripts/src/generate-font-subsets.mts",
     "lint": "ng lint",
     "git-hooks": "husky install",
-    "commitlint-last": "commitlint --verbose --edit",
+    "commitlint-edit-msg": "commitlint --verbose --edit",
+    "commitlint-last": "commitlint --verbose --from HEAD~1",
     "release-file": "ts-node scripts/src/generate-release-file.mts",
     "validate-renovate-config": "yarn dlx -p renovate renovate-config-validator"
   },
