@@ -1,6 +1,6 @@
-@use "touch-or-pointer";
-@use "margins";
-@use "paddings";
+@use 'touch-or-pointer';
+@use 'margins';
+@use 'paddings';
 
 $picture-size: 128px;
 
@@ -43,7 +43,7 @@ $picture-size: 128px;
     // https://freefrontend.com/css-speech-bubbles/
     &:before {
       position: absolute;
-      content: "";
+      content: '';
       border: 8px solid transparent;
 
       border-left: 0;
@@ -53,7 +53,7 @@ $picture-size: 128px;
     }
 
     .touch {
-      display: none
+      display: none;
     }
 
     @include touch-or-pointer.primaryInputCannotHover {
@@ -91,7 +91,8 @@ $picture-size: 128px;
     }
   }
 
-  &:hover, &[data-has-been-focused]:focus {
+  &:hover,
+  &[data-has-been-focused]:focus {
     .comment {
       visibility: visible;
       opacity: 1;

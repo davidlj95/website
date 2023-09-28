@@ -1,6 +1,6 @@
-import { Component, HostBinding, Inject } from '@angular/core';
-import { METADATA } from '../../common/injection-tokens';
-import { Metadata } from '../../metadata';
+import { Component, HostBinding, Inject } from '@angular/core'
+import { METADATA } from '../../common/injection-tokens'
+import { Metadata } from '../../metadata'
 
 @Component({
   selector: 'app-profile-picture',
@@ -8,12 +8,13 @@ import { Metadata } from '../../metadata';
   styleUrls: ['./profile-picture.component.scss'],
 })
 export class ProfilePictureComponent {
-  protected realName: string = this.metadata.realName;
-  protected _hasBeenFocused= false;
+  protected realName: string = this.metadata.realName
+  protected _hasBeenFocused = false
 
   public static HAS_BEEN_FOCUSED_ATTR = 'data-has-been-focused'
 
-  @HostBinding(`attr.${ProfilePictureComponent.HAS_BEEN_FOCUSED_ATTR}`) public get hasBeenFocused() {
+  @HostBinding(`attr.${ProfilePictureComponent.HAS_BEEN_FOCUSED_ATTR}`)
+  public get hasBeenFocused() {
     return this._hasBeenFocused ? true : undefined
   }
 
@@ -21,12 +22,9 @@ export class ProfilePictureComponent {
     return this.hasBeenFocused ? 0 : -1
   }
 
-  @HostBinding('attr.aria-label') public ariaLabel  = 'Profile picture'
+  @HostBinding('attr.aria-label') public ariaLabel = 'Profile picture'
 
-  constructor(
-    @Inject(METADATA) private metadata: Metadata,
-  ) {
-  }
+  constructor(@Inject(METADATA) private metadata: Metadata) {}
 
   onFocus() {
     this._hasBeenFocused = true

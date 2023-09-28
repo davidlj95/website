@@ -1,4 +1,4 @@
-@use "borders";
+@use 'borders';
 
 @mixin color($theme) {
   $background-palette: map-get($theme, background);

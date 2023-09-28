@@ -1,8 +1,8 @@
-@use "animations";
-@use "profile-picture/profile-picture-theme";
-@use "contact-social-icons/contact-social-icons-theme";
-@use "contact-traditional-icons/contact-traditional-icons-theme";
-@use "description/description-theme";
+@use 'animations';
+@use 'profile-picture/profile-picture-theme';
+@use 'contact-social-icons/contact-social-icons-theme';
+@use 'contact-traditional-icons/contact-traditional-icons-theme';
+@use 'description/description-theme';
 
 @mixin color($theme) {
   app-about {
@@ -15,7 +15,7 @@
 
 @mixin motion() {
   app-about {
-    @include profile-picture-theme.motion()
+    @include profile-picture-theme.motion();
   }
 }
 

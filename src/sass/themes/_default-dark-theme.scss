@@ -13,7 +13,7 @@ $default-dark-theme: (
     secondary: #9aa0a6ff,
   ),
   image: (
-    filter: grayscale(.5),
+    filter: grayscale(0.5),
   ),
   social: (
     foreground: #bdc6cfff,
@@ -39,4 +39,4 @@ $default-dark-theme: (
     // --color-syntax-1
     value-string: #35d4c7ff,
   ),
-)
+);

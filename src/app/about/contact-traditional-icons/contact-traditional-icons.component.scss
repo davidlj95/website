@@ -1,5 +1,5 @@
-@use "breakpoints";
-@use "margins";
+@use 'breakpoints';
+@use 'margins';
 
 :host {
   ul {
@@ -16,7 +16,11 @@
     height: 32px;
 
     .material-symbols-outlined {
-      font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 200, "opsz" 32;
+      font-variation-settings:
+        'FILL' 1,
+        'wght' 700,
+        'GRAD' 200,
+        'opsz' 32;
       font-size: 32px;
     }
   }

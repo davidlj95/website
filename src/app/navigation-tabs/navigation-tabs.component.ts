@@ -1,12 +1,12 @@
-import { Component, Inject, Input } from '@angular/core';
-import { isSomeEnum } from '../../utils';
-import { METADATA } from '../common/injection-tokens';
-import { Metadata } from '../metadata';
+import { Component, Inject, Input } from '@angular/core'
+import { isSomeEnum } from '../../utils'
+import { METADATA } from '../common/injection-tokens'
+import { Metadata } from '../metadata'
 
 @Component({
   selector: 'app-navigation-tabs',
   templateUrl: './navigation-tabs.component.html',
-  styleUrls: ['./navigation-tabs.component.scss']
+  styleUrls: ['./navigation-tabs.component.scss'],
 })
 export class NavigationTabsComponent {
   readonly items: ReadonlyArray<TabItem> = [
@@ -22,21 +22,18 @@ export class NavigationTabsComponent {
       id: TabId.CV,
       displayName: 'CV',
       externalUrl: `https://resume.${this.metadata.domainName}`,
-    }
-  ] as const;
+    },
+  ] as const
 
-  @Input({required: true}) tab!: TabId;
+  @Input({ required: true }) tab!: TabId
 
-  constructor(
-    @Inject(METADATA) private metadata: Metadata,
-  ) {
-  }
+  constructor(@Inject(METADATA) private metadata: Metadata) {}
 }
 
 interface TabItem {
-  id: TabId;
-  displayName: string;
-  externalUrl?: string;
+  id: TabId
+  displayName: string
+  externalUrl?: string
 }
 
 export enum TabId {
@@ -45,4 +42,4 @@ export enum TabId {
   CV = 'cv',
 }
 
-export const isTabId: (id: string) => id is TabId = isSomeEnum(TabId);
+export const isTabId: (id: string) => id is TabId = isSomeEnum(TabId)

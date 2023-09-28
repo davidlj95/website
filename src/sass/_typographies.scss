@@ -1,13 +1,13 @@
-@import "@fontsource/roboto/400.css";
-@import "@fontsource/roboto/700.css";
-@import "@fontsource/roboto-mono/400.css";
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/700.css';
+@import '@fontsource/roboto-mono/400.css';
 
 @mixin body-font {
-  font-family: "Roboto", "Helvetica", sans-serif;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
 @mixin monospace-font {
-  font-family: "Roboto Mono", "Courier New", monospace;
+  font-family: 'Roboto Mono', 'Courier New', monospace;
 }
 
 @mixin material-symbols-font {
@@ -16,9 +16,11 @@
     font-style: normal;
     font-weight: 100 700;
     font-display: block;
-    src: url('../../assets/material-symbols-outlined-subset.woff2') format('woff2'),
-    url('../../assets/material-symbols-outlined-subset.woff') format('woff'),
-    url('../../assets/material-symbols-outlined-subset.ttf') format('truetype');
+    src:
+      url('../../assets/material-symbols-outlined-subset.woff2') format('woff2'),
+      url('../../assets/material-symbols-outlined-subset.woff') format('woff'),
+      url('../../assets/material-symbols-outlined-subset.ttf')
+        format('truetype');
   }
 
   .material-symbols-outlined {
@@ -39,9 +41,10 @@
   }
 
   .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0,
-    'wght' 100,
-    'GRAD' 0,
-    'opsz' 24
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 100,
+      'GRAD' 0,
+      'opsz' 24;
   }
 }

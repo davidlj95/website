@@ -1,10 +1,10 @@
-@use "paddings";
-@use "borders";
+@use 'paddings';
+@use 'borders';
 
 $vertical-padding: paddings.$xs;
 $icons-height-pixels: 32;
 $icons-height: #{$icons-height-pixels}px;
-$vertical-padding-height: calc(2*$vertical-padding);
+$vertical-padding-height: calc(2 * $vertical-padding);
 $border-height: borders.$panel-width;
 
 $height: calc($icons-height + $vertical-padding-height + $border-height);

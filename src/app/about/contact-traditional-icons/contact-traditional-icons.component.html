@@ -1,5 +1,10 @@
 <ul>
   <li *ngFor="let item of items">
-    <a [href]="item.url" [attr.aria-label]="item.name" class="material-symbols-outlined">{{ item.materialSymbol }}</a>
+    <a
+      [href]="item.url"
+      [attr.aria-label]="item.name"
+      class="material-symbols-outlined"
+      >{{ item.materialSymbol }}</a
+    >
   </li>
 </ul>

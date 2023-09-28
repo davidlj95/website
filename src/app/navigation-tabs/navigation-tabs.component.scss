@@ -1,4 +1,4 @@
-@use "paddings";
+@use 'paddings';
 
 :host {
   display: block;
@@ -13,7 +13,8 @@
       justify-content: center;
       text-align: center;
 
-      a, span {
+      a,
+      span {
         display: inline-block;
         padding: paddings.$s;
         width: 100%;

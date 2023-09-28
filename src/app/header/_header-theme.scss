@@ -1,5 +1,5 @@
-@use "touch-or-pointer";
-@use "borders";
+@use 'touch-or-pointer';
+@use 'borders';
 
 @mixin color($theme) {
   $text-palette: map-get($theme, text);
@@ -24,4 +24,3 @@
 @mixin theme($theme) {
   @include color($theme);
 }
-

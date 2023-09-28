@@ -7,7 +7,7 @@ export function expectIsHidden(element: Element) {
 }
 
 function expectVisibility(element: Element, visible: boolean) {
-  const styles = getComputedStyle(element);
+  const styles = getComputedStyle(element)
   const isHiddenWithVisibility = styles.visibility === 'hidden'
   const isHiddenWithDisplay = styles.display === 'none'
   expect(isHiddenWithDisplay || isHiddenWithVisibility)

@@ -4,20 +4,38 @@
   </div>
 </ng-container>
 <ng-template #collapsibleTemplate>
-  <button class="data" type="button" [attr.aria-expanded]="isExpanded" [attr.aria-controls]="sluggedId"
-          (click)="isExpanded ? this.collapse() : this.expand()"
+  <button
+    class="data"
+    type="button"
+    [attr.aria-expanded]="isExpanded"
+    [attr.aria-controls]="sluggedId"
+    (click)="isExpanded ? this.collapse() : this.expand()"
   >
-    <span class="caret displayNoneIfNoScript" aria-hidden="true">{{ isExpanded ? config.expandedIcon : config.collapsedIcon }}</span>
+    <span class="caret displayNoneIfNoScript" aria-hidden="true">{{
+      isExpanded ? config.expandedIcon : config.collapsedIcon
+    }}</span>
     <ng-container [ngTemplateOutlet]="dataTemplate"></ng-container>
   </button>
 </ng-template>
 <ng-template #dataTemplate>
-  <span class="symbol material-symbols-outlined" aria-hidden="true" *ngIf="line.data">{{ line.data.symbol }}</span>
-  <span class="content" [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.data?.html ?? '')"></span>
+  <span
+    class="symbol material-symbols-outlined"
+    aria-hidden="true"
+    *ngIf="line.data"
+    >{{ line.data.symbol }}</span
+  >
+  <span
+    class="content"
+    [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.data?.html ?? '')"
+  ></span>
 </ng-template>
-<ul *ngIf="line.children.length" [attr.id]="sluggedId" [@expanded]="isCollapsible ? isExpanded : true">
+<ul
+  *ngIf="line.children.length"
+  [attr.id]="sluggedId"
+  [@expanded]="isCollapsible ? isExpanded : true"
+>
   <li *ngFor="let line of line.children">
-    <app-description [line]="line" [depth]="depth+1" [parent]="this">
+    <app-description [line]="line" [depth]="depth + 1" [parent]="this">
     </app-description>
   </li>
 </ul>

@@ -1,4 +1,4 @@
-@use "animations";
+@use 'animations';
 
 @mixin color($theme) {
   $background-palette: map-get($theme, background);
@@ -13,10 +13,10 @@
 @mixin motion() {
   body {
     transition-property: color, background-color;
-    @include animations.transition(animations.$emphasized-style)
+    @include animations.transition(animations.$emphasized-style);
   }
 }
 
 @mixin theme($theme) {
-  @include color($theme)
+  @include color($theme);
 }
