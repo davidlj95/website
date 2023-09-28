@@ -20,18 +20,23 @@
     "dependencies",
   ],
   "packageRules": [
+    // Commit messages. Mock @dependabot ones:
+    // build(deps) for production dependencies, build(deps-dev) for dev dependencies
     {
       "matchPackagePatterns": [
-        "*"
+        "dependencies"
       ],
-      "semanticCommitType": "build"
+      "semanticCommitType": "build",
+      "semanticCommitScope": "deps"
     },
     {
       "matchDepTypes": [
-        "dependencies"
+        "devDependencies"
       ],
-      "semanticCommitType": "fix"
+      "semanticCommitType": "build",
+      "semanticCommitScope": "deps-dev"
     },
+    // Tagging
     {
       "matchManagers": [
         "github-actions"
@@ -56,6 +61,7 @@
         "node"
       ]
     },
+    // Automerge minor/patch production ones & dev dependencies
     {
       "matchUpdateTypes": [
         "minor",
@@ -75,7 +81,9 @@
     // Otherwise, we'll get an error
     // https://angular.io/guide/versions
     {
-      "matchPackageNames": ["typescript"],
+      "matchPackageNames": [
+        "typescript"
+      ],
       "allowedVersions": ">=4.9.3 <5.2.0"
     }
   ]
