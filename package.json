@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:public": "ng serve --host 0.0.0.0 --disable-host-check",
     "prebuild": "concurrently \"yarn run font-subsets\" \"yarn run release-file\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
