@@ -23,7 +23,8 @@
     "release-file": "ts-node scripts/src/generate-release-file.mts",
     "validate-renovate-config": "yarn dlx -p renovate renovate-config-validator",
     "format-check": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "generate-prettierignore": "cp .gitignore .prettierignore && cat .part.prettierignore >> .prettierignore"
   },
   "dependencies": {
     "@angular/animations": "16.2.6",
