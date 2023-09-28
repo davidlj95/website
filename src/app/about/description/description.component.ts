@@ -11,8 +11,13 @@ import { DescriptionLine } from '../../metadata';
   styleUrls: ['./description.component.scss'],
   animations: [
     trigger('expanded', [
-      state('true', style({height: AUTO_STYLE, visibility: AUTO_STYLE})),
-      state('false', style({height: '0', visibility: 'hidden'})),
+      // TODO: Investigate how to set display in state without triggering Angular warning
+      //       Tried:
+      //        - Animation callbacks: they mess up the animation
+      //        - In CSS display: none, whilst :not(.ng-animating). Messes animation too
+      // Display state is needed so that elements don't make the body overflow in some devices
+      state('true', style({height: AUTO_STYLE, visibility: AUTO_STYLE, display: 'flex'})),
+      state('false', style({height: '0', visibility: 'hidden', display: 'none'})),
       transition('true => false', animate(`${EMPHASIZED_DURATION_MS}ms ${TIMING_FUNCTION}`)),
       transition('false => true', animate(`${EMPHASIZED_DURATION_MS}ms ${TIMING_FUNCTION}`)),
     ]),
@@ -33,7 +38,7 @@ export class DescriptionComponent {
     @Inject(COLLAPSIBLE_CONFIG) protected config: CollapsibleConfiguration,
     @Inject(PLATFORM_ID) private platformId: object,
   ) {
-    if(isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
       this.isExpanded = this.EXPANDED_DEFAULT_JS_ENABLED
       this.hidden = false
     }
