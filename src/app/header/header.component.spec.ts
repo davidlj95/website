@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { By } from '@angular/platform-browser'
 import { MockProviders, ngMocks } from 'ng-mocks'
 import { ColorSchemeService } from './color-scheme.service'
 import { HeaderComponent } from './header.component'
@@ -25,7 +26,10 @@ describe('ToolbarComponent', () => {
   describe('when pressing scheme switcher icon', () => {
     it('should call dark / light scheme toggle', () => {
       const colorSchemeService = TestBed.inject(ColorSchemeService)
-      ngMocks.click('.dark-light-scheme-toggle')
+
+      fixture.debugElement
+        .query(By.css('#dark-light-scheme-toggle'))
+        .triggerEventHandler('click')
 
       expect(colorSchemeService.toggleDarkLight).toHaveBeenCalled()
     })
