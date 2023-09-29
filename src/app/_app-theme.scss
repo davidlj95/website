@@ -12,8 +12,10 @@
 
 @mixin motion() {
   body {
-    transition-property: color, background-color;
-    @include animations.transition(animations.$emphasized-style);
+    @include animations.multiple-transitions(
+      (color, background-color),
+      animations.$emphasized-style
+    );
   }
 }
 
