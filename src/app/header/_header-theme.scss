@@ -1,5 +1,6 @@
 @use 'touch-or-pointer';
 @use 'borders';
+@use 'animations';
 
 @mixin color($theme) {
   $text-palette: map-get($theme, text);
@@ -18,6 +19,15 @@
         }
       }
     }
+  }
+}
+
+@mixin motion() {
+  app-header {
+    @include animations.multiple-transitions(
+      (background-color, color),
+      animations.$emphasized-style
+    );
   }
 }
 
