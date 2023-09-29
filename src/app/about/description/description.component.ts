@@ -60,13 +60,15 @@ export class DescriptionComponent {
   @Input() protected parent?: DescriptionComponent
 
   // 👇 Using `protected` to avoid being marked as unused
-  @HostBinding('class.visibleIfNoScript') protected visibleIfNoScript = true
-  @HostBinding('class.hidden') protected hidden = true
+  @HostBinding('class.displayBlockIfNoScript') protected visibleIfNoScript =
+    true
+  @HostBinding('class.hidden') protected hidden = !this.isRenderingOnBrowser
 
   private EXPANDED_DEFAULT_NO_JS = true
   private EXPANDED_DEFAULT_JS_ENABLED = false
-  public isExpanded = this.EXPANDED_DEFAULT_NO_JS
-
+  public isExpanded = this.isRenderingOnBrowser
+    ? this.EXPANDED_DEFAULT_JS_ENABLED
+    : this.EXPANDED_DEFAULT_NO_JS
   @ViewChildren(DescriptionComponent)
   private children!: QueryList<DescriptionComponent>
 
@@ -74,11 +76,10 @@ export class DescriptionComponent {
     protected sanitizer: DomSanitizer,
     @Inject(COLLAPSIBLE_CONFIG) protected config: CollapsibleConfiguration,
     @Inject(PLATFORM_ID) private platformId: object,
-  ) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.isExpanded = this.EXPANDED_DEFAULT_JS_ENABLED
-      this.hidden = false
-    }
+  ) {}
+
+  protected get isRenderingOnBrowser() {
+    return isPlatformBrowser(this.platformId)
   }
 
   public get isCollapsible(): boolean {
