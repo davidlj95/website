@@ -1,33 +1,44 @@
 @use 'borders';
 @use 'margins';
+@use 'header';
 @use 'paddings';
+@use 'z-index';
 
-app-no-script {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: paddings.$m;
-  gap: margins.$xs;
-  text-align: center;
-  height: 100px;
+:host {
+  position: fixed;
+  top: header.$height;
+  width: 100%;
+  z-index: z-index.$no-script;
 
-  @include borders.panel-style-width(bottom);
-
-  p:first-child {
+  .contents {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: margins.$s;
-  }
-  p:not(:first-child) {
-    font-size: 14px;
-  }
-  .material-symbols-outlined {
-    font-size: 1em;
-    font-variation-settings:
-      'FILL' 0,
-      'wght' 700,
-      'GRAD' 0,
-      'opsz' 16;
+    padding: paddings.$m;
+    gap: margins.$xs;
+    text-align: center;
+    height: 100px;
+
+    @include borders.panel-style-width(bottom);
+
+    p:first-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: margins.$s;
+    }
+
+    p:not(:first-child) {
+      font-size: 14px;
+    }
+
+    .material-symbols-outlined {
+      font-size: 1em;
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' 0,
+        'opsz' 16;
+    }
   }
 }

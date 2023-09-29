@@ -2,6 +2,7 @@
 @use 'paddings';
 @use 'header';
 @use 'z-index';
+@use 'helpers/units';
 
 :host {
   position: fixed;
@@ -14,9 +15,11 @@
     padding: header.$vertical-padding;
     flex-direction: row;
     justify-content: flex-end;
-    min-height: header.$icons-height + header.$vertical-padding-height;
+    $icons-height: header.$icons-height;
+    $vertical-padding-height: header.$vertical-padding-height;
+    min-height: calc($icons-height + $vertical-padding-height);
 
-    .buttons {
+    .toolbar {
       height: header.$icons-height;
 
       button {
@@ -31,7 +34,7 @@
           'FILL' 0,
           'wght' 200,
           'GRAD' 0,
-          'opsz' header.$icons-height-pixels;
+          'opsz' #{units.stripUnit(header.$icons-height)};
       }
     }
   }

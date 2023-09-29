@@ -3,7 +3,7 @@
 @mixin color($theme) {
   $background-palette: map-get($theme, background);
 
-  app-no-script {
+  app-no-script .contents {
     background: map-get($background-palette, z1);
     border-bottom-color: borders.panel-color($theme);
   }
