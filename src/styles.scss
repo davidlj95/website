@@ -11,8 +11,8 @@
 
 body {
   @include typographies.body-font();
-  // Do not allow scroll past boundaries
-  overscroll-behavior-y: none;
+  // Do not allow scroll "bounce" effect
+  overscroll-behavior: none;
 }
 
 code,
