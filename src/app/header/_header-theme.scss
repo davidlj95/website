@@ -10,7 +10,7 @@
     background-color: map-get($background-palette, z1);
     border-bottom-color: borders.panel-color($theme);
 
-    .dark-light-scheme-toggle {
+    .toolbar button {
       color: map-get($theme, icon);
 
       @include touch-or-pointer.primaryInputCanHover {
