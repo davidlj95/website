@@ -3,6 +3,7 @@
 @use 'app/header/header-theme';
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
+@use 'font-awesome';
 @use 'theming';
 @use 'typographies';
 
@@ -81,3 +82,6 @@ html:not([data-no-motion]) {
   @include about-theme.motion;
   @include navigation-tabs-theme.motion;
 }
+
+// Font Awesome quirk
+@include font-awesome.iconsStaticSizeFix;
