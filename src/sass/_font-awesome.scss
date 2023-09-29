@@ -1,0 +1,12 @@
+// When JavaScript is disabled and page is pre-rendered with SSR Font Awesome icons seemed to be there in the DOM,
+// but without their size set.
+//
+// Seems size is set dynamically by Font Awesome library. With this trick, we make icons always appear by setting its
+// size. Which also helps with SSR, given there are less layout shifts. As it appears there from early beginning, not
+// until its size is dynamically set
+@mixin iconsStaticSizeFix {
+  fa-icon > svg {
+    /* Otherwise, doesn't display when JavaScript is disabled */
+    height: 100%;
+  }
+}
