@@ -249,8 +249,14 @@ describe('DescriptionComponent', () => {
           let caretElement: DebugElement
           let listElement: DebugElement
 
-          function testShouldBeExpanded(checkVisibility: boolean = true) {
-            it('should be expanded', () => {
+          function testChildListShouldBeExpanded() {
+            it('child list should be expanded', () => {
+              expectIsVisible(listElement.nativeElement)
+            })
+          }
+
+          function testButtonShouldIndicateItsExpandedAndShowCollapseIcon() {
+            it('button should indicate it is expanded and show collapse icon', () => {
               expect(dataElement).toBeTruthy()
               expect(dataElement.attributes['aria-expanded']).toBe(
                 true.toString(),
@@ -259,15 +265,11 @@ describe('DescriptionComponent', () => {
               expect(caretElement.nativeElement.textContent).toBe(
                 fakeConfig.expandedIcon,
               )
-
-              if (checkVisibility) {
-                expectIsVisible(listElement.nativeElement)
-              }
             })
           }
 
-          function testShouldBeCollapsed() {
-            it('should be collapsed', () => {
+          function testButtonShouldIndicateItsCollapsedAndShowExpandIcon() {
+            it('button should indicate it is collapsed and show expand icon', () => {
               expect(dataElement).toBeTruthy()
               expect(dataElement.attributes['aria-expanded']).toBe(
                 false.toString(),
@@ -276,7 +278,11 @@ describe('DescriptionComponent', () => {
               expect(caretElement.nativeElement.textContent).toBe(
                 fakeConfig.collapsedIcon,
               )
+            })
+          }
 
+          function testShouldBeCollapsed() {
+            it('child list should be collapsed', () => {
               expectIsHidden(listElement.nativeElement)
             })
           }
@@ -294,7 +300,7 @@ describe('DescriptionComponent', () => {
               caretElement = dataElement.query(CARET_SELECTOR)
               listElement = fixture.debugElement.query(LIST_SELECTOR)
             })
-            testShouldBeExpanded(false)
+            testChildListShouldBeExpanded()
 
             // to avoid layout shifts
             it('should be hidden', () => {
@@ -315,6 +321,7 @@ describe('DescriptionComponent', () => {
             })
             describe('by default', () => {
               testShouldBeCollapsed()
+              testButtonShouldIndicateItsCollapsedAndShowExpandIcon()
               it('should make the component visible', () => {
                 expectIsVisible(fixture.debugElement.nativeElement)
               })
@@ -327,7 +334,8 @@ describe('DescriptionComponent', () => {
 
                 fixture.detectChanges()
               }))
-              testShouldBeExpanded()
+              testButtonShouldIndicateItsExpandedAndShowCollapseIcon()
+              testChildListShouldBeExpanded()
             })
             describe('when clicking twice', () => {
               beforeEach(fakeAsync(() => {
@@ -339,6 +347,7 @@ describe('DescriptionComponent', () => {
                 tick() // animation to complete
                 fixture.detectChanges()
               }))
+              testButtonShouldIndicateItsCollapsedAndShowExpandIcon()
               testShouldBeCollapsed()
             })
           })

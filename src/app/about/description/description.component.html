@@ -1,4 +1,6 @@
-<ng-container *ngIf="!isCollapsible; else collapsibleTemplate">
+<ng-container
+  *ngIf="!isCollapsible || !isRenderingOnBrowser; else collapsibleTemplate"
+>
   <div class="data" *ngIf="line.data">
     <ng-container [ngTemplateOutlet]="dataTemplate"></ng-container>
   </div>
@@ -11,7 +13,7 @@
     [attr.aria-controls]="sluggedId"
     (click)="isExpanded ? this.collapse() : this.expand()"
   >
-    <span class="caret displayNoneIfNoScript" aria-hidden="true">{{
+    <span class="caret" aria-hidden="true">{{
       isExpanded ? config.expandedIcon : config.collapsedIcon
     }}</span>
     <ng-container [ngTemplateOutlet]="dataTemplate"></ng-container>
