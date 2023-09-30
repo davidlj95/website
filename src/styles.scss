@@ -4,6 +4,7 @@
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
 @use 'font-awesome';
+@use 'material-symbols';
 @use 'theming';
 @use 'typographies';
 
@@ -38,7 +39,7 @@ pre {
   border-width: 0;
 }
 
-@include typographies.material-symbols-font();
+@include material-symbols.font();
 
 @mixin app-color($theme) {
   @include root-theme.color($theme);

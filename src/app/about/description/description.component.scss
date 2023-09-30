@@ -1,4 +1,5 @@
 @use 'margins';
+@use 'material-symbols';
 @use 'paddings';
 
 :host {
@@ -37,13 +38,14 @@
     }
   }
 
-  .material-symbols-outlined {
+  @include material-symbols.class {
     font-size: 1em;
-    font-variation-settings:
-      'FILL' 1,
-      'wght' 700,
-      'GRAD' 200,
-      'opsz' 24;
+    @include material-symbols.variation-settings(
+      $fill: true,
+      $weight: 700,
+      $grade: 200,
+      $size: 24
+    );
   }
 
   button {

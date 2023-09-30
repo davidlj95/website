@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { DarkTheme, LightTheme } from '../material-symbols'
 import { ColorSchemeService } from './color-scheme.service'
+import { MATERIAL_SYMBOLS_CLASS } from '../common/material-symbols'
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,11 @@ import { ColorSchemeService } from './color-scheme.service'
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  protected MaterialSymbol = {
+  protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
+  protected readonly MaterialSymbol = {
     DarkTheme,
     LightTheme,
   }
 
-  constructor(protected colorSchemeService: ColorSchemeService) {}
+  constructor(protected readonly colorSchemeService: ColorSchemeService) {}
 }

@@ -5,10 +5,10 @@
       aria-label="Color scheme toggle (dark or light)"
       id="dark-light-scheme-toggle"
     >
-      <span class="material-symbols-outlined light-only">{{
+      <span [class]="MATERIAL_SYMBOLS_CLASS" class="light-only">{{
         MaterialSymbol.DarkTheme
       }}</span>
-      <span class="material-symbols-outlined dark-only">{{
+      <span [class]="MATERIAL_SYMBOLS_CLASS" class="dark-only">{{
         MaterialSymbol.LightTheme
       }}</span>
     </button>
