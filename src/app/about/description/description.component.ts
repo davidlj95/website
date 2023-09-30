@@ -23,6 +23,7 @@ import {
   TIMING_FUNCTION,
 } from '../../common/animations'
 import { DescriptionLine } from '../../metadata'
+import { MATERIAL_SYMBOLS_CLASS } from '../../common/material-symbols'
 
 @Component({
   selector: 'app-description',
@@ -60,12 +61,13 @@ export class DescriptionComponent {
   @Input() protected parent?: DescriptionComponent
 
   // 👇 Using `protected` to avoid being marked as unused
-  @HostBinding('class.displayBlockIfNoScript') protected visibleIfNoScript =
-    true
+  @HostBinding('class.displayBlockIfNoScript')
+  protected readonly visibleIfNoScript = true
   @HostBinding('class.hidden') protected hidden = !this.isRenderingOnBrowser
 
-  private EXPANDED_DEFAULT_NO_JS = true
-  private EXPANDED_DEFAULT_JS_ENABLED = false
+  protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
+  private readonly EXPANDED_DEFAULT_NO_JS = true
+  private readonly EXPANDED_DEFAULT_JS_ENABLED = false
   public isExpanded = this.isRenderingOnBrowser
     ? this.EXPANDED_DEFAULT_JS_ENABLED
     : this.EXPANDED_DEFAULT_NO_JS
@@ -73,9 +75,10 @@ export class DescriptionComponent {
   private children!: QueryList<DescriptionComponent>
 
   constructor(
-    protected sanitizer: DomSanitizer,
-    @Inject(COLLAPSIBLE_CONFIG) protected config: CollapsibleConfiguration,
-    @Inject(PLATFORM_ID) private platformId: object,
+    protected readonly sanitizer: DomSanitizer,
+    @Inject(COLLAPSIBLE_CONFIG)
+    protected readonly config: CollapsibleConfiguration,
+    @Inject(PLATFORM_ID) private readonly platformId: object,
   ) {}
 
   protected get isRenderingOnBrowser() {

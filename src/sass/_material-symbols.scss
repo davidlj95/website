@@ -1,0 +1,58 @@
+@use 'sass:math';
+@use 'helpers/units';
+
+@mixin font {
+  @font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 100 700;
+    font-display: block;
+    src:
+      url('../../assets/material-symbols-outlined-subset.woff2') format('woff2'),
+      url('../../assets/material-symbols-outlined-subset.woff') format('woff'),
+      url('../../assets/material-symbols-outlined-subset.ttf')
+        format('truetype');
+  }
+
+  @include class {
+    //noinspection CssNoGenericFontName
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @include class {
+    @include variation-settings;
+  }
+}
+
+@mixin class {
+  .material-symbols-outlined {
+    @content;
+  }
+}
+
+@mixin variation-settings($fill: false, $weight: 400, $grade: 0, $size: 24) {
+  $sizeUnit: math.unit($size);
+  @if $sizeUnit == 'px' {
+    $size: units.strip($size);
+  } @else if $sizeUnit != '' {
+    @error "Size cannot have units other than 'px' (#{$size})";
+  }
+
+  font-variation-settings:
+    'FILL' if($fill, 1, 0),
+    'wght' $weight,
+    'GRAD' $grade,
+    'opsz' $size;
+}

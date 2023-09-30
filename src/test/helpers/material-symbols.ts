@@ -1,4 +1,4 @@
 import { By } from '@angular/platform-browser'
+import { MATERIAL_SYMBOLS_CLASS } from '../../app/common/material-symbols'
 
-const MATERIAL_SYMBOLS_CLASS = 'material-symbols-outlined'
 export const MATERIAL_SYMBOLS_SELECTOR = By.css(`.${MATERIAL_SYMBOLS_CLASS}`)

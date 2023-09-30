@@ -21,7 +21,8 @@
 </ng-template>
 <ng-template #dataTemplate>
   <span
-    class="symbol material-symbols-outlined"
+    [class]="MATERIAL_SYMBOLS_CLASS"
+    class="symbol"
     aria-hidden="true"
     *ngIf="line.data"
     >{{ line.data.symbol }}</span

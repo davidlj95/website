@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { Warning } from '../material-symbols'
+import { MATERIAL_SYMBOLS_CLASS } from '../common/material-symbols'
 
 @Component({
   selector: 'app-no-script',
@@ -7,7 +8,8 @@ import { Warning } from '../material-symbols'
   styleUrls: ['./no-script.component.scss'],
 })
 export class NoScriptComponent {
-  protected MaterialSymbol = {
+  protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
+  protected readonly MaterialSymbol = {
     Warning,
   }
 }
