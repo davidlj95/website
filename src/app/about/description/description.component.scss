@@ -33,7 +33,6 @@
 
     // If we move it outside this selector, conflicts with root <a> styles
     ::ng-deep a {
-      text-decoration-line: underline;
       text-decoration-thickness: 1px;
     }
   }
@@ -63,7 +62,6 @@
 
   // Content-specific customizations
   ::ng-deep a.craft {
-    text-decoration-line: underline;
     text-decoration-color: currentColor;
   }
 
