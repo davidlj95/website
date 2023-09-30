@@ -5,7 +5,6 @@ import { ensureHasComponents } from '../test/helpers/component-testers'
 import { AboutComponent } from './about/about.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
-import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component'
 import { NoScriptComponent } from './no-script/no-script.component'
 import { ReleaseInfoComponent } from './release-info/release-info.component'
 import { By } from '@angular/platform-browser'
@@ -20,7 +19,6 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         MockComponents(
-          JsonldMetadataComponent,
           ReleaseInfoComponent,
           NoScriptComponent,
           HeaderComponent,
@@ -44,7 +42,6 @@ describe('AppComponent', () => {
 
   ensureHasComponents(
     () => fixture,
-    JsonldMetadataComponent,
     ReleaseInfoComponent,
     NoScriptComponent,
     HeaderComponent,
