@@ -5,6 +5,7 @@
 @use 'app/header/header-theme';
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
+@use 'app/not-found/not-found-theme';
 @use 'font-awesome';
 @use 'material-symbols';
 @use 'theming';
@@ -54,6 +55,7 @@ a {
   @include no-script-theme.color($theme);
   @include about-theme.color($theme);
   @include navigation-tabs-theme.color($theme);
+  @include not-found-theme.color($theme);
 
   // TODO: cool effect for hovering
   $text-palette: map.get($theme, text);
