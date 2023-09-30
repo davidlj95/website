@@ -2,11 +2,10 @@
 @use 'margins';
 @use 'paddings';
 @use 'breakpoints';
+@use 'page';
 
 :host {
-  position: absolute;
-  width: 100%;
-  min-height: 100%;
+  @include page.full-size;
   display: flex;
   flex-direction: column;
   justify-content: center;
