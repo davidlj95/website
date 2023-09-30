@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use 'helpers/units';
+
 @mixin font {
   @font-face {
     font-family: 'Material Symbols Outlined';
@@ -40,6 +43,13 @@
 }
 
 @mixin variation-settings($fill: false, $weight: 400, $grade: 0, $size: 24) {
+  $sizeUnit: math.unit($size);
+  @if $sizeUnit == 'px' {
+    $size: units.strip($size);
+  } @else if $sizeUnit != '' {
+    @error "Size cannot have units other than 'px' (#{$size})";
+  }
+
   font-variation-settings:
     'FILL' if($fill, 1, 0),
     'wght' $weight,

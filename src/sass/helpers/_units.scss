@@ -2,6 +2,6 @@
 
 // Strips unit from variable. ie: 32px -> 32
 // https://stackoverflow.com/a/12335841/3263250
-@function stripUnit($number) {
+@function strip($number) {
   @return math.div($number, ($number * 0+1));
 }

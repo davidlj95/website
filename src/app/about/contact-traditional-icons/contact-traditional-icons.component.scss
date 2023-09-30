@@ -17,12 +17,13 @@
     height: 32px;
 
     @include material-symbols.class {
-      font-size: 32px;
+      $fontSize: 32px;
+      font-size: $fontSize;
       @include material-symbols.variation-settings(
         $fill: true,
         $weight: 700,
         $grade: 200,
-        $size: 32
+        $size: $fontSize
       );
     }
   }

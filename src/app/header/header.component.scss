@@ -35,7 +35,7 @@
           $fill: false,
           $weight: 200,
           $grade: 0,
-          $size: units.stripUnit(header.$icons-height)
+          $size: header.$icons-height
         );
       }
     }
