@@ -1,8 +1,15 @@
 @use 'page';
+@use 'margins';
 
 :host {
   @include page.full-size;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: margins.$m;
+
+  .icon {
+    font-size: 96px;
+  }
 }
