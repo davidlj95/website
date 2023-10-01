@@ -13,18 +13,14 @@
   ],
   timezone: 'Europe/Madrid',
   labels: ['dependencies'],
+  // Commit messages. Mock @dependabot ones:
+  // build(deps) for production dependencies, build(deps-dev) for dev dependencies (see below)
+  semanticCommitType: 'build',
+  semanticCommitScope: 'deps-dev',
   packageRules: [
-    // Commit messages. Mock @dependabot ones:
-    // build(deps) for production dependencies, build(deps-dev) for dev dependencies
     {
-      matchPackagePatterns: ['dependencies'],
-      semanticCommitType: 'build',
+      matchDepTypes: ['dependencies'],
       semanticCommitScope: 'deps',
-    },
-    {
-      matchDepTypes: ['devDependencies'],
-      semanticCommitType: 'build',
-      semanticCommitScope: 'deps-dev',
     },
     // Tagging
     {
