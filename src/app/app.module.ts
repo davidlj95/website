@@ -21,6 +21,7 @@ import { NoScriptComponent } from './no-script/no-script.component'
 import { ReleaseInfoComponent } from './release-info/release-info.component'
 import { NotFoundComponent } from './not-found/not-found.component'
 import { PresentationComponent } from './about/presentation/presentation.component'
+import { ProfessionalExperienceComponent } from './about/professional-experience/professional-experience.component'
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PresentationComponent } from './about/presentation/presentation.compone
     DescriptionComponent,
     NotFoundComponent,
     PresentationComponent,
+    ProfessionalExperienceComponent,
   ],
   imports: [
     BrowserModule,
