@@ -1,0 +1,13 @@
+@use 'page';
+
+:host {
+  @include page.full-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .after-presentation {
+    position: absolute;
+    top: 100%;
+  }
+}

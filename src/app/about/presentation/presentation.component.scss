@@ -5,48 +5,41 @@
 @use 'page';
 
 :host {
-  @include page.full-size;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: margins.$l;
+  padding: paddings.$m paddings.$l;
 
-  .contents {
+  .profile {
     display: flex;
     flex-direction: column;
-    gap: margins.$l;
-    padding: paddings.$m paddings.$l;
+    flex-wrap: wrap;
+    gap: margins.$s;
 
-    .profile {
+    h1 > span.visible-header {
       display: flex;
       flex-direction: column;
-      flex-wrap: wrap;
-      gap: margins.$s;
 
-      h1 > span.visible-header {
-        display: flex;
-        flex-direction: column;
-
-        .real-name {
-          font-size: 1.75rem;
-          font-weight: bold;
-        }
-        code {
-          font-size: 1.5rem;
-        }
+      .real-name {
+        font-size: 1.75rem;
+        font-weight: bold;
       }
 
-      h2 {
+      code {
         font-size: 1.5rem;
       }
+    }
 
-      .contacts {
-        display: flex;
-        gap: margins.$m;
-        flex-wrap: wrap;
-        flex-direction: row;
-        margin-top: margins.$s;
-      }
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .contacts {
+      display: flex;
+      gap: margins.$m;
+      flex-wrap: wrap;
+      flex-direction: row;
+      margin-top: margins.$s;
     }
   }
 }
