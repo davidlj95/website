@@ -45,5 +45,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ inputs.artifact-name }}
-          path: 'dist/@davidlj95/website'
+          path: 'dist/@davidlj95/website/browser'
           retention-days: 5
