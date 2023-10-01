@@ -8,17 +8,17 @@ import {
 import { By } from '@angular/platform-browser'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { MockProvider } from 'ng-mocks'
-import { getComponentSelector } from '../../../test/helpers/component-testers'
-import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols'
+import { getComponentSelector } from '../../../../test/helpers/component-testers'
+import { MATERIAL_SYMBOLS_SELECTOR } from '../../../../test/helpers/material-symbols'
 import {
   PLATFORM_BROWSER_ID,
   PLATFORM_SERVER_ID,
-} from '../../../test/helpers/platform-ids'
+} from '../../../../test/helpers/platform-ids'
 import {
   expectIsHidden,
   expectIsVisible,
-} from '../../../test/helpers/visibility'
-import { DescriptionLine, DescriptionLineData } from '../../metadata'
+} from '../../../../test/helpers/visibility'
+import { DescriptionLine, DescriptionLineData } from '../../../metadata'
 
 import {
   COLLAPSIBLE_CONFIG,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
-import { Call, Email, MyLocation } from '../../material-symbols'
-import { MATERIAL_SYMBOLS_CLASS } from '../../common/material-symbols'
+import { Call, Email, MyLocation } from '../../../material-symbols'
+import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 
 @Component({
   selector: 'app-contact-traditional-icons',

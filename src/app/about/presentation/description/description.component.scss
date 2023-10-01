@@ -1,6 +1,6 @@
-@use 'margins';
-@use 'material-symbols';
-@use 'paddings';
+@use '../../../../sass/margins';
+@use '../../../../sass/material-symbols';
+@use '../../../../sass/paddings';
 
 :host {
   &.hidden {

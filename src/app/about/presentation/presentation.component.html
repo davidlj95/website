@@ -1,0 +1,21 @@
+<div class="contents" role="presentation">
+  <div class="profile">
+    <app-profile-picture></app-profile-picture>
+    <h1>
+      <span class="visible-header" aria-hidden="true">
+        <span class="real-name">{{ realName }}</span>
+        <code>@{{ nickname }}</code>
+      </span>
+      <!-- Duplicated for accessibility
+                        Otherwise, it was read twice: first as a group, then each element (<span>/<code>) separately.
+                        https://stackoverflow.com/a/76001309/3263250 -->
+      <span class="sr-only"> {{ realName }} @{{ nickname }} </span>
+    </h1>
+    <h2>{{ title }}</h2>
+    <div class="contacts">
+      <app-contact-traditional-icons></app-contact-traditional-icons>
+      <app-contact-social-icons></app-contact-social-icons>
+    </div>
+  </div>
+  <app-description [line]="rootLine"></app-description>
+</div>
