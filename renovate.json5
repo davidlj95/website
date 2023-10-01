@@ -16,6 +16,8 @@
   packageRules: [
     // Semantic commit messages & PR titles. Mocks @dependabot ones:
     // build(deps) for production dependencies, build(deps-dev) for dev dependencies (see below)
+    // ℹ️ If placing this 👇 commit type and scope default in root config doesn't work. Most probably the config
+    // presets override that
     {
       matchFileNames: ['**/*'],
       semanticCommitType: 'build',
