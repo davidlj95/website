@@ -10,6 +10,7 @@ import {
   Log,
   SECURITY_TXT_REL_PATH,
 } from './utils.mjs'
+import * as child_process from 'child_process'
 
 const { METADATA } = metadata
 
@@ -92,6 +93,14 @@ function getContext() {
     manifestJsonMaskableIconSizes: [48, 72, 96, 128, 192, 384, 512],
     browserconfigIconSquareSizes: [70, 150, 310],
     securityTxtExpiration: sixMonthsFromToday,
+    prBranchName:
+      // Use CI environment variable, or default to branch name to work locally
+      process.env['GITHUB_HEAD_REF'] ??
+      // https://stackoverflow.com/a/35778030/3263250
+      child_process
+        .execSync('git rev-parse --abbrev-ref HEAD')
+        .toString()
+        .trim(),
   }
   const CONTEXT = { ...METADATA_CONTEXT, ...EXTRA_CONTEXT }
   Log.info('Context for rendering')
