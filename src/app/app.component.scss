@@ -13,13 +13,5 @@
     $headerHeight: header.$height;
     min-height: calc(100% - $headerHeight);
     width: 100%;
-
-    // Second wrapper to allow for the noscript notice in case it displays
-    // min-height and top changes in case noscript displays. Check index.html styles.
-    .contents {
-      position: absolute;
-      width: 100%;
-      min-height: 100%;
-    }
   }
 }
