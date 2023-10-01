@@ -7,10 +7,10 @@ $panel-width: 1px;
   @return map.get($theme, hairline);
 }
 
-@mixin panel-style-width($side) {
+@mixin panel-style-width($side: 'all') {
   $panel-style: solid;
 
-  @if ($side == all) {
+  @if ($side == 'all') {
     border-width: $panel-width;
     border-style: $panel-style;
   } @else {

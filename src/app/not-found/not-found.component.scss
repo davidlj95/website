@@ -1,0 +1,44 @@
+@use 'borders';
+@use 'page';
+@use 'margins';
+@use 'material-symbols';
+@use 'paddings';
+
+:host {
+  @include page.full-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: margins.$m;
+  padding: paddings.$m;
+
+  .icon {
+    font-size: 96px;
+  }
+
+  h1,
+  h2,
+  .tip {
+    text-align: center;
+  }
+
+  .tip {
+    @include borders.panel-style-width;
+    padding: paddings.$m;
+    display: flex;
+    flex-direction: column;
+    gap: margins.$s;
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: margins.$xs;
+
+      @include material-symbols.class {
+        font-size: 1em;
+      }
+    }
+  }
+}

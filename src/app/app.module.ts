@@ -19,6 +19,7 @@ import { METADATA } from './metadata'
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component'
 import { NoScriptComponent } from './no-script/no-script.component'
 import { ReleaseInfoComponent } from './release-info/release-info.component'
+import { NotFoundComponent } from './not-found/not-found.component'
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ReleaseInfoComponent } from './release-info/release-info.component'
     ContactTraditionalIconsComponent,
     ContactSocialIconsComponent,
     DescriptionComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

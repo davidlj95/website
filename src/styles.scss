@@ -1,8 +1,11 @@
+@use 'sass:color';
+@use 'sass:map';
 @use 'app/app-theme' as root-theme;
 @use 'app/about/about-theme';
 @use 'app/header/header-theme';
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
+@use 'app/not-found/not-found-theme';
 @use 'font-awesome';
 @use 'material-symbols';
 @use 'theming';
@@ -20,6 +23,11 @@ body {
 code,
 pre {
   @include typographies.monospace-font();
+}
+
+a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
 }
 
 // Needed for some accessibility tricks around
@@ -47,11 +55,14 @@ pre {
   @include no-script-theme.color($theme);
   @include about-theme.color($theme);
   @include navigation-tabs-theme.color($theme);
+  @include not-found-theme.color($theme);
 
   // TODO: cool effect for hovering
+  $text-palette: map.get($theme, text);
+  $primary: map.get($text-palette, primary);
   a {
     color: inherit;
-    text-decoration: none;
+    text-decoration-color: color.adjust($primary, $alpha: -0.75);
 
     &:visited {
       color: inherit;

@@ -10,6 +10,7 @@ import { ContactSocialIconsComponent } from './contact-social-icons/contact-soci
 import { ContactTraditionalIconsComponent } from './contact-traditional-icons/contact-traditional-icons.component'
 import { DescriptionComponent } from './description/description.component'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
+import { JsonldMetadataComponent } from '../jsonld-metadata/jsonld-metadata.component'
 
 describe('AboutComponent', () => {
   let component: AboutComponent
@@ -25,6 +26,7 @@ describe('AboutComponent', () => {
       declarations: [
         AboutComponent,
         MockComponents(
+          JsonldMetadataComponent,
           ProfilePictureComponent,
           ContactTraditionalIconsComponent,
           ContactSocialIconsComponent,
@@ -59,6 +61,7 @@ describe('AboutComponent', () => {
 
   ensureHasComponents(
     () => fixture,
+    JsonldMetadataComponent,
     ProfilePictureComponent,
     ContactTraditionalIconsComponent,
     ContactSocialIconsComponent,

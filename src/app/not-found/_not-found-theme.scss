@@ -1,0 +1,9 @@
+@use 'borders';
+
+@mixin color($theme) {
+  app-not-found {
+    .tip {
+      border-color: borders.panel-color($theme);
+    }
+  }
+}
