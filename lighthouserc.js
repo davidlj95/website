@@ -5,9 +5,7 @@ module.exports = {
       url: ['http://localhost/'],
     },
     collect: {
-      staticDistDir: process.env.CI
-        ? 'browser'
-        : 'dist/@davidlj95/website/browser',
+      staticDistDir: process.env.CI ? '.' : 'dist/@davidlj95/website/browser',
     },
     assert: {
       preset: 'lighthouse:no-pwa',
