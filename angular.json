@@ -81,6 +81,14 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "pullRequest": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.pull-request.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -93,6 +101,9 @@
             },
             "development": {
               "browserTarget": "@davidlj95/website:build:development"
+            },
+            "pullRequest": {
+              "browserTarget": "@davidlj95/website:build:pullRequest,production"
             }
           },
           "defaultConfiguration": "development"
@@ -155,6 +166,14 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "pullRequest": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.pull-request.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -186,6 +205,10 @@
             "development": {
               "browserTarget": "@davidlj95/website:build:development",
               "serverTarget": "@davidlj95/website:server:development"
+            },
+            "pullRequest": {
+              "browserTarget": "@davidlj95/website:build:pullRequest,production",
+              "serverTarget": "@davidlj95/website:server:pullRequest,production"
             }
           },
           "defaultConfiguration": "production"

@@ -1,8 +1,13 @@
 .PHONY: *
 
-build:
+prebuild:
 	yarn run prebuild
+
+build: prebuild
 	yarn run prerender
+
+build-pull-request: prebuild
+	yarn run prerender:pullRequest
 
 lint:
 	yarn lint --format eslint-formatter-multiple --max-warnings 0

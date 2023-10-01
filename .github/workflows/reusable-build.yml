@@ -10,6 +10,11 @@ on:
         type: string
         required: false
         default: ''
+      target:
+        description: Makefile target to run when building
+        type: string
+        required: false
+        default: build
 
 # Needed for prebuild step: dry run a release.
 # Git permissions are checked even in dry run mode 🙃
@@ -39,7 +44,7 @@ jobs:
           restore-keys: |
             ${{ env.cache-name }}
       - name: Build and prerender app
-        run: cd .ci && make build
+        run: cd .ci && make ${{ inputs.target }}
       - name: Upload built app
         if: ${{ inputs.artifact-name != '' }}
         uses: actions/upload-artifact@v3

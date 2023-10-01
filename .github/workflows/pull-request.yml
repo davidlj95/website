@@ -11,6 +11,7 @@ jobs:
       contents: write
     with:
       artifact-name: build
+      target: build-pull-request
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
