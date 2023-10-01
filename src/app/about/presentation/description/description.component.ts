@@ -21,9 +21,9 @@ import { DomSanitizer } from '@angular/platform-browser'
 import {
   EMPHASIZED_DURATION_MS,
   TIMING_FUNCTION,
-} from '../../common/animations'
-import { DescriptionLine } from '../../metadata'
-import { MATERIAL_SYMBOLS_CLASS } from '../../common/material-symbols'
+} from '../../../common/animations'
+import { DescriptionLine } from '../../../metadata'
+import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 
 @Component({
   selector: 'app-description',

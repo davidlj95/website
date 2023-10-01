@@ -6,8 +6,8 @@ import {
   faTwitter,
   IconDefinition,
 } from '@fortawesome/free-brands-svg-icons'
-import { METADATA } from '../../common/injection-tokens'
-import { Metadata } from '../../metadata'
+import { METADATA } from '../../../common/injection-tokens'
+import { Metadata } from '../../../metadata'
 
 @Component({
   selector: 'app-contact-social-icons',

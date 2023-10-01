@@ -1,4 +1,4 @@
-@use 'animations';
+@use '../../../../sass/animations';
 
 @mixin color($theme) {
   $background-palette: map-get($theme, background);

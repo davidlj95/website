@@ -6,10 +6,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { SeoModule } from '@ngaox/seo'
 import { environment } from '../environments'
 import { AboutComponent } from './about/about.component'
-import { ContactSocialIconsComponent } from './about/contact-social-icons/contact-social-icons.component'
-import { ContactTraditionalIconsComponent } from './about/contact-traditional-icons/contact-traditional-icons.component'
-import { DescriptionComponent } from './about/description/description.component'
-import { ProfilePictureComponent } from './about/profile-picture/profile-picture.component'
+import { ContactSocialIconsComponent } from './about/presentation/contact-social-icons/contact-social-icons.component'
+import { ContactTraditionalIconsComponent } from './about/presentation/contact-traditional-icons/contact-traditional-icons.component'
+import { DescriptionComponent } from './about/presentation/description/description.component'
+import { ProfilePictureComponent } from './about/presentation/profile-picture/profile-picture.component'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -20,6 +20,7 @@ import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.compo
 import { NoScriptComponent } from './no-script/no-script.component'
 import { ReleaseInfoComponent } from './release-info/release-info.component'
 import { NotFoundComponent } from './not-found/not-found.component'
+import { PresentationComponent } from './about/presentation/presentation.component'
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NotFoundComponent } from './not-found/not-found.component'
     ContactSocialIconsComponent,
     DescriptionComponent,
     NotFoundComponent,
+    PresentationComponent,
   ],
   imports: [
     BrowserModule,

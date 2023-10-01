@@ -1,6 +1,6 @@
 import { Component, HostBinding, Inject } from '@angular/core'
-import { METADATA } from '../../common/injection-tokens'
-import { Metadata } from '../../metadata'
+import { METADATA } from '../../../common/injection-tokens'
+import { Metadata } from '../../../metadata'
 
 @Component({
   selector: 'app-profile-picture',
