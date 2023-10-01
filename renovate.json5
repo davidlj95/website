@@ -1,7 +1,12 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   // 👇 Defined in https://github.com/renovatebot/renovate/blob/37.0.2/lib/config/presets/internal/config.ts
-  extends: ['config:recommended', 'config:best-practices', 'config:js-app'],
+  extends: [
+    'config:recommended',
+    'config:best-practices',
+    'config:js-app',
+    ':semanticCommitType(build)',
+  ],
   prHourlyLimit: 0,
   prConcurrentLimit: 5,
   schedule: [
@@ -15,7 +20,6 @@
   labels: ['dependencies'],
   // Commit messages. Mock @dependabot ones:
   // build(deps) for production dependencies, build(deps-dev) for dev dependencies (see below)
-  semanticCommitType: 'build',
   semanticCommitScope: 'deps-dev',
   packageRules: [
     {
