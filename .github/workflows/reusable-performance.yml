@@ -26,13 +26,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
         with:
           ref: ${{ inputs.ref }}
         # No setup step needed: latest stable Node.js & npm comes included with GitHub runners
         # https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md
       - name: Download built app
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
         with:
           name: ${{ inputs.build-artifact-name }}
       - name: Run Lighthouse CI
@@ -45,7 +45,7 @@ jobs:
       - name: Report results (as status check)
         if: github.ref == 'refs/heads/main'
         # noinspection SpellCheckingInspection
-        uses: manrueda/lighthouse-report-action@v1.1.2
+        uses: manrueda/lighthouse-report-action@731523717dc2a4a92b3c1f67e2710a8261f3ccbb # v1.1.2
         with:
           reports: '.lighthouseci'
           github-token: ${{ secrets.GITHUB_TOKEN }}

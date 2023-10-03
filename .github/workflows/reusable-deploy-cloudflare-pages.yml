@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download built app
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
         with:
           name: ${{ inputs.build-artifact-name }}
         # This whole step was created to mitigate an error: Cloudflare Pages deploying failed as PR branch was removed
@@ -35,7 +35,7 @@ jobs:
       - name: Check if reference exists
         if: github.event_name == 'pull_request'
         id: ref-exists
-        uses: actions/github-script@v6
+        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6
         with:
           script: |
             const ref = `heads/${context.payload.pull_request.head.ref}`
@@ -57,7 +57,7 @@ jobs:
             return response !== undefined
       - name: Publish
         if: "! (github.event_name == 'pull_request' && steps.ref-exists.outputs.result == 'false')"
-        uses: cloudflare/pages-action@1
+        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # 1
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
           apiToken: ${{ secrets.cloudflare-api-token }}
