@@ -52,9 +52,9 @@ describe('PresentationComponent', () => {
     expect(h1.nativeElement.textContent).toContain(`@${fakeMetadata.nickname}`)
   })
 
-  it('should display title in secondary header', () => {
-    const h2 = fixture.debugElement.query(By.css('h2'))
-    expect(h2.nativeElement.textContent).toEqual(fakeMetadata.title)
+  it('should display title', () => {
+    const headline = fixture.debugElement.query(By.css('.headline'))
+    expect(headline.nativeElement.textContent).toEqual(fakeMetadata.title)
   })
 
   ensureHasComponents(

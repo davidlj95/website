@@ -1,0 +1,72 @@
+<div class="header">
+  <a [href]="position.companyWebsite.toString()">
+    <img
+      [ngSrc]="position.imageUrl.toString()"
+      width="64"
+      height="64"
+      alt="{{ position.company }} logo"
+    />
+  </a>
+  <div class="text">
+    <span class="company">
+      <ng-container *ngIf="position.companyWebsite; else companyName">
+        <a [href]="position.companyWebsite.toString()">
+          <ng-container [ngTemplateOutlet]="companyName"></ng-container>
+        </a>
+      </ng-container>
+      <ng-template #companyName>
+        {{ position.company }}
+      </ng-template>
+    </span>
+    <span class="role">{{ position.role }}</span>
+    <span class="dates"
+      ><span class="start">{{ position.startDate | date: 'MMM yyyy' }}</span>
+      <span class="separator"> → </span>
+      <span class="end">
+        <ng-container *ngIf="position.endDate; else present">
+          {{ position.endDate | date: 'MMM yyyy' }}
+        </ng-container>
+        <ng-template #present>Present</ng-template>
+      </span>
+    </span>
+  </div>
+  <div class="attributes">
+    <div class="freelance">
+      <ng-container *ngIf="!position.freelance; else freelance">
+        <span [class]="MATERIAL_SYMBOLS_CLASS">
+          {{ MaterialSymbol.Badge }}
+        </span>
+        <div role="tooltip">Employee</div>
+      </ng-container>
+      <ng-template #freelance>
+        <span [class]="MATERIAL_SYMBOLS_CLASS">
+          {{ MaterialSymbol.Work }}
+        </span>
+        <div role="tooltip">Freelance</div>
+      </ng-template>
+    </div>
+    <div class="internship" *ngIf="position.internship">
+      <span [class]="MATERIAL_SYMBOLS_CLASS">
+        {{ MaterialSymbol.School }}
+      </span>
+      <div role="tooltip">Internship</div>
+    </div>
+    <div class="initial-positions" *ngIf="position.initialPositions.length">
+      <span [class]="MATERIAL_SYMBOLS_CLASS">
+        {{ MaterialSymbol.ToolsLadder }}
+      </span>
+      <div role="tooltip">
+        The role displayed is last one. There were promotions whilst working for
+        the company. Previous roles: {{ position.initialPositions.join(', ') }}
+      </div>
+    </div>
+    <div class="other-positions" *ngIf="position.otherPositions.length">
+      <span [class]="MATERIAL_SYMBOLS_CLASS">
+        {{ MaterialSymbol.More }}
+      </span>
+      <div role="tooltip">
+        Other positions also carried: {{ position.otherPositions.join(', ') }}
+      </div>
+    </div>
+  </div>
+</div>

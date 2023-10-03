@@ -5,6 +5,7 @@ import { ensureHasComponents } from '../../test/helpers/component-testers'
 import { AboutComponent } from './about.component'
 import { JsonldMetadataComponent } from '../jsonld-metadata/jsonld-metadata.component'
 import { PresentationComponent } from './presentation/presentation.component'
+import { ProfessionalExperienceComponent } from './professional-experience/professional-experience.component'
 
 describe('AboutComponent', () => {
   let component: AboutComponent
@@ -14,7 +15,11 @@ describe('AboutComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AboutComponent,
-        MockComponents(JsonldMetadataComponent, PresentationComponent),
+        MockComponents(
+          JsonldMetadataComponent,
+          PresentationComponent,
+          ProfessionalExperienceComponent,
+        ),
       ],
     })
     fixture = TestBed.createComponent(AboutComponent)
@@ -30,5 +35,6 @@ describe('AboutComponent', () => {
     () => fixture,
     JsonldMetadataComponent,
     PresentationComponent,
+    ProfessionalExperienceComponent,
   )
 })

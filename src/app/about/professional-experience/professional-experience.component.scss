@@ -1,2 +1,17 @@
+@use 'margins';
+@use 'borders';
+@use 'paddings';
+
 :host {
+  h2 {
+    font-size: 2rem;
+    padding: paddings.$m paddings.$l;
+  }
+
+  .positions {
+    padding: paddings.$l;
+    display: grid;
+    gap: margins.$m;
+    grid-template-columns: repeat(auto-fill, minmax(40ch, 1fr));
+  }
 }

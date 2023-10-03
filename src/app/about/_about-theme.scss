@@ -1,14 +1,17 @@
 @use 'presentation/presentation-theme';
+@use 'professional-experience/professional-experience-theme';
 
 @mixin color($theme) {
   app-about {
     @include presentation-theme.color($theme);
+    @include professional-experience-theme.color($theme);
   }
 }
 
 @mixin motion() {
   app-about {
     @include presentation-theme.motion();
+    @include professional-experience-theme.motion();
   }
 }
 

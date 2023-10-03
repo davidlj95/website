@@ -1,0 +1,61 @@
+@use 'borders';
+@use 'margins';
+@use 'paddings';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: margins.$s;
+  padding: paddings.$m;
+  @include borders.panel-style-width;
+
+  .header {
+    display: flex;
+    gap: margins.$m;
+
+    img {
+      height: 64px;
+      width: 64px;
+      border-radius: 64px;
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.15rem;
+      gap: margins.$xs;
+
+      .dates {
+        font-size: 1rem;
+      }
+    }
+
+    .attributes {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+
+      > * {
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+          [role='tooltip'] {
+            display: inline-block;
+          }
+        }
+      }
+
+      [role='tooltip'] {
+        display: none;
+        position: absolute;
+        min-width: fit-content;
+        right: 100%;
+        margin: 0 margins.$s;
+        padding: paddings.$s;
+        text-align: right;
+        @include borders.panel-style-width();
+      }
+    }
+  }
+}
