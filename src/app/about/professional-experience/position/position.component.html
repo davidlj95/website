@@ -1,12 +1,14 @@
 <div class="header">
-  <a [href]="position.companyWebsite.toString()">
-    <img
-      [ngSrc]="position.imageUrl.toString()"
-      width="64"
-      height="64"
-      alt="{{ position.company }} logo"
-    />
-  </a>
+  <div class="image">
+    <a [href]="position.companyWebsite.toString()">
+      <img
+        [ngSrc]="position.imageUrl.toString()"
+        width="64"
+        height="64"
+        alt="{{ position.company }} logo"
+      />
+    </a>
+  </div>
   <div class="text">
     <span class="company">
       <ng-container *ngIf="position.companyWebsite; else companyName">
