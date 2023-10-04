@@ -64,7 +64,7 @@
     "@angular-eslint/template-parser": "16.2.0",
     "@angular/cli": "16.2.3",
     "@angular/compiler-cli": "16.2.6",
-    "@commitlint/cli": "17.7.1",
+    "@commitlint/cli": "17.7.2",
     "@commitlint/config-conventional": "17.7.0",
     "@nguniversal/builders": "16.2.0",
     "@types/compression": "1.7.3",
