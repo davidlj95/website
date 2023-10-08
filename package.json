@@ -70,7 +70,7 @@
     "@types/compression": "1.7.3",
     "@types/express": "4.17.18",
     "@types/jasmine": "5.1.0",
-    "@types/node": "20.8.2",
+    "@types/node": "20.8.3",
     "@types/signale": "1.4.5",
     "@types/subset-font": "1.4.1",
     "@typescript-eslint/eslint-plugin": "6.7.4",
