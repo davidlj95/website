@@ -39,4 +39,11 @@ $default-dark-theme: (
     // --color-syntax-1
     value-string: #35d4c7ff,
   ),
+  chips: (
+    border: #5db0d7,
+    background: #282828,
+    text: #e3e3e3,
+    active: #5db0d7,
+    activeText: #202124,
+  ),
 );

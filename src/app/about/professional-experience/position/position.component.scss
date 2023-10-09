@@ -5,9 +5,13 @@
 :host {
   display: flex;
   flex-direction: column;
-  gap: margins.$s;
+  gap: margins.$m;
   padding: paddings.$m;
   @include borders.panel-style-width;
+
+  &.active {
+    grid-row: span 2;
+  }
 
   .header {
     display: flex;
@@ -57,6 +61,17 @@
         text-align: right;
         @include borders.panel-style-width();
       }
+    }
+  }
+  .chips {
+    display: flex;
+    gap: margins.$s;
+
+    .chip {
+      padding: paddings.$s;
+      @include borders.panel-style-width;
+      border-radius: 1em;
+      font-size: 1rem;
     }
   }
 }

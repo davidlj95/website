@@ -22,6 +22,7 @@ export class ProfessionalExperienceComponent {
         initialPositions: work.initialPositions,
         otherPositions: work.otherPositions,
         companyPreviouslyKnownAs: work.formerlyKnownAs,
+        summary: work.summary ?? '',
       }),
   )
 }
