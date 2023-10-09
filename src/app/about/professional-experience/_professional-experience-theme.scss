@@ -9,9 +9,6 @@
   $text-palette: map.get($theme, text);
 
   app-professional-experience {
-    h2 {
-      background-color: map.get($background-palette, z1);
-    }
     @include position-theme.color($theme);
   }
 }

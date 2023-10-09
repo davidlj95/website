@@ -10,6 +10,7 @@ import { DescriptionComponent } from './description/description.component'
 import { METADATA } from '../../common/injection-tokens'
 import { By } from '@angular/platform-browser'
 import { ensureHasComponents } from '../../../test/helpers/component-testers'
+import { H2Component } from '../h2/h2.component'
 
 describe('PresentationComponent', () => {
   let component: PresentationComponent
@@ -25,6 +26,7 @@ describe('PresentationComponent', () => {
       declarations: [
         PresentationComponent,
         MockComponents(
+          H2Component,
           ProfilePictureComponent,
           ContactTraditionalIconsComponent,
           ContactSocialIconsComponent,
@@ -42,14 +44,18 @@ describe('PresentationComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should display real name in primary header', () => {
-    const h1 = fixture.debugElement.query(By.css('h1'))
-    expect(h1.nativeElement.textContent).toContain(fakeMetadata.realName)
+  it('should display real name', () => {
+    const realNameElement = fixture.debugElement.query(By.css('.real-name'))
+    expect(realNameElement.nativeElement.textContent).toContain(
+      fakeMetadata.realName,
+    )
   })
 
   it("should display nickname preceded by '@' in primary header", () => {
-    const h1 = fixture.debugElement.query(By.css('h1'))
-    expect(h1.nativeElement.textContent).toContain(`@${fakeMetadata.nickname}`)
+    const nicknameElement = fixture.debugElement.query(By.css('.nickname'))
+    expect(nicknameElement.nativeElement.textContent).toContain(
+      `@${fakeMetadata.nickname}`,
+    )
   })
 
   it('should display title', () => {
@@ -59,6 +65,7 @@ describe('PresentationComponent', () => {
 
   ensureHasComponents(
     () => fixture,
+    H2Component,
     ProfilePictureComponent,
     ContactTraditionalIconsComponent,
     ContactSocialIconsComponent,

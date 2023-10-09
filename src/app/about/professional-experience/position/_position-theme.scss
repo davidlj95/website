@@ -36,6 +36,11 @@
 
 @mixin motion() {
   app-position {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+
     .header {
       img {
         @include animations.single-transition(

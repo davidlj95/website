@@ -1,8 +1,10 @@
+@use 'h2/h2-theme';
 @use 'presentation/presentation-theme';
 @use 'professional-experience/professional-experience-theme';
 
 @mixin color($theme) {
   app-about {
+    @include h2-theme.color($theme);
     @include presentation-theme.color($theme);
     @include professional-experience-theme.color($theme);
   }
@@ -10,6 +12,7 @@
 
 @mixin motion() {
   app-about {
+    @include h2-theme.motion;
     @include presentation-theme.motion();
     @include professional-experience-theme.motion();
   }

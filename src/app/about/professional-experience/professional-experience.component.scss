@@ -3,11 +3,6 @@
 @use 'paddings';
 
 :host {
-  h2 {
-    font-size: 2rem;
-    padding: paddings.$m paddings.$l;
-  }
-
   .positions {
     padding: paddings.$l;
     display: grid;

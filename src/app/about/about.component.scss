@@ -1,14 +1,22 @@
+@use 'borders';
+@use 'margins';
+@use 'paddings';
 @use 'page';
+@use 'z-index';
 
 :host {
-  @include page.full-size;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
 
-  .after-presentation {
-    position: absolute;
-    top: 100%;
-    width: 100%;
+  > * {
+    flex-grow: 1;
   }
+
+  app-presentation {
+    flex-basis: 100%;
+  }
+}
+
+::ng-deep app-presentation app-h2 h2 {
+  border-top-style: none !important;
 }

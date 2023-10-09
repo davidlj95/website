@@ -23,6 +23,7 @@ import { NotFoundComponent } from './not-found/not-found.component'
 import { PresentationComponent } from './about/presentation/presentation.component'
 import { ProfessionalExperienceComponent } from './about/professional-experience/professional-experience.component'
 import { PositionComponent } from './about/professional-experience/position/position.component'
+import { H2Component } from './about/h2/h2.component'
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PositionComponent } from './about/professional-experience/position/posi
     PresentationComponent,
     ProfessionalExperienceComponent,
     PositionComponent,
+    H2Component,
   ],
   imports: [
     BrowserModule,
