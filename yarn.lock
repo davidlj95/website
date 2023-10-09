@@ -2156,7 +2156,7 @@ __metadata:
     "@commitlint/cli": 17.7.2
     "@commitlint/config-conventional": 17.7.0
     "@fontsource/roboto": 5.0.8
-    "@fontsource/roboto-mono": 5.0.12
+    "@fontsource/roboto-mono": 5.0.13
     "@fortawesome/angular-fontawesome": 0.13.0
     "@fortawesome/fontawesome-svg-core": 6.4.2
     "@fortawesome/free-brands-svg-icons": 6.4.2
@@ -2560,10 +2560,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/roboto-mono@npm:5.0.12":
-  version: 5.0.12
-  resolution: "@fontsource/roboto-mono@npm:5.0.12"
-  checksum: 05219defda775fdfae8caa63c4d5927c50fe5438a60837273335b9c928ef47362e8adfd97865eeee1c7ec1af38759eaf3386f9c425545d8a4c5b7d325d40a293
+"@fontsource/roboto-mono@npm:5.0.13":
+  version: 5.0.13
+  resolution: "@fontsource/roboto-mono@npm:5.0.13"
+  checksum: 082f5a1551a97c808b860cedad40486dfe9e3b60adb4768f5ce2c073e81391387d3263ac1a896aa6e30087dd61b489fd6ce4d895f32adce2dc2a9e4fa4f316ff
   languageName: node
   linkType: hard
 
