@@ -90,7 +90,8 @@
         "Mobile app development for Android & iOS using Flutter 1/2 + Dart",
         "Web app development (SPA) using Angular 9+"
       ],
-      "initialPositions": ["Mid Software Engineer"]
+      "initialPositions": ["Mid Software Engineer"],
+      "formerlyKnownAs": "Telefónica Alpha"
     },
     {
       "company": "Telefónica Alpha",
@@ -122,7 +123,7 @@
     {
       "company": "SEAT",
       "website": "https://www.seat.com",
-      "image": "https://imgur.com/hLnTEwc.png",
+      "image": "https://i.imgur.com/TG5FidY.png",
       "position": "Software Engineer",
       "startDate": "2017-03-13",
       "endDate": "2017-06-19",

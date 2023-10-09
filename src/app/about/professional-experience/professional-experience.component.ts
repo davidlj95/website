@@ -21,6 +21,7 @@ export class ProfessionalExperienceComponent {
         internship: work.internship,
         initialPositions: work.initialPositions,
         otherPositions: work.otherPositions,
+        companyPreviouslyKnownAs: work.formerlyKnownAs,
       }),
   )
 }

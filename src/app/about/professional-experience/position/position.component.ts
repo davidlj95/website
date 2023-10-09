@@ -4,6 +4,7 @@ import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 import {
   Badge,
   More,
+  Resume,
   School,
   ToolsLadder,
   Work,
@@ -23,5 +24,6 @@ export class PositionComponent {
     School,
     ToolsLadder,
     More,
+    Resume,
   }
 }

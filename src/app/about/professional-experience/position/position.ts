@@ -9,6 +9,7 @@ export class Position {
   public readonly internship: boolean
   public readonly initialPositions: ReadonlyArray<string>
   public readonly otherPositions: ReadonlyArray<string>
+  public readonly companyPreviouslyKnownAs?: string
 
   constructor({
     imageUrl,
@@ -21,6 +22,7 @@ export class Position {
     internship,
     initialPositions,
     otherPositions,
+    companyPreviouslyKnownAs,
   }: {
     imageUrl: URL
     company: string
@@ -32,6 +34,7 @@ export class Position {
     internship?: boolean
     initialPositions?: ReadonlyArray<string>
     otherPositions?: ReadonlyArray<string>
+    companyPreviouslyKnownAs?: string
   }) {
     this.imageUrl = imageUrl
     this.company = company
@@ -43,5 +46,6 @@ export class Position {
     this.internship = internship ?? false
     this.initialPositions = initialPositions ?? []
     this.otherPositions = otherPositions ?? []
+    this.companyPreviouslyKnownAs = companyPreviouslyKnownAs
   }
 }

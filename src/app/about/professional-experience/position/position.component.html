@@ -70,5 +70,13 @@
         Other positions also carried: {{ position.otherPositions.join(', ') }}
       </div>
     </div>
+    <div class="formerly-known-as" *ngIf="position.companyPreviouslyKnownAs">
+      <span [class]="MATERIAL_SYMBOLS_CLASS">
+        {{ MaterialSymbol.Resume }}
+      </span>
+      <div role="tooltip">
+        Company formerly known as {{ position.companyPreviouslyKnownAs }}
+      </div>
+    </div>
   </div>
 </div>
