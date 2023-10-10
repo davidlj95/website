@@ -101,11 +101,10 @@ describe('PositionComponent', () => {
     it('should display start date', () => {
       const fakeStartDate = '2022-10-10'
       const fakeStartDateFormatted = 'Oct 2022'
-      const fakePosition = new Position({
+      component.position = new Position({
         ...newPositionArgs,
         startDate: new Date(fakeStartDate),
       })
-      component.position = fakePosition
       fixture.detectChanges()
 
       const datesElement = fixture.debugElement.query(By.css('.dates'))
