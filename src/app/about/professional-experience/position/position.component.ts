@@ -19,13 +19,9 @@ export class PositionComponent {
   @Input({ required: true }) public position!: Position
   public readonly contentTypes: ReadonlyArray<ContentType> = [
     { id: ContentTypeId.Summary, displayName: 'Summary' },
-    { id: ContentTypeId.TechStack, displayName: 'Tech' },
     { id: ContentTypeId.Highlights, displayName: 'Highlights' },
   ]
-  public readonly chips: ReadonlyArray<ContentType> = this.contentTypes.filter(
-    (contentType) => this.getContentFromType(contentType) !== null,
-  )
-  public activeContent?: Content
+  public activeContentType?: ContentType
   protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
   protected readonly MaterialSymbol = {
     Badge,
@@ -36,28 +32,37 @@ export class PositionComponent {
     Resume,
   }
 
+  public get chips(): ReadonlyArray<ContentType> {
+    return this.contentTypes.filter((contentType) =>
+      this.typeHasContent(contentType),
+    )
+  }
+
   @HostBinding('class.active')
   public get activeClass(): boolean {
-    return !!this.activeContent
+    return !!this.activeContentType
   }
 
   onContentTypeClick(contentType: ContentType) {
-    if (this.activeContent?.type === contentType) {
-      this.activeContent = undefined
+    if (this.activeContentType === contentType) {
+      this.activeContentType = undefined
       return
     }
-    this.activeContent = {
-      type: contentType,
-      value: this.getContentFromType(contentType) ?? '',
+    this.activeContentType = contentType
+  }
+
+  private typeHasContent(type: ContentType): boolean {
+    switch (type.id) {
+      case ContentTypeId.Summary:
+        return !!this.position?.summary
+      case ContentTypeId.Highlights:
+        return !!this.position && this.position.highlights.length > 0
+      default:
+        return false
     }
   }
 
-  private getContentFromType(type: ContentType): string | null {
-    if (type.id === ContentTypeId.Summary) {
-      return this.position?.summary
-    }
-    return null
-  }
+  protected readonly ContentTypeId = ContentTypeId
 }
 
 export enum ContentTypeId {
@@ -69,9 +74,4 @@ export enum ContentTypeId {
 interface ContentType {
   id: ContentTypeId
   displayName: string
-}
-
-interface Content {
-  type: ContentType
-  value: string
 }

@@ -62,13 +62,11 @@
       "position": "Senior Backend Engineer",
       "startDate": "2022-10-10",
       "endDate": "2023-07-14",
-      "summary": "Backend. Lead direct batch buy feature to buy multiple stocks at once. Lead robustness planning to improve the app stability, focusing on gaining observability to push for data-driven decisions and automating processes to reduce customer support workload",
+      "summary": "Lead direct batch buy feature to buy multiple stocks at once. Lead robustness planning to improve the app stability. Focusing on gaining observability to push for data-driven decisions. Automate processes to reduce customer support workload",
       "highlights": [
         "Lead initiative to observe & reduce wallet synchronization issues from 69% to 6%",
         "Lead continuous proposals to improve company's processes, backend team side and company wide. Like pushing for technical refinements, differentiating between bugs an complaints, tracking estimations accuracy",
         "Started learning fridays initiative for knowledge sharing amongst engineering team",
-        "HTTP REST JSON APIs development using Ruby on Rails + dry-validation + OpenAPI",
-        "Managing AWS infrastructure with Terraform: ELB, ECS + Fargate",
         "Added New Relic as observability tool"
       ],
       "freelance": true
@@ -80,15 +78,17 @@
       "position": "Senior Software Engineer",
       "startDate": "2020-10-01",
       "endDate": "2022-05-01",
-      "summary": "Full stack. Started as mid. Promoted to senior in 1st year's performance review. Owned several features implementations. Aligned with product, design, QA, DevOps, cybersec, research & other products' engineering teams. Lead & participated in squad's processes improvements",
+      "summary": "Full stack. Owned several features implementations. Contributed with improvements to the company's design system library. Aligned with product, design, QA, DevOps, cybersec, research & other products' engineering teams. Lead & participated in squad's processes improvements",
       "highlights": [
+        "Started as mid. Promoted to senior in 1st year's performance review",
         "Several features owner like audio exercises, push notifications, therapist & patient messaging for the Mindset product",
         "HTTP REST JSON APIs development using Node.js + Typescript + OpenAPI",
         "Support DevOps team maintaining the backend app infrastructure: K8s + Helm + Terraform to manage AWS resources (API Gateway, ALB, Cognito, RDS). Datadog for observability",
         "Maintenance of GitHub Actions CI/CD pipelines",
         "Continuous proposals & contributions in projects' authZ/N: OAuth 2.1 / OIDC / SSO with 3rd party IdP federation via AWS Cognito. API Gateway auth. JWT tokens management",
         "Mobile app development for Android & iOS using Flutter 1/2 + Dart",
-        "Web app development (SPA) using Angular 9+"
+        "Web app development (SPA) using Angular 9+",
+        "Automated setting up new brand Gmail signatures for all employees when company spun out"
       ],
       "initialPositions": ["Mid Software Engineer"],
       "formerlyKnownAs": "Telefónica Alpha"
@@ -99,7 +99,8 @@
       "image": "https://i.imgur.com/gVnENG6.png",
       "position": "Software Engineer",
       "startDate": "2020-03-01",
-      "endDate": "2020-10-01"
+      "endDate": "2020-10-01",
+      "summary": "Worked in health moonshot, that would later become its own company: Koa Health. Check that position for more information"
     },
     {
       "company": "BTC Assessors",

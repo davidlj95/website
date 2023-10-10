@@ -74,4 +74,11 @@
       font-size: 1rem;
     }
   }
+  .content {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: margins.$s;
+    }
+  }
 }

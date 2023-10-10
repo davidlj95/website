@@ -23,6 +23,7 @@ export class ProfessionalExperienceComponent {
         otherPositions: work.otherPositions,
         companyPreviouslyKnownAs: work.formerlyKnownAs,
         summary: work.summary ?? '',
+        highlights: work.highlights,
       }),
   )
 }
