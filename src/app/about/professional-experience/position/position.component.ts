@@ -18,8 +18,8 @@ import {
 export class PositionComponent {
   @Input({ required: true }) public position!: Position
   public readonly contentTypes: ReadonlyArray<ContentType> = [
-    { id: ContentTypeId.Summary, displayName: 'Summary' },
-    { id: ContentTypeId.Highlights, displayName: 'Highlights' },
+    SUMMARY_CONTENT_TYPE,
+    HIGHLIGHT_CONTENT_TYPE,
   ]
   public activeContentType?: ContentType
   protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
@@ -31,8 +31,9 @@ export class PositionComponent {
     More,
     Resume,
   }
+  protected readonly ContentTypeId = ContentTypeId
 
-  public get chips(): ReadonlyArray<ContentType> {
+  public get availableContentTypes(): ReadonlyArray<ContentType> {
     return this.contentTypes.filter((contentType) =>
       this.typeHasContent(contentType),
     )
@@ -61,17 +62,23 @@ export class PositionComponent {
         return false
     }
   }
-
-  protected readonly ContentTypeId = ContentTypeId
 }
 
 export enum ContentTypeId {
   Summary,
-  TechStack,
   Highlights,
 }
 
 interface ContentType {
   id: ContentTypeId
   displayName: string
+}
+
+export const SUMMARY_CONTENT_TYPE: ContentType = {
+  id: ContentTypeId.Summary,
+  displayName: 'Summary',
+}
+export const HIGHLIGHT_CONTENT_TYPE: ContentType = {
+  id: ContentTypeId.Highlights,
+  displayName: 'Highlights',
 }

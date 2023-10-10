@@ -75,10 +75,10 @@
     </div>
   </div>
 </div>
-<div class="chips">
+<div class="chips" *ngIf="availableContentTypes">
   <button
     class="chip"
-    *ngFor="let chip of chips"
+    *ngFor="let chip of availableContentTypes"
     [class.active]="activeContentType === chip"
     (click)="onContentTypeClick(chip)"
   >
