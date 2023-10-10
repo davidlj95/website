@@ -9,7 +9,13 @@ import { Company, Position } from './position'
 import { NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
 import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
-import { Badge, Resume, School, Work } from '../../../material-symbols'
+import {
+  Badge,
+  More,
+  School,
+  ToolsLadder,
+  Work,
+} from '../../../material-symbols'
 import { DebugElement } from '@angular/core'
 
 describe('PositionComponent', () => {
@@ -177,8 +183,64 @@ describe('PositionComponent', () => {
     })
   })
   describe('attributes', () => {
+    function testShouldNotDisplayAttribute(
+      attributeElementGetter: () => DebugElement,
+    ) {
+      it('should not display attribute', () => {
+        const attributeElement = attributeElementGetter()
+        expect(attributeElement).withContext('attribute element').toBeFalsy()
+      })
+    }
+    function testShouldDisplayItsIcon(
+      attributeElementGetter: () => DebugElement,
+      {
+        name,
+        icon,
+      }: {
+        name: string
+        icon: string
+      },
+    ) {
+      it(`should display its icon (${name})`, () => {
+        const attributeElement = attributeElementGetter()
+        expect(attributeElement)
+          .withContext('attribute element exists')
+          .toBeDefined()
+
+        const iconElement = attributeElement.query(By.css('span'))
+        expect(iconElement).withContext('icon exists').toBeTruthy()
+        expect(iconElement.classes)
+          .withContext('icon element has material symbols class')
+          .toEqual({ [MATERIAL_SYMBOLS_CLASS]: true })
+        expect(iconElement.nativeElement.textContent.trim())
+          .withContext(`icon is ${name}`)
+          .toEqual(icon)
+      })
+    }
+
+    function testShouldDisplayItsTooltip(
+      attributeElementGetter: () => DebugElement,
+      text: jasmine.Expected<string>,
+    ) {
+      it('should display its tooltip with its helper text', () => {
+        const attributeElement = attributeElementGetter()
+        expect(attributeElement)
+          .withContext('attribute element exists')
+          .toBeDefined()
+
+        const tooltipElement = attributeElement.query(
+          By.css("[role='tooltip']"),
+        )
+        expect(tooltipElement).withContext('tooltip exists').toBeTruthy()
+        expect(tooltipElement.nativeElement.textContent.trim())
+          .withContext('tooltip contains helper text')
+          .toEqual(text)
+      })
+    }
+
     describe('when position is not freelance', () => {
       let fakePosition: Position
+      let attributeElement: DebugElement
 
       beforeEach(() => {
         fakePosition = new Position({
@@ -187,207 +249,170 @@ describe('PositionComponent', () => {
         })
         component.position = fakePosition
         fixture.detectChanges()
+
+        attributeElement = fixture.debugElement.query(By.css('.freelance'))
       })
 
-      it('should display employee attribute with its icon and tooltip', () => {
-        // noinspection DuplicatedCode
-        const freelanceElement = fixture.debugElement.query(
-          By.css('.freelance'),
-        )
-        expect(freelanceElement)
-          .withContext('freelance attribute container exists')
-          .toBeTruthy()
-
-        const iconElement = freelanceElement.query(By.css('span'))
-        expect(iconElement).withContext('icon exists').toBeTruthy()
-        expect(iconElement.classes)
-          .withContext('icon element has material symbols class')
-          .toEqual({ [MATERIAL_SYMBOLS_CLASS]: true })
-        expect(iconElement.nativeElement.textContent.trim())
-          .withContext('icon is badge')
-          .toEqual(Badge)
-
-        const tooltipElement = freelanceElement.query(
-          By.css("[role='tooltip']"),
-        )
-        expect(tooltipElement).withContext('tooltip exists').toBeTruthy()
-        expect(tooltipElement.nativeElement.textContent.trim())
-          .withContext('tooltip indicates employee')
-          .toEqual('Employee')
+      testShouldDisplayItsIcon(() => attributeElement, {
+        name: 'badge',
+        icon: Badge,
       })
+      testShouldDisplayItsTooltip(() => attributeElement, 'Employee')
     })
 
     describe('when position is freelance', () => {
       let fakePosition: Position
+      let attributeElement: DebugElement
 
       beforeEach(() => {
         fakePosition = new Position({
           ...newPositionArgs,
           freelance: true,
         })
+
         component.position = fakePosition
         fixture.detectChanges()
+
+        attributeElement = fixture.debugElement.query(By.css('.freelance'))
       })
 
-      it('should display freelance attribute with its icon and tooltip', () => {
-        // noinspection DuplicatedCode
-        const freelanceElement = fixture.debugElement.query(
-          By.css('.freelance'),
-        )
-        expect(freelanceElement)
-          .withContext('freelance attribute container exists')
-          .toBeTruthy()
-
-        const iconElement = freelanceElement.query(By.css('span'))
-        expect(iconElement).withContext('icon exists').toBeTruthy()
-        expect(iconElement.classes)
-          .withContext('icon element has material symbols class')
-          .toEqual({ [MATERIAL_SYMBOLS_CLASS]: true })
-        expect(iconElement.nativeElement.textContent.trim())
-          .withContext('icon is work')
-          .toEqual(Work)
-
-        const tooltipElement = freelanceElement.query(
-          By.css("[role='tooltip']"),
-        )
-        expect(tooltipElement).withContext('tooltip exists').toBeTruthy()
-        expect(tooltipElement.nativeElement.textContent.trim())
-          .withContext('tooltip indicates freelance project')
-          .toEqual('Freelance')
+      testShouldDisplayItsIcon(() => attributeElement, {
+        name: 'work',
+        icon: Work,
       })
+      testShouldDisplayItsTooltip(() => attributeElement, 'Freelance')
     })
 
     describe('when position is not an internship', () => {
       let fakePosition: Position
+      let attributeElement: DebugElement
 
       beforeEach(() => {
         fakePosition = new Position({
           ...newPositionArgs,
           internship: false,
         })
+
         component.position = fakePosition
         fixture.detectChanges()
+
+        attributeElement = fixture.debugElement.query(By.css('.internship'))
       })
 
-      it('should not display internship attribute', () => {
-        const internshipElement = fixture.debugElement.query(
-          By.css('.internship'),
-        )
-        expect(internshipElement)
-          .withContext('internship attribute container does not exist')
-          .toBeFalsy()
-      })
+      testShouldNotDisplayAttribute(() => attributeElement)
     })
 
     describe('when position is an internship', () => {
       let fakePosition: Position
+      let attributeElement: DebugElement
 
       beforeEach(() => {
         fakePosition = new Position({
           ...newPositionArgs,
           internship: true,
         })
+
         component.position = fakePosition
         fixture.detectChanges()
+
+        attributeElement = fixture.debugElement.query(By.css('.internship'))
       })
 
-      it('should display internship attribute with its icon and tooltip', () => {
-        const internshipElement = fixture.debugElement.query(
-          By.css('.internship'),
-        )
-        expect(internshipElement)
-          .withContext('internship attribute container exists')
-          .toBeTruthy()
-
-        const iconElement = internshipElement.query(By.css('span'))
-        expect(iconElement).withContext('icon exists').toBeTruthy()
-        expect(iconElement.classes)
-          .withContext('icon element has material symbols class')
-          .toEqual({ [MATERIAL_SYMBOLS_CLASS]: true })
-        expect(iconElement.nativeElement.textContent.trim())
-          .withContext('icon is school')
-          .toEqual(School)
-
-        const tooltipElement = internshipElement.query(
-          By.css("[role='tooltip']"),
-        )
-        expect(tooltipElement).withContext('tooltip exists').toBeTruthy()
-        expect(tooltipElement.nativeElement.textContent.trim())
-          .withContext('tooltip indicates internship')
-          .toEqual('Internship')
+      testShouldDisplayItsIcon(() => attributeElement, {
+        name: 'school',
+        icon: School,
       })
+      testShouldDisplayItsTooltip(() => attributeElement, 'Internship')
     })
-    describe('when position has no formerly known name', () => {
+
+    describe('when position contained no promotions', () => {
       let fakePosition: Position
+      let attributeElement: DebugElement
 
       beforeEach(() => {
         fakePosition = new Position({
           ...newPositionArgs,
-          company: new Company({
-            name: 'Fake company Inc',
-            image: new URL('https://fake.example.org/logo.png'),
-            website: new URL('https://fake.example.org'),
-            formerlyKnownAs: undefined,
-          }),
+          promotions: false,
         })
+
         component.position = fakePosition
         fixture.detectChanges()
+
+        attributeElement = fixture.debugElement.query(By.css('.promotions'))
       })
 
-      it('should not display formerly known as attribute', () => {
-        const formerlyKnownAsElement = fixture.debugElement.query(
-          By.css('.formerly-known-as'),
-        )
-        expect(formerlyKnownAsElement)
-          .withContext('formerly known as attribute container does not exist')
-          .toBeFalsy()
-      })
+      testShouldNotDisplayAttribute(() => attributeElement)
     })
-    describe('when position has formerly known name', () => {
+
+    describe('when position contained promotions', () => {
       let fakePosition: Position
+      let attributeElement: DebugElement
 
       beforeEach(() => {
         fakePosition = new Position({
           ...newPositionArgs,
-          company: new Company({
-            name: 'Fake company Inc',
-            image: new URL('https://fake.example.org/logo.png'),
-            website: new URL('https://fake.example.org'),
-            formerlyKnownAs: 'Fake company Legacy Inc',
-          }),
+          promotions: true,
         })
+
         component.position = fakePosition
         fixture.detectChanges()
+
+        attributeElement = fixture.debugElement.query(By.css('.promotions'))
       })
 
-      it('should display formerly known as attribute with its icon and tooltip', () => {
-        const formerlyKnownAsElement = fixture.debugElement.query(
-          By.css('.formerly-known-as'),
-        )
-        expect(formerlyKnownAsElement)
-          .withContext('formerly known as attribute container exists')
-          .toBeTruthy()
-
-        const iconElement = formerlyKnownAsElement.query(By.css('span'))
-        expect(iconElement).withContext('icon exists').toBeTruthy()
-        expect(iconElement.classes)
-          .withContext('icon element has material symbols class')
-          .toEqual({ [MATERIAL_SYMBOLS_CLASS]: true })
-        expect(iconElement.nativeElement.textContent.trim())
-          .withContext('icon is resume')
-          .toEqual(Resume)
-
-        const tooltipElement = formerlyKnownAsElement.query(
-          By.css("[role='tooltip']"),
-        )
-        expect(tooltipElement).withContext('tooltip exists').toBeTruthy()
-        expect(tooltipElement.nativeElement.textContent)
-          .withContext('tooltip indicates formerly known as')
-          .toContain('formerly known as')
-        expect(tooltipElement.nativeElement.textContent)
-          .withContext('tooltip indicates formerly known name')
-          .toContain(fakePosition.company.formerlyKnownAs)
+      testShouldDisplayItsIcon(() => attributeElement, {
+        name: 'toolsLadder',
+        icon: ToolsLadder,
       })
+      testShouldDisplayItsTooltip(
+        () => attributeElement,
+        jasmine.stringContaining('Promotions during this period'),
+      )
+    })
+
+    describe('when position contained no other roles', () => {
+      let fakePosition: Position
+      let attributeElement: DebugElement
+
+      beforeEach(() => {
+        fakePosition = new Position({
+          ...newPositionArgs,
+          otherRoles: false,
+        })
+
+        component.position = fakePosition
+        fixture.detectChanges()
+
+        attributeElement = fixture.debugElement.query(By.css('.other-roles'))
+      })
+
+      testShouldNotDisplayAttribute(() => attributeElement)
+    })
+
+    describe('when position contained other roles', () => {
+      let fakePosition: Position
+      let attributeElement: DebugElement
+
+      beforeEach(() => {
+        fakePosition = new Position({
+          ...newPositionArgs,
+          otherRoles: true,
+        })
+
+        component.position = fakePosition
+        fixture.detectChanges()
+
+        attributeElement = fixture.debugElement.query(By.css('.other-roles'))
+      })
+
+      testShouldDisplayItsIcon(() => attributeElement, {
+        name: 'more',
+        icon: More,
+      })
+      testShouldDisplayItsTooltip(
+        () => attributeElement,
+        jasmine.stringContaining('More roles'),
+      )
     })
   })
   describe('chipped content', () => {

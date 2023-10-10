@@ -15,7 +15,9 @@
         {{ position.company.name }}
       </a>
     </span>
-    <span class="role">{{ position.role }}</span>
+    <div class="role">
+      {{ position.role }}
+    </div>
     <span class="dates"
       ><span class="start">{{ position.startDate | date: 'MMM yyyy' }}</span>
       <span class="separator"> → </span>
@@ -28,7 +30,7 @@
     </span>
   </div>
   <div class="attributes">
-    <div class="freelance">
+    <div class="freelance attribute">
       <ng-container *ngIf="!position.freelance; else freelance">
         <span [class]="MATERIAL_SYMBOLS_CLASS">
           {{ MaterialSymbol.Badge }}
@@ -42,35 +44,26 @@
         <div role="tooltip">Freelance</div>
       </ng-template>
     </div>
-    <div class="internship" *ngIf="position.internship">
+    <div class="internship attribute" *ngIf="position.internship">
       <span [class]="MATERIAL_SYMBOLS_CLASS">
         {{ MaterialSymbol.School }}
       </span>
       <div role="tooltip">Internship</div>
     </div>
-    <div class="initial-positions" *ngIf="position.previousRoles.length">
-      <span [class]="MATERIAL_SYMBOLS_CLASS">
-        {{ MaterialSymbol.ToolsLadder }}
-      </span>
-      <div role="tooltip">
-        The role displayed is last one. There were promotions whilst working for
-        the company. Previous roles: {{ position.previousRoles.join(', ') }}
-      </div>
-    </div>
-    <div class="other-positions" *ngIf="position.otherRoles.length">
+    <div class="other-roles attribute" *ngIf="position.otherRoles">
       <span [class]="MATERIAL_SYMBOLS_CLASS">
         {{ MaterialSymbol.More }}
       </span>
       <div role="tooltip">
-        Other positions also carried: {{ position.otherRoles.join(', ') }}
+        More roles performed during this period. <br />See summary for details
       </div>
     </div>
-    <div class="formerly-known-as" *ngIf="position.company.formerlyKnownAs">
+    <div class="promotions attribute" *ngIf="position.promotions">
       <span [class]="MATERIAL_SYMBOLS_CLASS">
-        {{ MaterialSymbol.Resume }}
+        {{ MaterialSymbol.ToolsLadder }}
       </span>
       <div role="tooltip">
-        Company formerly known as {{ position.company.formerlyKnownAs }}
+        Promotions during this period. <br />See highlights for details
       </div>
     </div>
   </div>

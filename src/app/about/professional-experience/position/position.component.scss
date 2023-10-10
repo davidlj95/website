@@ -19,6 +19,7 @@
 
     .image {
       min-width: 64px;
+
       img {
         border-radius: 64px;
       }
@@ -39,22 +40,23 @@
       margin-left: auto;
       display: flex;
       flex-direction: column;
+    }
 
-      > * {
-        position: relative;
-        cursor: pointer;
+    .attribute {
+      position: relative;
+      cursor: pointer;
 
-        &:hover {
-          [role='tooltip'] {
-            display: inline-block;
-          }
+      &:hover {
+        [role='tooltip'] {
+          display: inline-block;
         }
       }
 
       [role='tooltip'] {
         display: none;
+        font-size: 1rem;
         position: absolute;
-        min-width: fit-content;
+        width: max-content;
         right: 100%;
         margin: 0 margins.$s;
         padding: paddings.$s;
@@ -63,6 +65,7 @@
       }
     }
   }
+
   .chips {
     display: flex;
     gap: margins.$s;
@@ -74,6 +77,7 @@
       font-size: 1rem;
     }
   }
+
   .content {
     ul {
       display: flex;

@@ -103,15 +103,15 @@ describe('JsonResumePositionAdapterService', () => {
       })
     })
     // Non JSON Resume standard!
-    it('should map the freelance, internship, previousRoles, otherRoles and formerly known as fields', () => {
-      const fakePreviousRoles = ['Fake previous role']
-      const fakeOtherRoles = ['Fake other role']
+    it('should map the freelance, internship, promotions, otherRoles and formerly known as fields', () => {
+      const fakePromotions = true
+      const fakeOtherRoles = true
       const fakeFormerlyKnownAs = 'Fake company legacy Inc'
       const fakeJsonResumePosition: JsonResumeWorkPosition = {
         ...sampleJsonResumeWorkPosition,
         freelance: true,
         internship: true,
-        previousRoles: fakePreviousRoles,
+        promotions: fakePromotions,
         otherRoles: fakeOtherRoles,
         formerlyKnownAs: fakeFormerlyKnownAs,
       } as unknown as JsonResumeWorkPosition
@@ -121,7 +121,7 @@ describe('JsonResumePositionAdapterService', () => {
 
       expect(position.freelance).toBeTrue()
       expect(position.internship).toBeTrue()
-      expect(position.previousRoles).toEqual(fakePreviousRoles)
+      expect(position.promotions).toEqual(fakePromotions)
       expect(position.otherRoles).toEqual(fakeOtherRoles)
       expect(position.company.formerlyKnownAs).toEqual(fakeFormerlyKnownAs)
     })

@@ -90,7 +90,7 @@
         "Web app development (SPA) using Angular 9+",
         "Automated setting up new brand Gmail signatures for all employees when company spun out"
       ],
-      "previousRoles": ["Mid Software Engineer"],
+      "promotions": true,
       "formerlyKnownAs": "Telefónica Alpha"
     },
     {
@@ -119,7 +119,7 @@
         "Library for Bitcoin cryptocurrency's scripting in Python",
         "Software project management: 4+1 architecture, Domain driven design (DDD), Agile methodologies"
       ],
-      "otherRoles": ["Distributed ledger technologies consultant"]
+      "otherRoles": true
     },
     {
       "company": "SEAT",
@@ -175,7 +175,7 @@
         "Database applications using SQLAlchemy"
       ],
       "freelance": true,
-      "otherRoles": ["IT Manager"]
+      "otherRoles": true
     }
   ],
   "education": [

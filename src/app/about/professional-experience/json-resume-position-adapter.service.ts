@@ -31,7 +31,7 @@ export class JsonResumePositionAdapterService {
       endDate: position.endDate ? new Date(position.endDate) : undefined,
       freelance: position.freelance,
       internship: position.internship,
-      previousRoles: position.previousRoles,
+      promotions: position.promotions,
       otherRoles: position.otherRoles,
     })
   }

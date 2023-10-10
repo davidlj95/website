@@ -5,8 +5,8 @@ export class Position {
   public readonly endDate?: Date
   public readonly freelance: boolean
   public readonly internship: boolean
-  public readonly previousRoles: ReadonlyArray<string>
-  public readonly otherRoles: ReadonlyArray<string>
+  public readonly promotions: boolean
+  public readonly otherRoles: boolean
   public readonly summary: string
   public readonly highlights: ReadonlyArray<string>
 
@@ -17,7 +17,7 @@ export class Position {
     endDate,
     freelance,
     internship,
-    previousRoles,
+    promotions,
     otherRoles,
     summary,
     highlights,
@@ -28,8 +28,8 @@ export class Position {
     endDate?: Date
     freelance?: boolean
     internship?: boolean
-    previousRoles?: ReadonlyArray<string>
-    otherRoles?: ReadonlyArray<string>
+    promotions?: boolean
+    otherRoles?: boolean
     summary: string
     highlights?: ReadonlyArray<string>
   }) {
@@ -39,8 +39,8 @@ export class Position {
     this.endDate = endDate
     this.freelance = freelance ?? false
     this.internship = internship ?? false
-    this.previousRoles = previousRoles ?? []
-    this.otherRoles = otherRoles ?? []
+    this.promotions = promotions ?? false
+    this.otherRoles = otherRoles ?? false
     this.summary = summary
     this.highlights = highlights ?? []
   }
