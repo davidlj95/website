@@ -1,59 +1,71 @@
 export class Position {
-  public readonly imageUrl: URL
-  public readonly company: string
-  public readonly companyWebsite: URL
+  public readonly company: Company
   public readonly role: string
   public readonly startDate: Date
   public readonly endDate?: Date
   public readonly freelance: boolean
   public readonly internship: boolean
-  public readonly initialPositions: ReadonlyArray<string>
-  public readonly otherPositions: ReadonlyArray<string>
-  public readonly companyPreviouslyKnownAs?: string
+  public readonly previousRoles: ReadonlyArray<string>
+  public readonly otherRoles: ReadonlyArray<string>
   public readonly summary: string
   public readonly highlights: ReadonlyArray<string>
 
   constructor({
-    imageUrl,
     company,
-    companyWebsite,
     role,
     startDate,
     endDate,
     freelance,
     internship,
-    initialPositions,
-    otherPositions,
-    companyPreviouslyKnownAs,
+    previousRoles,
+    otherRoles,
     summary,
     highlights,
   }: {
-    imageUrl: URL
-    company: string
-    companyWebsite: URL
+    company: Company
     role: string
     startDate: Date
     endDate?: Date
     freelance?: boolean
     internship?: boolean
-    initialPositions?: ReadonlyArray<string>
-    otherPositions?: ReadonlyArray<string>
-    companyPreviouslyKnownAs?: string
+    previousRoles?: ReadonlyArray<string>
+    otherRoles?: ReadonlyArray<string>
     summary: string
     highlights?: ReadonlyArray<string>
   }) {
-    this.imageUrl = imageUrl
     this.company = company
-    this.companyWebsite = companyWebsite
     this.role = role
     this.startDate = startDate
     this.endDate = endDate
     this.freelance = freelance ?? false
     this.internship = internship ?? false
-    this.initialPositions = initialPositions ?? []
-    this.otherPositions = otherPositions ?? []
-    this.companyPreviouslyKnownAs = companyPreviouslyKnownAs
+    this.previousRoles = previousRoles ?? []
+    this.otherRoles = otherRoles ?? []
     this.summary = summary
     this.highlights = highlights ?? []
+  }
+}
+
+export class Company {
+  public readonly name: string
+  public readonly website: URL
+  public readonly image: URL
+  public readonly formerlyKnownAs?: string
+
+  constructor({
+    name,
+    website,
+    image,
+    formerlyKnownAs,
+  }: {
+    name: string
+    website: URL
+    image: URL
+    formerlyKnownAs?: string
+  }) {
+    this.name = name
+    this.website = website
+    this.image = image
+    this.formerlyKnownAs = formerlyKnownAs
   }
 }

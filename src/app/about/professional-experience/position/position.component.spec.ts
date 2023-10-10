@@ -1,16 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { PositionComponent } from './position.component'
-import { Position } from './position'
+import { Company, Position } from './position'
 import { NgOptimizedImage } from '@angular/common'
 
 describe('PositionComponent', () => {
   let component: PositionComponent
   let fixture: ComponentFixture<PositionComponent>
   const fakePosition = new Position({
-    imageUrl: new URL('https://example.com/fake.jpg'),
-    company: 'Fake company',
-    companyWebsite: new URL('https://fake.example.org'),
+    company: new Company({
+      name: 'Fake company',
+      image: new URL('https://fakeCompany.example.com/logo.jpg'),
+      website: new URL('https://fake.example.org'),
+    }),
+    summary: 'Fake summary',
     role: 'Fake role',
     startDate: new Date('2023-01-01'),
     endDate: new Date('2023-10-10'),

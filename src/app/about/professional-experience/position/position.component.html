@@ -1,24 +1,19 @@
 <div class="header">
   <div class="image">
-    <a [href]="position.companyWebsite.toString()">
+    <a [href]="position.company.website.toString()">
       <img
-        [ngSrc]="position.imageUrl.toString()"
+        [ngSrc]="position.company.image.toString()"
         width="64"
         height="64"
-        alt="{{ position.company }} logo"
+        alt="{{ position.company.name }} logo"
       />
     </a>
   </div>
   <div class="text">
     <span class="company">
-      <ng-container *ngIf="position.companyWebsite; else companyName">
-        <a [href]="position.companyWebsite.toString()">
-          <ng-container [ngTemplateOutlet]="companyName"></ng-container>
-        </a>
-      </ng-container>
-      <ng-template #companyName>
-        {{ position.company }}
-      </ng-template>
+      <a [href]="position.company.website.toString()">
+        {{ position.company.name }}
+      </a>
     </span>
     <span class="role">{{ position.role }}</span>
     <span class="dates"
@@ -53,29 +48,29 @@
       </span>
       <div role="tooltip">Internship</div>
     </div>
-    <div class="initial-positions" *ngIf="position.initialPositions.length">
+    <div class="initial-positions" *ngIf="position.previousRoles.length">
       <span [class]="MATERIAL_SYMBOLS_CLASS">
         {{ MaterialSymbol.ToolsLadder }}
       </span>
       <div role="tooltip">
         The role displayed is last one. There were promotions whilst working for
-        the company. Previous roles: {{ position.initialPositions.join(', ') }}
+        the company. Previous roles: {{ position.previousRoles.join(', ') }}
       </div>
     </div>
-    <div class="other-positions" *ngIf="position.otherPositions.length">
+    <div class="other-positions" *ngIf="position.otherRoles.length">
       <span [class]="MATERIAL_SYMBOLS_CLASS">
         {{ MaterialSymbol.More }}
       </span>
       <div role="tooltip">
-        Other positions also carried: {{ position.otherPositions.join(', ') }}
+        Other positions also carried: {{ position.otherRoles.join(', ') }}
       </div>
     </div>
-    <div class="formerly-known-as" *ngIf="position.companyPreviouslyKnownAs">
+    <div class="formerly-known-as" *ngIf="position.company.formerlyKnownAs">
       <span [class]="MATERIAL_SYMBOLS_CLASS">
         {{ MaterialSymbol.Resume }}
       </span>
       <div role="tooltip">
-        Company formerly known as {{ position.companyPreviouslyKnownAs }}
+        Company formerly known as {{ position.company.formerlyKnownAs }}
       </div>
     </div>
   </div>
