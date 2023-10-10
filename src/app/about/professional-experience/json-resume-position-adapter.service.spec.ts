@@ -6,6 +6,8 @@ import {
   JsonResumeWorkPosition,
 } from './json-resume-position-adapter.service'
 import { Environment } from '../../../environments'
+import { MockProvider } from 'ng-mocks'
+import { ENVIRONMENT } from '../../common/injection-tokens'
 
 describe('JsonResumePositionAdapterService', () => {
   it('should be created', () => {
@@ -23,7 +25,10 @@ describe('JsonResumePositionAdapterService', () => {
       const fakeEnvironment: Pick<Environment, 'canonicalUrl'> = {
         canonicalUrl: fakeCanonicalUrl,
       }
-      sut = new JsonResumePositionAdapterService(fakeEnvironment as Environment)
+      TestBed.configureTestingModule({
+        providers: [MockProvider(ENVIRONMENT, fakeEnvironment)],
+      })
+      sut = TestBed.inject(JsonResumePositionAdapterService)
     })
 
     it('should map the company name and website', () => {

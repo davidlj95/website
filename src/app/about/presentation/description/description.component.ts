@@ -24,6 +24,7 @@ import {
 } from '../../../common/animations'
 import { DescriptionLine } from '../../../metadata'
 import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
+import { SlugGeneratorService } from '../../../common/slug-generator.service'
 
 @Component({
   selector: 'app-description',
@@ -79,6 +80,7 @@ export class DescriptionComponent {
     @Inject(COLLAPSIBLE_CONFIG)
     protected readonly config: CollapsibleConfiguration,
     @Inject(PLATFORM_ID) private readonly platformId: object,
+    private readonly slugIdGenerator: SlugGeneratorService,
   ) {}
 
   protected get isRenderingOnBrowser() {
@@ -96,18 +98,14 @@ export class DescriptionComponent {
     if (!this.isCollapsible) {
       return
     }
-    return (
-      this.config.listIdPrefix +
-      this.line.data?.text
-        .toString()
-        .toLowerCase()
-        .replace(/\s+/g, '-') // Replace spaces with -
-        .replace(/[^\w-]+/g, '') // Remove all non-word chars
-        .replace(/--+/g, '-') // Replace multiple - with single -
-        .replace(/^-+/, '') // Trim - from start of text
-        .replace(/-+$/, '') // Trim - from end of text
-        .replace(/^\d/, '')
-    )
+    const lineText = this.line?.data?.text
+    if (!lineText) {
+      return undefined
+    }
+    return this.slugIdGenerator.generate(lineText, {
+      prefix: this.config.listIdPrefix,
+      firstCharIsALetter: true,
+    })
   }
 
   collapse() {

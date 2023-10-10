@@ -3,6 +3,7 @@ import resume from '../../../../assets/resume.json'
 import { Company, Position } from './position/position'
 import { ENVIRONMENT } from '../../common/injection-tokens'
 import { Environment } from '../../../environments'
+import { SlugGeneratorService } from '../../common/slug-generator.service'
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,10 @@ export class JsonResumePositionAdapterService {
   public readonly IMAGE_EXTENSION = '.png'
   private readonly canonicalURL: URL
 
-  constructor(@Inject(ENVIRONMENT) environment: Environment) {
+  constructor(
+    @Inject(ENVIRONMENT) environment: Environment,
+    private slugGenerator: SlugGeneratorService,
+  ) {
     this.canonicalURL = environment.canonicalUrl
   }
 
@@ -37,20 +41,9 @@ export class JsonResumePositionAdapterService {
   }
 
   private imageUrlFromCompanyName(companyName: string): URL {
-    // https://gist.github.com/djabif/b8d21c4ebcef51db7a4a28ecf3d41846
-    const kebabCasedCompanyName = companyName
-      .toLowerCase()
-      .replace(/\s+/g, '-') // Replace spaces with -
-      .replace(/--+/g, '-') // Replace multiple - with single -
-      .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, '') // Trim - from end of text
-    // https://stackoverflow.com/a/37511463/3263250
-    const noAccentsDiacriticsCompanyName = kebabCasedCompanyName
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
     return new URL(
       this.COMPANIES_IMAGE_ASSETS_PATH +
-        noAccentsDiacriticsCompanyName +
+        this.slugGenerator.generate(companyName) +
         this.IMAGE_EXTENSION,
       this.canonicalURL,
     )
