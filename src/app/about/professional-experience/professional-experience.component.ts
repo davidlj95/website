@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { Position } from './position/position'
 import resume from '../../../../assets/resume.json'
+import { environment } from '../../../environments'
 
 @Component({
   selector: 'app-professional-experience',
@@ -11,7 +12,13 @@ export class ProfessionalExperienceComponent {
   public readonly positions: ReadonlyArray<Position> = resume.work.map(
     (work) =>
       new Position({
-        imageUrl: new URL(work.image),
+        imageUrl: new URL(
+          `assets/companies/${work.company
+            .toLowerCase()
+            .replace(' ', '-')
+            .replace('ó', 'o')}.png`,
+          environment.canonicalUrl,
+        ),
         company: work.company,
         companyWebsite: new URL(work.website),
         role: work.position,
