@@ -9,6 +9,7 @@ import {
   ToolsLadder,
   Work,
 } from '../../../material-symbols'
+import { SlugGeneratorService } from '../../../common/slug-generator.service'
 
 @Component({
   selector: 'app-position',
@@ -33,6 +34,8 @@ export class PositionComponent {
   }
   protected readonly ContentTypeId = ContentTypeId
 
+  constructor(private slugGenerator: SlugGeneratorService) {}
+
   public get availableContentTypes(): ReadonlyArray<ContentType> {
     return this.contentTypes.filter((contentType) =>
       this.typeHasContent(contentType),
@@ -42,6 +45,28 @@ export class PositionComponent {
   @HostBinding('class.active')
   public get activeClass(): boolean {
     return !!this.activeContentType
+  }
+
+  public get freelanceAttributeTooltipId() {
+    return this.positionId + '-freelance-tooltip'
+  }
+
+  public get internshipAttributeTooltipId() {
+    return this.positionId + '-internship-tooltip'
+  }
+
+  public get otherRolesAttributeTooltipId() {
+    return this.positionId + '-other-roles-tooltip'
+  }
+
+  public get promotionsAttributeTooltipId() {
+    return this.positionId + '-promotions-tooltip'
+  }
+
+  private get positionId() {
+    return this.slugGenerator.generate(this.position.company.name, {
+      prefix: 'exp-pos-',
+    })
   }
 
   onContentTypeClick(contentType: ContentType) {

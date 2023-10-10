@@ -218,11 +218,12 @@ describe('PositionComponent', () => {
       })
     }
 
-    function testShouldDisplayItsTooltip(
+    function testShouldDisplayItsTooltipWithAria(
       attributeElementGetter: () => DebugElement,
       text: jasmine.Expected<string>,
+      idGetter: () => string,
     ) {
-      it('should display its tooltip with its helper text', () => {
+      it('should display its tooltip with its helper text and ARIA support', () => {
         const attributeElement = attributeElementGetter()
         expect(attributeElement)
           .withContext('attribute element exists')
@@ -235,6 +236,18 @@ describe('PositionComponent', () => {
         expect(tooltipElement.nativeElement.textContent.trim())
           .withContext('tooltip contains helper text')
           .toEqual(text)
+
+        const id = idGetter()
+        const iconElement = attributeElement.query(By.css('span'))
+        expect(iconElement.attributes['aria-describedby'])
+          .withContext('ARIA describedby points to tooltip id')
+          .toEqual(id)
+        expect(iconElement.attributes['tabindex'])
+          .withContext('icon included in tab sequence')
+          .toEqual('0')
+        expect(tooltipElement.attributes['id'])
+          .withContext('Tooltip has id')
+          .toEqual(id)
       })
     }
 
@@ -257,7 +270,11 @@ describe('PositionComponent', () => {
         name: 'badge',
         icon: Badge,
       })
-      testShouldDisplayItsTooltip(() => attributeElement, 'Employee')
+      testShouldDisplayItsTooltipWithAria(
+        () => attributeElement,
+        'Employee',
+        () => component.freelanceAttributeTooltipId,
+      )
     })
 
     describe('when position is freelance', () => {
@@ -280,7 +297,11 @@ describe('PositionComponent', () => {
         name: 'work',
         icon: Work,
       })
-      testShouldDisplayItsTooltip(() => attributeElement, 'Freelance')
+      testShouldDisplayItsTooltipWithAria(
+        () => attributeElement,
+        'Freelance',
+        () => component.freelanceAttributeTooltipId,
+      )
     })
 
     describe('when position is not an internship', () => {
@@ -322,7 +343,11 @@ describe('PositionComponent', () => {
         name: 'school',
         icon: School,
       })
-      testShouldDisplayItsTooltip(() => attributeElement, 'Internship')
+      testShouldDisplayItsTooltipWithAria(
+        () => attributeElement,
+        'Internship',
+        () => component.internshipAttributeTooltipId,
+      )
     })
 
     describe('when position contained no promotions', () => {
@@ -364,9 +389,10 @@ describe('PositionComponent', () => {
         name: 'toolsLadder',
         icon: ToolsLadder,
       })
-      testShouldDisplayItsTooltip(
+      testShouldDisplayItsTooltipWithAria(
         () => attributeElement,
         jasmine.stringContaining('Promotions during this period'),
+        () => component.promotionsAttributeTooltipId,
       )
     })
 
@@ -409,9 +435,10 @@ describe('PositionComponent', () => {
         name: 'more',
         icon: More,
       })
-      testShouldDisplayItsTooltip(
+      testShouldDisplayItsTooltipWithAria(
         () => attributeElement,
         jasmine.stringContaining('More roles'),
+        () => component.otherRolesAttributeTooltipId,
       )
     })
   })

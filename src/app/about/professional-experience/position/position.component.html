@@ -32,37 +32,57 @@
   <div class="attributes">
     <div class="freelance attribute">
       <ng-container *ngIf="!position.freelance; else freelance">
-        <span [class]="MATERIAL_SYMBOLS_CLASS">
+        <span
+          [class]="MATERIAL_SYMBOLS_CLASS"
+          [attr.aria-describedby]="freelanceAttributeTooltipId"
+          tabindex="0"
+        >
           {{ MaterialSymbol.Badge }}
         </span>
-        <div role="tooltip">Employee</div>
+        <div [id]="freelanceAttributeTooltipId" role="tooltip">Employee</div>
       </ng-container>
       <ng-template #freelance>
-        <span [class]="MATERIAL_SYMBOLS_CLASS">
+        <span
+          [class]="MATERIAL_SYMBOLS_CLASS"
+          [attr.aria-describedby]="freelanceAttributeTooltipId"
+          tabindex="0"
+        >
           {{ MaterialSymbol.Work }}
         </span>
-        <div role="tooltip">Freelance</div>
+        <div [id]="freelanceAttributeTooltipId" role="tooltip">Freelance</div>
       </ng-template>
     </div>
     <div class="internship attribute" *ngIf="position.internship">
-      <span [class]="MATERIAL_SYMBOLS_CLASS">
+      <span
+        [class]="MATERIAL_SYMBOLS_CLASS"
+        [attr.aria-describedby]="internshipAttributeTooltipId"
+        tabindex="0"
+      >
         {{ MaterialSymbol.School }}
       </span>
-      <div role="tooltip">Internship</div>
+      <div [id]="internshipAttributeTooltipId" role="tooltip">Internship</div>
     </div>
     <div class="other-roles attribute" *ngIf="position.otherRoles">
-      <span [class]="MATERIAL_SYMBOLS_CLASS">
+      <span
+        [class]="MATERIAL_SYMBOLS_CLASS"
+        [attr.aria-describedby]="otherRolesAttributeTooltipId"
+        tabindex="0"
+      >
         {{ MaterialSymbol.More }}
       </span>
-      <div role="tooltip">
+      <div [id]="otherRolesAttributeTooltipId" role="tooltip">
         More roles performed during this period. <br />See summary for details
       </div>
     </div>
     <div class="promotions attribute" *ngIf="position.promotions">
-      <span [class]="MATERIAL_SYMBOLS_CLASS">
+      <span
+        [class]="MATERIAL_SYMBOLS_CLASS"
+        [attr.aria-describedby]="promotionsAttributeTooltipId"
+        tabindex="0"
+      >
         {{ MaterialSymbol.ToolsLadder }}
       </span>
-      <div role="tooltip">
+      <div [id]="promotionsAttributeTooltipId" role="tooltip">
         Promotions during this period. <br />See highlights for details
       </div>
     </div>
