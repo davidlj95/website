@@ -22,16 +22,19 @@ export class JsonResumePositionAdapterService {
     this.mapJsonResumeImages = environment.mapJsonResumeImages
   }
 
+  // 👇 JSON Resume Schema of "work"
+  // https://github.com/jsonresume/resume-schema/blob/v1.0.0/schema.json#L100-L149
+  // Includes additional fields though
   adapt(position: JsonResumeWorkPosition): Position {
     return new Position({
       company: new Company({
-        name: position.company,
+        name: position.name,
         // Point to assets in this repo using canonical URL from env, so we can change the image and preview it.
         // Links in resume.json work anyway
         image: this.mapJsonResumeImages
-          ? this.imageUrlFromCompanyName(position.company)
+          ? this.imageUrlFromCompanyName(position.name)
           : new URL(position.image),
-        website: new URL(position.website),
+        website: new URL(position.url),
       }),
       role: position.position,
       summary: position.summary,
