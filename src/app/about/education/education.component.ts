@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { EducationItem } from './education-item/education-item'
-import { JsonResumeAdapterService } from '../json-resume-adapter.service'
+import { EducationItemsService } from './education-items.service'
 
 @Component({
   selector: 'app-education',
@@ -10,7 +10,7 @@ import { JsonResumeAdapterService } from '../json-resume-adapter.service'
 export class EducationComponent {
   protected items: ReadonlyArray<EducationItem>
 
-  constructor(jsonResumeAdapter: JsonResumeAdapterService) {
+  constructor(jsonResumeAdapter: EducationItemsService) {
     this.items = jsonResumeAdapter.getEducationItems()
   }
 }

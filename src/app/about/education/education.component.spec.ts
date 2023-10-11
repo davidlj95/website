@@ -4,7 +4,7 @@ import { EducationComponent } from './education.component'
 import { MockComponents } from 'ng-mocks'
 import { H2Component } from '../h2/h2.component'
 import { EducationItemComponent } from './education-item/education-item.component'
-import { JsonResumeAdapterService } from '../json-resume-adapter.service'
+import { EducationItemsService } from './education-items.service'
 import { By } from '@angular/platform-browser'
 import { getComponentSelector } from '../../../test/helpers/component-testers'
 
@@ -29,7 +29,7 @@ describe('EducationComponent', () => {
   })
 
   it('should display all items', () => {
-    const jsonResumeAdapter = TestBed.inject(JsonResumeAdapterService)
+    const jsonResumeAdapter = TestBed.inject(EducationItemsService)
     const educationItemElements = fixture.debugElement.queryAll(
       By.css(getComponentSelector(EducationItemComponent)),
     )
