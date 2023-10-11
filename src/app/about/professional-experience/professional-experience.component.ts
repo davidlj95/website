@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
-import { JsonResumeAdapterService } from '../json-resume-adapter.service'
 import { Position } from './position/position'
+import { PositionsService } from './positions.service'
 
 @Component({
   selector: 'app-professional-experience',
@@ -10,7 +10,7 @@ import { Position } from './position/position'
 export class ProfessionalExperienceComponent {
   protected positions: ReadonlyArray<Position>
 
-  constructor(jsonResumeAdapter: JsonResumeAdapterService) {
-    this.positions = jsonResumeAdapter.getPositions()
+  constructor(positionsService: PositionsService) {
+    this.positions = positionsService.getPositions()
   }
 }

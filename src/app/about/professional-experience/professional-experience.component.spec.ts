@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
 import { ProfessionalExperienceComponent } from './professional-experience.component'
 import { MockComponents } from 'ng-mocks'
 import { PositionComponent } from './position/position.component'
@@ -9,7 +8,7 @@ import {
   getComponentSelector,
 } from '../../../test/helpers/component-testers'
 import { By } from '@angular/platform-browser'
-import { JsonResumeAdapterService } from '../json-resume-adapter.service'
+import { PositionsService } from './positions.service'
 
 describe('ProfessionalExperienceComponent', () => {
   let component: ProfessionalExperienceComponent
@@ -32,13 +31,11 @@ describe('ProfessionalExperienceComponent', () => {
   })
 
   it('should display all positions', () => {
-    const jsonResumeAdapter = TestBed.inject(JsonResumeAdapterService)
+    const positionsService = TestBed.inject(PositionsService)
     const positionElements = fixture.debugElement.queryAll(
       By.css(getComponentSelector(PositionComponent)),
     )
-    expect(positionElements.length).toBe(
-      jsonResumeAdapter.getPositions().length,
-    )
+    expect(positionElements.length).toBe(positionsService.getPositions().length)
   })
 
   ensureHasComponent(() => fixture, H2Component)
