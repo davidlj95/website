@@ -5,7 +5,7 @@ import {
   PositionComponent,
   SUMMARY_CONTENT_TYPE,
 } from './position.component'
-import { Company, Position } from './position'
+import { Position } from './position'
 import { NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
 import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
@@ -18,12 +18,13 @@ import {
 } from '../../../material-symbols'
 import { DebugElement } from '@angular/core'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { Organization } from '../../organization'
 
 describe('PositionComponent', () => {
   let component: PositionComponent
   let fixture: ComponentFixture<PositionComponent>
   const newPositionArgs: ConstructorParameters<typeof Position>[0] = {
-    company: new Company({
+    company: new Organization({
       name: 'Fake company',
       image: new URL('https://fakeCompany.example.com/logo.jpg'),
       website: new URL('https://fake.example.org'),

@@ -4,7 +4,7 @@ import { ENVIRONMENT } from '../../common/injection-tokens'
 import { Environment } from '../../../environments'
 import { SlugGeneratorService } from '../../common/slug-generator.service'
 import { EducationItem } from './education-item/education-item'
-import { Organization } from './organization'
+import { Organization } from '../organization'
 
 @Injectable({
   providedIn: 'root',

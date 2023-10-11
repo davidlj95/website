@@ -1,9 +1,10 @@
 import { Inject, Injectable } from '@angular/core'
 import resume from '../../../../assets/resume.json'
-import { Company, Position } from './position/position'
+import { Position } from './position/position'
 import { ENVIRONMENT } from '../../common/injection-tokens'
 import { Environment } from '../../../environments'
 import { SlugGeneratorService } from '../../common/slug-generator.service'
+import { Organization } from '../organization'
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,7 @@ export class JsonResumePositionAdapterService {
   // Includes additional fields though
   adapt(position: JsonResumeWorkPosition): Position {
     return new Position({
-      company: new Company({
+      company: new Organization({
         name: position.name,
         // Point to assets in this repo using canonical URL from env, so we can change the image and preview it.
         // Links in resume.json work anyway

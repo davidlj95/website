@@ -1,4 +1,4 @@
-import { Organization } from '../organization'
+import { Organization } from '../../organization'
 
 export class EducationItem {
   public readonly institution: Organization
