@@ -1,7 +1,7 @@
 import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
 
-export class Position {
+export class ExperienceItem {
   public readonly company: Organization
   public readonly role: string
   public readonly dateRange: DateRange

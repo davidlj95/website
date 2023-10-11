@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core'
 import resume from '../../../../assets/resume.json'
-import { Position } from './position/position'
+import { ExperienceItem } from './experience-item/experience-item'
 import { ENVIRONMENT } from '../../common/injection-tokens'
 import { Environment } from '../../../environments'
 import { SlugGeneratorService } from '../../common/slug-generator.service'
@@ -10,7 +10,7 @@ import { DateRange } from '../date-range/date-range'
 @Injectable({
   providedIn: 'root',
 })
-export class JsonResumePositionAdapterService {
+export class JsonResumeExperienceItemAdapterService {
   public readonly COMPANIES_IMAGE_ASSETS_PATH = 'assets/companies/'
   public readonly IMAGE_EXTENSION = '.png'
   private readonly canonicalURL: URL
@@ -27,28 +27,28 @@ export class JsonResumePositionAdapterService {
   // 👇 JSON Resume Schema of "work"
   // https://github.com/jsonresume/resume-schema/blob/v1.0.0/schema.json#L100-L149
   // Includes additional fields though
-  adapt(position: JsonResumeWorkPosition): Position {
-    return new Position({
+  adapt(item: JsonResumeWorkItem): ExperienceItem {
+    return new ExperienceItem({
       company: new Organization({
-        name: position.name,
+        name: item.name,
         // Point to assets in this repo using canonical URL from env, so we can change the image and preview it.
         // Links in resume.json work anyway
         image: this.mapJsonResumeImages
-          ? this.imageUrlFromCompanyName(position.name)
-          : new URL(position.image),
-        website: new URL(position.url),
+          ? this.imageUrlFromCompanyName(item.name)
+          : new URL(item.image),
+        website: new URL(item.url),
       }),
-      role: position.position,
-      summary: position.summary,
-      highlights: position.highlights,
+      role: item.position,
+      summary: item.summary,
+      highlights: item.highlights,
       dateRange: new DateRange(
-        new Date(position.startDate),
-        !position.endDate ? undefined : new Date(position.endDate),
+        new Date(item.startDate),
+        !item.endDate ? undefined : new Date(item.endDate),
       ),
-      freelance: position.freelance,
-      internship: position.internship,
-      promotions: position.promotions,
-      otherRoles: position.otherRoles,
+      freelance: item.freelance,
+      internship: item.internship,
+      promotions: item.promotions,
+      otherRoles: item.otherRoles,
     })
   }
 
@@ -62,4 +62,4 @@ export class JsonResumePositionAdapterService {
   }
 }
 
-export type JsonResumeWorkPosition = (typeof resume.work)[number]
+export type JsonResumeWorkItem = (typeof resume.work)[number]

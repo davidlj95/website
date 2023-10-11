@@ -1,30 +1,30 @@
 <div class="header">
   <div class="image">
-    <a [href]="position.company.website.toString()">
+    <a [href]="item.company.website.toString()">
       <img
-        [ngSrc]="position.company.image.toString()"
+        [ngSrc]="item.company.image.toString()"
         width="64"
         height="64"
-        alt="{{ position.company.name }} logo"
+        alt="{{ item.company.name }} logo"
       />
     </a>
   </div>
   <div class="text">
     <span class="company">
-      <a [href]="position.company.website.toString()">
-        {{ position.company.name }}
+      <a [href]="item.company.website.toString()">
+        {{ item.company.name }}
       </a>
     </span>
     <div class="role">
-      {{ position.role }}
+      {{ item.role }}
     </div>
     <span class="dates"
-      ><app-date-range [range]="position.dateRange"></app-date-range
+      ><app-date-range [range]="item.dateRange"></app-date-range
     ></span>
   </div>
   <div class="attributes">
     <div class="freelance attribute">
-      <ng-container *ngIf="!position.freelance; else freelance">
+      <ng-container *ngIf="!item.freelance; else freelance">
         <span
           [class]="MATERIAL_SYMBOLS_CLASS"
           [attr.aria-describedby]="freelanceAttributeTooltipId"
@@ -45,7 +45,7 @@
         <div [id]="freelanceAttributeTooltipId" role="tooltip">Freelance</div>
       </ng-template>
     </div>
-    <div class="internship attribute" *ngIf="position.internship">
+    <div class="internship attribute" *ngIf="item.internship">
       <span
         [class]="MATERIAL_SYMBOLS_CLASS"
         [attr.aria-describedby]="internshipAttributeTooltipId"
@@ -55,7 +55,7 @@
       </span>
       <div [id]="internshipAttributeTooltipId" role="tooltip">Internship</div>
     </div>
-    <div class="other-roles attribute" *ngIf="position.otherRoles">
+    <div class="other-roles attribute" *ngIf="item.otherRoles">
       <span
         [class]="MATERIAL_SYMBOLS_CLASS"
         [attr.aria-describedby]="otherRolesAttributeTooltipId"
@@ -67,7 +67,7 @@
         More roles performed during this period. <br />See summary for details
       </div>
     </div>
-    <div class="promotions attribute" *ngIf="position.promotions">
+    <div class="promotions attribute" *ngIf="item.promotions">
       <span
         [class]="MATERIAL_SYMBOLS_CLASS"
         [attr.aria-describedby]="promotionsAttributeTooltipId"
@@ -104,7 +104,7 @@
     !isRenderingOnBrowser || activeContentType?.id === ContentTypeId.Summary
   "
 >
-  {{ position.summary }}
+  {{ item.summary }}
 </div>
 <div
   class="chip displayBlockIfNoScript"
@@ -120,7 +120,7 @@
   "
 >
   <ul>
-    <li *ngFor="let highlight of position.highlights">
+    <li *ngFor="let highlight of item.highlights">
       {{ highlight }}
     </li>
   </ul>

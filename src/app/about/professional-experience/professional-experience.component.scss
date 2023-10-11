@@ -3,7 +3,7 @@
 @use 'paddings';
 
 :host {
-  .positions {
+  .layout {
     padding: paddings.$l;
     display: grid;
     gap: margins.$m;

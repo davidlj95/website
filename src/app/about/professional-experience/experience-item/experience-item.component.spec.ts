@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
 import {
+  ExperienceItemComponent,
   HIGHLIGHT_CONTENT_TYPE,
-  PositionComponent,
   SUMMARY_CONTENT_TYPE,
-} from './position.component'
-import { Position } from './position'
+} from './experience-item.component'
+import { ExperienceItem } from './experience-item'
 import { NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
 import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
@@ -24,26 +23,30 @@ import { getComponentSelector } from '../../../../test/helpers/component-testers
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 
-describe('PositionComponent', () => {
-  let component: PositionComponent
-  let fixture: ComponentFixture<PositionComponent>
-  const newPositionArgs: ConstructorParameters<typeof Position>[0] = {
-    company: new Organization({
-      name: 'Fake company',
-      image: new URL('https://fakeCompany.example.com/logo.jpg'),
-      website: new URL('https://fake.example.org'),
-    }),
-    summary: 'Fake summary',
-    role: 'Fake role',
-    dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
-  }
+describe('ExperienceItem', () => {
+  let component: ExperienceItemComponent
+  let fixture: ComponentFixture<ExperienceItemComponent>
+  const newExperienceItemArgs: ConstructorParameters<typeof ExperienceItem>[0] =
+    {
+      company: new Organization({
+        name: 'Fake company',
+        image: new URL('https://fakeCompany.example.com/logo.jpg'),
+        website: new URL('https://fake.example.org'),
+      }),
+      summary: 'Fake summary',
+      role: 'Fake role',
+      dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
+    }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PositionComponent, MockComponents(DateRangeComponent)],
+      declarations: [
+        ExperienceItemComponent,
+        MockComponents(DateRangeComponent),
+      ],
       imports: [NgOptimizedImage, NoopAnimationsModule],
     })
-    fixture = TestBed.createComponent(PositionComponent)
+    fixture = TestBed.createComponent(ExperienceItemComponent)
     component = fixture.componentInstance
   })
 
@@ -53,8 +56,8 @@ describe('PositionComponent', () => {
 
   describe('company', () => {
     it("should display company image with link to company's website", () => {
-      const fakePosition = new Position(newPositionArgs)
-      component.position = fakePosition
+      const experienceItem = new ExperienceItem(newExperienceItemArgs)
+      component.item = experienceItem
       fixture.detectChanges()
 
       const imageContainerElement = fixture.debugElement.query(By.css('.image'))
@@ -66,18 +69,18 @@ describe('PositionComponent', () => {
       expect(anchorElement).withContext('link exists').toBeTruthy()
       expect(anchorElement.attributes['href'])
         .withContext('link points to company website')
-        .toEqual(fakePosition.company.website.toString())
+        .toEqual(experienceItem.company.website.toString())
 
       const imageElement = anchorElement.query(By.css('img'))
       expect(imageElement).withContext('image exists').toBeTruthy()
       expect(imageElement.attributes['src'])
         .withContext('image source points to company image')
-        .toEqual(fakePosition.company.image.toString())
+        .toEqual(experienceItem.company.image.toString())
     })
 
     it("should display company name with link to company's website", () => {
-      const fakePosition = new Position(newPositionArgs)
-      component.position = fakePosition
+      const experienceItem = new ExperienceItem(newExperienceItemArgs)
+      component.item = experienceItem
       fixture.detectChanges()
 
       const companyElement = fixture.debugElement.query(By.css('.company'))
@@ -89,29 +92,29 @@ describe('PositionComponent', () => {
       expect(anchorElement).withContext('link exists').toBeTruthy()
       expect(anchorElement.attributes['href'])
         .withContext('link points to company website')
-        .toEqual(fakePosition.company.website.toString())
+        .toEqual(experienceItem.company.website.toString())
       expect(anchorElement.nativeElement.textContent.trim()).toEqual(
-        fakePosition.company.name,
+        experienceItem.company.name,
       )
     })
   })
   describe('role', () => {
     it('should display role', () => {
-      const fakePosition = new Position(newPositionArgs)
-      component.position = fakePosition
+      const experienceItem = new ExperienceItem(newExperienceItemArgs)
+      component.item = experienceItem
       fixture.detectChanges()
 
       const roleElement = fixture.debugElement.query(By.css('.role'))
       expect(roleElement).withContext('role exists').toBeTruthy()
       expect(roleElement.nativeElement.textContent.trim())
-        .withContext('role contains position role')
-        .toEqual(fakePosition.role)
+        .withContext('role contains role')
+        .toEqual(experienceItem.role)
     })
   })
   describe('dates', () => {
     it('should display date range component', () => {
-      component.position = new Position({
-        ...newPositionArgs,
+      component.item = new ExperienceItem({
+        ...newExperienceItemArgs,
       })
       fixture.detectChanges()
 
@@ -192,16 +195,16 @@ describe('PositionComponent', () => {
       })
     }
 
-    describe('when position is not freelance', () => {
-      let fakePosition: Position
+    describe('when experience is not freelance', () => {
+      let experienceItem: ExperienceItem
       let attributeElement: DebugElement
 
       beforeEach(() => {
-        fakePosition = new Position({
-          ...newPositionArgs,
+        experienceItem = new ExperienceItem({
+          ...newExperienceItemArgs,
           freelance: false,
         })
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         attributeElement = fixture.debugElement.query(By.css('.freelance'))
@@ -218,17 +221,17 @@ describe('PositionComponent', () => {
       )
     })
 
-    describe('when position is freelance', () => {
-      let fakePosition: Position
+    describe('when experience is freelance', () => {
+      let experienceItem: ExperienceItem
       let attributeElement: DebugElement
 
       beforeEach(() => {
-        fakePosition = new Position({
-          ...newPositionArgs,
+        experienceItem = new ExperienceItem({
+          ...newExperienceItemArgs,
           freelance: true,
         })
 
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         attributeElement = fixture.debugElement.query(By.css('.freelance'))
@@ -245,17 +248,17 @@ describe('PositionComponent', () => {
       )
     })
 
-    describe('when position is not an internship', () => {
-      let fakePosition: Position
+    describe('when experience is not an internship', () => {
+      let experienceItem: ExperienceItem
       let attributeElement: DebugElement
 
       beforeEach(() => {
-        fakePosition = new Position({
-          ...newPositionArgs,
+        experienceItem = new ExperienceItem({
+          ...newExperienceItemArgs,
           internship: false,
         })
 
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         attributeElement = fixture.debugElement.query(By.css('.internship'))
@@ -264,17 +267,17 @@ describe('PositionComponent', () => {
       testShouldNotDisplayAttribute(() => attributeElement)
     })
 
-    describe('when position is an internship', () => {
-      let fakePosition: Position
+    describe('when experience is an internship', () => {
+      let experienceItem: ExperienceItem
       let attributeElement: DebugElement
 
       beforeEach(() => {
-        fakePosition = new Position({
-          ...newPositionArgs,
+        experienceItem = new ExperienceItem({
+          ...newExperienceItemArgs,
           internship: true,
         })
 
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         attributeElement = fixture.debugElement.query(By.css('.internship'))
@@ -291,17 +294,17 @@ describe('PositionComponent', () => {
       )
     })
 
-    describe('when position contained no promotions', () => {
-      let fakePosition: Position
+    describe('when experience contained no promotions', () => {
+      let experienceItem: ExperienceItem
       let attributeElement: DebugElement
 
       beforeEach(() => {
-        fakePosition = new Position({
-          ...newPositionArgs,
+        experienceItem = new ExperienceItem({
+          ...newExperienceItemArgs,
           promotions: false,
         })
 
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         attributeElement = fixture.debugElement.query(By.css('.promotions'))
@@ -310,17 +313,17 @@ describe('PositionComponent', () => {
       testShouldNotDisplayAttribute(() => attributeElement)
     })
 
-    describe('when position contained promotions', () => {
-      let fakePosition: Position
+    describe('when experience contained promotions', () => {
+      let experienceItem: ExperienceItem
       let attributeElement: DebugElement
 
       beforeEach(() => {
-        fakePosition = new Position({
-          ...newPositionArgs,
+        experienceItem = new ExperienceItem({
+          ...newExperienceItemArgs,
           promotions: true,
         })
 
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         attributeElement = fixture.debugElement.query(By.css('.promotions'))
@@ -337,17 +340,17 @@ describe('PositionComponent', () => {
       )
     })
 
-    describe('when position contained no other roles', () => {
-      let fakePosition: Position
+    describe('when experience contained no other roles', () => {
+      let experienceItem: ExperienceItem
       let attributeElement: DebugElement
 
       beforeEach(() => {
-        fakePosition = new Position({
-          ...newPositionArgs,
+        experienceItem = new ExperienceItem({
+          ...newExperienceItemArgs,
           otherRoles: false,
         })
 
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         attributeElement = fixture.debugElement.query(By.css('.other-roles'))
@@ -356,17 +359,17 @@ describe('PositionComponent', () => {
       testShouldNotDisplayAttribute(() => attributeElement)
     })
 
-    describe('when position contained other roles', () => {
-      let fakePosition: Position
+    describe('when experience contained other roles', () => {
+      let experienceItem: ExperienceItem
       let attributeElement: DebugElement
 
       beforeEach(() => {
-        fakePosition = new Position({
-          ...newPositionArgs,
+        experienceItem = new ExperienceItem({
+          ...newExperienceItemArgs,
           otherRoles: true,
         })
 
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         attributeElement = fixture.debugElement.query(By.css('.other-roles'))
@@ -384,7 +387,7 @@ describe('PositionComponent', () => {
     })
   })
   describe('chipped content', () => {
-    describe('when no position', () => {
+    describe('when no experience', () => {
       it('should not display chips container', () => {
         const chipsElement = fixture.debugElement.query(By.css('.chips'))
         expect(chipsElement)
@@ -392,12 +395,14 @@ describe('PositionComponent', () => {
           .toBeFalsy()
       })
     })
-    describe('when position has summary', () => {
+    describe('when experience has summary', () => {
       let summaryChipElement: DebugElement | undefined
-      const fakePosition: Position = new Position(newPositionArgs)
+      const experienceItem: ExperienceItem = new ExperienceItem(
+        newExperienceItemArgs,
+      )
 
       beforeEach(() => {
-        component.position = fakePosition
+        component.item = experienceItem
         fixture.detectChanges()
 
         const chipsElement = fixture.debugElement.query(By.css('.chips'))
@@ -436,7 +441,7 @@ describe('PositionComponent', () => {
             .toBeTruthy()
 
           expect(contentElement.nativeElement.textContent.trim()).toEqual(
-            fakePosition.summary,
+            experienceItem.summary,
           )
         })
 
@@ -461,7 +466,7 @@ describe('PositionComponent', () => {
         })
       })
     })
-    describe('when position has highlights', () => {
+    describe('when experience has highlights', () => {
       let highlightsChipElement: DebugElement | undefined
       const highlights: ReadonlyArray<string> = [
         'Fake highlight 1',
@@ -469,8 +474,8 @@ describe('PositionComponent', () => {
       ]
 
       beforeEach(() => {
-        component.position = new Position({
-          ...newPositionArgs,
+        component.item = new ExperienceItem({
+          ...newExperienceItemArgs,
           highlights,
         })
         fixture.detectChanges()

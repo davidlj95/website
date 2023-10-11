@@ -22,7 +22,7 @@ import { ReleaseInfoComponent } from './release-info/release-info.component'
 import { NotFoundComponent } from './not-found/not-found.component'
 import { PresentationComponent } from './about/presentation/presentation.component'
 import { ProfessionalExperienceComponent } from './about/professional-experience/professional-experience.component'
-import { PositionComponent } from './about/professional-experience/position/position.component'
+import { ExperienceItemComponent } from './about/professional-experience/experience-item/experience-item.component'
 import { H2Component } from './about/h2/h2.component'
 import { EducationComponent } from './about/education/education.component'
 import { EducationItemComponent } from './about/education/education-item/education-item.component'
@@ -44,7 +44,7 @@ import { DateRangeComponent } from './about/date-range/date-range.component'
     NotFoundComponent,
     PresentationComponent,
     ProfessionalExperienceComponent,
-    PositionComponent,
+    ExperienceItemComponent,
     H2Component,
     EducationComponent,
     EducationItemComponent,

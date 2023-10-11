@@ -5,7 +5,7 @@ import {
   Input,
   PLATFORM_ID,
 } from '@angular/core'
-import { Position } from './position'
+import { ExperienceItem } from './experience-item'
 import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 import {
   Badge,
@@ -29,9 +29,9 @@ import {
 import { isPlatformBrowser } from '@angular/common'
 
 @Component({
-  selector: 'app-position',
-  templateUrl: './position.component.html',
-  styleUrls: ['./position.component.scss'],
+  selector: 'app-experience-item',
+  templateUrl: './experience-item.component.html',
+  styleUrls: ['./experience-item.component.scss'],
   animations: [
     trigger('contentActive', [
       transition(':enter', [
@@ -51,8 +51,8 @@ import { isPlatformBrowser } from '@angular/common'
     ]),
   ],
 })
-export class PositionComponent {
-  @Input({ required: true }) public position!: Position
+export class ExperienceItemComponent {
+  @Input({ required: true }) public item!: ExperienceItem
   public readonly contentTypes: ReadonlyArray<ContentType> = [
     SUMMARY_CONTENT_TYPE,
     HIGHLIGHT_CONTENT_TYPE,
@@ -88,23 +88,23 @@ export class PositionComponent {
   }
 
   public get freelanceAttributeTooltipId() {
-    return this.positionId + '-freelance-tooltip'
+    return this.itemId + '-freelance-tooltip'
   }
 
   public get internshipAttributeTooltipId() {
-    return this.positionId + '-internship-tooltip'
+    return this.itemId + '-internship-tooltip'
   }
 
   public get otherRolesAttributeTooltipId() {
-    return this.positionId + '-other-roles-tooltip'
+    return this.itemId + '-other-roles-tooltip'
   }
 
   public get promotionsAttributeTooltipId() {
-    return this.positionId + '-promotions-tooltip'
+    return this.itemId + '-promotions-tooltip'
   }
 
-  private get positionId() {
-    return this.slugGenerator.generate(this.position.company.name, {
+  private get itemId() {
+    return this.slugGenerator.generate(this.item.company.name, {
       prefix: 'exp-pos-',
     })
   }
@@ -120,9 +120,9 @@ export class PositionComponent {
   protected typeHasContent(type: ContentType): boolean {
     switch (type.id) {
       case ContentTypeId.Summary:
-        return !!this.position?.summary
+        return !!this.item?.summary
       case ContentTypeId.Highlights:
-        return !!this.position && this.position.highlights.length > 0
+        return !!this.item && this.item.highlights.length > 0
       default:
         return false
     }
