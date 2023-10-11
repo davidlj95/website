@@ -98,15 +98,21 @@
     {{ chip.displayName }}
   </button>
 </div>
-<div class="content" *ngIf="activeContentType">
-  <ng-container *ngIf="activeContentType.id === ContentTypeId.Summary">
-    {{ position.summary }}
-  </ng-container>
-  <ng-container *ngIf="activeContentType.id === ContentTypeId.Highlights">
-    <ul>
-      <li *ngFor="let highlight of position.highlights">
-        {{ highlight }}
-      </li>
-    </ul>
-  </ng-container>
+<div
+  class="content summary"
+  @contentActive
+  *ngIf="activeContentType?.id === ContentTypeId.Summary"
+>
+  {{ position.summary }}
+</div>
+<div
+  class="content highlights"
+  @contentActive
+  *ngIf="activeContentType?.id === ContentTypeId.Highlights"
+>
+  <ul>
+    <li *ngFor="let highlight of position.highlights">
+      {{ highlight }}
+    </li>
+  </ul>
 </div>

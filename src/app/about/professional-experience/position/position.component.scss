@@ -79,6 +79,7 @@
   }
 
   .content {
+    overflow: hidden;
     ul {
       display: flex;
       flex-direction: column;

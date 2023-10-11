@@ -17,6 +17,7 @@ import {
   Work,
 } from '../../../material-symbols'
 import { DebugElement } from '@angular/core'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
 describe('PositionComponent', () => {
   let component: PositionComponent
@@ -36,7 +37,7 @@ describe('PositionComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [PositionComponent],
-      imports: [NgOptimizedImage],
+      imports: [NgOptimizedImage, NoopAnimationsModule],
     })
     fixture = TestBed.createComponent(PositionComponent)
     component = fixture.componentInstance
@@ -211,7 +212,7 @@ describe('PositionComponent', () => {
         expect(iconElement).withContext('icon exists').toBeTruthy()
         expect(iconElement.classes)
           .withContext('icon element has material symbols class')
-          .toEqual({ [MATERIAL_SYMBOLS_CLASS]: true })
+          .toEqual(jasmine.objectContaining({ [MATERIAL_SYMBOLS_CLASS]: true }))
         expect(iconElement.nativeElement.textContent.trim())
           .withContext(`icon is ${name}`)
           .toEqual(icon)
@@ -487,7 +488,9 @@ describe('PositionComponent', () => {
         })
 
         it('should display summary in contents', () => {
-          const contentElement = fixture.debugElement.query(By.css('.content'))
+          const contentElement = fixture.debugElement.query(
+            By.css('.content.summary'),
+          )
           expect(contentElement)
             .withContext('content container exists')
             .toBeTruthy()
@@ -509,7 +512,7 @@ describe('PositionComponent', () => {
 
           it('should not display summary in contents', () => {
             const contentElement = fixture.debugElement.query(
-              By.css('.content'),
+              By.css('.content.summary'),
             )
             expect(contentElement)
               .withContext('content container does not exist')
@@ -560,7 +563,9 @@ describe('PositionComponent', () => {
         })
 
         it('should display highlights in contents', () => {
-          const contentElement = fixture.debugElement.query(By.css('.content'))
+          const contentElement = fixture.debugElement.query(
+            By.css('.content.highlights'),
+          )
           expect(contentElement)
             .withContext('content container exists')
             .toBeTruthy()
@@ -586,7 +591,7 @@ describe('PositionComponent', () => {
 
           it('should not display highlight in contents', () => {
             const contentElement = fixture.debugElement.query(
-              By.css('.content'),
+              By.css('.content.highlights'),
             )
             expect(contentElement)
               .withContext('content container does not exist')
