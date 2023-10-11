@@ -8,13 +8,13 @@
   $background-palette: map.get($theme, background);
   $text-palette: map.get($theme, text);
 
-  app-professional-experience {
+  app-experience {
     @include experience-item-theme.color($theme);
   }
 }
 
 @mixin motion() {
-  app-professional-experience {
+  app-experience {
     @include experience-item-theme.motion;
   }
 }

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { ProfessionalExperienceComponent } from './professional-experience.component'
+import { ExperienceComponent } from './experience.component'
 import { MockComponents } from 'ng-mocks'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { H2Component } from '../h2/h2.component'
@@ -10,18 +10,18 @@ import {
 import { By } from '@angular/platform-browser'
 import { ExperienceItemsService } from './experience-items.service'
 
-describe('ProfessionalExperienceComponent', () => {
-  let component: ProfessionalExperienceComponent
-  let fixture: ComponentFixture<ProfessionalExperienceComponent>
+describe('ExperienceComponent', () => {
+  let component: ExperienceComponent
+  let fixture: ComponentFixture<ExperienceComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ProfessionalExperienceComponent,
+        ExperienceComponent,
         MockComponents(H2Component, ExperienceItemComponent),
       ],
     })
-    fixture = TestBed.createComponent(ProfessionalExperienceComponent)
+    fixture = TestBed.createComponent(ExperienceComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

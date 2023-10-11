@@ -1,13 +1,13 @@
 @use 'h2/h2-theme';
 @use 'presentation/presentation-theme';
-@use 'professional-experience/professional-experience-theme';
+@use 'experience/experience-theme';
 @use 'education/education-theme';
 
 @mixin color($theme) {
   app-about {
     @include h2-theme.color($theme);
     @include presentation-theme.color($theme);
-    @include professional-experience-theme.color($theme);
+    @include experience-theme.color($theme);
     @include education-theme.color($theme);
   }
 }
@@ -16,7 +16,7 @@
   app-about {
     @include h2-theme.motion;
     @include presentation-theme.motion();
-    @include professional-experience-theme.motion();
+    @include experience-theme.motion();
     @include education-theme.motion();
   }
 }
