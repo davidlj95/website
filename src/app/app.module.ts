@@ -26,6 +26,7 @@ import { PositionComponent } from './about/professional-experience/position/posi
 import { H2Component } from './about/h2/h2.component'
 import { EducationComponent } from './about/education/education.component'
 import { EducationItemComponent } from './about/education/education-item/education-item.component'
+import { DateRangeComponent } from './about/date-range/date-range.component'
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { EducationItemComponent } from './about/education/education-item/educati
     H2Component,
     EducationComponent,
     EducationItemComponent,
+    DateRangeComponent,
   ],
   imports: [
     BrowserModule,

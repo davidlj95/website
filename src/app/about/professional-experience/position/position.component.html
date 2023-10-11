@@ -19,15 +19,8 @@
       {{ position.role }}
     </div>
     <span class="dates"
-      ><span class="start">{{ position.startDate | date: 'MMM yyyy' }}</span>
-      <span class="separator"> → </span>
-      <span class="end">
-        <ng-container *ngIf="position.endDate; else present">
-          {{ position.endDate | date: 'MMM yyyy' }}
-        </ng-container>
-        <ng-template #present>Present</ng-template>
-      </span>
-    </span>
+      ><app-date-range [range]="position.dateRange"></app-date-range
+    ></span>
   </div>
   <div class="attributes">
     <div class="freelance attribute">

@@ -5,6 +5,7 @@ import { Environment } from '../../../environments'
 import { SlugGeneratorService } from '../../common/slug-generator.service'
 import { EducationItem } from './education-item/education-item'
 import { Organization } from '../organization'
+import { DateRange } from '../date-range/date-range'
 
 @Injectable({
   providedIn: 'root',
@@ -36,8 +37,10 @@ export class JsonResumeEducationItemAdapterService {
       }),
       area: item.area,
       studyType: item.studyType,
-      startDate: new Date(item.startDate),
-      endDate: !item.endDate ? undefined : new Date(item.endDate),
+      dateRange: new DateRange(
+        new Date(item.startDate),
+        !item.endDate ? undefined : new Date(item.endDate),
+      ),
       score: item.score,
       courses: item.courses,
       cumLaude: !!item.cumLaude,

@@ -67,7 +67,7 @@ describe('JsonResumeEducationItemAdapterService', () => {
         )
         expect(educationItem.score).toEqual(fakeJsonResumeEducationItem.score)
       })
-      it('should map the start and end date', () => {
+      it('should map the date range', () => {
         const fakeStartDate = '2022-12-31'
         const fakeEndDate = '2024-01-01'
         const fakeJsonResumeEducationItem: JsonResumeEducationItem = {
@@ -78,8 +78,8 @@ describe('JsonResumeEducationItemAdapterService', () => {
 
         const educationItem = sut.adapt(fakeJsonResumeEducationItem)
 
-        expect(educationItem.startDate).toEqual(new Date(fakeStartDate))
-        expect(educationItem.endDate).toEqual(new Date(fakeEndDate))
+        expect(educationItem.dateRange.start).toEqual(new Date(fakeStartDate))
+        expect(educationItem.dateRange.end).toEqual(new Date(fakeEndDate))
       })
       describe('when no end date', () => {
         it('should map no end date exists too', () => {
@@ -90,7 +90,7 @@ describe('JsonResumeEducationItemAdapterService', () => {
 
           const educationItem = sut.adapt(fakeJsonResumeEducationItem)
 
-          expect(educationItem.endDate).toBeUndefined()
+          expect(educationItem.dateRange.end).toBeUndefined()
         })
       })
       // Non standard fields

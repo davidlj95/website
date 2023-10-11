@@ -19,6 +19,10 @@ import {
 import { DebugElement } from '@angular/core'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { Organization } from '../../organization'
+import { DateRange } from '../../date-range/date-range'
+import { getComponentSelector } from '../../../../test/helpers/component-testers'
+import { DateRangeComponent } from '../../date-range/date-range.component'
+import { MockComponents } from 'ng-mocks'
 
 describe('PositionComponent', () => {
   let component: PositionComponent
@@ -31,13 +35,12 @@ describe('PositionComponent', () => {
     }),
     summary: 'Fake summary',
     role: 'Fake role',
-    startDate: new Date('2023-01-01'),
-    endDate: new Date('2023-10-10'),
+    dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
   }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PositionComponent],
+      declarations: [PositionComponent, MockComponents(DateRangeComponent)],
       imports: [NgOptimizedImage, NoopAnimationsModule],
     })
     fixture = TestBed.createComponent(PositionComponent)
@@ -106,82 +109,18 @@ describe('PositionComponent', () => {
     })
   })
   describe('dates', () => {
-    it('should display start date', () => {
-      const fakeStartDate = '2022-10-10'
-      const fakeStartDateFormatted = 'Oct 2022'
+    it('should display date range component', () => {
       component.position = new Position({
         ...newPositionArgs,
-        startDate: new Date(fakeStartDate),
       })
       fixture.detectChanges()
 
-      const datesElement = fixture.debugElement.query(By.css('.dates'))
-      expect(datesElement).withContext('dates container exists').toBeTruthy()
-
-      const startDateElement = datesElement.query(By.css('.start'))
-      expect(startDateElement)
-        .withContext('start date element exists')
+      const dateRangeElement = fixture.debugElement.query(
+        By.css(getComponentSelector(DateRangeComponent)),
+      )
+      expect(dateRangeElement)
+        .withContext('date range element exists')
         .toBeTruthy()
-      expect(startDateElement.nativeElement.textContent.trim())
-        .withContext('start date is displayed with proper format')
-        .toEqual(fakeStartDateFormatted)
-    })
-    it('should display separator', () => {
-      component.position = new Position({ ...newPositionArgs })
-      fixture.detectChanges()
-
-      const datesElement = fixture.debugElement.query(By.css('.dates'))
-      expect(datesElement).withContext('dates container exists').toBeTruthy()
-
-      const separatorElement = datesElement.query(By.css('.separator'))
-      expect(separatorElement)
-        .withContext('separator element exists')
-        .toBeTruthy()
-    })
-    describe('when no end date exists', () => {
-      beforeEach(() => {
-        component.position = new Position({
-          ...newPositionArgs,
-          endDate: undefined,
-        })
-        fixture.detectChanges()
-      })
-      it('should display present as end date', () => {
-        const datesElement = fixture.debugElement.query(By.css('.dates'))
-        expect(datesElement).withContext('dates container exists').toBeTruthy()
-
-        const endDateElement = datesElement.query(By.css('.end'))
-        expect(endDateElement)
-          .withContext('end date element exists')
-          .toBeTruthy()
-        expect(endDateElement.nativeElement.textContent.trim())
-          .withContext('end date is present')
-          .toEqual('Present')
-      })
-    })
-    describe('when end date exists', () => {
-      const fakeEndDate = '2024-01-01'
-      const fakeEndDateFormatted = 'Jan 2024'
-
-      beforeEach(() => {
-        component.position = new Position({
-          ...newPositionArgs,
-          endDate: new Date(fakeEndDate),
-        })
-        fixture.detectChanges()
-      })
-      it('should display end date', () => {
-        const datesElement = fixture.debugElement.query(By.css('.dates'))
-        expect(datesElement).withContext('dates container exists').toBeTruthy()
-
-        const endDateElement = datesElement.query(By.css('.end'))
-        expect(endDateElement)
-          .withContext('end date element exists')
-          .toBeTruthy()
-        expect(endDateElement.nativeElement.textContent.trim())
-          .withContext('end date is displayed with proper format')
-          .toEqual(fakeEndDateFormatted)
-      })
     })
   })
   describe('attributes', () => {

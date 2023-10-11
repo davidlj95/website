@@ -18,14 +18,7 @@
     <div class="studyType">{{ item.studyType }}</div>
     <div class="area">{{ item.area }}</div>
     <span class="dates"
-      ><span class="start">{{ item.startDate | date: 'MMM yyyy' }}</span>
-      <span class="separator"> → </span>
-      <span class="end">
-        <ng-container *ngIf="item.endDate; else present">
-          {{ item.endDate | date: 'MMM yyyy' }}
-        </ng-container>
-        <ng-template #present>Present</ng-template>
-      </span>
+      ><app-date-range [range]="item.dateRange"></app-date-range>
     </span>
   </div>
   <div class="attributes">

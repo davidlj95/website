@@ -67,7 +67,7 @@ describe('JsonResumePositionAdapterService', () => {
         expect(position.summary).toEqual(fakeJsonResumePosition.summary)
         expect(position.highlights).toEqual(fakeHighlights)
       })
-      it('should map the start and end date', () => {
+      it('should map the date range', () => {
         const fakeStartDate = '2022-12-31'
         const fakeEndDate = '2024-01-01'
         const fakeJsonResumePosition: JsonResumeWorkPosition = {
@@ -79,8 +79,8 @@ describe('JsonResumePositionAdapterService', () => {
           fakeJsonResumePosition as JsonResumeWorkPosition,
         )
 
-        expect(position.startDate).toEqual(new Date(fakeStartDate))
-        expect(position.endDate).toEqual(new Date(fakeEndDate))
+        expect(position.dateRange.start).toEqual(new Date(fakeStartDate))
+        expect(position.dateRange.end).toEqual(new Date(fakeEndDate))
       })
       describe('when no end date', () => {
         it('should map no end date exists too', () => {
@@ -92,11 +92,11 @@ describe('JsonResumePositionAdapterService', () => {
             fakeJsonResumePosition as JsonResumeWorkPosition,
           )
 
-          expect(position.endDate).toBeUndefined()
+          expect(position.dateRange.end).toBeUndefined()
         })
       })
-      // Non JSON Resume standard!
 
+      // Non JSON Resume standard!
       it('should map the freelance, internship, promotions and otherRoles fields', () => {
         const fakePromotions = true
         const fakeOtherRoles = true
