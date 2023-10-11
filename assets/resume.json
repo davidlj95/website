@@ -163,32 +163,30 @@
   "education": [
     {
       "institution": "Universitat Oberta de Catalunya",
-      "shortName": "UOC",
-      "image": "https://imgur.com/SNrdeRw.png",
-      "website": "https://uoc.edu",
-      "studyType": "Master's degree",
+      "url": "https://uoc.edu",
       "area": "MISTIC (Cybersecurity)",
+      "studyType": "Master's degree",
       "startDate": "2017-09-20",
       "endDate": "2018-09-20",
-      "gpa": "Avg: 8.14/10, (3.38/4 GPA). Unfinished",
+      "score": "Avg: 8.14/10, (3.38/4 GPA). Unfinished",
       "courses": [
         "Digital Identity",
         "Legislation and Regulation",
         "Security vulnerabilities",
         "Networks' security",
         "Databases' security"
-      ]
+      ],
+      "shortName": "UOC",
+      "image": "https://davidlj95.com/assets/education/uoc.png"
     },
     {
       "institution": "Universitat Autònoma de Barcelona",
-      "shortName": "UAB",
-      "image": "https://imgur.com/thgKNEt.png",
-      "website": "https://uab.cat",
-      "studyType": "University degree",
+      "url": "https://uab.cat",
       "area": "Computer Science Engineering",
+      "studyType": "University degree",
       "startDate": "2013-09-13",
       "endDate": "2017-06-20",
-      "gpa": "Cum laude, Avg: 8.86/10 (3.85/4 GPA)",
+      "score": "Cum laude, Avg: 8.86/10 (3.85/4 GPA)",
       "courses": [
         "Algebra and Calculus",
         "Electricity and Electronics",
@@ -207,17 +205,19 @@
         "DevOps",
         "Blockchain technology (Advanced)",
         "Bitcoin development (Advanced)"
-      ]
+      ],
+      "shortName": "UAB",
+      "image": "https://davidlj95.com/assets/education/uab.png",
+      "cumLaude": true
     },
     {
       "institution": "Institut de Mollet del Vallès",
-      "image": "https://imgur.com/3pVVNSY.png",
-      "website": "http://www.insmollet.cat",
-      "studyType": "High school",
+      "url": "http://www.insmollet.cat",
       "area": "Science and Technology",
+      "studyType": "High school",
       "startDate": "2011-09-13",
       "endDate": "2013-06-01",
-      "gpa": "Cum laude, Avg: 9.76/10 (3.96 GPA)",
+      "score": "Cum laude, Avg: 9.76/10 (3.96 GPA)",
       "courses": [
         "Catalan",
         "Spanish",
@@ -229,6 +229,9 @@
         "Entrepreneurship",
         "Internship (as computer technician)"
       ],
+      "shortName": "IES Mollet",
+      "image": "https://davidlj95.com/assets/education/ies-mollet.png",
+      "cumLaude": true,
       "printHidden": true
     }
   ],

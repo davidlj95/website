@@ -6,6 +6,7 @@ import { AboutComponent } from './about.component'
 import { JsonldMetadataComponent } from '../jsonld-metadata/jsonld-metadata.component'
 import { PresentationComponent } from './presentation/presentation.component'
 import { ProfessionalExperienceComponent } from './professional-experience/professional-experience.component'
+import { EducationComponent } from './education/education.component'
 
 describe('AboutComponent', () => {
   let component: AboutComponent
@@ -19,6 +20,7 @@ describe('AboutComponent', () => {
           JsonldMetadataComponent,
           PresentationComponent,
           ProfessionalExperienceComponent,
+          EducationComponent,
         ),
       ],
     })
@@ -36,5 +38,6 @@ describe('AboutComponent', () => {
     JsonldMetadataComponent,
     PresentationComponent,
     ProfessionalExperienceComponent,
+    EducationComponent,
   )
 })

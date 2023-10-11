@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { JsonResumeAdapterService } from './json-resume-adapter.service'
+import { JsonResumeAdapterService } from '../json-resume-adapter.service'
 import { Position } from './position/position'
 
 @Component({

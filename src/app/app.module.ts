@@ -24,6 +24,8 @@ import { PresentationComponent } from './about/presentation/presentation.compone
 import { ProfessionalExperienceComponent } from './about/professional-experience/professional-experience.component'
 import { PositionComponent } from './about/professional-experience/position/position.component'
 import { H2Component } from './about/h2/h2.component'
+import { EducationComponent } from './about/education/education.component'
+import { EducationItemComponent } from './about/education/education-item/education-item.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { H2Component } from './about/h2/h2.component'
     ProfessionalExperienceComponent,
     PositionComponent,
     H2Component,
+    EducationComponent,
+    EducationItemComponent,
   ],
   imports: [
     BrowserModule,

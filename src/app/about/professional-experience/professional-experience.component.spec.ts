@@ -9,7 +9,7 @@ import {
   getComponentSelector,
 } from '../../../test/helpers/component-testers'
 import { By } from '@angular/platform-browser'
-import { JsonResumeAdapterService } from './json-resume-adapter.service'
+import { JsonResumeAdapterService } from '../json-resume-adapter.service'
 
 describe('ProfessionalExperienceComponent', () => {
   let component: ProfessionalExperienceComponent

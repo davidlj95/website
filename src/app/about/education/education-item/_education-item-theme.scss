@@ -1,0 +1,54 @@
+@use 'sass:map';
+@use 'animations';
+@use 'borders';
+
+@mixin color($theme) {
+  $image-opts: map.get($theme, image);
+  $background-palette: map.get($theme, background);
+  $text-palette: map.get($theme, text);
+
+  app-education-item {
+    background-color: map.get($background-palette, z1);
+    border-color: borders.panel-color($theme);
+
+    .header {
+      img {
+        filter: map.get($image-opts, filter);
+      }
+
+      .area,
+      .studyType,
+      .dates {
+        color: map.get($text-palette, secondary);
+      }
+
+      .attribute {
+        color: map.get($text-palette, secondary);
+
+        [role='tooltip'] {
+          color: map.get($text-palette, primary);
+          background-color: map.get($background-palette, z2);
+          border-color: borders.panel-color($theme);
+        }
+      }
+    }
+  }
+}
+
+@mixin motion() {
+  app-education-item {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+
+    .header {
+      img {
+        @include animations.single-transition(
+          filter,
+          animations.$emphasized-style
+        );
+      }
+    }
+  }
+}
