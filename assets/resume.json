@@ -62,12 +62,13 @@
       "position": "Senior Backend Engineer",
       "startDate": "2022-10-10",
       "endDate": "2023-07-14",
-      "summary": "Lead direct batch buy feature to buy multiple stocks at once. Lead robustness planning to improve the app stability. Focusing on gaining observability to push for data-driven decisions. Automate processes to reduce customer support workload",
+      "summary": "Led, engineered and assisted many product features. Planned robustness proposal to improve the app stability by reducing error rates. Focusing on gaining observability to push for data-driven decisions. Optimized processes to reduce customer support workload",
       "highlights": [
-        "Lead initiative to observe & reduce wallet synchronization issues from 69% to 6%",
-        "Lead continuous proposals to improve company's processes, backend team side and company wide. Like pushing for technical refinements, differentiating between bugs an complaints, tracking estimations accuracy",
-        "Started learning fridays initiative for knowledge sharing amongst engineering team",
-        "Added New Relic as observability tool"
+        "Led initiative to observe & reduce wallet synchronization issues from 69% to 6%",
+        "Built direct batch buy feature to buy multiple stocks at once",
+        "Produced continuous proposals to improve company's processes. Backend team side and company wide. For instance pushing for technical refinements, differentiating between bugs and complaints or tracking estimations accuracy",
+        "Introduced 'learning fridays' to enable knowledge sharing amongst engineering team",
+        "Installed New Relic as observability tool"
       ],
       "freelance": true
     },
@@ -78,17 +79,14 @@
       "position": "Senior Software Engineer",
       "startDate": "2020-10-01",
       "endDate": "2022-05-01",
-      "summary": "Full stack. Owned several features implementations. Contributed with improvements to the company's design system library. Aligned with product, design, QA, DevOps, cybersecurity, research & other products' engineering teams. Lead & participated in squad's processes improvements",
+      "summary": "Full stack: web APIs backend, web app and mobile app. Led, engineered and assisted several features. Coordinated with product, design, QA, DevOps, cybersecurity, research & other products' engineering teams. Enhanced the company's design system library. Supported several squad's processes improvements",
       "highlights": [
         "Started as mid. Promoted to senior in 1st year's performance review",
-        "Several features owner like audio exercises, push notifications, therapist & patient messaging for the Mindset product",
-        "HTTP REST JSON APIs development using Node.js + Typescript + OpenAPI",
-        "Support DevOps team maintaining the backend app infrastructure: K8s + Helm + Terraform to manage AWS resources (API Gateway, ALB, Cognito, RDS). Datadog for observability",
-        "Maintenance of GitHub Actions CI/CD pipelines",
-        "Continuous proposals & contributions in projects' authZ/N: OAuth 2.1 / OIDC / SSO with 3rd party IdP federation via AWS Cognito. API Gateway auth. JWT tokens management",
-        "Mobile app development for Android & iOS using Flutter 1/2 + Dart",
-        "Web app development (SPA) using Angular 9+",
-        "Automated setting up new brand Gmail signatures for all employees when company spun out"
+        "Led some features: audio exercises, push notifications in mobile app. Messaging in web and mobile app. For the Mindset product",
+        "Maintained backend infrastructure collaborating with DevOps team",
+        "Maintained CI/CD pipelines",
+        "Handled many authZ/N features. Created proof of concept of Single Sign On (SSO) by federating with 3rd party identity providers using AWS Cognito",
+        "Assisted company spin off by programmatically setting up new email signatures for all employees"
       ],
       "promotions": true
     },
@@ -99,24 +97,21 @@
       "position": "Software Engineer",
       "startDate": "2020-03-01",
       "endDate": "2020-10-01",
-      "summary": "Worked in health moonshot, that would later become its own company: Koa Health. Check that position for more information"
+      "summary": "Part of the health moonshot unit. Which would later spin off to become its own company: Koa Health. Check that position for more information about both periods"
     },
     {
       "company": "BTC Assessors",
       "website": "https://btcassessors.gitlab.io/",
-      "image": "https://imgur.com/Jg7ADq1.png",
+      "image": "https://i.imgur.com/Jg7ADq1.png",
       "position": "Software Engineer",
       "startDate": "2018-06-01",
       "endDate": "2019-12-31",
-      "summary": "Lead software engineer for all company's projects. Blockchain / DLT consultant and researcher. Board member of the company's own cryptocurrency investment fund as technical advisor",
+      "summary": "Lead software engineer for all company's projects. Full stack: web apps and peer to peer / web API backends. Blockchain / DLT consultant and researcher. Board member of the company's own cryptocurrency investment fund as technical advisor",
       "highlights": [
-        "Web backend REST APIs with OpenAPI, Spring Boot, Kotlin and Python",
-        "Web frontend Material Design PWA with Angular 7 & 8, Polymer, Redux, Typescript, Javascript, SCSS and HTML5",
-        "DevOps with Docker, GitLab CI/CD, TravisCI and Heroku",
-        "Linux-based systems administration (Arch Linux, Debian, Ubuntu)",
-        "Libraries for data verification in Typescript, Javascript and Kotlin",
-        "Library for Bitcoin cryptocurrency's scripting in Python",
-        "Software project management: 4+1 architecture, Domain driven design (DDD), Agile methodologies"
+        "Headed many software development projects in the company. For instance a Bitcoin library and wallet and a verifiable credentials platform",
+        "Advised technically our customers about Bitcoin, blockchain or DLT technologies",
+        "Spoke in several talks about Bitcoin and blockchain technologies",
+        "Facilitated software project management"
       ],
       "otherRoles": true
     },
@@ -127,13 +122,7 @@
       "position": "Software Engineer",
       "startDate": "2017-03-13",
       "endDate": "2017-06-19",
-      "summary": "Integration and adaptation of the IBC Biomechanics software within SEAT IT Systems. In order to be used for its internal biomechanical laboratory in the CARS center inside Martorell headquarters",
-      "highlights": [
-        "Python 3.6 (using Anaconda)",
-        "Desktop GUI using PyQt4/5",
-        "SQLAlchemy",
-        "MariaDB"
-      ],
+      "summary": "Organized integration of IBC Biomechanics software within SEAT IT systems. In order to be used for its internal biomechanical laboratory in the CARS center inside Martorell headquarters",
       "freelance": true,
       "internship": true
     },
@@ -144,18 +133,13 @@
       "position": "IT Manager",
       "startDate": "2015-01-15",
       "endDate": "2018-06-01",
-      "summary": "Outsourced IT Systems and infrastructure accountable of the three company headquarters. Performing typical systems administration tasks and general IT consultancy",
+      "summary": "Administered IT systems and infrastructure of each of the three company branches. Performing systems administration tasks and general IT consultancy",
       "highlights": [
-        "LAN and WLAN TCP/IP networks installation and management (including cybersecurity tasks such as traffic filtering)",
-        "Servers installation and maintenance using Ubuntu and Microsoft Windows Server 2003/2012",
-        "Database setup and maintenance using Borland BDE, Microsoft Access and Microsoft SQL Server 7/2008",
-        "Network file sharing installation and maintenance (with permission management) using Samba protocol",
-        "Network printer spool services installation and maintenance using Canon, HP, Epson printers",
-        "Workstation installation and maintenance using Microsoft Windows 7/8/10 (also migrated old ones from XP) and setting up enterprise software including office automation and internal ERP customized software(s)",
-        "Installation and maintenance of DICOM networks and services",
-        "Installation and maintenance of point-of-sale devices",
-        "Installation and maintenance of medical equipment hardware and services such as X-Ray machines and ECGs",
-        "Installation and maintenance of labor risk prevention devices like audiometers"
+        "Maintained local and wireless area networks and its devices. Including cybersecurity tasks such as traffic filtering",
+        "Operated company's servers: shared file systems management via Samba, Microsoft SQL / Borland (BDE) databases. Data backups",
+        "Maintained network printers and scanners",
+        "Maintained workstations: company software management, endpoint protection and permissions management",
+        "Maintained labor risk prevention and medical equipment hardware and services. Like audiometers, X-Ray machines and ECGs"
       ],
       "freelance": true
     },
@@ -166,12 +150,11 @@
       "position": "Software Engineer",
       "startDate": "2014-09-15",
       "endDate": "2018-06-01",
-      "summary": "Developed a reporting application. Ingests multiple structured data files from third-party applications. Uses user-designed configurable Microsoft Word templates to generate visual reports. Developed several proofs of concept software to generate the data files without depending on third-party software by directly connecting to the biomechanical devices using Bluetooth. Also managed the IT systems of the company",
+      "summary": "Developed a reporting application. Created several proofs of concept apps to connect to biomechanical devices using Bluetooth. Managed the IT systems of the company",
       "highlights": [
-        "Python 2.7 / 3.6 (using Anaconda framework)",
-        "JavaSE 8 (using PyBluez to handle Bluetooth connections)",
-        "Desktop GUI(s) using PyQt4/5",
-        "Database applications using SQLAlchemy"
+        "Accelerated reporting process. From a manual process taking hours into an automatic process taking seconds",
+        "Conducted several tests to develop in-house biomechanical data capture and processing software. To remove third party software dependencies and provide a holistic study experience",
+        "Managed and maintained company's IT infrastructure: workstations, office software, endpoint protection and backups"
       ],
       "freelance": true,
       "otherRoles": true
