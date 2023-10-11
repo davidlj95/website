@@ -24,6 +24,8 @@ export class JsonResumePositionAdapterService {
     return new Position({
       company: new Company({
         name: position.company,
+        // Point to assets in this repo using canonical URL from env, so we can change the image and preview it.
+        // Links in resume.json work anyway
         image: this.imageUrlFromCompanyName(position.company),
         website: new URL(position.website),
       }),
