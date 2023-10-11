@@ -1,10 +1,10 @@
 import { Organization } from '../../organization'
+import { DateRange } from '../../date-range/date-range'
 
 export class Position {
   public readonly company: Organization
   public readonly role: string
-  public readonly startDate: Date
-  public readonly endDate?: Date
+  public readonly dateRange: DateRange
   public readonly freelance: boolean
   public readonly internship: boolean
   public readonly promotions: boolean
@@ -15,8 +15,7 @@ export class Position {
   constructor({
     company,
     role,
-    startDate,
-    endDate,
+    dateRange,
     freelance,
     internship,
     promotions,
@@ -26,8 +25,7 @@ export class Position {
   }: {
     company: Organization
     role: string
-    startDate: Date
-    endDate?: Date
+    dateRange: DateRange
     freelance?: boolean
     internship?: boolean
     promotions?: boolean
@@ -37,8 +35,7 @@ export class Position {
   }) {
     this.company = company
     this.role = role
-    this.startDate = startDate
-    this.endDate = endDate
+    this.dateRange = dateRange
     this.freelance = freelance ?? false
     this.internship = internship ?? false
     this.promotions = promotions ?? false

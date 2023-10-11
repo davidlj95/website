@@ -5,6 +5,7 @@ import { ENVIRONMENT } from '../../common/injection-tokens'
 import { Environment } from '../../../environments'
 import { SlugGeneratorService } from '../../common/slug-generator.service'
 import { Organization } from '../organization'
+import { DateRange } from '../date-range/date-range'
 
 @Injectable({
   providedIn: 'root',
@@ -40,8 +41,10 @@ export class JsonResumePositionAdapterService {
       role: position.position,
       summary: position.summary,
       highlights: position.highlights,
-      startDate: new Date(position.startDate),
-      endDate: position.endDate ? new Date(position.endDate) : undefined,
+      dateRange: new DateRange(
+        new Date(position.startDate),
+        !position.endDate ? undefined : new Date(position.endDate),
+      ),
       freelance: position.freelance,
       internship: position.internship,
       promotions: position.promotions,
