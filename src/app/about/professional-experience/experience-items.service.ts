@@ -1,20 +1,20 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core'
 import resume from '../../../../assets/resume.json'
-import { JsonResumePositionAdapterService } from './json-resume-position-adapter.service'
-import { Position } from './position/position'
+import { JsonResumeExperienceItemAdapterService } from './json-resume-experience-item-adapter.service'
+import { ExperienceItem } from './experience-item/experience-item'
 
 @Injectable({
   providedIn: 'root',
 })
-export class PositionsService {
+export class ExperienceItemsService {
   constructor(
     @Inject(JSON_RESUME_WORK) private jsonResumeWork: JsonResumeWork,
-    private positionAdapter: JsonResumePositionAdapterService,
+    private experienceItemAdapter: JsonResumeExperienceItemAdapterService,
   ) {}
 
-  getPositions(): ReadonlyArray<Position> {
-    return this.jsonResumeWork.map((position) =>
-      this.positionAdapter.adapt(position),
+  getExperienceItems(): ReadonlyArray<ExperienceItem> {
+    return this.jsonResumeWork.map((workItem) =>
+      this.experienceItemAdapter.adapt(workItem),
     )
   }
 }

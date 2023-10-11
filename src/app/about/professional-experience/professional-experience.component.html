@@ -1,7 +1,7 @@
 <app-h2 id="professional-experience">Professional experience</app-h2>
-<div class="positions">
-  <app-position
-    *ngFor="let position of positions"
-    [position]="position"
-  ></app-position>
+<div class="layout">
+  <app-experience-item
+    *ngFor="let item of items"
+    [item]="item"
+  ></app-experience-item>
 </div>

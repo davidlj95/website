@@ -7,7 +7,7 @@
   $background-palette: map.get($theme, background);
   $text-palette: map.get($theme, text);
 
-  app-position {
+  app-experience-item {
     background-color: map.get($background-palette, z1);
     border-color: borders.panel-color($theme);
 
@@ -48,7 +48,7 @@
 }
 
 @mixin motion() {
-  app-position {
+  app-experience-item {
     @include animations.multiple-transitions(
       (background-color, border-color),
       animations.$emphasized-style

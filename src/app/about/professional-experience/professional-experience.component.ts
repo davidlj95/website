@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
-import { Position } from './position/position'
-import { PositionsService } from './positions.service'
+import { ExperienceItem } from './experience-item/experience-item'
+import { ExperienceItemsService } from './experience-items.service'
 
 @Component({
   selector: 'app-professional-experience',
@@ -8,9 +8,9 @@ import { PositionsService } from './positions.service'
   styleUrls: ['./professional-experience.component.scss'],
 })
 export class ProfessionalExperienceComponent {
-  protected positions: ReadonlyArray<Position>
+  protected items: ReadonlyArray<ExperienceItem>
 
-  constructor(positionsService: PositionsService) {
-    this.positions = positionsService.getPositions()
+  constructor(experienceItemsService: ExperienceItemsService) {
+    this.items = experienceItemsService.getExperienceItems()
   }
 }

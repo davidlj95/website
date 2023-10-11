@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ProfessionalExperienceComponent } from './professional-experience.component'
 import { MockComponents } from 'ng-mocks'
-import { PositionComponent } from './position/position.component'
+import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { H2Component } from '../h2/h2.component'
 import {
   ensureHasComponent,
   getComponentSelector,
 } from '../../../test/helpers/component-testers'
 import { By } from '@angular/platform-browser'
-import { PositionsService } from './positions.service'
+import { ExperienceItemsService } from './experience-items.service'
 
 describe('ProfessionalExperienceComponent', () => {
   let component: ProfessionalExperienceComponent
@@ -18,7 +18,7 @@ describe('ProfessionalExperienceComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         ProfessionalExperienceComponent,
-        MockComponents(H2Component, PositionComponent),
+        MockComponents(H2Component, ExperienceItemComponent),
       ],
     })
     fixture = TestBed.createComponent(ProfessionalExperienceComponent)
@@ -30,12 +30,14 @@ describe('ProfessionalExperienceComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should display all positions', () => {
-    const positionsService = TestBed.inject(PositionsService)
-    const positionElements = fixture.debugElement.queryAll(
-      By.css(getComponentSelector(PositionComponent)),
+  it('should display all items', () => {
+    const experienceItemsService = TestBed.inject(ExperienceItemsService)
+    const itemElements = fixture.debugElement.queryAll(
+      By.css(getComponentSelector(ExperienceItemComponent)),
     )
-    expect(positionElements.length).toBe(positionsService.getPositions().length)
+    expect(itemElements.length).toBe(
+      experienceItemsService.getExperienceItems().length,
+    )
   })
 
   ensureHasComponent(() => fixture, H2Component)

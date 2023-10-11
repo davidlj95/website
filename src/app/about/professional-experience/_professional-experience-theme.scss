@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'animations';
 @use 'borders';
-@use 'position/position-theme';
+@use 'experience-item/experience-item-theme';
 
 @mixin color($theme) {
   $image-opts: map.get($theme, image);
@@ -9,12 +9,12 @@
   $text-palette: map.get($theme, text);
 
   app-professional-experience {
-    @include position-theme.color($theme);
+    @include experience-item-theme.color($theme);
   }
 }
 
 @mixin motion() {
   app-professional-experience {
-    @include position-theme.motion;
+    @include experience-item-theme.motion;
   }
 }
