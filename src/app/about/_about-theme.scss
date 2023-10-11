@@ -17,6 +17,7 @@
     @include h2-theme.motion;
     @include presentation-theme.motion();
     @include professional-experience-theme.motion();
+    @include education-theme.motion();
   }
 }
 

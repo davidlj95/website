@@ -4,6 +4,6 @@
   @include education-item-theme.color($theme);
 }
 
-@mixin motion {
-  @include education-item-theme.motion;
+@mixin motion() {
+  @include education-item-theme.motion();
 }

@@ -35,7 +35,7 @@
   }
 }
 
-@mixin motion($theme) {
+@mixin motion() {
   app-education-item {
     @include animations.multiple-transitions(
       (background-color, border-color),
@@ -49,12 +49,6 @@
           animations.$emphasized-style
         );
       }
-    }
-    .chip {
-      @include animations.multiple-transitions(
-        (background-color, color, border-color),
-        animations.$emphasized-style
-      );
     }
   }
 }
