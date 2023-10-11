@@ -50,22 +50,18 @@ export class Company {
   public readonly name: string
   public readonly website: URL
   public readonly image: URL
-  public readonly formerlyKnownAs?: string
 
   constructor({
     name,
     website,
     image,
-    formerlyKnownAs,
   }: {
     name: string
     website: URL
     image: URL
-    formerlyKnownAs?: string
   }) {
     this.name = name
     this.website = website
     this.image = image
-    this.formerlyKnownAs = formerlyKnownAs
   }
 }

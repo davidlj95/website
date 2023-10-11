@@ -26,7 +26,6 @@ export class JsonResumePositionAdapterService {
         name: position.company,
         image: this.imageUrlFromCompanyName(position.company),
         website: new URL(position.website),
-        formerlyKnownAs: position.formerlyKnownAs,
       }),
       role: position.position,
       summary: position.summary,

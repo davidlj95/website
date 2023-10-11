@@ -108,17 +108,15 @@ describe('JsonResumePositionAdapterService', () => {
       })
     })
     // Non JSON Resume standard!
-    it('should map the freelance, internship, promotions, otherRoles and formerly known as fields', () => {
+    it('should map the freelance, internship, promotions and otherRoles fields', () => {
       const fakePromotions = true
       const fakeOtherRoles = true
-      const fakeFormerlyKnownAs = 'Fake company legacy Inc'
       const fakeJsonResumePosition: JsonResumeWorkPosition = {
         ...sampleJsonResumeWorkPosition,
         freelance: true,
         internship: true,
         promotions: fakePromotions,
         otherRoles: fakeOtherRoles,
-        formerlyKnownAs: fakeFormerlyKnownAs,
       } as unknown as JsonResumeWorkPosition
       const position = sut.adapt(
         fakeJsonResumePosition as JsonResumeWorkPosition,
@@ -128,7 +126,6 @@ describe('JsonResumePositionAdapterService', () => {
       expect(position.internship).toBeTrue()
       expect(position.promotions).toEqual(fakePromotions)
       expect(position.otherRoles).toEqual(fakeOtherRoles)
-      expect(position.company.formerlyKnownAs).toEqual(fakeFormerlyKnownAs)
     })
   })
 })
