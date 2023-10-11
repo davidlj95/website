@@ -32,17 +32,14 @@
 @mixin motion() {
   app-profile-picture {
     img {
-      transition: animations.transition(opacity, animations.$standard-style),
-        animations.transition(visibility, animations.$standard-style),
+      transition: animations.transition(opacity),
+        animations.transition(visibility),
         animations.transition(filter, animations.$emphasized-style),
         animations.transition(background-color, animations.$emphasized-style);
     }
 
     .comment {
-      @include animations.multiple-transitions(
-        (opacity, visibility),
-        animations.$standard-style
-      );
+      @include animations.multiple-transitions((opacity, visibility));
     }
   }
 }

@@ -1,0 +1,542 @@
+{
+  "basics": {
+    "name": "David Lozano Jarque",
+    "label": "Full stack software engineer: from scratch to production",
+    "image": "https://www.davidlj95.com/assets/img/profile.png",
+    "email": "mail@davidlj95.com",
+    "phone": "+34 644 449 360",
+    "url": "https://davidlj95.com",
+    "summary": "Turning ideas into code is my passion: I've been developing software since I was in elementary school. First as a hobby, then as a freelance, and eventually in a company. Overall, my mission is to provide valuable contributions to great projects that can make a difference in their users' lifes",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Mollet del Vallès",
+      "countryCode": "ES",
+      "region": ""
+    },
+    "profiles": [
+      {
+        "network": "Github",
+        "username": "davidlj95",
+        "url": "https://github.com/davidlj95"
+      },
+      {
+        "network": "Linkedin",
+        "username": "davidlj95",
+        "url": "https://www.linkedin.com/in/davidlj95"
+      },
+      {
+        "network": "Twitter",
+        "username": "davidlj95",
+        "url": "https://twitter.com/davidlj95"
+      },
+      {
+        "network": "StackOverflow",
+        "username": "davidlj95",
+        "url": "https://stackoverflow.com/users/3263250/davidlj95"
+      }
+    ]
+  },
+  "languages": [
+    {
+      "language": "Spanish",
+      "fluency": "Native",
+      "comment": "native"
+    },
+    {
+      "language": "Catalan",
+      "fluency": "Native",
+      "comment": "native"
+    },
+    {
+      "language": "English",
+      "fluency": "Advanced",
+      "comment": "B2 certified"
+    }
+  ],
+  "work": [
+    {
+      "company": "Vesto",
+      "website": "https://www.vestoapp.com",
+      "image": "https://davidlj95.com/assets/companies/vesto.png",
+      "position": "Senior Backend Engineer",
+      "startDate": "2022-10-10",
+      "endDate": "2023-07-14",
+      "summary": "Led, engineered and assisted many product features. Planned robustness proposal to improve the app stability by reducing error rates. Focusing on gaining observability to push for data-driven decisions. Optimized processes to reduce customer support workload",
+      "highlights": [
+        "Led initiative to observe & reduce wallet synchronization issues from 69% to 6%",
+        "Built direct batch buy feature to buy multiple stocks at once",
+        "Produced continuous proposals to improve company's processes. Backend team side and company wide. For instance pushing for technical refinements, differentiating between bugs and complaints or tracking estimations accuracy",
+        "Introduced 'learning fridays' to enable knowledge sharing amongst engineering team",
+        "Installed New Relic as observability tool"
+      ],
+      "freelance": true
+    },
+    {
+      "company": "Koa Health",
+      "website": "https://www.koahealth.com",
+      "image": "https://davidlj95.com/assets/companies/koa-health.png",
+      "position": "Senior Software Engineer",
+      "startDate": "2020-10-01",
+      "endDate": "2022-05-01",
+      "summary": "Full stack: web APIs backend, web app and mobile app. Led, engineered and assisted several features. Coordinated with product, design, QA, DevOps, cybersecurity, research & other products' engineering teams. Enhanced the company's design system library. Supported several squad's processes improvements",
+      "highlights": [
+        "Started as mid. Promoted to senior in 1st year's performance review",
+        "Led some features: audio exercises, push notifications in mobile app. Messaging in web and mobile app. For the Mindset product",
+        "Maintained backend infrastructure collaborating with DevOps team",
+        "Maintained CI/CD pipelines",
+        "Handled many authZ/N features. Created proof of concept of Single Sign On (SSO) by federating with 3rd party identity providers using AWS Cognito",
+        "Assisted company spin off by programmatically setting up new email signatures for all employees"
+      ],
+      "promotions": true
+    },
+    {
+      "company": "Telefónica Alpha",
+      "website": "https://web.archive.org/web/20200426164320/https://www.alpha.company/",
+      "image": "https://davidlj95.com/assets/companies/telefonica-alpha.png",
+      "position": "Software Engineer",
+      "startDate": "2020-03-01",
+      "endDate": "2020-10-01",
+      "summary": "Part of the health moonshot unit. Which would later spin off to become its own company: Koa Health. Check that position for more information about both periods"
+    },
+    {
+      "company": "BTC Assessors",
+      "website": "https://btcassessors.gitlab.io/",
+      "image": "https://davidlj95.com/assets/companies/btc-assessors.png",
+      "position": "Software Engineer",
+      "startDate": "2018-06-01",
+      "endDate": "2019-12-31",
+      "summary": "Lead software engineer for all company's projects. Full stack: web apps and peer to peer / web API backends. Blockchain / DLT consultant and researcher. Board member of the company's own cryptocurrency investment fund as technical advisor",
+      "highlights": [
+        "Headed many software development projects in the company. For instance a Bitcoin library and wallet and a verifiable credentials platform",
+        "Advised technically our customers about Bitcoin, blockchain or DLT technologies",
+        "Spoke in several talks about Bitcoin and blockchain technologies",
+        "Facilitated software project management"
+      ],
+      "otherRoles": true
+    },
+    {
+      "company": "SEAT",
+      "website": "https://www.seat.com",
+      "image": "https://davidlj95.com/assets/companies/seat.png",
+      "position": "Software Engineer",
+      "startDate": "2017-03-13",
+      "endDate": "2017-06-19",
+      "summary": "Organized integration of IBC Biomechanics software within SEAT IT systems. In order to be used for its internal biomechanical laboratory in the CARS center inside Martorell headquarters",
+      "freelance": true,
+      "internship": true
+    },
+    {
+      "company": "Meditrauma",
+      "website": "https://meditrauma.com",
+      "image": "https://davidlj95.com/assets/companies/meditrauma.png",
+      "position": "IT Manager",
+      "startDate": "2015-01-15",
+      "endDate": "2018-06-01",
+      "summary": "Administered IT systems and infrastructure of each of the three company branches. Performing systems administration tasks and general IT consultancy",
+      "highlights": [
+        "Maintained local and wireless area networks and its devices. Including cybersecurity tasks such as traffic filtering",
+        "Operated company's servers: shared file systems management via Samba, Microsoft SQL / Borland (BDE) databases. Data backups",
+        "Maintained network printers and scanners",
+        "Maintained workstations: company software management, endpoint protection and permissions management",
+        "Maintained labor risk prevention and medical equipment hardware and services. Like audiometers, X-Ray machines and ECGs"
+      ],
+      "freelance": true
+    },
+    {
+      "company": "IBC Biomechanics",
+      "website": "https://ibc.bio",
+      "image": "https://davidlj95.com/assets/companies/ibc-biomechanics.png",
+      "position": "Software Engineer",
+      "startDate": "2014-09-15",
+      "endDate": "2018-06-01",
+      "summary": "Developed a reporting application. Created several proofs of concept apps to connect to biomechanical devices using Bluetooth. Managed the IT systems of the company",
+      "highlights": [
+        "Accelerated reporting process. From a manual process taking hours into an automatic process taking seconds",
+        "Conducted several tests to develop in-house biomechanical data capture and processing software. To remove third party software dependencies and provide a holistic study experience",
+        "Managed and maintained company's IT infrastructure: workstations, office software, endpoint protection and backups"
+      ],
+      "freelance": true,
+      "otherRoles": true
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universitat Oberta de Catalunya",
+      "shortName": "UOC",
+      "image": "https://imgur.com/SNrdeRw.png",
+      "website": "https://uoc.edu",
+      "studyType": "Master's degree",
+      "area": "MISTIC (Cybersecurity)",
+      "startDate": "2017-09-20",
+      "endDate": "2018-09-20",
+      "gpa": "Avg: 8.14/10, (3.38/4 GPA). Unfinished",
+      "courses": [
+        "Digital Identity",
+        "Legislation and Regulation",
+        "Security vulnerabilities",
+        "Networks' security",
+        "Databases' security"
+      ]
+    },
+    {
+      "institution": "Universitat Autònoma de Barcelona",
+      "shortName": "UAB",
+      "image": "https://imgur.com/thgKNEt.png",
+      "website": "https://uab.cat",
+      "studyType": "University degree",
+      "area": "Computer Science Engineering",
+      "startDate": "2013-09-13",
+      "endDate": "2017-06-20",
+      "gpa": "Cum laude, Avg: 8.86/10 (3.85/4 GPA)",
+      "courses": [
+        "Algebra and Calculus",
+        "Electricity and Electronics",
+        "Computer Architecture",
+        "Operating Systems",
+        "Software Development",
+        "Database Management (RDBMS and NoSQL)",
+        "Agile Methodologies",
+        "Computer Networks (Advanced)",
+        "Distributed Systems",
+        "Systems Administration",
+        "Information and Security (Advanced)",
+        "PKI",
+        "Big Data",
+        "Web Services",
+        "DevOps",
+        "Blockchain technology (Advanced)",
+        "Bitcoin development (Advanced)"
+      ]
+    },
+    {
+      "institution": "Institut de Mollet del Vallès",
+      "image": "https://imgur.com/3pVVNSY.png",
+      "website": "http://www.insmollet.cat",
+      "studyType": "High school",
+      "area": "Science and Technology",
+      "startDate": "2011-09-13",
+      "endDate": "2013-06-01",
+      "gpa": "Cum laude, Avg: 9.76/10 (3.96 GPA)",
+      "courses": [
+        "Catalan",
+        "Spanish",
+        "English",
+        "Industrial technology",
+        "Maths",
+        "Physics",
+        "Technical Design (and CAID)",
+        "Entrepreneurship",
+        "Internship (as computer technician)"
+      ],
+      "printHidden": true
+    }
+  ],
+  "awards": [
+    {
+      "title": "2nd place at University degree's gamification program",
+      "date": "2016-06-25",
+      "awarder": "dEIC.UAB.cat",
+      "summary": "'TOP Enginyeria' is an engineering gamification program implemented in several engineering degrees that aims students to go further than classes with extra projects,  competitions, challenges and games apart from traditional classes, awarding the best students with symbolic rewards and extra activities to motivate them in their studies and improve their rivalry to get the best performance possible"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend: web & hybrid mobile",
+      "level": "Advanced",
+      "keywords": [
+        "Flutter",
+        "Angular 11",
+        "Redux (flux architecture)",
+        "Typescript",
+        "Responsive design",
+        "Material Design 2",
+        "Bootstrap",
+        "Jekyll",
+        "HTML5",
+        "CSS3",
+        "Javascript"
+      ]
+    },
+    {
+      "name": "Backend",
+      "level": "Advanced",
+      "keywords": [
+        "Ruby on Rails",
+        "Sidekiq",
+        "Typescript",
+        "Node.js",
+        "Express",
+        "OpenAPI",
+        "PostgreSQL",
+        "Spring Framework (Boot)",
+        "Kotlin",
+        "Java",
+        "Python",
+        "PHP",
+        "J2EE",
+        "Gradle",
+        "Maven",
+        "Liquibase",
+        "MongoDB"
+      ]
+    },
+    {
+      "name": "DevOps",
+      "level": "Advanced",
+      "keywords": [
+        "Docker",
+        "Terraform",
+        "GitHub CI/CD",
+        "Shell scripting",
+        "Travis CI",
+        "GitLab CI/CD",
+        "Apache JMeter",
+        "Heroku"
+      ]
+    },
+    {
+      "name": "Software architecture",
+      "level": "Advanced",
+      "keywords": [
+        "Clean Code",
+        "Clean Architecture",
+        "DDD",
+        "TDD",
+        "Design patterns"
+      ]
+    },
+    {
+      "name": "Systems administration",
+      "level": "Advanced",
+      "keywords": [
+        "Linux",
+        "Arch Linux",
+        "Debian/Ubuntu",
+        "Bash",
+        "Zsh",
+        "iptables",
+        "OpenVPN",
+        "WireGuard",
+        "Windows XP+"
+      ]
+    },
+    {
+      "name": "Project management",
+      "level": "Competent",
+      "keywords": [
+        "4+1 Architecture",
+        "Agile methodologies",
+        "Requirements specification",
+        "Use cases diagrams"
+      ]
+    }
+  ],
+  "volunteer": [],
+  "publications": [],
+  "references": [],
+  "projects": [
+    {
+      "name": "Vesto",
+      "description": "Mobile app to introduce users to the world of financial investments. Allows to easily invest in US stock market with credit card or Bizum. Focused for Spanish market. Worked on the backend side",
+      "url": "https://vestoapp.com",
+      "image": "https://i.imgur.com/54OVtLi.png",
+      "startDate": "2022-10-10",
+      "entity": "Vesto",
+      "roles": ["Senior software engineer", "Backend"],
+      "keywords": [
+        "Ruby on Rails 6",
+        "Sidekiq",
+        "REST API",
+        "OpenAPI",
+        "RSpec",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "GitHub Actions",
+        "Terraform",
+        "AWS (EC2, ECS, RDS, ELB, ElastiCache)",
+        "RedSys",
+        "New Relic",
+        "Slack"
+      ]
+    },
+    {
+      "name": "Mindset",
+      "description": "Mobile app for patients to treat depression using Cognitive Behavioral Therapy (CBT) exercises. Web app for therapists to track patients' progress",
+      "url": "https://www.koahealth.com/products/mindset",
+      "image": "https://i.imgur.com/w85KRee.png",
+      "startDate": "2020-03-01",
+      "endDate": "2022-06-07",
+      "entity": "Koa Health / Telefónica Alpha",
+      "roles": ["Senior software engineer", "Full stack"],
+      "keywords": [
+        "Flutter 1 & 2",
+        "Typescript",
+        "Node.js",
+        "Express",
+        "REST API",
+        "OpenAPI",
+        "Jest",
+        "PostgreSQL",
+        "Docker",
+        "GitHub Actions",
+        "Terraform",
+        "AWS (EKS, ALB, RDS, API Gateway, Cognito)",
+        "Datadog"
+      ]
+    },
+    {
+      "name": "Cowstamp",
+      "description": "Web SaaS app to create, issue and receive verifiable credentials digitally signed using blockchain technologies with a user-centric design. Uses a custom ad hoc library to canonize JSON-LD graphs",
+      "url": "https://cowstamp.com",
+      "image": "https://imgur.com/9KpS6LW.png",
+      "startDate": "2019-07-29",
+      "endDate": "2019-12-17",
+      "entity": "BTC Assessors",
+      "roles": ["Lead software engineer", "Full stack developer"],
+      "keywords": [
+        "Angular 8",
+        "Typescript",
+        "PWA",
+        "REST API",
+        "OpenAPI",
+        "Spring Boot",
+        "Kotlin",
+        "Apache JMeter",
+        "JUnit 4",
+        "Liquibase",
+        "MongoDB",
+        "PostgreSQL",
+        "Gradle",
+        "JHipster",
+        "Docker",
+        "Heroku",
+        "GitLab CI/CD",
+        "Linux",
+        "Blockchain",
+        "Blockcerts",
+        "JSON-LD",
+        "Agile methodologies"
+      ]
+    },
+    {
+      "name": "Kowbucha",
+      "description": "Web app to allow an independent verification of Blockcerts verifiable credentials based upon users' trust decisions. Uses a companion NodeJS & browser Javascript library created ad hoc to perform the verifications.",
+      "url": "https://kowbucha.org",
+      "startDate": "2019-11-14",
+      "endDate": "2019-12-17",
+      "entity": "BTC Assessors",
+      "roles": ["Lead software engineer", "Frontend developer"],
+      "keywords": [
+        "Material Design",
+        "Angular 8",
+        "Typescript",
+        "PWA",
+        "Redux",
+        "Karma",
+        "Jasmine",
+        "Jest",
+        "Node.js",
+        "Rollup.js",
+        "npm",
+        "GitLab CI/CD",
+        "Karma",
+        "Jasmine",
+        "GitLab Pages",
+        "Blockchain",
+        "Bitcoin",
+        "Ethereum",
+        "Blockcerts",
+        "JSON-LD",
+        "Agile methodologies"
+      ]
+    },
+    {
+      "name": "NodeCenter",
+      "description": "Application to manage blockchain / DLT nodes deployments in few clicks with an easy to use web interface, based on an Open API documented REST API exposed by a companion app daemon",
+      "url": "https://github.com/nodecenter/app",
+      "image": "https://imgur.com/kroWBlD.png",
+      "startDate": "2019-01-15",
+      "endDate": "2019-09-10",
+      "entity": "BTC Assessors",
+      "roles": ["Software engineer", "Full stack developer"],
+      "keywords": [
+        "Docker",
+        "REST API",
+        "OpenAPI",
+        "Python 3.7",
+        "Flask",
+        "Angular 8",
+        "Typescript",
+        "GitLab CI/CD"
+      ]
+    },
+    {
+      "name": "Bitcoin Framework",
+      "description": "Python Bitcoin framework to create transactions with smart contracts (scripts) based on puzzle-friendliness and OOP",
+      "url": "https://gitlab.com/btcalabs/bitcoin-framework",
+      "image": "https://imgur.com/C4ahmYr.png",
+      "startDate": "2017-07-04",
+      "endDate": "2018-12-03",
+      "entity": "BTC Assessors & UAB",
+      "roles": ["Software engineer", "Library maintainer"],
+      "keywords": [
+        "Bitcoin",
+        "Cryptography",
+        "Python 3.6",
+        "Unittest",
+        "Sphinx",
+        "ReadTheDocs",
+        "TravisCI",
+        "GitLab CI/CD",
+        "PyPi"
+      ]
+    },
+    {
+      "name": "IBC Report Generator",
+      "description": "Desktop application to generate biomechanics reports out of data extracted from third party applications and devices using user-created report templates",
+      "image": "https://i.imgur.com/6jh7VDW.png",
+      "startDate": "2015-09-25",
+      "endDate": "2018-02-17",
+      "entity": "IBC Biomechanics",
+      "roles": ["Lead software engineer", "Full stack developer"],
+      "keywords": [
+        "Anaconda",
+        "Python 2.7",
+        "Python 3.4",
+        "PyQt 4",
+        "PyQt 5",
+        "SQL Alchemy",
+        "Maria DB",
+        "Docker"
+      ]
+    },
+    {
+      "name": "Police Translator",
+      "description": "Hybrid mobile application with a collection of useful phrases for police officers translated from/to English to/from Catalan, with audio pronunciations and that fully works offline. Web application to manage all content and their translations",
+      "image": "https://imgur.com/GIYv6YI.png",
+      "startDate": "2014-06-27",
+      "endDate": "2015-11-18",
+      "entity": "Institut de Seguretat Pública de Catalunya (ISPC)",
+      "roles": ["Software engineer", "Full stack developer"],
+      "keywords": [
+        "Linux",
+        "PHP 5",
+        "MySQL",
+        "jQuery",
+        "Apache Cordova",
+        "HTML4",
+        "CSS2",
+        "JavaScript"
+      ]
+    }
+  ],
+  "meta": {
+    "canonical": "https://resume.davidlj95.com",
+    "print": {
+      "hiddenSections": ["awards", "languages"]
+    },
+    "pdfUrl": "https://resume.davidlj95.com/davidlj95_Resume.pdf"
+  }
+}

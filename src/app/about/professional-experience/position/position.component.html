@@ -1,0 +1,134 @@
+<div class="header">
+  <div class="image">
+    <a [href]="position.company.website.toString()">
+      <img
+        [ngSrc]="position.company.image.toString()"
+        width="64"
+        height="64"
+        alt="{{ position.company.name }} logo"
+      />
+    </a>
+  </div>
+  <div class="text">
+    <span class="company">
+      <a [href]="position.company.website.toString()">
+        {{ position.company.name }}
+      </a>
+    </span>
+    <div class="role">
+      {{ position.role }}
+    </div>
+    <span class="dates"
+      ><span class="start">{{ position.startDate | date: 'MMM yyyy' }}</span>
+      <span class="separator"> → </span>
+      <span class="end">
+        <ng-container *ngIf="position.endDate; else present">
+          {{ position.endDate | date: 'MMM yyyy' }}
+        </ng-container>
+        <ng-template #present>Present</ng-template>
+      </span>
+    </span>
+  </div>
+  <div class="attributes">
+    <div class="freelance attribute">
+      <ng-container *ngIf="!position.freelance; else freelance">
+        <span
+          [class]="MATERIAL_SYMBOLS_CLASS"
+          [attr.aria-describedby]="freelanceAttributeTooltipId"
+          tabindex="0"
+        >
+          {{ MaterialSymbol.Badge }}
+        </span>
+        <div [id]="freelanceAttributeTooltipId" role="tooltip">Employee</div>
+      </ng-container>
+      <ng-template #freelance>
+        <span
+          [class]="MATERIAL_SYMBOLS_CLASS"
+          [attr.aria-describedby]="freelanceAttributeTooltipId"
+          tabindex="0"
+        >
+          {{ MaterialSymbol.Work }}
+        </span>
+        <div [id]="freelanceAttributeTooltipId" role="tooltip">Freelance</div>
+      </ng-template>
+    </div>
+    <div class="internship attribute" *ngIf="position.internship">
+      <span
+        [class]="MATERIAL_SYMBOLS_CLASS"
+        [attr.aria-describedby]="internshipAttributeTooltipId"
+        tabindex="0"
+      >
+        {{ MaterialSymbol.School }}
+      </span>
+      <div [id]="internshipAttributeTooltipId" role="tooltip">Internship</div>
+    </div>
+    <div class="other-roles attribute" *ngIf="position.otherRoles">
+      <span
+        [class]="MATERIAL_SYMBOLS_CLASS"
+        [attr.aria-describedby]="otherRolesAttributeTooltipId"
+        tabindex="0"
+      >
+        {{ MaterialSymbol.More }}
+      </span>
+      <div [id]="otherRolesAttributeTooltipId" role="tooltip">
+        More roles performed during this period. <br />See summary for details
+      </div>
+    </div>
+    <div class="promotions attribute" *ngIf="position.promotions">
+      <span
+        [class]="MATERIAL_SYMBOLS_CLASS"
+        [attr.aria-describedby]="promotionsAttributeTooltipId"
+        tabindex="0"
+      >
+        {{ MaterialSymbol.ToolsLadder }}
+      </span>
+      <div [id]="promotionsAttributeTooltipId" role="tooltip">
+        Promotions during this period. <br />See highlights for details
+      </div>
+    </div>
+  </div>
+</div>
+<div class="chips displayNoneIfNoScript" *ngIf="availableContentTypes">
+  <button
+    class="chip"
+    *ngFor="let chip of availableContentTypes"
+    [class.active]="activeContentType === chip"
+    (click)="onContentTypeClick(chip)"
+  >
+    {{ chip.displayName }}
+  </button>
+</div>
+<div
+  class="chip displayBlockIfNoScript"
+  *ngIf="typeHasContent(SUMMARY_CONTENT_TYPE)"
+>
+  {{ SUMMARY_CONTENT_TYPE.displayName }}
+</div>
+<div
+  class="content summary"
+  @contentActive
+  *ngIf="
+    !isRenderingOnBrowser || activeContentType?.id === ContentTypeId.Summary
+  "
+>
+  {{ position.summary }}
+</div>
+<div
+  class="chip displayBlockIfNoScript"
+  *ngIf="typeHasContent(HIGHLIGHT_CONTENT_TYPE)"
+>
+  {{ HIGHLIGHT_CONTENT_TYPE.displayName }}
+</div>
+<div
+  class="content highlights"
+  @contentActive
+  *ngIf="
+    !isRenderingOnBrowser || activeContentType?.id === ContentTypeId.Highlights
+  "
+>
+  <ul>
+    <li *ngFor="let highlight of position.highlights">
+      {{ highlight }}
+    </li>
+  </ul>
+</div>
