@@ -12,12 +12,14 @@ export class JsonResumePositionAdapterService {
   public readonly COMPANIES_IMAGE_ASSETS_PATH = 'assets/companies/'
   public readonly IMAGE_EXTENSION = '.png'
   private readonly canonicalURL: URL
+  private readonly mapJsonResumeImages: boolean
 
   constructor(
     @Inject(ENVIRONMENT) environment: Environment,
     private slugGenerator: SlugGeneratorService,
   ) {
     this.canonicalURL = environment.canonicalUrl
+    this.mapJsonResumeImages = environment.mapJsonResumeImages
   }
 
   adapt(position: JsonResumeWorkPosition): Position {
@@ -26,7 +28,9 @@ export class JsonResumePositionAdapterService {
         name: position.company,
         // Point to assets in this repo using canonical URL from env, so we can change the image and preview it.
         // Links in resume.json work anyway
-        image: this.imageUrlFromCompanyName(position.company),
+        image: this.mapJsonResumeImages
+          ? this.imageUrlFromCompanyName(position.company)
+          : new URL(position.image),
         website: new URL(position.website),
       }),
       role: position.position,
