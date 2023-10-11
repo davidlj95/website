@@ -32,19 +32,16 @@
       }
     }
 
-    .chips {
-      $chip-theme: map.get($theme, chips);
+    $chip-theme: map.get($theme, chips);
+    .chip {
+      background-color: map.get($chip-theme, background);
+      color: map.get($chip-theme, text);
+      border-color: map.get($chip-theme, border);
 
-      .chip {
-        background-color: map.get($chip-theme, background);
-        color: map.get($chip-theme, text);
-        border-color: map.get($chip-theme, border);
-
-        &.active {
-          background-color: map.get($chip-theme, active);
-          border-color: map.get($chip-theme, active);
-          color: map.get($chip-theme, activeText);
-        }
+      &.active {
+        background-color: map.get($chip-theme, active);
+        border-color: map.get($chip-theme, active);
+        color: map.get($chip-theme, activeText);
       }
     }
   }
@@ -65,13 +62,11 @@
         );
       }
     }
-    .chips {
-      .chip {
-        @include animations.multiple-transitions(
-          (background-color, color, border-color),
-          animations.$emphasized-style
-        );
-      }
+    .chip {
+      @include animations.multiple-transitions(
+        (background-color, color, border-color),
+        animations.$emphasized-style
+      );
     }
   }
 }

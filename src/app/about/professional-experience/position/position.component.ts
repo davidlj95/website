@@ -1,4 +1,10 @@
-import { Component, HostBinding, Input } from '@angular/core'
+import {
+  Component,
+  HostBinding,
+  Inject,
+  Input,
+  PLATFORM_ID,
+} from '@angular/core'
 import { Position } from './position'
 import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 import {
@@ -20,6 +26,7 @@ import {
   STANDARD_DURATION_MS,
   TIMING_FUNCTION,
 } from '../../../common/animations'
+import { isPlatformBrowser } from '@angular/common'
 
 @Component({
   selector: 'app-position',
@@ -60,8 +67,14 @@ export class PositionComponent {
     More,
   }
   protected readonly ContentTypeId = ContentTypeId
+  protected readonly isRenderingOnBrowser
 
-  constructor(private slugGenerator: SlugGeneratorService) {}
+  constructor(
+    private slugGenerator: SlugGeneratorService,
+    @Inject(PLATFORM_ID) platformId: object,
+  ) {
+    this.isRenderingOnBrowser = isPlatformBrowser(platformId)
+  }
 
   public get availableContentTypes(): ReadonlyArray<ContentType> {
     return this.contentTypes.filter((contentType) =>
@@ -104,7 +117,7 @@ export class PositionComponent {
     this.activeContentType = contentType
   }
 
-  private typeHasContent(type: ContentType): boolean {
+  protected typeHasContent(type: ContentType): boolean {
     switch (type.id) {
       case ContentTypeId.Summary:
         return !!this.position?.summary
@@ -114,6 +127,9 @@ export class PositionComponent {
         return false
     }
   }
+
+  protected readonly SUMMARY_CONTENT_TYPE = SUMMARY_CONTENT_TYPE
+  protected readonly HIGHLIGHT_CONTENT_TYPE = HIGHLIGHT_CONTENT_TYPE
 }
 
 export enum ContentTypeId {

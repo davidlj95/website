@@ -88,7 +88,7 @@
     </div>
   </div>
 </div>
-<div class="chips" *ngIf="availableContentTypes">
+<div class="chips displayNoneIfNoScript" *ngIf="availableContentTypes">
   <button
     class="chip"
     *ngFor="let chip of availableContentTypes"
@@ -99,16 +99,32 @@
   </button>
 </div>
 <div
+  class="chip displayBlockIfNoScript"
+  *ngIf="typeHasContent(SUMMARY_CONTENT_TYPE)"
+>
+  {{ SUMMARY_CONTENT_TYPE.displayName }}
+</div>
+<div
   class="content summary"
   @contentActive
-  *ngIf="activeContentType?.id === ContentTypeId.Summary"
+  *ngIf="
+    !isRenderingOnBrowser || activeContentType?.id === ContentTypeId.Summary
+  "
 >
   {{ position.summary }}
 </div>
 <div
+  class="chip displayBlockIfNoScript"
+  *ngIf="typeHasContent(HIGHLIGHT_CONTENT_TYPE)"
+>
+  {{ HIGHLIGHT_CONTENT_TYPE.displayName }}
+</div>
+<div
   class="content highlights"
   @contentActive
-  *ngIf="activeContentType?.id === ContentTypeId.Highlights"
+  *ngIf="
+    !isRenderingOnBrowser || activeContentType?.id === ContentTypeId.Highlights
+  "
 >
   <ul>
     <li *ngFor="let highlight of position.highlights">

@@ -69,12 +69,16 @@
   .chips {
     display: flex;
     gap: margins.$s;
+  }
 
-    .chip {
-      padding: paddings.$s;
-      @include borders.panel-style-width;
-      border-radius: 1em;
-      font-size: 1rem;
+  .chip {
+    padding: paddings.$s;
+    @include borders.panel-style-width;
+    border-radius: 1em;
+    font-size: 1rem;
+
+    &.displayBlockIfNoScript {
+      display: none;
     }
   }
 
