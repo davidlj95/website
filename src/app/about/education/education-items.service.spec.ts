@@ -36,7 +36,7 @@ describe('EducationItemsService', () => {
       sut = TestBed.inject(EducationItemsService)
     })
 
-    it('should return as many as in the JSON resume work section', () => {
+    it('should return as many as in the JSON education section', () => {
       expect(sut.getEducationItems().length).toBe(
         someResumeEducationItems.length,
       )
