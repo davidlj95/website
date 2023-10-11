@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
-import { Organization } from '../organization'
+import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
 import { NgOptimizedImage } from '@angular/common'
 

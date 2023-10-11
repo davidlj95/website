@@ -1,5 +1,7 @@
+import { Organization } from '../../organization'
+
 export class Position {
-  public readonly company: Company
+  public readonly company: Organization
   public readonly role: string
   public readonly startDate: Date
   public readonly endDate?: Date
@@ -22,7 +24,7 @@ export class Position {
     summary,
     highlights,
   }: {
-    company: Company
+    company: Organization
     role: string
     startDate: Date
     endDate?: Date
@@ -43,25 +45,5 @@ export class Position {
     this.otherRoles = otherRoles ?? false
     this.summary = summary
     this.highlights = highlights ?? []
-  }
-}
-
-export class Company {
-  public readonly name: string
-  public readonly website: URL
-  public readonly image: URL
-
-  constructor({
-    name,
-    website,
-    image,
-  }: {
-    name: string
-    website: URL
-    image: URL
-  }) {
-    this.name = name
-    this.website = website
-    this.image = image
   }
 }
