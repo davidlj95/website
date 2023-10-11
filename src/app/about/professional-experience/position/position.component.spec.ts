@@ -109,7 +109,7 @@ describe('PositionComponent', () => {
     })
   })
   describe('dates', () => {
-    it('should include date range component', () => {
+    it('should display date range component', () => {
       component.position = new Position({
         ...newPositionArgs,
       })

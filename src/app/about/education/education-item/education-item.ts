@@ -1,11 +1,11 @@
 import { Organization } from '../../organization'
+import { DateRange } from '../../date-range/date-range'
 
 export class EducationItem {
   public readonly institution: Organization
   public readonly area: string
   public readonly studyType: string
-  public readonly startDate: Date
-  public readonly endDate?: Date
+  public readonly dateRange: DateRange
   public readonly score: string
   public readonly courses: ReadonlyArray<string>
   public readonly cumLaude: boolean
@@ -14,8 +14,7 @@ export class EducationItem {
     institution,
     area,
     studyType,
-    startDate,
-    endDate,
+    dateRange,
     score,
     courses,
     cumLaude,
@@ -23,8 +22,7 @@ export class EducationItem {
     institution: Organization
     area: string
     studyType: string
-    startDate: Date
-    endDate?: Date
+    dateRange: DateRange
     score: string
     courses?: ReadonlyArray<string>
     cumLaude?: boolean
@@ -32,8 +30,7 @@ export class EducationItem {
     this.institution = institution
     this.area = area
     this.studyType = studyType
-    this.startDate = startDate
-    this.endDate = endDate
+    this.dateRange = dateRange
     this.score = score
     this.courses = courses ?? []
     this.cumLaude = cumLaude ?? false

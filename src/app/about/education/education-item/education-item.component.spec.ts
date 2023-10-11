@@ -5,6 +5,10 @@ import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
 import { NgOptimizedImage } from '@angular/common'
+import { getComponentSelector } from '../../../../test/helpers/component-testers'
+import { DateRangeComponent } from '../../date-range/date-range.component'
+import { DateRange } from '../../date-range/date-range'
+import { MockComponents } from 'ng-mocks'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -18,13 +22,15 @@ describe('EducationItemComponent', () => {
     area: 'Fake area',
     studyType: 'Fake study type',
     score: 'Fake score',
-    startDate: new Date('2023-01-01'),
-    endDate: new Date('2023-10-10'),
+    dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
   }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EducationItemComponent],
+      declarations: [
+        EducationItemComponent,
+        MockComponents(DateRangeComponent),
+      ],
       imports: [NgOptimizedImage],
     })
     fixture = TestBed.createComponent(EducationItemComponent)
@@ -111,88 +117,16 @@ describe('EducationItemComponent', () => {
   })
 
   describe('dates', () => {
-    it('should display start date', () => {
-      const fakeStartDate = '2022-10-10'
-      const fakeStartDateFormatted = 'Oct 2022'
-      component.item = new EducationItem({
-        ...newEducationItemArgs,
-        startDate: new Date(fakeStartDate),
-      })
-      // noinspection DuplicatedCode
+    it('should display date range component', () => {
+      component.item = new EducationItem(newEducationItemArgs)
       fixture.detectChanges()
 
-      const datesElement = fixture.debugElement.query(By.css('.dates'))
-      expect(datesElement).withContext('dates container exists').toBeTruthy()
-
-      const startDateElement = datesElement.query(By.css('.start'))
-      expect(startDateElement)
-        .withContext('start date element exists')
+      const dateRangeElement = fixture.debugElement.query(
+        By.css(getComponentSelector(DateRangeComponent)),
+      )
+      expect(dateRangeElement)
+        .withContext('dates range element exists')
         .toBeTruthy()
-      expect(startDateElement.nativeElement.textContent.trim())
-        .withContext('start date is displayed with proper format')
-        .toEqual(fakeStartDateFormatted)
-    })
-
-    it('should display separator', () => {
-      component.item = new EducationItem({ ...newEducationItemArgs })
-      fixture.detectChanges()
-
-      const datesElement = fixture.debugElement.query(By.css('.dates'))
-      expect(datesElement).withContext('dates container exists').toBeTruthy()
-
-      const separatorElement = datesElement.query(By.css('.separator'))
-      expect(separatorElement)
-        .withContext('separator element exists')
-        .toBeTruthy()
-    })
-
-    describe('when no end date exists', () => {
-      beforeEach(() => {
-        component.item = new EducationItem({
-          ...newEducationItemArgs,
-          endDate: undefined,
-        })
-        fixture.detectChanges()
-      })
-
-      // noinspection DuplicatedCode
-      it('should display present as end date', () => {
-        const datesElement = fixture.debugElement.query(By.css('.dates'))
-        expect(datesElement).withContext('dates container exists').toBeTruthy()
-
-        const endDateElement = datesElement.query(By.css('.end'))
-        expect(endDateElement)
-          .withContext('end date element exists')
-          .toBeTruthy()
-        expect(endDateElement.nativeElement.textContent.trim())
-          .withContext('end date is present')
-          .toEqual('Present')
-      })
-    })
-    describe('when end date exists', () => {
-      const fakeEndDate = '2024-01-01'
-      const fakeEndDateFormatted = 'Jan 2024'
-
-      beforeEach(() => {
-        component.item = new EducationItem({
-          ...newEducationItemArgs,
-          endDate: new Date(fakeEndDate),
-        })
-        fixture.detectChanges()
-      })
-      // noinspection DuplicatedCode
-      it('should display end date', () => {
-        const datesElement = fixture.debugElement.query(By.css('.dates'))
-        expect(datesElement).withContext('dates container exists').toBeTruthy()
-
-        const endDateElement = datesElement.query(By.css('.end'))
-        expect(endDateElement)
-          .withContext('end date element exists')
-          .toBeTruthy()
-        expect(endDateElement.nativeElement.textContent.trim())
-          .withContext('end date is displayed with proper format')
-          .toEqual(fakeEndDateFormatted)
-      })
     })
   })
 })
