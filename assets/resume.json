@@ -56,10 +56,9 @@
   ],
   "work": [
     {
-      "company": "Vesto",
-      "website": "https://www.vestoapp.com",
-      "image": "https://davidlj95.com/assets/companies/vesto.png",
+      "name": "Vesto",
       "position": "Senior Backend Engineer",
+      "url": "https://www.vestoapp.com",
       "startDate": "2022-10-10",
       "endDate": "2023-07-14",
       "summary": "Led, engineered and assisted many product features. Planned robustness proposal to improve the app stability by reducing error rates. Focusing on gaining observability to push for data-driven decisions. Optimized processes to reduce customer support workload",
@@ -70,13 +69,13 @@
         "Introduced 'learning fridays' to enable knowledge sharing amongst engineering team",
         "Installed New Relic as observability tool"
       ],
+      "image": "https://davidlj95.com/assets/companies/vesto.png",
       "freelance": true
     },
     {
-      "company": "Koa Health",
-      "website": "https://www.koahealth.com",
-      "image": "https://davidlj95.com/assets/companies/koa-health.png",
+      "name": "Koa Health",
       "position": "Senior Software Engineer",
+      "url": "https://www.koahealth.com",
       "startDate": "2020-10-01",
       "endDate": "2022-05-01",
       "summary": "Full stack: web APIs backend, web app and mobile app. Led, engineered and assisted several features. Coordinated with product, design, QA, DevOps, cybersecurity, research & other products' engineering teams. Enhanced the company's design system library. Supported several squad's processes improvements",
@@ -88,21 +87,21 @@
         "Handled many authZ/N features. Created proof of concept of Single Sign On (SSO) by federating with 3rd party identity providers using AWS Cognito",
         "Assisted company spin off by programmatically setting up new email signatures for all employees"
       ],
+      "image": "https://davidlj95.com/assets/companies/koa-health.png",
       "promotions": true
     },
     {
-      "company": "Telefónica Alpha",
-      "website": "https://web.archive.org/web/20200426164320/https://www.alpha.company/",
-      "image": "https://davidlj95.com/assets/companies/telefonica-alpha.png",
+      "name": "Telefónica Alpha",
+      "url": "https://web.archive.org/web/20200426164320/https://www.alpha.company/",
       "position": "Software Engineer",
       "startDate": "2020-03-01",
       "endDate": "2020-10-01",
-      "summary": "Part of the health moonshot unit. Which would later spin off to become its own company: Koa Health. Check that position for more information about both periods"
+      "summary": "Part of the health moonshot unit. Which would later spin off to become its own company: Koa Health. Check that position for more information about both periods",
+      "image": "https://davidlj95.com/assets/companies/telefonica-alpha.png"
     },
     {
-      "company": "BTC Assessors",
-      "website": "https://btcassessors.gitlab.io/",
-      "image": "https://davidlj95.com/assets/companies/btc-assessors.png",
+      "name": "BTC Assessors",
+      "url": "https://btcassessors.gitlab.io/",
       "position": "Software Engineer",
       "startDate": "2018-06-01",
       "endDate": "2019-12-31",
@@ -113,23 +112,23 @@
         "Spoke in several talks about Bitcoin and blockchain technologies",
         "Facilitated software project management"
       ],
+      "image": "https://davidlj95.com/assets/companies/btc-assessors.png",
       "otherRoles": true
     },
     {
-      "company": "SEAT",
-      "website": "https://www.seat.com",
-      "image": "https://davidlj95.com/assets/companies/seat.png",
+      "name": "SEAT",
+      "url": "https://www.seat.com",
       "position": "Software Engineer",
       "startDate": "2017-03-13",
       "endDate": "2017-06-19",
       "summary": "Organized integration of IBC Biomechanics software within SEAT IT systems. In order to be used for its internal biomechanical laboratory in the CARS center inside Martorell headquarters",
+      "image": "https://davidlj95.com/assets/companies/seat.png",
       "freelance": true,
       "internship": true
     },
     {
-      "company": "Meditrauma",
-      "website": "https://meditrauma.com",
-      "image": "https://davidlj95.com/assets/companies/meditrauma.png",
+      "name": "Meditrauma",
+      "url": "https://meditrauma.com",
       "position": "IT Manager",
       "startDate": "2015-01-15",
       "endDate": "2018-06-01",
@@ -141,12 +140,12 @@
         "Maintained workstations: company software management, endpoint protection and permissions management",
         "Maintained labor risk prevention and medical equipment hardware and services. Like audiometers, X-Ray machines and ECGs"
       ],
+      "image": "https://davidlj95.com/assets/companies/meditrauma.png",
       "freelance": true
     },
     {
-      "company": "IBC Biomechanics",
-      "website": "https://ibc.bio",
-      "image": "https://davidlj95.com/assets/companies/ibc-biomechanics.png",
+      "name": "IBC Biomechanics",
+      "url": "https://ibc.bio",
       "position": "Software Engineer",
       "startDate": "2014-09-15",
       "endDate": "2018-06-01",
@@ -156,6 +155,7 @@
         "Conducted several tests to develop in-house biomechanical data capture and processing software. To remove third party software dependencies and provide a holistic study experience",
         "Managed and maintained company's IT infrastructure: workstations, office software, endpoint protection and backups"
       ],
+      "image": "https://davidlj95.com/assets/companies/ibc-biomechanics.png",
       "freelance": true,
       "otherRoles": true
     }

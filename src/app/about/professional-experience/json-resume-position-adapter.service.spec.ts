@@ -34,17 +34,17 @@ describe('JsonResumePositionAdapterService', () => {
       it('should map the company name, image and website', () => {
         const fakeJsonResumePosition: JsonResumeWorkPosition = {
           ...sampleJsonResumeWorkPosition,
-          company: 'Fake company name',
-          website: 'https://example.org/',
+          name: 'Fake company name',
+          url: 'https://example.org/',
           image: 'https://example.org/logo.png',
         }
         const position = sut.adapt(
           fakeJsonResumePosition as JsonResumeWorkPosition,
         )
 
-        expect(position.company.name).toEqual(fakeJsonResumePosition.company)
+        expect(position.company.name).toEqual(fakeJsonResumePosition.name)
         expect(position.company.website.toString()).toEqual(
-          fakeJsonResumePosition.website,
+          fakeJsonResumePosition.url,
         )
         expect(position.company.image.toString()).toEqual(
           fakeJsonResumePosition.image,
@@ -138,7 +138,7 @@ describe('JsonResumePositionAdapterService', () => {
       it('should map the company image into a custom URL using canonical URL, assets path and slug from name', () => {
         const fakeJsonResumePosition: JsonResumeWorkPosition = {
           ...sampleJsonResumeWorkPosition,
-          company: 'Fake còmpány  Name',
+          name: 'Fake còmpány  Name',
         }
         const expectedImageFileName = 'fake-company-name'
         const position = sut.adapt(
