@@ -40,6 +40,7 @@ export class JsonResumeEducationItemAdapterService {
       endDate: !item.endDate ? undefined : new Date(item.endDate),
       score: item.score,
       courses: item.courses,
+      cumLaude: !!item.cumLaude,
     })
   }
 

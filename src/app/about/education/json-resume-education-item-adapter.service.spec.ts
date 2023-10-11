@@ -93,6 +93,17 @@ describe('JsonResumeEducationItemAdapterService', () => {
           expect(educationItem.endDate).toBeUndefined()
         })
       })
+      // Non standard fields
+      it('should map the cum laude field', () => {
+        const fakeJsonResumeEducationItem: JsonResumeEducationItem = {
+          ...sampleJsonResumeEducationItem,
+          cumLaude: true,
+        } as JsonResumeEducationItem
+
+        const educationItem = sut.adapt(fakeJsonResumeEducationItem)
+
+        expect(educationItem.cumLaude).toBeTrue()
+      })
     })
     describe('when images mapping is enabled', () => {
       const fakeCanonicalUrl = new URL('https://example.org/canonical/')

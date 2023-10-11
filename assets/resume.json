@@ -207,7 +207,8 @@
         "Bitcoin development (Advanced)"
       ],
       "shortName": "UAB",
-      "image": "https://davidlj95.com/assets/education/uab.png"
+      "image": "https://davidlj95.com/assets/education/uab.png",
+      "cumLaude": true
     },
     {
       "institution": "Institut de Mollet del Vallès",
@@ -230,6 +231,7 @@
       ],
       "shortName": "IES Mollet",
       "image": "https://davidlj95.com/assets/education/ies-mollet.png",
+      "cumLaude": true,
       "printHidden": true
     }
   ],

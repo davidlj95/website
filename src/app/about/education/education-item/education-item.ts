@@ -8,6 +8,7 @@ export class EducationItem {
   public readonly endDate?: Date
   public readonly score: string
   public readonly courses: ReadonlyArray<string>
+  public readonly cumLaude: boolean
 
   constructor({
     institution,
@@ -17,6 +18,7 @@ export class EducationItem {
     endDate,
     score,
     courses,
+    cumLaude,
   }: {
     institution: Organization
     area: string
@@ -25,6 +27,7 @@ export class EducationItem {
     endDate?: Date
     score: string
     courses?: ReadonlyArray<string>
+    cumLaude?: boolean
   }) {
     this.institution = institution
     this.area = area
@@ -33,5 +36,6 @@ export class EducationItem {
     this.endDate = endDate
     this.score = score
     this.courses = courses ?? []
+    this.cumLaude = cumLaude ?? false
   }
 }
