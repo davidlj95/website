@@ -1,0 +1,31 @@
+<div class="header">
+  <div class="image">
+    <a [href]="item.institution.website.toString()">
+      <img
+        [ngSrc]="item.institution.image.toString()"
+        width="64"
+        height="64"
+        alt="{{ item.institution.name }} logo"
+      />
+    </a>
+  </div>
+  <div class="text">
+    <span class="institution">
+      <a [href]="item.institution.website.toString()">
+        {{ item.institution.name }}
+      </a>
+    </span>
+    <div class="studyType">{{ item.studyType }}</div>
+    <div class="area">{{ item.area }}</div>
+    <span class="dates"
+      ><span class="start">{{ item.startDate | date: 'MMM yyyy' }}</span>
+      <span class="separator"> → </span>
+      <span class="end">
+        <ng-container *ngIf="item.endDate; else present">
+          {{ item.endDate | date: 'MMM yyyy' }}
+        </ng-container>
+        <ng-template #present>Present</ng-template>
+      </span>
+    </span>
+  </div>
+</div>

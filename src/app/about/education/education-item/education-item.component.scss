@@ -1,0 +1,93 @@
+@use 'borders';
+@use 'margins';
+@use 'paddings';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: margins.$m;
+  padding: paddings.$m;
+  @include borders.panel-style-width;
+
+  &.active {
+    grid-row: span 2;
+  }
+
+  .header {
+    display: flex;
+    gap: margins.$m;
+
+    .image {
+      min-width: 64px;
+
+      img {
+        border-radius: 64px;
+      }
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.15rem;
+      gap: margins.$xs;
+
+      .dates {
+        font-size: 1rem;
+      }
+    }
+
+    .attributes {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .attribute {
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        [role='tooltip'] {
+          display: inline-block;
+        }
+      }
+
+      [role='tooltip'] {
+        display: none;
+        font-size: 1rem;
+        position: absolute;
+        width: max-content;
+        right: 100%;
+        margin: 0 margins.$s;
+        padding: paddings.$s;
+        text-align: right;
+        @include borders.panel-style-width();
+      }
+    }
+  }
+
+  .chips {
+    display: flex;
+    gap: margins.$s;
+  }
+
+  .chip {
+    padding: paddings.$s;
+    @include borders.panel-style-width;
+    border-radius: 1em;
+    font-size: 1rem;
+
+    &.displayBlockIfNoScript {
+      display: none;
+    }
+  }
+
+  .content {
+    overflow: hidden;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: margins.$s;
+    }
+  }
+}
