@@ -29,12 +29,12 @@ describe('EducationComponent', () => {
   })
 
   it('should display all items', () => {
-    const jsonResumeAdapter = TestBed.inject(EducationItemsService)
+    const educationItemsService = TestBed.inject(EducationItemsService)
     const educationItemElements = fixture.debugElement.queryAll(
       By.css(getComponentSelector(EducationItemComponent)),
     )
     expect(educationItemElements.length).toBe(
-      jsonResumeAdapter.getEducationItems().length,
+      educationItemsService.getEducationItems().length,
     )
   })
 })

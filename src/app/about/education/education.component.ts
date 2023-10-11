@@ -10,7 +10,7 @@ import { EducationItemsService } from './education-items.service'
 export class EducationComponent {
   protected items: ReadonlyArray<EducationItem>
 
-  constructor(jsonResumeAdapter: EducationItemsService) {
-    this.items = jsonResumeAdapter.getEducationItems()
+  constructor(educationItemsService: EducationItemsService) {
+    this.items = educationItemsService.getEducationItems()
   }
 }
