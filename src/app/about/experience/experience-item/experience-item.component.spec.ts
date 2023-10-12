@@ -28,6 +28,8 @@ import { LinkComponent } from '../../link/link.component'
 import { CardHeaderTitleComponent } from '../../card/card-header-title/card-header-title.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from '../../card/card-header-detail/card-header-detail.component'
+import { byTestId } from '../../../../test/helpers/test-id'
+import { TestIdDirective } from '../../../common/test-id.directive'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -51,6 +53,7 @@ describe('ExperienceItem', () => {
         CardHeaderImageComponent,
         CardHeaderTitleComponent,
         CardHeaderSubtitleComponent,
+        TestIdDirective,
         MockComponents(
           CardComponent,
           DateRangeComponent,
@@ -82,7 +85,7 @@ describe('ExperienceItem', () => {
       fixture.detectChanges()
 
       const anchorElement = fixture.debugElement
-        .query(By.css("[data-test-id='image']"))
+        .query(byTestId('image'))
         .query(By.css('a'))
       expect(anchorElement).toBeTruthy()
       expect(anchorElement.attributes['href']).toEqual(companyUrl)
@@ -108,7 +111,7 @@ describe('ExperienceItem', () => {
       fixture.detectChanges()
 
       const anchorElement = fixture.debugElement
-        .query(By.css("[data-test-id='company-name']"))
+        .query(byTestId('company-name'))
         .query(By.css('a'))
       expect(anchorElement).toBeTruthy()
       expect(anchorElement.attributes['href']).toEqual(companyUrl)
@@ -124,9 +127,7 @@ describe('ExperienceItem', () => {
       component.item = experienceItem
       fixture.detectChanges()
 
-      const roleElement = fixture.debugElement.query(
-        By.css("[data-test-id='role']"),
-      )
+      const roleElement = fixture.debugElement.query(byTestId('role'))
       expect(roleElement).toBeTruthy()
       expect(roleElement.nativeElement.textContent.trim()).toEqual(
         experienceItem.role,
