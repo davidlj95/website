@@ -1,11 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 import { LinkComponent } from './link.component'
 import { By } from '@angular/platform-browser'
 import { Component, Type } from '@angular/core'
+import {
+  testSetup,
+  testSetupWithHostComponent,
+} from '../../../test/helpers/component-test-setup'
 
 describe('LinkComponent', () => {
   it('should create', () => {
-    const [fixture, component] = testSetup()
+    const [fixture, component] = setup()
     fixture.detectChanges()
     expect(component).toBeTruthy()
   })
@@ -14,7 +18,7 @@ describe('LinkComponent', () => {
     it("should contain element's content", () => {
       const someText = 'some text here'
       const hostComponent = makeHostComponent(someText, href)
-      const [fixture] = testSetupWithHostComponent(hostComponent)
+      const [fixture] = setupWithHostComponent(hostComponent)
       fixture.detectChanges()
 
       expect(fixture.debugElement.nativeElement.textContent.trim()).toEqual(
@@ -25,7 +29,7 @@ describe('LinkComponent', () => {
 
   describe('when no href is given', () => {
     it('should not contain the anchor element', () => {
-      const [fixture] = testSetup()
+      const [fixture] = setup()
 
       const anchorElement = fixture.debugElement.query(By.css('a'))
       expect(anchorElement).toBeFalsy()
@@ -38,7 +42,7 @@ describe('LinkComponent', () => {
     const href = 'https://example.org'
 
     it('should contain the anchor element with given href attribute', () => {
-      const [fixture, component] = testSetup()
+      const [fixture, component] = setup()
       component.href = href
       fixture.detectChanges()
 
@@ -50,22 +54,14 @@ describe('LinkComponent', () => {
   })
 })
 
-function testSetup(): [ComponentFixture<LinkComponent>, LinkComponent] {
-  TestBed.configureTestingModule({
-    declarations: [LinkComponent],
-  })
-  const fixture = TestBed.createComponent(LinkComponent)
-  return [fixture, fixture.componentInstance]
+function setup(): [ComponentFixture<LinkComponent>, LinkComponent] {
+  return testSetup(LinkComponent)
 }
 
-function testSetupWithHostComponent<T>(
+function setupWithHostComponent<T>(
   hostComponent: Type<T>,
 ): [ComponentFixture<T>, T] {
-  TestBed.configureTestingModule({
-    declarations: [hostComponent, LinkComponent],
-  })
-  const fixture = TestBed.createComponent(hostComponent)
-  return [fixture, fixture.componentInstance]
+  return testSetupWithHostComponent(hostComponent, LinkComponent)
 }
 
 function makeHostComponent(

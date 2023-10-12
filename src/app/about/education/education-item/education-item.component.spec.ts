@@ -12,6 +12,7 @@ import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header-image/card-header-image.component'
 import { LinkComponent } from '../../link/link.component'
+import { CardHeaderTitleComponent } from '../../card/card-header-title/card-header-title.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -33,6 +34,7 @@ describe('EducationItemComponent', () => {
         EducationItemComponent,
         LinkComponent,
         CardHeaderImageComponent,
+        CardHeaderTitleComponent,
         MockComponents(CardComponent, DateRangeComponent),
       ],
       imports: [NgOptimizedImage],

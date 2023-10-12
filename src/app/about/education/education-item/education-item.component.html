@@ -11,12 +11,14 @@
       </app-card-header-image>
     </app-link>
     <div class="text">
-      <app-link
-        [href]="item.institution.website?.toString()"
-        data-test-id="institution-name"
-      >
-        {{ item.institution.name }}
-      </app-link>
+      <app-card-header-title>
+        <app-link
+          [href]="item.institution.website?.toString()"
+          data-test-id="institution-name"
+        >
+          {{ item.institution.name }}
+        </app-link>
+      </app-card-header-title>
       <div class="studyType">{{ item.studyType }}</div>
       <div class="area">{{ item.area }}</div>
       <span class="dates"

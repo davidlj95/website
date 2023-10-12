@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'card-header-image/card-header-image-theme';
+@use 'card-header-title/card-header-title-theme';
 @use 'animations';
 @use 'borders';
 
@@ -23,5 +24,6 @@
     );
 
     @include card-header-image-theme.motion;
+    @include card-header-title-theme.motion;
   }
 }
