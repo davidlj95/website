@@ -7,15 +7,13 @@
   $text-palette: map.get($theme, text);
 
   app-education-item {
-    .header {
-      .attribute {
-        color: map.get($text-palette, secondary);
+    .attribute {
+      color: map.get($text-palette, secondary);
 
-        [role='tooltip'] {
-          color: map.get($text-palette, primary);
-          background-color: map.get($background-palette, z2);
-          border-color: borders.panel-color($theme);
-        }
+      [role='tooltip'] {
+        color: map.get($text-palette, primary);
+        background-color: map.get($background-palette, z2);
+        border-color: borders.panel-color($theme);
       }
     }
   }

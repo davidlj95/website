@@ -1,5 +1,5 @@
 <app-card>
-  <div class="header">
+  <app-card-header>
     <app-link [href]="item.company.website?.toString()" appTestId="image">
       <app-card-header-image
         [src]="item.company.image.toString()"
@@ -81,7 +81,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </app-card-header>
   <div class="chips displayNoneIfNoScript" *ngIf="availableContentTypes">
     <button
       class="chip"

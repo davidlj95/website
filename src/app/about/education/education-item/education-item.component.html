@@ -1,5 +1,5 @@
 <app-card>
-  <div class="header">
+  <app-card-header>
     <app-link [href]="item.institution.website?.toString()" appTestId="image">
       <app-card-header-image
         [src]="item.institution.image.toString()"
@@ -38,5 +38,5 @@
         <div [id]="cumLaudeAttributeTooltipId" role="tooltip">Cum laude</div>
       </div>
     </div>
-  </div>
+  </app-card-header>
 </app-card>
