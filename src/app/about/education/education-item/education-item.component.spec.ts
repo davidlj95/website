@@ -18,6 +18,7 @@ import { CardHeaderDetailComponent } from '../../card/card-header-detail/card-he
 import { byTestId } from '../../../../test/helpers/test-id'
 import { TestIdDirective } from '../../../common/test-id.directive'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
+import { CardHeaderTextsComponent } from '../../card/card-header-texts/card-header-texts.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -47,6 +48,7 @@ describe('EducationItemComponent', () => {
           DateRangeComponent,
           CardHeaderDetailComponent,
           CardHeaderComponent,
+          CardHeaderTextsComponent,
         ),
       ],
       imports: [NgOptimizedImage],
