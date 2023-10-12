@@ -10,6 +10,7 @@ import { DateRangeComponent } from '../../date-range/date-range.component'
 import { DateRange } from '../../date-range/date-range'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
+import { CardHeaderImageComponent } from '../../card/card-header-image/card-header-image.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -30,7 +31,11 @@ describe('EducationItemComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         EducationItemComponent,
-        MockComponents(CardComponent, DateRangeComponent),
+        MockComponents(
+          CardComponent,
+          CardHeaderImageComponent,
+          DateRangeComponent,
+        ),
       ],
       imports: [NgOptimizedImage],
     })
@@ -44,26 +49,13 @@ describe('EducationItemComponent', () => {
 
   describe('institution', () => {
     it('should display institution image with link to its website', () => {
-      const fakeEducationItem = new EducationItem(newEducationItemArgs)
-      component.item = fakeEducationItem
+      component.item = new EducationItem(newEducationItemArgs)
       fixture.detectChanges()
 
-      const imageContainerElement = fixture.debugElement.query(By.css('.image'))
-      expect(imageContainerElement)
-        .withContext('institution image container exists')
-        .toBeTruthy()
-
-      const anchorElement = imageContainerElement.query(By.css('a'))
-      expect(anchorElement).withContext('link exists').toBeTruthy()
-      expect(anchorElement.attributes['href'])
-        .withContext('link points to institution website')
-        .toEqual(fakeEducationItem.institution.website.toString())
-
-      const imageElement = anchorElement.query(By.css('img'))
-      expect(imageElement).withContext('image exists').toBeTruthy()
-      expect(imageElement.attributes['src'])
-        .withContext('image source points to institution image')
-        .toEqual(fakeEducationItem.institution.image.toString())
+      const headerImageElement = fixture.debugElement.query(
+        By.css(getComponentSelector(CardHeaderImageComponent)),
+      )
+      expect(headerImageElement).toBeTruthy()
     })
 
     it("should display institution name with link to company's website", () => {

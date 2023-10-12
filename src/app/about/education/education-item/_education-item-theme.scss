@@ -3,16 +3,11 @@
 @use 'borders';
 
 @mixin color($theme) {
-  $image-opts: map.get($theme, image);
   $background-palette: map.get($theme, background);
   $text-palette: map.get($theme, text);
 
   app-education-item {
     .header {
-      img {
-        filter: map.get($image-opts, filter);
-      }
-
       .area,
       .studyType,
       .dates {
@@ -27,19 +22,6 @@
           background-color: map.get($background-palette, z2);
           border-color: borders.panel-color($theme);
         }
-      }
-    }
-  }
-}
-
-@mixin motion() {
-  app-education-item {
-    .header {
-      img {
-        @include animations.single-transition(
-          filter,
-          animations.$emphasized-style
-        );
       }
     }
   }

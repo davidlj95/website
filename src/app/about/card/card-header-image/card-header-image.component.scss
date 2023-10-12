@@ -1,0 +1,8 @@
+:host {
+  $size: 64px;
+  min-width: $size;
+
+  img {
+    border-radius: $size;
+  }
+}

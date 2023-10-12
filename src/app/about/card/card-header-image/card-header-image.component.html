@@ -1,0 +1,8 @@
+<ng-container *ngIf="href; else image">
+  <a [href]="href">
+    <ng-container [ngTemplateOutlet]="image"></ng-container>
+  </a>
+</ng-container>
+<ng-template #image>
+  <img [ngSrc]="src" width="64" height="64" [alt]="alt" />
+</ng-template>
