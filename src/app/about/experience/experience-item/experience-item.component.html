@@ -1,11 +1,12 @@
 <app-card>
   <div class="header">
-    <app-card-header-image
-      [src]="item.company.image.toString()"
-      [alt]="item.company.name + ' logo'"
-      [href]="item.company.website.toString()"
-    >
-    </app-card-header-image>
+    <app-link [href]="item.company.website.toString()">
+      <app-card-header-image
+        [src]="item.company.image.toString()"
+        [alt]="item.company.name + ' logo'"
+      >
+      </app-card-header-image>
+    </app-link>
     <div class="text">
       <span class="company">
         <a [href]="item.company.website.toString()">

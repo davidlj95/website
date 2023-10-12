@@ -20,47 +20,18 @@ describe('CardHeaderImageComponent', () => {
 
     component.src = src
     component.alt = alt
+    fixture.detectChanges()
   })
 
   it('should create', () => {
-    fixture.detectChanges()
-
     expect(component).toBeTruthy()
   })
 
-  function testShouldIncludeImageWithSrcAndAltAttributesSet() {
-    it('should include image with source and alternative text attributes set', () => {
-      const imageElement = fixture.debugElement.query(By.css('img'))
-      expect(imageElement).toBeTruthy()
+  it('should include image with source and alternative text attributes set', () => {
+    const imageElement = fixture.debugElement.query(By.css('img'))
+    expect(imageElement).toBeTruthy()
 
-      expect(imageElement.attributes['src']).toEqual(src)
-      expect(imageElement.attributes['alt']).toEqual(alt)
-    })
-  }
-
-  describe('when no href attribute is given', () => {
-    beforeEach(() => {
-      fixture.detectChanges()
-    })
-
-    testShouldIncludeImageWithSrcAndAltAttributesSet()
-  })
-  describe('when href attribute is given', () => {
-    const href = 'foo'
-    beforeEach(() => {
-      component.href = href
-      fixture.detectChanges()
-    })
-
-    it('should link the image to the given href', () => {
-      const anchorElement = fixture.debugElement.query(By.css('a'))
-      expect(anchorElement).toBeTruthy()
-
-      expect(anchorElement.attributes['href']).toEqual(href)
-      const imageElement = anchorElement.query(By.css('img'))
-      expect(imageElement).toBeTruthy()
-    })
-
-    testShouldIncludeImageWithSrcAndAltAttributesSet()
+    expect(imageElement.attributes['src']).toEqual(src)
+    expect(imageElement.attributes['alt']).toEqual(alt)
   })
 })

@@ -1,0 +1,8 @@
+<ng-container *ngIf="href; else content">
+  <a [href]="href">
+    <ng-template [ngTemplateOutlet]="content"></ng-template>
+  </a>
+</ng-container>
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

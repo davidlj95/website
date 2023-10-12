@@ -24,6 +24,7 @@ import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header-image/card-header-image.component'
+import { LinkComponent } from '../../link/link.component'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -46,6 +47,7 @@ describe('ExperienceItem', () => {
         ExperienceItemComponent,
         MockComponents(
           CardComponent,
+          LinkComponent,
           CardHeaderImageComponent,
           DateRangeComponent,
         ),
@@ -65,7 +67,12 @@ describe('ExperienceItem', () => {
       component.item = new ExperienceItem(newExperienceItemArgs)
       fixture.detectChanges()
 
-      const headerImageElement = fixture.debugElement.query(
+      const linkElement = fixture.debugElement.query(
+        By.css(getComponentSelector(LinkComponent)),
+      )
+      expect(linkElement).toBeTruthy()
+
+      const headerImageElement = linkElement.query(
         By.css(getComponentSelector(CardHeaderImageComponent)),
       )
       expect(headerImageElement).toBeTruthy()
