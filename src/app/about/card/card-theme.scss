@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use 'animations';
+@use 'borders';
+
+@mixin color($theme) {
+  $background-palette: map.get($theme, background);
+  $text-palette: map.get($theme, text);
+
+  app-card {
+    background-color: map.get($background-palette, z1);
+    border-color: borders.panel-color($theme);
+  }
+}
+
+@mixin motion {
+  app-card {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
+}

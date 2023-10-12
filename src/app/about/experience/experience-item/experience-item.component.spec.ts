@@ -22,6 +22,7 @@ import { DateRange } from '../../date-range/date-range'
 import { getComponentSelector } from '../../../../test/helpers/component-testers'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
+import { CardComponent } from '../../card/card.component'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -42,7 +43,7 @@ describe('ExperienceItem', () => {
     TestBed.configureTestingModule({
       declarations: [
         ExperienceItemComponent,
-        MockComponents(DateRangeComponent),
+        MockComponents(CardComponent, DateRangeComponent),
       ],
       imports: [NgOptimizedImage, NoopAnimationsModule],
     })

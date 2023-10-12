@@ -8,9 +8,6 @@
   $text-palette: map.get($theme, text);
 
   app-experience-item {
-    background-color: map.get($background-palette, z1);
-    border-color: borders.panel-color($theme);
-
     .header {
       img {
         filter: map.get($image-opts, filter);
@@ -49,11 +46,6 @@
 
 @mixin motion() {
   app-experience-item {
-    @include animations.multiple-transitions(
-      (background-color, border-color),
-      animations.$emphasized-style
-    );
-
     .header {
       img {
         @include animations.single-transition(

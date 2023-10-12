@@ -27,6 +27,7 @@ import { H2Component } from './about/h2/h2.component'
 import { EducationComponent } from './about/education/education.component'
 import { EducationItemComponent } from './about/education/education-item/education-item.component'
 import { DateRangeComponent } from './about/date-range/date-range.component'
+import { CardComponent } from './about/card/card.component'
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { DateRangeComponent } from './about/date-range/date-range.component'
     EducationComponent,
     EducationItemComponent,
     DateRangeComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
