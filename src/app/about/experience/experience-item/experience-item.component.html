@@ -8,12 +8,14 @@
       </app-card-header-image>
     </app-link>
     <div class="text">
-      <app-link
-        [href]="item.company.website?.toString()"
-        data-test-id="company-name"
-      >
-        {{ item.company.name }}
-      </app-link>
+      <app-card-header-title>
+        <app-link
+          [href]="item.company.website?.toString()"
+          data-test-id="company-name"
+        >
+          {{ item.company.name }}
+        </app-link>
+      </app-card-header-title>
       <div class="role">
         {{ item.role }}
       </div>

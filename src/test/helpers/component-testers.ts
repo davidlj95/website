@@ -2,6 +2,10 @@ import { reflectComponentType, Type } from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { isClass } from './types'
+import {
+  makeHostComponent,
+  testSetupWithHostComponent,
+} from './component-test-setup'
 
 const COMPONENT_CLASS_SUFFIX = 'Component'
 
@@ -67,4 +71,26 @@ export function getComponentSelector<C>(component: Type<C>) {
     )
   }
   return selector
+}
+
+/**
+ * Ensures the given component contains the child content passed to it
+ *
+ * @see https://stackoverflow.com/a/61724478/3263250
+ */
+export function ensureProjectsContent(component: Type<unknown>) {
+  it(`should project its content`, () => {
+    const contentToProject = '<b>Foo</b><i>bar</i>'
+    const hostComponent = makeHostComponent(component, contentToProject)
+    const [fixture] = testSetupWithHostComponent(hostComponent, component)
+    // No change detection triggered given nothing may have changed
+
+    const componentElement = fixture.debugElement.query(
+      By.css(getComponentSelector(component)),
+    )
+    expect(componentElement).toBeTruthy()
+    expect(componentElement.nativeElement.innerHTML.trim()).toEqual(
+      contentToProject,
+    )
+  })
 }

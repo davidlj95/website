@@ -1,0 +1,7 @@
+@use 'animations';
+
+@mixin motion {
+  app-card-header-title {
+    @include animations.single-transition(color, animations.$emphasized-style);
+  }
+}
