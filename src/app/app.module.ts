@@ -35,6 +35,7 @@ import { CardHeaderSubtitleComponent } from './about/card/card-header-subtitle/c
 import { CardHeaderDetailComponent } from './about/card/card-header-detail/card-header-detail.component'
 import { TestIdDirective } from './common/test-id.directive'
 import { CardHeaderComponent } from './about/card/card-header/card-header.component'
+import { CardHeaderTextsComponent } from './about/card/card-header-texts/card-header-texts.component'
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { CardHeaderComponent } from './about/card/card-header/card-header.compon
     CardHeaderDetailComponent,
     TestIdDirective,
     CardHeaderComponent,
+    CardHeaderTextsComponent,
   ],
   imports: [
     BrowserModule,

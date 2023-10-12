@@ -7,7 +7,7 @@
       >
       </app-card-header-image>
     </app-link>
-    <div class="text">
+    <app-card-header-texts>
       <app-card-header-title>
         <app-link
           [href]="item.company.website?.toString()"
@@ -22,7 +22,7 @@
       <app-card-header-detail>
         <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>
-    </div>
+    </app-card-header-texts>
     <div class="attributes">
       <div class="freelance attribute">
         <ng-container *ngIf="!item.freelance; else freelance">
