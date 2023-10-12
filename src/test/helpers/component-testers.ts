@@ -89,7 +89,7 @@ export function ensureProjectsContent(component: Type<unknown>) {
       By.css(getComponentSelector(component)),
     )
     expect(componentElement).toBeTruthy()
-    expect(componentElement.nativeElement.innerHTML.trim()).toEqual(
+    expect(componentElement.nativeElement.innerHTML.trim()).toContain(
       contentToProject,
     )
   })

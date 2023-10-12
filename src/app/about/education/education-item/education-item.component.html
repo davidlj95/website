@@ -19,10 +19,14 @@
           {{ item.institution.name }}
         </app-link>
       </app-card-header-title>
-      <div class="studyType">{{ item.studyType }}</div>
-      <div class="area">{{ item.area }}</div>
-      <span class="dates"
-        ><app-date-range [range]="item.dateRange"></app-date-range>
+      <app-card-header-subtitle data-test-id="study-type">
+        {{ item.studyType }}
+      </app-card-header-subtitle>
+      <app-card-header-subtitle data-test-id="area">
+        {{ item.area }}
+      </app-card-header-subtitle>
+      <span class="dates">
+        <app-date-range [range]="item.dateRange"></app-date-range>
       </span>
     </div>
     <div class="attributes">

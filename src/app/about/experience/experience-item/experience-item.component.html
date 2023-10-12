@@ -16,9 +16,9 @@
           {{ item.company.name }}
         </app-link>
       </app-card-header-title>
-      <div class="role">
+      <app-card-header-subtitle data-test-id="role">
         {{ item.role }}
-      </div>
+      </app-card-header-subtitle>
       <span class="dates"
         ><app-date-range [range]="item.dateRange"></app-date-range
       ></span>

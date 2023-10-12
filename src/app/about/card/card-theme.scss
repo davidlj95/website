@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use 'card-header-image/card-header-image-theme';
 @use 'card-header-title/card-header-title-theme';
+@use 'card-header-subtitle/card-header-subtitle-theme';
 @use 'animations';
 @use 'borders';
 
@@ -13,6 +14,7 @@
     border-color: borders.panel-color($theme);
 
     @include card-header-image-theme.color($theme);
+    @include card-header-subtitle-theme.color($theme);
   }
 }
 
@@ -25,5 +27,6 @@
 
     @include card-header-image-theme.motion;
     @include card-header-title-theme.motion;
+    @include card-header-subtitle-theme.motion;
   }
 }

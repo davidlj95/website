@@ -8,8 +8,6 @@
 
   app-education-item {
     .header {
-      .area,
-      .studyType,
       .dates {
         color: map.get($text-palette, secondary);
       }
