@@ -1,6 +1,6 @@
 export class Organization {
   public readonly name: string
-  public readonly website: URL
+  public readonly website?: URL
   public readonly image: URL
 
   constructor({
@@ -9,7 +9,7 @@ export class Organization {
     image,
   }: {
     name: string
-    website: URL
+    website?: URL
     image: URL
   }) {
     this.name = name

@@ -41,11 +41,11 @@ describe('JsonResumeExperienceItemAdapterService', () => {
         const experienceItem = sut.adapt(jsonResumeWorkItem)
 
         expect(experienceItem.company.name).toEqual(jsonResumeWorkItem.name)
-        expect(experienceItem.company.website.toString()).toEqual(
-          jsonResumeWorkItem.url,
+        expect(experienceItem.company.website).toEqual(
+          new URL(jsonResumeWorkItem.url),
         )
-        expect(experienceItem.company.image.toString()).toEqual(
-          jsonResumeWorkItem.image,
+        expect(experienceItem.company.image).toEqual(
+          new URL(jsonResumeWorkItem.image),
         )
       })
 

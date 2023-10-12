@@ -1,6 +1,9 @@
 <app-card>
   <div class="header">
-    <app-link [href]="item.institution.website.toString()">
+    <app-link
+      [href]="item.institution.website?.toString()"
+      data-test-id="image"
+    >
       <app-card-header-image
         [src]="item.institution.image.toString()"
         [alt]="item.institution.name + ' logo'"
@@ -8,11 +11,12 @@
       </app-card-header-image>
     </app-link>
     <div class="text">
-      <span class="institution">
-        <a [href]="item.institution.website.toString()">
-          {{ item.institution.name }}
-        </a>
-      </span>
+      <app-link
+        [href]="item.institution.website?.toString()"
+        data-test-id="institution-name"
+      >
+        {{ item.institution.name }}
+      </app-link>
       <div class="studyType">{{ item.studyType }}</div>
       <div class="area">{{ item.area }}</div>
       <span class="dates"

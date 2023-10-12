@@ -34,7 +34,6 @@ describe('ExperienceItem', () => {
       company: new Organization({
         name: 'Fake company',
         image: new URL('https://fakeCompany.example.com/logo.jpg'),
-        website: new URL('https://fake.example.org'),
       }),
       summary: 'Fake summary',
       role: 'Fake role',
@@ -45,12 +44,9 @@ describe('ExperienceItem', () => {
     TestBed.configureTestingModule({
       declarations: [
         ExperienceItemComponent,
-        MockComponents(
-          CardComponent,
-          LinkComponent,
-          CardHeaderImageComponent,
-          DateRangeComponent,
-        ),
+        LinkComponent,
+        CardHeaderImageComponent,
+        MockComponents(CardComponent, DateRangeComponent),
       ],
       imports: [NgOptimizedImage, NoopAnimationsModule],
     })
@@ -64,35 +60,50 @@ describe('ExperienceItem', () => {
 
   describe('company', () => {
     it("should display company image with link to company's website", () => {
-      component.item = new ExperienceItem(newExperienceItemArgs)
-      fixture.detectChanges()
-
-      const linkElement = fixture.debugElement.query(
-        By.css(getComponentSelector(LinkComponent)),
-      )
-      expect(linkElement).toBeTruthy()
-
-      const headerImageElement = linkElement.query(
-        By.css(getComponentSelector(CardHeaderImageComponent)),
-      )
-      expect(headerImageElement).toBeTruthy()
-    })
-
-    it("should display company name with link to company's website", () => {
-      const experienceItem = new ExperienceItem(newExperienceItemArgs)
+      const companyUrl = 'https://example.org/'
+      const experienceItem = new ExperienceItem({
+        ...newExperienceItemArgs,
+        company: new Organization({
+          name: newExperienceItemArgs.company.name,
+          image: new URL('https://example.org/logo.png'),
+          website: new URL(companyUrl),
+        }),
+      })
       component.item = experienceItem
       fixture.detectChanges()
 
-      const companyElement = fixture.debugElement.query(By.css('.company'))
-      expect(companyElement)
-        .withContext('company name container element exists')
-        .toBeTruthy()
+      const anchorElement = fixture.debugElement
+        .query(By.css("[data-test-id='image']"))
+        .query(By.css('a'))
+      expect(anchorElement).toBeTruthy()
+      expect(anchorElement.attributes['href']).toEqual(companyUrl)
 
-      const anchorElement = companyElement.query(By.css('a'))
-      expect(anchorElement).withContext('link exists').toBeTruthy()
-      expect(anchorElement.attributes['href'])
-        .withContext('link points to company website')
-        .toEqual(experienceItem.company.website.toString())
+      const imageElement = anchorElement.query(By.css('img'))
+      expect(imageElement).toBeTruthy()
+      expect(imageElement.attributes['src']).toEqual(
+        experienceItem.company.image.toString(),
+      )
+    })
+
+    it("should display company name with link to company's website", () => {
+      const companyUrl = 'https://example.org/'
+      const experienceItem = new ExperienceItem({
+        ...newExperienceItemArgs,
+        company: new Organization({
+          name: newExperienceItemArgs.company.name,
+          image: new URL('https://example.org/logo.png'),
+          website: new URL(companyUrl),
+        }),
+      })
+      component.item = experienceItem
+      fixture.detectChanges()
+
+      const anchorElement = fixture.debugElement
+        .query(By.css("[data-test-id='company-name']"))
+        .query(By.css('a'))
+      expect(anchorElement).toBeTruthy()
+      expect(anchorElement.attributes['href']).toEqual(companyUrl)
+
       expect(anchorElement.nativeElement.textContent.trim()).toEqual(
         experienceItem.company.name,
       )

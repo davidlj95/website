@@ -43,11 +43,11 @@ describe('JsonResumeEducationItemAdapterService', () => {
         expect(educationItem.institution.name).toEqual(
           fakeJsonResumeEducationItem.institution,
         )
-        expect(educationItem.institution.website.toString()).toEqual(
-          fakeJsonResumeEducationItem.url,
+        expect(educationItem.institution.website).toEqual(
+          new URL(fakeJsonResumeEducationItem.url),
         )
-        expect(educationItem.institution.image.toString()).toEqual(
-          fakeJsonResumeEducationItem.image,
+        expect(educationItem.institution.image).toEqual(
+          new URL(fakeJsonResumeEducationItem.image),
         )
       })
 
