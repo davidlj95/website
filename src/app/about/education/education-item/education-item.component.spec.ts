@@ -20,7 +20,6 @@ describe('EducationItemComponent', () => {
     institution: new Organization({
       name: 'Fake institution',
       image: new URL('https://fake.example.org/logo.png'),
-      website: new URL('https://fake.example.org'),
     }),
     area: 'Fake area',
     studyType: 'Fake study type',
@@ -32,12 +31,9 @@ describe('EducationItemComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         EducationItemComponent,
-        MockComponents(
-          CardComponent,
-          LinkComponent,
-          CardHeaderImageComponent,
-          DateRangeComponent,
-        ),
+        LinkComponent,
+        CardHeaderImageComponent,
+        MockComponents(CardComponent, DateRangeComponent),
       ],
       imports: [NgOptimizedImage],
     })
@@ -51,37 +47,50 @@ describe('EducationItemComponent', () => {
 
   describe('institution', () => {
     it('should display institution image with link to its website', () => {
-      component.item = new EducationItem(newEducationItemArgs)
-      fixture.detectChanges()
-
-      const linkElement = fixture.debugElement.query(
-        By.css(getComponentSelector(LinkComponent)),
-      )
-      expect(linkElement).toBeTruthy()
-
-      const headerImageElement = linkElement.query(
-        By.css(getComponentSelector(CardHeaderImageComponent)),
-      )
-      expect(headerImageElement).toBeTruthy()
-    })
-
-    it("should display institution name with link to company's website", () => {
-      const fakeEducationItem = new EducationItem(newEducationItemArgs)
+      const institutionUrl = 'https://example.org/'
+      const fakeEducationItem = new EducationItem({
+        ...newEducationItemArgs,
+        institution: new Organization({
+          name: newEducationItemArgs.institution.name,
+          image: new URL('https://example.org/logo.png'),
+          website: new URL(institutionUrl),
+        }),
+      })
       component.item = fakeEducationItem
       fixture.detectChanges()
 
-      const institutionElement = fixture.debugElement.query(
-        By.css('.institution'),
-      )
-      expect(institutionElement)
-        .withContext('institution name container element exists')
-        .toBeTruthy()
+      const anchorElement = fixture.debugElement
+        .query(By.css("[data-test-id='image']"))
+        .query(By.css('a'))
+      expect(anchorElement).toBeTruthy()
+      expect(anchorElement.attributes['href']).toEqual(institutionUrl)
 
-      const anchorElement = institutionElement.query(By.css('a'))
-      expect(anchorElement).withContext('link exists').toBeTruthy()
-      expect(anchorElement.attributes['href'])
-        .withContext('link points to institution website')
-        .toEqual(fakeEducationItem.institution.website.toString())
+      const imageElement = anchorElement.query(By.css('img'))
+      expect(imageElement).toBeTruthy()
+      expect(imageElement.attributes['src']).toEqual(
+        fakeEducationItem.institution.image.toString(),
+      )
+    })
+
+    it("should display institution name with link to company's website", () => {
+      const institutionUrl = 'https://example.org/'
+      const fakeEducationItem = new EducationItem({
+        ...newEducationItemArgs,
+        institution: new Organization({
+          name: newEducationItemArgs.institution.name,
+          image: new URL('https://example.org/logo.png'),
+          website: new URL(institutionUrl),
+        }),
+      })
+      component.item = fakeEducationItem
+      fixture.detectChanges()
+
+      const anchorElement = fixture.debugElement
+        .query(By.css("[data-test-id='institution-name']"))
+        .query(By.css('a'))
+      expect(anchorElement).toBeTruthy()
+      expect(anchorElement.attributes['href']).toEqual(institutionUrl)
+
       expect(anchorElement.nativeElement.textContent.trim()).toEqual(
         fakeEducationItem.institution.name,
       )

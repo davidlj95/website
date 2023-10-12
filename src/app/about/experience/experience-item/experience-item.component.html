@@ -1,6 +1,6 @@
 <app-card>
   <div class="header">
-    <app-link [href]="item.company.website.toString()">
+    <app-link [href]="item.company.website?.toString()" data-test-id="image">
       <app-card-header-image
         [src]="item.company.image.toString()"
         [alt]="item.company.name + ' logo'"
@@ -8,11 +8,12 @@
       </app-card-header-image>
     </app-link>
     <div class="text">
-      <span class="company">
-        <a [href]="item.company.website.toString()">
-          {{ item.company.name }}
-        </a>
-      </span>
+      <app-link
+        [href]="item.company.website?.toString()"
+        data-test-id="company-name"
+      >
+        {{ item.company.name }}
+      </app-link>
       <div class="role">
         {{ item.role }}
       </div>
