@@ -2,6 +2,7 @@
 @use 'card-header-image/card-header-image-theme';
 @use 'card-header-title/card-header-title-theme';
 @use 'card-header-subtitle/card-header-subtitle-theme';
+@use 'card-header-detail/card-header-detail-theme';
 @use 'animations';
 @use 'borders';
 
@@ -15,6 +16,7 @@
 
     @include card-header-image-theme.color($theme);
     @include card-header-subtitle-theme.color($theme);
+    @include card-header-detail-theme.color($theme);
   }
 }
 
@@ -28,5 +30,6 @@
     @include card-header-image-theme.motion;
     @include card-header-title-theme.motion;
     @include card-header-subtitle-theme.motion;
+    @include card-header-detail-theme.motion;
   }
 }

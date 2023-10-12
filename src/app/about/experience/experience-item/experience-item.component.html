@@ -19,9 +19,9 @@
       <app-card-header-subtitle data-test-id="role">
         {{ item.role }}
       </app-card-header-subtitle>
-      <span class="dates"
-        ><app-date-range [range]="item.dateRange"></app-date-range
-      ></span>
+      <app-card-header-detail>
+        <app-date-range [range]="item.dateRange"></app-date-range>
+      </app-card-header-detail>
     </div>
     <div class="attributes">
       <div class="freelance attribute">

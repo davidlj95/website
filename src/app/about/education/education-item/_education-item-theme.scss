@@ -8,10 +8,6 @@
 
   app-education-item {
     .header {
-      .dates {
-        color: map.get($text-palette, secondary);
-      }
-
       .attribute {
         color: map.get($text-palette, secondary);
 

@@ -32,6 +32,7 @@ import { CardHeaderImageComponent } from './about/card/card-header-image/card-he
 import { CardHeaderTitleComponent } from './about/card/card-header-title/card-header-title.component'
 import { LinkComponent } from './about/link/link.component'
 import { CardHeaderSubtitleComponent } from './about/card/card-header-subtitle/card-header-subtitle.component'
+import { CardHeaderDetailComponent } from './about/card/card-header-detail/card-header-detail.component'
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { CardHeaderSubtitleComponent } from './about/card/card-header-subtitle/c
     CardHeaderTitleComponent,
     LinkComponent,
     CardHeaderSubtitleComponent,
+    CardHeaderDetailComponent,
   ],
   imports: [
     BrowserModule,

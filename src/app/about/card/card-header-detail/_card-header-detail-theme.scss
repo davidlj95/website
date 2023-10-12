@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use 'animations';
+
+@mixin color($theme) {
+  app-card-header-detail {
+    $text-palette: map.get($theme, text);
+    color: map.get($text-palette, secondary);
+  }
+}
+
+@mixin motion {
+  @include animations.single-transition(color);
+}
