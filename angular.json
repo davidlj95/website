@@ -5,6 +5,9 @@
     "@schematics/angular": {
       "component": {
         "module": "app"
+      },
+      "directive": {
+        "module": "app"
       }
     }
   },

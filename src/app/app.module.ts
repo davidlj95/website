@@ -33,6 +33,7 @@ import { CardHeaderTitleComponent } from './about/card/card-header-title/card-he
 import { LinkComponent } from './about/link/link.component'
 import { CardHeaderSubtitleComponent } from './about/card/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from './about/card/card-header-detail/card-header-detail.component'
+import { TestIdDirective } from './common/test-id.directive'
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { CardHeaderDetailComponent } from './about/card/card-header-detail/card-
     LinkComponent,
     CardHeaderSubtitleComponent,
     CardHeaderDetailComponent,
+    TestIdDirective,
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,8 @@ import { LinkComponent } from '../../link/link.component'
 import { CardHeaderTitleComponent } from '../../card/card-header-title/card-header-title.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from '../../card/card-header-detail/card-header-detail.component'
+import { byTestId } from '../../../../test/helpers/test-id'
+import { TestIdDirective } from '../../../common/test-id.directive'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -38,6 +40,7 @@ describe('EducationItemComponent', () => {
         CardHeaderImageComponent,
         CardHeaderTitleComponent,
         CardHeaderSubtitleComponent,
+        TestIdDirective,
         MockComponents(
           CardComponent,
           DateRangeComponent,
@@ -69,7 +72,7 @@ describe('EducationItemComponent', () => {
       fixture.detectChanges()
 
       const anchorElement = fixture.debugElement
-        .query(By.css("[data-test-id='image']"))
+        .query(byTestId('image'))
         .query(By.css('a'))
       expect(anchorElement).toBeTruthy()
       expect(anchorElement.attributes['href']).toEqual(institutionUrl)
@@ -95,7 +98,7 @@ describe('EducationItemComponent', () => {
       fixture.detectChanges()
 
       const anchorElement = fixture.debugElement
-        .query(By.css("[data-test-id='institution-name']"))
+        .query(byTestId('institution-name'))
         .query(By.css('a'))
       expect(anchorElement).toBeTruthy()
       expect(anchorElement.attributes['href']).toEqual(institutionUrl)
@@ -112,9 +115,7 @@ describe('EducationItemComponent', () => {
       component.item = educationItem
       fixture.detectChanges()
 
-      const areaElement = fixture.debugElement.query(
-        By.css("[data-test-id='area']"),
-      )
+      const areaElement = fixture.debugElement.query(byTestId('area'))
       expect(areaElement).toBeTruthy()
       expect(areaElement.nativeElement.textContent.trim()).toEqual(
         educationItem.area,
@@ -129,7 +130,7 @@ describe('EducationItemComponent', () => {
       fixture.detectChanges()
 
       const studyTypeElement = fixture.debugElement.query(
-        By.css("[data-test-id='study-type']"),
+        byTestId('study-type'),
       )
       expect(studyTypeElement).toBeTruthy()
       expect(studyTypeElement.nativeElement.textContent.trim()).toEqual(
