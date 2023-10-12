@@ -3,16 +3,6 @@
 @use 'paddings';
 
 :host {
-  display: flex;
-  flex-direction: column;
-  gap: margins.$m;
-  padding: paddings.$m;
-  @include borders.panel-style-width;
-
-  &.active {
-    grid-row: span 2;
-  }
-
   .header {
     display: flex;
     gap: margins.$m;

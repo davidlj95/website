@@ -3,11 +3,9 @@
 @use 'paddings';
 
 :host {
-  display: flex;
-  flex-direction: column;
-  gap: margins.$m;
-  padding: paddings.$m;
-  @include borders.panel-style-width;
+  app-card {
+    height: 100%;
+  }
 
   &.active {
     grid-row: span 2;

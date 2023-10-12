@@ -9,6 +9,7 @@ import { getComponentSelector } from '../../../../test/helpers/component-testers
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { DateRange } from '../../date-range/date-range'
 import { MockComponents } from 'ng-mocks'
+import { CardComponent } from '../../card/card.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -29,7 +30,7 @@ describe('EducationItemComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         EducationItemComponent,
-        MockComponents(DateRangeComponent),
+        MockComponents(CardComponent, DateRangeComponent),
       ],
       imports: [NgOptimizedImage],
     })

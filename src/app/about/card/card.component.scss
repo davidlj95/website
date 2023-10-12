@@ -1,0 +1,11 @@
+@use 'margins';
+@use 'paddings';
+@use 'borders';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: margins.$m;
+  padding: paddings.$m;
+  @include borders.panel-style-width;
+}
