@@ -30,6 +30,7 @@ import { CardHeaderSubtitleComponent } from '../../card/card-header-subtitle/car
 import { CardHeaderDetailComponent } from '../../card/card-header-detail/card-header-detail.component'
 import { byTestId } from '../../../../test/helpers/test-id'
 import { TestIdDirective } from '../../../common/test-id.directive'
+import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -58,6 +59,7 @@ describe('ExperienceItem', () => {
           CardComponent,
           DateRangeComponent,
           CardHeaderDetailComponent,
+          CardHeaderComponent,
         ),
       ],
       imports: [NgOptimizedImage, NoopAnimationsModule],

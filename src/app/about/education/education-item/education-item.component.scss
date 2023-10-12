@@ -7,43 +7,38 @@
     height: 100%;
   }
 
-  .header {
+  .text {
     display: flex;
-    gap: margins.$m;
+    flex-direction: column;
+    gap: margins.$xs;
+  }
 
-    .text {
-      display: flex;
-      flex-direction: column;
-      gap: margins.$xs;
-    }
+  .attributes {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .attributes {
-      margin-left: auto;
-      display: flex;
-      flex-direction: column;
-    }
+  .attribute {
+    position: relative;
+    cursor: pointer;
 
-    .attribute {
-      position: relative;
-      cursor: pointer;
-
-      &:hover {
-        [role='tooltip'] {
-          display: inline-block;
-        }
-      }
-
+    &:hover {
       [role='tooltip'] {
-        display: none;
-        font-size: 1rem;
-        position: absolute;
-        width: max-content;
-        right: 100%;
-        margin: 0 margins.$s;
-        padding: paddings.$s;
-        text-align: right;
-        @include borders.panel-style-width();
+        display: inline-block;
       }
+    }
+
+    [role='tooltip'] {
+      display: none;
+      font-size: 1rem;
+      position: absolute;
+      width: max-content;
+      right: 100%;
+      margin: 0 margins.$s;
+      padding: paddings.$s;
+      text-align: right;
+      @include borders.panel-style-width();
     }
   }
 
