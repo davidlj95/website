@@ -23,7 +23,7 @@
         <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
-    <div class="attributes">
+    <app-card-header-attributes>
       <div class="freelance attribute">
         <ng-container *ngIf="!item.freelance; else freelance">
           <span
@@ -80,7 +80,7 @@
           Promotions during this period. <br />See highlights for details
         </div>
       </div>
-    </div>
+    </app-card-header-attributes>
   </app-card-header>
   <div class="chips displayNoneIfNoScript" *ngIf="availableContentTypes">
     <button
