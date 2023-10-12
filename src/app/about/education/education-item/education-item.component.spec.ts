@@ -14,6 +14,7 @@ import { CardHeaderImageComponent } from '../../card/card-header-image/card-head
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderTitleComponent } from '../../card/card-header-title/card-header-title.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header-subtitle/card-header-subtitle.component'
+import { CardHeaderDetailComponent } from '../../card/card-header-detail/card-header-detail.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -37,7 +38,11 @@ describe('EducationItemComponent', () => {
         CardHeaderImageComponent,
         CardHeaderTitleComponent,
         CardHeaderSubtitleComponent,
-        MockComponents(CardComponent, DateRangeComponent),
+        MockComponents(
+          CardComponent,
+          DateRangeComponent,
+          CardHeaderDetailComponent,
+        ),
       ],
       imports: [NgOptimizedImage],
     })
@@ -141,9 +146,7 @@ describe('EducationItemComponent', () => {
       const dateRangeElement = fixture.debugElement.query(
         By.css(getComponentSelector(DateRangeComponent)),
       )
-      expect(dateRangeElement)
-        .withContext('dates range element exists')
-        .toBeTruthy()
+      expect(dateRangeElement).toBeTruthy()
     })
   })
 })
