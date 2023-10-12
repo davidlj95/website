@@ -1,8 +1,8 @@
 @use 'sass:map';
-@use 'card-header-image/card-header-image-theme';
-@use 'card-header-title/card-header-title-theme';
-@use 'card-header-subtitle/card-header-subtitle-theme';
-@use 'card-header-detail/card-header-detail-theme';
+@use 'card-header/card-header-image/card-header-image-theme';
+@use 'card-header/card-header-title/card-header-title-theme';
+@use 'card-header/card-header-subtitle/card-header-subtitle-theme';
+@use 'card-header/card-header-detail/card-header-detail-theme';
 @use 'animations';
 @use 'borders';
 
