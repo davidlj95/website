@@ -11,6 +11,7 @@ import { DateRange } from '../../date-range/date-range'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header-image/card-header-image.component'
+import { LinkComponent } from '../../link/link.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -33,6 +34,7 @@ describe('EducationItemComponent', () => {
         EducationItemComponent,
         MockComponents(
           CardComponent,
+          LinkComponent,
           CardHeaderImageComponent,
           DateRangeComponent,
         ),
@@ -52,7 +54,12 @@ describe('EducationItemComponent', () => {
       component.item = new EducationItem(newEducationItemArgs)
       fixture.detectChanges()
 
-      const headerImageElement = fixture.debugElement.query(
+      const linkElement = fixture.debugElement.query(
+        By.css(getComponentSelector(LinkComponent)),
+      )
+      expect(linkElement).toBeTruthy()
+
+      const headerImageElement = linkElement.query(
         By.css(getComponentSelector(CardHeaderImageComponent)),
       )
       expect(headerImageElement).toBeTruthy()
