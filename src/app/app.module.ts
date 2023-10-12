@@ -37,6 +37,7 @@ import { TestIdDirective } from './common/test-id.directive'
 import { CardHeaderComponent } from './about/card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from './about/card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from './about/card/card-header/card-header-attributes/card-header-attributes.component'
+import { AttributeComponent } from './about/attribute/attribute.component'
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { CardHeaderAttributesComponent } from './about/card/card-header/card-hea
     CardHeaderComponent,
     CardHeaderTextsComponent,
     CardHeaderAttributesComponent,
+    AttributeComponent,
   ],
   imports: [
     BrowserModule,

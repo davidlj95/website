@@ -20,20 +20,11 @@ import { TestIdDirective } from '../../../common/test-id.directive'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
+import { AttributeComponent } from '../../attribute/attribute.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
   let fixture: ComponentFixture<EducationItemComponent>
-  const newEducationItemArgs: ConstructorParameters<typeof EducationItem>[0] = {
-    institution: new Organization({
-      name: 'Fake institution',
-      image: new URL('https://fake.example.org/logo.png'),
-    }),
-    area: 'Fake area',
-    studyType: 'Fake study type',
-    score: 'Fake score',
-    dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
-  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -51,6 +42,7 @@ describe('EducationItemComponent', () => {
           CardHeaderComponent,
           CardHeaderTextsComponent,
           CardHeaderAttributesComponent,
+          AttributeComponent,
         ),
       ],
       imports: [NgOptimizedImage],
@@ -60,100 +52,116 @@ describe('EducationItemComponent', () => {
   })
 
   it('should create', () => {
+    setEducationItem(fixture)
+
     expect(component).toBeTruthy()
   })
 
-  describe('institution', () => {
-    it('should display institution image with link to its website', () => {
-      const institutionUrl = 'https://example.org/'
-      const fakeEducationItem = new EducationItem({
-        ...newEducationItemArgs,
-        institution: new Organization({
-          name: newEducationItemArgs.institution.name,
-          image: new URL('https://example.org/logo.png'),
-          website: new URL(institutionUrl),
-        }),
-      })
-      component.item = fakeEducationItem
-      fixture.detectChanges()
-
-      const anchorElement = fixture.debugElement
-        .query(byTestId('image'))
-        .query(By.css('a'))
-      expect(anchorElement).toBeTruthy()
-      expect(anchorElement.attributes['href']).toEqual(institutionUrl)
-
-      const imageElement = anchorElement.query(By.css('img'))
-      expect(imageElement).toBeTruthy()
-      expect(imageElement.attributes['src']).toEqual(
-        fakeEducationItem.institution.image.toString(),
-      )
+  it('should display institution image with link to its website', () => {
+    const imageUrl = 'https://example.org/logo.png'
+    const website = 'https://example.org/'
+    const institution = new Organization({
+      name: 'Some cool name',
+      image: new URL(imageUrl),
+      website: new URL(website),
     })
+    setEducationItem(fixture, { institution })
 
-    it("should display institution name with link to company's website", () => {
-      const institutionUrl = 'https://example.org/'
-      const fakeEducationItem = new EducationItem({
-        ...newEducationItemArgs,
-        institution: new Organization({
-          name: newEducationItemArgs.institution.name,
-          image: new URL('https://example.org/logo.png'),
-          website: new URL(institutionUrl),
-        }),
-      })
-      component.item = fakeEducationItem
-      fixture.detectChanges()
+    const anchorElement = fixture.debugElement
+      .query(byTestId('image'))
+      .query(By.css('a'))
+    expect(anchorElement).toBeTruthy()
+    expect(anchorElement.attributes['href']).toEqual(website)
 
-      const anchorElement = fixture.debugElement
-        .query(byTestId('institution-name'))
-        .query(By.css('a'))
-      expect(anchorElement).toBeTruthy()
-      expect(anchorElement.attributes['href']).toEqual(institutionUrl)
+    const imageElement = anchorElement.query(By.css('img'))
+    expect(imageElement).toBeTruthy()
+    expect(imageElement.attributes['src']).toEqual(imageUrl)
+  })
 
-      expect(anchorElement.nativeElement.textContent.trim()).toEqual(
-        fakeEducationItem.institution.name,
+  it("should display institution name with link to company's website", () => {
+    const name = 'Some cool name'
+    const website = 'https://example.org/'
+    const institution = new Organization({
+      name,
+      image: new URL('https://example.org/logo.png'),
+      website: new URL(website),
+    })
+    setEducationItem(fixture, { institution })
+
+    const anchorElement = fixture.debugElement
+      .query(byTestId('institution-name'))
+      .query(By.css('a'))
+    expect(anchorElement).toBeTruthy()
+    expect(anchorElement.attributes['href']).toEqual(website)
+    expect(anchorElement.nativeElement.textContent.trim()).toEqual(name)
+  })
+
+  it('should display area', () => {
+    const area = 'some study area'
+    setEducationItem(fixture, { area })
+
+    const areaElement = fixture.debugElement.query(byTestId('area'))
+    expect(areaElement).toBeTruthy()
+    expect(areaElement.nativeElement.textContent.trim()).toEqual(area)
+  })
+
+  it('should display study type', () => {
+    const studyType = 'Some study type'
+    setEducationItem(fixture, { studyType })
+
+    const studyTypeElement = fixture.debugElement.query(byTestId('study-type'))
+    expect(studyTypeElement).toBeTruthy()
+    expect(studyTypeElement.nativeElement.textContent.trim()).toEqual(studyType)
+  })
+
+  it('should display date range component', () => {
+    setEducationItem(fixture)
+
+    const dateRangeElement = fixture.debugElement.query(
+      By.css(getComponentSelector(DateRangeComponent)),
+    )
+    expect(dateRangeElement).toBeTruthy()
+  })
+
+  describe('when cum laude attribute is not set', () => {
+    it('should not display its attribute', () => {
+      setEducationItem(fixture, { cumLaude: false })
+
+      const cumLaudeAttributeElement = fixture.debugElement.query(
+        byTestId('cum-laude'),
       )
+      expect(cumLaudeAttributeElement).toBeFalsy()
     })
   })
 
-  describe('area', () => {
-    it('should display area', () => {
-      const educationItem = new EducationItem(newEducationItemArgs)
-      component.item = educationItem
-      fixture.detectChanges()
+  describe('when cum laude attribute is set', () => {
+    it('should display its attribute', () => {
+      setEducationItem(fixture, { cumLaude: true })
 
-      const areaElement = fixture.debugElement.query(byTestId('area'))
-      expect(areaElement).toBeTruthy()
-      expect(areaElement.nativeElement.textContent.trim()).toEqual(
-        educationItem.area,
+      const cumLaudeAttributeElement = fixture.debugElement.query(
+        byTestId('cum-laude'),
       )
-    })
-  })
-
-  describe('study type', () => {
-    it('should display study type', () => {
-      const educationItem = new EducationItem(newEducationItemArgs)
-      component.item = educationItem
-      fixture.detectChanges()
-
-      const studyTypeElement = fixture.debugElement.query(
-        byTestId('study-type'),
-      )
-      expect(studyTypeElement).toBeTruthy()
-      expect(studyTypeElement.nativeElement.textContent.trim()).toEqual(
-        educationItem.studyType,
-      )
-    })
-  })
-
-  describe('dates', () => {
-    it('should display date range component', () => {
-      component.item = new EducationItem(newEducationItemArgs)
-      fixture.detectChanges()
-
-      const dateRangeElement = fixture.debugElement.query(
-        By.css(getComponentSelector(DateRangeComponent)),
-      )
-      expect(dateRangeElement).toBeTruthy()
+      expect(cumLaudeAttributeElement).toBeTruthy()
     })
   })
 })
+
+function setEducationItem(
+  fixture: ComponentFixture<EducationItemComponent>,
+  newItemArgOverrides?: Partial<ConstructorParameters<typeof EducationItem>[0]>,
+): void {
+  fixture.componentInstance.item = new EducationItem({
+    institution: new Organization({
+      name: 'Institution name',
+      image: new URL('https://example.org/logo.png'),
+      website: new URL('https://example.org'),
+    }),
+    area: 'Area',
+    studyType: 'Study type',
+    score: 'Score',
+    dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-12-31')),
+    ...newItemArgOverrides,
+  })
+
+  fixture.detectChanges()
+}

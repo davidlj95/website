@@ -1,57 +1,5 @@
-@use 'borders';
-@use 'margins';
-@use 'paddings';
-
 :host {
   app-card {
     height: 100%;
-  }
-
-  .attribute {
-    position: relative;
-    cursor: pointer;
-
-    &:hover {
-      [role='tooltip'] {
-        display: inline-block;
-      }
-    }
-
-    [role='tooltip'] {
-      display: none;
-      font-size: 1rem;
-      position: absolute;
-      width: max-content;
-      right: 100%;
-      margin: 0 margins.$s;
-      padding: paddings.$s;
-      text-align: right;
-      @include borders.panel-style-width();
-    }
-  }
-
-  .chips {
-    display: flex;
-    gap: margins.$s;
-  }
-
-  .chip {
-    padding: paddings.$s;
-    @include borders.panel-style-width;
-    border-radius: 1em;
-    font-size: 1rem;
-
-    &.displayBlockIfNoScript {
-      display: none;
-    }
-  }
-
-  .content {
-    overflow: hidden;
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: margins.$s;
-    }
   }
 }

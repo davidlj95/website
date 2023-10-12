@@ -27,16 +27,13 @@
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      <div class="cum-laude attribute" *ngIf="item.cumLaude">
-        <span
-          [class]="MATERIAL_SYMBOLS_CLASS"
-          [attr.aria-describedby]="cumLaudeAttributeTooltipId"
-          tabindex="0"
-        >
-          {{ MaterialSymbol.SocialLeaderboard }}
-        </span>
-        <div [id]="cumLaudeAttributeTooltipId" role="tooltip">Cum laude</div>
-      </div>
+      <app-attribute
+        *ngIf="item.cumLaude"
+        [id]="getAttributeId('cum-laude')"
+        [symbol]="MaterialSymbol.SocialLeaderboard"
+        tooltipText="Cum laude"
+        appTestId="cum-laude"
+      ></app-attribute>
     </app-card-header-attributes>
   </app-card-header>
 </app-card>
