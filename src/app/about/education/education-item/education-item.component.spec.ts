@@ -13,6 +13,7 @@ import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header-image/card-header-image.component'
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderTitleComponent } from '../../card/card-header-title/card-header-title.component'
+import { CardHeaderSubtitleComponent } from '../../card/card-header-subtitle/card-header-subtitle.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -35,6 +36,7 @@ describe('EducationItemComponent', () => {
         LinkComponent,
         CardHeaderImageComponent,
         CardHeaderTitleComponent,
+        CardHeaderSubtitleComponent,
         MockComponents(CardComponent, DateRangeComponent),
       ],
       imports: [NgOptimizedImage],
@@ -101,29 +103,33 @@ describe('EducationItemComponent', () => {
 
   describe('area', () => {
     it('should display area', () => {
-      const fakeEducationItem = new EducationItem(newEducationItemArgs)
-      component.item = fakeEducationItem
+      const educationItem = new EducationItem(newEducationItemArgs)
+      component.item = educationItem
       fixture.detectChanges()
 
-      const areaElement = fixture.debugElement.query(By.css('.area'))
-      expect(areaElement).withContext('area exists').toBeTruthy()
-      expect(areaElement.nativeElement.textContent.trim())
-        .withContext('area element contains area')
-        .toEqual(fakeEducationItem.area)
+      const areaElement = fixture.debugElement.query(
+        By.css("[data-test-id='area']"),
+      )
+      expect(areaElement).toBeTruthy()
+      expect(areaElement.nativeElement.textContent.trim()).toEqual(
+        educationItem.area,
+      )
     })
   })
 
   describe('study type', () => {
     it('should display study type', () => {
-      const fakeEducationItem = new EducationItem(newEducationItemArgs)
-      component.item = fakeEducationItem
+      const educationItem = new EducationItem(newEducationItemArgs)
+      component.item = educationItem
       fixture.detectChanges()
 
-      const studyTypeElement = fixture.debugElement.query(By.css('.studyType'))
-      expect(studyTypeElement).withContext('study type exists').toBeTruthy()
-      expect(studyTypeElement.nativeElement.textContent.trim())
-        .withContext('study type element contains study type')
-        .toEqual(fakeEducationItem.studyType)
+      const studyTypeElement = fixture.debugElement.query(
+        By.css("[data-test-id='study-type']"),
+      )
+      expect(studyTypeElement).toBeTruthy()
+      expect(studyTypeElement.nativeElement.textContent.trim()).toEqual(
+        educationItem.studyType,
+      )
     })
   })
 

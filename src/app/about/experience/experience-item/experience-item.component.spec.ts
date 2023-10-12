@@ -26,6 +26,7 @@ import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header-image/card-header-image.component'
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderTitleComponent } from '../../card/card-header-title/card-header-title.component'
+import { CardHeaderSubtitleComponent } from '../../card/card-header-subtitle/card-header-subtitle.component'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -48,6 +49,7 @@ describe('ExperienceItem', () => {
         LinkComponent,
         CardHeaderImageComponent,
         CardHeaderTitleComponent,
+        CardHeaderSubtitleComponent,
         MockComponents(CardComponent, DateRangeComponent),
       ],
       imports: [NgOptimizedImage, NoopAnimationsModule],
@@ -117,11 +119,13 @@ describe('ExperienceItem', () => {
       component.item = experienceItem
       fixture.detectChanges()
 
-      const roleElement = fixture.debugElement.query(By.css('.role'))
-      expect(roleElement).withContext('role exists').toBeTruthy()
-      expect(roleElement.nativeElement.textContent.trim())
-        .withContext('role contains role')
-        .toEqual(experienceItem.role)
+      const roleElement = fixture.debugElement.query(
+        By.css("[data-test-id='role']"),
+      )
+      expect(roleElement).toBeTruthy()
+      expect(roleElement.nativeElement.textContent.trim()).toEqual(
+        experienceItem.role,
+      )
     })
   })
   describe('dates', () => {

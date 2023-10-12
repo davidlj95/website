@@ -31,6 +31,7 @@ import { CardComponent } from './about/card/card.component'
 import { CardHeaderImageComponent } from './about/card/card-header-image/card-header-image.component'
 import { CardHeaderTitleComponent } from './about/card/card-header-title/card-header-title.component'
 import { LinkComponent } from './about/link/link.component'
+import { CardHeaderSubtitleComponent } from './about/card/card-header-subtitle/card-header-subtitle.component'
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { LinkComponent } from './about/link/link.component'
     CardHeaderImageComponent,
     CardHeaderTitleComponent,
     LinkComponent,
+    CardHeaderSubtitleComponent,
   ],
   imports: [
     BrowserModule,
