@@ -23,6 +23,7 @@ import { getComponentSelector } from '../../../../test/helpers/component-testers
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
+import { CardHeaderImageComponent } from '../../card/card-header-image/card-header-image.component'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -43,7 +44,11 @@ describe('ExperienceItem', () => {
     TestBed.configureTestingModule({
       declarations: [
         ExperienceItemComponent,
-        MockComponents(CardComponent, DateRangeComponent),
+        MockComponents(
+          CardComponent,
+          CardHeaderImageComponent,
+          DateRangeComponent,
+        ),
       ],
       imports: [NgOptimizedImage, NoopAnimationsModule],
     })
@@ -57,26 +62,13 @@ describe('ExperienceItem', () => {
 
   describe('company', () => {
     it("should display company image with link to company's website", () => {
-      const experienceItem = new ExperienceItem(newExperienceItemArgs)
-      component.item = experienceItem
+      component.item = new ExperienceItem(newExperienceItemArgs)
       fixture.detectChanges()
 
-      const imageContainerElement = fixture.debugElement.query(By.css('.image'))
-      expect(imageContainerElement)
-        .withContext('company image container exists')
-        .toBeTruthy()
-
-      const anchorElement = imageContainerElement.query(By.css('a'))
-      expect(anchorElement).withContext('link exists').toBeTruthy()
-      expect(anchorElement.attributes['href'])
-        .withContext('link points to company website')
-        .toEqual(experienceItem.company.website.toString())
-
-      const imageElement = anchorElement.query(By.css('img'))
-      expect(imageElement).withContext('image exists').toBeTruthy()
-      expect(imageElement.attributes['src'])
-        .withContext('image source points to company image')
-        .toEqual(experienceItem.company.image.toString())
+      const headerImageElement = fixture.debugElement.query(
+        By.css(getComponentSelector(CardHeaderImageComponent)),
+      )
+      expect(headerImageElement).toBeTruthy()
     })
 
     it("should display company name with link to company's website", () => {

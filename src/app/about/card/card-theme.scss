@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'card-header-image/card-header-image-theme';
 @use 'animations';
 @use 'borders';
 
@@ -9,6 +10,8 @@
   app-card {
     background-color: map.get($background-palette, z1);
     border-color: borders.panel-color($theme);
+
+    @include card-header-image-theme.color($theme);
   }
 }
 
@@ -18,5 +21,7 @@
       (background-color, border-color),
       animations.$emphasized-style
     );
+
+    @include card-header-image-theme.motion;
   }
 }

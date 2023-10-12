@@ -3,16 +3,11 @@
 @use 'borders';
 
 @mixin color($theme) {
-  $image-opts: map.get($theme, image);
   $background-palette: map.get($theme, background);
   $text-palette: map.get($theme, text);
 
   app-experience-item {
     .header {
-      img {
-        filter: map.get($image-opts, filter);
-      }
-
       .role,
       .dates {
         color: map.get($text-palette, secondary);
@@ -46,14 +41,6 @@
 
 @mixin motion() {
   app-experience-item {
-    .header {
-      img {
-        @include animations.single-transition(
-          filter,
-          animations.$emphasized-style
-        );
-      }
-    }
     .chip {
       @include animations.multiple-transitions(
         (background-color, color, border-color),

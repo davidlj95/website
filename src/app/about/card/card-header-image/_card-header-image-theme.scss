@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use 'animations';
+
+@mixin color($theme) {
+  app-card-header-image {
+    $image-opts: map.get($theme, image);
+
+    img {
+      filter: map.get($image-opts, filter);
+    }
+  }
+}
+
+@mixin motion {
+  app-card-header-image {
+    img {
+      @include animations.single-transition(
+        filter,
+        animations.$emphasized-style
+      );
+    }
+  }
+}

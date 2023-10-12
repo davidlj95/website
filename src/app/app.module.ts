@@ -28,6 +28,7 @@ import { EducationComponent } from './about/education/education.component'
 import { EducationItemComponent } from './about/education/education-item/education-item.component'
 import { DateRangeComponent } from './about/date-range/date-range.component'
 import { CardComponent } from './about/card/card.component'
+import { CardHeaderImageComponent } from './about/card/card-header-image/card-header-image.component'
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CardComponent } from './about/card/card.component'
     EducationItemComponent,
     DateRangeComponent,
     CardComponent,
+    CardHeaderImageComponent,
   ],
   imports: [
     BrowserModule,

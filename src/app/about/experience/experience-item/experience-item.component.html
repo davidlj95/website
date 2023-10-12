@@ -1,15 +1,11 @@
 <app-card>
   <div class="header">
-    <div class="image">
-      <a [href]="item.company.website.toString()">
-        <img
-          [ngSrc]="item.company.image.toString()"
-          width="64"
-          height="64"
-          alt="{{ item.company.name }} logo"
-        />
-      </a>
-    </div>
+    <app-card-header-image
+      [src]="item.company.image.toString()"
+      [alt]="item.company.name + ' logo'"
+      [href]="item.company.website.toString()"
+    >
+    </app-card-header-image>
     <div class="text">
       <span class="company">
         <a [href]="item.company.website.toString()">
