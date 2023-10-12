@@ -1,8 +1,0 @@
-@use 'education-item/education-item-theme';
-
-@mixin color($theme) {
-  @include education-item-theme.color($theme);
-}
-
-@mixin motion() {
-}
