@@ -1,0 +1,13 @@
+@use 'borders';
+@use 'paddings';
+
+:host {
+  padding: paddings.$s;
+  @include borders.panel-style-width;
+  border-radius: 1em;
+  font-size: 1rem;
+
+  &.selectable {
+    cursor: pointer;
+  }
+}

@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import {
   Attribute,
+  ContentTypeId,
   ExperienceItemComponent,
-  HIGHLIGHT_CONTENT_TYPE,
-  SUMMARY_CONTENT_TYPE,
 } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { NgOptimizedImage } from '@angular/common'
@@ -27,6 +26,7 @@ import { CardHeaderComponent } from '../../card/card-header/card-header.componen
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
+import { ChipComponent } from '../../chip/chip.component'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -59,6 +59,7 @@ describe('ExperienceItem', () => {
           CardHeaderTextsComponent,
           CardHeaderAttributesComponent,
           AttributeComponent,
+          ChipComponent,
         ),
       ],
       imports: [NgOptimizedImage, NoopAnimationsModule],
@@ -290,12 +291,7 @@ describe('ExperienceItem', () => {
         const chipsElement = fixture.debugElement.query(By.css('.chips'))
         expect(chipsElement).withContext('chips container exists').toBeTruthy()
 
-        const chipElements = chipsElement.queryAll(By.css('.chip'))
-        summaryChipElement = chipElements.find(
-          (chipElement) =>
-            chipElement.nativeElement.textContent.trim() ==
-            SUMMARY_CONTENT_TYPE.displayName,
-        )
+        summaryChipElement = chipsElement.query(byTestId(ContentTypeId.Summary))
       })
 
       it('should display summary chip', () => {
@@ -306,12 +302,14 @@ describe('ExperienceItem', () => {
 
       describe('when tapping on the summary chip', () => {
         beforeEach(() => {
-          summaryChipElement!.triggerEventHandler('click')
+          summaryChipElement!.triggerEventHandler('selectedChange')
           fixture.detectChanges()
         })
 
         it('should mark chip as active', () => {
-          expect(summaryChipElement?.classes['active']).toBeTrue()
+          expect(summaryChipElement!.attributes['ng-reflect-selected']).toBe(
+            'true',
+          )
         })
 
         it('should display summary in contents', () => {
@@ -329,12 +327,14 @@ describe('ExperienceItem', () => {
 
         describe('when tapping again on the summary chip', () => {
           beforeEach(() => {
-            summaryChipElement!.triggerEventHandler('click')
+            summaryChipElement!.triggerEventHandler('selectedChange')
             fixture.detectChanges()
           })
 
           it('should not mark chip as active', () => {
-            expect(summaryChipElement?.classes['active']).toBeFalsy()
+            expect(summaryChipElement!.attributes['ng-reflect-selected']).toBe(
+              'false',
+            )
           })
 
           it('should not display summary in contents', () => {
@@ -365,11 +365,8 @@ describe('ExperienceItem', () => {
         const chipsElement = fixture.debugElement.query(By.css('.chips'))
         expect(chipsElement).withContext('chips container exists').toBeTruthy()
 
-        const chipElements = chipsElement.queryAll(By.css('.chip'))
-        highlightsChipElement = chipElements.find(
-          (chipElement) =>
-            chipElement.nativeElement.textContent.trim() ==
-            HIGHLIGHT_CONTENT_TYPE.displayName,
+        highlightsChipElement = chipsElement.query(
+          byTestId(ContentTypeId.Highlights),
         )
       })
 
@@ -381,12 +378,14 @@ describe('ExperienceItem', () => {
 
       describe('when tapping on the highlights chip', () => {
         beforeEach(() => {
-          highlightsChipElement!.triggerEventHandler('click')
+          highlightsChipElement!.triggerEventHandler('selectedChange')
           fixture.detectChanges()
         })
 
         it('should mark chip as active', () => {
-          expect(highlightsChipElement?.classes['active']).toBeTrue()
+          expect(highlightsChipElement!.attributes['ng-reflect-selected']).toBe(
+            'true',
+          )
         })
 
         it('should display highlights in contents', () => {
@@ -408,12 +407,14 @@ describe('ExperienceItem', () => {
         })
         describe('when tapping again on the highlights chip', () => {
           beforeEach(() => {
-            highlightsChipElement!.triggerEventHandler('click')
+            highlightsChipElement!.triggerEventHandler('selectedChange')
             fixture.detectChanges()
           })
 
           it('should not mark chip as active', () => {
-            expect(highlightsChipElement?.classes['active']).toBeFalsy()
+            expect(
+              highlightsChipElement!.attributes['ng-reflect-selected'],
+            ).toBe('false')
           })
 
           it('should not display highlight in contents', () => {

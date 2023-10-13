@@ -98,7 +98,7 @@ export class ExperienceItemComponent {
     })
   }
 
-  onContentTypeClick(contentType: ContentType) {
+  onContentTypeSelected(contentType: ContentType) {
     if (this.activeContentType === contentType) {
       this.activeContentType = undefined
       return
@@ -122,8 +122,8 @@ export class ExperienceItemComponent {
 }
 
 export enum ContentTypeId {
-  Summary,
-  Highlights,
+  Summary = 'summary',
+  Highlights = 'highlights',
 }
 
 interface ContentType {
