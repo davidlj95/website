@@ -7,7 +7,3 @@
     color: map.get($text-palette, secondary);
   }
 }
-
-@mixin motion {
-  @include animations.single-transition(color);
-}
