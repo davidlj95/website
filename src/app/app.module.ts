@@ -38,6 +38,7 @@ import { CardHeaderComponent } from './about/card/card-header/card-header.compon
 import { CardHeaderTextsComponent } from './about/card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from './about/card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from './about/attribute/attribute.component'
+import { ChipComponent } from './about/chip/chip.component'
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { AttributeComponent } from './about/attribute/attribute.component'
     CardHeaderTextsComponent,
     CardHeaderAttributesComponent,
     AttributeComponent,
+    ChipComponent,
   ],
   imports: [
     BrowserModule,

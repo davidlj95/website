@@ -16,15 +16,8 @@
     gap: margins.$s;
   }
 
-  .chip {
-    padding: paddings.$s;
-    @include borders.panel-style-width;
-    border-radius: 1em;
-    font-size: 1rem;
-
-    &.displayBlockIfNoScript {
-      display: none;
-    }
+  .displayBlockIfNoScript {
+    display: none;
   }
 
   .content {

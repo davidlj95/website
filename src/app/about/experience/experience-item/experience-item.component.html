@@ -69,14 +69,14 @@
     </app-card-header-attributes>
   </app-card-header>
   <div class="chips displayNoneIfNoScript" *ngIf="availableContentTypes">
-    <button
-      class="chip"
+    <app-chip
       *ngFor="let chip of availableContentTypes"
-      [class.active]="activeContentType === chip"
-      (click)="onContentTypeClick(chip)"
+      [selected]="activeContentType === chip"
+      (selectedChange)="onContentTypeSelected(chip)"
+      [appTestId]="chip.id"
     >
       {{ chip.displayName }}
-    </button>
+    </app-chip>
   </div>
   <div
     class="chip displayBlockIfNoScript"

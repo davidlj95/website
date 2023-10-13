@@ -2,15 +2,15 @@
 @use 'presentation/presentation-theme';
 @use 'card/card-theme';
 @use 'attribute/attribute-theme';
-@use 'experience/experience-theme';
+@use 'chip/chip-theme';
 
 @mixin color($theme) {
   app-about {
     @include h2-theme.color($theme);
     @include card-theme.color($theme);
     @include presentation-theme.color($theme);
-    @include experience-theme.color($theme);
     @include attribute-theme.color($theme);
+    @include chip-theme.color($theme);
   }
 }
 
@@ -19,8 +19,8 @@
     @include h2-theme.motion;
     @include card-theme.motion;
     @include presentation-theme.motion();
-    @include experience-theme.motion();
     @include attribute-theme.motion;
+    @include chip-theme.motion;
   }
 }
 
