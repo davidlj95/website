@@ -8,9 +8,3 @@
     color: map.get($text-palette, secondary);
   }
 }
-
-@mixin motion {
-  app-card-header-subtitle {
-    @include animations.single-transition(color, animations.$emphasized-style);
-  }
-}

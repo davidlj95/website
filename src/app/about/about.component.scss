@@ -6,15 +6,7 @@
 
 :host {
   display: flex;
-  flex-wrap: wrap;
-
-  > * {
-    flex-grow: 1;
-  }
-
-  app-presentation {
-    flex-basis: 100%;
-  }
+  flex-direction: column;
 }
 
 ::ng-deep app-presentation app-h2 h2 {
