@@ -7,16 +7,6 @@
   $text-palette: map.get($theme, text);
 
   app-experience-item {
-    .attribute {
-      color: map.get($text-palette, secondary);
-
-      [role='tooltip'] {
-        color: map.get($text-palette, primary);
-        background-color: map.get($background-palette, z2);
-        border-color: borders.panel-color($theme);
-      }
-    }
-
     $chip-theme: map.get($theme, chips);
     .chip {
       background-color: map.get($chip-theme, background);

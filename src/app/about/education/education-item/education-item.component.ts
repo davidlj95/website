@@ -16,19 +16,22 @@ export class EducationItemComponent {
   protected readonly MaterialSymbol = {
     SocialLeaderboard,
   }
+  protected readonly Attribute = Attribute
 
   constructor(private slugGenerator: SlugGeneratorService) {}
 
-  public getAttributeId(attributeName: string) {
-    return `${this.itemIdPrefix}-${attributeName}`
+  public getAttributeId(attribute: Attribute) {
+    return `${this.itemIdPrefix}-${attribute}`
   }
 
   private get itemIdPrefix() {
     // TODO: this can fall short if we repeat something in the same institution!
     return this.slugGenerator.generate(this.item.institution.name, {
-      prefix: ITEM_ID_PREFIX,
+      prefix: 'edu-',
     })
   }
 }
 
-export const ITEM_ID_PREFIX = 'edu-'
+export enum Attribute {
+  CumLaude = 'cum-laude',
+}

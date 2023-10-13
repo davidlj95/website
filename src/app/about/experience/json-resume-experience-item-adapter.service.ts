@@ -38,7 +38,7 @@ export class JsonResumeExperienceItemAdapterService {
           : new URL(item.image),
         website: new URL(item.url),
       }),
-      role: item.position,
+      position: item.position,
       summary: item.summary,
       highlights: item.highlights,
       dateRange: new DateRange(
@@ -48,7 +48,7 @@ export class JsonResumeExperienceItemAdapterService {
       freelance: item.freelance,
       internship: item.internship,
       promotions: item.promotions,
-      otherRoles: item.otherRoles,
+      morePositions: item.morePositions,
     })
   }
 

@@ -10,7 +10,6 @@ export class AttributeComponent {
   protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
 
   @Input({ required: true }) symbol!: string
-  @Input({ required: true }) tooltipText!: string
   @Input({ required: true }) id!: string
 
   public get tooltipId() {

@@ -17,69 +17,55 @@
         </app-link>
       </app-card-header-title>
       <app-card-header-subtitle appTestId="role">
-        {{ item.role }}
+        {{ item.position }}
       </app-card-header-subtitle>
       <app-card-header-detail>
         <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      <div class="freelance attribute">
-        <ng-container *ngIf="!item.freelance; else freelance">
-          <span
-            [class]="MATERIAL_SYMBOLS_CLASS"
-            [attr.aria-describedby]="freelanceAttributeTooltipId"
-            tabindex="0"
-          >
-            {{ MaterialSymbol.Badge }}
-          </span>
-          <div [id]="freelanceAttributeTooltipId" role="tooltip">Employee</div>
-        </ng-container>
-        <ng-template #freelance>
-          <span
-            [class]="MATERIAL_SYMBOLS_CLASS"
-            [attr.aria-describedby]="freelanceAttributeTooltipId"
-            tabindex="0"
-          >
-            {{ MaterialSymbol.Work }}
-          </span>
-          <div [id]="freelanceAttributeTooltipId" role="tooltip">Freelance</div>
-        </ng-template>
-      </div>
-      <div class="internship attribute" *ngIf="item.internship">
-        <span
-          [class]="MATERIAL_SYMBOLS_CLASS"
-          [attr.aria-describedby]="internshipAttributeTooltipId"
-          tabindex="0"
+      <app-attribute
+        *ngIf="!item.freelance; else freelance"
+        [symbol]="MaterialSymbol.Badge"
+        [id]="getAttributeId(Attribute.Employee)"
+        [appTestId]="Attribute.Employee"
+      >
+        Employee
+      </app-attribute>
+      <ng-template #freelance>
+        <app-attribute
+          [symbol]="MaterialSymbol.Work"
+          [id]="getAttributeId(Attribute.Freelance)"
+          [appTestId]="Attribute.Freelance"
         >
-          {{ MaterialSymbol.School }}
-        </span>
-        <div [id]="internshipAttributeTooltipId" role="tooltip">Internship</div>
-      </div>
-      <div class="other-roles attribute" *ngIf="item.otherRoles">
-        <span
-          [class]="MATERIAL_SYMBOLS_CLASS"
-          [attr.aria-describedby]="otherRolesAttributeTooltipId"
-          tabindex="0"
-        >
-          {{ MaterialSymbol.More }}
-        </span>
-        <div [id]="otherRolesAttributeTooltipId" role="tooltip">
-          More roles performed during this period. <br />See summary for details
-        </div>
-      </div>
-      <div class="promotions attribute" *ngIf="item.promotions">
-        <span
-          [class]="MATERIAL_SYMBOLS_CLASS"
-          [attr.aria-describedby]="promotionsAttributeTooltipId"
-          tabindex="0"
-        >
-          {{ MaterialSymbol.ToolsLadder }}
-        </span>
-        <div [id]="promotionsAttributeTooltipId" role="tooltip">
-          Promotions during this period. <br />See highlights for details
-        </div>
-      </div>
+          Freelance
+        </app-attribute>
+      </ng-template>
+      <app-attribute
+        *ngIf="item.internship"
+        [symbol]="MaterialSymbol.School"
+        [id]="getAttributeId(Attribute.Internship)"
+        [appTestId]="Attribute.Internship"
+      >
+        Internship
+      </app-attribute>
+      <app-attribute
+        *ngIf="item.morePositions"
+        [symbol]="MaterialSymbol.More"
+        [id]="getAttributeId(Attribute.MorePositions)"
+        [appTestId]="Attribute.MorePositions"
+      >
+        More positions during this period<br />
+        See summary for details
+      </app-attribute>
+      <app-attribute
+        *ngIf="item.promotions"
+        [symbol]="MaterialSymbol.ToolsLadder"
+        [id]="getAttributeId(Attribute.Promotions)"
+        [appTestId]="Attribute.Promotions"
+      >
+        Promotions during this period<br />See highlights for details
+      </app-attribute>
     </app-card-header-attributes>
   </app-card-header>
   <div class="chips displayNoneIfNoScript" *ngIf="availableContentTypes">

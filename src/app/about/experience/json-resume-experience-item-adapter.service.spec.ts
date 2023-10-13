@@ -59,7 +59,7 @@ describe('JsonResumeExperienceItemAdapterService', () => {
         } as JsonResumeWorkItem
         const experienceItem = sut.adapt(jsonResumeWorkItem)
 
-        expect(experienceItem.role).toEqual(jsonResumeWorkItem.position)
+        expect(experienceItem.position).toEqual(jsonResumeWorkItem.position)
         expect(experienceItem.summary).toEqual(jsonResumeWorkItem.summary)
         expect(experienceItem.highlights).toEqual(highlights)
       })
@@ -89,20 +89,20 @@ describe('JsonResumeExperienceItemAdapterService', () => {
       })
 
       // Non JSON Resume standard!
-      it('should map the freelance, internship, promotions and otherRoles fields', () => {
+      it('should map the freelance, internship, promotions and more positions fields', () => {
         const jsonResumeWorkItem: JsonResumeWorkItem = {
           ...sampleJsonResumeWorkItem,
           freelance: true,
           internship: true,
           promotions: true,
-          otherRoles: true,
+          morePositions: true,
         } as unknown as JsonResumeWorkItem
         const experienceItem = sut.adapt(jsonResumeWorkItem)
 
         expect(experienceItem.freelance).toBeTrue()
         expect(experienceItem.internship).toBeTrue()
         expect(experienceItem.promotions).toBeTrue()
-        expect(experienceItem.otherRoles).toBeTrue()
+        expect(experienceItem.morePositions).toBeTrue()
       })
     })
     describe('when images mapping is enabled', () => {
