@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import {
+  Attribute,
   ExperienceItemComponent,
   HIGHLIGHT_CONTENT_TYPE,
   SUMMARY_CONTENT_TYPE,
@@ -7,14 +8,6 @@ import {
 import { ExperienceItem } from './experience-item'
 import { NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
-import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
-import {
-  Badge,
-  More,
-  School,
-  ToolsLadder,
-  Work,
-} from '../../../material-symbols'
 import { DebugElement } from '@angular/core'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { Organization } from '../../organization'
@@ -33,6 +26,7 @@ import { TestIdDirective } from '../../../common/test-id.directive'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
+import { AttributeComponent } from '../../attribute/attribute.component'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -44,7 +38,7 @@ describe('ExperienceItem', () => {
         image: new URL('https://fakeCompany.example.com/logo.jpg'),
       }),
       summary: 'Fake summary',
-      role: 'Fake role',
+      position: 'Fake position',
       dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
     }
 
@@ -64,6 +58,7 @@ describe('ExperienceItem', () => {
           CardHeaderComponent,
           CardHeaderTextsComponent,
           CardHeaderAttributesComponent,
+          AttributeComponent,
         ),
       ],
       imports: [NgOptimizedImage, NoopAnimationsModule],
@@ -136,7 +131,7 @@ describe('ExperienceItem', () => {
       const roleElement = fixture.debugElement.query(byTestId('role'))
       expect(roleElement).toBeTruthy()
       expect(roleElement.nativeElement.textContent.trim()).toEqual(
-        experienceItem.role,
+        experienceItem.position,
       )
     })
   })
@@ -154,263 +149,123 @@ describe('ExperienceItem', () => {
     })
   })
   describe('attributes', () => {
-    function testShouldNotDisplayAttribute(
-      attributeElementGetter: () => DebugElement,
+    function testShouldNotDisplayItsAttribute(
+      fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
+      attribute: Attribute,
     ) {
-      it('should not display attribute', () => {
-        const attributeElement = attributeElementGetter()
-        expect(attributeElement).withContext('attribute element').toBeFalsy()
+      it('should not display its attribute', () => {
+        const fixture = fixtureGetter()
+
+        const attributeElement = fixture.debugElement.query(byTestId(attribute))
+        expect(attributeElement).toBeFalsy()
       })
     }
-    function testShouldDisplayItsIcon(
-      attributeElementGetter: () => DebugElement,
-      {
-        name,
-        icon,
-      }: {
-        name: string
-        icon: string
-      },
+    function testShouldDisplayItsAttribute(
+      fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
+      attribute: Attribute,
     ) {
-      it(`should display its icon (${name})`, () => {
-        const attributeElement = attributeElementGetter()
-        expect(attributeElement)
-          .withContext('attribute element exists')
-          .toBeDefined()
+      it('should display its attribute', () => {
+        const fixture = fixtureGetter()
 
-        const iconElement = attributeElement.query(By.css('span'))
-        expect(iconElement).withContext('icon exists').toBeTruthy()
-        expect(iconElement.classes)
-          .withContext('icon element has material symbols class')
-          .toEqual(jasmine.objectContaining({ [MATERIAL_SYMBOLS_CLASS]: true }))
-        expect(iconElement.nativeElement.textContent.trim())
-          .withContext(`icon is ${name}`)
-          .toEqual(icon)
+        const attributeElement = fixture.debugElement.query(byTestId(attribute))
+        expect(attributeElement).toBeTruthy()
       })
     }
 
-    function testShouldDisplayItsTooltipWithAria(
-      attributeElementGetter: () => DebugElement,
-      text: jasmine.Expected<string>,
-      idGetter: () => string,
-    ) {
-      it('should display its tooltip with its helper text and ARIA support', () => {
-        const attributeElement = attributeElementGetter()
-        expect(attributeElement)
-          .withContext('attribute element exists')
-          .toBeDefined()
-
-        const tooltipElement = attributeElement.query(
-          By.css("[role='tooltip']"),
-        )
-        expect(tooltipElement).withContext('tooltip exists').toBeTruthy()
-        expect(tooltipElement.nativeElement.textContent.trim())
-          .withContext('tooltip contains helper text')
-          .toEqual(text)
-
-        const id = idGetter()
-        const iconElement = attributeElement.query(By.css('span'))
-        expect(iconElement.attributes['aria-describedby'])
-          .withContext('ARIA describedby points to tooltip id')
-          .toEqual(id)
-        expect(iconElement.attributes['tabindex'])
-          .withContext('icon included in tab sequence')
-          .toEqual('0')
-        expect(tooltipElement.attributes['id'])
-          .withContext('Tooltip has id')
-          .toEqual(id)
-      })
-    }
-
-    describe('when experience is not freelance', () => {
-      let experienceItem: ExperienceItem
-      let attributeElement: DebugElement
-
+    describe('when experience is not freelance, therefore it was employee', () => {
       beforeEach(() => {
-        experienceItem = new ExperienceItem({
+        component.item = new ExperienceItem({
           ...newExperienceItemArgs,
           freelance: false,
         })
-        component.item = experienceItem
         fixture.detectChanges()
-
-        attributeElement = fixture.debugElement.query(By.css('.freelance'))
       })
 
-      testShouldDisplayItsIcon(() => attributeElement, {
-        name: 'badge',
-        icon: Badge,
-      })
-      testShouldDisplayItsTooltipWithAria(
-        () => attributeElement,
-        'Employee',
-        () => component.freelanceAttributeTooltipId,
-      )
+      testShouldDisplayItsAttribute(() => fixture, Attribute.Employee)
     })
 
     describe('when experience is freelance', () => {
-      let experienceItem: ExperienceItem
-      let attributeElement: DebugElement
-
       beforeEach(() => {
-        experienceItem = new ExperienceItem({
+        component.item = new ExperienceItem({
           ...newExperienceItemArgs,
           freelance: true,
         })
-
-        component.item = experienceItem
         fixture.detectChanges()
-
-        attributeElement = fixture.debugElement.query(By.css('.freelance'))
       })
 
-      testShouldDisplayItsIcon(() => attributeElement, {
-        name: 'work',
-        icon: Work,
-      })
-      testShouldDisplayItsTooltipWithAria(
-        () => attributeElement,
-        'Freelance',
-        () => component.freelanceAttributeTooltipId,
-      )
+      testShouldDisplayItsAttribute(() => fixture, Attribute.Freelance)
     })
 
     describe('when experience is not an internship', () => {
-      let experienceItem: ExperienceItem
-      let attributeElement: DebugElement
-
       beforeEach(() => {
-        experienceItem = new ExperienceItem({
+        component.item = new ExperienceItem({
           ...newExperienceItemArgs,
           internship: false,
         })
-
-        component.item = experienceItem
         fixture.detectChanges()
-
-        attributeElement = fixture.debugElement.query(By.css('.internship'))
       })
 
-      testShouldNotDisplayAttribute(() => attributeElement)
+      testShouldNotDisplayItsAttribute(() => fixture, Attribute.Internship)
     })
 
     describe('when experience is an internship', () => {
-      let experienceItem: ExperienceItem
-      let attributeElement: DebugElement
-
       beforeEach(() => {
-        experienceItem = new ExperienceItem({
+        component.item = new ExperienceItem({
           ...newExperienceItemArgs,
           internship: true,
         })
-
-        component.item = experienceItem
         fixture.detectChanges()
-
-        attributeElement = fixture.debugElement.query(By.css('.internship'))
       })
 
-      testShouldDisplayItsIcon(() => attributeElement, {
-        name: 'school',
-        icon: School,
-      })
-      testShouldDisplayItsTooltipWithAria(
-        () => attributeElement,
-        'Internship',
-        () => component.internshipAttributeTooltipId,
-      )
+      testShouldDisplayItsAttribute(() => fixture, Attribute.Internship)
     })
 
     describe('when experience contained no promotions', () => {
-      let experienceItem: ExperienceItem
-      let attributeElement: DebugElement
-
       beforeEach(() => {
-        experienceItem = new ExperienceItem({
+        component.item = new ExperienceItem({
           ...newExperienceItemArgs,
           promotions: false,
         })
-
-        component.item = experienceItem
         fixture.detectChanges()
-
-        attributeElement = fixture.debugElement.query(By.css('.promotions'))
       })
 
-      testShouldNotDisplayAttribute(() => attributeElement)
+      testShouldNotDisplayItsAttribute(() => fixture, Attribute.Promotions)
     })
 
     describe('when experience contained promotions', () => {
-      let experienceItem: ExperienceItem
-      let attributeElement: DebugElement
-
       beforeEach(() => {
-        experienceItem = new ExperienceItem({
+        component.item = new ExperienceItem({
           ...newExperienceItemArgs,
           promotions: true,
         })
-
-        component.item = experienceItem
         fixture.detectChanges()
-
-        attributeElement = fixture.debugElement.query(By.css('.promotions'))
       })
 
-      testShouldDisplayItsIcon(() => attributeElement, {
-        name: 'toolsLadder',
-        icon: ToolsLadder,
-      })
-      testShouldDisplayItsTooltipWithAria(
-        () => attributeElement,
-        jasmine.stringContaining('Promotions during this period'),
-        () => component.promotionsAttributeTooltipId,
-      )
+      testShouldDisplayItsAttribute(() => fixture, Attribute.Promotions)
     })
 
-    describe('when experience contained no other roles', () => {
-      let experienceItem: ExperienceItem
-      let attributeElement: DebugElement
-
+    describe('when experience contained no more positions', () => {
       beforeEach(() => {
-        experienceItem = new ExperienceItem({
+        component.item = new ExperienceItem({
           ...newExperienceItemArgs,
-          otherRoles: false,
+          morePositions: false,
         })
-
-        component.item = experienceItem
         fixture.detectChanges()
-
-        attributeElement = fixture.debugElement.query(By.css('.other-roles'))
       })
 
-      testShouldNotDisplayAttribute(() => attributeElement)
+      testShouldNotDisplayItsAttribute(() => fixture, Attribute.MorePositions)
     })
 
-    describe('when experience contained other roles', () => {
-      let experienceItem: ExperienceItem
-      let attributeElement: DebugElement
-
+    describe('when experience contained other positions', () => {
       beforeEach(() => {
-        experienceItem = new ExperienceItem({
+        component.item = new ExperienceItem({
           ...newExperienceItemArgs,
-          otherRoles: true,
+          morePositions: true,
         })
-
-        component.item = experienceItem
         fixture.detectChanges()
-
-        attributeElement = fixture.debugElement.query(By.css('.other-roles'))
       })
 
-      testShouldDisplayItsIcon(() => attributeElement, {
-        name: 'more',
-        icon: More,
-      })
-      testShouldDisplayItsTooltipWithAria(
-        () => attributeElement,
-        jasmine.stringContaining('More roles'),
-        () => component.otherRolesAttributeTooltipId,
-      )
+      testShouldDisplayItsAttribute(() => fixture, Attribute.MorePositions)
     })
   })
   describe('chipped content', () => {

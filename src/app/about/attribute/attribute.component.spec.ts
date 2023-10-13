@@ -3,47 +3,44 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { AttributeComponent } from './attribute.component'
 import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols'
 import { By } from '@angular/platform-browser'
+import { ensureProjectsContent } from '../../../test/helpers/component-testers'
 
 describe('AttributeComponent', () => {
-  let component: AttributeComponent
-  let fixture: ComponentFixture<AttributeComponent>
   const symbol = 'some symbol'
-  const tooltipText = 'some tooltip text'
   const id = 'some-attribute-id'
 
-  beforeEach(() => {
+  function setup(): [ComponentFixture<AttributeComponent>, AttributeComponent] {
     TestBed.configureTestingModule({
       declarations: [AttributeComponent],
     })
-    fixture = TestBed.createComponent(AttributeComponent)
-    component = fixture.componentInstance
+    const fixture = TestBed.createComponent(AttributeComponent)
+    const component = fixture.componentInstance
 
     component.symbol = symbol
-    component.tooltipText = tooltipText
     component.id = id
 
     fixture.detectChanges()
-  })
+
+    return [fixture, component]
+  }
 
   it('should create', () => {
+    const [component] = setup()
+
     expect(component).toBeTruthy()
   })
 
   it('should include the given symbol', () => {
+    const [fixture] = setup()
+
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
     expect(iconElement).toBeTruthy()
     expect(iconElement.nativeElement.textContent.trim()).toEqual(symbol)
   })
 
-  it('should include tooltip text', () => {
-    const tooltipElement = fixture.debugElement.query(
-      By.css("[role='tooltip']"),
-    )
-    expect(tooltipElement).toBeTruthy()
-    expect(tooltipElement.nativeElement.textContent.trim()).toEqual(tooltipText)
-  })
-
   it('should be ARIA accessible: icon is described by tooltip', () => {
+    const [fixture] = setup()
+
     const tooltipId = `${id}-tooltip`
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
     expect(iconElement).toBeTruthy()
@@ -57,8 +54,12 @@ describe('AttributeComponent', () => {
   })
 
   it('should be ARIA accessible: icon is included in tab sequence', () => {
+    const [fixture] = setup()
+
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
     expect(iconElement).toBeTruthy()
     expect(iconElement.attributes['tabindex']).toEqual('0')
   })
+
+  ensureProjectsContent(AttributeComponent, By.css("[role='tooltip']"))
 })

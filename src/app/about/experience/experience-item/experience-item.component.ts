@@ -66,6 +66,7 @@ export class ExperienceItemComponent {
     ToolsLadder,
     More,
   }
+  protected readonly Attribute = Attribute
   protected readonly ContentTypeId = ContentTypeId
   protected readonly isRenderingOnBrowser
 
@@ -87,20 +88,8 @@ export class ExperienceItemComponent {
     return !!this.activeContentType
   }
 
-  public get freelanceAttributeTooltipId() {
-    return this.itemId + '-freelance-tooltip'
-  }
-
-  public get internshipAttributeTooltipId() {
-    return this.itemId + '-internship-tooltip'
-  }
-
-  public get otherRolesAttributeTooltipId() {
-    return this.itemId + '-other-roles-tooltip'
-  }
-
-  public get promotionsAttributeTooltipId() {
-    return this.itemId + '-promotions-tooltip'
+  public getAttributeId(attributeName: string) {
+    return `${this.itemId}${attributeName}`
   }
 
   private get itemId() {
@@ -149,4 +138,11 @@ export const SUMMARY_CONTENT_TYPE: ContentType = {
 export const HIGHLIGHT_CONTENT_TYPE: ContentType = {
   id: ContentTypeId.Highlights,
   displayName: 'Highlights',
+}
+export enum Attribute {
+  Freelance = 'freelance',
+  Employee = 'employee',
+  Internship = 'internship',
+  MorePositions = 'more-positions',
+  Promotions = 'promotions',
 }

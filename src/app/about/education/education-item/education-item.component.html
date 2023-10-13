@@ -29,11 +29,12 @@
     <app-card-header-attributes>
       <app-attribute
         *ngIf="item.cumLaude"
-        [id]="getAttributeId('cum-laude')"
+        [id]="getAttributeId(Attribute.CumLaude)"
         [symbol]="MaterialSymbol.SocialLeaderboard"
-        tooltipText="Cum laude"
-        appTestId="cum-laude"
-      ></app-attribute>
+        [appTestId]="Attribute.CumLaude"
+      >
+        Cum laude
+      </app-attribute>
     </app-card-header-attributes>
   </app-card-header>
 </app-card>

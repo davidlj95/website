@@ -11,29 +11,6 @@
     grid-row: span 2;
   }
 
-  .attribute {
-    position: relative;
-    cursor: pointer;
-
-    &:hover {
-      [role='tooltip'] {
-        display: inline-block;
-      }
-    }
-
-    [role='tooltip'] {
-      display: none;
-      font-size: 1rem;
-      position: absolute;
-      width: max-content;
-      right: 100%;
-      margin: 0 margins.$s;
-      padding: paddings.$s;
-      text-align: right;
-      @include borders.panel-style-width();
-    }
-  }
-
   .chips {
     display: flex;
     gap: margins.$s;

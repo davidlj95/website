@@ -1,4 +1,9 @@
-import { reflectComponentType, Type } from '@angular/core'
+import {
+  DebugElement,
+  Predicate,
+  reflectComponentType,
+  Type,
+} from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { isClass } from './types'
@@ -78,7 +83,10 @@ export function getComponentSelector<C>(component: Type<C>) {
  *
  * @see https://stackoverflow.com/a/61724478/3263250
  */
-export function ensureProjectsContent(component: Type<unknown>) {
+export function ensureProjectsContent(
+  component: Type<unknown>,
+  projectionContainerPredicate?: Predicate<DebugElement>,
+) {
   it(`should project its content`, () => {
     const contentToProject = '<b>Foo</b><i>bar</i>'
     const hostComponent = makeHostComponent(component, contentToProject)
@@ -89,7 +97,12 @@ export function ensureProjectsContent(component: Type<unknown>) {
       By.css(getComponentSelector(component)),
     )
     expect(componentElement).toBeTruthy()
-    expect(componentElement.nativeElement.innerHTML.trim()).toContain(
+
+    const projectionContainerElement = !projectionContainerPredicate
+      ? componentElement
+      : componentElement.query(projectionContainerPredicate)
+    expect(projectionContainerElement).toBeTruthy()
+    expect(projectionContainerElement.nativeElement.innerHTML.trim()).toEqual(
       contentToProject,
     )
   })

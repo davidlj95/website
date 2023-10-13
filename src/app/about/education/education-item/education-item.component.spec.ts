@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { EducationItemComponent } from './education-item.component'
+import { Attribute, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
@@ -128,7 +128,7 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { cumLaude: false })
 
       const cumLaudeAttributeElement = fixture.debugElement.query(
-        byTestId('cum-laude'),
+        byTestId(Attribute.CumLaude),
       )
       expect(cumLaudeAttributeElement).toBeFalsy()
     })
@@ -139,7 +139,7 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { cumLaude: true })
 
       const cumLaudeAttributeElement = fixture.debugElement.query(
-        byTestId('cum-laude'),
+        byTestId(Attribute.CumLaude),
       )
       expect(cumLaudeAttributeElement).toBeTruthy()
     })
