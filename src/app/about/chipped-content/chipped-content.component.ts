@@ -1,8 +1,10 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core'
@@ -25,6 +27,7 @@ export class ChippedContentComponent implements OnInit {
   private HIDDEN_CLASS = 'hidden'
 
   public selectedContentId?: string
+  @Output() contentDisplayedChange = new EventEmitter<boolean>()
 
   ngOnInit(): void {
     const viewContainerRef = this.contentHost
@@ -56,6 +59,7 @@ export class ChippedContentComponent implements OnInit {
     if (this.selectedContentId === id) {
       this.hideContentElement(contentElement)
       this.selectedContentId = undefined
+      this.contentDisplayedChange.emit(false)
       return
     }
 
@@ -64,6 +68,8 @@ export class ChippedContentComponent implements OnInit {
         this.selectedContentId,
       )!
       this.hideContentElement(previousContentElement)
+    } else {
+      this.contentDisplayedChange.emit(true)
     }
 
     this.selectedContentId = id

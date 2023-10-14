@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, HostBinding, Input } from '@angular/core'
 import { ExperienceItem } from './experience-item'
 import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 import {
@@ -48,6 +48,7 @@ import { ExperienceItemHighlightsComponent } from './experience-item-highlights/
   ],
 })
 export class ExperienceItemComponent {
+  static readonly EXPANDED_CLASS = 'expanded'
   @Input({ required: true }) public item!: ExperienceItem
   protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
   protected readonly MaterialSymbol = {
@@ -87,6 +88,8 @@ export class ExperienceItemComponent {
     }
     return contents
   }
+  @HostBinding(`class.${ExperienceItemComponent.EXPANDED_CLASS}`)
+  public expanded?: boolean
 
   constructor(private slugGenerator: SlugGeneratorService) {}
 

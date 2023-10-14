@@ -324,4 +324,48 @@ describe('ExperienceItem', () => {
       expect(mockHighlightsComponent.highlights).toEqual(highlights)
     })
   })
+  describe('when content is displayed', () => {
+    const summary = 'summary'
+    beforeEach(() => {
+      component.item = new ExperienceItem({
+        ...newExperienceItemArgs,
+        summary,
+      })
+      fixture.detectChanges()
+      const chippedContentElement = fixture.debugElement.query(
+        By.css(getComponentSelector(ChippedContentComponent)),
+      )
+      expect(chippedContentElement).toBeTruthy()
+      chippedContentElement.triggerEventHandler('contentDisplayedChange', true)
+      fixture.detectChanges()
+    })
+
+    it('should add the expanded class to the element', () => {
+      expect(
+        fixture.debugElement.classes[ExperienceItemComponent.EXPANDED_CLASS],
+      ).toBeTrue()
+    })
+  })
+  describe('when content is hidden', () => {
+    const summary = 'summary'
+    beforeEach(() => {
+      component.item = new ExperienceItem({
+        ...newExperienceItemArgs,
+        summary,
+      })
+      fixture.detectChanges()
+      const chippedContentElement = fixture.debugElement.query(
+        By.css(getComponentSelector(ChippedContentComponent)),
+      )
+      expect(chippedContentElement).toBeTruthy()
+      chippedContentElement.triggerEventHandler('contentDisplayedChange', false)
+      fixture.detectChanges()
+    })
+
+    it('should remove the expanded class to the element', () => {
+      expect(
+        fixture.debugElement.classes[ExperienceItemComponent.EXPANDED_CLASS],
+      ).toBeFalsy()
+    })
+  })
 })

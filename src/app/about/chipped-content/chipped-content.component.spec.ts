@@ -11,6 +11,7 @@ import {
 } from '../../../test/helpers/visibility'
 import { byTestId } from '../../../test/helpers/test-id'
 import { TestIdDirective } from '../../common/test-id.directive'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-foo',
@@ -124,14 +125,25 @@ describe('ChippedContentComponent', () => {
 
   describe('when tapping on a chip', () => {
     let fooChipElement: DebugElement
+    let subscription: Subscription
+    let contentDisplayed: boolean
 
     beforeEach(() => {
       fooChipElement = fixture.debugElement.query(byTestId(fooContent.id))
       expect(fooChipElement).toBeTruthy()
 
+      subscription = component.contentDisplayedChange.subscribe(
+        (newContentDisplayed) => {
+          contentDisplayed = newContentDisplayed
+        },
+      )
       fooChipElement.triggerEventHandler('selectedChange')
 
       fixture.detectChanges()
+    })
+
+    afterEach(() => {
+      subscription.unsubscribe()
     })
 
     it('should mark the chip as selected', () => {
@@ -144,6 +156,10 @@ describe('ChippedContentComponent', () => {
       )
       expect(fooContentElement).toBeTruthy()
       expectIsVisible(fooContentElement.nativeElement)
+    })
+
+    it('should emit event indicating content has been displayed', () => {
+      expect(contentDisplayed).toBe(true)
     })
 
     describe('when tapping same chip again', () => {
@@ -162,6 +178,10 @@ describe('ChippedContentComponent', () => {
         )
         expect(fooContentElement).toBeTruthy()
         expectIsHidden(fooContentElement.nativeElement)
+      })
+
+      it('should emit event indicating content has been hidden', () => {
+        expect(contentDisplayed).toBe(false)
       })
     })
     describe('when tapping another chip', () => {
@@ -192,6 +212,10 @@ describe('ChippedContentComponent', () => {
         )
         expect(barContentElement).toBeTruthy()
         expectIsVisible(barContentElement.nativeElement)
+      })
+
+      it('should emit event indicating content has been displayed', () => {
+        expect(contentDisplayed).toBe(true)
       })
     })
   })
