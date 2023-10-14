@@ -1,15 +1,19 @@
 import {
   Component,
+  ComponentRef,
   ElementRef,
   EventEmitter,
+  Inject,
   Input,
   OnInit,
   Output,
+  PLATFORM_ID,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
+import { isPlatformBrowser } from '@angular/common'
 
 @Component({
   selector: 'app-chipped-content',
@@ -23,65 +27,62 @@ export class ChippedContentComponent implements OnInit {
   >
   @ViewChild('contentHost', { read: ViewContainerRef, static: true })
   public contentHost!: ViewContainerRef
-  private contentElementRefsById!: Map<string, ElementRef>
   private HIDDEN_CLASS = 'hidden'
-
   public selectedContentId?: string
+  private isRenderingOnBrowser: boolean
   @Output() contentDisplayedChange = new EventEmitter<boolean>()
 
+  constructor(@Inject(PLATFORM_ID) platformId: object) {
+    this.isRenderingOnBrowser = isPlatformBrowser(platformId)
+  }
+
   ngOnInit(): void {
-    const viewContainerRef = this.contentHost
-    this.contentElementRefsById = new Map<string, ElementRef>()
-    viewContainerRef.clear()
+    if (this.isRenderingOnBrowser) {
+      return
+    }
+    this.contentHost.clear()
     for (const content of this.contents) {
       // Add chip for non JS version
-      const chipComponentRef = viewContainerRef.createComponent(ChipComponent)
+      const chipComponentRef = this.contentHost.createComponent(ChipComponent)
       const chipComponentElement = chipComponentRef.location
         .nativeElement as HTMLElement
       chipComponentElement.classList.add('displayBlockIfNoScript')
       chipComponentElement.innerHTML = content.displayName
       // Add content
-      const contentComponentRef = viewContainerRef.createComponent(
-        content.component,
-      )
-      content.setupComponent(contentComponentRef.instance)
+      const contentComponentRef = this.addContentToHost(content)
       this.hideContentElement(contentComponentRef.location)
       const contentComponentElement = contentComponentRef.location
         .nativeElement as HTMLElement
       contentComponentElement.classList.add('displayBlockIfNoScript')
-      this.contentElementRefsById.set(content.id, contentComponentRef.location)
     }
   }
 
   setSelectedContent(id: string) {
-    const contentElement = this.contentElementRefsById.get(id)!
-
+    // Tapping same chip hides content
     if (this.selectedContentId === id) {
-      this.hideContentElement(contentElement)
+      this.contentHost.clear()
       this.selectedContentId = undefined
       this.contentDisplayedChange.emit(false)
       return
     }
-
-    if (this.selectedContentId) {
-      const previousContentElement = this.contentElementRefsById.get(
-        this.selectedContentId,
-      )!
-      this.hideContentElement(previousContentElement)
-    } else {
-      this.contentDisplayedChange.emit(true)
-    }
-
     this.selectedContentId = id
-    this.showContentElement(contentElement)
+    this.contentHost.clear()
+    const content = this.contents.find((content) => content.id === id)!
+    this.addContentToHost(content)
+    this.contentDisplayedChange.emit(true)
   }
 
   private hideContentElement(elementRef: ElementRef) {
     ;(elementRef.nativeElement as HTMLElement).classList.add(this.HIDDEN_CLASS)
   }
-  private showContentElement(elementRef: ElementRef) {
-    ;(elementRef.nativeElement as HTMLElement).classList.remove(
-      this.HIDDEN_CLASS,
+
+  private addContentToHost<T, U>(
+    content: ChippedContent<T, U>,
+  ): ComponentRef<U> {
+    const contentComponentRef = this.contentHost.createComponent(
+      content.component,
     )
+    content.setupComponent(contentComponentRef.instance)
+    return contentComponentRef
   }
 }
