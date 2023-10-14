@@ -25,6 +25,7 @@ import {
   CollapsibleConfiguration,
   DescriptionComponent,
 } from './description.component'
+import { MaterialSymbolDirective } from '../../../common/material-symbol.directive'
 
 describe('DescriptionComponent', () => {
   let component: DescriptionComponent
@@ -34,7 +35,7 @@ describe('DescriptionComponent', () => {
   const CARET_SELECTOR = By.css('.caret')
 
   it('should create', () => {
-    ;[fixture, component] = makeSut()
+    ;[fixture, component] = setup()
     expect(component).toBeTruthy()
   })
 
@@ -59,7 +60,7 @@ describe('DescriptionComponent', () => {
 
   describe('data', () => {
     beforeEach(() => {
-      ;[fixture, component] = makeSut()
+      ;[fixture, component] = setup()
     })
 
     describe('when line does not have data', () => {
@@ -87,7 +88,7 @@ describe('DescriptionComponent', () => {
 
   describe('children', () => {
     beforeEach(() => {
-      ;[fixture, component] = makeSut()
+      ;[fixture, component] = setup()
     })
 
     describe('when does not have children', () => {
@@ -170,7 +171,7 @@ describe('DescriptionComponent', () => {
         html: 'Fake html',
       })
       beforeEach(() => {
-        ;[fixture, component] = makeSut()
+        ;[fixture, component] = setup()
         component.line = fakeLine
         fixture.detectChanges()
       })
@@ -189,7 +190,7 @@ describe('DescriptionComponent', () => {
 
       describe('when depth is below configured depth to start a collapsible', () => {
         beforeEach(() => {
-          ;[fixture, component] = makeSut()
+          ;[fixture, component] = setup()
           component.depth = fakeConfig.collapsibleStartAtDepth - 1
           component.line = fakeLine
           fixture.detectChanges()
@@ -215,7 +216,7 @@ describe('DescriptionComponent', () => {
           let caretElement: DebugElement
 
           beforeEach(() => {
-            ;[fixture, component] = makeSut()
+            ;[fixture, component] = setup()
             configureToBeCollapsible(component)
 
             fixture.detectChanges()
@@ -289,7 +290,7 @@ describe('DescriptionComponent', () => {
 
           describe('when rendering on server', () => {
             beforeEach(() => {
-              ;[fixture, component] = makeSut({
+              ;[fixture, component] = setup({
                 platformId: PLATFORM_SERVER_ID,
               })
               configureToBeCollapsible(component)
@@ -310,7 +311,7 @@ describe('DescriptionComponent', () => {
 
           describe('when rendering on client', () => {
             beforeEach(() => {
-              ;[fixture, component] = makeSut()
+              ;[fixture, component] = setup()
               configureToBeCollapsible(component)
 
               fixture.detectChanges()
@@ -371,7 +372,7 @@ describe('DescriptionComponent', () => {
               ],
             )
             beforeEach(() => {
-              ;[fixture, component] = makeSut()
+              ;[fixture, component] = setup()
               configureToBeCollapsible(component, fakeLineWithManyChildren)
 
               fixture.detectChanges()
@@ -424,13 +425,13 @@ describe('DescriptionComponent', () => {
   })
 })
 
-function makeSut({
+function setup({
   platformId,
 }: {
   platformId?: typeof PLATFORM_BROWSER_ID | typeof PLATFORM_SERVER_ID
 } = {}): [ComponentFixture<DescriptionComponent>, DescriptionComponent] {
   TestBed.configureTestingModule({
-    declarations: [DescriptionComponent],
+    declarations: [DescriptionComponent, MaterialSymbolDirective],
     providers: [
       MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
       MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID),

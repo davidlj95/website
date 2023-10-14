@@ -1,6 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core'
 import { ExperienceItem } from './experience-item'
-import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 import {
   Badge,
   More,
@@ -50,7 +49,6 @@ import { ExperienceItemHighlightsComponent } from './experience-item-highlights/
 export class ExperienceItemComponent {
   static readonly EXPANDED_CLASS = 'expanded'
   @Input({ required: true }) public item!: ExperienceItem
-  protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
   protected readonly MaterialSymbol = {
     Badge,
     Work,

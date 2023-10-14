@@ -23,7 +23,6 @@ import {
   TIMING_FUNCTION,
 } from '../../../common/animations'
 import { DescriptionLine } from '../../../metadata'
-import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 import { SlugGeneratorService } from '../../../common/slug-generator.service'
 
 @Component({
@@ -66,7 +65,6 @@ export class DescriptionComponent {
   protected readonly visibleIfNoScript = true
   @HostBinding('class.hidden') protected hidden = !this.isRenderingOnBrowser
 
-  protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
   private readonly EXPANDED_DEFAULT_NO_JS = true
   private readonly EXPANDED_DEFAULT_JS_ENABLED = false
   public isExpanded = this.isRenderingOnBrowser

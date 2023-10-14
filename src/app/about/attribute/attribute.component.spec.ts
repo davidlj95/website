@@ -4,6 +4,7 @@ import { AttributeComponent } from './attribute.component'
 import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols'
 import { By } from '@angular/platform-browser'
 import { ensureProjectsContent } from '../../../test/helpers/component-testers'
+import { MaterialSymbolDirective } from '../../common/material-symbol.directive'
 
 describe('AttributeComponent', () => {
   const symbol = 'some symbol'
@@ -11,7 +12,7 @@ describe('AttributeComponent', () => {
 
   function setup(): [ComponentFixture<AttributeComponent>, AttributeComponent] {
     TestBed.configureTestingModule({
-      declarations: [AttributeComponent],
+      declarations: [AttributeComponent, MaterialSymbolDirective],
     })
     const fixture = TestBed.createComponent(AttributeComponent)
     const component = fixture.componentInstance
