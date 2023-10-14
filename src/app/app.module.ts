@@ -42,6 +42,7 @@ import { ChipComponent } from './about/chip/chip.component'
 import { ChippedContentComponent } from './about/chipped-content/chipped-content.component'
 import { ExperienceItemSummaryComponent } from './about/experience/experience-item/experience-item-summary/experience-item-summary.component'
 import { ExperienceItemHighlightsComponent } from './about/experience/experience-item/experience-item-highlights/experience-item-highlights.component'
+import { MaterialSymbolDirective } from './common/material-symbol.directive'
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { ExperienceItemHighlightsComponent } from './about/experience/experience
     ChippedContentComponent,
     ExperienceItemSummaryComponent,
     ExperienceItemHighlightsComponent,
+    MaterialSymbolDirective,
   ],
   imports: [
     BrowserModule,

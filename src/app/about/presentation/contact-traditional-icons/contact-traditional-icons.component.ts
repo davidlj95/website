@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
 import { Call, Email, MyLocation } from '../../../material-symbols'
-import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 
 @Component({
   selector: 'app-contact-traditional-icons',
@@ -8,7 +7,6 @@ import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
   styleUrls: ['./contact-traditional-icons.component.scss'],
 })
 export class ContactTraditionalIconsComponent {
-  protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
   public readonly items: ReadonlyArray<{
     name: string
     materialSymbol: string

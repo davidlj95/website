@@ -20,13 +20,9 @@
   </button>
 </ng-template>
 <ng-template #dataTemplate>
-  <span
-    [class]="MATERIAL_SYMBOLS_CLASS"
-    class="symbol"
-    aria-hidden="true"
-    *ngIf="line.data"
-    >{{ line.data.symbol }}</span
-  >
+  <span class="symbol" aria-hidden="true" *ngIf="line.data" appMaterialSymbol>{{
+    line.data.symbol
+  }}</span>
   <span
     class="content"
     [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.data?.html ?? '')"

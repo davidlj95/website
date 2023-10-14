@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core'
 import { EducationItem } from './education-item'
-import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 import { SocialLeaderboard } from '../../../material-symbols'
 import { SlugGeneratorService } from '../../../common/slug-generator.service'
 
@@ -12,7 +11,6 @@ import { SlugGeneratorService } from '../../../common/slug-generator.service'
 export class EducationItemComponent {
   @Input({ required: true }) public item!: EducationItem
 
-  protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
   protected readonly MaterialSymbol = {
     SocialLeaderboard,
   }

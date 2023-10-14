@@ -1,8 +1,4 @@
-<span
-  [class]="MATERIAL_SYMBOLS_CLASS"
-  [attr.aria-describedby]="tooltipId"
-  tabindex="0"
->
+<span [attr.aria-describedby]="tooltipId" tabindex="0" appMaterialSymbol>
   {{ symbol }}
 </span>
 <div [id]="tooltipId" role="tooltip"><ng-content></ng-content></div>

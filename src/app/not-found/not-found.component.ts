@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core'
 import { Lightbulb } from '../material-symbols'
-import { MATERIAL_SYMBOLS_CLASS } from '../common/material-symbols'
 import { Router } from '@angular/router'
 import { Environment } from '../../environments'
 import { ENVIRONMENT } from '../common/injection-tokens'
@@ -12,7 +11,6 @@ import { ENVIRONMENT } from '../common/injection-tokens'
 })
 export class NotFoundComponent {
   public readonly currentUrlInWaybackMachine: URL
-  protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
   protected readonly MaterialSymbol = {
     Lightbulb,
   }
