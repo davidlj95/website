@@ -1,17 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import {
   Attribute,
-  ContentTypeId,
+  ContentId,
   ExperienceItemComponent,
 } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
-import { DebugElement } from '@angular/core'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
-import { getComponentSelector } from '../../../../test/helpers/component-testers'
+import {
+  ensureHasComponent,
+  getComponentSelector,
+} from '../../../../test/helpers/component-testers'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
@@ -27,6 +29,10 @@ import { CardHeaderTextsComponent } from '../../card/card-header/card-header-tex
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChipComponent } from '../../chip/chip.component'
+import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
+import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
+import { ChippedContent } from '../../chipped-content/chipped-content'
+import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -60,6 +66,7 @@ describe('ExperienceItem', () => {
           CardHeaderAttributesComponent,
           AttributeComponent,
           ChipComponent,
+          ChippedContentComponent,
         ),
       ],
       imports: [NgOptimizedImage, NoopAnimationsModule],
@@ -269,164 +276,96 @@ describe('ExperienceItem', () => {
       testShouldDisplayItsAttribute(() => fixture, Attribute.MorePositions)
     })
   })
-  describe('chipped content', () => {
-    describe('when no experience', () => {
-      it('should not display chips container', () => {
-        const chipsElement = fixture.debugElement.query(By.css('.chips'))
-        expect(chipsElement)
-          .withContext("chips container doesn't exist")
-          .toBeFalsy()
+
+  ensureHasComponent(() => fixture, ChippedContentComponent)
+
+  describe('when experience has summary', () => {
+    const summary = 'sample summary'
+    beforeEach(() => {
+      component.item = new ExperienceItem({
+        ...newExperienceItemArgs,
+        summary,
       })
+      fixture.detectChanges()
     })
-    describe('when experience has summary', () => {
-      let summaryChipElement: DebugElement | undefined
-      const experienceItem: ExperienceItem = new ExperienceItem(
-        newExperienceItemArgs,
+
+    it('should generate its content item', () => {
+      const summaryContent = component.contents.find(
+        (content) => content.id === ContentId.Summary,
+      ) as ChippedContent<ContentId, ExperienceItemSummaryComponent>
+      expect(summaryContent).toBeTruthy()
+      expect(summaryContent!.component).toEqual(ExperienceItemSummaryComponent)
+      const mockSummaryComponent = {} as ExperienceItemSummaryComponent
+      summaryContent!.setupComponent(mockSummaryComponent)
+      expect(mockSummaryComponent.summary).toEqual(summary)
+    })
+  })
+
+  describe('when experience has highlights', () => {
+    const highlights = ['Sample highlight 1', 'Sample highlight 2']
+    beforeEach(() => {
+      component.item = new ExperienceItem({
+        ...newExperienceItemArgs,
+        highlights,
+      })
+      fixture.detectChanges()
+    })
+
+    it('should generate its content item', () => {
+      const highlightContent = component.contents.find(
+        (content) => content.id === ContentId.Highlights,
+      ) as ChippedContent<ContentId, ExperienceItemHighlightsComponent>
+      expect(highlightContent).toBeTruthy()
+      expect(highlightContent!.component).toEqual(
+        ExperienceItemHighlightsComponent,
       )
-
-      beforeEach(() => {
-        component.item = experienceItem
-        fixture.detectChanges()
-
-        const chipsElement = fixture.debugElement.query(By.css('.chips'))
-        expect(chipsElement).withContext('chips container exists').toBeTruthy()
-
-        summaryChipElement = chipsElement.query(byTestId(ContentTypeId.Summary))
-      })
-
-      it('should display summary chip', () => {
-        expect(summaryChipElement)
-          .withContext('summary chip exists')
-          .toBeTruthy()
-      })
-
-      describe('when tapping on the summary chip', () => {
-        beforeEach(() => {
-          summaryChipElement!.triggerEventHandler('selectedChange')
-          fixture.detectChanges()
-        })
-
-        it('should mark chip as active', () => {
-          expect(summaryChipElement!.attributes['ng-reflect-selected']).toBe(
-            'true',
-          )
-        })
-
-        it('should display summary in contents', () => {
-          const contentElement = fixture.debugElement.query(
-            By.css('.content.summary'),
-          )
-          expect(contentElement)
-            .withContext('content container exists')
-            .toBeTruthy()
-
-          expect(contentElement.nativeElement.textContent.trim()).toEqual(
-            experienceItem.summary,
-          )
-        })
-
-        describe('when tapping again on the summary chip', () => {
-          beforeEach(() => {
-            summaryChipElement!.triggerEventHandler('selectedChange')
-            fixture.detectChanges()
-          })
-
-          it('should not mark chip as active', () => {
-            expect(summaryChipElement!.attributes['ng-reflect-selected']).toBe(
-              'false',
-            )
-          })
-
-          it('should not display summary in contents', () => {
-            const contentElement = fixture.debugElement.query(
-              By.css('.content.summary'),
-            )
-            expect(contentElement)
-              .withContext('content container does not exist')
-              .toBeFalsy()
-          })
-        })
-      })
+      const mockHighlightsComponent = {} as ExperienceItemHighlightsComponent
+      highlightContent!.setupComponent(mockHighlightsComponent)
+      expect(mockHighlightsComponent.highlights).toEqual(highlights)
     })
-    describe('when experience has highlights', () => {
-      let highlightsChipElement: DebugElement | undefined
-      const highlights: ReadonlyArray<string> = [
-        'Fake highlight 1',
-        'Fake highlight 2',
-      ]
-
-      beforeEach(() => {
-        component.item = new ExperienceItem({
-          ...newExperienceItemArgs,
-          highlights,
-        })
-        fixture.detectChanges()
-
-        const chipsElement = fixture.debugElement.query(By.css('.chips'))
-        expect(chipsElement).withContext('chips container exists').toBeTruthy()
-
-        highlightsChipElement = chipsElement.query(
-          byTestId(ContentTypeId.Highlights),
-        )
+  })
+  describe('when content is displayed', () => {
+    const summary = 'summary'
+    beforeEach(() => {
+      component.item = new ExperienceItem({
+        ...newExperienceItemArgs,
+        summary,
       })
+      fixture.detectChanges()
+      const chippedContentElement = fixture.debugElement.query(
+        By.css(getComponentSelector(ChippedContentComponent)),
+      )
+      expect(chippedContentElement).toBeTruthy()
+      chippedContentElement.triggerEventHandler('contentDisplayedChange', true)
+      fixture.detectChanges()
+    })
 
-      it('should display highlights chip', () => {
-        expect(highlightsChipElement)
-          .withContext('highlights chip exists')
-          .toBeTruthy()
+    it('should add the expanded class to the element', () => {
+      expect(
+        fixture.debugElement.classes[ExperienceItemComponent.EXPANDED_CLASS],
+      ).toBeTrue()
+    })
+  })
+  describe('when content is hidden', () => {
+    const summary = 'summary'
+    beforeEach(() => {
+      component.item = new ExperienceItem({
+        ...newExperienceItemArgs,
+        summary,
       })
+      fixture.detectChanges()
+      const chippedContentElement = fixture.debugElement.query(
+        By.css(getComponentSelector(ChippedContentComponent)),
+      )
+      expect(chippedContentElement).toBeTruthy()
+      chippedContentElement.triggerEventHandler('contentDisplayedChange', false)
+      fixture.detectChanges()
+    })
 
-      describe('when tapping on the highlights chip', () => {
-        beforeEach(() => {
-          highlightsChipElement!.triggerEventHandler('selectedChange')
-          fixture.detectChanges()
-        })
-
-        it('should mark chip as active', () => {
-          expect(highlightsChipElement!.attributes['ng-reflect-selected']).toBe(
-            'true',
-          )
-        })
-
-        it('should display highlights in contents', () => {
-          const contentElement = fixture.debugElement.query(
-            By.css('.content.highlights'),
-          )
-          expect(contentElement)
-            .withContext('content container exists')
-            .toBeTruthy()
-
-          const listElements = contentElement.queryAll(By.css('li'))
-          expect(listElements.length).toEqual(highlights.length)
-          listElements.forEach((listElement, index) => {
-            const highlight = highlights[index]
-            expect(listElement.nativeElement.textContent.trim())
-              .withContext(`list element ${index}`)
-              .toEqual(highlight)
-          })
-        })
-        describe('when tapping again on the highlights chip', () => {
-          beforeEach(() => {
-            highlightsChipElement!.triggerEventHandler('selectedChange')
-            fixture.detectChanges()
-          })
-
-          it('should not mark chip as active', () => {
-            expect(
-              highlightsChipElement!.attributes['ng-reflect-selected'],
-            ).toBe('false')
-          })
-
-          it('should not display highlight in contents', () => {
-            const contentElement = fixture.debugElement.query(
-              By.css('.content.highlights'),
-            )
-            expect(contentElement)
-              .withContext('content container does not exist')
-              .toBeFalsy()
-          })
-        })
-      })
+    it('should remove the expanded class to the element', () => {
+      expect(
+        fixture.debugElement.classes[ExperienceItemComponent.EXPANDED_CLASS],
+      ).toBeFalsy()
     })
   })
 })

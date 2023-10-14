@@ -1,0 +1,10 @@
+@use 'margins';
+
+:host {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: margins.$s;
+  }
+  overflow: hidden;
+}

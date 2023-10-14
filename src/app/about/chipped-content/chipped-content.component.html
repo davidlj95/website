@@ -1,0 +1,11 @@
+<div class="chips displayNoneIfNoScript">
+  <app-chip
+    *ngFor="let content of contents"
+    [selected]="selectedContentId === content.id"
+    (selectedChange)="setSelectedContent(content.id)"
+    [appTestId]="content.id"
+  >
+    {{ content.displayName }}
+  </app-chip>
+</div>
+<ng-template #contentHost></ng-template>

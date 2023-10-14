@@ -1,10 +1,4 @@
-import {
-  Component,
-  HostBinding,
-  Inject,
-  Input,
-  PLATFORM_ID,
-} from '@angular/core'
+import { Component, HostBinding, Input } from '@angular/core'
 import { ExperienceItem } from './experience-item'
 import { MATERIAL_SYMBOLS_CLASS } from '../../../common/material-symbols'
 import {
@@ -26,7 +20,9 @@ import {
   STANDARD_DURATION_MS,
   TIMING_FUNCTION,
 } from '../../../common/animations'
-import { isPlatformBrowser } from '@angular/common'
+import { ChippedContent } from '../../chipped-content/chipped-content'
+import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
+import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 
 @Component({
   selector: 'app-experience-item',
@@ -52,12 +48,8 @@ import { isPlatformBrowser } from '@angular/common'
   ],
 })
 export class ExperienceItemComponent {
+  static readonly EXPANDED_CLASS = 'expanded'
   @Input({ required: true }) public item!: ExperienceItem
-  public readonly contentTypes: ReadonlyArray<ContentType> = [
-    SUMMARY_CONTENT_TYPE,
-    HIGHLIGHT_CONTENT_TYPE,
-  ]
-  public activeContentType?: ContentType
   protected readonly MATERIAL_SYMBOLS_CLASS = MATERIAL_SYMBOLS_CLASS
   protected readonly MaterialSymbol = {
     Badge,
@@ -67,26 +59,39 @@ export class ExperienceItemComponent {
     More,
   }
   protected readonly Attribute = Attribute
-  protected readonly ContentTypeId = ContentTypeId
-  protected readonly isRenderingOnBrowser
 
-  constructor(
-    private slugGenerator: SlugGeneratorService,
-    @Inject(PLATFORM_ID) platformId: object,
-  ) {
-    this.isRenderingOnBrowser = isPlatformBrowser(platformId)
+  public get contents() {
+    const contents = []
+    if (this.item.summary) {
+      contents.push(
+        new ChippedContent({
+          id: ContentId.Summary,
+          displayName: 'Summary',
+          component: ExperienceItemSummaryComponent,
+          setupComponent: (component) => {
+            component.summary = this.item.summary
+          },
+        }),
+      )
+    }
+    if (this.item.highlights.length > 0) {
+      contents.push(
+        new ChippedContent({
+          id: ContentId.Highlights,
+          displayName: 'Highlights',
+          component: ExperienceItemHighlightsComponent,
+          setupComponent: (component) => {
+            component.highlights = this.item.highlights
+          },
+        }),
+      )
+    }
+    return contents
   }
+  @HostBinding(`class.${ExperienceItemComponent.EXPANDED_CLASS}`)
+  public expanded?: boolean
 
-  public get availableContentTypes(): ReadonlyArray<ContentType> {
-    return this.contentTypes.filter((contentType) =>
-      this.typeHasContent(contentType),
-    )
-  }
-
-  @HostBinding('class.active')
-  public get activeClass(): boolean {
-    return !!this.activeContentType
-  }
+  constructor(private slugGenerator: SlugGeneratorService) {}
 
   public getAttributeId(attributeName: string) {
     return `${this.itemId}${attributeName}`
@@ -97,52 +102,17 @@ export class ExperienceItemComponent {
       prefix: 'exp-pos-',
     })
   }
-
-  onContentTypeSelected(contentType: ContentType) {
-    if (this.activeContentType === contentType) {
-      this.activeContentType = undefined
-      return
-    }
-    this.activeContentType = contentType
-  }
-
-  protected typeHasContent(type: ContentType): boolean {
-    switch (type.id) {
-      case ContentTypeId.Summary:
-        return !!this.item?.summary
-      case ContentTypeId.Highlights:
-        return !!this.item && this.item.highlights.length > 0
-      default:
-        return false
-    }
-  }
-
-  protected readonly SUMMARY_CONTENT_TYPE = SUMMARY_CONTENT_TYPE
-  protected readonly HIGHLIGHT_CONTENT_TYPE = HIGHLIGHT_CONTENT_TYPE
 }
 
-export enum ContentTypeId {
-  Summary = 'summary',
-  Highlights = 'highlights',
-}
-
-interface ContentType {
-  id: ContentTypeId
-  displayName: string
-}
-
-export const SUMMARY_CONTENT_TYPE: ContentType = {
-  id: ContentTypeId.Summary,
-  displayName: 'Summary',
-}
-export const HIGHLIGHT_CONTENT_TYPE: ContentType = {
-  id: ContentTypeId.Highlights,
-  displayName: 'Highlights',
-}
 export enum Attribute {
   Freelance = 'freelance',
   Employee = 'employee',
   Internship = 'internship',
   MorePositions = 'more-positions',
   Promotions = 'promotions',
+}
+
+export enum ContentId {
+  Summary = 'summary',
+  Highlights = 'highlights',
 }

@@ -68,49 +68,8 @@
       </app-attribute>
     </app-card-header-attributes>
   </app-card-header>
-  <div class="chips displayNoneIfNoScript" *ngIf="availableContentTypes">
-    <app-chip
-      *ngFor="let chip of availableContentTypes"
-      [selected]="activeContentType === chip"
-      (selectedChange)="onContentTypeSelected(chip)"
-      [appTestId]="chip.id"
-    >
-      {{ chip.displayName }}
-    </app-chip>
-  </div>
-  <div
-    class="chip displayBlockIfNoScript"
-    *ngIf="typeHasContent(SUMMARY_CONTENT_TYPE)"
-  >
-    {{ SUMMARY_CONTENT_TYPE.displayName }}
-  </div>
-  <div
-    class="content summary"
-    @contentActive
-    *ngIf="
-      !isRenderingOnBrowser || activeContentType?.id === ContentTypeId.Summary
-    "
-  >
-    {{ item.summary }}
-  </div>
-  <div
-    class="chip displayBlockIfNoScript"
-    *ngIf="typeHasContent(HIGHLIGHT_CONTENT_TYPE)"
-  >
-    {{ HIGHLIGHT_CONTENT_TYPE.displayName }}
-  </div>
-  <div
-    class="content highlights"
-    @contentActive
-    *ngIf="
-      !isRenderingOnBrowser ||
-      activeContentType?.id === ContentTypeId.Highlights
-    "
-  >
-    <ul>
-      <li *ngFor="let highlight of item.highlights">
-        {{ highlight }}
-      </li>
-    </ul>
-  </div>
+  <app-chipped-content
+    [contents]="contents"
+    (contentDisplayedChange)="expanded = $event"
+  ></app-chipped-content>
 </app-card>
