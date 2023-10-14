@@ -35,7 +35,8 @@
       transition: animations.transition(opacity),
         animations.transition(visibility),
         animations.transition(filter, animations.$emphasized-style),
-        animations.transition(background-color, animations.$emphasized-style);
+        animations.transition(background-color, animations.$emphasized-style),
+        animations.transition(border-color, animations.$emphasized-style);
     }
 
     .comment {

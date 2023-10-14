@@ -18,7 +18,7 @@
   app-about {
     @include h2-theme.motion;
     @include card-theme.motion;
-    @include presentation-theme.motion();
+    @include presentation-theme.motion;
     @include attribute-theme.motion;
     @include chip-theme.motion;
   }

@@ -14,6 +14,8 @@
 @mixin motion() {
   app-presentation {
     @include profile-picture-theme.motion();
+    @include contact-traditional-icons-theme.motion;
+    @include contact-social-icons-theme.motion;
   }
 }
 
