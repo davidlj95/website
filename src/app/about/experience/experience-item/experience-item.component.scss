@@ -1,7 +1,3 @@
-@use 'borders';
-@use 'margins';
-@use 'paddings';
-
 :host {
   app-card {
     height: 100%;
@@ -9,23 +5,5 @@
 
   &.active {
     grid-row: span 2;
-  }
-
-  .chips {
-    display: flex;
-    gap: margins.$s;
-  }
-
-  .displayBlockIfNoScript {
-    display: none;
-  }
-
-  .content {
-    overflow: hidden;
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: margins.$s;
-    }
   }
 }

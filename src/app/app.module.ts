@@ -39,6 +39,9 @@ import { CardHeaderTextsComponent } from './about/card/card-header/card-header-t
 import { CardHeaderAttributesComponent } from './about/card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from './about/attribute/attribute.component'
 import { ChipComponent } from './about/chip/chip.component'
+import { ChippedContentComponent } from './about/chipped-content/chipped-content.component'
+import { ExperienceItemSummaryComponent } from './about/experience/experience-item/experience-item-summary/experience-item-summary.component'
+import { ExperienceItemHighlightsComponent } from './about/experience/experience-item/experience-item-highlights/experience-item-highlights.component'
 
 @NgModule({
   declarations: [
@@ -73,6 +76,9 @@ import { ChipComponent } from './about/chip/chip.component'
     CardHeaderAttributesComponent,
     AttributeComponent,
     ChipComponent,
+    ChippedContentComponent,
+    ExperienceItemSummaryComponent,
+    ExperienceItemHighlightsComponent,
   ],
   imports: [
     BrowserModule,

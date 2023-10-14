@@ -1,0 +1,28 @@
+@use 'margins';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: margins.$m;
+
+  .chips {
+    display: flex;
+    gap: margins.$s;
+  }
+
+  app-chip {
+    display: inline-block;
+  }
+
+  > ::ng-deep app-chip.displayBlockIfNoScript {
+    display: none;
+  }
+
+  > ::ng-deep * {
+    display: block;
+
+    &.hidden {
+      display: none;
+    }
+  }
+}
