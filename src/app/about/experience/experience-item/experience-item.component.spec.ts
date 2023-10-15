@@ -7,7 +7,6 @@ import {
 import { ExperienceItem } from './experience-item'
 import { NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
 import { ensureHasComponent } from '../../../../test/helpers/component-testers'
@@ -57,7 +56,7 @@ describe('ExperienceItem', () => {
           ChippedContentComponent,
         ),
       ],
-      imports: [NgOptimizedImage, NoopAnimationsModule],
+      imports: [NgOptimizedImage],
     })
     fixture = TestBed.createComponent(ExperienceItemComponent)
     component = fixture.componentInstance
