@@ -34,7 +34,7 @@
   [@expanded]="isCollapsible ? isExpanded : true"
 >
   <li *ngFor="let line of line.children">
-    <app-description [line]="line" [depth]="depth + 1" [parent]="this">
-    </app-description>
+    <app-profile-description [line]="line" [depth]="depth + 1" [parent]="this">
+    </app-profile-description>
   </li>
 </ul>

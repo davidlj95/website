@@ -26,9 +26,9 @@ import { DescriptionLine } from '../../../metadata'
 import { SlugGeneratorService } from '../../../common/slug-generator.service'
 
 @Component({
-  selector: 'app-description',
-  templateUrl: './description.component.html',
-  styleUrls: ['./description.component.scss'],
+  selector: 'app-profile-description',
+  templateUrl: './profile-description.component.html',
+  styleUrls: ['./profile-description.component.scss'],
   animations: [
     trigger('expanded', [
       // TODO: Investigate how to set display in state without triggering Angular warning
@@ -55,10 +55,10 @@ import { SlugGeneratorService } from '../../../common/slug-generator.service'
     ]),
   ],
 })
-export class DescriptionComponent {
+export class ProfileDescriptionComponent {
   @Input({ required: true }) public line!: DescriptionLine
   @Input() public depth: number = 0
-  @Input() protected parent?: DescriptionComponent
+  @Input() protected parent?: ProfileDescriptionComponent
 
   // 👇 Using `protected` to avoid being marked as unused
   @HostBinding('class.displayBlockIfNoScript')
@@ -70,8 +70,8 @@ export class DescriptionComponent {
   public isExpanded = this.isRenderingOnBrowser
     ? this.EXPANDED_DEFAULT_JS_ENABLED
     : this.EXPANDED_DEFAULT_NO_JS
-  @ViewChildren(DescriptionComponent)
-  private children!: QueryList<DescriptionComponent>
+  @ViewChildren(ProfileDescriptionComponent)
+  private children!: QueryList<ProfileDescriptionComponent>
 
   constructor(
     protected readonly sanitizer: DomSanitizer,
@@ -115,7 +115,9 @@ export class DescriptionComponent {
     this.parent?.collapseAllChildren({ except: this })
   }
 
-  collapseAllChildren({ except }: { except?: DescriptionComponent } = {}) {
+  collapseAllChildren({
+    except,
+  }: { except?: ProfileDescriptionComponent } = {}) {
     const childrenToCollapse = this.children.filter((child) => child !== except)
     for (const child of childrenToCollapse) {
       child.collapse()

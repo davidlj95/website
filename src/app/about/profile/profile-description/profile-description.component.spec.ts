@@ -22,15 +22,15 @@ import { DescriptionLine, DescriptionLineData } from '../../../metadata'
 import {
   COLLAPSIBLE_CONFIG,
   CollapsibleConfiguration,
-  DescriptionComponent,
-} from './description.component'
+  ProfileDescriptionComponent,
+} from './profile-description.component'
 import { MaterialSymbolDirective } from '../../../common/material-symbol.directive'
 import { byComponent } from '../../../../test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '../../../../test/helpers/get-reflected-attribute'
 
 describe('DescriptionComponent', () => {
-  let component: DescriptionComponent
-  let fixture: ComponentFixture<DescriptionComponent>
+  let component: ProfileDescriptionComponent
+  let fixture: ComponentFixture<ProfileDescriptionComponent>
   const DATA_CLASS_SELECTOR = By.css('.data')
   const LIST_SELECTOR = By.css('ul')
   const CARET_SELECTOR = By.css('.caret')
@@ -133,7 +133,7 @@ describe('DescriptionComponent', () => {
         childrenElements.forEach((childElement, index) => {
           // Contains line element
           const childLineElement = childElement.query(
-            byComponent(DescriptionComponent),
+            byComponent(ProfileDescriptionComponent),
           )
           expect(childLineElement)
             .withContext(`child ${index} line element`)
@@ -205,7 +205,7 @@ describe('DescriptionComponent', () => {
       })
       describe('when depth is set to configured depth to start a collapsible', () => {
         function configureToBeCollapsible(
-          component: DescriptionComponent,
+          component: ProfileDescriptionComponent,
           line?: DescriptionLine,
         ) {
           component.depth = fakeConfig.collapsibleStartAtDepth
@@ -430,16 +430,19 @@ function setup({
   platformId,
 }: {
   platformId?: typeof PLATFORM_BROWSER_ID | typeof PLATFORM_SERVER_ID
-} = {}): [ComponentFixture<DescriptionComponent>, DescriptionComponent] {
+} = {}): [
+  ComponentFixture<ProfileDescriptionComponent>,
+  ProfileDescriptionComponent,
+] {
   TestBed.configureTestingModule({
-    declarations: [DescriptionComponent, MaterialSymbolDirective],
+    declarations: [ProfileDescriptionComponent, MaterialSymbolDirective],
     providers: [
       MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
       MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID),
     ],
     imports: [NoopAnimationsModule],
   })
-  const fixture = TestBed.createComponent(DescriptionComponent)
+  const fixture = TestBed.createComponent(ProfileDescriptionComponent)
   return [fixture, fixture.componentInstance]
 }
 

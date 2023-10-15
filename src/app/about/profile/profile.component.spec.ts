@@ -4,9 +4,9 @@ import { ProfileComponent } from './profile.component'
 import { Metadata } from '../../metadata'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
-import { ContactTraditionalIconsComponent } from './contact-traditional-icons/contact-traditional-icons.component'
-import { ContactSocialIconsComponent } from './contact-social-icons/contact-social-icons.component'
-import { DescriptionComponent } from './description/description.component'
+import { ProfileContactTraditionalIconsComponent } from './profile-contact-traditional-icons/profile-contact-traditional-icons.component'
+import { ProfileContactSocialIconsComponent } from './profile-contact-social-icons/profile-contact-social-icons.component'
+import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
 import { METADATA } from '../../common/injection-tokens'
 import { By } from '@angular/platform-browser'
 import { ensureHasComponents } from '../../../test/helpers/component-testers'
@@ -28,9 +28,9 @@ describe('ProfileComponent', () => {
         MockComponents(
           H2Component,
           ProfilePictureComponent,
-          ContactTraditionalIconsComponent,
-          ContactSocialIconsComponent,
-          DescriptionComponent,
+          ProfileContactTraditionalIconsComponent,
+          ProfileContactSocialIconsComponent,
+          ProfileDescriptionComponent,
         ),
       ],
       providers: [MockProvider(METADATA, fakeMetadata)],
@@ -67,8 +67,8 @@ describe('ProfileComponent', () => {
     () => fixture,
     H2Component,
     ProfilePictureComponent,
-    ContactTraditionalIconsComponent,
-    ContactSocialIconsComponent,
-    DescriptionComponent,
+    ProfileContactTraditionalIconsComponent,
+    ProfileContactSocialIconsComponent,
+    ProfileDescriptionComponent,
   )
 })

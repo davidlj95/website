@@ -1,21 +1,21 @@
 @use 'animations';
 @use 'profile-picture/profile-picture-theme';
-@use 'contact-social-icons/contact-social-icons-theme';
-@use 'contact-traditional-icons/contact-traditional-icons-theme';
+@use 'profile-contact-social-icons/profile-contact-social-icons-theme';
+@use 'profile-contact-traditional-icons/profile-contact-traditional-icons-theme';
 
 @mixin color($theme) {
   app-profile {
     @include profile-picture-theme.color($theme);
-    @include contact-traditional-icons-theme.color($theme);
-    @include contact-social-icons-theme.color($theme);
+    @include profile-contact-traditional-icons-theme.color($theme);
+    @include profile-contact-social-icons-theme.color($theme);
   }
 }
 
 @mixin motion() {
   app-profile {
     @include profile-picture-theme.motion();
-    @include contact-traditional-icons-theme.motion;
-    @include contact-social-icons-theme.motion;
+    @include profile-contact-traditional-icons-theme.motion;
+    @include profile-contact-social-icons-theme.motion;
   }
 }
 

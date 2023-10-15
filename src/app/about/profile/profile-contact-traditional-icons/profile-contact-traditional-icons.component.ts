@@ -2,11 +2,11 @@ import { Component } from '@angular/core'
 import { Call, Email, MyLocation } from '../../../material-symbols'
 
 @Component({
-  selector: 'app-contact-traditional-icons',
-  templateUrl: './contact-traditional-icons.component.html',
-  styleUrls: ['./contact-traditional-icons.component.scss'],
+  selector: 'app-profile-contact-traditional-icons',
+  templateUrl: './profile-contact-traditional-icons.component.html',
+  styleUrls: ['./profile-contact-traditional-icons.component.scss'],
 })
-export class ContactTraditionalIconsComponent {
+export class ProfileContactTraditionalIconsComponent {
   public readonly items: ReadonlyArray<{
     name: string
     materialSymbol: string

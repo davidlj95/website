@@ -6,17 +6,17 @@ import { MockProvider } from 'ng-mocks'
 import { METADATA } from '../../../common/injection-tokens'
 import { Metadata } from '../../../metadata'
 
-import { ContactSocialIconsComponent } from './contact-social-icons.component'
+import { ProfileContactSocialIconsComponent } from './profile-contact-social-icons.component'
 import { byComponent } from '../../../../test/helpers/component-query-predicates'
 
 describe('ContactSocialIconsComponent', () => {
-  let component: ContactSocialIconsComponent
-  let fixture: ComponentFixture<ContactSocialIconsComponent>
+  let component: ProfileContactSocialIconsComponent
+  let fixture: ComponentFixture<ProfileContactSocialIconsComponent>
   const nickname = 'foo'
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ContactSocialIconsComponent, FaIconComponent],
+      declarations: [ProfileContactSocialIconsComponent, FaIconComponent],
       providers: [
         MockProvider(METADATA, { nickname: nickname } as Pick<
           Metadata,
@@ -24,7 +24,7 @@ describe('ContactSocialIconsComponent', () => {
         > as Metadata),
       ],
     })
-    fixture = TestBed.createComponent(ContactSocialIconsComponent)
+    fixture = TestBed.createComponent(ProfileContactSocialIconsComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

@@ -10,11 +10,11 @@ import { METADATA } from '../../../common/injection-tokens'
 import { Metadata } from '../../../metadata'
 
 @Component({
-  selector: 'app-contact-social-icons',
-  templateUrl: './contact-social-icons.component.html',
-  styleUrls: ['./contact-social-icons.component.scss'],
+  selector: 'app-profile-contact-social-icons',
+  templateUrl: './profile-contact-social-icons.component.html',
+  styleUrls: ['./profile-contact-social-icons.component.scss'],
 })
-export class ContactSocialIconsComponent {
+export class ProfileContactSocialIconsComponent {
   public items: ReadonlyArray<{
     name: string
     icon: IconDefinition

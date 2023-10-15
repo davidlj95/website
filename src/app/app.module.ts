@@ -6,9 +6,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { SeoModule } from '@ngaox/seo'
 import { environment } from '../environments'
 import { AboutComponent } from './about/about.component'
-import { ContactSocialIconsComponent } from './about/profile/contact-social-icons/contact-social-icons.component'
-import { ContactTraditionalIconsComponent } from './about/profile/contact-traditional-icons/contact-traditional-icons.component'
-import { DescriptionComponent } from './about/profile/description/description.component'
+import { ProfileContactSocialIconsComponent } from './about/profile/profile-contact-social-icons/profile-contact-social-icons.component'
+import { ProfileContactTraditionalIconsComponent } from './about/profile/profile-contact-traditional-icons/profile-contact-traditional-icons.component'
+import { ProfileDescriptionComponent } from './about/profile/profile-description/profile-description.component'
 import { ProfilePictureComponent } from './about/profile/profile-picture/profile-picture.component'
 
 import { AppRoutingModule } from './app-routing.module'
@@ -56,9 +56,9 @@ import { EducationItemCoursesComponent } from './about/education/education-item/
     JsonldMetadataComponent,
     ReleaseInfoComponent,
     ProfilePictureComponent,
-    ContactTraditionalIconsComponent,
-    ContactSocialIconsComponent,
-    DescriptionComponent,
+    ProfileContactTraditionalIconsComponent,
+    ProfileContactSocialIconsComponent,
+    ProfileDescriptionComponent,
     NotFoundComponent,
     ProfileComponent,
     ExperienceComponent,

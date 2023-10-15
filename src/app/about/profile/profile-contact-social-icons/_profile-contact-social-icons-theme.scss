@@ -3,7 +3,7 @@
 @mixin color($theme) {
   $text-palette: map-get($theme, text);
 
-  app-contact-traditional-icons {
+  app-profile-contact-social-icons {
     color: map-get($theme, icon);
 
     li:hover {
@@ -12,7 +12,7 @@
   }
 }
 @mixin motion {
-  app-contact-traditional-icons {
+  app-profile-contact-social-icons {
     @include animations.single-transition(color, animations.$emphasized-style);
   }
 }
