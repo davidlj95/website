@@ -8,17 +8,6 @@ import {
   Work,
 } from '../../../material-symbols'
 import { SlugGeneratorService } from '../../../common/slug-generator.service'
-import {
-  animate,
-  AUTO_STYLE,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations'
-import {
-  STANDARD_DURATION_MS,
-  TIMING_FUNCTION,
-} from '../../../common/animations'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
@@ -27,24 +16,6 @@ import { ExperienceItemHighlightsComponent } from './experience-item-highlights/
   selector: 'app-experience-item',
   templateUrl: './experience-item.component.html',
   styleUrls: ['./experience-item.component.scss'],
-  animations: [
-    trigger('contentActive', [
-      transition(':enter', [
-        style({ height: '0', visibility: 'hidden' }),
-        animate(
-          `${STANDARD_DURATION_MS}ms ${TIMING_FUNCTION}`,
-          style({ height: AUTO_STYLE, visibility: AUTO_STYLE }),
-        ),
-      ]),
-      transition(':leave', [
-        style({ height: AUTO_STYLE, visibility: AUTO_STYLE }),
-        animate(
-          `${STANDARD_DURATION_MS}ms ${TIMING_FUNCTION}`,
-          style({ height: '0', visibility: 'hidden' }),
-        ),
-      ]),
-    ]),
-  ],
 })
 export class ExperienceItemComponent {
   static readonly EXPANDED_CLASS = 'expanded'
