@@ -8,7 +8,6 @@ import {
 import { By } from '@angular/platform-browser'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { MockProvider } from 'ng-mocks'
-import { getComponentSelector } from '../../../../test/helpers/component-testers'
 import { MATERIAL_SYMBOLS_SELECTOR } from '../../../../test/helpers/material-symbols'
 import {
   PLATFORM_BROWSER_ID,
@@ -26,6 +25,7 @@ import {
   DescriptionComponent,
 } from './description.component'
 import { MaterialSymbolDirective } from '../../../common/material-symbol.directive'
+import { byComponent } from '../../../../test/helpers/component-query-predicates'
 
 describe('DescriptionComponent', () => {
   let component: DescriptionComponent
@@ -132,7 +132,7 @@ describe('DescriptionComponent', () => {
         childrenElements.forEach((childElement, index) => {
           // Contains line element
           const childLineElement = childElement.query(
-            By.css(getComponentSelector(DescriptionComponent)),
+            byComponent(DescriptionComponent),
           )
           expect(childLineElement)
             .withContext(`child ${index} line element`)

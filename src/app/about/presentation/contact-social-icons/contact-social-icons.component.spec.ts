@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { FaIconComponent } from '@fortawesome/angular-fontawesome'
 import { MockProvider } from 'ng-mocks'
-import { getComponentSelector } from '../../../../test/helpers/component-testers'
 import { METADATA } from '../../../common/injection-tokens'
 import { Metadata } from '../../../metadata'
 
 import { ContactSocialIconsComponent } from './contact-social-icons.component'
+import { byComponent } from '../../../../test/helpers/component-query-predicates'
 
 describe('ContactSocialIconsComponent', () => {
   let component: ContactSocialIconsComponent
@@ -58,9 +58,7 @@ describe('ContactSocialIconsComponent', () => {
       .toBe(component.items.length)
     component.items.forEach((item, index) => {
       const itemElement = itemElements[index]
-      const iconElement = itemElement.query(
-        By.css(getComponentSelector(FaIconComponent)),
-      )
+      const iconElement = itemElement.query(byComponent(FaIconComponent))
       expect(getIconNameFromFontAwesomeElement(iconElement))
         .withContext(`item ${index} icon`)
         .toEqual(item.icon.iconName)

@@ -5,8 +5,7 @@ import { MockComponents } from 'ng-mocks'
 import { H2Component } from '../h2/h2.component'
 import { EducationItemComponent } from './education-item/education-item.component'
 import { EducationItemsService } from './education-items.service'
-import { By } from '@angular/platform-browser'
-import { getComponentSelector } from '../../../test/helpers/component-testers'
+import { byComponent } from '../../../test/helpers/component-query-predicates'
 
 describe('EducationComponent', () => {
   let component: EducationComponent
@@ -31,7 +30,7 @@ describe('EducationComponent', () => {
   it('should display all items', () => {
     const educationItemsService = TestBed.inject(EducationItemsService)
     const educationItemElements = fixture.debugElement.queryAll(
-      By.css(getComponentSelector(EducationItemComponent)),
+      byComponent(EducationItemComponent),
     )
     expect(educationItemElements.length).toBe(
       educationItemsService.getEducationItems().length,
