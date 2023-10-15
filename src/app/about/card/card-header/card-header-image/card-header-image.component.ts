@@ -8,5 +8,4 @@ import { Component, Input } from '@angular/core'
 export class CardHeaderImageComponent {
   @Input({ required: true }) src!: string
   @Input({ required: true }) alt!: string
-  @Input() href?: string
 }

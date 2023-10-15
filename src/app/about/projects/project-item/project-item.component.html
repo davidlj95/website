@@ -1,1 +1,9 @@
-<p>project-item works!</p>
+<app-card>
+  <app-card-header>
+    <app-card-header-image
+      *ngIf="item.image"
+      [src]="item.image.toString()"
+      [alt]="item.name + ' logo'"
+    ></app-card-header-image>
+  </app-card-header>
+</app-card>

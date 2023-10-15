@@ -3,6 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ProjectsComponent } from './projects.component'
 import { MockComponents } from 'ng-mocks'
 import { H2Component } from '../h2/h2.component'
+import { byComponent } from '../../../test/helpers/component-query-predicates'
+import { ProjectItemsService } from './project-items.service'
+import { ProjectItemComponent } from './project-item/project-item.component'
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent
@@ -10,7 +13,10 @@ describe('ProjectsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectsComponent, MockComponents(H2Component)],
+      declarations: [
+        ProjectsComponent,
+        MockComponents(H2Component, ProjectItemComponent),
+      ],
     })
     fixture = TestBed.createComponent(ProjectsComponent)
     component = fixture.componentInstance
@@ -19,5 +25,13 @@ describe('ProjectsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
+  })
+
+  it('should display all projects', () => {
+    const projectItemsService = TestBed.inject(ProjectItemsService)
+    const projectItemElements = fixture.debugElement.queryAll(
+      byComponent(ProjectItemComponent),
+    )
+    expect(projectItemElements.length).toEqual(projectItemsService.get().length)
   })
 })
