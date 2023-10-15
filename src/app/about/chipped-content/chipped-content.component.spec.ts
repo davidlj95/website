@@ -21,6 +21,7 @@ import {
   byComponent,
   getComponentSelector,
 } from '../../../test/helpers/component-query-predicates'
+import { getReflectedAttribute } from '../../../test/helpers/get-reflected-attribute'
 
 @Component({
   selector: 'app-foo',
@@ -94,7 +95,7 @@ describe('ChippedContentComponent', () => {
       expect(chipElements.length).toEqual(contents.length)
       chipElements.forEach((chipElement, index) => {
         const content = contents[index]
-        expect(chipElement.attributes['ng-reflect-selected'])
+        expect(getReflectedAttribute(chipElement, 'selected'))
           .withContext(`chip ${index} is unselected`)
           .toBe('false')
         expect(chipElement.nativeElement.textContent.trim())
@@ -204,7 +205,7 @@ describe('ChippedContentComponent', () => {
       })
 
       it('should mark the chip as selected', () => {
-        expect(fooChipElement.attributes['ng-reflect-selected']).toBe('true')
+        expect(getReflectedAttribute(fooChipElement, 'selected')).toBe('true')
       })
 
       it('should display its content', () => {
@@ -226,7 +227,9 @@ describe('ChippedContentComponent', () => {
         })
 
         it('should mark the chip as unselected', () => {
-          expect(fooChipElement.attributes['ng-reflect-selected']).toBe('false')
+          expect(getReflectedAttribute(fooChipElement, 'selected')).toBe(
+            'false',
+          )
         })
 
         it('should remove its content', () => {
@@ -252,8 +255,10 @@ describe('ChippedContentComponent', () => {
         })
 
         it('should mark the previous chip as unselected and just tapped chip as selected', () => {
-          expect(fooChipElement.attributes['ng-reflect-selected']).toBe('false')
-          expect(barChipElement.attributes['ng-reflect-selected']).toBe('true')
+          expect(getReflectedAttribute(fooChipElement, 'selected')).toBe(
+            'false',
+          )
+          expect(getReflectedAttribute(barChipElement, 'selected')).toBe('true')
         })
 
         it('should remove its content and display the content of the tapped chip', () => {
