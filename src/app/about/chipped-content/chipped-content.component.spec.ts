@@ -1,6 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing'
 import { ChippedContentComponent } from './chipped-content.component'
-import { Component, DebugElement, PLATFORM_ID } from '@angular/core'
+import {
+  Component,
+  DebugElement,
+  EventEmitter,
+  PLATFORM_ID,
+} from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { By } from '@angular/platform-browser'
 import { ChipComponent } from '../chip/chip.component'
@@ -10,7 +20,7 @@ import {
 } from '../../../test/helpers/visibility'
 import { byTestId } from '../../../test/helpers/test-id'
 import { TestIdDirective } from '../../common/test-id.directive'
-import { Subscription } from 'rxjs'
+import { firstValueFrom, Subscription } from 'rxjs'
 import { MockProvider } from 'ng-mocks'
 import {
   PLATFORM_BROWSER_ID,
@@ -40,12 +50,16 @@ class BarComponent {
 
 describe('ChippedContentComponent', () => {
   const fooContentData = 'foo-data'
+  const fooComponentAnimationDone = new EventEmitter<void>()
   const fooContent = new ChippedContent({
     id: 'foo',
     displayName: 'Foo',
     component: FooComponent,
     setupComponent: (component) => {
       component.data = fooContentData
+    },
+    waitForAnimationEnd: async () => {
+      await firstValueFrom(fooComponentAnimationDone)
     },
   })
   const barContentData = 'bar-data'
@@ -217,7 +231,7 @@ describe('ChippedContentComponent', () => {
       })
 
       it('should emit event indicating content has been displayed', () => {
-        expect(contentDisplayed).toBe(true)
+        expect(contentDisplayed).toBeTrue()
       })
 
       describe('when tapping same chip again', () => {
@@ -239,9 +253,12 @@ describe('ChippedContentComponent', () => {
           expect(fooContentElement).toBeFalsy()
         })
 
-        it('should emit event indicating content has removed', () => {
-          expect(contentDisplayed).toBe(false)
-        })
+        it('should wait for animation to end and then emit event indicating content has been removed', fakeAsync(() => {
+          expect(contentDisplayed).toBeTrue()
+          fooComponentAnimationDone.emit()
+          tick()
+          expect(contentDisplayed).toBeFalse()
+        }))
       })
       describe('when tapping another chip', () => {
         let barChipElement: DebugElement
@@ -275,7 +292,7 @@ describe('ChippedContentComponent', () => {
         })
 
         it('should emit event indicating content has been displayed', () => {
-          expect(contentDisplayed).toBe(true)
+          expect(contentDisplayed).toBeTrue()
         })
       })
     })
