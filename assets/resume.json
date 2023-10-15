@@ -345,6 +345,7 @@
       "url": "https://vestoapp.com",
       "image": "https://i.imgur.com/54OVtLi.png",
       "startDate": "2022-10-10",
+      "endDate": "2023-07-14",
       "entity": "Vesto",
       "roles": ["Senior software engineer", "Backend"],
       "keywords": [
