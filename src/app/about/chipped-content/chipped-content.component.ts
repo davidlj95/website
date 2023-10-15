@@ -72,8 +72,12 @@ export class ChippedContentComponent implements OnInit {
     this.selectedContentId = id
     this.contentHost.clear()
     const content = this.contents.find((content) => content.id === id)!
-    this.addContentToHost(content)
+    const componentRef = this.addContentToHost(content)
     this.contentDisplayedChange.emit(true)
+    await content.waitForAnimationEnd(componentRef.instance)
+    ;(componentRef.location.nativeElement as HTMLElement).scrollIntoView({
+      block: 'nearest',
+    })
   }
 
   private hideContentElement(elementRef: ElementRef) {
