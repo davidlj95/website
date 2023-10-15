@@ -34,6 +34,7 @@ export class JsonResumeEducationItemAdapterService {
         image: this.mapJsonResumeImages
           ? this.imageUrlFromInstitutionName(item.shortName ?? item.institution)
           : new URL(item.image),
+        shortName: item.shortName,
       }),
       area: item.area,
       studyType: item.studyType,
