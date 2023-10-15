@@ -168,7 +168,7 @@
       "studyType": "Master's degree",
       "startDate": "2017-09-20",
       "endDate": "2018-09-20",
-      "score": "Avg: 8.14/10, (3.38/4 GPA). Unfinished",
+      "score": "Unfinished. 8.14 over 10 (3.38 over 4 GPA)",
       "courses": [
         "Digital Identity",
         "Legislation and Regulation",
@@ -186,7 +186,7 @@
       "studyType": "University degree",
       "startDate": "2013-09-13",
       "endDate": "2017-06-20",
-      "score": "Cum laude, Avg: 8.86/10 (3.85/4 GPA)",
+      "score": "Cum laude. 8.86 over 10 (3.85 over 4 GPA)",
       "courses": [
         "Algebra and Calculus",
         "Electricity and Electronics",
@@ -217,7 +217,7 @@
       "studyType": "High school",
       "startDate": "2011-09-13",
       "endDate": "2013-06-01",
-      "score": "Cum laude, Avg: 9.76/10 (3.96 GPA)",
+      "score": "Cum laude. 9.76 over 10 (3.96 over 4 GPA)",
       "courses": [
         "Catalan",
         "Spanish",

@@ -18,9 +18,9 @@ import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations
   animations: [slideDownOnEnterAndSlideUpOnLeave('enterAndLeave')],
 })
 export class ExperienceItemHighlightsComponent {
-  @HostBinding('@enterAndLeave') public enterAndLeaveAnimation = true
   @Input({ required: true }) public highlights!: readonly string[]
 
+  @HostBinding('@enterAndLeave') public enterAndLeaveAnimation = true
   public enterAndLeaveAnimationDone = new EventEmitter<void>()
   @HostListener('@enterAndLeave.done')
   protected onEnterAndLeaveAnimationDone() {

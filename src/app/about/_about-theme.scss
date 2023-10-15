@@ -3,6 +3,7 @@
 @use 'card/card-theme';
 @use 'attribute/attribute-theme';
 @use 'chip/chip-theme';
+@use 'education/education-item/education-item-courses/education-item-courses-theme';
 
 @mixin color($theme) {
   app-about {
@@ -11,6 +12,7 @@
     @include presentation-theme.color($theme);
     @include attribute-theme.color($theme);
     @include chip-theme.color($theme);
+    @include education-item-courses-theme.color($theme);
   }
 }
 
@@ -21,6 +23,7 @@
     @include presentation-theme.motion;
     @include attribute-theme.motion;
     @include chip-theme.motion;
+    @include education-item-courses-theme.motion;
   }
 }
 

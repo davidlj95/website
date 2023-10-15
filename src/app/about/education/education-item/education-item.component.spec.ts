@@ -1,6 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing'
 
-import { Attribute, EducationItemComponent } from './education-item.component'
+import {
+  Attribute,
+  ContentId,
+  EducationItemComponent,
+} from './education-item.component'
 import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
@@ -21,6 +30,11 @@ import { CardHeaderTextsComponent } from '../../card/card-header/card-header-tex
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { byComponent } from '../../../../test/helpers/component-query-predicates'
+import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
+import { ChippedContent } from '../../chipped-content/chipped-content'
+import { EventEmitter } from '@angular/core'
+import { EducationItemScoreComponent } from './education-item-score/education-item-score.component'
+import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -43,6 +57,7 @@ describe('EducationItemComponent', () => {
           CardHeaderTextsComponent,
           CardHeaderAttributesComponent,
           AttributeComponent,
+          ChippedContentComponent,
         ),
       ],
       imports: [NgOptimizedImage],
@@ -67,6 +82,7 @@ describe('EducationItemComponent', () => {
     })
     setEducationItem(fixture, { institution })
 
+    // noinspection DuplicatedCode
     const anchorElement = fixture.debugElement
       .query(byTestId('image'))
       .query(By.css('a'))
@@ -117,20 +133,18 @@ describe('EducationItemComponent', () => {
   it('should display date range component', () => {
     setEducationItem(fixture)
 
-    const dateRangeElement = fixture.debugElement.query(
-      byComponent(DateRangeComponent),
-    )
-    expect(dateRangeElement).toBeTruthy()
+    expect(
+      fixture.debugElement.query(byComponent(DateRangeComponent)),
+    ).toBeTruthy()
   })
 
   describe('when cum laude attribute is not set', () => {
     it('should not display its attribute', () => {
       setEducationItem(fixture, { cumLaude: false })
 
-      const cumLaudeAttributeElement = fixture.debugElement.query(
-        byTestId(Attribute.CumLaude),
-      )
-      expect(cumLaudeAttributeElement).toBeFalsy()
+      expect(
+        fixture.debugElement.query(byTestId(Attribute.CumLaude)),
+      ).toBeFalsy()
     })
   })
 
@@ -138,11 +152,84 @@ describe('EducationItemComponent', () => {
     it('should display its attribute', () => {
       setEducationItem(fixture, { cumLaude: true })
 
-      const cumLaudeAttributeElement = fixture.debugElement.query(
-        byTestId(Attribute.CumLaude),
-      )
-      expect(cumLaudeAttributeElement).toBeTruthy()
+      expect(
+        fixture.debugElement.query(byTestId(Attribute.CumLaude)),
+      ).toBeTruthy()
     })
+  })
+
+  it('should add chipped contents component', () => {
+    setEducationItem(fixture)
+
+    expect(
+      fixture.debugElement.query(byComponent(ChippedContentComponent)),
+    ).toBeTruthy()
+  })
+
+  describe('when score is present', () => {
+    const score = 'Very good++'
+
+    beforeEach(() => {
+      setEducationItem(fixture, { score })
+    })
+
+    it('should add score content', fakeAsync(() => {
+      const scoreContent = component.contents.find(
+        (content) => content.id === ContentId.Score,
+      ) as ChippedContent<ContentId, EducationItemScoreComponent>
+      expect(scoreContent).toBeTruthy()
+
+      expect(scoreContent!.component).toEqual(EducationItemScoreComponent)
+
+      const mockScoreComponent = {
+        enterAndLeaveAnimationDone: new EventEmitter<void>(),
+      } as EducationItemScoreComponent
+      scoreContent!.setupComponent(mockScoreComponent)
+      expect(mockScoreComponent.score).toEqual(score)
+
+      let endedAnimation = false
+      scoreContent
+        .waitForAnimationEnd(mockScoreComponent)
+        .then(() => (endedAnimation = true))
+      tick()
+      expect(endedAnimation).toBeFalse()
+      mockScoreComponent.enterAndLeaveAnimationDone.emit()
+      tick()
+      expect(endedAnimation).toBeTrue()
+    }))
+  })
+
+  describe('when courses are not empty', () => {
+    const courses = ['Course 1', 'Course 2']
+
+    beforeEach(() => {
+      setEducationItem(fixture, { courses })
+    })
+
+    it('should add courses content', fakeAsync(() => {
+      const coursesContent = component.contents.find(
+        (content) => content.id === ContentId.Courses,
+      ) as ChippedContent<ContentId, EducationItemCoursesComponent>
+      expect(coursesContent).toBeTruthy()
+
+      expect(coursesContent!.component).toEqual(EducationItemCoursesComponent)
+
+      const mockCoursesComponent = {
+        enterAndLeaveAnimationDone: new EventEmitter<void>(),
+      } as EducationItemCoursesComponent
+      coursesContent!.setupComponent(mockCoursesComponent)
+      expect(mockCoursesComponent.courses).toEqual(courses)
+
+      let endedAnimation = false
+      coursesContent
+        .waitForAnimationEnd(mockCoursesComponent)
+        .then(() => (endedAnimation = true))
+      tick()
+      expect(endedAnimation).toBeFalse()
+      mockCoursesComponent.enterAndLeaveAnimationDone.emit()
+      tick()
+      expect(endedAnimation).toBeTrue()
+    }))
   })
 })
 
