@@ -27,5 +27,7 @@
     );
 
     @include card-header-image-theme.motion;
+    @include card-header-subtitle-theme.motion;
+    @include card-header-detail-theme.motion;
   }
 }

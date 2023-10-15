@@ -1,3 +1,5 @@
+@use 'animations';
+
 @mixin color($theme) {
   $text-palette: map-get($theme, text);
 
@@ -7,5 +9,10 @@
     li:hover {
       color: map-get($text-palette, secondary);
     }
+  }
+}
+@mixin motion {
+  app-contact-social-icons {
+    @include animations.single-transition(color, animations.$emphasized-style);
   }
 }
