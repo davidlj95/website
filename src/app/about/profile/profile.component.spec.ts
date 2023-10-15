@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { PresentationComponent } from './presentation.component'
+import { ProfileComponent } from './profile.component'
 import { Metadata } from '../../metadata'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
@@ -12,9 +12,9 @@ import { By } from '@angular/platform-browser'
 import { ensureHasComponents } from '../../../test/helpers/component-testers'
 import { H2Component } from '../h2/h2.component'
 
-describe('PresentationComponent', () => {
-  let component: PresentationComponent
-  let fixture: ComponentFixture<PresentationComponent>
+describe('ProfileComponent', () => {
+  let component: ProfileComponent
+  let fixture: ComponentFixture<ProfileComponent>
   const fakeMetadata: Metadata = {
     nickname: 'Fake nickname',
     realName: 'Fake real name',
@@ -24,7 +24,7 @@ describe('PresentationComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        PresentationComponent,
+        ProfileComponent,
         MockComponents(
           H2Component,
           ProfilePictureComponent,
@@ -35,7 +35,7 @@ describe('PresentationComponent', () => {
       ],
       providers: [MockProvider(METADATA, fakeMetadata)],
     })
-    fixture = TestBed.createComponent(PresentationComponent)
+    fixture = TestBed.createComponent(ProfileComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
