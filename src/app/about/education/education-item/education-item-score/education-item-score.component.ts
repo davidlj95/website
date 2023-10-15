@@ -8,8 +8,8 @@ import {
 import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations'
 
 @Component({
-  selector: 'app-experience-item-summary',
-  template: '{{ summary }}',
+  selector: 'app-education-item-score',
+  template: '{{ score }}',
   styles: [
     `
       :host {
@@ -19,9 +19,8 @@ import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations
   ],
   animations: [slideDownOnEnterAndSlideUpOnLeave('enterAndLeave')],
 })
-export class ExperienceItemSummaryComponent {
-  @Input({ required: true })
-  public summary!: string
+export class EducationItemScoreComponent {
+  @Input({ required: true }) score!: string
 
   @HostBinding('@enterAndLeave') public readonly enterOrLeaveAnimation = true
   public enterAndLeaveAnimationDone = new EventEmitter<void>()

@@ -1,0 +1,18 @@
+@use 'borders';
+@use 'margins';
+@use 'paddings';
+
+:host {
+  overflow: hidden;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: margins.$s;
+  }
+
+  li {
+    @include borders.panel-style-width;
+    padding: paddings.$s;
+  }
+}

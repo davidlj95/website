@@ -8,20 +8,13 @@ import {
 import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations'
 
 @Component({
-  selector: 'app-experience-item-summary',
-  template: '{{ summary }}',
-  styles: [
-    `
-      :host {
-        overflow: hidden;
-      }
-    `,
-  ],
+  selector: 'app-education-item-courses',
+  templateUrl: './education-item-courses.component.html',
+  styleUrls: ['./education-item-courses.component.scss'],
   animations: [slideDownOnEnterAndSlideUpOnLeave('enterAndLeave')],
 })
-export class ExperienceItemSummaryComponent {
-  @Input({ required: true })
-  public summary!: string
+export class EducationItemCoursesComponent {
+  @Input({ required: true }) courses!: readonly string[]
 
   @HostBinding('@enterAndLeave') public readonly enterOrLeaveAnimation = true
   public enterAndLeaveAnimationDone = new EventEmitter<void>()

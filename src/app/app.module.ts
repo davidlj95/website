@@ -43,6 +43,8 @@ import { ChippedContentComponent } from './about/chipped-content/chipped-content
 import { ExperienceItemSummaryComponent } from './about/experience/experience-item/experience-item-summary/experience-item-summary.component'
 import { ExperienceItemHighlightsComponent } from './about/experience/experience-item/experience-item-highlights/experience-item-highlights.component'
 import { MaterialSymbolDirective } from './common/material-symbol.directive'
+import { EducationItemScoreComponent } from './about/education/education-item/education-item-score/education-item-score.component'
+import { EducationItemCoursesComponent } from './about/education/education-item/education-item-courses/education-item-courses.component'
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { MaterialSymbolDirective } from './common/material-symbol.directive'
     ExperienceItemSummaryComponent,
     ExperienceItemHighlightsComponent,
     MaterialSymbolDirective,
+    EducationItemScoreComponent,
+    EducationItemCoursesComponent,
   ],
   imports: [
     BrowserModule,
