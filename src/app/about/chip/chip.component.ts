@@ -9,7 +9,7 @@ import {
 
 @Component({
   selector: 'app-chip',
-  templateUrl: './chip.component.html',
+  template: '<ng-content></ng-content>',
   styleUrls: ['./chip.component.scss'],
 })
 export class ChipComponent {

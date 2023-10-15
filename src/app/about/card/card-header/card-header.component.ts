@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 
 @Component({
   selector: 'app-card-header',
-  templateUrl: './card-header.component.html',
+  template: '<ng-content></ng-content>',
   styleUrls: ['./card-header.component.scss'],
 })
 export class CardHeaderComponent {}
