@@ -3,12 +3,14 @@ import {
   Apps,
   Build,
   Cloud,
+  Code,
   Database,
   DeployedCode,
   Dns,
   History,
   Login,
   Robot2,
+  RocketLaunch,
   Security,
   Smartphone,
   Terminal,
@@ -75,6 +77,14 @@ export class DescriptionLineData {
 }
 
 const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
+  DescriptionLine.fromData({
+    symbol: Code,
+    html: 'Full stack',
+  }),
+  DescriptionLine.fromData({
+    symbol: RocketLaunch,
+    html: 'From scratch to production',
+  }),
   DescriptionLine.fromData(
     {
       symbol: History,
