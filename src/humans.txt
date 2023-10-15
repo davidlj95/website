@@ -3,7 +3,9 @@ I happen to be the author of my own site too.
 
 Some things about me:
 
-┌ 9+ years crafting
+┌ Full stack
+├ From scratch to production
+├ 9+ years crafting
 │ ├ Frontends
 │ │ ├ Cross-platform mobile apps
 │ │ └ Websites and web apps
