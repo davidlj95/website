@@ -60,18 +60,18 @@ export class ChippedContentComponent implements OnInit {
   }
 
   async setSelectedContent(id: string) {
+    const content = this.contents.find((content) => content.id === id)!
+    this.contentHost.clear()
+
     // Tapping same chip hides content
     if (this.selectedContentId === id) {
-      const content = this.contents.find((content) => content.id === id)!
-      this.contentHost.clear()
       this.selectedContentId = undefined
       await content.waitForAnimationEnd(this.selectedContentComponent)
       this.contentDisplayedChange.emit(false)
       return
     }
+
     this.selectedContentId = id
-    this.contentHost.clear()
-    const content = this.contents.find((content) => content.id === id)!
     const componentRef = this.addContentToHost(content)
     this.contentDisplayedChange.emit(true)
     await content.waitForAnimationEnd(componentRef.instance)
