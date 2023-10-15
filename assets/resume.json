@@ -361,7 +361,7 @@
       "startDate": "2022-10-10",
       "endDate": "2023-07-14",
       "url": "https://vestoapp.com",
-      "roles": ["Senior software engineer", "Backend"],
+      "roles": ["Senior Backend Engineer"],
       "entity": "Vesto",
       "image": "https://davidlj95.com/assets/projects/vesto.png"
     },
@@ -386,7 +386,7 @@
       "startDate": "2020-03-01",
       "endDate": "2022-06-07",
       "url": "https://www.koahealth.com/products/mindset",
-      "roles": ["Senior software engineer", "Full stack"],
+      "roles": ["Senior Software Engineer"],
       "entity": "Koa Health / Telefónica Alpha",
       "image": "https://davidlj95.com/assets/projects/mindset.png"
     },
@@ -420,7 +420,7 @@
       "startDate": "2019-07-29",
       "endDate": "2019-12-17",
       "url": "https://cowstamp.com",
-      "roles": ["Lead software engineer", "Full stack developer"],
+      "roles": ["Lead Software Engineer"],
       "entity": "BTC Assessors",
       "image": "https://davidlj95.com/assets/projects/cowstamp.png"
     },
@@ -453,7 +453,7 @@
       "startDate": "2019-11-14",
       "endDate": "2019-12-17",
       "url": "https://kowbucha.org",
-      "roles": ["Lead software engineer", "Frontend developer"],
+      "roles": ["Lead Software Engineer"],
       "entity": "BTC Assessors"
     },
     {
@@ -472,7 +472,7 @@
       "startDate": "2019-01-15",
       "endDate": "2019-09-10",
       "url": "https://github.com/nodecenter/app",
-      "roles": ["Software engineer", "Full stack developer"],
+      "roles": ["Software Engineer"],
       "entity": "BTC Assessors",
       "image": "https://davidlj95.com/assets/projects/nodecenter.png"
     },
@@ -493,7 +493,7 @@
       "startDate": "2017-07-04",
       "endDate": "2018-12-03",
       "url": "https://gitlab.com/btcalabs/bitcoin-framework",
-      "roles": ["Software engineer", "Library maintainer"],
+      "roles": ["Lead Software Engineer"],
       "entity": "BTC Assessors & UAB",
       "image": "https://davidlj95.com/assets/projects/bitcoin-framework.png"
     },
@@ -512,7 +512,7 @@
       ],
       "startDate": "2015-09-25",
       "endDate": "2018-02-17",
-      "roles": ["Lead software engineer", "Full stack developer"],
+      "roles": ["Lead Software Engineer"],
       "entity": "IBC Biomechanics",
       "image": "https://davidlj95.com/assets/projects/ibc-report-generator.png"
     },
@@ -531,7 +531,7 @@
       ],
       "startDate": "2014-06-27",
       "endDate": "2015-11-18",
-      "roles": ["Software engineer", "Full stack developer"],
+      "roles": ["Lead Software Engineer"],
       "entity": "Institut de Seguretat Pública de Catalunya (ISPC)",
       "image": "https://davidlj95.com/assets/projects/police-translator.png"
     }
