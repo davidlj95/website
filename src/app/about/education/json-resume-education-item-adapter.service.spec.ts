@@ -30,12 +30,13 @@ describe('JsonResumeEducationItemAdapterService', () => {
         sut = TestBed.inject(JsonResumeEducationItemAdapterService)
       })
 
-      it('should map the institution name, image and website', () => {
+      it('should map the institution name, shortName, image and website', () => {
         const fakeJsonResumeEducationItem: JsonResumeEducationItem = {
           ...sampleJsonResumeEducationItem,
           institution: 'Fake institution name',
           image: 'https://example.org/logo.png',
           url: 'https://example.org/',
+          shortName: 'FIN',
         }
 
         const educationItem = sut.adapt(fakeJsonResumeEducationItem)
@@ -48,6 +49,9 @@ describe('JsonResumeEducationItemAdapterService', () => {
         )
         expect(educationItem.institution.image).toEqual(
           new URL(fakeJsonResumeEducationItem.image),
+        )
+        expect(educationItem.institution.shortName).toEqual(
+          fakeJsonResumeEducationItem.shortName,
         )
       })
 

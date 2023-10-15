@@ -57,6 +57,16 @@ export class EducationItemComponent {
     return contents
   }
 
+  public get institutionDisplayName() {
+    if (
+      this.item.institution.name.length > 15 &&
+      this.item.institution.shortName
+    ) {
+      return this.item.institution.shortName
+    }
+    return this.item.institution.name
+  }
+
   private get itemIdPrefix() {
     // TODO: this can fall short if we repeat something in the same institution!
     return this.slugGenerator.generate(this.item.institution.name, {

@@ -112,6 +112,27 @@ describe('EducationItemComponent', () => {
     expect(anchorElement.nativeElement.textContent.trim()).toEqual(name)
   })
 
+  describe('when name is long and there is short name', () => {
+    it('should display short name instead', () => {
+      const name = 'Very very very very very very very very long name'
+      const shortName = 'VLN'
+      setEducationItem(fixture, {
+        institution: new Organization({
+          name,
+          image: new URL('https://example.org'),
+          shortName,
+        }),
+      })
+
+      const institutionNameElement = fixture.debugElement.query(
+        byTestId('institution-name'),
+      )
+      expect(institutionNameElement.nativeElement.textContent.trim()).toEqual(
+        shortName,
+      )
+    })
+  })
+
   it('should display area', () => {
     const area = 'some study area'
     setEducationItem(fixture, { area })
