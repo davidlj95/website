@@ -11,6 +11,7 @@ import { SlugGeneratorService } from '../../../common/slug-generator.service'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
+import { firstValueFrom } from 'rxjs'
 
 @Component({
   selector: 'app-experience-item',
@@ -40,6 +41,9 @@ export class ExperienceItemComponent {
           setupComponent: (component) => {
             component.summary = this.item.summary
           },
+          waitForAnimationEnd: async (component) => {
+            await firstValueFrom(component.enterAndLeaveAnimationDone)
+          },
         }),
       )
     }
@@ -51,6 +55,9 @@ export class ExperienceItemComponent {
           component: ExperienceItemHighlightsComponent,
           setupComponent: (component) => {
             component.highlights = this.item.highlights
+          },
+          waitForAnimationEnd: async (component) => {
+            await firstValueFrom(component.enterAndLeaveAnimationDone)
           },
         }),
       )

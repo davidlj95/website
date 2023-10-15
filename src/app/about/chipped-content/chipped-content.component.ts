@@ -8,6 +8,7 @@ import {
   OnInit,
   Output,
   PLATFORM_ID,
+  Type,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core'
@@ -29,7 +30,8 @@ export class ChippedContentComponent implements OnInit {
   public contentHost!: ViewContainerRef
   private HIDDEN_CLASS = 'hidden'
   public selectedContentId?: string
-  private isRenderingOnBrowser: boolean
+  private selectedContentComponent?: Type<unknown>
+  private readonly isRenderingOnBrowser: boolean
   @Output() contentDisplayedChange = new EventEmitter<boolean>()
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
@@ -57,11 +59,13 @@ export class ChippedContentComponent implements OnInit {
     }
   }
 
-  setSelectedContent(id: string) {
+  async setSelectedContent(id: string) {
     // Tapping same chip hides content
     if (this.selectedContentId === id) {
+      const content = this.contents.find((content) => content.id === id)!
       this.contentHost.clear()
       this.selectedContentId = undefined
+      await content.waitForAnimationEnd(this.selectedContentComponent)
       this.contentDisplayedChange.emit(false)
       return
     }
@@ -83,6 +87,8 @@ export class ChippedContentComponent implements OnInit {
       content.component,
     )
     content.setupComponent(contentComponentRef.instance)
+    this.selectedContentComponent =
+      contentComponentRef.instance as Type<unknown>
     return contentComponentRef
   }
 }

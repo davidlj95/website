@@ -28,4 +28,13 @@ describe('ExperienceItemSummaryComponent', () => {
       summary,
     )
   })
+
+  it('should emit animation done event when animation finishes', () => {
+    let eventEmitted = false
+    component.enterAndLeaveAnimationDone.subscribe(() => {
+      eventEmitted = true
+    })
+    fixture.debugElement.triggerEventHandler('@enterAndLeave.done')
+    expect(eventEmitted).toBeTrue()
+  })
 })
