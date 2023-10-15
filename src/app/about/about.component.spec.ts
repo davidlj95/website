@@ -4,7 +4,7 @@ import { ensureHasComponents } from '../../test/helpers/component-testers'
 
 import { AboutComponent } from './about.component'
 import { JsonldMetadataComponent } from '../jsonld-metadata/jsonld-metadata.component'
-import { PresentationComponent } from './presentation/presentation.component'
+import { ProfileComponent } from './profile/profile.component'
 import { ExperienceComponent } from './experience/experience.component'
 import { EducationComponent } from './education/education.component'
 
@@ -18,7 +18,7 @@ describe('AboutComponent', () => {
         AboutComponent,
         MockComponents(
           JsonldMetadataComponent,
-          PresentationComponent,
+          ProfileComponent,
           ExperienceComponent,
           EducationComponent,
         ),
@@ -36,7 +36,7 @@ describe('AboutComponent', () => {
   ensureHasComponents(
     () => fixture,
     JsonldMetadataComponent,
-    PresentationComponent,
+    ProfileComponent,
     ExperienceComponent,
     EducationComponent,
   )

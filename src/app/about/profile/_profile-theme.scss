@@ -4,7 +4,7 @@
 @use 'contact-traditional-icons/contact-traditional-icons-theme';
 
 @mixin color($theme) {
-  app-presentation {
+  app-profile {
     @include profile-picture-theme.color($theme);
     @include contact-traditional-icons-theme.color($theme);
     @include contact-social-icons-theme.color($theme);
@@ -12,7 +12,7 @@
 }
 
 @mixin motion() {
-  app-presentation {
+  app-profile {
     @include profile-picture-theme.motion();
     @include contact-traditional-icons-theme.motion;
     @include contact-social-icons-theme.motion;

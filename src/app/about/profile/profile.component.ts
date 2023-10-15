@@ -3,11 +3,11 @@ import { DescriptionLine, Metadata } from '../../metadata'
 import { METADATA } from '../../common/injection-tokens'
 
 @Component({
-  selector: 'app-presentation',
-  templateUrl: './presentation.component.html',
-  styleUrls: ['./presentation.component.scss'],
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss'],
 })
-export class PresentationComponent {
+export class ProfileComponent {
   public readonly realName = this.metadata.realName
   public readonly nickname = this.metadata.nickname
   public readonly title = this.metadata.title

@@ -1,5 +1,5 @@
 @use 'h2/h2-theme';
-@use 'presentation/presentation-theme';
+@use 'profile/profile-theme';
 @use 'card/card-theme';
 @use 'attribute/attribute-theme';
 @use 'chip/chip-theme';
@@ -9,7 +9,7 @@
   app-about {
     @include h2-theme.color($theme);
     @include card-theme.color($theme);
-    @include presentation-theme.color($theme);
+    @include profile-theme.color($theme);
     @include attribute-theme.color($theme);
     @include chip-theme.color($theme);
     @include education-item-courses-theme.color($theme);
@@ -20,7 +20,7 @@
   app-about {
     @include h2-theme.motion;
     @include card-theme.motion;
-    @include presentation-theme.motion;
+    @include profile-theme.motion;
     @include attribute-theme.motion;
     @include chip-theme.motion;
     @include education-item-courses-theme.motion;
