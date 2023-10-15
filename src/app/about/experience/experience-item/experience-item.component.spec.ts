@@ -10,10 +10,7 @@ import { By } from '@angular/platform-browser'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
-import {
-  ensureHasComponent,
-  getComponentSelector,
-} from '../../../../test/helpers/component-testers'
+import { ensureHasComponent } from '../../../../test/helpers/component-testers'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
@@ -33,6 +30,7 @@ import { ChippedContentComponent } from '../../chipped-content/chipped-content.c
 import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
+import { byComponent } from '../../../../test/helpers/component-query-predicates'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -132,7 +130,7 @@ describe('ExperienceItem', () => {
       setExperienceItem(fixture)
 
       const dateRangeElement = fixture.debugElement.query(
-        By.css(getComponentSelector(DateRangeComponent)),
+        byComponent(DateRangeComponent),
       )
       expect(dateRangeElement).toBeTruthy()
     })
@@ -272,7 +270,7 @@ describe('ExperienceItem', () => {
       setExperienceItem(fixture, { summary })
 
       const chippedContentElement = fixture.debugElement.query(
-        By.css(getComponentSelector(ChippedContentComponent)),
+        byComponent(ChippedContentComponent),
       )
       expect(chippedContentElement).toBeTruthy()
       chippedContentElement.triggerEventHandler('contentDisplayedChange', true)
@@ -291,7 +289,7 @@ describe('ExperienceItem', () => {
       setExperienceItem(fixture, { summary })
 
       const chippedContentElement = fixture.debugElement.query(
-        By.css(getComponentSelector(ChippedContentComponent)),
+        byComponent(ChippedContentComponent),
       )
       expect(chippedContentElement).toBeTruthy()
       chippedContentElement.triggerEventHandler('contentDisplayedChange', false)

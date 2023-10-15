@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { Component, Type } from '@angular/core'
-import { getComponentSelector } from './component-testers'
+import { getComponentSelector } from './component-query-predicates'
 
 /**
  * Sets up a basic component test given the component to test

@@ -3,12 +3,9 @@ import { ExperienceComponent } from './experience.component'
 import { MockComponents } from 'ng-mocks'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { H2Component } from '../h2/h2.component'
-import {
-  ensureHasComponent,
-  getComponentSelector,
-} from '../../../test/helpers/component-testers'
-import { By } from '@angular/platform-browser'
+import { ensureHasComponent } from '../../../test/helpers/component-testers'
 import { ExperienceItemsService } from './experience-items.service'
+import { byComponent } from '../../../test/helpers/component-query-predicates'
 
 describe('ExperienceComponent', () => {
   let component: ExperienceComponent
@@ -33,7 +30,7 @@ describe('ExperienceComponent', () => {
   it('should display all items', () => {
     const experienceItemsService = TestBed.inject(ExperienceItemsService)
     const itemElements = fixture.debugElement.queryAll(
-      By.css(getComponentSelector(ExperienceItemComponent)),
+      byComponent(ExperienceItemComponent),
     )
     expect(itemElements.length).toBe(
       experienceItemsService.getExperienceItems().length,

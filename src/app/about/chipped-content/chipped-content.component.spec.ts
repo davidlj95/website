@@ -3,7 +3,6 @@ import { ChippedContentComponent } from './chipped-content.component'
 import { Component, DebugElement, PLATFORM_ID } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { By } from '@angular/platform-browser'
-import { getComponentSelector } from '../../../test/helpers/component-testers'
 import { ChipComponent } from '../chip/chip.component'
 import {
   expectIsHidden,
@@ -18,6 +17,10 @@ import {
   PLATFORM_SERVER_ID,
   PlatformId,
 } from '../../../test/helpers/platform-ids'
+import {
+  byComponent,
+  getComponentSelector,
+} from '../../../test/helpers/component-query-predicates'
 
 @Component({
   selector: 'app-foo',
@@ -86,7 +89,7 @@ describe('ChippedContentComponent', () => {
       expect(selectableChipsContainerElement).toBeTruthy()
 
       const chipElements = selectableChipsContainerElement.queryAll(
-        By.css(getComponentSelector(ChipComponent)),
+        byComponent(ChipComponent),
       )
       expect(chipElements.length).toEqual(contents.length)
       chipElements.forEach((chipElement, index) => {
@@ -115,18 +118,14 @@ describe('ChippedContentComponent', () => {
 
     // They're displayed in non-JS version thanks to helper classes
     it('should add and setup all content components, but hidden', () => {
-      const fooElement = fixture.debugElement.query(
-        By.css(getComponentSelector(FooComponent)),
-      )
+      const fooElement = fixture.debugElement.query(byComponent(FooComponent))
       expect(fooElement).toBeTruthy()
       expect(fooElement.nativeElement.textContent.trim())
         .withContext(`foo element contents`)
         .toEqual(fooContentData)
       expectIsHidden(fooElement.nativeElement)
 
-      const barElement = fixture.debugElement.query(
-        By.css(getComponentSelector(BarComponent)),
-      )
+      const barElement = fixture.debugElement.query(byComponent(BarComponent))
       expect(barElement).toBeTruthy()
       expect(barElement.nativeElement.textContent.trim())
         .withContext(`bar element contents`)
@@ -167,14 +166,10 @@ describe('ChippedContentComponent', () => {
     )
 
     it('should not add any content component or non-selectable chip', () => {
-      const fooElement = fixture.debugElement.query(
-        By.css(getComponentSelector(FooComponent)),
-      )
+      const fooElement = fixture.debugElement.query(byComponent(FooComponent))
       expect(fooElement).toBeFalsy()
 
-      const barElement = fixture.debugElement.query(
-        By.css(getComponentSelector(BarComponent)),
-      )
+      const barElement = fixture.debugElement.query(byComponent(BarComponent))
       expect(barElement).toBeFalsy()
 
       const chipElements = fixture.debugElement.children.filter(
@@ -214,7 +209,7 @@ describe('ChippedContentComponent', () => {
 
       it('should display its content', () => {
         const fooContentElement = fixture.debugElement.query(
-          By.css(getComponentSelector(FooComponent)),
+          byComponent(FooComponent),
         )
         expect(fooContentElement).toBeTruthy()
         expectIsVisible(fooContentElement.nativeElement)
@@ -236,7 +231,7 @@ describe('ChippedContentComponent', () => {
 
         it('should remove its content', () => {
           const fooContentElement = fixture.debugElement.query(
-            By.css(getComponentSelector(FooComponent)),
+            byComponent(FooComponent),
           )
           expect(fooContentElement).toBeFalsy()
         })
@@ -263,12 +258,12 @@ describe('ChippedContentComponent', () => {
 
         it('should remove its content and display the content of the tapped chip', () => {
           const fooContentElement = fixture.debugElement.query(
-            By.css(getComponentSelector(FooComponent)),
+            byComponent(FooComponent),
           )
           expect(fooContentElement).toBeFalsy()
 
           const barContentElement = fixture.debugElement.query(
-            By.css(getComponentSelector(BarComponent)),
+            byComponent(BarComponent),
           )
           expect(barContentElement).toBeTruthy()
           expectIsVisible(barContentElement.nativeElement)

@@ -1,16 +1,10 @@
-import {
-  DebugElement,
-  Predicate,
-  reflectComponentType,
-  Type,
-} from '@angular/core'
+import { DebugElement, Predicate, Type } from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
-import { By } from '@angular/platform-browser'
-import { isClass } from './types'
 import {
   makeHostComponent,
   testSetupWithHostComponent,
 } from './component-test-setup'
+import { byComponent } from './component-query-predicates'
 
 const COMPONENT_CLASS_SUFFIX = 'Component'
 
@@ -31,7 +25,7 @@ export function ensureHasComponent<T, U>(
       .toLowerCase()
   it(`should render the ${name}`, () => {
     const debugElement = fixtureGetter().debugElement.query(
-      By.css(getComponentSelector(component)),
+      byComponent(component),
     )
     expect(debugElement).toBeTruthy()
   })
@@ -52,33 +46,6 @@ export function ensureHasComponents<T>(
 }
 
 /**
- * Useful to identify a component without hard-coding the component's HTML tag
- *
- * So instead of
- * ```
- * const componentDebugElement = fixture.debugElement.query(By.css('app-foo'));
- * ```
- *
- * You can just
- *
- * ```
- * const componentDebugElement = fixture.debugElement.query(By.css(getComponentSelector(FooComponent)));
- * ```
- */
-export function getComponentSelector<C>(component: Type<C>) {
-  if (!isClass(component)) {
-    throw new Error('Component argument is not a class')
-  }
-  const selector = reflectComponentType(component)?.selector
-  if (!selector) {
-    throw new Error(
-      `Selector not found for alleged component: ${component.constructor.name}`,
-    )
-  }
-  return selector
-}
-
-/**
  * Ensures the given component contains the child content passed to it
  *
  * @see https://stackoverflow.com/a/61724478/3263250
@@ -93,9 +60,7 @@ export function ensureProjectsContent(
     const [fixture] = testSetupWithHostComponent(hostComponent, component)
     // No change detection triggered given nothing may have changed
 
-    const componentElement = fixture.debugElement.query(
-      By.css(getComponentSelector(component)),
-    )
+    const componentElement = fixture.debugElement.query(byComponent(component))
     expect(componentElement).toBeTruthy()
 
     const projectionContainerElement = !projectionContainerPredicate

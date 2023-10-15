@@ -5,7 +5,6 @@ import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
 import { NgOptimizedImage } from '@angular/common'
-import { getComponentSelector } from '../../../../test/helpers/component-testers'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { DateRange } from '../../date-range/date-range'
 import { MockComponents } from 'ng-mocks'
@@ -21,6 +20,7 @@ import { CardHeaderComponent } from '../../card/card-header/card-header.componen
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
+import { byComponent } from '../../../../test/helpers/component-query-predicates'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -118,7 +118,7 @@ describe('EducationItemComponent', () => {
     setEducationItem(fixture)
 
     const dateRangeElement = fixture.debugElement.query(
-      By.css(getComponentSelector(DateRangeComponent)),
+      byComponent(DateRangeComponent),
     )
     expect(dateRangeElement).toBeTruthy()
   })
