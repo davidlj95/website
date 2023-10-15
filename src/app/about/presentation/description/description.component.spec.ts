@@ -26,6 +26,7 @@ import {
 } from './description.component'
 import { MaterialSymbolDirective } from '../../../common/material-symbol.directive'
 import { byComponent } from '../../../../test/helpers/component-query-predicates'
+import { getReflectedAttribute } from '../../../../test/helpers/get-reflected-attribute'
 
 describe('DescriptionComponent', () => {
   let component: DescriptionComponent
@@ -144,7 +145,7 @@ describe('DescriptionComponent', () => {
             .toContain(fakeLineWithChildren.children[index].data!.html)
 
           // Depth is increased by one
-          expect(childLineElement.attributes['ng-reflect-depth'])
+          expect(getReflectedAttribute(childLineElement, 'depth'))
             .withContext(`child ${index} depth`)
             .toBe((fakeDepth + 1).toString())
         })
