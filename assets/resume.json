@@ -61,7 +61,7 @@
       "url": "https://www.vestoapp.com",
       "startDate": "2022-10-10",
       "endDate": "2023-07-14",
-      "summary": "Led, engineered and assisted many product features. Planned robustness proposal to improve the app stability by reducing error rates. Focusing on gaining observability to push for data-driven decisions. Optimized processes to reduce customer support workload",
+      "summary": "Backend: web APIs and background processing. Led, engineered and assisted many product features. Planned robustness proposal to improve the app stability by reducing error rates. Focusing on gaining observability to push for data-driven decisions. Optimized processes to reduce customer support workload",
       "highlights": [
         "Led initiative to observe & reduce wallet synchronization issues from 69% to 6%",
         "Built direct batch buy feature to buy multiple stocks at once",
@@ -105,7 +105,7 @@
       "position": "Software Engineer",
       "startDate": "2018-06-01",
       "endDate": "2019-12-31",
-      "summary": "Lead software engineer for all company's projects. Full stack: web apps and peer to peer / web API backends. Blockchain / DLT consultant and researcher. Board member of the company's own cryptocurrency investment fund as technical advisor",
+      "summary": "Full stack: web apps and peer to peer / web API backends. Lead software engineer for all company's projects. Blockchain / DLT consultant and researcher. Board member of the company's own cryptocurrency investment fund as technical advisor",
       "highlights": [
         "Headed many software development projects in the company. For instance a Bitcoin library and wallet and a verifiable credentials platform",
         "Advised technically our customers about Bitcoin, blockchain or DLT technologies",
