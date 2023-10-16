@@ -6,7 +6,7 @@ export class ProjectItem {
   public readonly dateRange: DateRange
   public readonly website?: URL
   public readonly roles: ReadonlyArray<string>
-  public readonly image?: URL
+  public readonly imageSrc?: string
   public readonly stack?: Stack
 
   constructor({
@@ -15,7 +15,7 @@ export class ProjectItem {
     dateRange,
     website,
     roles,
-    image,
+    imageSrc,
     stack,
   }: {
     name: string
@@ -23,7 +23,7 @@ export class ProjectItem {
     dateRange: DateRange
     website?: URL
     roles?: ReadonlyArray<string>
-    image?: URL
+    imageSrc?: string
     stack?: Stack
   }) {
     this.name = name
@@ -31,7 +31,7 @@ export class ProjectItem {
     this.dateRange = dateRange
     this.website = website
     this.roles = roles ?? []
-    this.image = image
+    this.imageSrc = imageSrc
     this.stack = stack
   }
 }

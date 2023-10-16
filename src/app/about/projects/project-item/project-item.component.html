@@ -1,12 +1,12 @@
 <app-card>
   <app-card-header>
     <app-link
-      *ngIf="item.image"
+      *ngIf="item.imageSrc"
       [href]="item.website?.toString()"
       appTestId="image"
     >
       <app-card-header-image
-        [src]="item.image.toString()"
+        [src]="item.imageSrc"
         [alt]="item.name + ' logo'"
       ></app-card-header-image>
     </app-link>

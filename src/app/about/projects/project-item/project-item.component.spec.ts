@@ -72,8 +72,8 @@ describe('ProjectItemComponent', () => {
 
   describe('when image does not exist', () => {
     it('should not contain image component neither its link', () => {
-      const image = undefined
-      setProjectItem(fixture, { image })
+      const imageSrc = undefined
+      setProjectItem(fixture, { imageSrc })
 
       const linkElement = fixture.debugElement.query(byTestId('image'))
       expect(linkElement).toBeFalsy()
@@ -82,10 +82,10 @@ describe('ProjectItemComponent', () => {
 
   describe('when image exists', () => {
     it('should contain image component with link to website', () => {
-      const image = new URL('https://example.org/logo.png')
+      const imageSrc = 'https://example.org/logo.png'
       const website = new URL('https://example.org')
 
-      setProjectItem(fixture, { image, website })
+      setProjectItem(fixture, { imageSrc, website })
 
       const anchorElement = fixture.debugElement
         .query(byTestId('image'))
@@ -97,9 +97,7 @@ describe('ProjectItemComponent', () => {
         byComponent(CardHeaderImageComponent),
       )
       expect(imageElement).toBeTruthy()
-      expect(getReflectedAttribute(imageElement, 'src')).toEqual(
-        image.toString(),
-      )
+      expect(getReflectedAttribute(imageElement, 'src')).toEqual(imageSrc)
     })
   })
 

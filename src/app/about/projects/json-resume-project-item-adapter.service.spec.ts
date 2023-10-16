@@ -10,6 +10,7 @@ import { MockProvider } from 'ng-mocks'
 import { ENVIRONMENT } from '../../common/injection-tokens'
 import { Environment } from '../../../environments'
 import { Stack } from './project-item/project-item'
+import { LocalImageService } from '../local-image.service'
 
 describe('JsonResumeProjectItemAdapterService', () => {
   it('should be created', () => {
@@ -81,25 +82,26 @@ describe('JsonResumeProjectItemAdapterService', () => {
           const item = makeSut({ mapJsonResumeImages: false }).adapt(
             makeJsonResumeProjectItem({ image }),
           )
-          expect(item.image).toEqual(new URL(image))
+          expect(item.imageSrc).toEqual(image)
         })
       })
       describe('when image mapping is enabled', () => {
-        it('should point to local image based on name', () => {
+        it('should generate local image path using service', () => {
           const name = 'Fóò PröJEct'
-          const slug = 'foo-project'
-          const canonicalUrl = 'https://example.org/'
+          const fakeImageSrc = 'assets/projects/project.png'
           const sut = makeSut({
             mapJsonResumeImages: true,
-            canonicalUrl: new URL(canonicalUrl),
           })
+          const localImageService = TestBed.inject(LocalImageService)
+          spyOn(localImageService, 'generatePath').and.returnValue(fakeImageSrc)
 
           const item = sut.adapt(makeJsonResumeProjectItem({ name, image }))
-          expect(item.image).toEqual(
-            new URL(
-              `${canonicalUrl}${sut.IMAGE_ASSETS_PATH}${slug}${sut.IMAGE_EXTENSION}`,
-            ),
-          )
+
+          expect(item.imageSrc).toEqual(fakeImageSrc)
+          expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
+            name,
+            subdirectory: sut.ASSETS_SUBDIRECTORY,
+          })
         })
       })
     })
@@ -111,7 +113,7 @@ describe('JsonResumeProjectItemAdapterService', () => {
           const item = makeSut({ mapJsonResumeImages: false }).adapt(
             makeJsonResumeProjectItem({ image }),
           )
-          expect(item.image).toBeUndefined()
+          expect(item.imageSrc).toBeUndefined()
         })
       })
       describe('when image mapping is enabled', () => {
@@ -120,7 +122,7 @@ describe('JsonResumeProjectItemAdapterService', () => {
           const item = makeSut({
             mapJsonResumeImages: true,
           }).adapt(makeJsonResumeProjectItem({ image }))
-          expect(item.image).toBeUndefined()
+          expect(item.imageSrc).toBeUndefined()
         })
       })
     })
@@ -149,15 +151,13 @@ describe('JsonResumeProjectItemAdapterService', () => {
   })
 })
 
-function makeSut(opts?: {
-  mapJsonResumeImages: boolean
-  canonicalUrl?: URL
-}): JsonResumeProjectItemAdapterService {
+function makeSut({
+  mapJsonResumeImages,
+}: Partial<Environment> = {}): JsonResumeProjectItemAdapterService {
   let providers: unknown[] | undefined
-  if (opts) {
+  if (mapJsonResumeImages !== undefined) {
     const environment: Partial<Environment> = {
-      mapJsonResumeImages: opts.mapJsonResumeImages,
-      canonicalUrl: opts.canonicalUrl,
+      mapJsonResumeImages,
     }
     providers = [MockProvider(ENVIRONMENT, environment)]
   }
