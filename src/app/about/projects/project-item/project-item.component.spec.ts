@@ -1,7 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing'
 
 import {
   Attribute,
+  ContentId,
   ProjectItemComponent,
   StackContent,
 } from './project-item.component'
@@ -25,6 +31,10 @@ import { TestIdDirective } from '../../../common/test-id.directive'
 import { DateRange } from '../../date-range/date-range'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
+import { ChippedContent } from '../../chipped-content/chipped-content'
+import { EventEmitter } from '@angular/core'
+import { ProjectItemDescriptionComponent } from './project-item-description/project-item-description.component'
+import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -47,6 +57,7 @@ describe('ProjectItemComponent', () => {
           DateRangeComponent,
           CardHeaderAttributesComponent,
           AttributeComponent,
+          ChippedContentComponent,
         ),
       ],
     })
@@ -172,6 +183,43 @@ describe('ProjectItemComponent', () => {
       )
     })
   })
+
+  it('should include chipped contents', () => {
+    const chippedContentsElement = fixture.debugElement.query(
+      byComponent(ChippedContentComponent),
+    )
+    expect(chippedContentsElement).toBeTruthy()
+  })
+
+  it('should generate description content item', fakeAsync(() => {
+    const description = 'It is super cool and does awesome things'
+    setProjectItem(fixture, { description })
+
+    const descriptionContent = component.contents.find(
+      (content) => content.id === ContentId.Description,
+    ) as ChippedContent<ContentId, ProjectItemDescriptionComponent>
+    expect(descriptionContent).toBeTruthy()
+
+    expect(descriptionContent!.component).toEqual(
+      ProjectItemDescriptionComponent,
+    )
+
+    const mockDescriptionComponent = {
+      enterAndLeaveAnimationDone: new EventEmitter<void>(),
+    } as ProjectItemDescriptionComponent
+    descriptionContent!.setupComponent(mockDescriptionComponent)
+    expect(mockDescriptionComponent.description).toEqual(description)
+
+    let endedAnimation = false
+    descriptionContent
+      .waitForAnimationEnd(mockDescriptionComponent)
+      .then(() => (endedAnimation = true))
+    tick()
+    expect(endedAnimation).toBeFalse()
+    mockDescriptionComponent.enterAndLeaveAnimationDone.emit()
+    tick()
+    expect(endedAnimation).toBeTrue()
+  }))
 })
 
 function setProjectItem(

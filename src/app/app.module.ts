@@ -47,6 +47,7 @@ import { EducationItemScoreComponent } from './about/education/education-item/ed
 import { EducationItemCoursesComponent } from './about/education/education-item/education-item-courses/education-item-courses.component'
 import { ProjectsComponent } from './about/projects/projects.component'
 import { ProjectItemComponent } from './about/projects/project-item/project-item.component'
+import { ProjectItemDescriptionComponent } from './about/projects/project-item/project-item-description/project-item-description.component'
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { ProjectItemComponent } from './about/projects/project-item/project-item
     EducationItemCoursesComponent,
     ProjectsComponent,
     ProjectItemComponent,
+    ProjectItemDescriptionComponent,
   ],
   imports: [
     BrowserModule,

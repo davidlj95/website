@@ -341,7 +341,7 @@
   "projects": [
     {
       "name": "Vesto",
-      "description": "Mobile app to introduce users to the world of financial investments. Allows to easily invest in US stock market with credit card or Bizum. Focused for Spanish market. Worked on the backend side",
+      "description": "Worked on backend stack. Mobile app to introduce users to the world of financial investments. Allows to easily invest in US stock market with card or Bizum. Focused for Spanish market",
       "keywords": [
         "Ruby on Rails 6",
         "Sidekiq",
@@ -368,7 +368,7 @@
     },
     {
       "name": "Mindset",
-      "description": "Mobile app for patients to treat depression using Cognitive Behavioral Therapy (CBT) exercises. Web app for therapists to track patients' progress",
+      "description": "Worked in full stack. Mobile app for patients to treat depression using Cognitive Behavioral Therapy (CBT) exercises. Web app for therapists to track patients' progress",
       "keywords": [
         "Flutter 1 & 2",
         "Typescript",
@@ -394,7 +394,7 @@
     },
     {
       "name": "Cowstamp",
-      "description": "Web SaaS app to create, issue and receive verifiable credentials digitally signed using blockchain technologies with a user-centric design. Uses a custom ad hoc library to canonize JSON-LD graphs",
+      "description": "Worked in full stack. Web SaaS app to create, issue and receive verifiable credentials digitally signed using blockchain technologies with a user-centric design. Uses a custom ad hoc library to canonize JSON-LD graphs",
       "keywords": [
         "Angular 8",
         "Typescript",
@@ -462,7 +462,7 @@
     },
     {
       "name": "NodeCenter",
-      "description": "Application to manage blockchain / DLT nodes deployments in few clicks with an easy to use web interface, based on an Open API documented REST API exposed by a companion app daemon",
+      "description": "Worked in full stack. Application to manage blockchain / DLT nodes deployments in few clicks with an easy to use web interface, based on an Open API documented REST API exposed by a companion app daemon",
       "keywords": [
         "Docker",
         "REST API",
@@ -483,7 +483,7 @@
     },
     {
       "name": "Bitcoin Framework",
-      "description": "Python Bitcoin framework to create transactions with smart contracts (scripts) based on puzzle-friendliness and OOP",
+      "description": "Bitcoin library to create transactions with smart contracts (scripts) based on puzzle-friendliness and object oriented programming (OOP)",
       "keywords": [
         "Bitcoin",
         "Cryptography",
@@ -505,7 +505,7 @@
     },
     {
       "name": "IBC Report Generator",
-      "description": "Desktop application to generate biomechanics reports out of data extracted from third party applications and devices using user-created report templates",
+      "description": "Worked in full stack. Desktop application to generate biomechanics reports out of data extracted from third party applications and devices using user-created report templates",
       "keywords": [
         "Anaconda",
         "Python 2.7",
@@ -525,7 +525,7 @@
     },
     {
       "name": "Police Translator",
-      "description": "Hybrid mobile application with a collection of useful phrases for police officers translated from/to English to/from Catalan, with audio pronunciations and that fully works offline. Web application to manage all content and their translations",
+      "description": "Worked in full stack. Hybrid mobile application with a collection of useful phrases for police officers translated between English and Catalan. Includes audio pronunciations and supports offline mode. Custom contents manager as web application",
       "keywords": [
         "Linux",
         "PHP 5",
