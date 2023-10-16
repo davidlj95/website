@@ -8,6 +8,7 @@ import {
 import { Environment } from '../../../environments'
 import { MockProvider } from 'ng-mocks'
 import { ENVIRONMENT } from '../../common/injection-tokens'
+import { LocalImageService } from '../local-image.service'
 
 describe('JsonResumeExperienceItemAdapterService', () => {
   it('should be created', () => {
@@ -96,35 +97,32 @@ describe('JsonResumeExperienceItemAdapterService', () => {
     })
 
     describe('when images mapping is enabled', () => {
-      it('should map the company image into a custom URL using canonical URL, assets path and slug from name', () => {
-        const canonicalUrl = new URL('https://example.org/canonical/')
+      it('should generate local image path using service', () => {
         const name = 'Còmpány Näme'
-        const expectedImageFileName = 'company-name'
+        const fakeImageSrc = 'company-name'
+        const sut = makeSut({ mapJsonResumeImages: true })
+        const localImageService = TestBed.inject(LocalImageService)
+        spyOn(localImageService, 'generatePath').and.returnValue(fakeImageSrc)
 
-        const item = makeSut({ mapJsonResumeImages: true, canonicalUrl }).adapt(
-          makeJsonResumeWorkItem({ name }),
-        )
+        const item = sut.adapt(makeJsonResumeWorkItem({ name }))
 
-        expect(item.company.imageSrc).toEqual(
-          canonicalUrl.toString() +
-            makeSut().COMPANIES_IMAGE_ASSETS_PATH +
-            expectedImageFileName +
-            makeSut().IMAGE_EXTENSION,
-        )
+        expect(item.company.imageSrc).toEqual(fakeImageSrc)
+        expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
+          name: name,
+          subdirectory: sut.ASSETS_SUBDIRECTORY,
+        })
       })
     })
   })
 })
 
-function makeSut(opts?: {
-  mapJsonResumeImages: boolean
-  canonicalUrl?: URL
-}): JsonResumeExperienceItemAdapterService {
+function makeSut({
+  mapJsonResumeImages,
+}: Partial<Environment> = {}): JsonResumeExperienceItemAdapterService {
   let providers: unknown[] | undefined
-  if (opts) {
+  if (mapJsonResumeImages !== undefined) {
     const environment: Partial<Environment> = {
-      mapJsonResumeImages: opts.mapJsonResumeImages,
-      canonicalUrl: opts.canonicalUrl,
+      mapJsonResumeImages,
     }
     providers = [MockProvider(ENVIRONMENT, environment)]
   }

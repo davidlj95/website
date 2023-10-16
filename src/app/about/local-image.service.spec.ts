@@ -7,15 +7,15 @@ describe('LocalImageService', () => {
   it('should be created', () => {
     expect(makeSut()).toBeTruthy()
   })
-  describe('#getPath', () => {
-    const dummyArgs: Parameters<LocalImageService['getPath']>[0] = {
+  describe('#generatePath', () => {
+    const dummyArgs: Parameters<LocalImageService['generatePath']>[0] = {
       name: 'Cool image',
     }
 
     it('should start by assets directory', () => {
       const sut = makeSut()
 
-      const path = sut.getPath(dummyArgs)
+      const path = sut.generatePath(dummyArgs)
 
       expect(path.startsWith(sut.ASSETS_PATH)).toBeTruthy()
     })
@@ -23,7 +23,7 @@ describe('LocalImageService', () => {
     it('should include given subdirectory', () => {
       const subdirectory = 'foo'
 
-      const path = makeSut().getPath({ ...dummyArgs, subdirectory })
+      const path = makeSut().generatePath({ ...dummyArgs, subdirectory })
 
       expect(path).toEqual(jasmine.stringContaining(subdirectory))
     })
@@ -35,7 +35,7 @@ describe('LocalImageService', () => {
       const slugGenerator = TestBed.inject(SlugGeneratorService)
       spyOn(slugGenerator, 'generate').and.returnValue(sluggedName)
 
-      const path = sut.getPath({ name })
+      const path = sut.generatePath({ name })
 
       expect(path).toEqual(jasmine.stringContaining(sluggedName))
       expect(slugGenerator.generate).toHaveBeenCalledWith(name)
@@ -44,7 +44,7 @@ describe('LocalImageService', () => {
     it('should finish with default extension', () => {
       const sut = makeSut()
 
-      const path = sut.getPath(dummyArgs)
+      const path = sut.generatePath(dummyArgs)
 
       expect(path.endsWith(sut.DEFAULT_EXTENSION)).toBeTrue()
     })
@@ -56,7 +56,7 @@ describe('LocalImageService', () => {
       const slugGenerator = TestBed.inject(SlugGeneratorService)
       spyOn(slugGenerator, 'generate').and.returnValue(sluggedName)
 
-      const path = sut.getPath({ ...dummyArgs, name })
+      const path = sut.generatePath({ ...dummyArgs, name })
 
       expect(path).toEqual(
         `${sut.ASSETS_PATH}/${sluggedName}${sut.DEFAULT_EXTENSION}`,
@@ -71,7 +71,7 @@ describe('LocalImageService', () => {
       const slugGenerator = TestBed.inject(SlugGeneratorService)
       spyOn(slugGenerator, 'generate').and.returnValue(sluggedName)
 
-      const path = sut.getPath({ ...dummyArgs, name, subdirectory })
+      const path = sut.generatePath({ ...dummyArgs, name, subdirectory })
 
       expect(path).toEqual(
         `${sut.ASSETS_PATH}/${subdirectory}/${sluggedName}${sut.DEFAULT_EXTENSION}`,

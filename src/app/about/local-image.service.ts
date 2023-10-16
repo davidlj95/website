@@ -10,7 +10,7 @@ export class LocalImageService {
 
   constructor(private slugGenerator: SlugGeneratorService) {}
 
-  public getPath({
+  public generatePath({
     name,
     subdirectory,
   }: {

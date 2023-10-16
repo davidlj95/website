@@ -7,6 +7,7 @@ import {
   JsonResumeEducationItem,
   JsonResumeEducationItemAdapterService,
 } from './json-resume-education-item-adapter.service'
+import { LocalImageService } from '../local-image.service'
 
 describe('JsonResumeEducationItemAdapterService', () => {
   it('should be created', () => {
@@ -15,7 +16,7 @@ describe('JsonResumeEducationItemAdapterService', () => {
 
   describe('#adapt', () => {
     it('should map the institution name, website and short name', () => {
-      const institution = 'Fake institution name'
+      const institution = 'Institution name'
       const url = 'https://example.org/'
       const shortName = 'FIN'
 
@@ -29,9 +30,9 @@ describe('JsonResumeEducationItemAdapterService', () => {
     })
 
     it('should map the area, study type and score', () => {
-      const area = 'Fake area'
-      const studyType = 'Fake study type'
-      const score = 'Fake score'
+      const area = 'Area'
+      const studyType = 'Study type'
+      const score = 'Score'
 
       const item = makeSut().adapt(
         makeJsonResumeEducationItem({ area, studyType, score }),
@@ -84,62 +85,65 @@ describe('JsonResumeEducationItemAdapterService', () => {
     })
 
     describe('when images mapping is enabled', () => {
-      const canonicalUrl = new URL('https://example.org/canonical/')
+      const institution = 'Instìtútión Name'
+      const image = 'https://example.org/logo.png'
+      const fakeImageSrc = 'assets/education/institution.png'
       let sut: JsonResumeEducationItemAdapterService
+      let localImageService: LocalImageService
 
       beforeEach(() => {
-        sut = makeSut({ mapJsonResumeImages: true, canonicalUrl })
+        sut = makeSut({ mapJsonResumeImages: true })
+        localImageService = TestBed.inject(LocalImageService)
+        spyOn(localImageService, 'generatePath').and.returnValue(fakeImageSrc)
+      })
+
+      it('should generate local image path using service giving proper assets subdirectory', () => {
+        const item = sut.adapt(
+          makeJsonResumeEducationItem({ institution, image }),
+        )
+
+        expect(item.institution.imageSrc).toEqual(fakeImageSrc)
+        expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
+          name: jasmine.anything(),
+          subdirectory: sut.ASSETS_SUBDIRECTORY,
+        })
       })
 
       describe('when short name is available', () => {
-        it('should map the company image into a custom URL using canonical URL, assets path and slug from short name', () => {
-          const institution = 'Fake ínstìtútión name'
+        it('should generate local image path based on short name', () => {
           const shortName = 'FIN'
-          const expectedImageFileName = 'fin'
 
-          const item = sut.adapt(
-            makeJsonResumeEducationItem({ institution, shortName }),
-          )
+          sut.adapt(makeJsonResumeEducationItem({ institution, shortName }))
 
-          expect(item.institution.imageSrc).toEqual(
-            canonicalUrl.toString() +
-              sut.EDUCATION_IMAGES_PATH +
-              expectedImageFileName +
-              sut.IMAGE_EXTENSION,
-          )
+          expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
+            name: shortName,
+            subdirectory: jasmine.anything(),
+          })
         })
       })
       describe('when short name is not available', () => {
-        it('should map the company image into a custom URL using canonical URL, assets path and slug from name', () => {
-          const institution = 'Fake ínstìtútión name'
+        it('should generate local image path based on name', () => {
           const shortName = undefined
-          const expectedImageFileName = 'fake-institution-name'
 
-          const item = sut.adapt(
-            makeJsonResumeEducationItem({ institution, shortName }),
-          )
+          sut.adapt(makeJsonResumeEducationItem({ institution, shortName }))
 
-          expect(item.institution.imageSrc).toEqual(
-            canonicalUrl.toString() +
-              sut.EDUCATION_IMAGES_PATH +
-              expectedImageFileName +
-              sut.IMAGE_EXTENSION,
-          )
+          expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
+            name: institution,
+            subdirectory: jasmine.anything(),
+          })
         })
       })
     })
   })
 })
 
-function makeSut(opts?: {
-  mapJsonResumeImages: boolean
-  canonicalUrl?: URL
-}): JsonResumeEducationItemAdapterService {
+function makeSut({
+  mapJsonResumeImages,
+}: Partial<Environment> = {}): JsonResumeEducationItemAdapterService {
   let providers: unknown[] | undefined
-  if (opts) {
+  if (mapJsonResumeImages !== undefined) {
     const environment: Partial<Environment> = {
-      mapJsonResumeImages: opts.mapJsonResumeImages,
-      canonicalUrl: opts.canonicalUrl,
+      mapJsonResumeImages,
     }
     providers = [MockProvider(ENVIRONMENT, environment)]
   }
