@@ -11,133 +11,134 @@ import { ENVIRONMENT } from '../../common/injection-tokens'
 
 describe('JsonResumeExperienceItemAdapterService', () => {
   it('should be created', () => {
-    TestBed.configureTestingModule({})
-    expect(TestBed.inject(JsonResumeExperienceItemAdapterService)).toBeTruthy()
+    expect(makeSut()).toBeTruthy()
   })
 
-  const sampleJsonResumeWorkItem = resume.work[0]
-
   describe('#adapt', () => {
-    describe('when images mapping is disabled', () => {
-      let sut: JsonResumeExperienceItemAdapterService
+    it('should map the company name and website', () => {
+      const name = 'Cool company name'
+      const url = 'https://example.org/'
 
-      beforeEach(() => {
-        const fakeEnvironment: Pick<Environment, 'mapJsonResumeImages'> = {
-          mapJsonResumeImages: false,
-        }
-        TestBed.configureTestingModule({
-          providers: [MockProvider(ENVIRONMENT, fakeEnvironment)],
-        })
-        sut = TestBed.inject(JsonResumeExperienceItemAdapterService)
-      })
+      const item = makeSut().adapt(makeJsonResumeWorkItem({ name, url }))
 
-      it('should map the company name, image and website', () => {
-        const jsonResumeWorkItem: JsonResumeWorkItem = {
-          ...sampleJsonResumeWorkItem,
-          name: 'Fake company name',
-          url: 'https://example.org/',
-          image: 'https://example.org/logo.png',
-        }
-        const experienceItem = sut.adapt(jsonResumeWorkItem)
+      expect(item.company.name).toEqual(name)
+      expect(item.company.website).toEqual(new URL(url))
+    })
 
-        expect(experienceItem.company.name).toEqual(jsonResumeWorkItem.name)
-        expect(experienceItem.company.website).toEqual(
-          new URL(jsonResumeWorkItem.url),
-        )
-        expect(experienceItem.company.imageSrc).toEqual(
-          jsonResumeWorkItem.image,
-        )
-      })
+    it('should map the position, summary and highlights', () => {
+      const highlights = ['Highlight 1', 'Highlight 2']
+      const position = 'Position'
+      const summary = 'Summary'
 
-      it('should map the role, summary and highlights', () => {
-        const highlights = ['Highlight 1', 'Highlight 2']
-        const jsonResumeWorkItem: JsonResumeWorkItem = {
-          ...sampleJsonResumeWorkItem,
-          position: 'Position',
-          summary: 'Summary',
-          highlights: highlights,
-        } as JsonResumeWorkItem
-        const experienceItem = sut.adapt(jsonResumeWorkItem)
+      const item = makeSut().adapt(
+        makeJsonResumeWorkItem({ highlights, position, summary }),
+      )
 
-        expect(experienceItem.position).toEqual(jsonResumeWorkItem.position)
-        expect(experienceItem.summary).toEqual(jsonResumeWorkItem.summary)
-        expect(experienceItem.highlights).toEqual(highlights)
-      })
-      it('should map the date range', () => {
-        const startDate = '2022-12-31'
-        const endDate = '2024-01-01'
-        const jsonResumeWorkItem: JsonResumeWorkItem = {
-          ...sampleJsonResumeWorkItem,
-          startDate: startDate,
-          endDate: endDate,
-        }
-        const experienceItem = sut.adapt(jsonResumeWorkItem)
+      expect(item.position).toEqual(position)
+      expect(item.summary).toEqual(summary)
+      expect(item.highlights).toEqual(highlights)
+    })
 
-        expect(experienceItem.dateRange.start).toEqual(new Date(startDate))
-        expect(experienceItem.dateRange.end).toEqual(new Date(endDate))
-      })
-      describe('when no end date', () => {
-        it('should map no end date exists too', () => {
-          const jsonResumeWorkItem: JsonResumeWorkItem = {
-            ...sampleJsonResumeWorkItem,
-            endDate: undefined,
-          } as unknown as JsonResumeWorkItem
-          const experienceItem = sut.adapt(jsonResumeWorkItem)
+    it('should map the date range', () => {
+      const startDate = '2022-12-31'
+      const endDate = '2024-01-01'
 
-          expect(experienceItem.dateRange.end).toBeUndefined()
-        })
-      })
+      const item = makeSut().adapt(
+        makeJsonResumeWorkItem({ startDate, endDate }),
+      )
 
-      // Non JSON Resume standard!
-      it('should map the freelance, internship, promotions and more positions fields', () => {
-        const jsonResumeWorkItem: JsonResumeWorkItem = {
-          ...sampleJsonResumeWorkItem,
-          freelance: true,
-          internship: true,
-          promotions: true,
-          morePositions: true,
-        } as unknown as JsonResumeWorkItem
-        const experienceItem = sut.adapt(jsonResumeWorkItem)
+      expect(item.dateRange.start).toEqual(new Date(startDate))
+      expect(item.dateRange.end).toEqual(new Date(endDate))
+    })
 
-        expect(experienceItem.freelance).toBeTrue()
-        expect(experienceItem.internship).toBeTrue()
-        expect(experienceItem.promotions).toBeTrue()
-        expect(experienceItem.morePositions).toBeTrue()
+    describe('when no end date', () => {
+      it('should map no end date exists too', () => {
+        const endDate = undefined
+
+        const item = makeSut().adapt(makeJsonResumeWorkItem({ endDate }))
+
+        expect(item.dateRange.end).toBeUndefined()
       })
     })
-    describe('when images mapping is enabled', () => {
-      const canonicalUrl = new URL('https://example.org/canonical/')
-      let sut: JsonResumeExperienceItemAdapterService
 
-      beforeEach(() => {
-        const environment: Pick<
-          Environment,
-          'canonicalUrl' | 'mapJsonResumeImages'
-        > = {
-          canonicalUrl,
-          mapJsonResumeImages: true,
-        }
-        TestBed.configureTestingModule({
-          providers: [MockProvider(ENVIRONMENT, environment)],
-        })
-        sut = TestBed.inject(JsonResumeExperienceItemAdapterService)
+    // Non JSON Resume standard!
+    it('should map the freelance, internship, promotions and more positions fields', () => {
+      const freelance = true
+      const internship = true
+      const promotions = true
+      const morePositions = true
+
+      const item = makeSut().adapt(
+        makeJsonResumeWorkItem({
+          freelance,
+          internship,
+          promotions,
+          morePositions,
+        } as unknown as Partial<JsonResumeWorkItem>),
+      )
+
+      expect(item.freelance).toBe(freelance)
+      expect(item.internship).toBe(internship)
+      expect(item.promotions).toBe(promotions)
+      expect(item.morePositions).toBe(morePositions)
+    })
+
+    describe('when images mapping is disabled', () => {
+      it('should map image', () => {
+        const image = 'https://example.org/logo.png'
+
+        const item = makeSut({ mapJsonResumeImages: false }).adapt(
+          makeJsonResumeWorkItem({ image }),
+        )
+
+        expect(item.company.imageSrc).toEqual(image)
       })
+    })
 
+    describe('when images mapping is enabled', () => {
       it('should map the company image into a custom URL using canonical URL, assets path and slug from name', () => {
-        const jsonResumeWorkItem: JsonResumeWorkItem = {
-          ...sampleJsonResumeWorkItem,
-          name: 'Còmpány Näme',
-        }
+        const canonicalUrl = new URL('https://example.org/canonical/')
+        const name = 'Còmpány Näme'
         const expectedImageFileName = 'company-name'
-        const experienceItem = sut.adapt(jsonResumeWorkItem)
 
-        expect(experienceItem.company.imageSrc).toEqual(
+        const item = makeSut({ mapJsonResumeImages: true, canonicalUrl }).adapt(
+          makeJsonResumeWorkItem({ name }),
+        )
+
+        expect(item.company.imageSrc).toEqual(
           canonicalUrl.toString() +
-            sut.COMPANIES_IMAGE_ASSETS_PATH +
+            makeSut().COMPANIES_IMAGE_ASSETS_PATH +
             expectedImageFileName +
-            sut.IMAGE_EXTENSION,
+            makeSut().IMAGE_EXTENSION,
         )
       })
     })
   })
 })
+
+function makeSut(opts?: {
+  mapJsonResumeImages: boolean
+  canonicalUrl?: URL
+}): JsonResumeExperienceItemAdapterService {
+  let providers: unknown[] | undefined
+  if (opts) {
+    const environment: Partial<Environment> = {
+      mapJsonResumeImages: opts.mapJsonResumeImages,
+      canonicalUrl: opts.canonicalUrl,
+    }
+    providers = [MockProvider(ENVIRONMENT, environment)]
+  }
+  TestBed.configureTestingModule({ providers })
+  return TestBed.inject(JsonResumeExperienceItemAdapterService)
+}
+
+const sampleJsonResumeWorkItem = resume.work[0]
+
+function makeJsonResumeWorkItem(
+  overrides?: Partial<JsonResumeWorkItem>,
+): JsonResumeWorkItem {
+  return {
+    ...sampleJsonResumeWorkItem,
+    ...overrides,
+  } as JsonResumeWorkItem
+}

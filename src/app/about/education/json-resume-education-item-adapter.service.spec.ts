@@ -53,6 +53,7 @@ describe('JsonResumeEducationItemAdapterService', () => {
       expect(item.dateRange.start).toEqual(new Date(startDate))
       expect(item.dateRange.end).toEqual(new Date(endDate))
     })
+
     describe('when no end date', () => {
       it('should map no end date exists too', () => {
         const endDate = undefined
