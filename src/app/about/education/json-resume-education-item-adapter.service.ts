@@ -31,9 +31,11 @@ export class JsonResumeEducationItemAdapterService {
       institution: new Organization({
         name: item.institution,
         website: new URL(item.url),
-        image: this.mapJsonResumeImages
-          ? this.imageUrlFromInstitutionName(item.shortName ?? item.institution)
-          : new URL(item.image),
+        imageSrc: this.mapJsonResumeImages
+          ? this.imagePathFromInstitutionName(
+              item.shortName ?? item.institution,
+            )
+          : item.image,
         shortName: item.shortName,
       }),
       area: item.area,
@@ -48,13 +50,13 @@ export class JsonResumeEducationItemAdapterService {
     })
   }
 
-  private imageUrlFromInstitutionName(institutionName: string): URL {
+  private imagePathFromInstitutionName(institutionName: string): string {
     return new URL(
       this.EDUCATION_IMAGES_PATH +
         this.slugGenerator.generate(institutionName) +
         this.IMAGE_EXTENSION,
       this.canonicalURL,
-    )
+    ).toString()
   }
 }
 

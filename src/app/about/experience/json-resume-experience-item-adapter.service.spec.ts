@@ -44,8 +44,8 @@ describe('JsonResumeExperienceItemAdapterService', () => {
         expect(experienceItem.company.website).toEqual(
           new URL(jsonResumeWorkItem.url),
         )
-        expect(experienceItem.company.image).toEqual(
-          new URL(jsonResumeWorkItem.image),
+        expect(experienceItem.company.imageSrc).toEqual(
+          jsonResumeWorkItem.image,
         )
       })
 
@@ -131,7 +131,7 @@ describe('JsonResumeExperienceItemAdapterService', () => {
         const expectedImageFileName = 'company-name'
         const experienceItem = sut.adapt(jsonResumeWorkItem)
 
-        expect(experienceItem.company.image.toString()).toEqual(
+        expect(experienceItem.company.imageSrc).toEqual(
           canonicalUrl.toString() +
             sut.COMPANIES_IMAGE_ASSETS_PATH +
             expectedImageFileName +

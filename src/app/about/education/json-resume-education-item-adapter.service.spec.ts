@@ -47,8 +47,8 @@ describe('JsonResumeEducationItemAdapterService', () => {
         expect(educationItem.institution.website).toEqual(
           new URL(fakeJsonResumeEducationItem.url),
         )
-        expect(educationItem.institution.image).toEqual(
-          new URL(fakeJsonResumeEducationItem.image),
+        expect(educationItem.institution.imageSrc).toEqual(
+          fakeJsonResumeEducationItem.image,
         )
         expect(educationItem.institution.shortName).toEqual(
           fakeJsonResumeEducationItem.shortName,
@@ -137,7 +137,7 @@ describe('JsonResumeEducationItemAdapterService', () => {
           const expectedImageFileName = 'fin'
           const educationItem = sut.adapt(fakeJsonResumeEducationItem)
 
-          expect(educationItem.institution.image.toString()).toEqual(
+          expect(educationItem.institution.imageSrc).toEqual(
             fakeCanonicalUrl.toString() +
               sut.EDUCATION_IMAGES_PATH +
               expectedImageFileName +
@@ -155,7 +155,7 @@ describe('JsonResumeEducationItemAdapterService', () => {
           const expectedImageFileName = 'fake-institution-name'
           const educationItem = sut.adapt(fakeJsonResumeEducationItem)
 
-          expect(educationItem.institution.image.toString()).toEqual(
+          expect(educationItem.institution.imageSrc).toEqual(
             fakeCanonicalUrl.toString() +
               sut.EDUCATION_IMAGES_PATH +
               expectedImageFileName +

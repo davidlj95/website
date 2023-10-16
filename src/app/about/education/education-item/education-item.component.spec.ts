@@ -77,7 +77,7 @@ describe('EducationItemComponent', () => {
     const website = 'https://example.org/'
     const institution = new Organization({
       name: 'Some cool name',
-      image: new URL(imageUrl),
+      imageSrc: imageUrl,
       website: new URL(website),
     })
     setEducationItem(fixture, { institution })
@@ -99,7 +99,7 @@ describe('EducationItemComponent', () => {
     const website = 'https://example.org/'
     const institution = new Organization({
       name,
-      image: new URL('https://example.org/logo.png'),
+      imageSrc: 'https://example.org/logo.png',
       website: new URL(website),
     })
     setEducationItem(fixture, { institution })
@@ -119,7 +119,7 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, {
         institution: new Organization({
           name,
-          image: new URL('https://example.org'),
+          imageSrc: 'https://example.org',
           shortName,
         }),
       })
@@ -261,7 +261,7 @@ function setEducationItem(
   fixture.componentInstance.item = new EducationItem({
     institution: new Organization({
       name: 'Institution name',
-      image: new URL('https://example.org/logo.png'),
+      imageSrc: 'https://example.org/logo.png',
       website: new URL('https://example.org'),
     }),
     area: 'Area',

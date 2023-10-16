@@ -33,9 +33,9 @@ export class JsonResumeExperienceItemAdapterService {
         name: item.name,
         // Point to assets in this repo using canonical URL from env, so we can change the image and preview it.
         // Links in resume.json work anyway
-        image: this.mapJsonResumeImages
-          ? this.imageUrlFromCompanyName(item.name)
-          : new URL(item.image),
+        imageSrc: this.mapJsonResumeImages
+          ? this.imageSrcFromCompanyName(item.name)
+          : item.image,
         website: new URL(item.url),
       }),
       position: item.position,
@@ -52,13 +52,13 @@ export class JsonResumeExperienceItemAdapterService {
     })
   }
 
-  private imageUrlFromCompanyName(companyName: string): URL {
+  private imageSrcFromCompanyName(companyName: string): string {
     return new URL(
       this.COMPANIES_IMAGE_ASSETS_PATH +
         this.slugGenerator.generate(companyName) +
         this.IMAGE_EXTENSION,
       this.canonicalURL,
-    )
+    ).toString()
   }
 }
 
