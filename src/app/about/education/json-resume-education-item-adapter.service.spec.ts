@@ -78,7 +78,9 @@ describe('JsonResumeEducationItemAdapterService', () => {
       it('should map the image', () => {
         const image = 'https://example.org/logo.png'
 
-        const item = makeSut().adapt(makeJsonResumeEducationItem({ image }))
+        const item = makeSut({ mapJsonResumeImages: false }).adapt(
+          makeJsonResumeEducationItem({ image }),
+        )
 
         expect(item.institution.imageSrc).toEqual(image)
       })
