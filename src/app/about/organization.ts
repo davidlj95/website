@@ -1,23 +1,23 @@
 export class Organization {
   public readonly name: string
   public readonly website?: URL
-  public readonly image: URL
+  public readonly imageSrc: string
   public readonly shortName?: string
 
   constructor({
     name,
     website,
-    image,
+    imageSrc,
     shortName,
   }: {
     name: string
     website?: URL
-    image: URL
+    imageSrc: string
     shortName?: string
   }) {
     this.name = name
     this.website = website
-    this.image = image
+    this.imageSrc = imageSrc
     this.shortName = shortName
   }
 }

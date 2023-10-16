@@ -81,7 +81,7 @@ describe('ExperienceItem', () => {
       setExperienceItem(fixture, {
         company: new Organization({
           name: 'Company name',
-          image: new URL(imageUrl),
+          imageSrc: imageUrl,
           website: new URL(website),
         }),
       })
@@ -104,7 +104,7 @@ describe('ExperienceItem', () => {
       setExperienceItem(fixture, {
         company: new Organization({
           name,
-          image: new URL('https://example.org/logo.png'),
+          imageSrc: 'https://example.org/logo.png',
           website: new URL(website),
         }),
       })
@@ -346,7 +346,7 @@ function setExperienceItem(
   fixture.componentInstance.item = new ExperienceItem({
     company: new Organization({
       name: 'Fake company',
-      image: new URL('https://fakeCompany.example.com/logo.jpg'),
+      imageSrc: 'https://fakeCompany.example.com/logo.jpg',
     }),
     summary: 'Fake summary',
     position: 'Fake position',

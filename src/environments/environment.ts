@@ -3,6 +3,6 @@ import { Environment } from './environment-interface'
 
 export const environment: Environment = {
   production: true,
-  mapJsonResumeImages: false,
+  mapJsonResumeImages: true,
   canonicalUrl: new URL(`https://${METADATA.domainName}`),
 }
