@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core'
 import resume from '../../../../assets/resume.json'
-import { ProjectItem } from './project-item/project-item'
+import { ProjectItem, Stack } from './project-item/project-item'
 import { DateRange } from '../date-range/date-range'
 import { ENVIRONMENT } from '../../common/injection-tokens'
 import { Environment } from '../../../environments'
@@ -32,6 +32,7 @@ export class JsonResumeProjectItemAdapterService {
           ? this.imageUrlFromProjectName(item.name)
           : new URL(item.image)
         : undefined,
+      stack: item.stack ? this.mapStack(item.stack) : undefined,
     })
   }
 
@@ -42,6 +43,19 @@ export class JsonResumeProjectItemAdapterService {
         this.IMAGE_EXTENSION,
       this.environment.canonicalUrl,
     )
+  }
+
+  private mapStack(stack: string): Stack {
+    if (Object.values(Stack).includes(stack as Stack)) {
+      return stack as Stack
+    }
+    throw new InvalidStackValueError(stack)
+  }
+}
+
+export class InvalidStackValueError extends Error {
+  constructor(value: string) {
+    super(`Invalid stack value: '${value}'`)
   }
 }
 

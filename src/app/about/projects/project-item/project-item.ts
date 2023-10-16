@@ -7,6 +7,7 @@ export class ProjectItem {
   public readonly website?: URL
   public readonly roles: ReadonlyArray<string>
   public readonly image?: URL
+  public readonly stack?: Stack
 
   constructor({
     name,
@@ -15,6 +16,7 @@ export class ProjectItem {
     website,
     roles,
     image,
+    stack,
   }: {
     name: string
     description: string
@@ -22,6 +24,7 @@ export class ProjectItem {
     website?: URL
     roles?: ReadonlyArray<string>
     image?: URL
+    stack?: Stack
   }) {
     this.name = name
     this.description = description
@@ -29,5 +32,12 @@ export class ProjectItem {
     this.website = website
     this.roles = roles ?? []
     this.image = image
+    this.stack = stack
   }
+}
+
+export enum Stack {
+  Back = 'back',
+  Front = 'front',
+  Full = 'full',
 }

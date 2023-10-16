@@ -2,12 +2,14 @@ import { TestBed } from '@angular/core/testing'
 
 import resume from '../../../../assets/resume.json'
 import {
+  InvalidStackValueError,
   JsonResumeProjectItem,
   JsonResumeProjectItemAdapterService,
 } from './json-resume-project-item-adapter.service'
 import { MockProvider } from 'ng-mocks'
 import { ENVIRONMENT } from '../../common/injection-tokens'
 import { Environment } from '../../../environments'
+import { Stack } from './project-item/project-item'
 
 describe('JsonResumeProjectItemAdapterService', () => {
   it('should be created', () => {
@@ -120,6 +122,28 @@ describe('JsonResumeProjectItemAdapterService', () => {
           }).adapt(makeJsonResumeProjectItem({ image }))
           expect(item.image).toBeUndefined()
         })
+      })
+    })
+
+    describe('when stack exists', () => {
+      it('should map stack', () => {
+        const stack = Stack.Full
+        const item = makeSut().adapt(makeJsonResumeProjectItem({ stack }))
+        expect(item.stack).toEqual(stack)
+      })
+      it('should raise error if invalid', () => {
+        const stack = 'kata-croquet'
+        expect(() =>
+          makeSut().adapt(makeJsonResumeProjectItem({ stack })),
+        ).toThrowError(InvalidStackValueError)
+      })
+    })
+
+    describe('when stack does not exist', () => {
+      it('should map no stack', () => {
+        const stack = undefined
+        const item = makeSut().adapt(makeJsonResumeProjectItem({ stack }))
+        expect(item.stack).toBeUndefined()
       })
     })
   })

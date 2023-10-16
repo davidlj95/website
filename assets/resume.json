@@ -363,7 +363,8 @@
       "url": "https://vestoapp.com",
       "roles": ["Senior Backend Engineer"],
       "entity": "Vesto",
-      "image": "https://davidlj95.com/assets/projects/vesto.png"
+      "image": "https://davidlj95.com/assets/projects/vesto.png",
+      "stack": "back"
     },
     {
       "name": "Mindset",
@@ -388,7 +389,8 @@
       "url": "https://www.koahealth.com/products/mindset",
       "roles": ["Senior Software Engineer"],
       "entity": "Koa Health / Telefónica Alpha",
-      "image": "https://davidlj95.com/assets/projects/mindset.png"
+      "image": "https://davidlj95.com/assets/projects/mindset.png",
+      "stack": "full"
     },
     {
       "name": "Cowstamp",
@@ -422,7 +424,8 @@
       "url": "https://cowstamp.com",
       "roles": ["Lead Software Engineer"],
       "entity": "BTC Assessors",
-      "image": "https://davidlj95.com/assets/projects/cowstamp.png"
+      "image": "https://davidlj95.com/assets/projects/cowstamp.png",
+      "stack": "full"
     },
     {
       "name": "Kowbucha",
@@ -454,7 +457,8 @@
       "endDate": "2019-12-17",
       "url": "https://kowbucha.org",
       "roles": ["Lead Software Engineer"],
-      "entity": "BTC Assessors"
+      "entity": "BTC Assessors",
+      "stack": "front"
     },
     {
       "name": "NodeCenter",
@@ -474,7 +478,8 @@
       "url": "https://github.com/nodecenter/app",
       "roles": ["Software Engineer"],
       "entity": "BTC Assessors",
-      "image": "https://davidlj95.com/assets/projects/nodecenter.png"
+      "image": "https://davidlj95.com/assets/projects/nodecenter.png",
+      "stack": "full"
     },
     {
       "name": "Bitcoin Framework",
@@ -495,7 +500,8 @@
       "url": "https://gitlab.com/btcalabs/bitcoin-framework",
       "roles": ["Lead Software Engineer"],
       "entity": "BTC Assessors & UAB",
-      "image": "https://davidlj95.com/assets/projects/bitcoin-framework.png"
+      "image": "https://davidlj95.com/assets/projects/bitcoin-framework.png",
+      "stack": "back"
     },
     {
       "name": "IBC Report Generator",
@@ -514,7 +520,8 @@
       "endDate": "2018-02-17",
       "roles": ["Lead Software Engineer"],
       "entity": "IBC Biomechanics",
-      "image": "https://davidlj95.com/assets/projects/ibc-report-generator.png"
+      "image": "https://davidlj95.com/assets/projects/ibc-report-generator.png",
+      "stack": "full"
     },
     {
       "name": "Police Translator",
@@ -533,7 +540,8 @@
       "endDate": "2015-11-18",
       "roles": ["Lead Software Engineer"],
       "entity": "Institut de Seguretat Pública de Catalunya (ISPC)",
-      "image": "https://davidlj95.com/assets/projects/police-translator.png"
+      "image": "https://davidlj95.com/assets/projects/police-translator.png",
+      "stack": "full"
     }
   ],
   "meta": {
