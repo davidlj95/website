@@ -3,11 +3,11 @@ import { ProjectItem } from './project-item/project-item'
 import { ProjectItemsService } from './project-items.service'
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss'],
+  selector: 'app-projects-section',
+  templateUrl: './projects-section.component.html',
+  styleUrls: ['./projects-section.component.scss'],
 })
-export class ProjectsComponent {
+export class ProjectsSectionComponent {
   public readonly items: ReadonlyArray<ProjectItem>
 
   constructor(projectItemsService: ProjectItemsService) {

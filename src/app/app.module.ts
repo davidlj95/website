@@ -7,10 +7,10 @@ import { SeoModule } from '@ngaox/seo'
 import { environment } from '../environments'
 
 import { ResumePageComponent } from './resume-page/resume-page.component'
-import { ProfileContactSocialIconsComponent } from './resume-page/profile/profile-contact-social-icons/profile-contact-social-icons.component'
-import { ProfileContactTraditionalIconsComponent } from './resume-page/profile/profile-contact-traditional-icons/profile-contact-traditional-icons.component'
-import { ProfileDescriptionComponent } from './resume-page/profile/profile-description/profile-description.component'
-import { ProfilePictureComponent } from './resume-page/profile/profile-picture/profile-picture.component'
+import { ProfileContactSocialIconsComponent } from './resume-page/profile-section/profile-contact-social-icons/profile-contact-social-icons.component'
+import { ProfileContactTraditionalIconsComponent } from './resume-page/profile-section/profile-contact-traditional-icons/profile-contact-traditional-icons.component'
+import { ProfileDescriptionComponent } from './resume-page/profile-section/profile-description/profile-description.component'
+import { ProfilePictureComponent } from './resume-page/profile-section/profile-picture/profile-picture.component'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
@@ -20,12 +20,12 @@ import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.compo
 import { NoScriptComponent } from './no-script/no-script.component'
 import { ReleaseInfoComponent } from './release-info/release-info.component'
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component'
-import { ProfileComponent } from './resume-page/profile/profile.component'
-import { ExperienceComponent } from './resume-page/experience/experience.component'
-import { ExperienceItemComponent } from './resume-page/experience/experience-item/experience-item.component'
+import { ProfileSectionComponent } from './resume-page/profile-section/profile-section.component'
+import { ExperienceSectionComponent } from './resume-page/experience-section/experience-section.component'
+import { ExperienceItemComponent } from './resume-page/experience-section/experience-item/experience-item.component'
 import { H2Component } from './resume-page/h2/h2.component'
-import { EducationComponent } from './resume-page/education/education.component'
-import { EducationItemComponent } from './resume-page/education/education-item/education-item.component'
+import { EducationSectionComponent } from './resume-page/education-section/education-section.component'
+import { EducationItemComponent } from './resume-page/education-section/education-item/education-item.component'
 import { DateRangeComponent } from './resume-page/date-range/date-range.component'
 import { CardComponent } from './resume-page/card/card.component'
 import { CardHeaderImageComponent } from './resume-page/card/card-header/card-header-image/card-header-image.component'
@@ -40,14 +40,14 @@ import { CardHeaderAttributesComponent } from './resume-page/card/card-header/ca
 import { AttributeComponent } from './resume-page/attribute/attribute.component'
 import { ChipComponent } from './resume-page/chip/chip.component'
 import { ChippedContentComponent } from './resume-page/chipped-content/chipped-content.component'
-import { ExperienceItemSummaryComponent } from './resume-page/experience/experience-item/experience-item-summary/experience-item-summary.component'
-import { ExperienceItemHighlightsComponent } from './resume-page/experience/experience-item/experience-item-highlights/experience-item-highlights.component'
+import { ExperienceItemSummaryComponent } from './resume-page/experience-section/experience-item/experience-item-summary/experience-item-summary.component'
+import { ExperienceItemHighlightsComponent } from './resume-page/experience-section/experience-item/experience-item-highlights/experience-item-highlights.component'
 import { MaterialSymbolDirective } from './common/material-symbol.directive'
-import { EducationItemScoreComponent } from './resume-page/education/education-item/education-item-score/education-item-score.component'
-import { EducationItemCoursesComponent } from './resume-page/education/education-item/education-item-courses/education-item-courses.component'
-import { ProjectsComponent } from './resume-page/projects/projects.component'
-import { ProjectItemComponent } from './resume-page/projects/project-item/project-item.component'
-import { ProjectItemDescriptionComponent } from './resume-page/projects/project-item/project-item-description/project-item-description.component'
+import { EducationItemScoreComponent } from './resume-page/education-section/education-item/education-item-score/education-item-score.component'
+import { EducationItemCoursesComponent } from './resume-page/education-section/education-item/education-item-courses/education-item-courses.component'
+import { ProjectsSectionComponent } from './resume-page/projects-section/projects-section.component'
+import { ProjectItemComponent } from './resume-page/projects-section/project-item/project-item.component'
+import { ProjectItemDescriptionComponent } from './resume-page/projects-section/project-item/project-item-description/project-item-description.component'
 
 @NgModule({
   declarations: [
@@ -63,11 +63,11 @@ import { ProjectItemDescriptionComponent } from './resume-page/projects/project-
     ProfileContactSocialIconsComponent,
     ProfileDescriptionComponent,
     NotFoundPageComponent,
-    ProfileComponent,
-    ExperienceComponent,
+    ProfileSectionComponent,
+    ExperienceSectionComponent,
     ExperienceItemComponent,
     H2Component,
-    EducationComponent,
+    EducationSectionComponent,
     EducationItemComponent,
     DateRangeComponent,
     CardComponent,
@@ -88,7 +88,7 @@ import { ProjectItemDescriptionComponent } from './resume-page/projects/project-
     MaterialSymbolDirective,
     EducationItemScoreComponent,
     EducationItemCoursesComponent,
-    ProjectsComponent,
+    ProjectsSectionComponent,
     ProjectItemComponent,
     ProjectItemDescriptionComponent,
   ],

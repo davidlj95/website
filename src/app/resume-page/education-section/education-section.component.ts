@@ -3,11 +3,11 @@ import { EducationItem } from './education-item/education-item'
 import { EducationItemsService } from './education-items.service'
 
 @Component({
-  selector: 'app-education',
-  templateUrl: './education.component.html',
-  styleUrls: ['./education.component.scss'],
+  selector: 'app-education-section',
+  templateUrl: './education-section.component.html',
+  styleUrls: ['./education-section.component.scss'],
 })
-export class EducationComponent {
+export class EducationSectionComponent {
   protected items: ReadonlyArray<EducationItem>
 
   constructor(educationItemsService: EducationItemsService) {

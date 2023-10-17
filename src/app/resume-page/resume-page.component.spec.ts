@@ -4,10 +4,10 @@ import { ensureHasComponents } from '../../test/helpers/component-testers'
 
 import { ResumePageComponent } from './resume-page.component'
 import { JsonldMetadataComponent } from '../jsonld-metadata/jsonld-metadata.component'
-import { ProfileComponent } from './profile/profile.component'
-import { ExperienceComponent } from './experience/experience.component'
-import { EducationComponent } from './education/education.component'
-import { ProjectsComponent } from './projects/projects.component'
+import { ProfileSectionComponent } from './profile-section/profile-section.component'
+import { ExperienceSectionComponent } from './experience-section/experience-section.component'
+import { EducationSectionComponent } from './education-section/education-section.component'
+import { ProjectsSectionComponent } from './projects-section/projects-section.component'
 
 describe('ResumePageComponent', () => {
   let component: ResumePageComponent
@@ -19,10 +19,10 @@ describe('ResumePageComponent', () => {
         ResumePageComponent,
         MockComponents(
           JsonldMetadataComponent,
-          ProfileComponent,
-          ExperienceComponent,
-          EducationComponent,
-          ProjectsComponent,
+          ProfileSectionComponent,
+          ExperienceSectionComponent,
+          EducationSectionComponent,
+          ProjectsSectionComponent,
         ),
       ],
     })
@@ -38,8 +38,8 @@ describe('ResumePageComponent', () => {
   ensureHasComponents(
     () => fixture,
     JsonldMetadataComponent,
-    ProfileComponent,
-    ExperienceComponent,
-    EducationComponent,
+    ProfileSectionComponent,
+    ExperienceSectionComponent,
+    EducationSectionComponent,
   )
 })

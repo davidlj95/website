@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { ExperienceComponent } from './experience.component'
+import { ExperienceSectionComponent } from './experience-section.component'
 import { MockComponents } from 'ng-mocks'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { H2Component } from '../h2/h2.component'
@@ -7,18 +7,18 @@ import { ensureHasComponent } from '../../../test/helpers/component-testers'
 import { ExperienceItemsService } from './experience-items.service'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
 
-describe('ExperienceComponent', () => {
-  let component: ExperienceComponent
-  let fixture: ComponentFixture<ExperienceComponent>
+describe('ExperienceSectionComponent', () => {
+  let component: ExperienceSectionComponent
+  let fixture: ComponentFixture<ExperienceSectionComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ExperienceComponent,
+        ExperienceSectionComponent,
         MockComponents(H2Component, ExperienceItemComponent),
       ],
     })
-    fixture = TestBed.createComponent(ExperienceComponent)
+    fixture = TestBed.createComponent(ExperienceSectionComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

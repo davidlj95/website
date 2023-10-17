@@ -4,7 +4,7 @@
 @use 'profile-contact-traditional-icons/profile-contact-traditional-icons-theme';
 
 @mixin color($theme) {
-  app-profile {
+  app-profile-section {
     @include profile-picture-theme.color($theme);
     @include profile-contact-traditional-icons-theme.color($theme);
     @include profile-contact-social-icons-theme.color($theme);
@@ -12,7 +12,7 @@
 }
 
 @mixin motion() {
-  app-profile {
+  app-profile-section {
     @include profile-picture-theme.motion();
     @include profile-contact-traditional-icons-theme.motion;
     @include profile-contact-social-icons-theme.motion;
