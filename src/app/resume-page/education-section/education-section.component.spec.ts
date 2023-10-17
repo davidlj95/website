@@ -1,24 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { EducationComponent } from './education.component'
+import { EducationSectionComponent } from './education-section.component'
 import { MockComponents } from 'ng-mocks'
 import { H2Component } from '../h2/h2.component'
 import { EducationItemComponent } from './education-item/education-item.component'
 import { EducationItemsService } from './education-items.service'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
 
-describe('EducationComponent', () => {
-  let component: EducationComponent
-  let fixture: ComponentFixture<EducationComponent>
+describe('EducationSectionComponent', () => {
+  let component: EducationSectionComponent
+  let fixture: ComponentFixture<EducationSectionComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        EducationComponent,
+        EducationSectionComponent,
         MockComponents(H2Component, EducationItemComponent),
       ],
     })
-    fixture = TestBed.createComponent(EducationComponent)
+    fixture = TestBed.createComponent(EducationSectionComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

@@ -1,15 +1,15 @@
 @use 'h2/h2-theme';
-@use 'profile/profile-theme';
+@use 'profile-section/profile-section-theme';
 @use 'card/card-theme';
 @use 'attribute/attribute-theme';
 @use 'chip/chip-theme';
-@use 'education/education-item/education-item-courses/education-item-courses-theme';
+@use 'education-section/education-item/education-item-courses/education-item-courses-theme';
 
 @mixin color($theme) {
   app-resume-page {
     @include h2-theme.color($theme);
     @include card-theme.color($theme);
-    @include profile-theme.color($theme);
+    @include profile-section-theme.color($theme);
     @include attribute-theme.color($theme);
     @include chip-theme.color($theme);
     @include education-item-courses-theme.color($theme);
@@ -20,7 +20,7 @@
   app-resume-page {
     @include h2-theme.motion;
     @include card-theme.motion;
-    @include profile-theme.motion;
+    @include profile-section-theme.motion;
     @include attribute-theme.motion;
     @include chip-theme.motion;
     @include education-item-courses-theme.motion;

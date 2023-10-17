@@ -3,11 +3,11 @@ import { ExperienceItem } from './experience-item/experience-item'
 import { ExperienceItemsService } from './experience-items.service'
 
 @Component({
-  selector: 'app-experience',
-  templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.scss'],
+  selector: 'app-experience-section',
+  templateUrl: './experience-section.component.html',
+  styleUrls: ['./experience-section.component.scss'],
 })
-export class ExperienceComponent {
+export class ExperienceSectionComponent {
   protected items: ReadonlyArray<ExperienceItem>
 
   constructor(experienceItemsService: ExperienceItemsService) {

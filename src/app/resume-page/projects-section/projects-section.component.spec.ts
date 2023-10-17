@@ -1,24 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ProjectsComponent } from './projects.component'
+import { ProjectsSectionComponent } from './projects-section.component'
 import { MockComponents } from 'ng-mocks'
 import { H2Component } from '../h2/h2.component'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
 import { ProjectItemsService } from './project-items.service'
 import { ProjectItemComponent } from './project-item/project-item.component'
 
-describe('ProjectsComponent', () => {
-  let component: ProjectsComponent
-  let fixture: ComponentFixture<ProjectsComponent>
+describe('ProjectsSectionComponent', () => {
+  let component: ProjectsSectionComponent
+  let fixture: ComponentFixture<ProjectsSectionComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ProjectsComponent,
+        ProjectsSectionComponent,
         MockComponents(H2Component, ProjectItemComponent),
       ],
     })
-    fixture = TestBed.createComponent(ProjectsComponent)
+    fixture = TestBed.createComponent(ProjectsSectionComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
