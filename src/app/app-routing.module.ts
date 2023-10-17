@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AboutComponent } from './about/about.component'
+import { ResumePageComponent } from './resume-page/resume-page.component'
 import { NotFoundComponent } from './not-found/not-found.component'
 import { IPageSeoData } from '@ngaox/seo'
 import { METADATA } from './metadata'
@@ -15,7 +15,7 @@ const notFoundData: { NgaoxSeo: IPageSeoData } = {
   },
 }
 const routes: Routes = [
-  { path: '', component: AboutComponent, pathMatch: 'full' },
+  { path: '', component: ResumePageComponent, pathMatch: 'full' },
   { path: '404', component: NotFoundComponent, data: notFoundData },
   { path: '**', component: NotFoundComponent, data: notFoundData },
 ]

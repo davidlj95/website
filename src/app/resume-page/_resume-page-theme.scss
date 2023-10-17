@@ -6,7 +6,7 @@
 @use 'education/education-item/education-item-courses/education-item-courses-theme';
 
 @mixin color($theme) {
-  app-about {
+  app-resume-page {
     @include h2-theme.color($theme);
     @include card-theme.color($theme);
     @include profile-theme.color($theme);
@@ -17,7 +17,7 @@
 }
 
 @mixin motion() {
-  app-about {
+  app-resume-page {
     @include h2-theme.motion;
     @include card-theme.motion;
     @include profile-theme.motion;

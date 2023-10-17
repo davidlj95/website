@@ -2,21 +2,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { MockComponents } from 'ng-mocks'
 import { ensureHasComponents } from '../../test/helpers/component-testers'
 
-import { AboutComponent } from './about.component'
+import { ResumePageComponent } from './resume-page.component'
 import { JsonldMetadataComponent } from '../jsonld-metadata/jsonld-metadata.component'
 import { ProfileComponent } from './profile/profile.component'
 import { ExperienceComponent } from './experience/experience.component'
 import { EducationComponent } from './education/education.component'
 import { ProjectsComponent } from './projects/projects.component'
 
-describe('AboutComponent', () => {
-  let component: AboutComponent
-  let fixture: ComponentFixture<AboutComponent>
+describe('ResumePageComponent', () => {
+  let component: ResumePageComponent
+  let fixture: ComponentFixture<ResumePageComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AboutComponent,
+        ResumePageComponent,
         MockComponents(
           JsonldMetadataComponent,
           ProfileComponent,
@@ -26,7 +26,7 @@ describe('AboutComponent', () => {
         ),
       ],
     })
-    fixture = TestBed.createComponent(AboutComponent)
+    fixture = TestBed.createComponent(ResumePageComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

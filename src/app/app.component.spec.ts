@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { MockComponents } from 'ng-mocks'
 import { ensureHasComponents } from '../test/helpers/component-testers'
-import { AboutComponent } from './about/about.component'
+import { ResumePageComponent } from './resume-page/resume-page.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
 import { NoScriptComponent } from './no-script/no-script.component'
@@ -22,7 +22,7 @@ describe('AppComponent', () => {
           ReleaseInfoComponent,
           NoScriptComponent,
           HeaderComponent,
-          AboutComponent,
+          ResumePageComponent,
         ),
       ],
     })
