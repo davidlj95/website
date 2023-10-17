@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { SeoModule } from '@ngaox/seo'
 import { environment } from '../environments'
+
 import { ResumePageComponent } from './resume-page/resume-page.component'
 import { ProfileContactSocialIconsComponent } from './resume-page/profile/profile-contact-social-icons/profile-contact-social-icons.component'
 import { ProfileContactTraditionalIconsComponent } from './resume-page/profile/profile-contact-traditional-icons/profile-contact-traditional-icons.component'
@@ -18,7 +19,7 @@ import { METADATA } from './metadata'
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component'
 import { NoScriptComponent } from './no-script/no-script.component'
 import { ReleaseInfoComponent } from './release-info/release-info.component'
-import { NotFoundComponent } from './not-found/not-found.component'
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component'
 import { ProfileComponent } from './resume-page/profile/profile.component'
 import { ExperienceComponent } from './resume-page/experience/experience.component'
 import { ExperienceItemComponent } from './resume-page/experience/experience-item/experience-item.component'
@@ -61,7 +62,7 @@ import { ProjectItemDescriptionComponent } from './resume-page/projects/project-
     ProfileContactTraditionalIconsComponent,
     ProfileContactSocialIconsComponent,
     ProfileDescriptionComponent,
-    NotFoundComponent,
+    NotFoundPageComponent,
     ProfileComponent,
     ExperienceComponent,
     ExperienceItemComponent,
