@@ -5,11 +5,11 @@ import { Environment } from '../../environments'
 import { ENVIRONMENT } from '../common/injection-tokens'
 
 @Component({
-  selector: 'app-not-found',
-  templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.scss'],
+  selector: 'app-not-found-page',
+  templateUrl: './not-found-page.component.html',
+  styleUrls: ['./not-found-page.component.scss'],
 })
-export class NotFoundComponent {
+export class NotFoundPageComponent {
   public readonly currentUrlInWaybackMachine: URL
   protected readonly MaterialSymbol = {
     Lightbulb,

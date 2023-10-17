@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import {
-  NotFoundComponent,
+  NotFoundPageComponent,
   WAYBACK_MACHINE_URL_PREFIX,
-} from './not-found.component'
+} from './not-found-page.component'
 import { Environment } from '../../environments'
 import { Router } from '@angular/router'
 import { MockProvider } from 'ng-mocks'
 import { ENVIRONMENT } from '../common/injection-tokens'
 
-describe('NotFoundComponent', () => {
-  let component: NotFoundComponent
-  let fixture: ComponentFixture<NotFoundComponent>
+describe('NotFoundPageComponent', () => {
+  let component: NotFoundPageComponent
+  let fixture: ComponentFixture<NotFoundPageComponent>
   const fakeEnvUrlNoTrailingSlash: string = 'https://example.com'
   const fakeEnv: Pick<Environment, 'canonicalUrl'> = {
     canonicalUrl: new URL(fakeEnvUrlNoTrailingSlash),
@@ -22,13 +22,13 @@ describe('NotFoundComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NotFoundComponent],
+      declarations: [NotFoundPageComponent],
       providers: [
         MockProvider(ENVIRONMENT, fakeEnv),
         MockProvider(Router, fakeRouter),
       ],
     })
-    fixture = TestBed.createComponent(NotFoundComponent)
+    fixture = TestBed.createComponent(NotFoundPageComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

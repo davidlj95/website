@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AboutComponent } from './about/about.component'
-import { NotFoundComponent } from './not-found/not-found.component'
+import { ResumePageComponent } from './resume-page/resume-page.component'
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component'
 import { IPageSeoData } from '@ngaox/seo'
 import { METADATA } from './metadata'
 
-const notFoundData: { NgaoxSeo: IPageSeoData } = {
+const notFoundPageData: { NgaoxSeo: IPageSeoData } = {
   NgaoxSeo: {
     title: `${METADATA.siteName} | Not Found`,
     description: 'Page could not be found',
@@ -15,9 +15,9 @@ const notFoundData: { NgaoxSeo: IPageSeoData } = {
   },
 }
 const routes: Routes = [
-  { path: '', component: AboutComponent, pathMatch: 'full' },
-  { path: '404', component: NotFoundComponent, data: notFoundData },
-  { path: '**', component: NotFoundComponent, data: notFoundData },
+  { path: '', component: ResumePageComponent, pathMatch: 'full' },
+  { path: '404', component: NotFoundPageComponent, data: notFoundPageData },
+  { path: '**', component: NotFoundPageComponent, data: notFoundPageData },
 ]
 
 @NgModule({

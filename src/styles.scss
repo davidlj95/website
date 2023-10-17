@@ -2,11 +2,11 @@
 @use 'sass:map';
 @use 'animations';
 @use 'app/app-theme' as root-theme;
-@use 'app/about/about-theme';
+@use 'app/resume-page/resume-page-theme';
 @use 'app/header/header-theme';
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
-@use 'app/not-found/not-found-theme';
+@use 'app/not-found-page/not-found-page-theme';
 @use 'font-awesome';
 @use 'material-symbols';
 @use 'theming';
@@ -61,9 +61,9 @@ a {
   @include root-theme.color($theme);
   @include header-theme.color($theme);
   @include no-script-theme.color($theme);
-  @include about-theme.color($theme);
+  @include resume-page-theme.color($theme);
   @include navigation-tabs-theme.color($theme);
-  @include not-found-theme.color($theme);
+  @include not-found-page-theme.color($theme);
 
   // TODO: cool effect for hovering
   $text-palette: map.get($theme, text);
@@ -99,7 +99,7 @@ a {
 html:not([data-no-motion]) {
   @include root-theme.motion;
   @include header-theme.motion;
-  @include about-theme.motion;
+  @include resume-page-theme.motion;
   @include navigation-tabs-theme.motion;
 }
 
