@@ -341,12 +341,7 @@
   "projects": [
     {
       "name": "Vesto",
-      "description": "Mobile app to introduce users to the world of financial investments. Allows to easily invest in US stock market with credit card or Bizum. Focused for Spanish market. Worked on the backend side",
-      "url": "https://vestoapp.com",
-      "image": "https://i.imgur.com/54OVtLi.png",
-      "startDate": "2022-10-10",
-      "entity": "Vesto",
-      "roles": ["Senior software engineer", "Backend"],
+      "description": "Worked on backend stack. Mobile app to introduce users to the world of financial investments. Allows to easily invest in US stock market with card or Bizum. Focused for Spanish market",
       "keywords": [
         "Ruby on Rails 6",
         "Sidekiq",
@@ -362,17 +357,18 @@
         "RedSys",
         "New Relic",
         "Slack"
-      ]
+      ],
+      "startDate": "2022-10-10",
+      "endDate": "2023-07-14",
+      "url": "https://vestoapp.com",
+      "roles": ["Senior Backend Engineer"],
+      "entity": "Vesto",
+      "image": "https://davidlj95.com/assets/projects/vesto.png",
+      "stack": "back"
     },
     {
       "name": "Mindset",
-      "description": "Mobile app for patients to treat depression using Cognitive Behavioral Therapy (CBT) exercises. Web app for therapists to track patients' progress",
-      "url": "https://www.koahealth.com/products/mindset",
-      "image": "https://i.imgur.com/w85KRee.png",
-      "startDate": "2020-03-01",
-      "endDate": "2022-06-07",
-      "entity": "Koa Health / Telefónica Alpha",
-      "roles": ["Senior software engineer", "Full stack"],
+      "description": "Worked in full stack. Mobile app for patients to treat depression using Cognitive Behavioral Therapy (CBT) exercises. Web app for therapists to track patients' progress",
       "keywords": [
         "Flutter 1 & 2",
         "Typescript",
@@ -387,17 +383,18 @@
         "Terraform",
         "AWS (EKS, ALB, RDS, API Gateway, Cognito)",
         "Datadog"
-      ]
+      ],
+      "startDate": "2020-03-01",
+      "endDate": "2022-06-07",
+      "url": "https://www.koahealth.com/products/mindset",
+      "roles": ["Senior Software Engineer"],
+      "entity": "Koa Health / Telefónica Alpha",
+      "image": "https://davidlj95.com/assets/projects/mindset.png",
+      "stack": "full"
     },
     {
       "name": "Cowstamp",
-      "description": "Web SaaS app to create, issue and receive verifiable credentials digitally signed using blockchain technologies with a user-centric design. Uses a custom ad hoc library to canonize JSON-LD graphs",
-      "url": "https://cowstamp.com",
-      "image": "https://imgur.com/9KpS6LW.png",
-      "startDate": "2019-07-29",
-      "endDate": "2019-12-17",
-      "entity": "BTC Assessors",
-      "roles": ["Lead software engineer", "Full stack developer"],
+      "description": "Worked in full stack. Web SaaS app to create, issue and receive verifiable credentials digitally signed using blockchain technologies with a user-centric design. Uses a custom ad hoc library to canonize JSON-LD graphs",
       "keywords": [
         "Angular 8",
         "Typescript",
@@ -421,16 +418,18 @@
         "Blockcerts",
         "JSON-LD",
         "Agile methodologies"
-      ]
+      ],
+      "startDate": "2019-07-29",
+      "endDate": "2019-12-17",
+      "url": "https://cowstamp.com",
+      "roles": ["Lead Software Engineer"],
+      "entity": "BTC Assessors",
+      "image": "https://davidlj95.com/assets/projects/cowstamp.png",
+      "stack": "full"
     },
     {
       "name": "Kowbucha",
       "description": "Web app to allow an independent verification of Blockcerts verifiable credentials based upon users' trust decisions. Uses a companion NodeJS & browser Javascript library created ad hoc to perform the verifications.",
-      "url": "https://kowbucha.org",
-      "startDate": "2019-11-14",
-      "endDate": "2019-12-17",
-      "entity": "BTC Assessors",
-      "roles": ["Lead software engineer", "Frontend developer"],
       "keywords": [
         "Material Design",
         "Angular 8",
@@ -453,17 +452,17 @@
         "Blockcerts",
         "JSON-LD",
         "Agile methodologies"
-      ]
+      ],
+      "startDate": "2019-11-14",
+      "endDate": "2019-12-17",
+      "url": "https://kowbucha.org",
+      "roles": ["Lead Software Engineer"],
+      "entity": "BTC Assessors",
+      "stack": "front"
     },
     {
       "name": "NodeCenter",
-      "description": "Application to manage blockchain / DLT nodes deployments in few clicks with an easy to use web interface, based on an Open API documented REST API exposed by a companion app daemon",
-      "url": "https://github.com/nodecenter/app",
-      "image": "https://imgur.com/kroWBlD.png",
-      "startDate": "2019-01-15",
-      "endDate": "2019-09-10",
-      "entity": "BTC Assessors",
-      "roles": ["Software engineer", "Full stack developer"],
+      "description": "Worked in full stack. Application to manage blockchain / DLT nodes deployments in few clicks with an easy to use web interface, based on an Open API documented REST API exposed by a companion app daemon",
       "keywords": [
         "Docker",
         "REST API",
@@ -473,17 +472,18 @@
         "Angular 8",
         "Typescript",
         "GitLab CI/CD"
-      ]
+      ],
+      "startDate": "2019-01-15",
+      "endDate": "2019-09-10",
+      "url": "https://github.com/nodecenter/app",
+      "roles": ["Software Engineer"],
+      "entity": "BTC Assessors",
+      "image": "https://davidlj95.com/assets/projects/nodecenter.png",
+      "stack": "full"
     },
     {
       "name": "Bitcoin Framework",
-      "description": "Python Bitcoin framework to create transactions with smart contracts (scripts) based on puzzle-friendliness and OOP",
-      "url": "https://gitlab.com/btcalabs/bitcoin-framework",
-      "image": "https://imgur.com/C4ahmYr.png",
-      "startDate": "2017-07-04",
-      "endDate": "2018-12-03",
-      "entity": "BTC Assessors & UAB",
-      "roles": ["Software engineer", "Library maintainer"],
+      "description": "Bitcoin library to create transactions with smart contracts (scripts) based on puzzle-friendliness and object oriented programming (OOP)",
       "keywords": [
         "Bitcoin",
         "Cryptography",
@@ -494,16 +494,18 @@
         "TravisCI",
         "GitLab CI/CD",
         "PyPi"
-      ]
+      ],
+      "startDate": "2017-07-04",
+      "endDate": "2018-12-03",
+      "url": "https://gitlab.com/btcalabs/bitcoin-framework",
+      "roles": ["Lead Software Engineer"],
+      "entity": "BTC Assessors & UAB",
+      "image": "https://davidlj95.com/assets/projects/bitcoin-framework.png",
+      "stack": "back"
     },
     {
       "name": "IBC Report Generator",
-      "description": "Desktop application to generate biomechanics reports out of data extracted from third party applications and devices using user-created report templates",
-      "image": "https://i.imgur.com/6jh7VDW.png",
-      "startDate": "2015-09-25",
-      "endDate": "2018-02-17",
-      "entity": "IBC Biomechanics",
-      "roles": ["Lead software engineer", "Full stack developer"],
+      "description": "Worked in full stack. Desktop application to generate biomechanics reports out of data extracted from third party applications and devices using user-created report templates",
       "keywords": [
         "Anaconda",
         "Python 2.7",
@@ -513,16 +515,17 @@
         "SQL Alchemy",
         "Maria DB",
         "Docker"
-      ]
+      ],
+      "startDate": "2015-09-25",
+      "endDate": "2018-02-17",
+      "roles": ["Lead Software Engineer"],
+      "entity": "IBC Biomechanics",
+      "image": "https://davidlj95.com/assets/projects/ibc-report-generator.png",
+      "stack": "full"
     },
     {
       "name": "Police Translator",
-      "description": "Hybrid mobile application with a collection of useful phrases for police officers translated from/to English to/from Catalan, with audio pronunciations and that fully works offline. Web application to manage all content and their translations",
-      "image": "https://imgur.com/GIYv6YI.png",
-      "startDate": "2014-06-27",
-      "endDate": "2015-11-18",
-      "entity": "Institut de Seguretat Pública de Catalunya (ISPC)",
-      "roles": ["Software engineer", "Full stack developer"],
+      "description": "Worked in full stack. Hybrid mobile application with a collection of useful phrases for police officers translated between English and Catalan. Includes audio pronunciations and supports offline mode. Custom contents manager as web application",
       "keywords": [
         "Linux",
         "PHP 5",
@@ -532,7 +535,13 @@
         "HTML4",
         "CSS2",
         "JavaScript"
-      ]
+      ],
+      "startDate": "2014-06-27",
+      "endDate": "2015-11-18",
+      "roles": ["Lead Software Engineer"],
+      "entity": "Institut de Seguretat Pública de Catalunya (ISPC)",
+      "image": "https://davidlj95.com/assets/projects/police-translator.png",
+      "stack": "full"
     }
   ],
   "meta": {
