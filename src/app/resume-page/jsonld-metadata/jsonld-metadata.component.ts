@@ -1,8 +1,8 @@
 import { DOCUMENT } from '@angular/common'
 import { Component, Inject, OnInit } from '@angular/core'
-import { Environment } from '../../environments'
-import { ENVIRONMENT, METADATA } from '../common/injection-tokens'
-import { Metadata } from '../metadata'
+import { Environment } from '../../../environments'
+import { ENVIRONMENT, METADATA } from '../../common/injection-tokens'
+import { Metadata } from '../../metadata'
 
 @Component({
   selector: 'app-jsonld-metadata',

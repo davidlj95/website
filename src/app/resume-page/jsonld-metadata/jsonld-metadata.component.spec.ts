@@ -1,9 +1,9 @@
 import { DOCUMENT } from '@angular/common'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
-import { Environment } from '../../environments'
-import { ENVIRONMENT, METADATA } from '../common/injection-tokens'
-import { Metadata } from '../metadata'
+import { Environment } from '../../../environments'
+import { ENVIRONMENT, METADATA } from '../../common/injection-tokens'
+import { Metadata } from '../../metadata'
 
 import { JsonldMetadataComponent } from './jsonld-metadata.component'
 

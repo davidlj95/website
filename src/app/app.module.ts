@@ -14,7 +14,7 @@ import { ProfilePictureComponent } from './resume-page/profile-section/profile-p
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
-import { JsonldMetadataComponent } from './jsonld-metadata/jsonld-metadata.component'
+import { JsonldMetadataComponent } from './resume-page/jsonld-metadata/jsonld-metadata.component'
 import { METADATA } from './metadata'
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component'
 import { NoScriptComponent } from './no-script/no-script.component'
