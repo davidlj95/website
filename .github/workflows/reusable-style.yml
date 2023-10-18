@@ -2,9 +2,6 @@ name: Style
 on:
   workflow_call:
     inputs:
-      artifact-name:
-        required: false
-        type: string
       ref:
         description: Git reference to checkout. Defaults to @actions/checkout default.
         type: string
