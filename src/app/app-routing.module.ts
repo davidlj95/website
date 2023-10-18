@@ -4,6 +4,7 @@ import { ResumePageComponent } from './resume-page/resume-page.component'
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component'
 import { IPageSeoData } from '@ngaox/seo'
 import { METADATA } from './metadata'
+import { environment } from '../environments'
 
 const notFoundPageData: { NgaoxSeo: IPageSeoData } = {
   NgaoxSeo: {
@@ -14,8 +15,16 @@ const notFoundPageData: { NgaoxSeo: IPageSeoData } = {
     image: undefined,
   },
 }
+const resumePath = 'resume'
+const resumePageData: { NgaoxSeo: IPageSeoData } = {
+  NgaoxSeo: {
+    title: `${METADATA.siteName} | Resume`,
+    url: new URL(resumePath, environment.canonicalUrl).toString(),
+  },
+}
 const routes: Routes = [
-  { path: '', component: ResumePageComponent, pathMatch: 'full' },
+  { path: '', redirectTo: `/${resumePath}`, pathMatch: 'full' },
+  { path: resumePath, component: ResumePageComponent, data: resumePageData },
   { path: '404', component: NotFoundPageComponent, data: notFoundPageData },
   { path: '**', component: NotFoundPageComponent, data: notFoundPageData },
 ]
