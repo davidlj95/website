@@ -72,7 +72,7 @@
     "@types/jasmine": "5.1.1",
     "@types/node": "20.8.7",
     "@types/signale": "1.4.5",
-    "@types/subset-font": "1.4.1",
+    "@types/subset-font": "1.4.2",
     "@typescript-eslint/eslint-plugin": "6.7.5",
     "@typescript-eslint/parser": "6.7.5",
     "concurrently": "8.2.1",
