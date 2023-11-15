@@ -2255,7 +2255,7 @@ __metadata:
     karma-jasmine-html-reporter: 2.1.0
     karma-junit-reporter: 2.0.1
     lint-staged: 15.1.0
-    liquidjs: 10.9.3
+    liquidjs: 10.9.4
     ng-mocks: 14.11.0
     prettier: 3.1.0
     rxjs: 7.8.1
@@ -9688,15 +9688,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"liquidjs@npm:10.9.3":
-  version: 10.9.3
-  resolution: "liquidjs@npm:10.9.3"
+"liquidjs@npm:10.9.4":
+  version: 10.9.4
+  resolution: "liquidjs@npm:10.9.4"
   dependencies:
     commander: ^10.0.0
   bin:
     liquid: bin/liquid.js
     liquidjs: bin/liquid.js
-  checksum: 8f4d62f746706a9483a03527798b3b0277a4becaddee7f4b43fe30298849c34db99c1bfbeb99145e3119c96847527b8b3c42eff386605bf72443de472df88089
+  checksum: ee95c68117c3d92359d1e55f5d9da2112e5c6c99541a31704f808e6d274a59b971d41da9e556444b5fb005734195946be2b0e5f7cdd01afbccfb6f3bd215ff5b
   languageName: node
   linkType: hard
 
