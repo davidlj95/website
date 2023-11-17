@@ -63,5 +63,11 @@
       matchPackageNames: ['@fortawesome/angular-fontawesome'],
       allowedVersions: '>=0.13.0 <0.14.0',
     },
+    // ts-node doesn't support Node 20 with ESM
+    // https://github.com/TypeStrong/ts-node/issues/1997
+    {
+      matchPackageNames: ['node'],
+      allowedVersions: '18.x',
+    },
   ],
 }
