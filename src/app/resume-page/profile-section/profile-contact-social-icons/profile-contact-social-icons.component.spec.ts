@@ -16,7 +16,6 @@ describe('ContactSocialIconsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfileContactSocialIconsComponent, FaIconComponent],
       providers: [
         MockProvider(METADATA, { nickname: nickname } as Pick<
           Metadata,

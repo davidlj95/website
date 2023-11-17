@@ -2,12 +2,10 @@ import { NgOptimizedImage } from '@angular/common'
 import { NgModule, VERSION } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { SeoModule } from '@ngaox/seo'
 import { environment } from '../environments'
 
 import { ResumePageComponent } from './resume-page/resume-page.component'
-import { ProfileContactSocialIconsComponent } from './resume-page/profile-section/profile-contact-social-icons/profile-contact-social-icons.component'
 import { ProfileContactTraditionalIconsComponent } from './resume-page/profile-section/profile-contact-traditional-icons/profile-contact-traditional-icons.component'
 import { ProfileDescriptionComponent } from './resume-page/profile-section/profile-description/profile-description.component'
 import { ProfilePictureComponent } from './resume-page/profile-section/profile-picture/profile-picture.component'
@@ -60,7 +58,6 @@ import { ProjectItemDescriptionComponent } from './resume-page/projects-section/
     ReleaseInfoComponent,
     ProfilePictureComponent,
     ProfileContactTraditionalIconsComponent,
-    ProfileContactSocialIconsComponent,
     ProfileDescriptionComponent,
     NotFoundPageComponent,
     ProfileSectionComponent,
@@ -127,7 +124,6 @@ import { ProjectItemDescriptionComponent } from './resume-page/projects-section/
         { name: 'application-name', content: METADATA.siteName },
       ],
     }),
-    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

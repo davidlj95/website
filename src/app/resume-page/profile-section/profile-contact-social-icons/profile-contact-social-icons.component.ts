@@ -8,11 +8,15 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { METADATA } from '../../../common/injection-tokens'
 import { Metadata } from '../../../metadata'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-profile-contact-social-icons',
   templateUrl: './profile-contact-social-icons.component.html',
   styleUrls: ['./profile-contact-social-icons.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FontAwesomeModule],
 })
 export class ProfileContactSocialIconsComponent {
   public items: ReadonlyArray<{
