@@ -2231,7 +2231,7 @@ __metadata:
     "@types/compression": "npm:1.7.5"
     "@types/express": "npm:4.17.21"
     "@types/jasmine": "npm:5.1.2"
-    "@types/node": "npm:20.8.7"
+    "@types/node": "npm:20.9.1"
     "@types/signale": "npm:1.4.7"
     "@types/subset-font": "npm:1.4.3"
     "@typescript-eslint/eslint-plugin": "npm:6.11.0"
@@ -3875,12 +3875,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.8.7":
-  version: 20.8.7
-  resolution: "@types/node@npm:20.8.7"
+"@types/node@npm:20.9.1":
+  version: 20.9.1
+  resolution: "@types/node@npm:20.9.1"
   dependencies:
-    undici-types: "npm:~5.25.1"
-  checksum: e82b87e7f3f4c12acc5803db21f9144d5e87c20841db9ae98746958e038064700ab04294d08a3714a3df8bd710a974998e2e423443a5d031840cbba17fa126a7
+    undici-types: "npm:~5.26.4"
+  checksum: 0cb52c0840fe9a2e8f988564da6823bb3141e34fef8cb7264762c851c0dac5d9ef4859db422dfa41cd1a864ad126a9bd3b588d0285bc9af6de814de3280da9b3
   languageName: node
   linkType: hard
 
@@ -14114,13 +14114,6 @@ __metadata:
   bin:
     uglifyjs: bin/uglifyjs
   checksum: 8b7fcdca69deb284fed7d2025b73eb747ce37f9aca6af53422844f46427152d5440601b6e2a033e77856a2f0591e4167153d5a21b68674ad11f662034ec13ced
-  languageName: node
-  linkType: hard
-
-"undici-types@npm:~5.25.1":
-  version: 5.25.3
-  resolution: "undici-types@npm:5.25.3"
-  checksum: 60a47c6db451c00d27186d86a41fbd9677fa1f6d1a5350bff342c3985bd79fc3f5a638ebf56bbce21df46c701a687db43b3fbd588e1726e58047cea14d182fef
   languageName: node
   linkType: hard
 
