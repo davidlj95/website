@@ -56,5 +56,12 @@
       matchPackageNames: ['typescript'],
       allowedVersions: '>=4.9.3 <5.2.0',
     },
+    // We cannot upgrade until migrating to Angular v17
+    // Plus use of standalone components (tried to bypass when using v16)
+    // https://github.com/FortAwesome/angular-fontawesome/releases/tag/0.14.0
+    {
+      matchPackageNames: ['@fortawesome/angular-fontawesome'],
+      allowedVersions: '>=0.13.0 <0.14.0',
+    },
   ],
 }
