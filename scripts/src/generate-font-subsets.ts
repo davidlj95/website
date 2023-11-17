@@ -1,11 +1,11 @@
-import * as fs from 'fs'
 import subsetFont from 'subset-font'
-import MaterialSymbols from '../../src/app/material-symbols.js'
-import { isMain, Log } from './utils.mjs'
+import * as MaterialSymbols from '../../src/app/material-symbols'
+import { isMain, Log } from './utils'
+import { readFileSync, writeFileSync } from 'fs'
 
 async function generateFonts() {
   Log.info('Generating font subset for Material Symbols Outlined')
-  const materialSymbolsFont = fs.readFileSync(
+  const materialSymbolsFont = readFileSync(
     'assets/material-symbols-outlined.woff2',
   )
   const fontBuffer = Buffer.from(materialSymbolsFont)
@@ -68,10 +68,7 @@ async function generateFontSubset(
   const subsetBuffer = await subsetFont(fontBuffer, text, {
     targetFormat: format,
   })
-  fs.writeFileSync(
-    `${filename}.${getExtensionFromFormat(format)}`,
-    subsetBuffer,
-  )
+  writeFileSync(`${filename}.${getExtensionFromFormat(format)}`, subsetBuffer)
 }
 
 function getExtensionFromFormat(format: FontFormat): string {
