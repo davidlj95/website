@@ -1,7 +1,5 @@
 // Getting hipster here 😎 Importing JSONs and type assertions are experimental
 import { execaSync } from 'execa'
-import * as fs from 'fs'
-import path from 'path'
 import semanticRelease, {
   AnalyzeCommitsContext,
   BranchObject,
@@ -14,7 +12,9 @@ import semanticRelease, {
 // But we get type safety given Typescript reads the JSON
 // We can always go back to an old boring read file sync if experiment goes wrong :P
 import realReleaseOptions from '../../.releaserc.json' assert { type: 'json' }
-import { getRepositoryRootDir, isMain, Log } from './utils.mjs'
+import { getRepositoryRootDir, isMain, Log } from './utils'
+import { join } from 'path'
+import { writeFileSync } from 'fs'
 
 async function generateReleaseFile() {
   const tagsPointingAtHead = await getTagsPointingAtHead()
@@ -126,7 +126,7 @@ async function runSemanticRelease(
   options: Options,
 ): Promise<Result | PreviewResultObject> {
   const currentBranch = await getCurrentBranch()
-  const env = {} as any
+  const env = {} as { env: { GITHUB_ACTIONS: boolean; GITHUB_REF: string } }
   const mainBranch = getMainBranch(options)
   Log.info('Branch detection')
   Log.item("Main branch as per release config: '%s'", mainBranch)
@@ -248,7 +248,7 @@ async function runSemanticReleaseThatReturnsAFakeRelease(
 function generateFakeAnalyzeCommitsThatJustTriggersARelease(
   releaseType: AnalyzeCommitsReleaseType,
 ): AnalyzeCommitsPlugin {
-  return { analyzeCommits: async (_pluginContext, _context) => releaseType }
+  return { analyzeCommits: async () => releaseType }
 }
 
 // https://github.com/semantic-release/commit-analyzer/blob/v10.0.4/index.js#L28
@@ -268,11 +268,11 @@ type AnalyzeCommitsReleaseType = Extract<
 type ResultObject = Exclude<Result, false>
 type FakeResultObject = ResultObject & { fake: true }
 
-const RELEASE_FILE = path.join(getRepositoryRootDir(), 'release.json')
+const RELEASE_FILE = join(getRepositoryRootDir(), 'release.json')
 
 async function writeToReleaseFile(result: unknown) {
   Log.info("Writing to file '%s'", RELEASE_FILE)
-  fs.writeFileSync(RELEASE_FILE, JSON.stringify(result, undefined, 2))
+  writeFileSync(RELEASE_FILE, JSON.stringify(result, undefined, 2))
 }
 
 if (isMain(import.meta.url)) {

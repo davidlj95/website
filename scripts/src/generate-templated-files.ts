@@ -1,18 +1,15 @@
-import * as fs from 'fs/promises'
 import { glob } from 'glob'
 import { Liquid } from 'liquidjs'
-import * as path from 'path'
-import * as process from 'process'
-import metadata from '../../src/app/metadata.js'
 import {
   getRepositoryRootDir,
   isMain,
   Log,
   SECURITY_TXT_REL_PATH,
-} from './utils.mjs'
-import * as child_process from 'child_process'
-
-const { METADATA } = metadata
+} from './utils'
+import { METADATA } from '../../src/app/metadata'
+import { resolve } from 'path'
+import { writeFile } from 'fs/promises'
+import { execSync } from 'child_process'
 
 export const LIQUID_EXTENSION = '.liquid'
 
@@ -21,7 +18,7 @@ async function generateTemplatedFiles() {
     (exclusion) => `**/${exclusion}${LIQUID_EXTENSION}`,
   )
   const repoRootDir = getRepositoryRootDir()
-  const globExpression = path.resolve('src', '**', `*${LIQUID_EXTENSION}`)
+  const globExpression = resolve('src', '**', `*${LIQUID_EXTENSION}`)
   Log.info('Looking for Liquid files...')
   Log.item("Extension: '%s'", LIQUID_EXTENSION)
   Log.item("Directory: '%s'", globExpression)
@@ -74,10 +71,7 @@ export async function generateTemplatedFile(
   Log.ok('Rendered successfully')
 
   const outputFile = templateFile.substring(0, templateFile.lastIndexOf('.'))
-  await fs.writeFile(
-    path.resolve(engine.options.root[0], outputFile),
-    renderedContents,
-  )
+  await writeFile(resolve(engine.options.root[0], outputFile), renderedContents)
   Log.ok("Output saved to '%s'", outputFile)
 
   Log.groupEnd()
@@ -97,10 +91,7 @@ function getContext() {
       // Use CI environment variable, or default to branch name to work locally
       process.env['GITHUB_HEAD_REF'] ??
       // https://stackoverflow.com/a/35778030/3263250
-      child_process
-        .execSync('git rev-parse --abbrev-ref HEAD')
-        .toString()
-        .trim(),
+      execSync('git rev-parse --abbrev-ref HEAD').toString().trim(),
   }
   const CONTEXT = { ...METADATA_CONTEXT, ...EXTRA_CONTEXT }
   Log.info('Context for rendering')
