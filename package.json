@@ -92,7 +92,7 @@
     "karma-junit-reporter": "2.0.1",
     "lint-staged": "15.1.0",
     "liquidjs": "10.9.4",
-    "ng-mocks": "14.12.0",
+    "ng-mocks": "14.12.1",
     "prettier": "3.1.0",
     "semantic-release": "22.0.8",
     "subset-font": "2.1.0",
