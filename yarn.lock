@@ -2361,7 +2361,7 @@ __metadata:
     karma-junit-reporter: "npm:2.0.1"
     lint-staged: "npm:15.1.0"
     liquidjs: "npm:10.9.4"
-    ng-mocks: "npm:14.12.0"
+    ng-mocks: "npm:14.12.1"
     prettier: "npm:3.1.0"
     rxjs: "npm:7.8.1"
     semantic-release: "npm:22.0.8"
@@ -10715,15 +10715,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ng-mocks@npm:14.12.0":
-  version: 14.12.0
-  resolution: "ng-mocks@npm:14.12.0"
+"ng-mocks@npm:14.12.1":
+  version: 14.12.1
+  resolution: "ng-mocks@npm:14.12.1"
   peerDependencies:
     "@angular/common": 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17
     "@angular/core": 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17
     "@angular/forms": 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17
     "@angular/platform-browser": 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17
-  checksum: 242256ffde4796d2296c3164b1bde06ebc4dd5482caf2275ea6b4aa0f645437f56987d84d0982fbaebed2c76c507c8aabb7ef119f3795ee1e613ee680693a1d2
+  checksum: 128cd005d1b994817a9c6710962c9ced35f670bbac7f7dac84e62a471f79f56727b454ad26b781560ea3acbbe82824b4aa19e4d8571837986336c5820bc26f07
   languageName: node
   linkType: hard
 
