@@ -1,6 +1,6 @@
 import subsetFont from 'subset-font'
 import * as MaterialSymbols from '../../src/app/material-symbols'
-import { isMain, Log } from './utils'
+import { isMain, Log } from './utils.mjs'
 import { readFileSync, writeFileSync } from 'fs'
 
 async function generateFonts() {

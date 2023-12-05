@@ -12,7 +12,7 @@ import semanticRelease, {
 // But we get type safety given Typescript reads the JSON
 // We can always go back to an old boring read file sync if experiment goes wrong :P
 import realReleaseOptions from '../../.releaserc.json' assert { type: 'json' }
-import { getRepositoryRootDir, isMain, Log } from './utils'
+import { getRepositoryRootDir, isMain, Log } from './utils.mjs'
 import { join } from 'path'
 import { writeFileSync } from 'fs'
 

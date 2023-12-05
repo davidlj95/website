@@ -5,7 +5,7 @@ import {
   isMain,
   Log,
   SECURITY_TXT_REL_PATH,
-} from './utils'
+} from './utils.mjs'
 import { METADATA } from '../../src/app/metadata'
 import { resolve } from 'path'
 import { writeFile } from 'fs/promises'
