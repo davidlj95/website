@@ -2,7 +2,7 @@ import { Liquid } from 'liquidjs'
 import {
   generateTemplatedFile,
   LIQUID_EXTENSION,
-} from './generate-templated-files.mjs'
+} from './generate-templated-files'
 import {
   getRepositoryRootDir,
   isMain,
