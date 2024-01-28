@@ -29,7 +29,6 @@
     "format-check-all": "yarn run format-check -- .",
     "format": "prettier --ignore-unknown --write",
     "format-all": "yarn run format -- .",
-    "generate-prettierignore": "cp .gitignore .prettierignore && cat .part.prettierignore >> .prettierignore",
     "scripts:tsc": "cd scripts && tsc"
   },
   "dependencies": {
