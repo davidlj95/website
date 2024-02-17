@@ -20,7 +20,7 @@
     "font-subsets": "tsm scripts/src/generate-font-subsets.ts",
     "lint": "ng lint",
     "lint-staged": "lint-staged",
-    "git-hooks": "husky install",
+    "git-hooks": "husky",
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --verbose --from HEAD~1",
     "release-file": "tsx scripts/src/generate-release-file.mts",
