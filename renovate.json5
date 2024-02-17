@@ -49,19 +49,38 @@
       matchDepTypes: ['devDependencies'],
       automerge: true,
     },
-    // We cannot upgrade to latest Typescript until Angular supports it
-    // Otherwise, we'll get an error
+    // Angular v16.1.x || v16.2.x compatibilities
     // https://angular.io/guide/versions
+    // https://update.angular.io/?v=15.0-16.0 (zone.js)
+    {
+      matchPackagePrefixes: ['@angular'],
+      allowedVersions: '^16',
+    },
     {
       matchPackageNames: ['typescript'],
       allowedVersions: '>=4.9.3 <5.2.0',
     },
-    // We cannot upgrade until migrating to Angular v17
-    // Plus use of standalone components (tried to bypass when using v16)
-    // https://github.com/FortAwesome/angular-fontawesome/releases/tag/0.14.0
+    {
+      matchPackageNames: ['rxjs'],
+      allowedVersions: '^6.5.3 || ^7.4.0',
+    },
+    {
+      matchPackageNames: ['zone.js'],
+      allowedVersions: '0.13.x',
+    },
+    // Font Awesome & Angular v16
+    // https://github.com/FortAwesome/angular-fontawesome#compatibility-table
     {
       matchPackageNames: ['@fortawesome/angular-fontawesome'],
-      allowedVersions: '>=0.13.0 <0.14.0',
+      allowedVersions: '0.13.x',
+    },
+    {
+      matchPackageNames: [
+        '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-brands-svg-icons',
+        '@fortawesome/free-solid-svg-icons',
+      ],
+      allowedVersions: '5.x || 6.x',
     },
   ],
 }
