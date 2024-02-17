@@ -82,7 +82,7 @@
     "eslint-formatter-multiple": "2.0.0",
     "execa": "8.0.1",
     "glob": "10.3.10",
-    "husky": "8.0.3",
+    "husky": "9.0.11",
     "jasmine-core": "5.1.1",
     "karma": "6.4.2",
     "karma-chrome-launcher": "3.2.0",
