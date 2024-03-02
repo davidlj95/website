@@ -2472,7 +2472,7 @@ __metadata:
     glob: "npm:10.3.10"
     husky: "npm:9.0.11"
     jasmine-core: "npm:5.1.2"
-    karma: "npm:6.4.2"
+    karma: "npm:6.4.3"
     karma-chrome-launcher: "npm:3.2.0"
     karma-coverage: "npm:2.2.1"
     karma-jasmine: "npm:5.1.0"
@@ -10228,9 +10228,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"karma@npm:6.4.2":
-  version: 6.4.2
-  resolution: "karma@npm:6.4.2"
+"karma@npm:6.4.3":
+  version: 6.4.3
+  resolution: "karma@npm:6.4.3"
   dependencies:
     "@colors/colors": "npm:1.5.0"
     body-parser: "npm:^1.19.0"
@@ -10251,14 +10251,14 @@ __metadata:
     qjobs: "npm:^1.2.0"
     range-parser: "npm:^1.2.1"
     rimraf: "npm:^3.0.2"
-    socket.io: "npm:^4.4.1"
+    socket.io: "npm:^4.7.2"
     source-map: "npm:^0.6.1"
     tmp: "npm:^0.2.1"
     ua-parser-js: "npm:^0.7.30"
     yargs: "npm:^16.1.1"
   bin:
     karma: bin/karma
-  checksum: 10c0/ff737dfc3871944daf016ba2eb3677f1e7fe57c6fcf65b451f416a2454663b11518d8404392ace71a9e4daf6cb140e5fb4dffbb740a4d86ce495c4fe61039183
+  checksum: 10c0/dc9710600c69265fce24a91312a136396acef969b72aac05e342724a4223a799cd3676a20f73a4beda797908b7f534fa95c8228bd79fd5c54682020c626e4fdd
   languageName: node
   linkType: hard
 
@@ -14081,6 +14081,21 @@ __metadata:
     socket.io-adapter: "npm:~2.5.2"
     socket.io-parser: "npm:~4.2.4"
   checksum: 10c0/ce43f44e21513d8fcdc1a5e9bb7de4f28cea34536a51d52612ebcedb8634432cf5587976163a0d5fc361d1fe926abce65c5aee17c35dace3766420c2a264953c
+  languageName: node
+  linkType: hard
+
+"socket.io@npm:^4.7.2":
+  version: 4.7.4
+  resolution: "socket.io@npm:4.7.4"
+  dependencies:
+    accepts: "npm:~1.3.4"
+    base64id: "npm:~2.0.0"
+    cors: "npm:~2.8.5"
+    debug: "npm:~4.3.2"
+    engine.io: "npm:~6.5.2"
+    socket.io-adapter: "npm:~2.5.2"
+    socket.io-parser: "npm:~4.2.4"
+  checksum: 10c0/c37b7745d475695d5d5d20a30af940ebf1fefa9defdd1f3601978682a4e1d12eab10da0a6efb19d72038bb819a7972331a679649161689db600883b83818fb16
   languageName: node
   linkType: hard
 
