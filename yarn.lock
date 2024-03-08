@@ -2441,8 +2441,8 @@ __metadata:
     "@angular/router": "npm:16.2.12"
     "@commitlint/cli": "npm:19.0.3"
     "@commitlint/config-conventional": "npm:19.0.3"
-    "@fontsource/roboto": "npm:5.0.8"
-    "@fontsource/roboto-mono": "npm:5.0.16"
+    "@fontsource/roboto": "npm:5.0.12"
+    "@fontsource/roboto-mono": "npm:5.0.17"
     "@fortawesome/angular-fontawesome": "npm:0.13.0"
     "@fortawesome/fontawesome-svg-core": "npm:6.5.1"
     "@fortawesome/free-brands-svg-icons": "npm:6.5.1"
@@ -3022,17 +3022,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/roboto-mono@npm:5.0.16":
-  version: 5.0.16
-  resolution: "@fontsource/roboto-mono@npm:5.0.16"
-  checksum: 10c0/9a2031f5bc14fab3324a3693d67dc27a098d76e408d70bd4c94121f75ed17d38b21ff51eab2d7ecbe459a59d62b0036aa31a8c4337ab5180b4fd32b7f09db16f
+"@fontsource/roboto-mono@npm:5.0.17":
+  version: 5.0.17
+  resolution: "@fontsource/roboto-mono@npm:5.0.17"
+  checksum: 10c0/fc0de85b31b89a41c8a2ee597a9b9f1c76e3238dfab41498b44df197936fe12e9ba878fe02638f7d6de821b23f00cce28f2a406663390d33eef14db813858d98
   languageName: node
   linkType: hard
 
-"@fontsource/roboto@npm:5.0.8":
-  version: 5.0.8
-  resolution: "@fontsource/roboto@npm:5.0.8"
-  checksum: 10c0/da262037305145cc2a3b7f7c00066df72d4aa36d237001d7affce9390d16b3488eadaf0aa43a7ba86b3be8e310e3ae6823fa838365ee0e9a2e98a65e89e9d0f9
+"@fontsource/roboto@npm:5.0.12":
+  version: 5.0.12
+  resolution: "@fontsource/roboto@npm:5.0.12"
+  checksum: 10c0/bd21eea90146742300b13607c7c0b902d49ff1cc73df5e4e897251b9c6facdc27000e0c0bf62db00ae4fa1504427503969a2fa955b1aa4e2341feac2383ceb9c
   languageName: node
   linkType: hard
 
