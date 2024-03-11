@@ -1,17 +1,14 @@
 import { DOCUMENT } from '@angular/common'
-import { EventEmitter, VERSION } from '@angular/core'
+import { VERSION } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import {
-  Event as RouterEmittedEvent,
-  NavigationEnd,
-  Router,
-  RouterState,
-} from '@angular/router'
-import { MockProvider } from 'ng-mocks'
-import { AppModule } from '../app/app.module'
 import { Metadata, METADATA } from '../app/metadata'
 import { Environment, environment as appEnv } from '../environments'
 import { EmptyComponent } from './helpers/empty-component'
+import { RouterTestingHarness } from '@angular/router/testing'
+import { provideRouter } from '@angular/router'
+import { APP_MODULE_METADATA_IMPORTS } from '../app/app.module'
+import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
+import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
 
 describe('App SEO metadata', () => {
   let headElement: HTMLElement
@@ -21,29 +18,24 @@ describe('App SEO metadata', () => {
   const environment: Environment = appEnv
 
   beforeEach(async () => {
-    const routerEventsEmitter = new EventEmitter<RouterEmittedEvent>()
-    // All that jazz so that @davidlj95/ngx-meta doesn't complain
-    const mockRouter = {
-      events: routerEventsEmitter,
-      routerState: {
-        root: { firstChild: null, snapshot: { data: {} } },
-      } as RouterState,
-    } as Pick<Router, 'events' | 'routerState'> as Router
-
     TestBed.configureTestingModule({
-      imports: [AppModule],
-      providers: [MockProvider(Router, mockRouter)],
+      providers: [
+        provideRouter([
+          {
+            path: '',
+            component: EmptyComponent,
+            // No default one can be provided due to a bug
+            // Though it doesn't make much sense a default canonical URL tbh
+            data: {
+              meta: { canonicalUrl: environment.canonicalUrl },
+            } satisfies NgxMetaRouteData<GlobalMetadata>,
+          },
+        ]),
+      ],
+      imports: APP_MODULE_METADATA_IMPORTS,
     })
-
-    // Component not needed, so let's put a dummy one
-    TestBed.createComponent(EmptyComponent)
-
-    // For @davidlj95/ngx-meta to work we need a "NavigationEnd" event triggered
-    // Didn't know how to do it otherwise. Suggestions accepted :P (have an idea, will implement later)
-    routerEventsEmitter.emit(new NavigationEnd(0, '', ''))
-
-    const document = TestBed.inject(DOCUMENT)
-    headElement = document.head
+    await RouterTestingHarness.create('/')
+    headElement = TestBed.inject(DOCUMENT).head
   })
 
   describe('Basic metas', () => {
@@ -66,17 +58,11 @@ describe('App SEO metadata', () => {
       jasmine.stringContaining(metadata.nickname),
       'containing nickname from metadata',
     )
-    it("should include meta tag with name 'keywords' and a list of at least two comma separated items", () => {
-      const keywordsMetaElement = headElement.querySelector(
-        `meta[name="keywords"]`,
-      )
-      expect(keywordsMetaElement).not.toBeNull()
-      const keywordsText = keywordsMetaElement?.getAttribute('content')
-      expect(keywordsText).not.toBeNull()
-      const keywords = keywordsText?.split(',')
-      expect(keywords?.length).toBeGreaterThan(1)
-    })
-
+    ensureMetaTagPresentWithName(
+      'keywords',
+      jasmine.stringContaining(','),
+      'and a list of at least two comma separated items',
+    )
     ensureMetaTagPresentWithName(
       'author',
       metadata.nickname,
@@ -97,16 +83,15 @@ describe('App SEO metadata', () => {
       metadata.siteName,
       'with site name from metadata',
     )
-    // Will be fixed in next PR
-    //it('should include canonical URL link element with environment config', () => {
-    //  const canonicalLinkElement = headElement.querySelector(
-    //    `link[rel="canonical"]`,
-    //  )
-    //  expect(canonicalLinkElement).not.toBeNull()
-    //  expect(canonicalLinkElement?.getAttribute('href')).toEqual(
-    //    environment.canonicalUrl.toString(),
-    //  )
-    //})
+    it('should include canonical URL link element with environment config', () => {
+      const canonicalLinkElement = headElement.querySelector(
+        `link[rel="canonical"]`,
+      )
+      expect(canonicalLinkElement).not.toBeNull()
+      expect(canonicalLinkElement?.getAttribute('href')).toEqual(
+        environment.canonicalUrl.toString(),
+      )
+    })
   })
   describe('Open Graph', () => {
     ensureMetaTagPresentWithProperty(
@@ -114,12 +99,11 @@ describe('App SEO metadata', () => {
       metadata.siteName,
       'with site name from metadata',
     )
-    // Will be fixed in next PR
-    // ensureMetaTagPresentWithProperty(
-    //   'og:url',
-    //   environment.canonicalUrl.toString(),
-    //   'with canonical url from environment',
-    // )
+    ensureMetaTagPresentWithProperty(
+      'og:url',
+      environment.canonicalUrl.toString(),
+      'with canonical url from environment',
+    )
     ensureMetaTagPresentWithProperty('og:type', 'website')
     ensureMetaTagPresentWithProperty(
       'og:image',
