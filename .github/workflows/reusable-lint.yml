@@ -49,11 +49,11 @@ jobs:
         uses: ./.github/actions/setup
       - name: Lint last commit
         if: github.event_name == 'push'
-        run: yarn run commitlint --from HEAD~1 --to HEAD --verbose
+        run: cd .ci && make lint-last-commit
       - name: Lint all PR commits
         if: github.event_name == 'pull_request'
         run: |
-          yarn run commitlint \
+          pnpm run commitlint \
             --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} \
             --to ${{ github.event.pull_request.head.sha }} \
             --verbose

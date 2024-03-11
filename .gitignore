@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,yarn,webstorm+iml,macos,linux,windows
-# Edit at https://www.toptal.com/developers/gitignore?templates=angular,vim,visualstudiocode,yarn,webstorm+iml,macos,linux,windows
+# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci
 
 ### Angular ###
 ## Angular ##
@@ -12,6 +12,9 @@ app/**/*.js.map
 # dependencies
 node_modules/
 bower_components/
+
+# IDEs and editors
+#.idea/
 
 # misc
 .sass-cache/
@@ -29,6 +32,10 @@ e2e/*.map
 
 # System Files
 .DS_Store/
+
+### LighthouseCI ###
+# Lighthouse reports
+.lighthouseci/
 
 ### Linux ###
 *~
@@ -230,32 +237,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-### yarn ###
-# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-
-.yarn/*
-!.yarn/releases
-!.yarn/patches
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-
-# if you are NOT using Zero-installs, then:
-# comment the following lines
-#!.yarn/cache
-
-# and uncomment the following lines
-.pnp.*
-
-# End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,yarn,webstorm+iml,macos,linux,windows
-# Created by https://www.toptal.com/developers/gitignore/api/lighthouseci                                                                                                                                                           18s
-# Edit at https://www.toptal.com/developers/gitignore?templates=lighthouseci
-
-### LighthouseCI ###
-# Lighthouse reports
-.lighthouseci/
-
-# End of https://www.toptal.com/developers/gitignore/api/lighthouseci
+# End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci
 ## Manual files
 /junit-test.xml
 /junit-lint.xml
@@ -263,7 +245,6 @@ $RECYCLE.BIN/
 /release.json
 /src/environments/environment.pull-request.ts
 # Manual changes:
-# - Yarn config to not use zero installs.
 # - Remove .idea from angular, we want some settings in the repo
 # - Include dictionaries
 # - Add junit-(lint|test).xml generated for CI/CD purposes

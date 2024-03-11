@@ -231,7 +231,7 @@
       "environment": "all",
       "path": ".angular/cache"
     },
-    "packageManager": "yarn",
+    "packageManager": "pnpm",
     "schematicCollections": ["@angular-eslint/schematics"]
   }
 }
