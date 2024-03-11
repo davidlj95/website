@@ -146,6 +146,10 @@ won't be in sync.
 
 ## Quirks
 
+### Use latest `npm` version to audit signatures
+
+See https://github.com/npm/cli/issues/7279
+
 ## Rendering font subsets
 
 Some fonts included are a subset of a big font file. Before doing anything, please run
