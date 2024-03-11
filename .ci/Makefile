@@ -46,4 +46,4 @@ format-check:
 	cd .. && pnpm run format-check-all
 
 lighthouse:
-	cd .. && pnpm dlx @lhci/cli@0.12.x autorun
+	cd .. && npx --yes @lhci/cli@0.12.x autorun
