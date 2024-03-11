@@ -4,10 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@semantic-release/npm': 11.0.2
-  ts-api-utils: 1.2.1
-
 dependencies:
   '@angular/animations':
     specifier: 16.2.12
