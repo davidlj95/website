@@ -25,7 +25,9 @@ jobs:
   semantic-release:
     name: Semantic Release
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # Adding some time in case many PRs have to be labeled, as it may time out otherwise
+    # https://github.com/davidlj95/website/actions/runs/8238739780/job/22530445766
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
