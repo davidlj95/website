@@ -58,17 +58,11 @@ describe('App SEO metadata', () => {
       jasmine.stringContaining(metadata.nickname),
       'containing nickname from metadata',
     )
-    it("should include meta tag with name 'keywords' and a list of at least two comma separated items", () => {
-      const keywordsMetaElement = headElement.querySelector(
-        `meta[name="keywords"]`,
-      )
-      expect(keywordsMetaElement).not.toBeNull()
-      const keywordsText = keywordsMetaElement?.getAttribute('content')
-      expect(keywordsText).not.toBeNull()
-      const keywords = keywordsText?.split(',')
-      expect(keywords?.length).toBeGreaterThan(1)
-    })
-
+    ensureMetaTagPresentWithName(
+      'keywords',
+      jasmine.stringContaining(','),
+      'and a list of at least two comma separated items',
+    )
     ensureMetaTagPresentWithName(
       'author',
       metadata.nickname,
