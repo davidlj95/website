@@ -32,6 +32,9 @@ dependencies:
   '@angular/router':
     specifier: 16.2.12
     version: 16.2.12(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12)(rxjs@7.8.1)
+  '@davidlj95/ngx-meta':
+    specifier: 1.0.0-alpha.47
+    version: 1.0.0-alpha.47(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/router@16.2.12)
   '@fontsource/roboto':
     specifier: 5.0.12
     version: 5.0.12
@@ -47,9 +50,6 @@ dependencies:
   '@fortawesome/free-brands-svg-icons':
     specifier: 6.5.1
     version: 6.5.1
-  '@ngaox/seo':
-    specifier: 5.0.0
-    version: 5.0.0(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12)(@angular/router@16.2.12)(rxjs@7.8.1)
   '@nguniversal/express-engine':
     specifier: 16.2.0
     version: 16.2.0(@angular/common@16.2.12)(@angular/core@16.2.12)(express@4.18.3)
@@ -2174,6 +2174,22 @@ packages:
       chalk: 5.3.0
     dev: true
 
+  /@davidlj95/ngx-meta@1.0.0-alpha.47(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/router@16.2.12):
+    resolution: {integrity: sha512-JI0FmTV+LpGYrSuAjTX2llrreh5D/+LMJqzcj7JP89KTxRBR5Wz6Ent8t3X5Ah0Pxd19ttSghHg2YZf3B2oDoA==}
+    peerDependencies:
+      '@angular/common': ^17 || ^16 || ^15
+      '@angular/core': ^17 || ^16 || ^15
+      '@angular/router': ^17 || ^16 || ^15
+    peerDependenciesMeta:
+      '@angular/router':
+        optional: true
+    dependencies:
+      '@angular/common': 16.2.12(@angular/core@16.2.12)(rxjs@7.8.1)
+      '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
+      '@angular/router': 16.2.12(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12)(rxjs@7.8.1)
+      tslib: 2.6.2
+    dev: false
+
   /@discoveryjs/json-ext@0.5.7:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
@@ -2815,23 +2831,6 @@ packages:
       - typescript
       - utf-8-validate
     dev: true
-
-  /@ngaox/seo@5.0.0(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12)(@angular/router@16.2.12)(rxjs@7.8.1):
-    resolution: {integrity: sha512-pcxxQc19+/W97meiBWRALyV2oTTbUyjL8Sx+2EP9ApcFciE4w1nu2kwamsqh95dWQow3kwxDEz8r9RccBxUW9g==}
-    peerDependencies:
-      '@angular/common': 15.2.8
-      '@angular/core': 15.2.8
-      '@angular/platform-browser': 15.2.8
-      '@angular/router': 15.2.8
-      rxjs: 7.8.1
-    dependencies:
-      '@angular/common': 16.2.12(@angular/core@16.2.12)(rxjs@7.8.1)
-      '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
-      '@angular/platform-browser': 16.2.12(@angular/animations@16.2.12)(@angular/common@16.2.12)(@angular/core@16.2.12)
-      '@angular/router': 16.2.12(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12)(rxjs@7.8.1)
-      rxjs: 7.8.1
-      tslib: 2.6.2
-    dev: false
 
   /@ngtools/webpack@16.2.12(@angular/compiler-cli@16.2.12)(typescript@5.1.6)(webpack@5.88.2):
     resolution: {integrity: sha512-f9R9Qsk8v+ffDxryl6PQ7Wnf2JCNd4dDXOH+d/AuF06VFiwcwGDRDZpmqkAXbFxQfcWTbT1FFvfoJ+SFcJgXLA==}

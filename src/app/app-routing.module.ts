@@ -2,24 +2,28 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { ResumePageComponent } from './resume-page/resume-page.component'
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component'
-import { IPageSeoData } from '@ngaox/seo'
 import { METADATA } from './metadata'
 import { environment } from '../environments'
+import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
+import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
+import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
 
-const notFoundPageData: { NgaoxSeo: IPageSeoData } = {
-  NgaoxSeo: {
+const notFoundPageData: NgxMetaRouteData<GlobalMetadata & StandardMetadata> = {
+  meta: {
     title: `${METADATA.siteName} | Not Found`,
     description: 'Page could not be found',
-    keywords: undefined,
-    url: undefined,
-    image: undefined,
+    canonicalUrl: null,
+    image: null,
+    standard: {
+      keywords: null,
+    },
   },
 }
 const resumePath = 'resume'
-const resumePageData: { NgaoxSeo: IPageSeoData } = {
-  NgaoxSeo: {
+const resumePageData: NgxMetaRouteData<GlobalMetadata> = {
+  meta: {
     title: `${METADATA.siteName} | Resume`,
-    url: new URL(resumePath, environment.canonicalUrl).toString(),
+    canonicalUrl: new URL(resumePath, environment.canonicalUrl),
   },
 }
 const routes: Routes = [
