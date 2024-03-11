@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 First, run the `prebuild` command, to generate files that are required for the app to work
 
 ```shell
-yarn run prebuild
+pnpm run prebuild
 ```
 
 ## Development server
@@ -49,7 +49,7 @@ To enforce that, [`commitlint`][commitlint] is used. It reads the commit message
 You can use the following run script to ensure the last commit follows the guidelines:
 
 ```shell
-yarn run commitlint-last
+pnpm run commitlint-last
 ```
 
 [commitlint]: https://github.com/conventional-changelog/commitlint
@@ -77,7 +77,7 @@ In order to embed release information in the app, a script was created to export
 To generate the release info, run
 
 ```shell
-yarn run generate-release-file
+pnpm run prebuild:generate-release-file
 ```
 
 It will generate a `release.json` file in the root of the repository containing all info about releases that
@@ -110,13 +110,12 @@ It will generate a `release.json` file in the root of the repository containing 
 
 ## Git hooks
 
-Not a fan of, but it's useful to enforce conventional commits. Indeed, it's only one, a pre-commit hook. And checks your
-commit message complies with the conventional commits format and configuration.
+Not a fan of, but it's useful to enforce conventional commits & format your code before submitting it
 
 To use it, run
 
 ```shell
-yarn run git-hooks
+pnpm run git-hooks
 ```
 
 It will install Git hooks via [`husky`](https://typicode.github.io/husky/). Now everytime you commit, you'll be sure
@@ -152,7 +151,7 @@ won't be in sync.
 Some fonts included are a subset of a big font file. Before doing anything, please run
 
 ```shell
-yarn run font-subsets
+pnpm run prebuild:font-subsets
 ```
 
 To generate them. Otherwise, those fonts won't be found and you may get some errors. Also, remember to run it if
@@ -203,7 +202,7 @@ Simulates the workflow triggered by a push to `main` branch.
 > it if it doesn't exist.
 
 > ℹ️ Images are set to [`js-*` ones](https://github.com/catthehacker/docker_images) via the `.actrc` file as medium
-> default ones don't include `yarn` `:sadparrot:`
+> default ones don't include `pnpm` `:sadparrot:`
 
 ## Release
 

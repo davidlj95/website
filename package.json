@@ -6,7 +6,10 @@
     "start": "ng serve",
     "start:public": "ng serve --host 0.0.0.0 --disable-host-check",
     "start:pullRequest": "ng serve --configuration pullRequest",
-    "prebuild": "concurrently \"yarn run font-subsets\" \"yarn run release-file\" \"yarn run render-templates\"",
+    "prebuild": "pnpm run '/prebuild:.*/'",
+    "prebuild:font-subsets": "tsm scripts/src/generate-font-subsets.ts",
+    "prebuild:release-file": "tsx scripts/src/generate-release-file.mts",
+    "prebuild:render-templates": "tsm scripts/src/generate-templated-files.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -15,20 +18,17 @@
     "build:ssr": "ng build && ng run @davidlj95/website:server",
     "prerender": "ng run @davidlj95/website:prerender",
     "prerender:pullRequest": "ng run @davidlj95/website:prerender:pullRequest",
-    "render-templates": "tsm scripts/src/generate-templated-files.ts",
     "security-txt": "tsm scripts/src/generate-security-txt.ts",
-    "font-subsets": "tsm scripts/src/generate-font-subsets.ts",
     "lint": "ng lint",
     "lint-staged": "lint-staged",
     "git-hooks": "husky",
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --verbose --from HEAD~1",
-    "release-file": "tsx scripts/src/generate-release-file.mts",
-    "validate-renovate-config": "yarn dlx -p renovate renovate-config-validator",
+    "validate-renovate-config": "pnpm --package renovate dlx renovate-config-validator",
     "format-check": "prettier --check",
-    "format-check-all": "yarn run format-check -- .",
+    "format-check-all": "pnpm run format-check .",
     "format": "prettier --ignore-unknown --write",
-    "format-all": "yarn run format -- .",
+    "format-all": "pnpm run format .",
     "scripts:tsc": "cd scripts && tsc"
   },
   "dependencies": {
@@ -75,7 +75,6 @@
     "@types/subset-font": "1.4.3",
     "@typescript-eslint/eslint-plugin": "7.1.1",
     "@typescript-eslint/parser": "7.1.1",
-    "concurrently": "8.2.2",
     "conventional-changelog-conventionalcommits": "7.0.2",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
@@ -100,7 +99,7 @@
     "tsx": "4.7.1",
     "typescript": "5.1.6"
   },
-  "packageManager": "yarn@4.1.1",
+  "packageManager": "pnpm@8.15.4",
   "eslint-formatter-multiple": {
     "formatters": [
       {
