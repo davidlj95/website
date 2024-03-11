@@ -36,12 +36,6 @@ test:
 	pnpm run test --browsers=ChromeHeadless \
 		--no-watch --no-progress --reporters junit,progress --code-coverage
 
-run-main:
-	cd .. && act
-
-reset:
-	docker ps -a --format '{{.Names}}' | grep -e '^act-' | xargs docker rm -f
-
 format-check:
 	cd .. && pnpm run format-check-all
 

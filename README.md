@@ -175,37 +175,6 @@ cd .ci && make test # for instance
 And see how a command run in the CI/CD behaves locally. Notice your machine's state may differ from the CI/CD machine
 one.
 
-### Running GitHub Actions workflows locally
-
-You can use [`act`](https://github.com/nektos/act) to run GitHub Action workflows in your development machine. If using
-macOS, install it using `brew`:
-
-```shell
-brew install act
-```
-
-Then, use one of the many `run-` targets in the CI/CD `Makefile` to simulate a CI/CD workflow run. For instance:
-
-```shell
-cd .ci && make run-main
-```
-
-Simulates the workflow triggered by a push to `main` branch.
-
-> If you get a message related to Apple M-series chip:
->
-> ```shell
-> WARN  ⚠ You are using Apple M-series chip and you have not specified container architecture, you might encounter issues while running act. If so, try running it with '--container-architecture linux/amd64'. ⚠                      7s
-> ```
->
-> You can add ` --container-architecture linux/amd64` (notice a space when line begins) to your `~/.actrc` file. Create
-> it if it doesn't exist.
-
-> ℹ️ Images are set to [`js-*` ones](https://github.com/catthehacker/docker_images) via the `.actrc` file as medium
-> default ones don't include `pnpm` `:sadparrot:`
-
-## Release
-
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out
