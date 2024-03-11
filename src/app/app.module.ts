@@ -1,9 +1,8 @@
 import { NgOptimizedImage } from '@angular/common'
-import { NgModule, VERSION } from '@angular/core'
+import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { SeoModule } from '@ngaox/seo'
 import { environment } from '../environments'
 
 import { ResumePageComponent } from './resume-page/resume-page.component'
@@ -48,6 +47,22 @@ import { EducationItemCoursesComponent } from './resume-page/education-section/e
 import { ProjectsSectionComponent } from './resume-page/projects-section/projects-section.component'
 import { ProjectItemComponent } from './resume-page/projects-section/project-item/project-item.component'
 import { ProjectItemDescriptionComponent } from './resume-page/projects-section/project-item/project-item-description/project-item-description.component'
+import { GlobalMetadata, NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
+import { NgxMetaRoutingModule } from '@davidlj95/ngx-meta/routing'
+import {
+  NgxMetaStandardModule,
+  StandardMetadata,
+} from '@davidlj95/ngx-meta/standard'
+import {
+  NgxMetaOpenGraphModule,
+  OPEN_GRAPH_TYPE_WEBSITE,
+  OpenGraphMetadata,
+} from '@davidlj95/ngx-meta/open-graph'
+import {
+  NgxMetaTwitterCardModule,
+  TWITTER_CARD_TYPE_SUMMARY,
+  TwitterCardMetadata,
+} from '@davidlj95/ngx-meta/twitter-card'
 
 @NgModule({
   declarations: [
@@ -97,36 +112,63 @@ import { ProjectItemDescriptionComponent } from './resume-page/projects-section/
     BrowserAnimationsModule,
     AppRoutingModule,
     NgOptimizedImage,
-    SeoModule.forRoot({
-      title: METADATA.siteName,
-      keywords: `${METADATA.nickname}, website, ${METADATA.realName}, portfolio, cv, resume, projects, info, contact`,
-      description: METADATA.description,
-      url: environment.canonicalUrl.toString(),
-      type: 'website',
-      image: {
-        url: new URL('assets/img/og.jpg', environment.canonicalUrl).toString(),
-        alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
-        width: 875,
-        height: 875,
-        // I wouldn't set it, but if I don't set it, then it appears as "undefined" :(
-        mimeType: 'image/jpeg',
-      },
-      twitter: {
-        card: 'summary',
-        creator: `@${METADATA.nickname}`,
-        site: `@${METADATA.nickname}`,
-      },
-      siteName: METADATA.siteName,
-      extra: [
-        { name: 'author', content: METADATA.nickname },
-        { property: 'og:locale', content: 'en' },
-        { property: 'fb:admins', content: METADATA.nickname },
-        { name: 'facebook-domain-verification', content: '1299426610587748' },
-        { name: 'generator', content: `Angular ${VERSION.full}` },
-        // See more in favicons doc. Related to Internet Explorer / Microsoft metro tiles
-        { name: 'application-name', content: METADATA.siteName },
-      ],
+    NgxMetaCoreModule.forRoot({
+      defaults: {
+        title: METADATA.siteName,
+        description: METADATA.description,
+        image: {
+          url: new URL('assets/img/og.jpg', environment.canonicalUrl),
+          alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
+        },
+        locale: 'en',
+        canonicalUrl: environment.canonicalUrl,
+        applicationName: METADATA.siteName,
+        standard: {
+          author: METADATA.nickname,
+          keywords: [
+            METADATA.nickname,
+            'website',
+            METADATA.realName,
+            'portfolio',
+            'cv',
+            'resume',
+            'projects',
+            'info',
+            'contact',
+          ],
+          generator: true,
+        },
+        openGraph: {
+          type: OPEN_GRAPH_TYPE_WEBSITE,
+          image: {
+            width: 875,
+            height: 875,
+            // I wouldn't set it, but if I don't set it, then it appears as "undefined" :(
+            type: 'image/jpeg',
+          },
+        },
+        twitterCard: {
+          card: TWITTER_CARD_TYPE_SUMMARY,
+          creator: { username: METADATA.twitterUsername },
+          site: {
+            username: METADATA.twitterUsername,
+          },
+        },
+        // TODO: Add them into `@davidlj95/ngx-meta`
+        // https://github.com/davidlj95/ngx/discussions/422
+        //extra: [
+        //  { property: 'fb:admins', content: METADATA.nickname },
+        //  { name: 'facebook-domain-verification', content: '1299426610587748' },
+        //],
+      } satisfies GlobalMetadata &
+        StandardMetadata &
+        OpenGraphMetadata &
+        TwitterCardMetadata,
     }),
+    NgxMetaRoutingModule.forRoot(),
+    NgxMetaStandardModule,
+    NgxMetaOpenGraphModule,
+    NgxMetaTwitterCardModule,
     FontAwesomeModule,
   ],
   providers: [],

@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common'
 import { EventEmitter, VERSION } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { MetaDefinition } from '@angular/platform-browser'
 import {
   Event as RouterEmittedEvent,
   NavigationEnd,
@@ -23,10 +22,12 @@ describe('App SEO metadata', () => {
 
   beforeEach(async () => {
     const routerEventsEmitter = new EventEmitter<RouterEmittedEvent>()
-    // All that jazz so that @ngaox/seo doesn't complain
+    // All that jazz so that @davidlj95/ngx-meta doesn't complain
     const mockRouter = {
       events: routerEventsEmitter,
-      routerState: { root: { firstChild: null, snapshot: {} } } as RouterState,
+      routerState: {
+        root: { firstChild: null, snapshot: { data: {} } },
+      } as RouterState,
     } as Pick<Router, 'events' | 'routerState'> as Router
 
     TestBed.configureTestingModule({
@@ -37,8 +38,8 @@ describe('App SEO metadata', () => {
     // Component not needed, so let's put a dummy one
     TestBed.createComponent(EmptyComponent)
 
-    // So @ngaox/seo does its magic we need a "NavigationEnd" event triggered
-    // Didn't know how to do it otherwise. Suggestions accepted :P
+    // For @davidlj95/ngx-meta to work we need a "NavigationEnd" event triggered
+    // Didn't know how to do it otherwise. Suggestions accepted :P (have an idea, will implement later)
     routerEventsEmitter.emit(new NavigationEnd(0, '', ''))
 
     const document = TestBed.inject(DOCUMENT)
@@ -46,11 +47,10 @@ describe('App SEO metadata', () => {
   })
 
   describe('Basic metas', () => {
-    ensureMetaTagPresentWithName(
-      'title',
-      metadata.siteName,
-      'with site name from metadata as value',
-    )
+    it('should set proper title', () => {
+      const titleElement = headElement.querySelector('title')
+      expect(titleElement?.innerText).toEqual(metadata.siteName)
+    })
     ensureMetaTagPresentWithName(
       'description',
       metadata.description,
@@ -76,6 +76,7 @@ describe('App SEO metadata', () => {
       const keywords = keywordsText?.split(',')
       expect(keywords?.length).toBeGreaterThan(1)
     })
+
     ensureMetaTagPresentWithName(
       'author',
       metadata.nickname,
@@ -150,8 +151,7 @@ describe('App SEO metadata', () => {
       new URL('assets/img/og.jpg', environment.canonicalUrl).toString(),
       'pointing to the OG image',
     )
-    // Honestly this should be probably a "name" meta tag but somehow @ngaox/seo uses property :/
-    ensureMetaTagPresentWithProperty('twitter:image:alt')
+    ensureMetaTagPresentWithName('twitter:image:alt')
     ensureMetaTagPresentWithName(
       'twitter:site',
       `@${metadata.nickname}`,
@@ -164,57 +164,61 @@ describe('App SEO metadata', () => {
     )
     ensureMetaTagPresentWithName('twitter:card')
   })
-  describe('Facebook', () => {
-    ensureMetaTagPresentWithProperty(
-      'fb:admins',
-      metadata.nickname,
-      'with nickname from metadata',
-    )
-    ensureMetaTagPresentWithName('facebook-domain-verification')
-  })
+  // See defaults code. Removed until available in lib
+  // describe('Facebook', () => {
+  //   ensureMetaTagPresentWithProperty(
+  //     'fb:admins',
+  //     metadata.nickname,
+  //     'with nickname from metadata',
+  //   )
+  //   ensureMetaTagPresentWithName('facebook-domain-verification')
+  // })
 
-  function ensureMetaTagPresent(
-    bySelector: MetaDefinition,
+  function ensureMetaTagPresentWithName(
+    name: string,
     expectedContent?: jasmine.Expected<string>,
-    expectedContentName?: string,
+    expectedContentDescription?: string,
   ) {
-    if (Object.keys(bySelector).length > 1) {
-      throw new Error('Select a meta tag using 1 selector only')
-    }
-    const selectorAttribute = Object.keys(bySelector)[0]
-    const selectorValue = bySelector[selectorAttribute]
-    const selectorDescription = `with ${selectorAttribute} '${selectorValue}'`
-    const expectedValueDescription = expectedContent
-      ? expectedContentName ?? `and value '${expectedContent}'`
-      : ''
-    it(`should include meta tag ${selectorDescription} ${expectedValueDescription}`, () => {
+    ensureMetaTagPresent(
+      'name',
+      name,
+      expectedContent,
+      expectedContentDescription,
+    )
+  }
+
+  function ensureMetaTagPresentWithProperty(
+    property: string,
+    expectedContent?: jasmine.Expected<string>,
+    expectedContentDescription?: string,
+  ) {
+    ensureMetaTagPresent(
+      'property',
+      property,
+      expectedContent,
+      expectedContentDescription,
+    )
+  }
+  function ensureMetaTagPresent(
+    keyAttributeName: string,
+    keyAttributeValue: string,
+    expectedContent?: jasmine.Expected<string>,
+    expectedContentDescription?: string,
+  ) {
+    const keyAttributeDescription = `with ${keyAttributeName} '${keyAttributeValue}'`
+    const expectedValueDescription = expectedContentDescription
+      ? expectedContentDescription
+      : expectedContent
+        ? `and value '${expectedContent}'`
+        : ''
+    it(`should include meta element ${keyAttributeDescription} ${expectedValueDescription}`, () => {
       const metaElement = headElement.querySelector(
-        `meta[${selectorAttribute}="${selectorValue}"]`,
+        `meta[${keyAttributeName}="${keyAttributeValue}"]`,
       )
       expect(metaElement).not.toBeNull()
       if (expectedContent) {
         expect(metaElement?.getAttribute('content')).toEqual(expectedContent)
       }
     })
-  }
-
-  function ensureMetaTagPresentWithName(
-    name: string,
-    expectedContent?: jasmine.Expected<string>,
-    expectedContentName?: string,
-  ) {
-    ensureMetaTagPresent({ name: name }, expectedContent, expectedContentName)
-  }
-
-  function ensureMetaTagPresentWithProperty(
-    property: string,
-    expectedContent?: jasmine.Expected<string>,
-    expectedContentName?: string,
-  ) {
-    ensureMetaTagPresent(
-      { property: property },
-      expectedContent,
-      expectedContentName,
-    )
   }
 })

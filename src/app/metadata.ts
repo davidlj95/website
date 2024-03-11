@@ -192,6 +192,7 @@ const getDescriptionFromTitleAndLines = (
 export const METADATA = {
   nickname: NICKNAME,
   realName: REAL_NAME,
+  twitterUsername: `@${NICKNAME}`,
   title: TITLE,
   siteName: `${REAL_NAME} 🔗 @${NICKNAME}`,
   descriptionLines: DESCRIPTION_LINES,
