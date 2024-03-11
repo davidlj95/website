@@ -64,6 +64,68 @@ import {
   TwitterCardMetadata,
 } from '@davidlj95/ngx-meta/twitter-card'
 
+export const APP_MODULE_METADATA_IMPORTS = [
+  NgxMetaCoreModule.forRoot({
+    defaults: {
+      title: METADATA.siteName,
+      description: METADATA.description,
+      image: {
+        url: new URL('assets/img/og.jpg', environment.canonicalUrl),
+        alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
+      },
+      locale: 'en',
+      // TODO: @davidlj95/ngx-meta tries to merge default canonical URL + route canonical URL
+      //       With spread operator. Result: messed up canonical URL and `[object Object]` in your URLs :')
+      // canonicalUrl: environment.canonicalUrl,
+      applicationName: METADATA.siteName,
+      standard: {
+        author: METADATA.nickname,
+        keywords: [
+          METADATA.nickname,
+          'website',
+          METADATA.realName,
+          'portfolio',
+          'cv',
+          'resume',
+          'projects',
+          'info',
+          'contact',
+        ],
+        generator: true,
+      },
+      openGraph: {
+        type: OPEN_GRAPH_TYPE_WEBSITE,
+        image: {
+          width: 875,
+          height: 875,
+          // I wouldn't set it, but if I don't set it, then it appears as "undefined" :(
+          type: 'image/jpeg',
+        },
+      },
+      twitterCard: {
+        card: TWITTER_CARD_TYPE_SUMMARY,
+        creator: { username: METADATA.twitterUsername },
+        site: {
+          username: METADATA.twitterUsername,
+        },
+      },
+      // TODO: Add them into `@davidlj95/ngx-meta`
+      // https://github.com/davidlj95/ngx/discussions/422
+      //extra: [
+      //  { property: 'fb:admins', content: METADATA.nickname },
+      //  { name: 'facebook-domain-verification', content: '1299426610587748' },
+      //],
+    } satisfies GlobalMetadata &
+      StandardMetadata &
+      OpenGraphMetadata &
+      TwitterCardMetadata,
+  }),
+  NgxMetaRoutingModule.forRoot(),
+  NgxMetaStandardModule,
+  NgxMetaOpenGraphModule,
+  NgxMetaTwitterCardModule,
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,65 +174,7 @@ import {
     BrowserAnimationsModule,
     AppRoutingModule,
     NgOptimizedImage,
-    NgxMetaCoreModule.forRoot({
-      defaults: {
-        title: METADATA.siteName,
-        description: METADATA.description,
-        image: {
-          url: new URL('assets/img/og.jpg', environment.canonicalUrl),
-          alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
-        },
-        locale: 'en',
-        // TODO: @davidlj95/ngx-meta tries to merge default canonical URL + route canonical URL
-        //       With spread operator. Result: messed up canonical URL and `[object Object]` in your URLs :')
-        // canonicalUrl: environment.canonicalUrl,
-        applicationName: METADATA.siteName,
-        standard: {
-          author: METADATA.nickname,
-          keywords: [
-            METADATA.nickname,
-            'website',
-            METADATA.realName,
-            'portfolio',
-            'cv',
-            'resume',
-            'projects',
-            'info',
-            'contact',
-          ],
-          generator: true,
-        },
-        openGraph: {
-          type: OPEN_GRAPH_TYPE_WEBSITE,
-          image: {
-            width: 875,
-            height: 875,
-            // I wouldn't set it, but if I don't set it, then it appears as "undefined" :(
-            type: 'image/jpeg',
-          },
-        },
-        twitterCard: {
-          card: TWITTER_CARD_TYPE_SUMMARY,
-          creator: { username: METADATA.twitterUsername },
-          site: {
-            username: METADATA.twitterUsername,
-          },
-        },
-        // TODO: Add them into `@davidlj95/ngx-meta`
-        // https://github.com/davidlj95/ngx/discussions/422
-        //extra: [
-        //  { property: 'fb:admins', content: METADATA.nickname },
-        //  { name: 'facebook-domain-verification', content: '1299426610587748' },
-        //],
-      } satisfies GlobalMetadata &
-        StandardMetadata &
-        OpenGraphMetadata &
-        TwitterCardMetadata,
-    }),
-    NgxMetaRoutingModule.forRoot(),
-    NgxMetaStandardModule,
-    NgxMetaOpenGraphModule,
-    NgxMetaTwitterCardModule,
+    ...APP_MODULE_METADATA_IMPORTS,
     FontAwesomeModule,
   ],
   providers: [],
