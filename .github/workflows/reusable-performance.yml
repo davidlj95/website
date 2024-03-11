@@ -29,8 +29,8 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           ref: ${{ inputs.ref }}
-        # No setup step needed: latest stable Node.js & npm comes included with GitHub runners
-        # https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Download built app
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
