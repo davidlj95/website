@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Generate font subsets" type="js.build_tools.npm">
+  <configuration default="false" name="Prebuild: release file" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="font-subsets" />
+      <script value="prebuild:release-file" />
     </scripts>
     <node-interpreter value="project" />
     <envs />
