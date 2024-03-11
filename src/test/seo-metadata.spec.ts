@@ -113,7 +113,6 @@ describe('App SEO metadata', () => {
     ensureMetaTagPresentWithProperty('og:image:alt')
     ensureMetaTagPresentWithProperty('og:image:width', '875')
     ensureMetaTagPresentWithProperty('og:image:height', '875')
-    ensureMetaTagPresentWithProperty('og:image:type', 'image/jpeg')
     ensureMetaTagPresentWithProperty('og:locale', 'en')
     ensureMetaTagPresentWithProperty(
       'og:site_name',

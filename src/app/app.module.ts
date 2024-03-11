@@ -98,8 +98,6 @@ export const APP_MODULE_METADATA_IMPORTS = [
         image: {
           width: 875,
           height: 875,
-          // I wouldn't set it, but if I don't set it, then it appears as "undefined" :(
-          type: 'image/jpeg',
         },
       },
       twitterCard: {
