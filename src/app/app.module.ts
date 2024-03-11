@@ -121,7 +121,9 @@ import {
           alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
         },
         locale: 'en',
-        canonicalUrl: environment.canonicalUrl,
+        // TODO: @davidlj95/ngx-meta tries to merge default canonical URL + route canonical URL
+        //       With spread operator. Result: messed up canonical URL and `[object Object]` in your URLs :')
+        // canonicalUrl: environment.canonicalUrl,
         applicationName: METADATA.siteName,
         standard: {
           author: METADATA.nickname,
