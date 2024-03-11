@@ -7,6 +7,28 @@ import { environment } from '../environments'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
 import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
+import { JsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
+
+// Metadata to add when '/' route is ready
+// jsonLd: {
+//   '@context': 'https://schema.org',
+//   '@type': 'WebSite',
+//   author: {
+//     '@type': 'Person',
+//     name: METADATA.realName,
+//     url: METADATA.authorUrl,
+//   },
+//   name: METADATA.siteName,
+//   headline: METADATA.description,
+//   url: environment.canonicalUrl.toString(),
+// },
+const resumePath = 'resume'
+const resumePageData: NgxMetaRouteData<GlobalMetadata & JsonLdMetadata> = {
+  meta: {
+    title: `${METADATA.siteName} | Resume`,
+    canonicalUrl: new URL(resumePath, environment.canonicalUrl),
+  },
+}
 
 const notFoundPageData: NgxMetaRouteData<GlobalMetadata & StandardMetadata> = {
   meta: {
@@ -19,13 +41,7 @@ const notFoundPageData: NgxMetaRouteData<GlobalMetadata & StandardMetadata> = {
     },
   },
 }
-const resumePath = 'resume'
-const resumePageData: NgxMetaRouteData<GlobalMetadata> = {
-  meta: {
-    title: `${METADATA.siteName} | Resume`,
-    canonicalUrl: new URL(resumePath, environment.canonicalUrl),
-  },
-}
+
 const routes: Routes = [
   { path: '', redirectTo: `/${resumePath}`, pathMatch: 'full' },
   { path: resumePath, component: ResumePageComponent, data: resumePageData },
