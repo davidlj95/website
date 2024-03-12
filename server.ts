@@ -3,13 +3,18 @@ import 'zone.js/node'
 import { APP_BASE_HREF } from '@angular/common'
 import { CommonEngine } from '@angular/ssr'
 import * as express from 'express'
+import compression from 'compression'
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
-import bootstrap from './src/main.server'
+import { AppServerModule } from './src/main.server'
+//👇 Will be useful after migrating to standalone
+//import bootstrap from './src/main.server'
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express()
+  // Manually added so Lighthouse doesn't complain about adding text compression
+  server.use(compression())
   const distFolder = join(process.cwd(), 'dist/@davidlj95/website/browser')
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? join(distFolder, 'index.original.html')
@@ -36,7 +41,7 @@ export function app(): express.Express {
 
     commonEngine
       .render({
-        bootstrap,
+        bootstrap: AppServerModule,
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: distFolder,
@@ -69,4 +74,6 @@ if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run()
 }
 
-export default bootstrap
+export * from './src/main.server'
+//👇 Will be useful after migrating to standalone
+//export default bootstrap
