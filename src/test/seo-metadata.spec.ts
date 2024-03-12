@@ -1,154 +1,186 @@
 import { DOCUMENT } from '@angular/common'
 import { VERSION } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { Metadata, METADATA } from '../app/metadata'
-import { Environment, environment as appEnv } from '../environments'
 import { EmptyComponent } from './helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { provideRouter } from '@angular/router'
 import { APP_MODULE_METADATA_IMPORTS } from '../app/app.module'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
-import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
+import { GlobalMetadata, MetadataValues } from '@davidlj95/ngx-meta/core'
+import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
+import {
+  OPEN_GRAPH_TYPE_WEBSITE,
+  OpenGraphMetadata,
+} from '@davidlj95/ngx-meta/open-graph'
+import {
+  TWITTER_CARD_TYPE_SUMMARY,
+  TwitterCardMetadata,
+} from '@davidlj95/ngx-meta/twitter-card'
+import { METADATA_DEFAULTS } from '../app/app.metadata-defaults'
 
 describe('App SEO metadata', () => {
-  let headElement: HTMLElement
-  // We can't fake it since it is configured at module level with imports as we can't use a service there
-  // because the system hasn't started yet. Maybe it could be done somehow, though not sure how to at this point.
-  const metadata: Metadata = METADATA
-  const environment: Environment = appEnv
+  let headElement: HTMLHeadElement
+  let htmlElement: HTMLElement
 
-  beforeEach(async () => {
-    TestBed.configureTestingModule({
-      providers: [
-        provideRouter([
-          {
-            path: '',
-            component: EmptyComponent,
-            // No default one can be provided due to a bug
-            // Though it doesn't make much sense a default canonical URL tbh
-            data: {
-              meta: { canonicalUrl: environment.canonicalUrl },
-            } satisfies NgxMetaRouteData<GlobalMetadata>,
-          },
-        ]),
-      ],
-      imports: APP_MODULE_METADATA_IMPORTS,
+  describe('By default', () => {
+    beforeEach(async () => {
+      const document = await makeSut()
+      headElement = document.head
+      htmlElement = document.documentElement
     })
-    await RouterTestingHarness.create('/')
-    headElement = TestBed.inject(DOCUMENT).head
-  })
 
-  describe('Basic metas', () => {
-    it('should set proper title', () => {
-      const titleElement = headElement.querySelector('title')
-      expect(titleElement?.innerText).toEqual(metadata.siteName)
-    })
-    ensureMetaTagPresentWithName(
-      'description',
-      metadata.description,
-      'with description from metadata as value',
-    )
-    ensureMetaTagPresentWithName(
-      'keywords',
-      jasmine.stringContaining(metadata.realName),
-      'containing real name from metadata',
-    )
-    ensureMetaTagPresentWithName(
-      'keywords',
-      jasmine.stringContaining(metadata.nickname),
-      'containing nickname from metadata',
-    )
-    ensureMetaTagPresentWithName(
-      'keywords',
-      jasmine.stringContaining(','),
-      'and a list of at least two comma separated items',
-    )
-    ensureMetaTagPresentWithName(
-      'author',
-      metadata.nickname,
-      'with nickname from metadata',
-    )
-    ensureMetaTagPresentWithName(
-      'generator',
-      jasmine.stringContaining('Angular'),
-      'containing Angular as framework',
-    )
-    ensureMetaTagPresentWithName(
-      'generator',
-      jasmine.stringContaining(VERSION.full),
-      'containing Angular version',
-    )
-    ensureMetaTagPresentWithName(
-      'application-name',
-      metadata.siteName,
-      'with site name from metadata',
-    )
-    it('should include canonical URL link element with environment config', () => {
-      const canonicalLinkElement = headElement.querySelector(
-        `link[rel="canonical"]`,
+    describe('Standard metas', () => {
+      shouldSetTitle(METADATA_DEFAULTS.title)
+      shouldSetHtmlLangAttribute(METADATA_DEFAULTS.locale)
+      shouldIncludeMetaWithName(
+        'application-name',
+        METADATA_DEFAULTS.applicationName,
       )
-      expect(canonicalLinkElement).not.toBeNull()
-      expect(canonicalLinkElement?.getAttribute('href')).toEqual(
-        environment.canonicalUrl.toString(),
+      shouldIncludeMetaWithName('author', METADATA_DEFAULTS.standard.author)
+      shouldIncludeMetaWithName(
+        'generator',
+        jasmine.stringContaining('Angular'),
+        'containing Angular as framework',
+      )
+      shouldIncludeMetaWithName(
+        'generator',
+        jasmine.stringContaining(VERSION.full),
+        'containing Angular version',
+      )
+    })
+
+    describe('Open Graph', () => {
+      shouldIncludeMetaWithProperty('og:type', METADATA_DEFAULTS.openGraph.type)
+    })
+
+    describe('Twitter Card', () => {
+      shouldIncludeMetaWithName(
+        'twitter:card',
+        METADATA_DEFAULTS.twitterCard.card,
+      )
+      shouldIncludeMetaWithName(
+        'twitter:creator',
+        METADATA_DEFAULTS.twitterCard.creator.username,
+      )
+      shouldIncludeMetaWithName(
+        'twitter:site',
+        METADATA_DEFAULTS.twitterCard.site.username,
       )
     })
   })
-  describe('Open Graph', () => {
-    ensureMetaTagPresentWithProperty(
-      'og:title',
-      metadata.siteName,
-      'with site name from metadata',
-    )
-    ensureMetaTagPresentWithProperty(
-      'og:url',
-      environment.canonicalUrl.toString(),
-      'with canonical url from environment',
-    )
-    ensureMetaTagPresentWithProperty('og:type', 'website')
-    ensureMetaTagPresentWithProperty(
-      'og:image',
-      new URL('assets/img/og.jpg', environment.canonicalUrl).toString(),
-      'pointing to the OG image',
-    )
-    ensureMetaTagPresentWithProperty('og:image:alt')
-    ensureMetaTagPresentWithProperty('og:image:width', '875')
-    ensureMetaTagPresentWithProperty('og:image:height', '875')
-    ensureMetaTagPresentWithProperty('og:locale', 'en')
-    ensureMetaTagPresentWithProperty(
-      'og:site_name',
-      metadata.siteName,
-      'with site name from metadata',
-    )
+
+  describe('When specified in a route', () => {
+    const routeMetadata = {
+      title: 'Sample title',
+      description: 'Sample description',
+      image: {
+        url: new URL('https://example.org/image.png'),
+        alt: 'Sample image description',
+      },
+      applicationName: 'Sample app',
+      locale: 'pt',
+      canonicalUrl: new URL('https://example.org/canonical'),
+      standard: {
+        author: 'John Doe',
+        keywords: ['foo', 'bar'],
+        generator: true,
+      },
+      openGraph: {
+        type: OPEN_GRAPH_TYPE_WEBSITE,
+        image: {
+          width: 875,
+          height: 875,
+        },
+      },
+      twitterCard: {
+        card: TWITTER_CARD_TYPE_SUMMARY,
+        site: { username: '@johnDoeTheSite' },
+        creator: { username: '@johnDoeTheAuthor' },
+      },
+    } satisfies GlobalMetadata &
+      StandardMetadata &
+      OpenGraphMetadata &
+      TwitterCardMetadata
+
+    beforeEach(async () => {
+      const document = await makeSut({ routeMetadata })
+      headElement = document.head
+      htmlElement = document.documentElement
+    })
+
+    describe('Standard metas', () => {
+      shouldSetTitle(routeMetadata.title)
+      shouldIncludeMetaWithName('description', routeMetadata.description)
+      shouldIncludeMetaWithName(
+        'keywords',
+        routeMetadata.standard.keywords.join(','),
+      )
+      shouldIncludeMetaWithName('author', routeMetadata.standard.author)
+      shouldIncludeMetaWithName(
+        'application-name',
+        routeMetadata.applicationName,
+      )
+      it('should include canonical URL link element', () => {
+        const canonicalLinkElement = headElement.querySelector(
+          `link[rel="canonical"]`,
+        )
+        expect(canonicalLinkElement).not.toBeNull()
+        expect(canonicalLinkElement?.getAttribute('href')).toEqual(
+          routeMetadata.canonicalUrl.toString(),
+        )
+      })
+    })
+
+    describe('Open Graph', () => {
+      shouldIncludeMetaWithProperty('og:title', routeMetadata.title)
+      shouldIncludeMetaWithProperty(
+        'og:url',
+        routeMetadata.canonicalUrl.toString(),
+      )
+      shouldIncludeMetaWithProperty('og:type', routeMetadata.openGraph.type)
+      shouldIncludeMetaWithProperty(
+        'og:image',
+        routeMetadata.image.url.toString(),
+      )
+      shouldIncludeMetaWithProperty('og:image:alt', routeMetadata.image.alt)
+      shouldIncludeMetaWithProperty(
+        'og:image:width',
+        routeMetadata.openGraph.image.width.toString(),
+      )
+      shouldIncludeMetaWithProperty(
+        'og:image:height',
+        routeMetadata.openGraph.image.height.toString(),
+      )
+      shouldIncludeMetaWithProperty('og:locale', routeMetadata.locale)
+      shouldIncludeMetaWithProperty(
+        'og:site_name',
+        routeMetadata.applicationName,
+      )
+    })
+
+    describe('Twitter', () => {
+      shouldIncludeMetaWithName('twitter:title', routeMetadata.title)
+      shouldIncludeMetaWithName(
+        'twitter:description',
+        routeMetadata.description,
+      )
+      shouldIncludeMetaWithName(
+        'twitter:image',
+        routeMetadata.image.url.toString(),
+      )
+      shouldIncludeMetaWithName('twitter:image:alt', routeMetadata.image.alt)
+      shouldIncludeMetaWithName(
+        'twitter:site',
+        routeMetadata.twitterCard.site.username,
+      )
+      shouldIncludeMetaWithName(
+        'twitter:creator',
+        routeMetadata.twitterCard.creator.username,
+      )
+      shouldIncludeMetaWithName('twitter:card', routeMetadata.twitterCard.card)
+    })
   })
-  describe('Twitter', () => {
-    ensureMetaTagPresentWithName(
-      'twitter:title',
-      metadata.siteName,
-      'with site name from metadata',
-    )
-    ensureMetaTagPresentWithName(
-      'twitter:description',
-      metadata.description,
-      'with description from metadata',
-    )
-    ensureMetaTagPresentWithName(
-      'twitter:image',
-      new URL('assets/img/og.jpg', environment.canonicalUrl).toString(),
-      'pointing to the OG image',
-    )
-    ensureMetaTagPresentWithName('twitter:image:alt')
-    ensureMetaTagPresentWithName(
-      'twitter:site',
-      `@${metadata.nickname}`,
-      'with nickname from metadata preceded by @',
-    )
-    ensureMetaTagPresentWithName(
-      'twitter:creator',
-      `@${metadata.nickname}`,
-      'with nickname from metadata preceded by @',
-    )
-    ensureMetaTagPresentWithName('twitter:card')
-  })
+
   // See defaults code. Removed until available in lib
   // describe('Facebook', () => {
   //   ensureMetaTagPresentWithProperty(
@@ -159,44 +191,49 @@ describe('App SEO metadata', () => {
   //   ensureMetaTagPresentWithName('facebook-domain-verification')
   // })
 
-  function ensureMetaTagPresentWithName(
+  function shouldSetTitle(expectedTitle: string) {
+    it('should set title', () => {
+      const titleElement = headElement.querySelector('title')
+      expect(titleElement).not.toBeNull()
+      expect(titleElement?.innerText).toEqual(expectedTitle)
+    })
+  }
+
+  function shouldSetHtmlLangAttribute(expectedLocale: string) {
+    it("should set HTML element's lang attribute", () => {
+      const langAttribute = htmlElement.getAttribute('lang')
+      expect(langAttribute).toEqual(expectedLocale)
+    })
+  }
+
+  function shouldIncludeMetaWithName(
     name: string,
     expectedContent?: jasmine.Expected<string>,
     expectedContentDescription?: string,
   ) {
-    ensureMetaTagPresent(
-      'name',
-      name,
-      expectedContent,
-      expectedContentDescription,
-    )
+    shouldIncludeMeta('name', name, expectedContent, expectedContentDescription)
   }
 
-  function ensureMetaTagPresentWithProperty(
+  function shouldIncludeMetaWithProperty(
     property: string,
     expectedContent?: jasmine.Expected<string>,
     expectedContentDescription?: string,
   ) {
-    ensureMetaTagPresent(
+    shouldIncludeMeta(
       'property',
       property,
       expectedContent,
       expectedContentDescription,
     )
   }
-  function ensureMetaTagPresent(
+  function shouldIncludeMeta(
     keyAttributeName: string,
     keyAttributeValue: string,
     expectedContent?: jasmine.Expected<string>,
     expectedContentDescription?: string,
   ) {
     const keyAttributeDescription = `with ${keyAttributeName} '${keyAttributeValue}'`
-    const expectedValueDescription = expectedContentDescription
-      ? expectedContentDescription
-      : expectedContent
-        ? `and value '${expectedContent}'`
-        : ''
-    it(`should include meta element ${keyAttributeDescription} ${expectedValueDescription}`, () => {
+    it(`should include meta element ${keyAttributeDescription} ${expectedContentDescription ?? ''}`, () => {
       const metaElement = headElement.querySelector(
         `meta[${keyAttributeName}="${keyAttributeValue}"]`,
       )
@@ -207,3 +244,23 @@ describe('App SEO metadata', () => {
     })
   }
 })
+async function makeSut(opts: { routeMetadata?: MetadataValues } = {}) {
+  TestBed.configureTestingModule({
+    providers: [
+      provideRouter([
+        {
+          path: '',
+          component: EmptyComponent,
+          data: opts.routeMetadata
+            ? ({
+                meta: opts.routeMetadata,
+              } satisfies NgxMetaRouteData)
+            : undefined,
+        },
+      ]),
+    ],
+    imports: APP_MODULE_METADATA_IMPORTS,
+  })
+  await RouterTestingHarness.create('/')
+  return TestBed.inject(DOCUMENT)
+}

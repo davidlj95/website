@@ -7,7 +7,8 @@ import { environment } from '../environments'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
 import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
-import { JsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
+import { OpenGraphMetadata } from '@davidlj95/ngx-meta/open-graph'
+import { TwitterCardMetadata } from '@davidlj95/ngx-meta/twitter-card'
 
 // Metadata to add when '/' route is ready
 // jsonLd: {
@@ -23,21 +24,51 @@ import { JsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
 //   url: environment.canonicalUrl.toString(),
 // },
 const resumePath = 'resume'
-const resumePageData: NgxMetaRouteData<GlobalMetadata & JsonLdMetadata> = {
+const resumePageData: NgxMetaRouteData<
+  GlobalMetadata & StandardMetadata & OpenGraphMetadata
+> = {
   meta: {
     title: `${METADATA.siteName} | Resume`,
     canonicalUrl: new URL(resumePath, environment.canonicalUrl),
+    description: METADATA.description,
+    image: {
+      url: new URL('assets/img/og.jpg', environment.canonicalUrl),
+      alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
+    },
+    standard: {
+      keywords: [
+        METADATA.nickname,
+        'website',
+        METADATA.realName,
+        'portfolio',
+        'cv',
+        'resume',
+        'projects',
+        'info',
+        'contact',
+      ],
+    },
+    openGraph: {
+      image: {
+        width: 875,
+        height: 875,
+      },
+    },
   },
 }
 
-const notFoundPageData: NgxMetaRouteData<GlobalMetadata & StandardMetadata> = {
+const notFoundPageData: NgxMetaRouteData<
+  GlobalMetadata & StandardMetadata & TwitterCardMetadata
+> = {
   meta: {
     title: `${METADATA.siteName} | Not Found`,
     description: 'Page could not be found',
-    canonicalUrl: null,
-    image: null,
     standard: {
-      keywords: null,
+      author: null,
+    },
+    twitterCard: {
+      creator: { username: null },
+      site: { username: null },
     },
   },
 }
