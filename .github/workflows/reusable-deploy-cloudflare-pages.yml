@@ -23,7 +23,12 @@ concurrency:
 jobs:
   deploy:
     name: Deploy to Cloudflare Pages
-    if: secrets.cloudflare-api-token != ''
+    # Secrets can't be referenced in `if`s. Unless this workaround is used
+    # https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#:~:text=Secrets%20cannot%20be%20directly%20referenced%20in%20if%3A%20conditionals
+    # That's the reason it's here and can't be in caller workflow. `env` isn't allowed there
+    env:
+      CLOUDFLARE-API-TOKEN: ${{ secrets.cloudflare-api-token }}
+    if: env.CLOUDFLARE_API_TOKEN != ''
     runs-on: ubuntu-latest
     steps:
       - name: Download built app
