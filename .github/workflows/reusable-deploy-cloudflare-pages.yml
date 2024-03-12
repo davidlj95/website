@@ -23,12 +23,7 @@ concurrency:
 jobs:
   deploy:
     name: Deploy to Cloudflare Pages
-    # Secrets can't be referenced in `if`s. Unless this workaround is used
-    # https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#:~:text=Secrets%20cannot%20be%20directly%20referenced%20in%20if%3A%20conditionals
-    # That's the reason it's here and can't be in caller workflow. `env` isn't allowed there
-    env:
-      CLOUDFLARE-API-TOKEN: ${{ secrets.cloudflare-api-token }}
-    if: env.CLOUDFLARE_API_TOKEN != ''
+
     runs-on: ubuntu-latest
     steps:
       - name: Download built app
@@ -60,9 +55,16 @@ jobs:
                 throw error
               }
             }
+            console.log(response)
             return response !== undefined
       - name: Publish
-        if: "! (github.event_name == 'pull_request' && steps.ref-exists.outputs.result == 'false')"
+        # Secrets can't be referenced in `if`s. Unless this workaround is used
+        # https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#:~:text=Secrets%20cannot%20be%20directly%20referenced%20in%20if%3A%20conditionals
+        # Env isn't available in job `if`s, so workaround must be done here
+        # https://docs.github.com/en/actions/learn-github-actions/contexts#context-availability
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.cloudflare-api-token }}
+        if: env.CLOUDFLARE_API_TOKEN != '' && (steps.ref-exists.outputs.result || github.event_name != 'pull_request')
         uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # 1
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
