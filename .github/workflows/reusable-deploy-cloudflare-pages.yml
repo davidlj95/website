@@ -23,6 +23,7 @@ concurrency:
 jobs:
   deploy:
     name: Deploy to Cloudflare Pages
+    if: secrets.cloudflare-api-token != ''
     runs-on: ubuntu-latest
     steps:
       - name: Download built app
