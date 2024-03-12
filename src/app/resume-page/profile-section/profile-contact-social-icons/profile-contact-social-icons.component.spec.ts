@@ -1,7 +1,10 @@
 import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { FaIconComponent } from '@fortawesome/angular-fontawesome'
+import {
+  FaIconComponent,
+  FontAwesomeModule,
+} from '@fortawesome/angular-fontawesome'
 import { MockProvider } from 'ng-mocks'
 import { METADATA } from '../../../common/injection-tokens'
 import { Metadata } from '../../../metadata'
@@ -16,7 +19,8 @@ describe('ContactSocialIconsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfileContactSocialIconsComponent, FaIconComponent],
+      declarations: [ProfileContactSocialIconsComponent],
+      imports: [FontAwesomeModule],
       providers: [
         MockProvider(METADATA, { nickname: nickname } as Pick<
           Metadata,
