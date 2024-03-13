@@ -9,7 +9,6 @@ import { ProfileContactSocialIconsComponent } from './resume-page/profile-sectio
 import { ProfileContactTraditionalIconsComponent } from './resume-page/profile-section/profile-contact-traditional-icons/profile-contact-traditional-icons.component'
 import { ProfileDescriptionComponent } from './resume-page/profile-section/profile-description/profile-description.component'
 import { ProfilePictureComponent } from './resume-page/profile-section/profile-picture/profile-picture.component'
-import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component'
@@ -50,6 +49,12 @@ import { NgxMetaStandardModule } from '@davidlj95/ngx-meta/standard'
 import { NgxMetaOpenGraphModule } from '@davidlj95/ngx-meta/open-graph'
 import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
 import { METADATA_DEFAULTS } from './app.metadata-defaults'
+import {
+  provideRouter,
+  RouterModule,
+  withEnabledBlockingInitialNavigation,
+} from '@angular/router'
+import { routes } from './app.routes'
 
 export const APP_MODULE_METADATA_IMPORTS = [
   NgxMetaCoreModule.forRoot({
@@ -66,7 +71,8 @@ export const APP_MODULE_METADATA_IMPORTS = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    // 👇 Temporary until app component is standalone
+    RouterModule,
     NgOptimizedImage,
     ...APP_MODULE_METADATA_IMPORTS,
     FontAwesomeModule,
@@ -109,7 +115,13 @@ export const APP_MODULE_METADATA_IMPORTS = [
     ProjectItemComponent,
     ProjectItemDescriptionComponent,
   ],
-  providers: [],
+  providers: [
+    provideRouter(
+      routes,
+      // 👇 Needed for SSR
+      withEnabledBlockingInitialNavigation(),
+    ),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
