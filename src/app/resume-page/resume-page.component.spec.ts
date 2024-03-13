@@ -14,7 +14,7 @@ describe('ResumePageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
         ResumePageComponent,
         MockComponents(
           ProfileSectionComponent,

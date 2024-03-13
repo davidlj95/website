@@ -2,11 +2,14 @@ import { Component, Inject, Input } from '@angular/core'
 import { isSomeEnum } from '../../utils'
 import { METADATA } from '../common/injection-tokens'
 import { Metadata } from '../metadata'
+import { NgFor, NgIf } from '@angular/common'
 
 @Component({
   selector: 'app-navigation-tabs',
   templateUrl: './navigation-tabs.component.html',
   styleUrls: ['./navigation-tabs.component.scss'],
+  standalone: true,
+  imports: [NgFor, NgIf],
 })
 export class NavigationTabsComponent {
   readonly items: ReadonlyArray<TabItem> = [

@@ -19,7 +19,6 @@ import {
   expectIsVisible,
 } from '../../../test/helpers/visibility'
 import { byTestId } from '../../../test/helpers/test-id'
-import { TestIdDirective } from '../../common/test-id.directive'
 import { firstValueFrom, Subscription } from 'rxjs'
 import { MockProvider } from 'ng-mocks'
 import {
@@ -77,7 +76,6 @@ describe('ChippedContentComponent', () => {
     ChippedContentComponent,
   ] {
     TestBed.configureTestingModule({
-      declarations: [ChippedContentComponent, ChipComponent, TestIdDirective],
       providers: [MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID)],
     })
     const fixture = TestBed.createComponent(ChippedContentComponent)

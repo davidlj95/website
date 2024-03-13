@@ -6,6 +6,7 @@ import { H2Component } from '../h2/h2.component'
 import { ensureHasComponent } from '../../../test/helpers/component-testers'
 import { ExperienceItemsService } from './experience-items.service'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
+import { NgFor } from '@angular/common'
 
 describe('ExperienceSectionComponent', () => {
   let component: ExperienceSectionComponent
@@ -13,8 +14,9 @@ describe('ExperienceSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
         ExperienceSectionComponent,
+        NgFor,
         MockComponents(H2Component, ExperienceItemComponent),
       ],
     })

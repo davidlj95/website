@@ -6,6 +6,7 @@ import { H2Component } from '../h2/h2.component'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
 import { ProjectItemsService } from './project-items.service'
 import { ProjectItemComponent } from './project-item/project-item.component'
+import { NgFor } from '@angular/common'
 
 describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent
@@ -13,8 +14,9 @@ describe('ProjectsSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
         ProjectsSectionComponent,
+        NgFor,
         MockComponents(H2Component, ProjectItemComponent),
       ],
     })

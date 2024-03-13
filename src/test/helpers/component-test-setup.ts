@@ -14,29 +14,8 @@ import { getComponentSelector } from './component-query-predicates'
  * ```
  */
 export function testSetup<T>(component: Type<T>): [ComponentFixture<T>, T] {
-  TestBed.configureTestingModule({
-    declarations: [component],
-  })
+  TestBed.configureTestingModule({})
   const fixture = TestBed.createComponent(component)
-  return [fixture, fixture.componentInstance]
-}
-
-/**
- * Sets up a basic component test with a host component and a child component. This is useful to test if content
- * projection (<ng-content>) is used.
- *
- * @see [ensureProjectsContent]
- *
- * Returns the fixture and component for the host component
- */
-export function testSetupWithHostComponent<T>(
-  hostComponent: Type<T>,
-  childComponent: Type<unknown>,
-): [ComponentFixture<T>, T] {
-  TestBed.configureTestingModule({
-    declarations: [hostComponent, childComponent],
-  })
-  const fixture = TestBed.createComponent(hostComponent)
   return [fixture, fixture.componentInstance]
 }
 
@@ -55,9 +34,10 @@ export function makeHostComponent(
   innerHtml: string,
 ): Type<unknown> {
   const childComponentSelector = getComponentSelector(childComponent)
-  // noinspection AngularMissingOrInvalidDeclarationInModule
   @Component({
     template: `<${childComponentSelector}>${innerHtml}</${childComponentSelector}>`,
+    standalone: true,
+    imports: [childComponent],
   })
   class TestHostComponent {}
   return TestHostComponent

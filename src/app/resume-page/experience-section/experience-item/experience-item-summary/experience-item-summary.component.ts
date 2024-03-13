@@ -18,6 +18,7 @@ import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations
     `,
   ],
   animations: [slideDownOnEnterAndSlideUpOnLeave('enterAndLeave')],
+  standalone: true,
 })
 export class ExperienceItemSummaryComponent {
   @Input({ required: true })

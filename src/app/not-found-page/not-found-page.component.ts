@@ -3,11 +3,14 @@ import { Lightbulb } from '../material-symbols'
 import { Router } from '@angular/router'
 import { Environment } from '../../environments'
 import { ENVIRONMENT } from '../common/injection-tokens'
+import { MaterialSymbolDirective } from '../common/material-symbol.directive'
 
 @Component({
   selector: 'app-not-found-page',
   templateUrl: './not-found-page.component.html',
   styleUrls: ['./not-found-page.component.scss'],
+  standalone: true,
+  imports: [MaterialSymbolDirective],
 })
 export class NotFoundPageComponent {
   public readonly currentUrlInWaybackMachine: URL

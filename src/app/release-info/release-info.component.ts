@@ -6,6 +6,7 @@ import { ReleaseInfoSummary } from './semantic-release'
   selector: 'app-release-info',
   templateUrl: './release-info.component.html',
   styleUrls: ['./release-info.component.scss'],
+  standalone: true,
 })
 export class ReleaseInfoComponent {
   constructor(@Inject(RELEASE) private release: ReleaseInfoSummary) {}

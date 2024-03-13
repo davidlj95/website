@@ -11,9 +11,7 @@ describe('TestIdDirective', () => {
       elementTag,
       testId,
     })
-    TestBed.configureTestingModule({
-      declarations: [component, TestIdDirective],
-    })
+    TestBed.configureTestingModule({})
     const fixture = TestBed.createComponent(component)
     fixture.detectChanges()
 
@@ -32,6 +30,8 @@ function makeComponentWithChildElementHavingTestIdDirectiveSetTo({
 }): Type<unknown> {
   @Component({
     template: `<${elementTag} [appTestId]="testId"></${elementTag}>`,
+    standalone: true,
+    imports: [TestIdDirective],
   })
   class TestIdComponent {
     public readonly testId = testId

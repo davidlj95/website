@@ -1,15 +1,11 @@
-import { ComponentFixture } from '@angular/core/testing'
 import { LinkComponent } from './link.component'
 import { By } from '@angular/platform-browser'
 import { Component, Type } from '@angular/core'
-import {
-  testSetup,
-  testSetupWithHostComponent,
-} from '../../../test/helpers/component-test-setup'
+import { testSetup } from '../../../test/helpers/component-test-setup'
 
 describe('LinkComponent', () => {
   it('should create', () => {
-    const [fixture, component] = setup()
+    const [fixture, component] = testSetup(LinkComponent)
     fixture.detectChanges()
     expect(component).toBeTruthy()
   })
@@ -18,7 +14,7 @@ describe('LinkComponent', () => {
     it("should contain element's content", () => {
       const someText = 'some text here'
       const hostComponent = makeHostComponent(someText, href)
-      const [fixture] = setupWithHostComponent(hostComponent)
+      const [fixture] = testSetup(hostComponent)
       fixture.detectChanges()
 
       expect(fixture.debugElement.nativeElement.textContent.trim()).toEqual(
@@ -29,7 +25,7 @@ describe('LinkComponent', () => {
 
   describe('when no href is given', () => {
     it('should not contain the anchor element', () => {
-      const [fixture] = setup()
+      const [fixture] = testSetup(LinkComponent)
 
       const anchorElement = fixture.debugElement.query(By.css('a'))
       expect(anchorElement).toBeFalsy()
@@ -42,7 +38,7 @@ describe('LinkComponent', () => {
     const href = 'https://example.org'
 
     it('should contain the anchor element with given href attribute', () => {
-      const [fixture, component] = setup()
+      const [fixture, component] = testSetup(LinkComponent)
       component.href = href
       fixture.detectChanges()
 
@@ -54,22 +50,14 @@ describe('LinkComponent', () => {
   })
 })
 
-function setup(): [ComponentFixture<LinkComponent>, LinkComponent] {
-  return testSetup(LinkComponent)
-}
-
-function setupWithHostComponent<T>(
-  hostComponent: Type<T>,
-): [ComponentFixture<T>, T] {
-  return testSetupWithHostComponent(hostComponent, LinkComponent)
-}
-
 function makeHostComponent(
   textContent: string,
   href: string | undefined,
 ): Type<unknown> {
   @Component({
     template: `<app-link [href]="href">${textContent}</app-link>`,
+    standalone: true,
+    imports: [LinkComponent],
   })
   class TestHostComponent {
     public readonly href = href

@@ -35,6 +35,7 @@ import { ChippedContent } from '../../chipped-content/chipped-content'
 import { EventEmitter } from '@angular/core'
 import { ProjectItemDescriptionComponent } from './project-item-description/project-item-description.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
+import { NgIf } from '@angular/common'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -42,8 +43,9 @@ describe('ProjectItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
         ProjectItemComponent,
+        NgIf,
         LinkComponent,
         TestIdDirective,
         MockComponents(

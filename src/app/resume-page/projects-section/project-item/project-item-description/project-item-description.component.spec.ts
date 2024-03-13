@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ProjectItemDescriptionComponent } from './project-item-description.component'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
 
 describe('ProjectItemDescriptionComponent', () => {
   let component: ProjectItemDescriptionComponent
@@ -10,8 +10,7 @@ describe('ProjectItemDescriptionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectItemDescriptionComponent],
-      imports: [NoopAnimationsModule],
+      providers: [provideNoopAnimations()],
     })
     fixture = TestBed.createComponent(ProjectItemDescriptionComponent)
     component = fixture.componentInstance

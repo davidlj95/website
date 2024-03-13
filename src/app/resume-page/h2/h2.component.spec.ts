@@ -7,9 +7,7 @@ describe('H2Component', () => {
   let fixture: ComponentFixture<H2Component>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [H2Component],
-    })
+    TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(H2Component)
     component = fixture.componentInstance
     fixture.detectChanges()

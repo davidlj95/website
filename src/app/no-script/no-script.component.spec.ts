@@ -7,9 +7,7 @@ describe('NoScriptComponent', () => {
   let fixture: ComponentFixture<NoScriptComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [NoScriptComponent],
-    })
+    TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(NoScriptComponent)
     component = fixture.componentInstance
     fixture.detectChanges()

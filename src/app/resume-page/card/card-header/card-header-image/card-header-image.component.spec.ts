@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { CardHeaderImageComponent } from './card-header-image.component'
 import { By } from '@angular/platform-browser'
-import { NgOptimizedImage } from '@angular/common'
 
 describe('CardHeaderImageComponent', () => {
   let component: CardHeaderImageComponent
@@ -11,10 +10,7 @@ describe('CardHeaderImageComponent', () => {
   const alt = 'Company Foo logotype'
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [CardHeaderImageComponent],
-      imports: [NgOptimizedImage],
-    })
+    TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(CardHeaderImageComponent)
     component = fixture.componentInstance
 

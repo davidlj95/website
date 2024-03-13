@@ -13,7 +13,7 @@ import {
 import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
-import { NgOptimizedImage } from '@angular/common'
+import { NgIf, NgOptimizedImage } from '@angular/common'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { DateRange } from '../../date-range/date-range'
 import { MockComponents } from 'ng-mocks'
@@ -42,8 +42,10 @@ describe('EducationItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
         EducationItemComponent,
+        NgIf,
+        NgOptimizedImage,
         LinkComponent,
         CardHeaderImageComponent,
         CardHeaderTitleComponent,
@@ -60,7 +62,6 @@ describe('EducationItemComponent', () => {
           ChippedContentComponent,
         ),
       ],
-      imports: [NgOptimizedImage],
     })
     fixture = TestBed.createComponent(EducationItemComponent)
     component = fixture.componentInstance

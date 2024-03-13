@@ -10,9 +10,7 @@ describe('MaterialSymbolDirective', () => {
   it('should add the material symbol class to the element', () => {
     const elementTag = 'span'
     const component = makeComponentWithDirective(elementTag)
-    TestBed.configureTestingModule({
-      declarations: [component, MaterialSymbolDirective],
-    })
+    TestBed.configureTestingModule({})
     const fixture = TestBed.createComponent(component)
     fixture.detectChanges()
 
@@ -25,6 +23,8 @@ describe('MaterialSymbolDirective', () => {
 function makeComponentWithDirective(elementTag: string): Type<unknown> {
   @Component({
     template: `<${elementTag} appMaterialSymbol></${elementTag}>`,
+    standalone: true,
+    imports: [MaterialSymbolDirective],
   })
   class MaterialSymbolComponent {}
   return MaterialSymbolComponent

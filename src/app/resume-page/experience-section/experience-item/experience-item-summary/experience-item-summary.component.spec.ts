@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ExperienceItemSummaryComponent } from './experience-item-summary.component'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
 
 describe('ExperienceItemSummaryComponent', () => {
   let component: ExperienceItemSummaryComponent
@@ -10,8 +10,7 @@ describe('ExperienceItemSummaryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ExperienceItemSummaryComponent],
-      imports: [NoopAnimationsModule],
+      providers: [provideNoopAnimations()],
     })
     fixture = TestBed.createComponent(ExperienceItemSummaryComponent)
     component = fixture.componentInstance

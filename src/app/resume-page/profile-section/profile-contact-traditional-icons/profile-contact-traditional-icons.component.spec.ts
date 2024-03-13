@@ -8,9 +8,7 @@ describe('ContactTraditionalIconsComponent', () => {
   let fixture: ComponentFixture<ProfileContactTraditionalIconsComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [ProfileContactTraditionalIconsComponent],
-    })
+    TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(ProfileContactTraditionalIconsComponent)
     component = fixture.componentInstance
     fixture.detectChanges()

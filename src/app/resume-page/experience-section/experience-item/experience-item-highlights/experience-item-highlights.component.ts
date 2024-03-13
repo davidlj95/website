@@ -6,6 +6,7 @@ import {
   Input,
 } from '@angular/core'
 import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations'
+import { NgFor } from '@angular/common'
 
 @Component({
   selector: 'app-experience-item-highlights',
@@ -16,6 +17,8 @@ import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations
   </ul>`,
   styleUrls: ['./experience-item-highlights.component.scss'],
   animations: [slideDownOnEnterAndSlideUpOnLeave('enterAndLeave')],
+  standalone: true,
+  imports: [NgFor],
 })
 export class ExperienceItemHighlightsComponent {
   @Input({ required: true }) public highlights!: readonly string[]

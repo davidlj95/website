@@ -12,6 +12,7 @@ import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations
   template: '{{ description }}',
   styles: [':host { overflow: hidden}'],
   animations: [slideDownOnEnterAndSlideUpOnLeave('enterAndLeave')],
+  standalone: true,
 })
 export class ProjectItemDescriptionComponent {
   @Input({ required: true }) public description!: string
