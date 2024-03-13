@@ -3,7 +3,7 @@ import { ExperienceSectionComponent } from './experience-section.component'
 import { MockComponents } from 'ng-mocks'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { H2Component } from '../h2/h2.component'
-import { ensureHasComponent } from '../../../test/helpers/component-testers'
+import { shouldContainComponent } from '../../../test/helpers/component-testers'
 import { ExperienceItemsService } from './experience-items.service'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
 import { NgFor } from '@angular/common'
@@ -39,5 +39,5 @@ describe('ExperienceSectionComponent', () => {
     )
   })
 
-  ensureHasComponent(() => fixture, H2Component)
+  shouldContainComponent(() => fixture, H2Component)
 })

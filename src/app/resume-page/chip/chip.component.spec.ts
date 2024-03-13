@@ -2,7 +2,7 @@ import { ChipComponent } from './chip.component'
 import { testSetup } from '../../../test/helpers/component-test-setup'
 import { ComponentFixture } from '@angular/core/testing'
 import { first, Subscription } from 'rxjs'
-import { ensureProjectsContent } from '../../../test/helpers/component-testers'
+import { shouldProjectContent } from '../../../test/helpers/component-testers'
 
 describe('ChipComponent', () => {
   it('should create', () => {
@@ -11,7 +11,7 @@ describe('ChipComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  ensureProjectsContent(ChipComponent)
+  shouldProjectContent(ChipComponent)
 
   describe('when selected attribute is false', () => {
     it('should not add the selected class', () => {

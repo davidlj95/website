@@ -1,14 +1,12 @@
-import { DebugElement, Predicate, Type } from '@angular/core'
+import { Component, DebugElement, Predicate, Type } from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
-import { makeHostComponent, testSetup } from './component-test-setup'
-import { byComponent } from './component-query-predicates'
-
-const COMPONENT_CLASS_SUFFIX = 'Component'
+import { testSetup } from './component-test-setup'
+import { byComponent, getComponentSelector } from './component-query-predicates'
 
 /**
- * Writes a test to ensure the component fixture contains the given component
+ * Tests a component is contained inside the provided fixture
  */
-export function ensureHasComponent<T, U>(
+export function shouldContainComponent<T, U>(
   fixtureGetter: () => ComponentFixture<T>,
   component: Type<U>,
   givenName: string | undefined = undefined,
@@ -16,11 +14,10 @@ export function ensureHasComponent<T, U>(
   const name =
     givenName ??
     component.name
-      .replace(COMPONENT_CLASS_SUFFIX, '')
       .replace(/([A-Z])/g, ' $1')
       .slice(1)
       .toLowerCase()
-  it(`should render the ${name}`, () => {
+  it(`should contain ${name}`, () => {
     const debugElement = fixtureGetter().debugElement.query(
       byComponent(component),
     )
@@ -29,37 +26,50 @@ export function ensureHasComponent<T, U>(
 }
 
 /**
- * Writes a test to ensure the component fixture contains the given components
+ * Tests a component is contained inside the provided fixture
  *
- * @see ensureHasComponent
+ * {@link shouldContainComponent}
  */
-export function ensureHasComponents<T>(
+export function shouldContainComponents<T>(
   fixtureGetter: () => ComponentFixture<T>,
   ...components: Array<Type<unknown>>
 ) {
   for (const component of components) {
-    ensureHasComponent(fixtureGetter, component)
+    shouldContainComponent(fixtureGetter, component)
   }
 }
 
 /**
- * Ensures the given component contains the child content passed to it
+ * Tests given component projects content
  *
- * @see https://stackoverflow.com/a/61724478/3263250
+ * @see {@link https://stackoverflow.com/a/61724478/3263250}
+ * @param component - Component that should project content
+ * @param projectionContainerPredicate - Predicate to locate the component's element that projects the content
+ *                                       Defaults to the component itself. This way, it doesn't matter where it's
+ *                                       projected as long content gets projected.
  */
-export function ensureProjectsContent(
+export function shouldProjectContent(
   component: Type<unknown>,
   projectionContainerPredicate?: Predicate<DebugElement>,
 ) {
   it(`should project its content`, () => {
-    const contentToProject = '<b>Foo</b><i>bar</i>'
-    const hostComponent = makeHostComponent(component, contentToProject)
-    const [fixture] = testSetup(hostComponent)
+    // TODO: this could be random to ensure component doesn't include that HTML by mistake
+    const contentToProject = '<b>Foo</b><i>bar</i>42'
+    const componentSelector = getComponentSelector(component)
+    @Component({
+      template: `<${componentSelector}>${contentToProject}</${componentSelector}>`,
+      standalone: true,
+      imports: [component],
+    })
+    class HostComponent {}
+    const [fixture] = testSetup(HostComponent)
     // No change detection triggered given nothing may have changed
 
+    // Ensure component is there
     const componentElement = fixture.debugElement.query(byComponent(component))
     expect(componentElement).toBeTruthy()
 
+    // Ensure projected content is there
     const projectionContainerElement = !projectionContainerPredicate
       ? componentElement
       : componentElement.query(projectionContainerPredicate)

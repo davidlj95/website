@@ -9,7 +9,7 @@ import { ProfileContactSocialIconsComponent } from './profile-contact-social-ico
 import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
 import { METADATA } from '../../common/injection-tokens'
 import { By } from '@angular/platform-browser'
-import { ensureHasComponents } from '../../../test/helpers/component-testers'
+import { shouldContainComponents } from '../../../test/helpers/component-testers'
 import { H2Component } from '../h2/h2.component'
 
 describe('ProfileSectionComponent', () => {
@@ -63,7 +63,7 @@ describe('ProfileSectionComponent', () => {
     expect(headline.nativeElement.textContent).toEqual(fakeMetadata.title)
   })
 
-  ensureHasComponents(
+  shouldContainComponents(
     () => fixture,
     H2Component,
     ProfilePictureComponent,

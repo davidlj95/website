@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { Component, Type } from '@angular/core'
-import { getComponentSelector } from './component-query-predicates'
+import { Type } from '@angular/core'
 
 /**
  * Sets up a basic component test given the component to test
@@ -17,28 +16,4 @@ export function testSetup<T>(component: Type<T>): [ComponentFixture<T>, T] {
   TestBed.configureTestingModule({})
   const fixture = TestBed.createComponent(component)
   return [fixture, fixture.componentInstance]
-}
-
-/**
- * Creates a host component including the given child component.
- *
- * Embeds inside that child component the given content.
- * Useful to check if a component includes child contents
- *
- * @see [ensureProjectsContent]
- *
- * Returns the host component type
- */
-export function makeHostComponent(
-  childComponent: Type<unknown>,
-  innerHtml: string,
-): Type<unknown> {
-  const childComponentSelector = getComponentSelector(childComponent)
-  @Component({
-    template: `<${childComponentSelector}>${innerHtml}</${childComponentSelector}>`,
-    standalone: true,
-    imports: [childComponent],
-  })
-  class TestHostComponent {}
-  return TestHostComponent
 }
