@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { EducationItemCoursesComponent } from './education-item-courses.component'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { By } from '@angular/platform-browser'
 
 describe('EducationItemCoursesComponent', () => {
@@ -11,7 +11,7 @@ describe('EducationItemCoursesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule],
+      providers: [provideNoopAnimations()],
     })
     fixture = TestBed.createComponent(EducationItemCoursesComponent)
     component = fixture.componentInstance

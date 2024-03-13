@@ -6,7 +6,7 @@ import {
   tick,
 } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { MockProvider } from 'ng-mocks'
 import { MATERIAL_SYMBOLS_SELECTOR } from '../../../../test/helpers/material-symbols'
 import {
@@ -437,8 +437,8 @@ function setup({
     providers: [
       MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
       MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID),
+      provideNoopAnimations(),
     ],
-    imports: [NoopAnimationsModule],
   })
   const fixture = TestBed.createComponent(ProfileDescriptionComponent)
   return [fixture, fixture.componentInstance]
