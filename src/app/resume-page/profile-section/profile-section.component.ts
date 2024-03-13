@@ -5,7 +5,7 @@ import { ProfileDescriptionComponent } from './profile-description/profile-descr
 import { ProfileContactSocialIconsComponent } from './profile-contact-social-icons/profile-contact-social-icons.component'
 import { ProfileContactTraditionalIconsComponent } from './profile-contact-traditional-icons/profile-contact-traditional-icons.component'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
-import { H2Component } from '../h2/h2.component'
+import { SectionTitleComponent } from '../section-title/section-title.component'
 
 @Component({
   selector: 'app-profile-section',
@@ -13,7 +13,7 @@ import { H2Component } from '../h2/h2.component'
   styleUrls: ['./profile-section.component.scss'],
   standalone: true,
   imports: [
-    H2Component,
+    SectionTitleComponent,
     ProfilePictureComponent,
     ProfileContactTraditionalIconsComponent,
     ProfileContactSocialIconsComponent,

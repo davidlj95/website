@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ProjectsSectionComponent } from './projects-section.component'
 import { MockComponents } from 'ng-mocks'
-import { H2Component } from '../h2/h2.component'
+import { SectionTitleComponent } from '../section-title/section-title.component'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
 import { ProjectItemsService } from './project-items.service'
 import { ProjectItemComponent } from './project-item/project-item.component'
@@ -17,7 +17,7 @@ describe('ProjectsSectionComponent', () => {
       imports: [
         ProjectsSectionComponent,
         NgFor,
-        MockComponents(H2Component, ProjectItemComponent),
+        MockComponents(SectionTitleComponent, ProjectItemComponent),
       ],
     })
     fixture = TestBed.createComponent(ProjectsSectionComponent)

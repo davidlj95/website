@@ -10,7 +10,7 @@ import { ProfileDescriptionComponent } from './profile-description/profile-descr
 import { METADATA } from '../../common/injection-tokens'
 import { By } from '@angular/platform-browser'
 import { shouldContainComponents } from '../../../test/helpers/component-testers'
-import { H2Component } from '../h2/h2.component'
+import { SectionTitleComponent } from '../section-title/section-title.component'
 
 describe('ProfileSectionComponent', () => {
   let component: ProfileSectionComponent
@@ -26,7 +26,7 @@ describe('ProfileSectionComponent', () => {
       imports: [
         ProfileSectionComponent,
         MockComponents(
-          H2Component,
+          SectionTitleComponent,
           ProfilePictureComponent,
           ProfileContactTraditionalIconsComponent,
           ProfileContactSocialIconsComponent,
@@ -65,7 +65,7 @@ describe('ProfileSectionComponent', () => {
 
   shouldContainComponents(
     () => fixture,
-    H2Component,
+    SectionTitleComponent,
     ProfilePictureComponent,
     ProfileContactTraditionalIconsComponent,
     ProfileContactSocialIconsComponent,

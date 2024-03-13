@@ -24,6 +24,8 @@ body {
   overscroll-behavior: none;
 }
 
+@include typographies.header-styles;
+
 code,
 pre {
   @include typographies.monospace-font();
