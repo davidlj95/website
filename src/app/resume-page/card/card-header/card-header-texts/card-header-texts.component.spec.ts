@@ -1,5 +1,6 @@
 import { CardHeaderTextsComponent } from './card-header-texts.component'
 import { testSetup } from '../../../../../test/helpers/component-test-setup'
+import { ensureProjectsContent } from '../../../../../test/helpers/component-testers'
 
 describe('CardHeaderTextsComponent', () => {
   it('should create', () => {
@@ -9,5 +10,5 @@ describe('CardHeaderTextsComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  //ensureProjectsContent(CardHeaderTextsComponent)
+  ensureProjectsContent(CardHeaderTextsComponent)
 })

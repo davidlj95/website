@@ -37,6 +37,8 @@ export function makeHostComponent(
   // noinspection AngularMissingOrInvalidDeclarationInModule
   @Component({
     template: `<${childComponentSelector}>${innerHtml}</${childComponentSelector}>`,
+    standalone: true,
+    imports: [childComponent],
   })
   class TestHostComponent {}
   return TestHostComponent
