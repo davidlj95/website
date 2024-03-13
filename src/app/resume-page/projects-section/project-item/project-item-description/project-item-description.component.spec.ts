@@ -10,8 +10,7 @@ describe('ProjectItemDescriptionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectItemDescriptionComponent],
-      imports: [NoopAnimationsModule],
+      imports: [NoopAnimationsModule, ProjectItemDescriptionComponent],
     })
     fixture = TestBed.createComponent(ProjectItemDescriptionComponent)
     component = fixture.componentInstance

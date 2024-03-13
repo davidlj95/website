@@ -15,7 +15,7 @@ import { getComponentSelector } from './component-query-predicates'
  */
 export function testSetup<T>(component: Type<T>): [ComponentFixture<T>, T] {
   TestBed.configureTestingModule({
-    declarations: [component],
+    imports: [component],
   })
   const fixture = TestBed.createComponent(component)
   return [fixture, fixture.componentInstance]
@@ -34,7 +34,7 @@ export function testSetupWithHostComponent<T>(
   childComponent: Type<unknown>,
 ): [ComponentFixture<T>, T] {
   TestBed.configureTestingModule({
-    declarations: [hostComponent, childComponent],
+    imports: [hostComponent, childComponent],
   })
   const fixture = TestBed.createComponent(hostComponent)
   return [fixture, fixture.componentInstance]

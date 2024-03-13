@@ -62,8 +62,14 @@ export const APP_MODULE_METADATA_IMPORTS = [
 ]
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    NgOptimizedImage,
+    ...APP_MODULE_METADATA_IMPORTS,
+    FontAwesomeModule,
     HeaderComponent,
     ResumePageComponent,
     NoScriptComponent,
@@ -102,14 +108,6 @@ export const APP_MODULE_METADATA_IMPORTS = [
     ProjectsSectionComponent,
     ProjectItemComponent,
     ProjectItemDescriptionComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    NgOptimizedImage,
-    ...APP_MODULE_METADATA_IMPORTS,
-    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

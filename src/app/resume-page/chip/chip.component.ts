@@ -11,6 +11,7 @@ import {
   selector: 'app-chip',
   template: '<ng-content></ng-content>',
   styleUrls: ['./chip.component.scss'],
+  standalone: true,
 })
 export class ChipComponent {
   @HostBinding('class.selected')

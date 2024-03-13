@@ -12,8 +12,7 @@ describe('CardHeaderImageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CardHeaderImageComponent],
-      imports: [NgOptimizedImage],
+      imports: [NgOptimizedImage, CardHeaderImageComponent],
     })
     fixture = TestBed.createComponent(CardHeaderImageComponent)
     component = fixture.componentInstance

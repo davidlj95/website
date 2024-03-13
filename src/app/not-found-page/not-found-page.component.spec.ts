@@ -22,7 +22,7 @@ describe('NotFoundPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NotFoundPageComponent],
+      imports: [NotFoundPageComponent],
       providers: [
         MockProvider(ENVIRONMENT, fakeEnv),
         MockProvider(Router, fakeRouter),

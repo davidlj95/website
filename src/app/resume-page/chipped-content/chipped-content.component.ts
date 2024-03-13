@@ -14,12 +14,15 @@ import {
 } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
-import { isPlatformBrowser } from '@angular/common'
+import { isPlatformBrowser, NgFor } from '@angular/common'
+import { TestIdDirective } from '../../common/test-id.directive'
 
 @Component({
   selector: 'app-chipped-content',
   templateUrl: './chipped-content.component.html',
   styleUrls: ['./chipped-content.component.scss'],
+  standalone: true,
+  imports: [NgFor, ChipComponent, TestIdDirective],
 })
 export class ChippedContentComponent implements OnInit {
   @Input({ required: true }) public contents!: ReadonlyArray<

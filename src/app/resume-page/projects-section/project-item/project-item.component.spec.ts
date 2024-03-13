@@ -42,7 +42,7 @@ describe('ProjectItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
         ProjectItemComponent,
         LinkComponent,
         TestIdDirective,

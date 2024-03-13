@@ -1,11 +1,14 @@
 import { Component, HostBinding, Inject } from '@angular/core'
 import { METADATA } from '../../../common/injection-tokens'
 import { Metadata } from '../../../metadata'
+import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'app-profile-picture',
   templateUrl: './profile-picture.component.html',
   styleUrls: ['./profile-picture.component.scss'],
+  standalone: true,
+  imports: [NgOptimizedImage],
 })
 export class ProfilePictureComponent {
   protected realName: string = this.metadata.realName

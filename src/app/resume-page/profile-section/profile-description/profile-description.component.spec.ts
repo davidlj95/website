@@ -435,12 +435,15 @@ function setup({
   ProfileDescriptionComponent,
 ] {
   TestBed.configureTestingModule({
-    declarations: [ProfileDescriptionComponent, MaterialSymbolDirective],
     providers: [
       MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
       MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID),
     ],
-    imports: [NoopAnimationsModule],
+    imports: [
+      NoopAnimationsModule,
+      ProfileDescriptionComponent,
+      MaterialSymbolDirective,
+    ],
   })
   const fixture = TestBed.createComponent(ProfileDescriptionComponent)
   return [fixture, fixture.componentInstance]

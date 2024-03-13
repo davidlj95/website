@@ -8,7 +8,7 @@ describe('H2Component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [H2Component],
+      imports: [H2Component],
     })
     fixture = TestBed.createComponent(H2Component)
     component = fixture.componentInstance

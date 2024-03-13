@@ -6,7 +6,12 @@ import {
   transition,
   trigger,
 } from '@angular/animations'
-import { isPlatformBrowser } from '@angular/common'
+import {
+  isPlatformBrowser,
+  NgIf,
+  NgTemplateOutlet,
+  NgFor,
+} from '@angular/common'
 import {
   Component,
   HostBinding,
@@ -24,6 +29,7 @@ import {
 } from '../../../common/animations'
 import { DescriptionLine } from '../../../metadata'
 import { SlugGeneratorService } from '../../../common/slug-generator.service'
+import { MaterialSymbolDirective } from '../../../common/material-symbol.directive'
 
 @Component({
   selector: 'app-profile-description',
@@ -54,6 +60,8 @@ import { SlugGeneratorService } from '../../../common/slug-generator.service'
       ),
     ]),
   ],
+  standalone: true,
+  imports: [NgIf, NgTemplateOutlet, MaterialSymbolDirective, NgFor],
 })
 export class ProfileDescriptionComponent {
   @Input({ required: true }) public line!: DescriptionLine

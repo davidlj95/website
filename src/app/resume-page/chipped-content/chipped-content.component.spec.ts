@@ -77,7 +77,7 @@ describe('ChippedContentComponent', () => {
     ChippedContentComponent,
   ] {
     TestBed.configureTestingModule({
-      declarations: [ChippedContentComponent, ChipComponent, TestIdDirective],
+      imports: [ChippedContentComponent, ChipComponent, TestIdDirective],
       providers: [MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID)],
     })
     const fixture = TestBed.createComponent(ChippedContentComponent)

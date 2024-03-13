@@ -12,7 +12,7 @@ describe('TestIdDirective', () => {
       testId,
     })
     TestBed.configureTestingModule({
-      declarations: [component, TestIdDirective],
+      imports: [component, TestIdDirective],
     })
     const fixture = TestBed.createComponent(component)
     fixture.detectChanges()

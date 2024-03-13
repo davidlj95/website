@@ -15,9 +15,8 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [
-        AppComponent,
+      imports: [
+        RouterTestingModule,
         MockComponents(
           ReleaseInfoComponent,
           NoScriptComponent,
@@ -25,6 +24,7 @@ describe('AppComponent', () => {
           ResumePageComponent,
         ),
       ],
+      declarations: [AppComponent],
     })
 
     fixture = TestBed.createComponent(AppComponent)

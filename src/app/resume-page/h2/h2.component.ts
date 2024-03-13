@@ -4,5 +4,6 @@ import { Component } from '@angular/core'
   selector: 'app-h2',
   templateUrl: './h2.component.html',
   styleUrls: ['./h2.component.scss'],
+  standalone: true,
 })
 export class H2Component {}

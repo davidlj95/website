@@ -42,7 +42,8 @@ describe('EducationItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
+        NgOptimizedImage,
         EducationItemComponent,
         LinkComponent,
         CardHeaderImageComponent,
@@ -60,7 +61,6 @@ describe('EducationItemComponent', () => {
           ChippedContentComponent,
         ),
       ],
-      imports: [NgOptimizedImage],
     })
     fixture = TestBed.createComponent(EducationItemComponent)
     component = fixture.componentInstance

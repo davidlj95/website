@@ -19,8 +19,7 @@ describe('ContactSocialIconsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfileContactSocialIconsComponent],
-      imports: [FontAwesomeModule],
+      imports: [FontAwesomeModule, ProfileContactSocialIconsComponent],
       providers: [
         MockProvider(METADATA, { nickname: nickname } as Pick<
           Metadata,

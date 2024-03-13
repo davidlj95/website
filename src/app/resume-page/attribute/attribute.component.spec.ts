@@ -12,7 +12,7 @@ describe('AttributeComponent', () => {
 
   function setup(): [ComponentFixture<AttributeComponent>, AttributeComponent] {
     TestBed.configureTestingModule({
-      declarations: [AttributeComponent, MaterialSymbolDirective],
+      imports: [AttributeComponent, MaterialSymbolDirective],
     })
     const fixture = TestBed.createComponent(AttributeComponent)
     const component = fixture.componentInstance

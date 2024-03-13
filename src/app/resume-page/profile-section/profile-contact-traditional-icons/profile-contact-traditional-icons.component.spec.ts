@@ -9,7 +9,7 @@ describe('ContactTraditionalIconsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfileContactTraditionalIconsComponent],
+      imports: [ProfileContactTraditionalIconsComponent],
     })
     fixture = TestBed.createComponent(ProfileContactTraditionalIconsComponent)
     component = fixture.componentInstance

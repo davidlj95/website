@@ -8,7 +8,7 @@ describe('ReleaseInfoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ReleaseInfoComponent],
+      imports: [ReleaseInfoComponent],
     })
     fixture = TestBed.createComponent(ReleaseInfoComponent)
     component = fixture.componentInstance

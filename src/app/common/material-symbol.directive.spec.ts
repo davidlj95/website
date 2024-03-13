@@ -11,7 +11,7 @@ describe('MaterialSymbolDirective', () => {
     const elementTag = 'span'
     const component = makeComponentWithDirective(elementTag)
     TestBed.configureTestingModule({
-      declarations: [component, MaterialSymbolDirective],
+      imports: [component, MaterialSymbolDirective],
     })
     const fixture = TestBed.createComponent(component)
     fixture.detectChanges()

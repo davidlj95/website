@@ -23,7 +23,7 @@ describe('ProfileSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
         ProfileSectionComponent,
         MockComponents(
           H2Component,

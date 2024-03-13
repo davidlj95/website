@@ -2,6 +2,7 @@ import { Directive, ElementRef, Input, OnChanges } from '@angular/core'
 
 @Directive({
   selector: '[appTestId]',
+  standalone: true,
 })
 export class TestIdDirective implements OnChanges {
   @Input('appTestId') public id!: string

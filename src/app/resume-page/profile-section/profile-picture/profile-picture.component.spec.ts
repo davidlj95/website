@@ -13,8 +13,7 @@ describe('ProfilePictureComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfilePictureComponent],
-      imports: [NgOptimizedImage],
+      imports: [NgOptimizedImage, ProfilePictureComponent],
     })
     fixture = TestBed.createComponent(ProfilePictureComponent)
     component = fixture.componentInstance

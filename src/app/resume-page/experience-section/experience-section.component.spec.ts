@@ -13,7 +13,7 @@ describe('ExperienceSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
         ExperienceSectionComponent,
         MockComponents(H2Component, ExperienceItemComponent),
       ],

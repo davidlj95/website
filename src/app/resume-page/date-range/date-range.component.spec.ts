@@ -10,7 +10,7 @@ describe('DateRangeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DateRangeComponent],
+      imports: [DateRangeComponent],
     })
     fixture = TestBed.createComponent(DateRangeComponent)
     component = fixture.componentInstance

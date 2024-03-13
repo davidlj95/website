@@ -8,7 +8,7 @@ describe('NoScriptComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NoScriptComponent],
+      imports: [NoScriptComponent],
     })
     fixture = TestBed.createComponent(NoScriptComponent)
     component = fixture.componentInstance

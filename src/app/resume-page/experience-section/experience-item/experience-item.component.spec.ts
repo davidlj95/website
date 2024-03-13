@@ -43,7 +43,8 @@ describe('ExperienceItem', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
+      imports: [
+        NgOptimizedImage,
         ExperienceItemComponent,
         LinkComponent,
         CardHeaderImageComponent,
@@ -62,7 +63,6 @@ describe('ExperienceItem', () => {
           ChippedContentComponent,
         ),
       ],
-      imports: [NgOptimizedImage],
     })
     fixture = TestBed.createComponent(ExperienceItemComponent)
     component = fixture.componentInstance

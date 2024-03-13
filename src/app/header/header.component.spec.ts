@@ -11,7 +11,7 @@ describe('ToolbarComponent', () => {
   beforeEach(() => {
     ngMocks.autoSpy('jasmine')
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
+      imports: [HeaderComponent],
       providers: [MockProviders(ColorSchemeService)],
     })
     fixture = TestBed.createComponent(HeaderComponent)
