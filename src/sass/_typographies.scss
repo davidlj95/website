@@ -9,3 +9,9 @@
 @mixin monospace-font {
   font-family: 'Roboto Mono', 'Courier New', monospace;
 }
+
+@mixin header-styles {
+  h2 {
+    font-size: 1.25em;
+  }
+}

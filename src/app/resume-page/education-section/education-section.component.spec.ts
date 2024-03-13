@@ -5,7 +5,7 @@ import { EducationItemComponent } from './education-item/education-item.componen
 import { EducationItemsService } from './education-items.service'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
 import { MockComponents } from 'ng-mocks'
-import { H2Component } from '../h2/h2.component'
+import { SectionTitleComponent } from '../section-title/section-title.component'
 import { NgForOf } from '@angular/common'
 
 describe('EducationSectionComponent', () => {
@@ -17,7 +17,7 @@ describe('EducationSectionComponent', () => {
       imports: [
         EducationSectionComponent,
         NgForOf,
-        MockComponents(H2Component, EducationItemComponent),
+        MockComponents(SectionTitleComponent, EducationItemComponent),
       ],
     })
     fixture = TestBed.createComponent(EducationSectionComponent)

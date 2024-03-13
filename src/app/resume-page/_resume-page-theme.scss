@@ -1,4 +1,4 @@
-@use 'h2/h2-theme';
+@use 'section-title/section-title-theme';
 @use 'profile-section/profile-section-theme';
 @use 'card/card-theme';
 @use 'attribute/attribute-theme';
@@ -7,7 +7,7 @@
 
 @mixin color($theme) {
   app-resume-page {
-    @include h2-theme.color($theme);
+    @include section-title-theme.color($theme);
     @include card-theme.color($theme);
     @include profile-section-theme.color($theme);
     @include attribute-theme.color($theme);
@@ -18,7 +18,7 @@
 
 @mixin motion() {
   app-resume-page {
-    @include h2-theme.motion;
+    @include section-title-theme.motion;
     @include card-theme.motion;
     @include profile-section-theme.motion;
     @include attribute-theme.motion;

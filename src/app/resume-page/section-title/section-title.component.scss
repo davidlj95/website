@@ -1,0 +1,15 @@
+@use 'borders';
+@use 'header';
+@use 'paddings';
+@use 'z-index';
+
+:host {
+  display: block;
+  position: sticky;
+  top: header.$height - header.$border-height;
+  z-index: z-index.$headers;
+  width: 100%;
+  padding: paddings.$s paddings.$l;
+  @include borders.panel-style-width('bottom');
+  @include borders.panel-style-width('top');
+}
