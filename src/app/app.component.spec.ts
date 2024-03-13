@@ -23,8 +23,8 @@ describe('AppComponent', () => {
           HeaderComponent,
           ResumePageComponent,
         ),
+        AppComponent,
       ],
-      declarations: [AppComponent],
     })
 
     fixture = TestBed.createComponent(AppComponent)
