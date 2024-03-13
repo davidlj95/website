@@ -6,7 +6,7 @@ import {
   withEnabledBlockingInitialNavigation,
 } from '@angular/router'
 import { NgOptimizedImage } from '@angular/common'
-import { APP_MODULE_METADATA_IMPORTS } from './app.module'
+import { APP_METADATA_IMPORTS } from './app.metadata-imports'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { routes } from './app.routes'
 import { provideAnimations } from '@angular/platform-browser/animations'
@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
       // 👇 Temporary until app component is standalone
       RouterModule,
       NgOptimizedImage,
-      ...APP_MODULE_METADATA_IMPORTS,
+      ...APP_METADATA_IMPORTS,
       FontAwesomeModule,
     ),
     provideRouter(

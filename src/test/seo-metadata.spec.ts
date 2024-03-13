@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing'
 import { EmptyComponent } from './helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { provideRouter } from '@angular/router'
-import { APP_MODULE_METADATA_IMPORTS } from '../app/app.module'
+import { APP_METADATA_IMPORTS } from '../app/app.metadata-imports'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata, MetadataValues } from '@davidlj95/ngx-meta/core'
 import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
@@ -259,7 +259,7 @@ async function makeSut(opts: { routeMetadata?: MetadataValues } = {}) {
         },
       ]),
     ],
-    imports: APP_MODULE_METADATA_IMPORTS,
+    imports: APP_METADATA_IMPORTS,
   })
   await RouterTestingHarness.create('/')
   return TestBed.inject(DOCUMENT)
