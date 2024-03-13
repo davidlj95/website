@@ -14,9 +14,7 @@ import { getComponentSelector } from './component-query-predicates'
  * ```
  */
 export function testSetup<T>(component: Type<T>): [ComponentFixture<T>, T] {
-  TestBed.configureTestingModule({
-    imports: [component],
-  })
+  TestBed.configureTestingModule({})
   const fixture = TestBed.createComponent(component)
   return [fixture, fixture.componentInstance]
 }
