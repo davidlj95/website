@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { EducationSectionComponent } from './education-section.component'
-import { MockComponents } from 'ng-mocks'
-import { H2Component } from '../h2/h2.component'
 import { EducationItemComponent } from './education-item/education-item.component'
 import { EducationItemsService } from './education-items.service'
 import { byComponent } from '../../../test/helpers/component-query-predicates'
+import { MockComponents } from 'ng-mocks'
+import { H2Component } from '../h2/h2.component'
+import { NgForOf } from '@angular/common'
 
 describe('EducationSectionComponent', () => {
   let component: EducationSectionComponent
@@ -15,6 +16,7 @@ describe('EducationSectionComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         EducationSectionComponent,
+        NgForOf,
         MockComponents(H2Component, EducationItemComponent),
       ],
     })

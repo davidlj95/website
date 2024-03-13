@@ -9,9 +9,7 @@ describe('EducationItemScoreComponent', () => {
   const score = 'Very well, I studied a lot'
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, EducationItemScoreComponent],
-    })
+    TestBed.configureTestingModule({ imports: [NoopAnimationsModule] })
     fixture = TestBed.createComponent(EducationItemScoreComponent)
     component = fixture.componentInstance
     component.score = score

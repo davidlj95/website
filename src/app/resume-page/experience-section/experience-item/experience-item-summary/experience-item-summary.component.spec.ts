@@ -10,7 +10,7 @@ describe('ExperienceItemSummaryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, ExperienceItemSummaryComponent],
+      imports: [NoopAnimationsModule],
     })
     fixture = TestBed.createComponent(ExperienceItemSummaryComponent)
     component = fixture.componentInstance

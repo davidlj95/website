@@ -9,9 +9,7 @@ describe('DateRangeComponent', () => {
   let fixture: ComponentFixture<DateRangeComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [DateRangeComponent],
-    })
+    TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(DateRangeComponent)
     component = fixture.componentInstance
   })

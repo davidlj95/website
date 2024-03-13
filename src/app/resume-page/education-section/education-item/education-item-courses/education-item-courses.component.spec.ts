@@ -11,7 +11,7 @@ describe('EducationItemCoursesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, EducationItemCoursesComponent],
+      imports: [NoopAnimationsModule],
     })
     fixture = TestBed.createComponent(EducationItemCoursesComponent)
     component = fixture.componentInstance

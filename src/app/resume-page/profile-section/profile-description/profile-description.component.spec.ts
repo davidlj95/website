@@ -24,7 +24,6 @@ import {
   CollapsibleConfiguration,
   ProfileDescriptionComponent,
 } from './profile-description.component'
-import { MaterialSymbolDirective } from '../../../common/material-symbol.directive'
 import { byComponent } from '../../../../test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '../../../../test/helpers/get-reflected-attribute'
 
@@ -439,11 +438,7 @@ function setup({
       MockProvider(COLLAPSIBLE_CONFIG, fakeConfig),
       MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID),
     ],
-    imports: [
-      NoopAnimationsModule,
-      ProfileDescriptionComponent,
-      MaterialSymbolDirective,
-    ],
+    imports: [NoopAnimationsModule],
   })
   const fixture = TestBed.createComponent(ProfileDescriptionComponent)
   return [fixture, fixture.componentInstance]

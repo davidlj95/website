@@ -10,7 +10,7 @@ import {
   ExperienceItemComponent,
 } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
-import { NgOptimizedImage } from '@angular/common'
+import { NgIf, NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
 import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
@@ -44,8 +44,9 @@ describe('ExperienceItem', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        NgOptimizedImage,
         ExperienceItemComponent,
+        NgIf,
+        NgOptimizedImage,
         LinkComponent,
         CardHeaderImageComponent,
         CardHeaderTitleComponent,

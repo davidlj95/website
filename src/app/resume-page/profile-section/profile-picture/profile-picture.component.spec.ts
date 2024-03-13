@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser'
 import { expectIsHidden } from '../../../../test/helpers/visibility'
 
 import { ProfilePictureComponent } from './profile-picture.component'
-import { NgOptimizedImage } from '@angular/common'
 import { getReflectedAttribute } from '../../../../test/helpers/get-reflected-attribute'
 
 describe('ProfilePictureComponent', () => {
@@ -12,9 +11,7 @@ describe('ProfilePictureComponent', () => {
   let fixture: ComponentFixture<ProfilePictureComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [NgOptimizedImage, ProfilePictureComponent],
-    })
+    TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(ProfilePictureComponent)
     component = fixture.componentInstance
     fixture.detectChanges()

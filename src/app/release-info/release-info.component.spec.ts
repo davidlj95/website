@@ -7,9 +7,7 @@ describe('ReleaseInfoComponent', () => {
   let fixture: ComponentFixture<ReleaseInfoComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [ReleaseInfoComponent],
-    })
+    TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(ReleaseInfoComponent)
     component = fixture.componentInstance
     fixture.detectChanges()

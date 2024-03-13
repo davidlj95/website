@@ -4,14 +4,13 @@ import { MockProviders, ngMocks } from 'ng-mocks'
 import { ColorSchemeService } from './color-scheme.service'
 import { HeaderComponent } from './header.component'
 
-describe('ToolbarComponent', () => {
+describe('HeaderComponent', () => {
   let component: HeaderComponent
   let fixture: ComponentFixture<HeaderComponent>
 
   beforeEach(() => {
     ngMocks.autoSpy('jasmine')
     TestBed.configureTestingModule({
-      imports: [HeaderComponent],
       providers: [MockProviders(ColorSchemeService)],
     })
     fixture = TestBed.createComponent(HeaderComponent)

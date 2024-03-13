@@ -7,9 +7,7 @@ describe('CardComponent', () => {
   let fixture: ComponentFixture<CardComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [CardComponent],
-    })
+    TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(CardComponent)
     component = fixture.componentInstance
     fixture.detectChanges()

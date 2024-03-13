@@ -15,7 +15,6 @@ describe('NavigationTabsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NavigationTabsComponent],
       providers: [MockProvider(METADATA, fakeMetadata)],
     })
     fixture = TestBed.createComponent(NavigationTabsComponent)
