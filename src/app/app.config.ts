@@ -2,7 +2,6 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import {
   provideRouter,
-  RouterModule,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router'
 import { NgOptimizedImage } from '@angular/common'
@@ -15,8 +14,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(
       BrowserModule,
-      // 👇 Temporary until app component is standalone
-      RouterModule,
       NgOptimizedImage,
       ...APP_METADATA_IMPORTS,
       FontAwesomeModule,
