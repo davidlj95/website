@@ -16,14 +16,14 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
+        AppComponent,
         MockComponents(
           ReleaseInfoComponent,
           NoScriptComponent,
           HeaderComponent,
           ResumePageComponent,
         ),
-        AppComponent,
+        RouterTestingModule,
       ],
     })
 
