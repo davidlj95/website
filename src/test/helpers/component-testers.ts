@@ -1,6 +1,6 @@
 import { Component, DebugElement, Predicate, Type } from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
-import { testSetup } from './component-test-setup'
+import { componentTestSetup } from './component-test-setup'
 import { byComponent, getComponentSelector } from './component-query-predicates'
 
 /**
@@ -62,7 +62,7 @@ export function shouldProjectContent(
       imports: [component],
     })
     class HostComponent {}
-    const [fixture] = testSetup(HostComponent)
+    const [fixture] = componentTestSetup(HostComponent)
     // No change detection triggered given nothing may have changed
 
     // Ensure component is there

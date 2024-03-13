@@ -1,11 +1,11 @@
 import { LinkComponent } from './link.component'
 import { By } from '@angular/platform-browser'
 import { Component, Type } from '@angular/core'
-import { testSetup } from '../../../test/helpers/component-test-setup'
+import { componentTestSetup } from '../../../test/helpers/component-test-setup'
 
 describe('LinkComponent', () => {
   it('should create', () => {
-    const [fixture, component] = testSetup(LinkComponent)
+    const [fixture, component] = componentTestSetup(LinkComponent)
     fixture.detectChanges()
     expect(component).toBeTruthy()
   })
@@ -14,7 +14,7 @@ describe('LinkComponent', () => {
     it("should contain element's content", () => {
       const someText = 'some text here'
       const hostComponent = makeHostComponent(someText, href)
-      const [fixture] = testSetup(hostComponent)
+      const [fixture] = componentTestSetup(hostComponent)
       fixture.detectChanges()
 
       expect(fixture.debugElement.nativeElement.textContent.trim()).toEqual(
@@ -25,7 +25,7 @@ describe('LinkComponent', () => {
 
   describe('when no href is given', () => {
     it('should not contain the anchor element', () => {
-      const [fixture] = testSetup(LinkComponent)
+      const [fixture] = componentTestSetup(LinkComponent)
 
       const anchorElement = fixture.debugElement.query(By.css('a'))
       expect(anchorElement).toBeFalsy()
@@ -38,7 +38,7 @@ describe('LinkComponent', () => {
     const href = 'https://example.org'
 
     it('should contain the anchor element with given href attribute', () => {
-      const [fixture, component] = testSetup(LinkComponent)
+      const [fixture, component] = componentTestSetup(LinkComponent)
       component.href = href
       fixture.detectChanges()
 

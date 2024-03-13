@@ -1,12 +1,12 @@
 import { ChipComponent } from './chip.component'
-import { testSetup } from '../../../test/helpers/component-test-setup'
+import { componentTestSetup } from '../../../test/helpers/component-test-setup'
 import { ComponentFixture } from '@angular/core/testing'
 import { first, Subscription } from 'rxjs'
 import { shouldProjectContent } from '../../../test/helpers/component-testers'
 
 describe('ChipComponent', () => {
   it('should create', () => {
-    const [fixture, component] = testSetup(ChipComponent)
+    const [fixture, component] = componentTestSetup(ChipComponent)
     fixture.detectChanges()
     expect(component).toBeTruthy()
   })
@@ -15,7 +15,7 @@ describe('ChipComponent', () => {
 
   describe('when selected attribute is false', () => {
     it('should not add the selected class', () => {
-      const [fixture, component] = testSetup(ChipComponent)
+      const [fixture, component] = componentTestSetup(ChipComponent)
       component.selected = false
       fixture.detectChanges()
 
@@ -25,7 +25,7 @@ describe('ChipComponent', () => {
 
   describe('when selected attribute is true', () => {
     it('should add the selected class', () => {
-      const [fixture, component] = testSetup(ChipComponent)
+      const [fixture, component] = componentTestSetup(ChipComponent)
       component.selected = true
       fixture.detectChanges()
 
@@ -35,21 +35,21 @@ describe('ChipComponent', () => {
 
   describe('when selected attribute is not listened', () => {
     it('should not add the selectable class', () => {
-      const [fixture] = testSetup(ChipComponent)
+      const [fixture] = componentTestSetup(ChipComponent)
       fixture.detectChanges()
 
       expect(fixture.debugElement.classes['selectable']).toBeFalsy()
     })
 
     it('should not include the element in the tab sequence', () => {
-      const [fixture] = testSetup(ChipComponent)
+      const [fixture] = componentTestSetup(ChipComponent)
       fixture.detectChanges()
 
       expect(fixture.debugElement.attributes['tabindex']).toBeUndefined()
     })
 
     it('should not add ARIA role', () => {
-      const [fixture] = testSetup(ChipComponent)
+      const [fixture] = componentTestSetup(ChipComponent)
       fixture.detectChanges()
 
       expect(fixture.debugElement.attributes['role']).toBeUndefined()
@@ -63,7 +63,7 @@ describe('ChipComponent', () => {
     let newSelectedValue: boolean
 
     beforeEach(() => {
-      ;[fixture, component] = testSetup(ChipComponent)
+      ;[fixture, component] = componentTestSetup(ChipComponent)
       component.selected = false
       subscription = component.selectedChange
         .pipe(first())
