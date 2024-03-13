@@ -1,9 +1,6 @@
 import { DebugElement, Predicate, Type } from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
-import {
-  makeHostComponent,
-  testSetupWithHostComponent,
-} from './component-test-setup'
+import { makeHostComponent, testSetup } from './component-test-setup'
 import { byComponent } from './component-query-predicates'
 
 const COMPONENT_CLASS_SUFFIX = 'Component'
@@ -57,7 +54,7 @@ export function ensureProjectsContent(
   it(`should project its content`, () => {
     const contentToProject = '<b>Foo</b><i>bar</i>'
     const hostComponent = makeHostComponent(component, contentToProject)
-    const [fixture] = testSetupWithHostComponent(hostComponent, component)
+    const [fixture] = testSetup(hostComponent)
     // No change detection triggered given nothing may have changed
 
     const componentElement = fixture.debugElement.query(byComponent(component))

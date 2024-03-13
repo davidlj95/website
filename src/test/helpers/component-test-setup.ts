@@ -20,25 +20,6 @@ export function testSetup<T>(component: Type<T>): [ComponentFixture<T>, T] {
 }
 
 /**
- * Sets up a basic component test with a host component and a child component. This is useful to test if content
- * projection (<ng-content>) is used.
- *
- * @see [ensureProjectsContent]
- *
- * Returns the fixture and component for the host component
- */
-export function testSetupWithHostComponent<T>(
-  hostComponent: Type<T>,
-  childComponent: Type<unknown>,
-): [ComponentFixture<T>, T] {
-  TestBed.configureTestingModule({
-    imports: [hostComponent, childComponent],
-  })
-  const fixture = TestBed.createComponent(hostComponent)
-  return [fixture, fixture.componentInstance]
-}
-
-/**
  * Creates a host component including the given child component.
  *
  * Embeds inside that child component the given content.
