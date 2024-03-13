@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { AttributeComponent } from './attribute.component'
 import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols'
 import { By } from '@angular/platform-browser'
-import { ensureProjectsContent } from '../../../test/helpers/component-testers'
+import { shouldProjectContent } from '../../../test/helpers/component-testers'
 
 describe('AttributeComponent', () => {
   const symbol = 'some symbol'
@@ -59,5 +59,5 @@ describe('AttributeComponent', () => {
     expect(iconElement.attributes['tabindex']).toEqual('0')
   })
 
-  ensureProjectsContent(AttributeComponent, By.css("[role='tooltip']"))
+  shouldProjectContent(AttributeComponent, By.css("[role='tooltip']"))
 })

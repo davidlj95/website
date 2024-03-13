@@ -14,7 +14,7 @@ import { NgIf, NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
 import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
-import { ensureHasComponent } from '../../../../test/helpers/component-testers'
+import { shouldContainComponent } from '../../../../test/helpers/component-testers'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
@@ -231,7 +231,7 @@ describe('ExperienceItem', () => {
     })
   })
 
-  ensureHasComponent(() => fixture, ChippedContentComponent)
+  shouldContainComponent(() => fixture, ChippedContentComponent)
 
   describe('when experience has summary', () => {
     const summary = 'sample summary'

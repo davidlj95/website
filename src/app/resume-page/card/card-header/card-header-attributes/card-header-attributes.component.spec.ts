@@ -1,6 +1,6 @@
 import { CardHeaderAttributesComponent } from './card-header-attributes.component'
 import { testSetup } from '../../../../../test/helpers/component-test-setup'
-import { ensureProjectsContent } from '../../../../../test/helpers/component-testers'
+import { shouldProjectContent } from '../../../../../test/helpers/component-testers'
 
 describe('CardHeaderAttributesComponent', () => {
   it('should create', () => {
@@ -10,5 +10,5 @@ describe('CardHeaderAttributesComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  ensureProjectsContent(CardHeaderAttributesComponent)
+  shouldProjectContent(CardHeaderAttributesComponent)
 })
