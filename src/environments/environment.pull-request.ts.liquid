@@ -4,7 +4,7 @@ import { METADATA } from '../app/metadata'
 // For info about how the Cloudflare Pages preview URL is formed:
 // https://developers.cloudflare.com/pages/platform/preview-deployments/
 const CLOUDFLARE_PAGES_DOMAIN = `${METADATA.nickname}.pages.dev`
-const PR_BRANCH_NAME = '{{ prBranchName |  replace: '/', '-' }}'
+const PR_BRANCH_NAME = '{{ prBranchName |  replace: '/', '-' |  truncate: 28, '' }}'
 const CLOUDFLARE_PAGES_PREVIEW_BRANCH_ALIAS_URL = new URL(
   `https://${PR_BRANCH_NAME}.${CLOUDFLARE_PAGES_DOMAIN}`,
 )

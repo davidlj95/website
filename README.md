@@ -156,7 +156,7 @@ Can only be triggered by users with write access to the repo (to prevent secrets
 
 Also, branch names should be short. Otherwise, the `canonicalUrl` may be incorrect, given we try to generate the URL following docs about it in Cloudflare Pages docs. But the exact algorithm to generate the preview URL from branch name is not published. Empirically, it is known that branch names get shorten if they exceed a certain length.
 
-See https://github.com/davidlj95/website/pull/288 for more info.
+See https://github.com/davidlj95/website/pull/289 for more info.
 
 ## Rendering font subsets
 
