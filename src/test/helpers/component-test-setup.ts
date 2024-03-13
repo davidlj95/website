@@ -34,7 +34,6 @@ export function makeHostComponent(
   innerHtml: string,
 ): Type<unknown> {
   const childComponentSelector = getComponentSelector(childComponent)
-  // noinspection AngularMissingOrInvalidDeclarationInModule
   @Component({
     template: `<${childComponentSelector}>${innerHtml}</${childComponentSelector}>`,
     standalone: true,

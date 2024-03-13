@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 
-// noinspection AngularMissingOrInvalidDeclarationInModule
 @Component({
   template: '',
+  standalone: true,
 })
 export class EmptyComponent {}
