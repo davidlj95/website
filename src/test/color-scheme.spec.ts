@@ -1,6 +1,5 @@
 import { DOCUMENT } from '@angular/common'
 import { TestBed } from '@angular/core/testing'
-import { AppModule } from '../app/app.module'
 import { ColorSchemeService, Scheme } from '../app/header/color-scheme.service'
 
 describe('App color scheme', () => {
@@ -11,9 +10,7 @@ describe('App color scheme', () => {
   const NO_MOTION_ATTRIBUTE = 'data-no-motion'
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
-      imports: [AppModule],
-    })
+    TestBed.configureTestingModule({})
 
     const document = TestBed.inject(DOCUMENT)
     document.documentElement.setAttribute(NO_MOTION_ATTRIBUTE, '')
