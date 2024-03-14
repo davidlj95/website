@@ -14,23 +14,20 @@ import {
 import { ChippedContent } from './chipped-content'
 import { By } from '@angular/platform-browser'
 import { ChipComponent } from '../chip/chip.component'
-import {
-  expectIsHidden,
-  expectIsVisible,
-} from '../../../test/helpers/visibility'
-import { byTestId } from '../../../test/helpers/test-id'
+import { expectIsHidden, expectIsVisible } from '@test/helpers/visibility'
+import { byTestId } from '@test/helpers/test-id'
 import { firstValueFrom, Subscription } from 'rxjs'
 import { MockProvider } from 'ng-mocks'
 import {
   PLATFORM_BROWSER_ID,
   PLATFORM_SERVER_ID,
   PlatformId,
-} from '../../../test/helpers/platform-ids'
+} from '@test/helpers/platform-ids'
 import {
   byComponent,
   getComponentSelector,
-} from '../../../test/helpers/component-query-predicates'
-import { getReflectedAttribute } from '../../../test/helpers/get-reflected-attribute'
+} from '@test/helpers/component-query-predicates'
+import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
 
 @Component({
   selector: 'app-foo',

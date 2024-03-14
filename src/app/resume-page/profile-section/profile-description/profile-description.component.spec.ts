@@ -8,15 +8,12 @@ import {
 import { By } from '@angular/platform-browser'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { MockProvider } from 'ng-mocks'
-import { MATERIAL_SYMBOLS_SELECTOR } from '../../../../test/helpers/material-symbols'
+import { MATERIAL_SYMBOLS_SELECTOR } from '@test/helpers/material-symbols'
 import {
   PLATFORM_BROWSER_ID,
   PLATFORM_SERVER_ID,
-} from '../../../../test/helpers/platform-ids'
-import {
-  expectIsHidden,
-  expectIsVisible,
-} from '../../../../test/helpers/visibility'
+} from '@test/helpers/platform-ids'
+import { expectIsHidden, expectIsVisible } from '@test/helpers/visibility'
 import { DescriptionLine, DescriptionLineData } from '../../../metadata'
 
 import {
@@ -24,8 +21,8 @@ import {
   CollapsibleConfiguration,
   ProfileDescriptionComponent,
 } from './profile-description.component'
-import { byComponent } from '../../../../test/helpers/component-query-predicates'
-import { getReflectedAttribute } from '../../../../test/helpers/get-reflected-attribute'
+import { byComponent } from '@test/helpers/component-query-predicates'
+import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
 
 describe('DescriptionComponent', () => {
   let component: ProfileDescriptionComponent

@@ -22,7 +22,12 @@
     "lib": ["ES2022", "dom"],
     // Manually added to import release.json into app
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    // Could be in `tsconfig.spec.json` but WebStorm doesn't read that file. Just the `tsconfig.json` one
+    // https://youtrack.jetbrains.com/issue/WEB-60673
+    "paths": {
+      "@test/*": ["src/test/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
