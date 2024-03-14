@@ -14,15 +14,16 @@ import {
 } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
-import { isPlatformBrowser, NgFor } from '@angular/common'
+import { isPlatformBrowser, NgClass, NgFor } from '@angular/common'
 import { TestIdDirective } from '../../common/test-id.directive'
+import { DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS } from '../../common/no-script'
 
 @Component({
   selector: 'app-chipped-content',
   templateUrl: './chipped-content.component.html',
   styleUrls: ['./chipped-content.component.scss'],
   standalone: true,
-  imports: [NgFor, ChipComponent, TestIdDirective],
+  imports: [NgFor, ChipComponent, TestIdDirective, NgClass],
 })
 export class ChippedContentComponent implements OnInit {
   @Input({ required: true }) public contents!: ReadonlyArray<
@@ -51,14 +52,14 @@ export class ChippedContentComponent implements OnInit {
       const chipComponentRef = this.contentHost.createComponent(ChipComponent)
       const chipComponentElement = chipComponentRef.location
         .nativeElement as HTMLElement
-      chipComponentElement.classList.add('displayBlockIfNoScript')
+      chipComponentElement.classList.add(DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS)
       chipComponentElement.innerHTML = content.displayName
       // Add content
       const contentComponentRef = this.addContentToHost(content)
       this.hideContentElement(contentComponentRef.location)
       const contentComponentElement = contentComponentRef.location
         .nativeElement as HTMLElement
-      contentComponentElement.classList.add('displayBlockIfNoScript')
+      contentComponentElement.classList.add(DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS)
     }
   }
 
@@ -98,4 +99,7 @@ export class ChippedContentComponent implements OnInit {
       contentComponentRef.instance as Type<unknown>
     return contentComponentRef
   }
+
+  protected readonly DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS =
+    DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS
 }

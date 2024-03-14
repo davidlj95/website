@@ -1,5 +1,9 @@
 <div class="bar">
-  <div class="toolbar displayNoneIfNoScript" role="toolbar">
+  <div
+    class="toolbar"
+    [ngClass]="DISPLAY_NONE_IF_NO_SCRIPT_CLASS"
+    role="toolbar"
+  >
     <button
       (click)="colorSchemeService.toggleDarkLight()"
       aria-label="Color scheme toggle (dark or light)"

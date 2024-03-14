@@ -8,9 +8,9 @@ import {
 } from '@angular/animations'
 import {
   isPlatformBrowser,
+  NgFor,
   NgIf,
   NgTemplateOutlet,
-  NgFor,
 } from '@angular/common'
 import {
   Component,
@@ -30,6 +30,7 @@ import {
 import { DescriptionLine } from '../../../metadata'
 import { SlugGeneratorService } from '../../../common/slug-generator.service'
 import { MaterialSymbolDirective } from '../../../common/material-symbol.directive'
+import { DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS } from '../../../common/no-script'
 
 @Component({
   selector: 'app-profile-description',
@@ -69,7 +70,7 @@ export class ProfileDescriptionComponent {
   @Input() protected parent?: ProfileDescriptionComponent
 
   // 👇 Using `protected` to avoid being marked as unused
-  @HostBinding('class.displayBlockIfNoScript')
+  @HostBinding(`class.${DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS}`)
   protected readonly visibleIfNoScript = true
   @HostBinding('class.hidden') protected hidden = !this.isRenderingOnBrowser
 
