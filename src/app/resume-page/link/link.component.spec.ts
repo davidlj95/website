@@ -1,7 +1,7 @@
 import { LinkComponent } from './link.component'
 import { By } from '@angular/platform-browser'
 import { Component, Type } from '@angular/core'
-import { componentTestSetup } from '../../../test/helpers/component-test-setup'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 
 describe('LinkComponent', () => {
   it('should create', () => {

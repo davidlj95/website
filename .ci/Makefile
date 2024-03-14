@@ -31,7 +31,7 @@ test:
 	pnpm run prebuild:font-subsets
 
 	# In CI, this file is not generated because should be mocked when testing
-	cp ../src/test/@mocks/release.json ..
+	cp ../src/test/mocks/release.json ..
 
 	pnpm run test --browsers=ChromeHeadless \
 		--no-watch --no-progress --reporters junit,progress --code-coverage

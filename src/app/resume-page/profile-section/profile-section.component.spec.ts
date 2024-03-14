@@ -9,7 +9,7 @@ import { ProfileContactSocialIconsComponent } from './profile-contact-social-ico
 import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
 import { METADATA } from '../../common/injection-tokens'
 import { By } from '@angular/platform-browser'
-import { shouldContainComponents } from '../../../test/helpers/component-testers'
+import { shouldContainComponents } from '@test/helpers/component-testers'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 
 describe('ProfileSectionComponent', () => {

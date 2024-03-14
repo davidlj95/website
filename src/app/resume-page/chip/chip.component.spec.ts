@@ -1,8 +1,8 @@
 import { ChipComponent } from './chip.component'
-import { componentTestSetup } from '../../../test/helpers/component-test-setup'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 import { ComponentFixture } from '@angular/core/testing'
 import { first, Subscription } from 'rxjs'
-import { shouldProjectContent } from '../../../test/helpers/component-testers'
+import { shouldProjectContent } from '@test/helpers/component-testers'
 
 describe('ChipComponent', () => {
   it('should create', () => {

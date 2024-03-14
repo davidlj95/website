@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { MockComponents } from 'ng-mocks'
-import { shouldContainComponents } from '../../test/helpers/component-testers'
+import { shouldContainComponents } from '@test/helpers/component-testers'
 
 import { ResumePageComponent } from './resume-page.component'
 import { ProfileSectionComponent } from './profile-section/profile-section.component'

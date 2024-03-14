@@ -3,9 +3,9 @@ import { ExperienceSectionComponent } from './experience-section.component'
 import { MockComponents } from 'ng-mocks'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
-import { shouldContainComponent } from '../../../test/helpers/component-testers'
+import { shouldContainComponent } from '@test/helpers/component-testers'
 import { ExperienceItemsService } from './experience-items.service'
-import { byComponent } from '../../../test/helpers/component-query-predicates'
+import { byComponent } from '@test/helpers/component-query-predicates'
 import { NgFor } from '@angular/common'
 
 describe('ExperienceSectionComponent', () => {

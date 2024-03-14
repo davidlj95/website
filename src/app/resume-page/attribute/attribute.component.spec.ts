@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { AttributeComponent } from './attribute.component'
-import { MATERIAL_SYMBOLS_SELECTOR } from '../../../test/helpers/material-symbols'
+import { MATERIAL_SYMBOLS_SELECTOR } from '@test/helpers/material-symbols'
 import { By } from '@angular/platform-browser'
-import { shouldProjectContent } from '../../../test/helpers/component-testers'
+import { shouldProjectContent } from '@test/helpers/component-testers'
 
 describe('AttributeComponent', () => {
   const symbol = 'some symbol'

@@ -1,6 +1,6 @@
 import { CardHeaderDetailComponent } from './card-header-detail.component'
-import { componentTestSetup } from '../../../../../test/helpers/component-test-setup'
-import { shouldProjectContent } from '../../../../../test/helpers/component-testers'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { shouldProjectContent } from '@test/helpers/component-testers'
 
 describe('CardHeaderDetailComponent', () => {
   it('should create', () => {
