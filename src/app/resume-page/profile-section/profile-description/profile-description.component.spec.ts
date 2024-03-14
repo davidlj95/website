@@ -36,8 +36,8 @@ describe('DescriptionComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  function testShouldDisplaySymbolAndHtmlContent(fakeLine: DescriptionLine) {
-    it('should display the symbol and html content', () => {
+  function shouldDisplaySymbolAndHtmlContent(fakeLine: DescriptionLine) {
+    it('should display symbol and html content', () => {
       const lineElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
 
       const materialSymbolSpan = lineElement.query(MATERIAL_SYMBOLS_SELECTOR)
@@ -79,7 +79,7 @@ describe('DescriptionComponent', () => {
         component.line = fakeLine
         fixture.detectChanges()
       })
-      testShouldDisplaySymbolAndHtmlContent(fakeLine)
+      shouldDisplaySymbolAndHtmlContent(fakeLine)
     })
   })
 
@@ -149,7 +149,7 @@ describe('DescriptionComponent', () => {
     })
   })
 
-  function testShouldNotDisplayCollapsibleControls() {
+  function shouldNotDisplayCollapsibleControls() {
     it('should not display collapsible controls', () => {
       const lineElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
       expect(lineElement).toBeTruthy()
@@ -172,8 +172,8 @@ describe('DescriptionComponent', () => {
         component.line = fakeLine
         fixture.detectChanges()
       })
-      testShouldNotDisplayCollapsibleControls()
-      testShouldDisplaySymbolAndHtmlContent(fakeLine)
+      shouldNotDisplayCollapsibleControls()
+      shouldDisplaySymbolAndHtmlContent(fakeLine)
     })
     describe('when line has children', () => {
       const fakeLine: DescriptionLine = DescriptionLine.fromData(
@@ -192,8 +192,8 @@ describe('DescriptionComponent', () => {
           component.line = fakeLine
           fixture.detectChanges()
         })
-        testShouldNotDisplayCollapsibleControls()
-        testShouldDisplaySymbolAndHtmlContent(fakeLine)
+        shouldNotDisplayCollapsibleControls()
+        shouldDisplaySymbolAndHtmlContent(fakeLine)
         it('should not add id to list', () => {
           const listElement = fixture.debugElement.query(LIST_SELECTOR)
           expect(Object.keys(listElement.attributes)).not.toContain('id')
@@ -233,7 +233,7 @@ describe('DescriptionComponent', () => {
               .withContext('caret is hidden from screen readers')
               .toBe(true.toString())
           })
-          testShouldDisplaySymbolAndHtmlContent(fakeLine)
+          shouldDisplaySymbolAndHtmlContent(fakeLine)
           it('should add slug id to list', () => {
             const listElement = fixture.debugElement.query(LIST_SELECTOR)
             expect(Object.keys(listElement.attributes)).toContain('id')
@@ -247,14 +247,14 @@ describe('DescriptionComponent', () => {
           let caretElement: DebugElement
           let listElement: DebugElement
 
-          function testChildListShouldBeExpanded() {
-            it('child list should be expanded', () => {
+          function shouldExpandChildList() {
+            it('should expand child list', () => {
               expectIsVisible(listElement.nativeElement)
             })
           }
 
-          function testButtonShouldIndicateItsExpandedAndShowCollapseIcon() {
-            it('button should indicate it is expanded and show collapse icon', () => {
+          function shouldIndicateItsExpandedAndShowCollapseIcon() {
+            it('should indicate it is expanded and show collapse icon', () => {
               expect(dataElement).toBeTruthy()
               expect(dataElement.attributes['aria-expanded']).toBe(
                 true.toString(),
@@ -266,8 +266,8 @@ describe('DescriptionComponent', () => {
             })
           }
 
-          function testButtonShouldIndicateItsCollapsedAndShowExpandIcon() {
-            it('button should indicate it is collapsed and show expand icon', () => {
+          function shouldIndicateItsCollapsedAndShowExpandIcon() {
+            it('should indicate it is collapsed and show expand icon', () => {
               expect(dataElement).toBeTruthy()
               expect(dataElement.attributes['aria-expanded']).toBe(
                 false.toString(),
@@ -279,8 +279,8 @@ describe('DescriptionComponent', () => {
             })
           }
 
-          function testShouldBeCollapsed() {
-            it('child list should be collapsed', () => {
+          function shouldCollapseChildList() {
+            it('should collapse child list', () => {
               expectIsHidden(listElement.nativeElement)
             })
           }
@@ -298,7 +298,7 @@ describe('DescriptionComponent', () => {
               caretElement = dataElement.query(CARET_SELECTOR)
               listElement = fixture.debugElement.query(LIST_SELECTOR)
             })
-            testChildListShouldBeExpanded()
+            shouldExpandChildList()
 
             // to avoid layout shifts
             it('should be hidden', () => {
@@ -318,8 +318,8 @@ describe('DescriptionComponent', () => {
               listElement = fixture.debugElement.query(LIST_SELECTOR)
             })
             describe('by default', () => {
-              testShouldBeCollapsed()
-              testButtonShouldIndicateItsCollapsedAndShowExpandIcon()
+              shouldCollapseChildList()
+              shouldIndicateItsCollapsedAndShowExpandIcon()
               it('should make the component visible', () => {
                 expectIsVisible(fixture.debugElement.nativeElement)
               })
@@ -332,8 +332,8 @@ describe('DescriptionComponent', () => {
 
                 fixture.detectChanges()
               }))
-              testButtonShouldIndicateItsExpandedAndShowCollapseIcon()
-              testChildListShouldBeExpanded()
+              shouldIndicateItsExpandedAndShowCollapseIcon()
+              shouldExpandChildList()
             })
             describe('when clicking twice', () => {
               beforeEach(fakeAsync(() => {
@@ -345,8 +345,8 @@ describe('DescriptionComponent', () => {
                 tick() // animation to complete
                 fixture.detectChanges()
               }))
-              testButtonShouldIndicateItsCollapsedAndShowExpandIcon()
-              testShouldBeCollapsed()
+              shouldIndicateItsCollapsedAndShowExpandIcon()
+              shouldCollapseChildList()
             })
           })
 
