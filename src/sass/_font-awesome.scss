@@ -5,7 +5,7 @@
 // size. Which also helps with SSR, given there are less layout shifts. As it appears there from early beginning, not
 // until its size is dynamically set
 @mixin iconsStaticSizeFix {
-  fa-icon > svg {
+  svg.svg-inline--fa {
     /* Otherwise, doesn't display when JavaScript is disabled */
     height: 100%;
   }
