@@ -16,7 +16,10 @@ import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
 import { isPlatformBrowser, NgClass, NgFor } from '@angular/common'
 import { TestIdDirective } from '../../common/test-id.directive'
-import { DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS } from '../../common/no-script'
+import {
+  DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS,
+  DISPLAY_NONE_IF_NO_SCRIPT_CLASS,
+} from '../../common/no-script'
 
 @Component({
   selector: 'app-chipped-content',
@@ -37,6 +40,8 @@ export class ChippedContentComponent implements OnInit {
   private selectedContentComponent?: Type<unknown>
   private readonly isRenderingOnBrowser: boolean
   @Output() contentDisplayedChange = new EventEmitter<boolean>()
+  protected readonly DISPLAY_NONE_IF_NO_SCRIPT_CLASS =
+    DISPLAY_NONE_IF_NO_SCRIPT_CLASS
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isRenderingOnBrowser = isPlatformBrowser(platformId)
@@ -99,7 +104,4 @@ export class ChippedContentComponent implements OnInit {
       contentComponentRef.instance as Type<unknown>
     return contentComponentRef
   }
-
-  protected readonly DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS =
-    DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS
 }
