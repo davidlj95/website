@@ -32,7 +32,7 @@ describe('DescriptionComponent', () => {
   const CARET_SELECTOR = By.css('.caret')
 
   it('should create', () => {
-    ;[fixture, component] = setup()
+    ;[fixture, component] = makeSut()
     expect(component).toBeTruthy()
   })
 
@@ -57,7 +57,7 @@ describe('DescriptionComponent', () => {
 
   describe('data', () => {
     beforeEach(() => {
-      ;[fixture, component] = setup()
+      ;[fixture, component] = makeSut()
     })
 
     describe('when line does not have data', () => {
@@ -85,7 +85,7 @@ describe('DescriptionComponent', () => {
 
   describe('children', () => {
     beforeEach(() => {
-      ;[fixture, component] = setup()
+      ;[fixture, component] = makeSut()
     })
 
     describe('when does not have children', () => {
@@ -168,7 +168,7 @@ describe('DescriptionComponent', () => {
         html: 'Fake html',
       })
       beforeEach(() => {
-        ;[fixture, component] = setup()
+        ;[fixture, component] = makeSut()
         component.line = fakeLine
         fixture.detectChanges()
       })
@@ -187,7 +187,7 @@ describe('DescriptionComponent', () => {
 
       describe('when depth is below configured depth to start a collapsible', () => {
         beforeEach(() => {
-          ;[fixture, component] = setup()
+          ;[fixture, component] = makeSut()
           component.depth = fakeConfig.collapsibleStartAtDepth - 1
           component.line = fakeLine
           fixture.detectChanges()
@@ -213,7 +213,7 @@ describe('DescriptionComponent', () => {
           let caretElement: DebugElement
 
           beforeEach(() => {
-            ;[fixture, component] = setup()
+            ;[fixture, component] = makeSut()
             configureToBeCollapsible(component)
 
             fixture.detectChanges()
@@ -287,7 +287,7 @@ describe('DescriptionComponent', () => {
 
           describe('when rendering on server', () => {
             beforeEach(() => {
-              ;[fixture, component] = setup({
+              ;[fixture, component] = makeSut({
                 platformId: PLATFORM_SERVER_ID,
               })
               configureToBeCollapsible(component)
@@ -308,7 +308,7 @@ describe('DescriptionComponent', () => {
 
           describe('when rendering on client', () => {
             beforeEach(() => {
-              ;[fixture, component] = setup()
+              ;[fixture, component] = makeSut()
               configureToBeCollapsible(component)
 
               fixture.detectChanges()
@@ -369,7 +369,7 @@ describe('DescriptionComponent', () => {
               ],
             )
             beforeEach(() => {
-              ;[fixture, component] = setup()
+              ;[fixture, component] = makeSut()
               configureToBeCollapsible(component, fakeLineWithManyChildren)
 
               fixture.detectChanges()
@@ -422,7 +422,7 @@ describe('DescriptionComponent', () => {
   })
 })
 
-function setup({
+function makeSut({
   platformId,
 }: {
   platformId?: typeof PLATFORM_BROWSER_ID | typeof PLATFORM_SERVER_ID

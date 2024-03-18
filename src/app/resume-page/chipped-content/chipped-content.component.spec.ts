@@ -68,7 +68,7 @@ describe('ChippedContentComponent', () => {
     },
   })
   const contents = [fooContent, barContent]
-  function setup({ platformId }: { platformId?: PlatformId } = {}): [
+  function makeSut({ platformId }: { platformId?: PlatformId } = {}): [
     ComponentFixture<ChippedContentComponent>,
     ChippedContentComponent,
   ] {
@@ -82,7 +82,7 @@ describe('ChippedContentComponent', () => {
   }
 
   it('should create', () => {
-    const [fixture, component] = setup()
+    const [fixture, component] = makeSut()
     fixture.detectChanges()
 
     expect(component).toBeTruthy()
@@ -118,7 +118,7 @@ describe('ChippedContentComponent', () => {
     let fixture: ComponentFixture<ChippedContentComponent>
 
     beforeEach(() => {
-      ;[fixture] = setup({ platformId: PLATFORM_SERVER_ID })
+      ;[fixture] = makeSut({ platformId: PLATFORM_SERVER_ID })
       fixture.detectChanges()
     })
 
@@ -167,7 +167,7 @@ describe('ChippedContentComponent', () => {
     let component: ChippedContentComponent
 
     beforeEach(() => {
-      ;[fixture, component] = setup({ platformId: PLATFORM_BROWSER_ID })
+      ;[fixture, component] = makeSut({ platformId: PLATFORM_BROWSER_ID })
       fixture.detectChanges()
     })
 
