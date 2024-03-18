@@ -9,7 +9,10 @@ describe('AttributeComponent', () => {
   const symbol = 'some symbol'
   const id = 'some-attribute-id'
 
-  function setup(): [ComponentFixture<AttributeComponent>, AttributeComponent] {
+  function makeSut(): [
+    ComponentFixture<AttributeComponent>,
+    AttributeComponent,
+  ] {
     TestBed.configureTestingModule({})
     const fixture = TestBed.createComponent(AttributeComponent)
     const component = fixture.componentInstance
@@ -23,13 +26,13 @@ describe('AttributeComponent', () => {
   }
 
   it('should create', () => {
-    const [component] = setup()
+    const [component] = makeSut()
 
     expect(component).toBeTruthy()
   })
 
   it('should include the given symbol', () => {
-    const [fixture] = setup()
+    const [fixture] = makeSut()
 
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
     expect(iconElement).toBeTruthy()
@@ -37,7 +40,7 @@ describe('AttributeComponent', () => {
   })
 
   it('should be ARIA accessible: icon is described by tooltip', () => {
-    const [fixture] = setup()
+    const [fixture] = makeSut()
 
     const tooltipId = `${id}-tooltip`
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
@@ -52,7 +55,7 @@ describe('AttributeComponent', () => {
   })
 
   it('should be ARIA accessible: icon is included in tab sequence', () => {
-    const [fixture] = setup()
+    const [fixture] = makeSut()
 
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
     expect(iconElement).toBeTruthy()
