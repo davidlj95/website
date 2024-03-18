@@ -14,8 +14,9 @@ import { Type } from '@angular/core'
  */
 export function componentTestSetup<T>(
   component: Type<T>,
+  moduleDef: Parameters<TestBed['configureTestingModule']>[0] = {},
 ): [ComponentFixture<T>, T] {
-  TestBed.configureTestingModule({})
+  TestBed.configureTestingModule(moduleDef)
   const fixture = TestBed.createComponent(component)
   return [fixture, fixture.componentInstance]
 }
