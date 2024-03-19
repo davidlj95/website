@@ -7,10 +7,6 @@
     gap: margins.$m;
     overflow: hidden;
 
-    &.hidden {
-      display: none;
-    }
-
     &[data-is-nested='true'] {
       margin-left: margins.$l;
 

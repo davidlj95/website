@@ -4,12 +4,13 @@
   [@expanded]="!isCollapsible || isExpanded"
   [ngClass]="
     isCollapsible && _platformService.isServer
-      ? [HIDDEN_CLASS, DISPLAY_FLEX_IF_NO_SCRIPT_CLASS]
+      ? [DISPLAY_FLEX_IF_NO_SCRIPT_CLASS]
       : undefined
   "
   [style.visibility]="
     isCollapsible && _platformService.isBrowser ? 'hidden' : undefined
   "
+  [style.display]="_platformService.isServer ? 'none' : undefined"
   [attr.data-is-nested]="depth > 0"
 >
   <li *ngFor="let item of children">

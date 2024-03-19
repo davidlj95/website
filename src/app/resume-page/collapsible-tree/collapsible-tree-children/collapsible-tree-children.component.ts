@@ -65,9 +65,6 @@ export class CollapsibleTreeChildrenComponent {
   @ViewChildren(CollapsibleTreeNodeComponent)
   private childComponents!: QueryList<CollapsibleTreeNodeComponent>
 
-  //👇 Keep in sync with CSS
-  protected readonly HIDDEN_CLASS = 'hidden'
-
   constructor(
     @Inject(PLATFORM_SERVICE)
     protected readonly _platformService: PlatformService,
