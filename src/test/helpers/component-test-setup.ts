@@ -15,8 +15,12 @@ import { Type } from '@angular/core'
 export function componentTestSetup<T>(
   component: Type<T>,
   moduleDef: Parameters<TestBed['configureTestingModule']>[0] = {},
+  componentOverrides?: Parameters<TestBed['overrideComponent']>[1],
 ): [ComponentFixture<T>, T] {
   TestBed.configureTestingModule(moduleDef)
+  if (componentOverrides) {
+    TestBed.overrideComponent(component, componentOverrides)
+  }
   const fixture = TestBed.createComponent(component)
   return [fixture, fixture.componentInstance]
 }

@@ -1,0 +1,22 @@
+@use 'margins';
+
+:host {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: margins.$m;
+    overflow: hidden;
+
+    &.hidden {
+      display: none;
+    }
+
+    &[data-is-nested='true'] {
+      margin-left: margins.$l;
+
+      > li:first-child {
+        margin-top: margins.$m;
+      }
+    }
+  }
+}

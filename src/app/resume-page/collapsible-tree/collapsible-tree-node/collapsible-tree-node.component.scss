@@ -2,37 +2,22 @@
 @use 'material-symbols';
 
 :host {
-  &.hidden {
-    display: none;
-  }
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: margins.$m;
-  }
-
-  // Indentation for nested lists
-  ul ul {
-    margin-left: margins.$l;
-  }
-
-  ul ul > li:first-child {
-    margin-top: margins.$m;
-  }
-
   .data {
     display: flex;
     flex-direction: row;
     align-items: center;
     word-break: break-word;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     gap: margins.$s;
     text-align: left;
 
     // If we move it outside this selector, conflicts with root <a> styles
     ::ng-deep a {
       text-decoration-thickness: 1px;
+    }
+
+    .data[aria-expanded] + app-profile-description-list .data {
+      font-size: 1.25rem;
     }
   }
 
@@ -62,13 +47,5 @@
   // Content-specific customizations
   ::ng-deep a.craft {
     text-decoration-color: currentColor;
-  }
-
-  .data[aria-expanded='false'] + ul {
-    overflow: hidden;
-  }
-
-  .data[aria-expanded] + ul .data {
-    font-size: 1.25rem;
   }
 }

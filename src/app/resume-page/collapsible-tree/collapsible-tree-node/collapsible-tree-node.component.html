@@ -1,0 +1,48 @@
+<ng-container *ngIf="line.data">
+  <ng-container *ngIf="isCollapsible; else leaf">
+    <button
+      type="button"
+      class="data"
+      [attr.aria-expanded]="isExpanded"
+      [attr.aria-controls]="sluggedId"
+      (click)="isExpanded ? this.collapse() : this.expand()"
+    >
+      <span
+        class="caret"
+        aria-hidden="true"
+        [ngClass]="VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS"
+      >
+        {{ isExpanded ? expandedIcon : collapsedIcon }}
+      </span>
+      <ng-container [ngTemplateOutlet]="data"></ng-container>
+    </button>
+  </ng-container>
+  <ng-template #leaf>
+    <div class="data">
+      <ng-container [ngTemplateOutlet]="data"></ng-container>
+    </div>
+  </ng-template>
+  <ng-template #data>
+    <span
+      class="symbol"
+      aria-hidden="true"
+      *ngIf="line.data"
+      appMaterialSymbol
+      >{{ line.data.symbol }}</span
+    >
+    <span
+      class="content"
+      [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.data.html)"
+    ></span>
+  </ng-template>
+</ng-container>
+<!--suppress AngularUndefinedTag, AngularUndefinedBinding -->
+<app-collapsible-tree-children
+  *ngIf="line.children.length"
+  [id]="sluggedId"
+  [children]="line.children"
+  [isCollapsible]="isCollapsible"
+  [isExpanded]="isExpanded"
+  [depth]="depth"
+  [parent]="this"
+></app-collapsible-tree-children>
