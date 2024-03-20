@@ -1,5 +1,6 @@
 // Constants for mocking platform in tests
 // https://github.com/angular/angular/blob/16.2.6/packages/common/src/platform_id.ts#L9-L12
+// ‼️ DEPRECATED: Use PlatformService mocks instead. Less coupled to platform
 export const PLATFORM_BROWSER_ID = 'browser'
 export const PLATFORM_SERVER_ID = 'server'
 export const PLATFORM_WORKER_APP_ID = 'browserWorkerApp'

@@ -1,0 +1,60 @@
+<ng-container *ngIf="node.data">
+  <ng-container *ngIf="isCollapsible; else leaf">
+    <button
+      type="button"
+      class="data"
+      [attr.aria-expanded]="isExpanded"
+      [attr.aria-controls]="sluggedId"
+      (click)="isExpanded ? this.collapse() : this.expand()"
+    >
+      <span
+        class="caret"
+        aria-hidden="true"
+        [ngClass]="VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS"
+      >
+        {{
+          _platformService.isBrowser && isExpanded
+            ? expandedIcon
+            : collapsedIcon
+        }}
+      </span>
+      <ng-container [ngTemplateOutlet]="data"></ng-container>
+    </button>
+  </ng-container>
+  <ng-template #leaf>
+    <div class="data">
+      <ng-container [ngTemplateOutlet]="data"></ng-container>
+    </div>
+  </ng-template>
+  <ng-template #data>
+    <ng-container
+      *ngComponentOutlet="node.data.component; inputs: node.data.options.inputs"
+    ></ng-container>
+  </ng-template>
+</ng-container>
+<ul
+  *ngIf="node.children.length"
+  [attr.id]="sluggedId"
+  [@expanded]="!isCollapsible || isExpanded"
+  [ngClass]="
+    isCollapsible && _platformService.isServer
+      ? [DISPLAY_FLEX_IF_NO_SCRIPT_CLASS]
+      : undefined
+  "
+  [style.visibility]="
+    isCollapsible && _platformService.isBrowser ? 'hidden' : undefined
+  "
+  [style.display]="
+    isCollapsible && _platformService.isServer ? 'none' : undefined
+  "
+>
+  <li *ngFor="let child of node.children">
+    <app-collapsible-tree
+      [node]="child"
+      [isCollapsibleFn]="isCollapsibleFn"
+      [depth]="depth + 1"
+      [parent]="this"
+    >
+    </app-collapsible-tree>
+  </li>
+</ul>
