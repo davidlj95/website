@@ -7,29 +7,21 @@ import { byComponent } from '@test/helpers/component-query-predicates'
 import { MockComponents } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { NgForOf } from '@angular/common'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 
 describe('EducationSectionComponent', () => {
   let component: EducationSectionComponent
   let fixture: ComponentFixture<EducationSectionComponent>
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        EducationSectionComponent,
-        NgForOf,
-        MockComponents(SectionTitleComponent, EducationItemComponent),
-      ],
-    })
-    fixture = TestBed.createComponent(EducationSectionComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
-
   it('should create', () => {
+    ;[fixture, component] = makeSut()
     expect(component).toBeTruthy()
   })
 
   it('should display all items', () => {
+    ;[fixture, component] = makeSut()
+    fixture.detectChanges()
+
     const educationItemsService = TestBed.inject(EducationItemsService)
     const educationItemElements = fixture.debugElement.queryAll(
       byComponent(EducationItemComponent),
@@ -39,3 +31,13 @@ describe('EducationSectionComponent', () => {
     )
   })
 })
+
+function makeSut() {
+  return componentTestSetup(EducationSectionComponent, {
+    imports: [
+      EducationSectionComponent,
+      NgForOf,
+      MockComponents(SectionTitleComponent, EducationItemComponent),
+    ],
+  })
+}

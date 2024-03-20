@@ -7,29 +7,21 @@ import { byComponent } from '@test/helpers/component-query-predicates'
 import { ProjectItemsService } from './project-items.service'
 import { ProjectItemComponent } from './project-item/project-item.component'
 import { NgFor } from '@angular/common'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 
 describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent
   let fixture: ComponentFixture<ProjectsSectionComponent>
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        ProjectsSectionComponent,
-        NgFor,
-        MockComponents(SectionTitleComponent, ProjectItemComponent),
-      ],
-    })
-    fixture = TestBed.createComponent(ProjectsSectionComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
-
   it('should create', () => {
+    ;[fixture, component] = makeSut()
     expect(component).toBeTruthy()
   })
 
   it('should display all projects', () => {
+    ;[fixture, component] = makeSut()
+    fixture.detectChanges()
+
     const projectItemsService = TestBed.inject(ProjectItemsService)
     const projectItemElements = fixture.debugElement.queryAll(
       byComponent(ProjectItemComponent),
@@ -37,3 +29,13 @@ describe('ProjectsSectionComponent', () => {
     expect(projectItemElements.length).toEqual(projectItemsService.get().length)
   })
 })
+
+function makeSut() {
+  return componentTestSetup(ProjectsSectionComponent, {
+    imports: [
+      ProjectsSectionComponent,
+      NgFor,
+      MockComponents(SectionTitleComponent, ProjectItemComponent),
+    ],
+  })
+}
