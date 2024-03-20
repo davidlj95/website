@@ -4,10 +4,7 @@ import {
   CollapsibleTreeComponent,
   IsCollapsibleFn,
 } from './collapsible-tree.component'
-import {
-  PLATFORM_SERVICE,
-  PlatformService,
-} from '../../common/platform.service'
+import { PLATFORM_SERVICE, PlatformService } from '@common/platform.service'
 import { componentTestSetup } from '@test/helpers/component-test-setup'
 import { MockProvider } from 'ng-mocks'
 import {

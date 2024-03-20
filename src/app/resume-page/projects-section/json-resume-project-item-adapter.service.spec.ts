@@ -7,7 +7,7 @@ import {
   JsonResumeProjectItemAdapterService,
 } from './json-resume-project-item-adapter.service'
 import { MockProvider } from 'ng-mocks'
-import { ENVIRONMENT } from '../../common/injection-tokens'
+import { ENVIRONMENT } from '@common/injection-tokens'
 import { Environment } from '../../../environments'
 import { Stack } from './project-item/project-item'
 import { LocalImageService } from '../local-image.service'

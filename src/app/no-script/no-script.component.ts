@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { Warning } from '../material-symbols'
-import { MaterialSymbolDirective } from '../common/material-symbol.directive'
+import { MaterialSymbolDirective } from '@common/material-symbol.directive'
 
 @Component({
   selector: 'app-no-script',

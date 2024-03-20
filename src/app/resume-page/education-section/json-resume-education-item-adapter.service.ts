@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core'
 import resume from '../../../../assets/resume.json'
-import { ENVIRONMENT } from '../../common/injection-tokens'
+import { ENVIRONMENT } from '@common/injection-tokens'
 import { Environment } from '../../../environments'
 import { EducationItem } from './education-item/education-item'
 import { Organization } from '../organization'

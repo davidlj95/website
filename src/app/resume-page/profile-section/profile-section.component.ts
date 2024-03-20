@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core'
 import { DescriptionLine, Metadata } from '../../metadata'
-import { METADATA } from '../../common/injection-tokens'
+import { METADATA } from '@common/injection-tokens'
 import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
 import { ProfileContactSocialIconsComponent } from './profile-contact-social-icons/profile-contact-social-icons.component'
 import { ProfileContactTraditionalIconsComponent } from './profile-contact-traditional-icons/profile-contact-traditional-icons.component'

@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { FaIconComponent } from '@fortawesome/angular-fontawesome'
 import { MockProvider } from 'ng-mocks'
-import { METADATA } from '../../../common/injection-tokens'
+import { METADATA } from '@common/injection-tokens'
 import { Metadata } from '../../../metadata'
 
 import { ProfileContactSocialIconsComponent } from './profile-contact-social-icons.component'

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 
 import { LocalImageService } from './local-image.service'
-import { SlugGeneratorService } from '../common/slug-generator.service'
+import { SlugGeneratorService } from '@common/slug-generator.service'
 
 describe('LocalImageService', () => {
   it('should be created', () => {
