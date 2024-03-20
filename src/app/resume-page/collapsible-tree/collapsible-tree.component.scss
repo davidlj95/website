@@ -48,4 +48,19 @@
   ::ng-deep a.craft {
     text-decoration-color: currentColor;
   }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: margins.$m;
+    overflow: hidden;
+
+    ul {
+      margin-left: margins.$l;
+
+      > li:first-child {
+        margin-top: margins.$m;
+      }
+    }
+  }
 }

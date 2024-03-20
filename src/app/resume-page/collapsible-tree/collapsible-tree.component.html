@@ -12,7 +12,11 @@
         aria-hidden="true"
         [ngClass]="VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS"
       >
-        {{ isExpanded ? expandedIcon : collapsedIcon }}
+        {{
+          _platformService.isBrowser && isExpanded
+            ? expandedIcon
+            : collapsedIcon
+        }}
       </span>
       <ng-container [ngTemplateOutlet]="data"></ng-container>
     </button>
@@ -36,13 +40,29 @@
     ></span>
   </ng-template>
 </ng-container>
-<!--suppress AngularUndefinedTag, AngularUndefinedBinding -->
-<app-collapsible-tree-children
+<ul
   *ngIf="line.children.length"
-  [id]="sluggedId"
-  [children]="line.children"
-  [isCollapsible]="isCollapsible"
-  [isExpanded]="isExpanded"
-  [depth]="depth"
-  [parent]="this"
-></app-collapsible-tree-children>
+  [attr.id]="sluggedId"
+  [@expanded]="!isCollapsible || isExpanded"
+  [ngClass]="
+    isCollapsible && _platformService.isServer
+      ? [DISPLAY_FLEX_IF_NO_SCRIPT_CLASS]
+      : undefined
+  "
+  [style.visibility]="
+    isCollapsible && _platformService.isBrowser ? 'hidden' : undefined
+  "
+  [style.display]="
+    isCollapsible && _platformService.isServer ? 'none' : undefined
+  "
+>
+  <li *ngFor="let line of line.children">
+    <app-collapsible-tree
+      [line]="line"
+      [isCollapsibleFn]="isCollapsibleFn"
+      [depth]="depth + 1"
+      [parent]="this"
+    >
+    </app-collapsible-tree>
+  </li>
+</ul>
