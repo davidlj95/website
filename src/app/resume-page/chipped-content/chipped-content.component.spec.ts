@@ -1,16 +1,6 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing'
+import { ComponentFixture, fakeAsync, tick } from '@angular/core/testing'
 import { ChippedContentComponent } from './chipped-content.component'
-import {
-  Component,
-  DebugElement,
-  EventEmitter,
-  PLATFORM_ID,
-} from '@angular/core'
+import { Component, DebugElement, EventEmitter } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { By } from '@angular/platform-browser'
 import { ChipComponent } from '../chip/chip.component'
@@ -19,68 +9,18 @@ import { byTestId } from '@test/helpers/test-id'
 import { firstValueFrom, Subscription } from 'rxjs'
 import { MockProvider } from 'ng-mocks'
 import {
-  PLATFORM_BROWSER_ID,
-  PLATFORM_SERVER_ID,
-  PlatformId,
-} from '@test/helpers/platform-ids'
-import {
   byComponent,
   getComponentSelector,
 } from '@test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
-
-@Component({
-  selector: 'app-foo',
-  template: `{{ data }}`,
-})
-class FooComponent {
-  public data?: string
-}
-@Component({
-  selector: 'app-bar',
-  template: `{{ data }}`,
-})
-class BarComponent {
-  public data?: string
-}
+import { PLATFORM_SERVICE, PlatformService } from '@common/platform.service'
+import {
+  MOCK_BROWSER_PLATFORM_SERVICE,
+  MOCK_SERVER_PLATFORM_SERVICE,
+} from '@test/helpers/platform-service'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 
 describe('ChippedContentComponent', () => {
-  const fooContentData = 'foo-data'
-  const fooComponentAnimationDone = new EventEmitter<void>()
-  const fooContent = new ChippedContent({
-    id: 'foo',
-    displayName: 'Foo',
-    component: FooComponent,
-    setupComponent: (component) => {
-      component.data = fooContentData
-    },
-    waitForAnimationEnd: async () => {
-      await firstValueFrom(fooComponentAnimationDone)
-    },
-  })
-  const barContentData = 'bar-data'
-  const barContent = new ChippedContent({
-    id: 'bar',
-    displayName: 'Bar',
-    component: BarComponent,
-    setupComponent: (component) => {
-      component.data = barContentData
-    },
-  })
-  const contents = [fooContent, barContent]
-  function makeSut({ platformId }: { platformId?: PlatformId } = {}): [
-    ComponentFixture<ChippedContentComponent>,
-    ChippedContentComponent,
-  ] {
-    TestBed.configureTestingModule({
-      providers: [MockProvider(PLATFORM_ID, platformId ?? PLATFORM_BROWSER_ID)],
-    })
-    const fixture = TestBed.createComponent(ChippedContentComponent)
-    const component = fixture.componentInstance
-    component.contents = contents
-    return [fixture, component]
-  }
-
   it('should create', () => {
     const [fixture, component] = makeSut()
     fixture.detectChanges()
@@ -101,9 +41,9 @@ describe('ChippedContentComponent', () => {
       const chipElements = selectableChipsContainerElement.queryAll(
         byComponent(ChipComponent),
       )
-      expect(chipElements.length).toEqual(contents.length)
+      expect(chipElements.length).toEqual(CONTENTS.length)
       chipElements.forEach((chipElement, index) => {
-        const content = contents[index]
+        const content = CONTENTS[index]
         expect(getReflectedAttribute(chipElement, 'selected'))
           .withContext(`chip ${index} is unselected`)
           .toBe('false')
@@ -114,11 +54,11 @@ describe('ChippedContentComponent', () => {
     })
   }
 
-  describe('when not rendering on browser', () => {
+  describe('when rendering on server', () => {
     let fixture: ComponentFixture<ChippedContentComponent>
 
     beforeEach(() => {
-      ;[fixture] = makeSut({ platformId: PLATFORM_SERVER_ID })
+      ;[fixture] = makeSut({ platformService: MOCK_SERVER_PLATFORM_SERVICE })
       fixture.detectChanges()
     })
 
@@ -132,14 +72,14 @@ describe('ChippedContentComponent', () => {
       expect(fooElement).toBeTruthy()
       expect(fooElement.nativeElement.textContent.trim())
         .withContext(`foo element contents`)
-        .toEqual(fooContentData)
+        .toEqual(FOO_CONTENT_DATA)
       expectIsHidden(fooElement.nativeElement)
 
       const barElement = fixture.debugElement.query(byComponent(BarComponent))
       expect(barElement).toBeTruthy()
       expect(barElement.nativeElement.textContent.trim())
         .withContext(`bar element contents`)
-        .toEqual(barContentData)
+        .toEqual(BAR_CONTENT_DATA)
       expectIsHidden(barElement.nativeElement)
     })
 
@@ -150,10 +90,10 @@ describe('ChippedContentComponent', () => {
           element.properties['localName'] ===
           getComponentSelector(ChipComponent),
       )
-      expect(chipElements.length).toEqual(contents.length)
+      expect(chipElements.length).toEqual(CONTENTS.length)
 
       chipElements.forEach((chipElement, index) => {
-        const content = contents[index]
+        const content = CONTENTS[index]
         expect(chipElement.nativeElement.textContent.trim())
           .withContext(`chip ${index} contents`)
           .toEqual(content.displayName)
@@ -167,7 +107,9 @@ describe('ChippedContentComponent', () => {
     let component: ChippedContentComponent
 
     beforeEach(() => {
-      ;[fixture, component] = makeSut({ platformId: PLATFORM_BROWSER_ID })
+      ;[fixture, component] = makeSut({
+        platformService: MOCK_BROWSER_PLATFORM_SERVICE,
+      })
       fixture.detectChanges()
     })
 
@@ -196,7 +138,7 @@ describe('ChippedContentComponent', () => {
       let contentDisplayed: boolean
 
       beforeEach(() => {
-        fooChipElement = fixture.debugElement.query(byTestId(fooContent.id))
+        fooChipElement = fixture.debugElement.query(byTestId(FOO_CONTENT.id))
         expect(fooChipElement).toBeTruthy()
 
         subscription = component.contentDisplayedChange.subscribe(
@@ -250,7 +192,7 @@ describe('ChippedContentComponent', () => {
 
         it('should wait for animation to end and then emit event indicating content has been removed', fakeAsync(() => {
           expect(contentDisplayed).toBeTrue()
-          fooComponentAnimationDone.emit()
+          FOO_COMPONENT_ANIMATION_DONE.emit()
           tick()
           expect(contentDisplayed).toBeFalse()
         }))
@@ -258,7 +200,7 @@ describe('ChippedContentComponent', () => {
       describe('when tapping another chip', () => {
         let barChipElement: DebugElement
         beforeEach(() => {
-          barChipElement = fixture.debugElement.query(byTestId(barContent.id))
+          barChipElement = fixture.debugElement.query(byTestId(BAR_CONTENT.id))
           expect(barChipElement).toBeTruthy()
 
           barChipElement.triggerEventHandler('selectedChange')
@@ -293,3 +235,58 @@ describe('ChippedContentComponent', () => {
     })
   })
 })
+@Component({
+  selector: 'app-foo',
+  template: `{{ data }}`,
+})
+class FooComponent {
+  public data?: string
+}
+@Component({
+  selector: 'app-bar',
+  template: `{{ data }}`,
+})
+class BarComponent {
+  public data?: string
+}
+
+const FOO_CONTENT_DATA = 'foo-data'
+const FOO_COMPONENT_ANIMATION_DONE = new EventEmitter<void>()
+const FOO_CONTENT = new ChippedContent({
+  id: 'foo',
+  displayName: 'Foo',
+  component: FooComponent,
+  setupComponent: (component) => {
+    component.data = FOO_CONTENT_DATA
+  },
+  waitForAnimationEnd: async () => {
+    await firstValueFrom(FOO_COMPONENT_ANIMATION_DONE)
+  },
+})
+const BAR_CONTENT_DATA = 'bar-data'
+const BAR_CONTENT = new ChippedContent({
+  id: 'bar',
+  displayName: 'Bar',
+  component: BarComponent,
+  setupComponent: (component) => {
+    component.data = BAR_CONTENT_DATA
+  },
+})
+const CONTENTS = [FOO_CONTENT, BAR_CONTENT]
+function makeSut({
+  platformService,
+}: { platformService?: PlatformService } = {}): [
+  ComponentFixture<ChippedContentComponent>,
+  ChippedContentComponent,
+] {
+  const [fixture, component] = componentTestSetup(ChippedContentComponent, {
+    providers: [
+      MockProvider(
+        PLATFORM_SERVICE,
+        platformService ?? MOCK_BROWSER_PLATFORM_SERVICE,
+      ),
+    ],
+  })
+  component.contents = CONTENTS
+  return [fixture, component]
+}
