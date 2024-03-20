@@ -15,11 +15,11 @@ import {
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
 import { isPlatformBrowser, NgClass, NgFor } from '@angular/common'
-import { TestIdDirective } from '../../common/test-id.directive'
+import { TestIdDirective } from '@common/test-id.directive'
 import {
   DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS,
   DISPLAY_NONE_IF_NO_SCRIPT_CLASS,
-} from '../../common/no-script'
+} from '@common/no-script'
 
 @Component({
   selector: 'app-chipped-content',

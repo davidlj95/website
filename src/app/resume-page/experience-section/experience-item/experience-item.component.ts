@@ -7,7 +7,7 @@ import {
   ToolsLadder,
   Work,
 } from '../../../material-symbols'
-import { SlugGeneratorService } from '../../../common/slug-generator.service'
+import { SlugGeneratorService } from '@common/slug-generator.service'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
@@ -22,7 +22,7 @@ import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
-import { TestIdDirective } from '../../../common/test-id.directive'
+import { TestIdDirective } from '@common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'

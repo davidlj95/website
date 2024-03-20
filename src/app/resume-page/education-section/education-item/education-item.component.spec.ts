@@ -24,7 +24,7 @@ import { CardHeaderTitleComponent } from '../../card/card-header/card-header-tit
 import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
 import { byTestId } from '@test/helpers/test-id'
-import { TestIdDirective } from '../../../common/test-id.directive'
+import { TestIdDirective } from '@common/test-id.directive'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'

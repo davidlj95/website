@@ -5,7 +5,7 @@ import {
   HostListener,
   Input,
 } from '@angular/core'
-import { slideDownOnEnterAndSlideUpOnLeave } from '../../../../common/animations'
+import { slideDownOnEnterAndSlideUpOnLeave } from '@common/animations'
 import { NgFor } from '@angular/common'
 
 @Component({

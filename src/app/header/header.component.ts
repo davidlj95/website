@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 import { DarkTheme, LightTheme } from '../material-symbols'
 import { ColorSchemeService } from './color-scheme.service'
-import { MaterialSymbolDirective } from '../common/material-symbol.directive'
-import { DISPLAY_NONE_IF_NO_SCRIPT_CLASS } from '../common/no-script'
+import { MaterialSymbolDirective } from '@common/material-symbol.directive'
+import { DISPLAY_NONE_IF_NO_SCRIPT_CLASS } from '@common/no-script'
 import { NgClass } from '@angular/common'
 
 @Component({
