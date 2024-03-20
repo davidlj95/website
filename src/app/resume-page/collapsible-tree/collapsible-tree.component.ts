@@ -5,10 +5,14 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core'
-import { DescriptionLine } from '../../metadata'
 import { MaterialSymbolDirective } from '../../common/material-symbol.directive'
-import { NgClass, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common'
-import { SlugGeneratorService } from '../../common/slug-generator.service'
+import {
+  NgClass,
+  NgComponentOutlet,
+  NgForOf,
+  NgIf,
+  NgTemplateOutlet,
+} from '@angular/common'
 import {
   PLATFORM_SERVICE,
   PlatformService,
@@ -17,7 +21,6 @@ import {
   DISPLAY_FLEX_IF_NO_SCRIPT_CLASS,
   VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS,
 } from '../../common/no-script'
-import { DomSanitizer } from '@angular/platform-browser'
 import {
   animate,
   AUTO_STYLE,
@@ -30,13 +33,26 @@ import {
   EMPHASIZED_DURATION_MS,
   TIMING_FUNCTION,
 } from '../../common/animations'
+import { CollapsibleTreeNode } from './collapsible-tree-node'
 
 export type IsCollapsibleFn = (node: CollapsibleTreeComponent) => boolean
+
+// Pattern for unique id generation
+// https://github.com/angular/components/blob/17.3.0/src/cdk/a11y/aria-describer/aria-describer.ts#L47-L48
+const COLLAPSIBLE_TREE_COMPONENT_CONTROLS_ID_PREFIX = `ctc-cid-`
+let nextId = 0
 
 @Component({
   selector: 'app-collapsible-tree',
   standalone: true,
-  imports: [MaterialSymbolDirective, NgIf, NgTemplateOutlet, NgClass, NgForOf],
+  imports: [
+    MaterialSymbolDirective,
+    NgIf,
+    NgTemplateOutlet,
+    NgClass,
+    NgForOf,
+    NgComponentOutlet,
+  ],
   templateUrl: './collapsible-tree.component.html',
   styleUrl: './collapsible-tree.component.scss',
   animations: [
@@ -55,7 +71,7 @@ export type IsCollapsibleFn = (node: CollapsibleTreeComponent) => boolean
   ],
 })
 export class CollapsibleTreeComponent {
-  @Input({ required: true }) public line!: DescriptionLine
+  @Input({ required: true }) public node!: CollapsibleTreeNode
   @Input() public depth: number = 0
   @Input() public parent?: CollapsibleTreeComponent
   @Input() public collapsedIcon: string = this.parent?.collapsedIcon ?? '▶'
@@ -72,16 +88,15 @@ export class CollapsibleTreeComponent {
     VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS
   protected readonly DISPLAY_FLEX_IF_NO_SCRIPT_CLASS =
     DISPLAY_FLEX_IF_NO_SCRIPT_CLASS
+  private readonly _id = nextId++
 
   constructor(
-    private readonly _slugIdGenerator: SlugGeneratorService,
     @Inject(PLATFORM_SERVICE)
     protected readonly _platformService: PlatformService,
-    protected readonly sanitizer: DomSanitizer,
   ) {}
 
   public get isCollapsible(): boolean {
-    if (!(this.line.children.length > 0)) {
+    if (!(this.node.children.length > 0)) {
       return false
     }
     if (!this.isCollapsibleFn) {
@@ -94,14 +109,7 @@ export class CollapsibleTreeComponent {
     if (!this.isCollapsible) {
       return
     }
-    const lineText = this.line?.data?.text
-    if (!lineText) {
-      return undefined
-    }
-    return this._slugIdGenerator.generate(lineText, {
-      prefix: 'ctnc-',
-      firstCharIsALetter: true,
-    })
+    return `${COLLAPSIBLE_TREE_COMPONENT_CONTROLS_ID_PREFIX}${this._id}`
   }
 
   collapse() {

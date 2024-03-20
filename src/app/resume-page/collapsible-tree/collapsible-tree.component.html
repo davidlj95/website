@@ -1,4 +1,4 @@
-<ng-container *ngIf="line.data">
+<ng-container *ngIf="node.data">
   <ng-container *ngIf="isCollapsible; else leaf">
     <button
       type="button"
@@ -27,21 +27,13 @@
     </div>
   </ng-template>
   <ng-template #data>
-    <span
-      class="symbol"
-      aria-hidden="true"
-      *ngIf="line.data"
-      appMaterialSymbol
-      >{{ line.data.symbol }}</span
-    >
-    <span
-      class="content"
-      [innerHtml]="sanitizer.bypassSecurityTrustHtml(line.data.html)"
-    ></span>
+    <ng-container
+      *ngComponentOutlet="node.data.component; inputs: node.data.options.inputs"
+    ></ng-container>
   </ng-template>
 </ng-container>
 <ul
-  *ngIf="line.children.length"
+  *ngIf="node.children.length"
   [attr.id]="sluggedId"
   [@expanded]="!isCollapsible || isExpanded"
   [ngClass]="
@@ -56,9 +48,9 @@
     isCollapsible && _platformService.isServer ? 'none' : undefined
   "
 >
-  <li *ngFor="let line of line.children">
+  <li *ngFor="let child of node.children">
     <app-collapsible-tree
-      [line]="line"
+      [node]="child"
       [isCollapsibleFn]="isCollapsibleFn"
       [depth]="depth + 1"
       [parent]="this"

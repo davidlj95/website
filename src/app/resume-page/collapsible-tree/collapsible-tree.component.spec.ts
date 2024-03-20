@@ -15,8 +15,6 @@ import {
   MOCK_SERVER_PLATFORM_SERVICE,
 } from '@test/helpers/platform-service'
 import { By } from '@angular/platform-browser'
-import { MATERIAL_SYMBOLS_SELECTOR } from '@test/helpers/material-symbols'
-import { DescriptionLine } from '../../metadata'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import {
   ATTRIBUTE_ARIA_CONTROLS,
@@ -34,70 +32,89 @@ import {
   expectIsDisplayed,
   expectIsNotDisplayed,
 } from '@test/helpers/visibility'
+import {
+  CollapsibleTreeNode,
+  CollapsibleTreeNodeData,
+} from './collapsible-tree-node'
+import { Component, Input } from '@angular/core'
+import { EmptyComponent } from '@test/helpers/empty-component'
 
 describe('CollapsibleTreeComponent', () => {
   let component: CollapsibleTreeComponent
   let fixture: ComponentFixture<CollapsibleTreeComponent>
 
+  const DUMMY_NODE_DATA = new CollapsibleTreeNodeData(EmptyComponent)
+
   const DATA_PREDICATE = By.css('.data')
+  const LIST_PREDICATE = By.css('ul')
   const CARET_PREDICATE = By.css('.caret')
 
-  describe('when data is not provided', () => {
-    it('should not render data if not provided', () => {
+  describe('when node has no data', () => {
+    it('should not render data element', () => {
       ;[fixture, component] = makeSut()
-      component.line = new DescriptionLine()
+      component.node = new CollapsibleTreeNode()
       fixture.detectChanges()
 
       const dataElement = fixture.debugElement.query(DATA_PREDICATE)
       expect(dataElement).toBeNull()
     })
   })
-  describe('when data is provided', () => {
-    const DUMMY_LINE = DescriptionLine.fromData(
-      {
-        symbol: 'symbol',
-        html: '<span>Content</span>',
-      },
-      [new DescriptionLine()],
-    )
 
-    it('should display symbol and html content', () => {
+  describe('when node has data', () => {
+    const DUMMY_COMPONENT_CONTENTS = 'dummy contents'
+    @Component({
+      standalone: true,
+      template: '{{ contents }}',
+      selector: 'app-dummy-component',
+    })
+    class DummyComponent {
+      @Input({ required: true }) contents!: string
+    }
+
+    it('should render data element and project node data component binding its inputs', () => {
       ;[fixture, component] = makeSut()
-      component.line = DUMMY_LINE
+      component.node = new CollapsibleTreeNode(
+        new CollapsibleTreeNodeData(DummyComponent, {
+          inputs: { contents: DUMMY_COMPONENT_CONTENTS } satisfies Record<
+            keyof DummyComponent,
+            unknown
+          >,
+        }),
+      )
       fixture.detectChanges()
 
-      const lineElement = fixture.debugElement.query(DATA_PREDICATE)
+      const dataElement = fixture.debugElement.query(DATA_PREDICATE)
+      expect(dataElement).not.toBeNull()
 
-      const materialSymbolSpan = lineElement.query(MATERIAL_SYMBOLS_SELECTOR)
-      expect(materialSymbolSpan.nativeElement.textContent)
-        .withContext('symbol')
-        .toEqual(DUMMY_LINE.data!.symbol)
-      expect(materialSymbolSpan.attributes['aria-hidden'])
-        .withContext('symbol is hidden from screen readers')
-        .toBe(true.toString())
+      const nodeDataElement = dataElement.query(byComponent(DummyComponent))
+      expect(nodeDataElement).not.toBeNull()
 
-      const htmlSpan = lineElement.query(By.css('.content'))
-      expect(htmlSpan.nativeElement.innerHTML)
-        .withContext('html')
-        .toEqual(DUMMY_LINE.data!.html)
+      expect(nodeDataElement.nativeElement.textContent.trim()).toEqual(
+        DUMMY_COMPONENT_CONTENTS,
+      )
     })
-
-    const LIST_PREDICATE = By.css('ul')
-    it('should not render the list of elements when children list is empty', () => {
+  })
+  describe('when data has no children', () => {
+    it('should not render the list of children', () => {
       ;[fixture, component] = makeSut()
-      component.line = new DescriptionLine(DUMMY_LINE.data)
+      component.node = new CollapsibleTreeNode()
 
       fixture.detectChanges()
 
       const listElement = fixture.debugElement.query(LIST_PREDICATE)
       expect(listElement).toBeNull()
     })
+  })
 
-    it('should render the list of elements (with assigned id and increased depth) when children list is not empty', () => {
+  describe('when data has children', () => {
+    it('should render the list of children (with assigned id and increased depth)', () => {
       const DUMMY_DEPTH = 42
-      const DUMMY_CHILDREN = [new DescriptionLine(), new DescriptionLine()]
+      const DUMMY_CHILDREN = [
+        new CollapsibleTreeNode(),
+        new CollapsibleTreeNode(),
+      ]
       ;[fixture, component] = makeSut()
-      component.line = new DescriptionLine(DUMMY_LINE.data, DUMMY_CHILDREN)
+      component.node = new CollapsibleTreeNode(undefined, DUMMY_CHILDREN)
       component.depth = DUMMY_DEPTH
 
       fixture.detectChanges()
@@ -119,12 +136,16 @@ describe('CollapsibleTreeComponent', () => {
     })
 
     describe('when collapsible', () => {
+      const DUMMY_NODE = new CollapsibleTreeNode(DUMMY_NODE_DATA, [
+        new CollapsibleTreeNode(),
+        new CollapsibleTreeNode(),
+      ])
       const ALWAYS_COLLAPSIBLE: IsCollapsibleFn = () => true
       const BUTTON_PREDICATE = By.css('button')
 
       it('should include button to toggle', () => {
         ;[fixture, component] = makeSut()
-        component.line = DUMMY_LINE
+        component.node = DUMMY_NODE
         component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
         fixture.detectChanges()
 
@@ -134,7 +155,7 @@ describe('CollapsibleTreeComponent', () => {
 
       it('should indicate via ARIA which element the button controls', () => {
         ;[fixture, component] = makeSut()
-        component.line = DUMMY_LINE
+        component.node = DUMMY_NODE
         component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
         fixture.detectChanges()
 
@@ -153,7 +174,7 @@ describe('CollapsibleTreeComponent', () => {
           ;[fixture, component] = makeSut({
             platformService: MOCK_BROWSER_PLATFORM_SERVICE,
           })
-          component.line = DUMMY_LINE
+          component.node = DUMMY_NODE
           component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
           fixture.detectChanges()
         })
@@ -180,7 +201,7 @@ describe('CollapsibleTreeComponent', () => {
           ;[fixture, component] = makeSut({
             platformService: MOCK_SERVER_PLATFORM_SERVICE,
           })
-          component.line = DUMMY_LINE
+          component.node = DUMMY_NODE
           component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
           fixture.detectChanges()
         })
@@ -240,7 +261,7 @@ describe('CollapsibleTreeComponent', () => {
               'collapseAllChildren' satisfies keyof CollapsibleTreeComponent,
             ])
             ;[fixture, component] = makeSut()
-            component.line = DUMMY_LINE
+            component.node = DUMMY_NODE
             component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
             component.isExpanded = testCase.isExpanded
             component.parent = mockParentComponent

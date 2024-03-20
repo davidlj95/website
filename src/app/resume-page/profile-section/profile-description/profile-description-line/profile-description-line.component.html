@@ -1,0 +1,9 @@
+<ng-container *ngIf="line.data">
+  <span class="symbol" aria-hidden="true" *ngIf="line.data" appMaterialSymbol>{{
+    line.data.symbol
+  }}</span>
+  <span
+    class="content"
+    [innerHtml]="_domSanitizer.bypassSecurityTrustHtml(line.data.html)"
+  ></span>
+</ng-container>
