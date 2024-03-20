@@ -39,7 +39,8 @@ describe('CollapsibleTreeComponent', () => {
   let component: CollapsibleTreeComponent
   let fixture: ComponentFixture<CollapsibleTreeComponent>
 
-  const DATA_CLASS_SELECTOR = By.css('.data')
+  const DATA_PREDICATE = By.css('.data')
+  const CARET_PREDICATE = By.css('.caret')
 
   describe('when data is not provided', () => {
     it('should not render data if not provided', () => {
@@ -47,7 +48,7 @@ describe('CollapsibleTreeComponent', () => {
       component.line = new DescriptionLine()
       fixture.detectChanges()
 
-      const dataElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
+      const dataElement = fixture.debugElement.query(DATA_PREDICATE)
       expect(dataElement).toBeNull()
     })
   })
@@ -65,7 +66,7 @@ describe('CollapsibleTreeComponent', () => {
       component.line = DUMMY_LINE
       fixture.detectChanges()
 
-      const lineElement = fixture.debugElement.query(DATA_CLASS_SELECTOR)
+      const lineElement = fixture.debugElement.query(DATA_PREDICATE)
 
       const materialSymbolSpan = lineElement.query(MATERIAL_SYMBOLS_SELECTOR)
       expect(materialSymbolSpan.nativeElement.textContent)
@@ -81,14 +82,14 @@ describe('CollapsibleTreeComponent', () => {
         .toEqual(DUMMY_LINE.data!.html)
     })
 
-    const LIST_ELEMENT_PREDICATE = By.css('ul')
+    const LIST_PREDICATE = By.css('ul')
     it('should not render the list of elements when children list is empty', () => {
       ;[fixture, component] = makeSut()
       component.line = new DescriptionLine(DUMMY_LINE.data)
 
       fixture.detectChanges()
 
-      const listElement = fixture.debugElement.query(LIST_ELEMENT_PREDICATE)
+      const listElement = fixture.debugElement.query(LIST_PREDICATE)
       expect(listElement).toBeNull()
     })
 
@@ -101,7 +102,7 @@ describe('CollapsibleTreeComponent', () => {
 
       fixture.detectChanges()
 
-      const listElement = fixture.debugElement.query(LIST_ELEMENT_PREDICATE)
+      const listElement = fixture.debugElement.query(LIST_PREDICATE)
       const listItemElements = listElement.queryAll(By.css('li'))
       expect(listItemElements).toHaveSize(DUMMY_CHILDREN.length)
 
@@ -142,7 +143,7 @@ describe('CollapsibleTreeComponent', () => {
           component.sluggedId!,
         )
 
-        const listElement = fixture.debugElement.query(LIST_ELEMENT_PREDICATE)
+        const listElement = fixture.debugElement.query(LIST_PREDICATE)
         expect(listElement).not.toBeNull()
         expect(listElement.attributes['id']).toEqual(component.sluggedId!)
       })
@@ -158,7 +159,7 @@ describe('CollapsibleTreeComponent', () => {
         })
 
         it('should display list', () => {
-          const listElement = fixture.debugElement.query(LIST_ELEMENT_PREDICATE)
+          const listElement = fixture.debugElement.query(LIST_PREDICATE)
           expectIsDisplayed(listElement.nativeElement)
         })
 
@@ -169,7 +170,7 @@ describe('CollapsibleTreeComponent', () => {
         //👇 This way, if animations are deferred, the hidden visibility initial status is
         //   already applied
         it('should set list visibility to hidden', () => {
-          const listElement = fixture.debugElement.query(LIST_ELEMENT_PREDICATE)
+          const listElement = fixture.debugElement.query(LIST_PREDICATE)
           expectHiddenVisibility(listElement.nativeElement)
         })
       })
@@ -185,17 +186,24 @@ describe('CollapsibleTreeComponent', () => {
         })
 
         it('should not display list', () => {
-          const listElement = fixture.debugElement.query(LIST_ELEMENT_PREDICATE)
+          const listElement = fixture.debugElement.query(LIST_PREDICATE)
           expectIsNotDisplayed(listElement.nativeElement)
         })
 
         it('should force list display if no JS', () => {
-          const listElement = fixture.debugElement.query(LIST_ELEMENT_PREDICATE)
+          const listElement = fixture.debugElement.query(LIST_PREDICATE)
           expectIsFlexDisplayedIfNoScript(listElement)
         })
 
         it('should be expanded by default', () => {
           expect(component.isExpanded).toBeTrue()
+        })
+
+        it('should display collapsed caret icon to avoid layout shift (on browser will be collapsed)', () => {
+          const caretElement = fixture.debugElement.query(CARET_PREDICATE)
+          expect(caretElement.nativeElement.textContent.trim()).toEqual(
+            component.collapsedIcon,
+          )
         })
       })
 
@@ -255,7 +263,7 @@ describe('CollapsibleTreeComponent', () => {
           })
 
           it('should render caret with proper icon, not visible if no script and ARIA hidden', () => {
-            const caretElement = fixture.debugElement.query(By.css('.caret'))
+            const caretElement = fixture.debugElement.query(CARET_PREDICATE)
             expect(caretElement).not.toBeNull()
 
             expect(caretElement.nativeElement.textContent.trim()).toEqual(
