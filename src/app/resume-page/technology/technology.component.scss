@@ -1,0 +1,17 @@
+@use 'margins';
+
+:host {
+  display: inline-block;
+
+  .wrap {
+    display: flex;
+    gap: margins.$s;
+  }
+
+  .icon {
+    ::ng-deep svg {
+      height: 1em;
+      width: 1em;
+    }
+  }
+}

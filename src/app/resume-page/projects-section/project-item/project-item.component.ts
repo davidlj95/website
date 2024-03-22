@@ -16,9 +16,10 @@ import { CardHeaderTextsComponent } from '../../card/card-header/card-header-tex
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { TestIdDirective } from '@common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
-import { NgIf } from '@angular/common'
+import { AsyncPipe, NgIf } from '@angular/common'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
+import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 
 @Component({
   selector: 'app-project-item',
@@ -40,12 +41,12 @@ import { CardComponent } from '../../card/card.component'
     CardHeaderAttributesComponent,
     AttributeComponent,
     ChippedContentComponent,
+    AsyncPipe,
   ],
 })
 export class ProjectItemComponent {
   @Input({ required: true }) public item!: ProjectItem
-  protected readonly StackContent = StackContent
-  protected readonly Attribute = Attribute
+
   public get contents() {
     const contents = []
     if (this.item.description) {
@@ -63,8 +64,23 @@ export class ProjectItemComponent {
         }),
       )
     }
+    if (this.item.technologies.length > 0) {
+      contents.push(
+        new ChippedContent({
+          id: ContentId.Technologies,
+          displayName: 'Tech',
+          component: ProjectItemTechnologiesComponent,
+          setupComponent: (component) => {
+            component.technologies = this.item.technologies
+          },
+          waitForAnimationEnd: async () => {},
+        }),
+      )
+    }
     return contents
   }
+  protected readonly StackContent = StackContent
+  protected readonly Attribute = Attribute
 
   constructor(private slugGenerator: SlugGeneratorService) {}
 
@@ -100,4 +116,5 @@ export interface StackContent {
 
 export enum ContentId {
   Description = 'description',
+  Technologies = 'tech',
 }

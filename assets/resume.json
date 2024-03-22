@@ -364,7 +364,45 @@
       "roles": ["Senior Backend Engineer"],
       "entity": "Vesto",
       "image": "https://davidlj95.com/assets/projects/vesto.png",
-      "stack": "back"
+      "stack": "back",
+      "technologies": [
+        {
+          "id": "rubyonrails",
+          "version": "^6"
+        },
+        { "id": "sidekiq" },
+        { "id": "http-web-apis" },
+        { "id": "http-rest-apis" },
+        {
+          "id": "openapiinitiative",
+          "version": "^3"
+        },
+        { "id": "rspec" },
+        {
+          "id": "postgresql",
+          "version": ">11"
+        },
+        { "id": "redis" },
+        { "id": "docker" },
+        { "id": "githubactions" },
+        { "id": "terraform" },
+        { "id": "amazonec2" },
+        { "id": "amazonecs" },
+        { "id": "amazonrds" },
+        { "id": "amazonelb" },
+        { "id": "amazonelasticache" },
+        { "id": "amazons3" },
+        { "id": "redsys" },
+        { "id": "newrelic" },
+        { "id": "rubymine" },
+        { "id": "sentry" },
+        { "id": "redash" },
+        { "id": "slack" },
+        { "id": "github" },
+        { "id": "notion" },
+        { "id": "zoom" },
+        { "id": "graphite" }
+      ]
     },
     {
       "name": "Mindset",
@@ -390,7 +428,8 @@
       "roles": ["Senior Software Engineer"],
       "entity": "Koa Health / Telefónica Alpha",
       "image": "https://davidlj95.com/assets/projects/mindset.png",
-      "stack": "full"
+      "stack": "full",
+      "technologies": [{ "id": "slack" }]
     },
     {
       "name": "Cowstamp",

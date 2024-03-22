@@ -16,6 +16,7 @@ export class JsonResumeProjectItemAdapterService {
     @Inject(ENVIRONMENT) private environment: Environment,
     private localImageService: LocalImageService,
   ) {}
+
   public adapt(item: JsonResumeProjectItem): ProjectItem {
     return new ProjectItem({
       name: item.name,
@@ -35,6 +36,7 @@ export class JsonResumeProjectItemAdapterService {
           : item.image
         : undefined,
       stack: item.stack ? this.mapStack(item.stack) : undefined,
+      technologies: item.technologies,
     })
   }
 
