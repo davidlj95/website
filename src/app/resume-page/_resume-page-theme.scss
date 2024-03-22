@@ -3,7 +3,7 @@
 @use 'card/card-theme';
 @use 'attribute/attribute-theme';
 @use 'chip/chip-theme';
-@use 'education-section/education-item/education-item-courses/education-item-courses-theme';
+@use 'content-chip/content-chip-theme';
 
 @mixin color($theme) {
   app-resume-page {
@@ -12,7 +12,7 @@
     @include profile-section-theme.color($theme);
     @include attribute-theme.color($theme);
     @include chip-theme.color($theme);
-    @include education-item-courses-theme.color($theme);
+    @include content-chip-theme.color($theme);
   }
 }
 
@@ -23,7 +23,7 @@
     @include profile-section-theme.motion;
     @include attribute-theme.motion;
     @include chip-theme.motion;
-    @include education-item-courses-theme.motion;
+    @include content-chip-theme.motion;
   }
 }
 

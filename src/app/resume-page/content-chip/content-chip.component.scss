@@ -1,0 +1,7 @@
+@use 'borders';
+@use 'paddings';
+
+:host {
+  @include borders.panel-style-width;
+  padding: paddings.$s;
+}

@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use 'animations';
+@use 'borders';
+
+@mixin color($theme) {
+  app-content-chip {
+    $background-palette: map.get($theme, background);
+    background-color: map.get($background-palette, z2);
+    border-color: borders.panel-color($theme);
+  }
+}
+
+@mixin motion {
+  app-content-chip {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
+}

@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { EducationItemCoursesComponent } from './education-item-courses.component'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
-import { By } from '@angular/platform-browser'
+import { byComponent } from '@test/helpers/component-query-predicates'
+import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 
 describe('EducationItemCoursesComponent', () => {
   let component: EducationItemCoursesComponent
@@ -24,7 +25,9 @@ describe('EducationItemCoursesComponent', () => {
   })
 
   it('should display all courses', () => {
-    const courseElements = fixture.debugElement.queryAll(By.css('li'))
+    const courseElements = fixture.debugElement.queryAll(
+      byComponent(ContentChipComponent),
+    )
     expect(courseElements.length).toEqual(courses.length)
     courseElements.forEach((courseElement, index) => {
       expect(courseElement.nativeElement.textContent.trim())
