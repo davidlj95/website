@@ -7,6 +7,8 @@ import {
 } from '@angular/core'
 import { slideDownOnEnterAndSlideUpOnLeave } from '@common/animations'
 import { NgFor } from '@angular/common'
+import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
+import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 
 @Component({
   selector: 'app-education-item-courses',
@@ -14,7 +16,7 @@ import { NgFor } from '@angular/common'
   styleUrls: ['./education-item-courses.component.scss'],
   animations: [slideDownOnEnterAndSlideUpOnLeave('enterAndLeave')],
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, ContentChipListComponent, ContentChipComponent],
 })
 export class EducationItemCoursesComponent {
   @Input({ required: true }) courses!: readonly string[]
