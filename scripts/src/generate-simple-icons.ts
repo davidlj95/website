@@ -51,7 +51,8 @@ const SIMPLE_ICONS_FILE = join(
   getRepositoryRootDir(),
   'src',
   'app',
-  'common',
+  'resume-page',
+  'technology',
   'simple-icons.json',
 )
 

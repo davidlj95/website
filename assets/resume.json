@@ -371,8 +371,9 @@
           "version": "^6"
         },
         { "id": "sidekiq" },
-        { "id": "http-web-apis" },
-        { "id": "http-rest-apis" },
+        { "id": "http", "version": "1.1" },
+        { "id": "httprest" },
+        { "id": "json" },
         {
           "id": "openapiinitiative",
           "version": "^3"
