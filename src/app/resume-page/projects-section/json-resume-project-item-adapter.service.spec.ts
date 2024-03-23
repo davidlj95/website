@@ -174,5 +174,5 @@ function makeJsonResumeProjectItem(
   return {
     ...sampleJsonResumeProjectItem,
     ...overrides,
-  }
+  } as JsonResumeProjectItem
 }
