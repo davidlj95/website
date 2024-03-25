@@ -10,6 +10,8 @@ module.exports = {
     assert: {
       preset: 'lighthouse:no-pwa',
       assertions: {
+        // Angular omits them when bundle size >500kb
+        'valid-source-maps': 'warn',
         'bf-cache': 'warn',
         'csp-xss': 'warn',
         'unused-javascript': 'warn',
