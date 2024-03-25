@@ -194,8 +194,8 @@ devDependencies:
     specifier: 23.0.6
     version: 23.0.6(typescript@5.4.2)
   subset-font:
-    specifier: 2.1.0
-    version: 2.1.0
+    specifier: 2.2.0
+    version: 2.2.0
   tsm:
     specifier: 2.3.0
     version: 2.3.0
@@ -6728,8 +6728,8 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
-  /harfbuzzjs@0.3.4:
-    resolution: {integrity: sha512-0TH7j8TIqCJB6RVpcJ7IyhPpHRq1JlyBiSOcNRAWpuN6S1HVSBmNtdt+G0jND1Y2qLnh70nXZ2R2zYqO57y92Q==}
+  /harfbuzzjs@0.3.5:
+    resolution: {integrity: sha512-SbNxmVAyhlUJTHdaxgK5S6Uqy4mXIu80Vl6KDn8d+ctPAF6W3DY2yehB4BwIC24I/Tk5HGLjaQkyny5gY0r41Q==}
     dev: true
 
   /has-flag@3.0.0:
@@ -10476,11 +10476,11 @@ packages:
       through: 2.3.8
     dev: true
 
-  /subset-font@2.1.0:
-    resolution: {integrity: sha512-4xV42NsGGBftUj2bR6cYrUkwtTWZRRg5ISUquTBztWfntyZhod24KI0IH4YBFD3U8luLXFv87uo+1U18kAlVzg==}
+  /subset-font@2.2.0:
+    resolution: {integrity: sha512-Kw6L09AgXe4Vr39VN8c2B4sWe5B3EDRwb2mtgmEVQcs0RojTjZ6SpZnAgNrn6MAY5dleoK1FKgwN4Ry3BtwQbw==}
     dependencies:
       fontverter: 2.0.0
-      harfbuzzjs: 0.3.4
+      harfbuzzjs: 0.3.5
       lodash: 4.17.21
       p-limit: 3.1.0
     dev: true
