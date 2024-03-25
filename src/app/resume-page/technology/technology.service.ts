@@ -51,4 +51,17 @@ const getSimpleIconByTechnologyId = (
 const EXTRA_DISPLAY_NAMES = new Map<string, string>([
   ['http', 'HTTP'],
   ['httprest', 'RESTful'],
+  ['googleworkspace', 'Google Workspace'],
+  ['oauth2', 'OAuth 2.0'],
+  ['junit', 'JUnit'],
+  ['jsonld', 'JSON LD'],
+  ['blockcerts', 'Blockcerts'],
+  ['gitlabcicd', 'GitLab CI/CD'],
+  ['gitlabpages', 'GitLab Pages'],
+  ['webcomponents', 'Web Components'],
+  ['unittest', "Python's `unittest`"],
+  ['pyqt', 'PyQt'],
+  ['java', 'Java'],
+  ['html', 'HTML'],
+  ['css', 'CSS'],
 ])
