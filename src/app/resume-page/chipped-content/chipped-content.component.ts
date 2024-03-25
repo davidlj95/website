@@ -49,9 +49,6 @@ export class ChippedContentComponent implements OnInit {
 
   ngOnInit(): void {
     if (this._platformService.isBrowser) {
-      if (this.contents.find((content) => content.id === 'tech')) {
-        this.setSelectedContent('tech')
-      }
       return
     }
     this.contentHost.clear()
