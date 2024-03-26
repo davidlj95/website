@@ -1,0 +1,10 @@
+<div class="wrap">
+  <span
+    class="icon"
+    *ngIf="item.icon"
+    [innerHTML]="item.icon.svg"
+    [style.fill]="item.icon.color"
+  >
+  </span>
+  <span class="name">{{ item.displayName }}</span>
+</div>

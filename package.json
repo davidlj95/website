@@ -10,6 +10,7 @@
     "prebuild:font-subsets": "tsm scripts/src/generate-font-subsets.ts",
     "prebuild:release-file": "tsx scripts/src/generate-release-file.mts",
     "prebuild:render-templates": "tsm scripts/src/generate-templated-files.ts",
+    "prebuild:simple-icons": "tsm scripts/src/generate-simple-icons.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -53,6 +54,7 @@
     "express": "4.19.2",
     "gardevoir": "1.0.0",
     "rxjs": "7.8.1",
+    "simple-icons": "11.9.0",
     "tslib": "2.6.2",
     "zone.js": "0.14.4"
   },

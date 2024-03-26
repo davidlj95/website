@@ -65,6 +65,9 @@ dependencies:
   rxjs:
     specifier: 7.8.1
     version: 7.8.1
+  simple-icons:
+    specifier: 11.9.0
+    version: 11.9.0
   tslib:
     specifier: 2.6.2
     version: 2.6.2
@@ -10073,6 +10076,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /simple-icons@11.9.0:
+    resolution: {integrity: sha512-l7WNzIxw0H4SBqrzpVCqXyrU7r/xlDRhcEAz+HBB47904x3N9c6bV0smG86WwAaiEpjrMYsKruZZq5ieZ1dHhQ==}
+    engines: {node: '>=0.12.18'}
+    dev: false
 
   /skin-tone@2.0.0:
     resolution: {integrity: sha512-kUMbT1oBJCpgrnKoSr0o6wPtvRWT9W9UKvGLwfJYO2WuahZRHOpEyL1ckyMGgMWh0UdpmaoFqKKD29WTomNEGA==}

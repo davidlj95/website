@@ -1,4 +1,5 @@
 import { DateRange } from '../../date-range/date-range'
+import { SimpleIcon } from 'simple-icons'
 
 export class ProjectItem {
   public readonly name: string
@@ -8,6 +9,7 @@ export class ProjectItem {
   public readonly roles: ReadonlyArray<string>
   public readonly imageSrc?: string
   public readonly stack?: Stack
+  public readonly technologies: ReadonlyArray<Technology>
 
   constructor({
     name,
@@ -17,6 +19,7 @@ export class ProjectItem {
     roles,
     imageSrc,
     stack,
+    technologies,
   }: {
     name: string
     description: string
@@ -25,6 +28,7 @@ export class ProjectItem {
     roles?: ReadonlyArray<string>
     imageSrc?: string
     stack?: Stack
+    technologies?: ReadonlyArray<Technology>
   }) {
     this.name = name
     this.description = description
@@ -33,6 +37,7 @@ export class ProjectItem {
     this.roles = roles ?? []
     this.imageSrc = imageSrc
     this.stack = stack
+    this.technologies = technologies ?? []
   }
 }
 
@@ -40,4 +45,10 @@ export enum Stack {
   Back = 'back',
   Front = 'front',
   Full = 'full',
+}
+
+export interface Technology {
+  readonly id: string
+  readonly version?: string
+  readonly simpleIcon?: SimpleIcon
 }

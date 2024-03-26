@@ -9,8 +9,9 @@ import {
 import { MockProvider } from 'ng-mocks'
 import { ENVIRONMENT } from '@common/injection-tokens'
 import { Environment } from '../../../environments'
-import { Stack } from './project-item/project-item'
+import { Stack, Technology } from './project-item/project-item'
 import { LocalImageService } from '../local-image.service'
+import { serviceTestSetup } from '@test/helpers/service-test-setup'
 
 describe('JsonResumeProjectItemAdapterService', () => {
   it('should be created', () => {
@@ -148,6 +149,17 @@ describe('JsonResumeProjectItemAdapterService', () => {
         expect(item.stack).toBeUndefined()
       })
     })
+
+    it('should map technologies', () => {
+      const technologies: Technology[] = [
+        {
+          id: 'id',
+          version: 'version',
+        },
+      ]
+      const item = makeSut().adapt(makeJsonResumeProjectItem({ technologies }))
+      expect(item.technologies).toEqual(technologies)
+    })
   })
 })
 
@@ -161,10 +173,7 @@ function makeSut({
     }
     providers = [MockProvider(ENVIRONMENT, environment)]
   }
-  TestBed.configureTestingModule({
-    providers,
-  })
-  return TestBed.inject(JsonResumeProjectItemAdapterService)
+  return serviceTestSetup(JsonResumeProjectItemAdapterService, { providers })
 }
 
 function makeJsonResumeProjectItem(
@@ -174,5 +183,5 @@ function makeJsonResumeProjectItem(
   return {
     ...sampleJsonResumeProjectItem,
     ...overrides,
-  }
+  } as JsonResumeProjectItem
 }
