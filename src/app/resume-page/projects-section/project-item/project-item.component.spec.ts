@@ -18,7 +18,7 @@ import { CardHeaderComponent } from '../../card/card-header/card-header.componen
 import { SAMPLE_NEW_PROJECT_ITEM_ARG } from './fixtures'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
-import { ProjectItem, Stack } from './project-item'
+import { ProjectItem, Stack, Technology } from './project-item'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
@@ -36,6 +36,7 @@ import { EventEmitter } from '@angular/core'
 import { ProjectItemDescriptionComponent } from './project-item-description/project-item-description.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { NgIf } from '@angular/common'
+import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -60,6 +61,7 @@ describe('ProjectItemComponent', () => {
           CardHeaderAttributesComponent,
           AttributeComponent,
           ChippedContentComponent,
+          ProjectItemTechnologiesComponent,
         ),
       ],
     })
@@ -219,6 +221,26 @@ describe('ProjectItemComponent', () => {
     mockDescriptionComponent.enterAndLeaveAnimationDone.emit()
     tick()
     expect(endedAnimation).toBeTrue()
+  }))
+
+  it('should generate tech content item', fakeAsync(() => {
+    const technologies = [
+      { id: 'id', version: 'version' },
+    ] satisfies ReadonlyArray<Technology>
+    setProjectItem(fixture, { technologies })
+
+    const technologyContent = component.contents.find(
+      (content) => content.id === ContentId.Technologies,
+    ) as ChippedContent<ContentId, ProjectItemTechnologiesComponent>
+    expect(technologyContent).toBeTruthy()
+
+    expect(technologyContent!.component).toEqual(
+      ProjectItemTechnologiesComponent,
+    )
+
+    const mockTechnologyComponent = {} as ProjectItemTechnologiesComponent
+    technologyContent!.setupComponent(mockTechnologyComponent)
+    expect(mockTechnologyComponent.technologies).toEqual(technologies)
   }))
 })
 

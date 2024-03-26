@@ -24,11 +24,19 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
 export class ProjectItemTechnologiesComponent {
   @Input({ required: true })
   public set technologies(technologies: ReadonlyArray<Technology>) {
-    this._items = technologies.map((technology) =>
-      this._technologyService.getTechnologyItem(technology),
-    )
+    this.items = technologies.map((technology) => ({
+      displayName:
+        this._technologyService.getDisplayName(technology.id) ?? technology.id,
+      icon: this._technologyService.getIcon(technology.id) ?? undefined,
+      slug: technology.id,
+      version: technology.version,
+    }))
   }
-  protected _items: ReadonlyArray<TechnologyItem> = []
+
+  /**
+   * @visibleForTesting
+   */
+  public items: ReadonlyArray<TechnologyItem> = []
 
   constructor(private readonly _technologyService: TechnologyService) {}
 }
