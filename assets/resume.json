@@ -437,7 +437,7 @@
         { "id": "amazoniam" },
         { "id": "amazonrds" },
         { "id": "amazons3" },
-        { "id": "amazonsecretsmanager" },
+        { "id": "awssecretsmanager" },
         { "id": "kubernetes" },
         { "id": "helm" },
         { "id": "datadog" },
