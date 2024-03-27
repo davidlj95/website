@@ -57,4 +57,5 @@ export const EXTRA_DISPLAY_NAMES = new Map<string, string>([
   ['java', 'Java'],
   ['html', 'HTML'],
   ['css', 'CSS'],
+  ['zenqms', 'ZenQMS'],
 ])
