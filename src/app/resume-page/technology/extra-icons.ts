@@ -98,10 +98,13 @@ export const EXTRA_ICONS: ReadonlyArray<ReducedSimpleIcon> = [
   },
   // Extracted from JHipster logos repo
   // https://github.com/jhipster/jhipster-artwork/blob/main/logos/JHipster%20bowtie.svg
+  // Pending to add to simple icons:
+  // https://github.com/simple-icons/simple-icons/pull/10710
   {
     title: 'JHipster',
     slug: 'jhipster',
-    svg: '<svg xmlns="http://www.w3.org/2000/svg" width="32mm" height="32mm" viewBox="0 0 32 32"><path d="M69.88 38.18S10.53 3.74 5.4 25.16s-10.9 37.7 4.91 40.71 59.57-27.69 59.57-27.69" style="fill:#3474ab" transform="matrix(.26458 0 0 .26458 .175 4.85)"/><path d="M59.62 33c17-8.8 50.68-23.88 54.53-7.91 5.18 21.49 11 37.84-4.79 40.91-11.08 2.15-36-12.38-49.82-21.2-.02-10.44.1-1.51.08-11.8" style="fill:#4289c7" transform="matrix(.26458 0 0 .26458 .175 4.85)"/></svg>',
+    svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>JHipster</title><path d="M20.709 7.171c-2.455-.029-6.332 1.749-8.684 2.962-3.434-1.75-10.178-4.729-10.942-1.54-1.03 4.297-2.187 7.563.985 8.167 2.207.42 7.122-2.43 9.912-4.205 2.78 1.771 7.746 4.66 9.96 4.231 3.168-.616 2-3.896.961-8.208-.24-1-1.067-1.394-2.192-1.407z"/></svg>',
+    hex: '3E8ACC',
   },
   // Extracted from Karma repo
   // https://github.com/karma-runner/karma/blob/master/logo/logo.svg
