@@ -62,11 +62,13 @@ export const EXTRA_ICONS: ReadonlyArray<ReducedSimpleIcon> = [
   },
   // Extracted from JetBrains brand guidelines
   // https://www.jetbrains.com/company/brand/#logos-and-icons-product-logos
+  // Pending to be added in simple icons soon:
+  // https://github.com/simple-icons/simple-icons/pull/10707
   {
     title: 'RubyMine',
     slug: 'rubymine',
-    svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path d="M60 0H0v60h60z"/><path fill="#fff" d="M8 52h24v-4H8zM45.41 7.48l-5.17 8.75-.46 1.06-.5-1.06-5.42-8.75h-4.88v22.4h4.21V14.01l-.06-.83 6.54 10.45 6.56-10.54-.05.93v15.87h4.19V7.49h-4.96zM12.48 21.37h3.87l4.87 8.51h4.9l-5.34-8.96c.38-.12.75-.26 1.1-.42 1.2-.58 2.13-1.4 2.78-2.46.66-1.06.98-2.28.98-3.66s-.32-2.57-.97-3.62c-.65-1.04-1.56-1.85-2.74-2.42s-2.56-.86-4.11-.86h-9.6v22.4h4.27v-8.51zm0-10.32h5.04c.75 0 1.4.14 1.96.41s.99.66 1.29 1.17.45 1.1.45 1.78-.15 1.29-.45 1.8-.73.9-1.29 1.18-1.21.42-1.96.42h-5.04v-6.75z"/></svg>',
-    hex: '000',
+    svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>RubyMine</title><path d="M0 0v24h24V0zm3.287 2.992H7.13q.932.001 1.643.344.706.344 1.095.969c.26.42.389.895.389 1.447q.002.828-.393 1.465-.39.635-1.111.982a4 4 0 0 1-.44.168l2.135 3.584H8.488L6.54 8.55H4.996v3.402H3.287zm8.305 0h1.953l2.168 3.5.2.424.183-.424 2.068-3.5v.004h1.985v8.96h-1.676V5.606l.02-.37-2.626 4.214-2.615-4.18.023.332v6.348h-1.683zm-6.6 1.428v2.705h2.016q.45-.001.785-.17.336-.167.516-.47c.12-.205.18-.45.18-.721q0-.406-.18-.711a1.17 1.17 0 0 0-.516-.469 1.8 1.8 0 0 0-.785-.164zM3.2 19.199h9.602V20.8H3.199z"/></svg>',
+    hex: '000000',
   },
   // Extracted from Redash official page using SVG extractor
   // https://redash.io/
