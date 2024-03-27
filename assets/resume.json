@@ -504,7 +504,7 @@
         { "id": "pwa" },
         { "id": "webcomponents" },
         { "id": "redux" },
-        { "id": "karma" },
+        { "id": "karmarunner" },
         { "id": "jasmine" },
         { "id": "jest" },
         { "id": "nodedotjs" },
