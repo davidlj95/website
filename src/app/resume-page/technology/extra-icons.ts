@@ -95,13 +95,13 @@ export const EXTRA_ICONS: ReadonlyArray<ReducedSimpleIcon> = [
   },
   // Extracted from Karma repo
   // https://github.com/karma-runner/karma/blob/master/logo/logo.svg
+  // Wasn't added to simple-icons as was deprecated when PR got there
+  // https://github.com/simple-icons/simple-icons/pull/9275
+  // Though in the future maybe there's the chance to have it there.
   {
-    title: 'Karma',
-    slug: 'karma',
-    //👇 2 colors. Minimized with SVGO.
-    // svg: '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="261" height="261"><defs><clipPath id="a"><path d="M0 0h6874.96v1603H0Z"/></clipPath></defs><g clip-path="url(#a)" transform="matrix(.13 0 0 -.13 .074 230.688)"><path d="M1247.1 497.781 1580.77 0h506.04l-592.23 875.016zM240.547 221.488l234.375 220.793L849.641 0 609.094 887.191 387.129 556.289z" style="fill:#429f87;fill-opacity:1;fill-rule:nonzero;stroke:none"/><path d="m240.547 221.488 368.547 665.703-234.321-220.894L0 1108.59zM2038.56 1603.08h-506.04l-309.93-457.92v457.92H758.406v-474.93L1005.9 216.012 1063.58 0h159.01v400.781z" style="fill:#56c5a8;fill-opacity:1;fill-rule:nonzero;stroke:none"/></g></svg>',
-    //👇 1 color
-    svg: '<svg xmlns="http://www.w3.org/2000/svg" width="261" height="261" viewBox="0 0 261 261"><defs><clipPath id="a"><path d="M0 0h6874.96v1603H0Z"/></clipPath></defs><g clip-path="url(#a)" transform="matrix(.13 0 0 -.13 .074 230.688)"><path d="M1247.1 497.781 1580.77 0h506.04l-592.23 875.016zM240.547 221.488l234.375 220.793L849.641 0 609.094 887.191 387.129 556.289z"/><path d="m240.547 221.488 368.547 665.703-234.321-220.894L0 1108.59zM2038.56 1603.08h-506.04l-309.93-457.92v457.92H758.406v-474.93L1005.9 216.012 1063.58 0h159.01v400.781z"/></g></svg>',
-    hex: '429F87',
+    title: 'Karma Runner',
+    slug: 'karmarunner',
+    svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Karma</title><path d="M8.722 2.782v5.462l2.847 10.49.663 2.484h1.829v-4.61l.518-.762 3.601 5.372H24l-6.525-9.64 5.97-8.797h-5.82l-3.564 5.267V2.78zM0 8.469 2.767 18.67l2.695-2.54 4.31 5.087-2.767-10.203-2.695 2.54z"/></svg>',
+    hex: '42BEAE',
   },
 ]
