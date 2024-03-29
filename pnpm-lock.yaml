@@ -197,8 +197,8 @@ devDependencies:
     specifier: 23.0.6
     version: 23.0.6(typescript@5.4.3)
   subset-font:
-    specifier: 2.2.0
-    version: 2.2.0
+    specifier: 2.3.0
+    version: 2.3.0
   tsm:
     specifier: 2.3.0
     version: 2.3.0
@@ -10484,8 +10484,8 @@ packages:
       through: 2.3.8
     dev: true
 
-  /subset-font@2.2.0:
-    resolution: {integrity: sha512-Kw6L09AgXe4Vr39VN8c2B4sWe5B3EDRwb2mtgmEVQcs0RojTjZ6SpZnAgNrn6MAY5dleoK1FKgwN4Ry3BtwQbw==}
+  /subset-font@2.3.0:
+    resolution: {integrity: sha512-RcB2cu/14zYxGceTnnptlc8uTuxMkVYdyu3Kj+CA1nye6bI1s1cSSp+ApzpkMzl8iAmEUt+zAE0VHvhVpTO/Ig==}
     dependencies:
       fontverter: 2.0.0
       harfbuzzjs: 0.3.5
