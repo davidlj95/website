@@ -1,33 +1,21 @@
 import { Type } from '@angular/core'
 
-export class ChippedContent<T, U> {
-  public readonly id: T
+export class ChippedContent {
   public readonly displayName: string
-  public readonly component: Type<U>
-  public readonly setupComponent: (component: U) => void
-  public readonly waitForAnimationEnd: (component: U) => Promise<void>
+  public readonly component: Type<unknown>
+  public readonly inputs?: Record<string, unknown>
 
   constructor({
-    id,
     displayName,
     component,
-    setupComponent,
-    waitForAnimationEnd,
+    inputs,
   }: {
-    id: T
     displayName: string
-    component: Type<U>
-    setupComponent: (component: U) => void
-    waitForAnimationEnd?: (component: U) => Promise<void>
+    component: Type<unknown>
+    inputs?: Record<string, unknown>
   }) {
-    this.id = id
     this.displayName = displayName
     this.component = component
-    this.setupComponent = setupComponent
-    this.waitForAnimationEnd = waitForAnimationEnd ?? noWaitForAnimationEnd
+    this.inputs = inputs
   }
-}
-
-async function noWaitForAnimationEnd() {
-  return
 }

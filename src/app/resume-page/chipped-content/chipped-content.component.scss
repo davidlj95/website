@@ -5,24 +5,18 @@
   flex-direction: column;
   gap: margins.$m;
 
-  .chips {
+  .selectable-chips {
     display: flex;
     gap: margins.$s;
   }
 
-  app-chip {
-    display: inline-block;
-  }
+  .content {
+    app-chip {
+      margin-bottom: margins.$s;
+    }
 
-  > ::ng-deep app-chip.displayBlockIfNoScript {
-    display: none;
-  }
-
-  > ::ng-deep * {
-    display: block;
-
-    &.hidden {
-      display: none;
+    > ::ng-deep * {
+      display: block;
     }
   }
 }

@@ -1,11 +1,25 @@
-<div class="chips" [ngClass]="DISPLAY_NONE_IF_NO_SCRIPT_CLASS">
+<div class="selectable-chips" [class]="DISPLAY_NONE_IF_NO_SCRIPT_CLASS">
   <app-chip
     *ngFor="let content of contents"
-    [selected]="selectedContentId === content.id"
-    (selectedChange)="setSelectedContent(content.id)"
-    [appTestId]="content.id"
+    [selected]="_displayedContent === content"
+    (selectedChange)="displayedContent = content"
   >
     {{ content.displayName }}
   </app-chip>
 </div>
-<ng-template #contentHost></ng-template>
+<div
+  class="content"
+  *ngFor="let content of contents"
+  [style.display]="_displayedContent !== content ? 'none' : undefined"
+  [ngClass]="DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS"
+>
+  <app-chip
+    [ngClass]="DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS"
+    [style.display]="'none'"
+  >
+    {{ content.displayName }}
+  </app-chip>
+  <ng-container
+    *ngComponentOutlet="content.component; inputs: content.inputs"
+  ></ng-container>
+</div>

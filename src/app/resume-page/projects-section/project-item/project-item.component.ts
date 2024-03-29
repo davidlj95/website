@@ -4,7 +4,6 @@ import { SlugGeneratorService } from '@common/slug-generator.service'
 import { Apps, Dns, FullStackedBarChart } from '../../../material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ProjectItemDescriptionComponent } from './project-item-description/project-item-description.component'
-import { firstValueFrom } from 'rxjs'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
@@ -52,28 +51,24 @@ export class ProjectItemComponent {
     if (this.item.description) {
       contents.push(
         new ChippedContent({
-          id: ContentId.Description,
+          //id: ContentId.Description,
           displayName: 'Description',
           component: ProjectItemDescriptionComponent,
-          setupComponent: (component) => {
-            component.description = this.item.description
-          },
-          waitForAnimationEnd: async (component) => {
-            await firstValueFrom(component.enterAndLeaveAnimationDone)
-          },
+          inputs: {
+            description: this.item.description,
+          } satisfies Partial<ProjectItemDescriptionComponent>,
         }),
       )
     }
     if (this.item.technologies.length > 0) {
       contents.push(
         new ChippedContent({
-          id: ContentId.Technologies,
+          //id: ContentId.Technologies,
           displayName: 'Tech',
           component: ProjectItemTechnologiesComponent,
-          setupComponent: (component) => {
-            component.technologies = this.item.technologies
-          },
-          waitForAnimationEnd: async () => {},
+          inputs: {
+            technologies: this.item.technologies,
+          } satisfies Partial<ProjectItemTechnologiesComponent>,
         }),
       )
     }

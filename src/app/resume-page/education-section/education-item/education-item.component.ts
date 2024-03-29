@@ -4,7 +4,6 @@ import { SocialLeaderboard } from '../../../material-symbols'
 import { SlugGeneratorService } from '@common/slug-generator.service'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { EducationItemScoreComponent } from './education-item-score/education-item-score.component'
-import { firstValueFrom } from 'rxjs'
 import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
@@ -58,30 +57,24 @@ export class EducationItemComponent {
     if (this.item.score) {
       contents.push(
         new ChippedContent({
-          id: ContentId.Score,
+          //id: ContentId.Score,
           displayName: 'Score',
           component: EducationItemScoreComponent,
-          setupComponent: (component) => {
-            component.score = this.item.score
-          },
-          waitForAnimationEnd: async (component) => {
-            await firstValueFrom(component.enterAndLeaveAnimationDone)
-          },
+          inputs: {
+            score: this.item.score,
+          } satisfies Partial<EducationItemScoreComponent>,
         }),
       )
     }
     if (this.item.courses) {
       contents.push(
         new ChippedContent({
-          id: ContentId.Courses,
+          //id: ContentId.Courses,
           displayName: 'Courses',
           component: EducationItemCoursesComponent,
-          setupComponent: (component) => {
-            component.courses = this.item.courses
-          },
-          waitForAnimationEnd: async (component) => {
-            await firstValueFrom(component.enterAndLeaveAnimationDone)
-          },
+          inputs: {
+            courses: this.item.courses,
+          } satisfies Partial<EducationItemCoursesComponent>,
         }),
       )
     }

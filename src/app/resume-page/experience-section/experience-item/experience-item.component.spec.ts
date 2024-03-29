@@ -1,14 +1,5 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing'
-import {
-  Attribute,
-  ContentId,
-  ExperienceItemComponent,
-} from './experience-item.component'
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
+import { Attribute, ExperienceItemComponent } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { NgIf, NgOptimizedImage } from '@angular/common'
 import { By } from '@angular/platform-browser'
@@ -32,10 +23,8 @@ import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChipComponent } from '../../chip/chip.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
-import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { byComponent } from '@test/helpers/component-query-predicates'
-import { EventEmitter } from '@angular/core'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -241,27 +230,10 @@ describe('ExperienceItem', () => {
 
     it('should generate its content item', fakeAsync(() => {
       const summaryContent = component.contents.find(
-        (content) => content.id === ContentId.Summary,
-      ) as ChippedContent<ContentId, ExperienceItemSummaryComponent>
+        (content) => content.component === ExperienceItemSummaryComponent,
+      )
       expect(summaryContent).toBeTruthy()
-
-      expect(summaryContent!.component).toEqual(ExperienceItemSummaryComponent)
-
-      const mockSummaryComponent = {
-        enterAndLeaveAnimationDone: new EventEmitter<void>(),
-      } as ExperienceItemSummaryComponent
-      summaryContent!.setupComponent(mockSummaryComponent)
-      expect(mockSummaryComponent.summary).toEqual(summary)
-
-      let endedAnimation = false
-      summaryContent
-        .waitForAnimationEnd(mockSummaryComponent)
-        .then(() => (endedAnimation = true))
-      tick()
-      expect(endedAnimation).toBeFalse()
-      mockSummaryComponent.enterAndLeaveAnimationDone.emit()
-      tick()
-      expect(endedAnimation).toBeTrue()
+      expect(summaryContent?.inputs).toEqual({ summary })
     }))
   })
 
@@ -273,31 +245,13 @@ describe('ExperienceItem', () => {
 
     it('should generate its content item', fakeAsync(() => {
       const highlightContent = component.contents.find(
-        (content) => content.id === ContentId.Highlights,
-      ) as ChippedContent<ContentId, ExperienceItemHighlightsComponent>
-      expect(highlightContent).toBeTruthy()
-
-      expect(highlightContent!.component).toEqual(
-        ExperienceItemHighlightsComponent,
+        (content) => content.component === ExperienceItemHighlightsComponent,
       )
-
-      const mockHighlightsComponent = {
-        enterAndLeaveAnimationDone: new EventEmitter<void>(),
-      } as ExperienceItemHighlightsComponent
-      highlightContent!.setupComponent(mockHighlightsComponent)
-      expect(mockHighlightsComponent.highlights).toEqual(highlights)
-
-      let endedAnimation = false
-      highlightContent
-        .waitForAnimationEnd(mockHighlightsComponent)
-        .then(() => (endedAnimation = true))
-      tick()
-      expect(endedAnimation).toBeFalse()
-      mockHighlightsComponent.enterAndLeaveAnimationDone.emit()
-      tick()
-      expect(endedAnimation).toBeTrue()
+      expect(highlightContent).toBeTruthy()
+      expect(highlightContent!.inputs).toEqual({ highlights })
     }))
   })
+
   describe('when content is displayed', () => {
     const summary = 'summary'
     beforeEach(() => {

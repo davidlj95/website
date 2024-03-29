@@ -1,15 +1,6 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing'
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
 
-import {
-  Attribute,
-  ContentId,
-  EducationItemComponent,
-} from './education-item.component'
+import { Attribute, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
@@ -31,8 +22,6 @@ import { CardHeaderAttributesComponent } from '../../card/card-header/card-heade
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
-import { ChippedContent } from '../../chipped-content/chipped-content'
-import { EventEmitter } from '@angular/core'
 import { EducationItemScoreComponent } from './education-item-score/education-item-score.component'
 import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 
@@ -197,27 +186,10 @@ describe('EducationItemComponent', () => {
 
     it('should add score content', fakeAsync(() => {
       const scoreContent = component.contents.find(
-        (content) => content.id === ContentId.Score,
-      ) as ChippedContent<ContentId, EducationItemScoreComponent>
+        (content) => content.component === EducationItemScoreComponent,
+      )
       expect(scoreContent).toBeTruthy()
-
-      expect(scoreContent!.component).toEqual(EducationItemScoreComponent)
-
-      const mockScoreComponent = {
-        enterAndLeaveAnimationDone: new EventEmitter<void>(),
-      } as EducationItemScoreComponent
-      scoreContent!.setupComponent(mockScoreComponent)
-      expect(mockScoreComponent.score).toEqual(score)
-
-      let endedAnimation = false
-      scoreContent
-        .waitForAnimationEnd(mockScoreComponent)
-        .then(() => (endedAnimation = true))
-      tick()
-      expect(endedAnimation).toBeFalse()
-      mockScoreComponent.enterAndLeaveAnimationDone.emit()
-      tick()
-      expect(endedAnimation).toBeTrue()
+      expect(scoreContent!.inputs).toEqual({ score })
     }))
   })
 
@@ -230,27 +202,10 @@ describe('EducationItemComponent', () => {
 
     it('should add courses content', fakeAsync(() => {
       const coursesContent = component.contents.find(
-        (content) => content.id === ContentId.Courses,
-      ) as ChippedContent<ContentId, EducationItemCoursesComponent>
+        (content) => content.component === EducationItemCoursesComponent,
+      )
       expect(coursesContent).toBeTruthy()
-
-      expect(coursesContent!.component).toEqual(EducationItemCoursesComponent)
-
-      const mockCoursesComponent = {
-        enterAndLeaveAnimationDone: new EventEmitter<void>(),
-      } as EducationItemCoursesComponent
-      coursesContent!.setupComponent(mockCoursesComponent)
-      expect(mockCoursesComponent.courses).toEqual(courses)
-
-      let endedAnimation = false
-      coursesContent
-        .waitForAnimationEnd(mockCoursesComponent)
-        .then(() => (endedAnimation = true))
-      tick()
-      expect(endedAnimation).toBeFalse()
-      mockCoursesComponent.enterAndLeaveAnimationDone.emit()
-      tick()
-      expect(endedAnimation).toBeTrue()
+      expect(coursesContent!.inputs).toEqual({ courses })
     }))
   })
 })

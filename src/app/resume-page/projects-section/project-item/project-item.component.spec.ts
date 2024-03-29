@@ -1,13 +1,7 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing'
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
 
 import {
   Attribute,
-  ContentId,
   ProjectItemComponent,
   StackContent,
 } from './project-item.component'
@@ -31,8 +25,6 @@ import { TestIdDirective } from '@common/test-id.directive'
 import { DateRange } from '../../date-range/date-range'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
-import { ChippedContent } from '../../chipped-content/chipped-content'
-import { EventEmitter } from '@angular/core'
 import { ProjectItemDescriptionComponent } from './project-item-description/project-item-description.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { NgIf } from '@angular/common'
@@ -195,52 +187,28 @@ describe('ProjectItemComponent', () => {
 
   it('should generate description content item', fakeAsync(() => {
     const description = 'It is super cool and does awesome things'
+
     setProjectItem(fixture, { description })
 
     const descriptionContent = component.contents.find(
-      (content) => content.id === ContentId.Description,
-    ) as ChippedContent<ContentId, ProjectItemDescriptionComponent>
-    expect(descriptionContent).toBeTruthy()
-
-    expect(descriptionContent!.component).toEqual(
-      ProjectItemDescriptionComponent,
+      (content) => content.component === ProjectItemDescriptionComponent,
     )
-
-    const mockDescriptionComponent = {
-      enterAndLeaveAnimationDone: new EventEmitter<void>(),
-    } as ProjectItemDescriptionComponent
-    descriptionContent!.setupComponent(mockDescriptionComponent)
-    expect(mockDescriptionComponent.description).toEqual(description)
-
-    let endedAnimation = false
-    descriptionContent
-      .waitForAnimationEnd(mockDescriptionComponent)
-      .then(() => (endedAnimation = true))
-    tick()
-    expect(endedAnimation).toBeFalse()
-    mockDescriptionComponent.enterAndLeaveAnimationDone.emit()
-    tick()
-    expect(endedAnimation).toBeTrue()
+    expect(descriptionContent).toBeTruthy()
+    expect(descriptionContent!.inputs).toEqual({ description })
   }))
 
   it('should generate tech content item', fakeAsync(() => {
     const technologies = [
       { id: 'id', version: 'version' },
     ] satisfies ReadonlyArray<Technology>
+
     setProjectItem(fixture, { technologies })
 
     const technologyContent = component.contents.find(
-      (content) => content.id === ContentId.Technologies,
-    ) as ChippedContent<ContentId, ProjectItemTechnologiesComponent>
-    expect(technologyContent).toBeTruthy()
-
-    expect(technologyContent!.component).toEqual(
-      ProjectItemTechnologiesComponent,
+      (content) => content.component === ProjectItemTechnologiesComponent,
     )
-
-    const mockTechnologyComponent = {} as ProjectItemTechnologiesComponent
-    technologyContent!.setupComponent(mockTechnologyComponent)
-    expect(mockTechnologyComponent.technologies).toEqual(technologies)
+    expect(technologyContent).toBeDefined()
+    expect(technologyContent!.inputs).toEqual({ technologies })
   }))
 })
 

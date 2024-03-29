@@ -40,3 +40,24 @@ function expectVisibility(element: Element, visible: boolean) {
     .withContext(`is ${visible ? '' : 'not '}visible`)
     .toBe(!visible)
 }
+
+export function expectIsInLayout(element: Element) {
+  const boundingBox = element.getBoundingClientRect()
+  expect(boundingBox)
+    .withContext('is in layout')
+    .toEqual(jasmine.objectContaining(NOT_RENDERED_BOUNDING_BOX))
+}
+
+export function expectIsNotInLayout(element: Element) {
+  const boundingBox = element.getBoundingClientRect()
+  expect(boundingBox)
+    .withContext('is not in layout')
+    .not.toEqual(jasmine.objectContaining(NOT_RENDERED_BOUNDING_BOX))
+}
+
+const NOT_RENDERED_BOUNDING_BOX: Partial<DOMRect> = {
+  height: 0,
+  width: 0,
+  x: 0,
+  y: 0,
+}
