@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 
 import { ProfileContactTraditionalIconsComponent } from './profile-contact-traditional-icons.component'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 
 describe('ContactTraditionalIconsComponent', () => {
   let component: ProfileContactTraditionalIconsComponent
   let fixture: ComponentFixture<ProfileContactTraditionalIconsComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({})
-    fixture = TestBed.createComponent(ProfileContactTraditionalIconsComponent)
-    component = fixture.componentInstance
+    ;[fixture, component] = componentTestSetup(
+      ProfileContactTraditionalIconsComponent,
+    )
     fixture.detectChanges()
   })
 
