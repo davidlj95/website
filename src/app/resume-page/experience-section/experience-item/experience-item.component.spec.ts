@@ -261,14 +261,15 @@ describe('ExperienceItem', () => {
         byComponent(ChippedContentComponent),
       )
       expect(chippedContentElement).toBeTruthy()
-      chippedContentElement.triggerEventHandler('contentDisplayedChange', true)
+      chippedContentElement.triggerEventHandler(
+        'displayedContentChange' satisfies keyof ChippedContentComponent,
+        component.contents[0],
+      )
       fixture.detectChanges()
     })
 
-    it('should add the expanded class to the element', () => {
-      expect(
-        fixture.debugElement.classes[ExperienceItemComponent.EXPANDED_CLASS],
-      ).toBeTrue()
+    it('should expand item on grid', () => {
+      expect(fixture.debugElement.styles['grid-row']).toEqual('span 2')
     })
   })
   describe('when content is removed', () => {
@@ -280,14 +281,15 @@ describe('ExperienceItem', () => {
         byComponent(ChippedContentComponent),
       )
       expect(chippedContentElement).toBeTruthy()
-      chippedContentElement.triggerEventHandler('contentDisplayedChange', false)
+      chippedContentElement.triggerEventHandler(
+        'displayedContentChange' satisfies keyof ChippedContentComponent,
+        undefined,
+      )
       fixture.detectChanges()
     })
 
-    it('should remove the expanded class to the element', () => {
-      expect(
-        fixture.debugElement.classes[ExperienceItemComponent.EXPANDED_CLASS],
-      ).toBeFalsy()
+    it('should not expand on grid', () => {
+      expect(fixture.debugElement.styles['grid-row']).toBeFalsy()
     })
   })
 })

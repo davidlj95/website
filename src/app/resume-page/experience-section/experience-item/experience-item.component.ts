@@ -50,7 +50,6 @@ import { isNotUndefined } from '@common/is-not-undefined'
   ],
 })
 export class ExperienceItemComponent {
-  static readonly EXPANDED_CLASS = 'expanded'
   @Input({ required: true }) public set item(item: ExperienceItem) {
     this._item = item
     this.contents = [
@@ -88,8 +87,8 @@ export class ExperienceItemComponent {
   }
   protected readonly Attribute = Attribute
 
-  @HostBinding(`class.${ExperienceItemComponent.EXPANDED_CLASS}`)
-  public expanded?: boolean
+  @HostBinding('style.grid-row')
+  protected _gridRowStyle?: string
 
   constructor(private slugGenerator: SlugGeneratorService) {}
 

@@ -70,6 +70,8 @@
   </app-card-header>
   <app-chipped-content
     [contents]="contents"
-    (selectedContent$)="expanded = $event !== undefined"
+    (displayedContentChange)="
+      _gridRowStyle = $event !== undefined ? 'span 2' : undefined
+    "
   ></app-chipped-content>
 </app-card>
