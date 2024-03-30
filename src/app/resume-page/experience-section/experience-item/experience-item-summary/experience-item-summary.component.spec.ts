@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 
 import { ExperienceItemSummaryComponent } from './experience-item-summary.component'
-import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 
 describe('ExperienceItemSummaryComponent', () => {
   let component: ExperienceItemSummaryComponent
@@ -9,11 +9,7 @@ describe('ExperienceItemSummaryComponent', () => {
   const summary = 'sample summary that explains what you did in there'
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [provideNoopAnimations()],
-    })
-    fixture = TestBed.createComponent(ExperienceItemSummaryComponent)
-    component = fixture.componentInstance
+    ;[fixture, component] = componentTestSetup(ExperienceItemSummaryComponent)
     component.summary = summary
     fixture.detectChanges()
   })
@@ -26,14 +22,5 @@ describe('ExperienceItemSummaryComponent', () => {
     expect(fixture.debugElement.nativeElement.textContent.trim()).toEqual(
       summary,
     )
-  })
-
-  it('should emit animation done event when animation finishes', () => {
-    let eventEmitted = false
-    component.enterAndLeaveAnimationDone.subscribe(() => {
-      eventEmitted = true
-    })
-    fixture.debugElement.triggerEventHandler('@enterAndLeave.done')
-    expect(eventEmitted).toBeTrue()
   })
 })

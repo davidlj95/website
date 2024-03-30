@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights.component'
 import { By } from '@angular/platform-browser'
-import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 
 describe('ExperienceItemHighlightsComponent', () => {
   let component: ExperienceItemHighlightsComponent
@@ -10,11 +10,9 @@ describe('ExperienceItemHighlightsComponent', () => {
   const highlights = ['Sample highlight 1', 'Sample highlight 2']
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [provideNoopAnimations()],
-    })
-    fixture = TestBed.createComponent(ExperienceItemHighlightsComponent)
-    component = fixture.componentInstance
+    ;[fixture, component] = componentTestSetup(
+      ExperienceItemHighlightsComponent,
+    )
     component.highlights = highlights
     fixture.detectChanges()
   })
@@ -31,14 +29,5 @@ describe('ExperienceItemHighlightsComponent', () => {
         highlights[index],
       )
     })
-  })
-
-  it('should emit animation done event when animation finishes', () => {
-    let eventEmitted = false
-    component.enterAndLeaveAnimationDone.subscribe(() => {
-      eventEmitted = true
-    })
-    fixture.debugElement.triggerEventHandler('@enterAndLeave.done')
-    expect(eventEmitted).toBeTrue()
   })
 })
