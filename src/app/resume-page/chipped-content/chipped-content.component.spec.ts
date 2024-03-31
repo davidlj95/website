@@ -199,13 +199,11 @@ class BarComponent {
 }
 
 const FOO_CONTENT = new ChippedContent({
-  //id: 'foo',
   displayName: 'Foo',
   component: FooComponent,
   inputs: { data: 'foo-data' } satisfies Partial<FooComponent>,
 })
 const BAR_CONTENT = new ChippedContent({
-  //id: 'bar',
   displayName: 'Bar',
   component: BarComponent,
   inputs: { data: 'bar-data' } satisfies Partial<BarComponent>,
