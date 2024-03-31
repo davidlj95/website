@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { ExperienceItem } from './experience-item'
 import {
   Badge,
@@ -54,7 +54,6 @@ export class ExperienceItemComponent {
     this.contents = [
       this._item.summary
         ? new ChippedContent({
-            //id: ContentId.Summary,
             displayName: 'Summary',
             component: ExperienceItemSummaryComponent,
             inputs: {
@@ -64,7 +63,6 @@ export class ExperienceItemComponent {
         : undefined,
       this._item.highlights.length > 0
         ? new ChippedContent({
-            //id: ContentId.Highlights,
             displayName: 'Highlights',
             component: ExperienceItemHighlightsComponent,
             inputs: {
@@ -86,9 +84,6 @@ export class ExperienceItemComponent {
   }
   protected readonly Attribute = Attribute
 
-  @HostBinding('style.grid-row')
-  protected _gridRowStyle?: string
-
   constructor(private slugGenerator: SlugGeneratorService) {}
 
   public getAttributeId(attributeName: string) {
@@ -108,9 +103,4 @@ export enum Attribute {
   Internship = 'internship',
   MorePositions = 'more-positions',
   Promotions = 'promotions',
-}
-
-export enum ContentId {
-  Summary = 'summary',
-  Highlights = 'highlights',
 }
