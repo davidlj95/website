@@ -4,7 +4,6 @@ import { Component, DebugElement, Input } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
 import { expectIsInLayout, expectIsNotInLayout } from '@test/helpers/visibility'
-import { Subscription } from 'rxjs'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
 import { componentTestSetup } from '@test/helpers/component-test-setup'
@@ -74,7 +73,6 @@ describe('ChippedContentComponent', () => {
 
       expectIsNotInLayout(contentElement.nativeElement)
     })
-    expect(component.displayedContent).toBeUndefined()
   })
 
   describe('when JS is disabled', () => {
@@ -105,8 +103,6 @@ describe('ChippedContentComponent', () => {
   describe('when tapping on a chip', () => {
     let fooChipElement: DebugElement
     let fooContentElement: DebugElement
-    let subscription: Subscription
-    let displayedContent: ChippedContent | undefined
 
     beforeEach(fakeAsync(() => {
       fooChipElement = findChipByDisplayName(FOO_CONTENT.displayName)!
@@ -114,19 +110,10 @@ describe('ChippedContentComponent', () => {
       expect(fooChipElement).withContext('foo chip exists').toBeTruthy()
       expect(fooContentElement).withContext('foo content exists').toBeTruthy()
 
-      subscription = component.displayedContentChange.subscribe(
-        (newSelectedContent) => {
-          displayedContent = newSelectedContent
-        },
-      )
       fooChipElement.triggerEventHandler('click')
       fixture.detectChanges()
       tickToFinishAnimation()
     }))
-
-    afterEach(() => {
-      subscription.unsubscribe()
-    })
 
     function findChipByDisplayName(displayName: string) {
       const chipElements = fixture.debugElement.queryAll(
@@ -145,10 +132,6 @@ describe('ChippedContentComponent', () => {
       expectIsInLayout(fooContentElement.nativeElement)
     })
 
-    it('should emit event indicating content has been displayed', () => {
-      expect(displayedContent).toEqual(FOO_CONTENT)
-    })
-
     describe('when tapping same chip again', () => {
       beforeEach(fakeAsync(() => {
         fooChipElement.triggerEventHandler('click')
@@ -164,10 +147,6 @@ describe('ChippedContentComponent', () => {
 
       it('should not display its content', () => {
         expectIsNotInLayout(fooContentElement.nativeElement)
-      })
-
-      it('should emit event indicating no content is selected', () => {
-        expect(displayedContent).toBeUndefined()
       })
     })
 
@@ -200,10 +179,6 @@ describe('ChippedContentComponent', () => {
           byComponent(BarComponent),
         )
         expectIsInLayout(barContentElement.nativeElement)
-      })
-
-      it('should emit event indicating content has been displayed', () => {
-        expect(displayedContent).toEqual(BAR_CONTENT)
       })
     })
   })

@@ -30,7 +30,6 @@ import { isNotUndefined } from '@common/is-not-undefined'
 @Component({
   selector: 'app-experience-item',
   templateUrl: './experience-item.component.html',
-  styleUrls: ['./experience-item.component.scss'],
   standalone: true,
   imports: [
     CardComponent,

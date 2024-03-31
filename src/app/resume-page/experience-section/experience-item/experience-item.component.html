@@ -68,10 +68,5 @@
       </app-attribute>
     </app-card-header-attributes>
   </app-card-header>
-  <app-chipped-content
-    [contents]="contents"
-    (displayedContentChange)="
-      _gridRowStyle = $event !== undefined ? 'span 2' : undefined
-    "
-  ></app-chipped-content>
+  <app-chipped-content [contents]="contents"></app-chipped-content>
 </app-card>

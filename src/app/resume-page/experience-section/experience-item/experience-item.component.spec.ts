@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
+import { ComponentFixture, fakeAsync } from '@angular/core/testing'
 import { Attribute, ExperienceItemComponent } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { NgIf, NgOptimizedImage } from '@angular/common'
@@ -25,13 +25,14 @@ import { ChippedContentComponent } from '../../chipped-content/chipped-content.c
 import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { byComponent } from '@test/helpers/component-query-predicates'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
   let fixture: ComponentFixture<ExperienceItemComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
+    ;[fixture, component] = componentTestSetup(ExperienceItemComponent, {
       imports: [
         ExperienceItemComponent,
         NgIf,
@@ -54,8 +55,6 @@ describe('ExperienceItem', () => {
         ),
       ],
     })
-    fixture = TestBed.createComponent(ExperienceItemComponent)
-    component = fixture.componentInstance
   })
 
   it('should create', () => {
@@ -250,47 +249,6 @@ describe('ExperienceItem', () => {
       expect(highlightContent).toBeTruthy()
       expect(highlightContent!.inputs).toEqual({ highlights })
     }))
-  })
-
-  describe('when content is displayed', () => {
-    const summary = 'summary'
-    beforeEach(() => {
-      setExperienceItem(fixture, { summary })
-
-      const chippedContentElement = fixture.debugElement.query(
-        byComponent(ChippedContentComponent),
-      )
-      expect(chippedContentElement).toBeTruthy()
-      chippedContentElement.triggerEventHandler(
-        'displayedContentChange' satisfies keyof ChippedContentComponent,
-        component.contents[0],
-      )
-      fixture.detectChanges()
-    })
-
-    it('should expand item on grid', () => {
-      expect(fixture.debugElement.styles['grid-row']).toEqual('span 2')
-    })
-  })
-  describe('when content is removed', () => {
-    const summary = 'summary'
-    beforeEach(() => {
-      setExperienceItem(fixture, { summary })
-
-      const chippedContentElement = fixture.debugElement.query(
-        byComponent(ChippedContentComponent),
-      )
-      expect(chippedContentElement).toBeTruthy()
-      chippedContentElement.triggerEventHandler(
-        'displayedContentChange' satisfies keyof ChippedContentComponent,
-        undefined,
-      )
-      fixture.detectChanges()
-    })
-
-    it('should not expand on grid', () => {
-      expect(fixture.debugElement.styles['grid-row']).toBeFalsy()
-    })
   })
 })
 

@@ -9,7 +9,6 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
 @Component({
   selector: 'app-experience-section',
   templateUrl: './experience-section.component.html',
-  styleUrls: ['./experience-section.component.scss'],
   standalone: true,
   imports: [
     SectionTitleComponent,

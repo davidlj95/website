@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { ChipComponent } from '../chip/chip.component'
 import { NgClass, NgComponentOutlet, NgFor } from '@angular/common'
 import { TestIdDirective } from '@common/test-id.directive'
@@ -58,17 +58,10 @@ const durationInMs = EMPHASIZED_DURATION_MS
 })
 export class ChippedContentComponent {
   @Input() public contents!: ReadonlyArray<ChippedContent>
-  @Output() displayedContentChange = new EventEmitter<DisplayedContent>()
 
   constructor() {}
 
   protected _displayedContent: DisplayedContent
-  public set displayedContent(content: DisplayedContent) {
-    const newDisplayedContent =
-      content !== this._displayedContent ? content : undefined
-    this._displayedContent = newDisplayedContent
-    this.displayedContentChange.next(newDisplayedContent)
-  }
 
   protected readonly DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS =
     DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS

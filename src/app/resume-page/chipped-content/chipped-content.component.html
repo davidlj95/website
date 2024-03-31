@@ -2,7 +2,11 @@
   <app-chip
     *ngFor="let content of contents"
     [selected]="_displayedContent === content"
-    (selectedChange)="displayedContent = content"
+    (selectedChange)="
+      _displayedContent === content
+        ? (_displayedContent = undefined)
+        : (_displayedContent = content)
+    "
   >
     {{ content.displayName }}
   </app-chip>
@@ -10,7 +14,6 @@
 <div
   class="content"
   *ngFor="let content of contents"
-  [style.display]="_displayedContent !== content ? 'none' : undefined"
   [ngClass]="DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS"
   [@contentDisplayed]="_displayedContent === content"
 >
