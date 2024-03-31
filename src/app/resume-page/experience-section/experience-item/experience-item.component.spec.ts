@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 import { Attribute, ExperienceItemComponent } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { NgIf, NgOptimizedImage } from '@angular/common'
@@ -22,39 +22,16 @@ import { CardHeaderAttributesComponent } from '../../card/card-header/card-heade
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChipComponent } from '../../chip/chip.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
-import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
-import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
   let fixture: ComponentFixture<ExperienceItemComponent>
 
   beforeEach(() => {
-    ;[fixture, component] = componentTestSetup(ExperienceItemComponent, {
-      imports: [
-        ExperienceItemComponent,
-        NgIf,
-        NgOptimizedImage,
-        LinkComponent,
-        CardHeaderImageComponent,
-        CardHeaderTitleComponent,
-        CardHeaderSubtitleComponent,
-        TestIdDirective,
-        MockComponents(
-          CardComponent,
-          DateRangeComponent,
-          CardHeaderDetailComponent,
-          CardHeaderComponent,
-          CardHeaderTextsComponent,
-          CardHeaderAttributesComponent,
-          AttributeComponent,
-          ChipComponent,
-          ChippedContentComponent,
-        ),
-      ],
-    })
+    ;[fixture, component] = makeSut()
   })
 
   it('should create', () => {
@@ -221,19 +198,23 @@ describe('ExperienceItem', () => {
 
   shouldContainComponent(() => fixture, ChippedContentComponent)
 
+  const CONTENT_CONTAINER_PREDICATE = byComponent(ChippedContentComponent)
+
   describe('when experience has summary', () => {
     const summary = 'sample summary'
     beforeEach(() => {
       setExperienceItem(fixture, { summary })
     })
 
-    it('should generate its content item', fakeAsync(() => {
-      const summaryContent = component.contents.find(
-        (content) => content.component === ExperienceItemSummaryComponent,
+    it('should render it', () => {
+      const contentContainerElement = fixture.debugElement.query(
+        CONTENT_CONTAINER_PREDICATE,
       )
-      expect(summaryContent).toBeTruthy()
-      expect(summaryContent?.inputs).toEqual({ summary })
-    }))
+
+      expect(
+        contentContainerElement.nativeElement.textContent.trim(),
+      ).toContain(summary)
+    })
   })
 
   describe('when experience has highlights', () => {
@@ -242,15 +223,45 @@ describe('ExperienceItem', () => {
       setExperienceItem(fixture, { highlights })
     })
 
-    it('should generate its content item', fakeAsync(() => {
-      const highlightContent = component.contents.find(
-        (content) => content.component === ExperienceItemHighlightsComponent,
+    it('should render them', () => {
+      const contentContainerElement = fixture.debugElement.query(
+        CONTENT_CONTAINER_PREDICATE,
       )
-      expect(highlightContent).toBeTruthy()
-      expect(highlightContent!.inputs).toEqual({ highlights })
-    }))
+
+      highlights.forEach((highlight) => {
+        expect(
+          contentContainerElement.nativeElement.textContent.trim(),
+        ).toContain(highlight)
+      })
+    })
   })
 })
+function makeSut() {
+  return componentTestSetup(ExperienceItemComponent, {
+    imports: [
+      ExperienceItemComponent,
+      NgIf,
+      NgOptimizedImage,
+      LinkComponent,
+      CardHeaderImageComponent,
+      CardHeaderTitleComponent,
+      CardHeaderSubtitleComponent,
+      ChippedContentComponent,
+      TestIdDirective,
+      MockComponents(
+        CardComponent,
+        DateRangeComponent,
+        CardHeaderDetailComponent,
+        CardHeaderComponent,
+        CardHeaderTextsComponent,
+        CardHeaderAttributesComponent,
+        AttributeComponent,
+        ChipComponent,
+      ),
+    ],
+    providers: [provideNoopAnimations()], // to mount real chipped content component
+  })
+}
 
 function setExperienceItem(
   fixture: ComponentFixture<ExperienceItemComponent>,
@@ -260,11 +271,11 @@ function setExperienceItem(
 ) {
   fixture.componentInstance.item = new ExperienceItem({
     company: new Organization({
-      name: 'Fake company',
+      name: 'Dummy company',
       imageSrc: 'https://fakeCompany.example.com/logo.jpg',
     }),
-    summary: 'Fake summary',
-    position: 'Fake position',
+    summary: 'Dummy summary',
+    position: 'Dummy position',
     dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
     ...newItemArgOverrides,
   })
