@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
+import { ComponentFixture, fakeAsync } from '@angular/core/testing'
 
 import { Attribute, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
@@ -22,38 +22,15 @@ import { CardHeaderAttributesComponent } from '../../card/card-header/card-heade
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
-import { EducationItemScoreComponent } from './education-item-score/education-item-score.component'
-import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
   let fixture: ComponentFixture<EducationItemComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        EducationItemComponent,
-        NgIf,
-        NgOptimizedImage,
-        LinkComponent,
-        CardHeaderImageComponent,
-        CardHeaderTitleComponent,
-        CardHeaderSubtitleComponent,
-        TestIdDirective,
-        MockComponents(
-          CardComponent,
-          DateRangeComponent,
-          CardHeaderDetailComponent,
-          CardHeaderComponent,
-          CardHeaderTextsComponent,
-          CardHeaderAttributesComponent,
-          AttributeComponent,
-          ChippedContentComponent,
-        ),
-      ],
-    })
-    fixture = TestBed.createComponent(EducationItemComponent)
-    component = fixture.componentInstance
+    ;[fixture, component] = makeSut()
   })
 
   it('should create', () => {
@@ -177,6 +154,8 @@ describe('EducationItemComponent', () => {
     ).toBeTruthy()
   })
 
+  const CONTENT_CONTAINER_PREDICATE = byComponent(ChippedContentComponent)
+
   describe('when score is present', () => {
     const score = 'Very good++'
 
@@ -185,11 +164,11 @@ describe('EducationItemComponent', () => {
     })
 
     it('should add score content', fakeAsync(() => {
-      const scoreContent = component.contents.find(
-        (content) => content.component === EducationItemScoreComponent,
+      const contentContainer = fixture.debugElement.query(
+        CONTENT_CONTAINER_PREDICATE,
       )
-      expect(scoreContent).toBeTruthy()
-      expect(scoreContent!.inputs).toEqual({ score })
+
+      expect(contentContainer.nativeElement.textContent.trim()).toContain(score)
     }))
   })
 
@@ -201,14 +180,46 @@ describe('EducationItemComponent', () => {
     })
 
     it('should add courses content', fakeAsync(() => {
-      const coursesContent = component.contents.find(
-        (content) => content.component === EducationItemCoursesComponent,
+      const contentContainer = fixture.debugElement.query(
+        CONTENT_CONTAINER_PREDICATE,
       )
-      expect(coursesContent).toBeTruthy()
-      expect(coursesContent!.inputs).toEqual({ courses })
+
+      courses.forEach((course) => {
+        expect(contentContainer.nativeElement.textContent.trim()).toContain(
+          course,
+        )
+      })
     }))
   })
 })
+
+function makeSut() {
+  return componentTestSetup(EducationItemComponent, {
+    imports: [
+      EducationItemComponent,
+      NgIf,
+      NgOptimizedImage,
+      LinkComponent,
+      CardHeaderImageComponent,
+      CardHeaderTitleComponent,
+      CardHeaderSubtitleComponent,
+      TestIdDirective,
+      ChippedContentComponent,
+      MockComponents(
+        CardComponent,
+        DateRangeComponent,
+        CardHeaderDetailComponent,
+        CardHeaderComponent,
+        CardHeaderTextsComponent,
+        CardHeaderAttributesComponent,
+        AttributeComponent,
+      ),
+    ],
+    providers: [
+      provideNoopAnimations(), // to include real chipped content
+    ],
+  })
+}
 
 function setEducationItem(
   fixture: ComponentFixture<EducationItemComponent>,

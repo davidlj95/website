@@ -7,13 +7,13 @@ import { componentTestSetup } from '@test/helpers/component-test-setup'
 describe('ExperienceItemHighlightsComponent', () => {
   let component: ExperienceItemHighlightsComponent
   let fixture: ComponentFixture<ExperienceItemHighlightsComponent>
-  const highlights = ['Sample highlight 1', 'Sample highlight 2']
+  const HIGHLIGHTS = ['Sample highlight 1', 'Sample highlight 2']
 
   beforeEach(() => {
     ;[fixture, component] = componentTestSetup(
       ExperienceItemHighlightsComponent,
     )
-    component.highlights = highlights
+    component.highlights = HIGHLIGHTS
     fixture.detectChanges()
   })
 
@@ -23,10 +23,10 @@ describe('ExperienceItemHighlightsComponent', () => {
 
   it('should display all highlights', () => {
     const listElements = fixture.debugElement.queryAll(By.css('li'))
-    expect(listElements.length).toBe(highlights.length)
+    expect(listElements.length).toBe(HIGHLIGHTS.length)
     listElements.forEach((listElement, index) => {
       expect(listElement.nativeElement.textContent.trim()).toEqual(
-        highlights[index],
+        HIGHLIGHTS[index],
       )
     })
   })

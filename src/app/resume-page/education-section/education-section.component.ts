@@ -9,13 +9,12 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
 @Component({
   selector: 'app-education-section',
   templateUrl: './education-section.component.html',
-  styleUrls: ['./education-section.component.scss'],
   standalone: true,
   imports: [
     SectionTitleComponent,
+    CardGridComponent,
     NgFor,
     EducationItemComponent,
-    CardGridComponent,
   ],
 })
 export class EducationSectionComponent {

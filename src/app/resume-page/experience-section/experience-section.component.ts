@@ -12,9 +12,9 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
   standalone: true,
   imports: [
     SectionTitleComponent,
+    CardGridComponent,
     NgFor,
     ExperienceItemComponent,
-    CardGridComponent,
   ],
 })
 export class ExperienceSectionComponent {

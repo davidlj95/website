@@ -37,7 +37,7 @@ describe('ResumePageComponent', () => {
     () => fixture,
     ProfileSectionComponent,
     ExperienceSectionComponent,
-    //EducationSectionComponent,
+    EducationSectionComponent,
     //ProjectsSectionComponent,
   )
 })
