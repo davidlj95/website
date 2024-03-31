@@ -17,8 +17,6 @@ import {
   trigger,
 } from '@angular/animations'
 
-const durationInMs = EMPHASIZED_DURATION_MS
-
 @Component({
   selector: 'app-chipped-content',
   templateUrl: './chipped-content.component.html',
@@ -38,7 +36,7 @@ const durationInMs = EMPHASIZED_DURATION_MS
       transition('false -> true', [
         style({ height: '0', visibility: 'hidden', display: AUTO_STYLE }),
         animate(
-          `${durationInMs}ms ${TIMING_FUNCTION}`,
+          `${EMPHASIZED_DURATION_MS}ms ${TIMING_FUNCTION}`,
           style({
             height: AUTO_STYLE,
             visibility: AUTO_STYLE,
@@ -49,7 +47,7 @@ const durationInMs = EMPHASIZED_DURATION_MS
       transition('true -> false', [
         style({ height: AUTO_STYLE, visibility: AUTO_STYLE }),
         animate(
-          `${durationInMs}ms ${TIMING_FUNCTION}`,
+          `${EMPHASIZED_DURATION_MS}ms ${TIMING_FUNCTION}`,
           style({ height: '0', visibility: 'hidden' }),
         ),
       ]),
