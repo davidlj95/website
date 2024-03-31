@@ -8,7 +8,6 @@ import {
   Work,
 } from '../../../material-symbols'
 import { SlugGeneratorService } from '@common/slug-generator.service'
-import { ExperienceItemSummaryComponent } from './experience-item-summary/experience-item-summary.component'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
@@ -26,6 +25,7 @@ import { CardHeaderComponent } from '../../card/card-header/card-header.componen
 import { CardComponent } from '../../card/card.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { isNotUndefined } from '@common/is-not-undefined'
+import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 
 @Component({
   selector: 'app-experience-item',
@@ -55,10 +55,10 @@ export class ExperienceItemComponent {
       this._item.summary
         ? new ChippedContent({
             displayName: 'Summary',
-            component: ExperienceItemSummaryComponent,
+            component: TextContentComponent,
             inputs: {
-              summary: this._item.summary,
-            } satisfies Partial<ExperienceItemSummaryComponent>,
+              text: this._item.summary,
+            } satisfies Partial<TextContentComponent>,
           })
         : undefined,
       this._item.highlights.length > 0
