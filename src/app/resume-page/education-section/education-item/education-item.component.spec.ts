@@ -163,7 +163,7 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { score })
     })
 
-    it('should add score content', () => {
+    it('should render score content', () => {
       const contentContainer = fixture.debugElement.query(
         CONTENT_CONTAINER_PREDICATE,
       )
@@ -179,7 +179,7 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { courses })
     })
 
-    it('should add courses content', () => {
+    it('should render courses content', () => {
       const contentContainer = fixture.debugElement.query(
         CONTENT_CONTAINER_PREDICATE,
       )
