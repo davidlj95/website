@@ -7,7 +7,7 @@ import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
 import { shouldContainComponent } from '@test/helpers/component-testers'
 import { DateRangeComponent } from '../../date-range/date-range.component'
-import { MockComponents } from 'ng-mocks'
+import { MockComponents, MockProvider } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { LinkComponent } from '../../link/link.component'
@@ -25,6 +25,8 @@ import { ChippedContentComponent } from '../../chipped-content/chipped-content.c
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { componentTestSetup } from '@test/helpers/component-test-setup'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { PLATFORM_SERVICE } from '@common/platform.service'
+import { MOCK_BROWSER_PLATFORM_SERVICE } from '@test/helpers/platform-service'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -246,7 +248,6 @@ function makeSut() {
       CardHeaderImageComponent,
       CardHeaderTitleComponent,
       CardHeaderSubtitleComponent,
-      ChippedContentComponent,
       TestIdDirective,
       MockComponents(
         CardComponent,
@@ -259,7 +260,10 @@ function makeSut() {
         ChipComponent,
       ),
     ],
-    providers: [provideNoopAnimations()], // to mount real chipped content component
+    providers: [
+      provideNoopAnimations(), // to mount real chipped content component
+      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
+    ],
   })
 }
 

@@ -14,6 +14,9 @@ import {
 import { By } from '@angular/platform-browser'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { tickToFinishAnimation } from '@test/helpers/tick-to-finish-animation'
+import { MockProvider } from 'ng-mocks'
+import { PLATFORM_SERVICE } from '@common/platform.service'
+import { MOCK_BROWSER_PLATFORM_SERVICE } from '@test/helpers/platform-service'
 
 describe('ChippedContentComponent', () => {
   let fixture: ComponentFixture<ChippedContentComponent>
@@ -216,7 +219,10 @@ function makeSut(): [
 ] {
   const [fixture, component] = componentTestSetup(ChippedContentComponent, {
     imports: [ChippedContentComponent, ChipComponent],
-    providers: [provideNoopAnimations()],
+    providers: [
+      provideNoopAnimations(),
+      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
+    ],
   })
   component.contents = CONTENTS
   return [fixture, component]

@@ -5,7 +5,7 @@ import {
   ProjectItemComponent,
   StackContent,
 } from './project-item.component'
-import { MockComponents } from 'ng-mocks'
+import { MockComponents, MockProvider } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
@@ -29,6 +29,8 @@ import { NgIf } from '@angular/common'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 import { componentTestSetup } from '@test/helpers/component-test-setup'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { PLATFORM_SERVICE } from '@common/platform.service'
+import { MOCK_BROWSER_PLATFORM_SERVICE } from '@test/helpers/platform-service'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -209,6 +211,7 @@ function makeSut() {
     ],
     providers: [
       provideNoopAnimations(), // to use real chipped content component
+      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
     ],
   })
 }

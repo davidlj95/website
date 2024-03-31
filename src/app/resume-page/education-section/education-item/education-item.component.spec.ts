@@ -7,7 +7,7 @@ import { By } from '@angular/platform-browser'
 import { NgIf, NgOptimizedImage } from '@angular/common'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { DateRange } from '../../date-range/date-range'
-import { MockComponents } from 'ng-mocks'
+import { MockComponents, MockProvider } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { LinkComponent } from '../../link/link.component'
@@ -24,6 +24,8 @@ import { byComponent } from '@test/helpers/component-query-predicates'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { componentTestSetup } from '@test/helpers/component-test-setup'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { PLATFORM_SERVICE } from '@common/platform.service'
+import { MOCK_BROWSER_PLATFORM_SERVICE } from '@test/helpers/platform-service'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -204,7 +206,6 @@ function makeSut() {
       CardHeaderTitleComponent,
       CardHeaderSubtitleComponent,
       TestIdDirective,
-      ChippedContentComponent,
       MockComponents(
         CardComponent,
         DateRangeComponent,
@@ -217,6 +218,7 @@ function makeSut() {
     ],
     providers: [
       provideNoopAnimations(), // to include real chipped content
+      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
     ],
   })
 }
