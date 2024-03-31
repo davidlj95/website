@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 
 import {
   Attribute,
@@ -168,7 +168,7 @@ describe('ProjectItemComponent', () => {
     )
   })
 
-  it('should render techs', fakeAsync(() => {
+  it('should render techs', () => {
     const technologies = [
       { id: 'tech-1', version: 'version-1' },
       { id: 'tech-2', version: 'version-2' },
@@ -183,7 +183,7 @@ describe('ProjectItemComponent', () => {
     expect(techContent!.inputs).toEqual({
       technologies,
     } satisfies Partial<ProjectItemTechnologiesComponent>)
-  }))
+  })
 })
 
 function makeSut() {

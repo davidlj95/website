@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 
 import { Attribute, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
@@ -163,13 +163,13 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { score })
     })
 
-    it('should add score content', fakeAsync(() => {
+    it('should add score content', () => {
       const contentContainer = fixture.debugElement.query(
         CONTENT_CONTAINER_PREDICATE,
       )
 
       expect(contentContainer.nativeElement.textContent.trim()).toContain(score)
-    }))
+    })
   })
 
   describe('when courses are not empty', () => {
@@ -179,7 +179,7 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { courses })
     })
 
-    it('should add courses content', fakeAsync(() => {
+    it('should add courses content', () => {
       const contentContainer = fixture.debugElement.query(
         CONTENT_CONTAINER_PREDICATE,
       )
@@ -189,7 +189,7 @@ describe('EducationItemComponent', () => {
           course,
         )
       })
-    }))
+    })
   })
 })
 
