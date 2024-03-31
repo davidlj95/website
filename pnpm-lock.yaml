@@ -66,8 +66,8 @@ dependencies:
     specifier: 7.8.1
     version: 7.8.1
   simple-icons:
-    specifier: 11.10.0
-    version: 11.10.0
+    specifier: 11.11.0
+    version: 11.11.0
   tslib:
     specifier: 2.6.2
     version: 2.6.2
@@ -10078,8 +10078,8 @@ packages:
       - supports-color
     dev: true
 
-  /simple-icons@11.10.0:
-    resolution: {integrity: sha512-3jhPx5xgbDCx/tuegpnW82VmUc4xe7yVd5r/BwIhfei02hS3IbOfgLKPPczd2OasngeNEd0J31vU19/0jmfxrQ==}
+  /simple-icons@11.11.0:
+    resolution: {integrity: sha512-jF4FvxqJ5LGRgScMy6IWHYBuKG7SImwzsTDKHhmAB2RQVKEqvGWI8qmAHWYPKEGM8/oRA/VvKTVIbWdg7YPRsg==}
     engines: {node: '>=0.12.18'}
     dev: false
 
