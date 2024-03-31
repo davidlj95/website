@@ -7,7 +7,17 @@ import {
   DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS,
   DISPLAY_NONE_IF_NO_SCRIPT_CLASS,
 } from '@common/no-script'
-import { slideDownOnEnterAndSlideUpOnLeave } from '@common/animations'
+import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '@common/animations'
+import {
+  animate,
+  AUTO_STYLE,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations'
+
+const durationInMs = EMPHASIZED_DURATION_MS
 
 @Component({
   selector: 'app-chipped-content',
@@ -15,7 +25,36 @@ import { slideDownOnEnterAndSlideUpOnLeave } from '@common/animations'
   styleUrls: ['./chipped-content.component.scss'],
   standalone: true,
   imports: [NgFor, ChipComponent, TestIdDirective, NgClass, NgComponentOutlet],
-  animations: [slideDownOnEnterAndSlideUpOnLeave('enterAndLeave')],
+  animations: [
+    trigger('contentDisplayed', [
+      state('false', style({ height: '0', display: 'none' })),
+      state(
+        'true',
+        style({
+          height: AUTO_STYLE,
+          display: AUTO_STYLE,
+        }),
+      ),
+      transition('false -> true', [
+        style({ height: '0', visibility: 'hidden', display: AUTO_STYLE }),
+        animate(
+          `${durationInMs}ms ${TIMING_FUNCTION}`,
+          style({
+            height: AUTO_STYLE,
+            visibility: AUTO_STYLE,
+            display: AUTO_STYLE,
+          }),
+        ),
+      ]),
+      transition('true -> false', [
+        style({ height: AUTO_STYLE, visibility: AUTO_STYLE }),
+        animate(
+          `${durationInMs}ms ${TIMING_FUNCTION}`,
+          style({ height: '0', visibility: 'hidden' }),
+        ),
+      ]),
+    ]),
+  ],
 })
 export class ChippedContentComponent {
   @Input() public contents!: ReadonlyArray<ChippedContent>

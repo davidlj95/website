@@ -1,21 +1,20 @@
-import { ComponentFixture } from '@angular/core/testing'
+import { ComponentFixture, fakeAsync } from '@angular/core/testing'
 import { ChippedContentComponent } from './chipped-content.component'
 import { Component, DebugElement, Input } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
 import { expectIsInLayout, expectIsNotInLayout } from '@test/helpers/visibility'
 import { Subscription } from 'rxjs'
-import { MockProvider } from 'ng-mocks'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
-import { PLATFORM_SERVICE, PlatformService } from '@common/platform.service'
-import { MOCK_BROWSER_PLATFORM_SERVICE } from '@test/helpers/platform-service'
 import { componentTestSetup } from '@test/helpers/component-test-setup'
 import {
   expectIsBlockDisplayedIfNoScript,
   expectIsNotDisplayedIfNoScript,
 } from '@test/helpers/no-script'
 import { By } from '@angular/platform-browser'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { tickToFinishAnimation } from '@test/helpers/tick-to-finish-animation'
 
 describe('ChippedContentComponent', () => {
   let fixture: ComponentFixture<ChippedContentComponent>
@@ -55,23 +54,27 @@ describe('ChippedContentComponent', () => {
     })
   })
 
-  it('should not display any content by default', () => {
+  it('should render all contents without laying out neither its component or its chip', () => {
     const contentElements = fixture.debugElement.queryAll(CONTENT_PREDICATE)
-
     expect(contentElements.length).toEqual(CONTENTS.length)
-    contentElements.forEach((contentElement) => {
-      expectIsInLayout(contentElement.nativeElement)
+
+    contentElements.forEach((contentElement, index) => {
+      const content = CONTENTS[index]
+      const componentElement = contentElement.query(
+        byComponent(content.component),
+      )
+      expect(componentElement).toBeTruthy()
+
+      expect(componentElement.nativeElement.textContent.trim()).toEqual(
+        content.inputs!['data'],
+      )
+
+      const chipElement = contentElement.query(byComponent(ChipComponent))
+      expectIsNotInLayout(chipElement.nativeElement)
+
+      expectIsNotInLayout(contentElement.nativeElement)
     })
     expect(component.displayedContent).toBeUndefined()
-  })
-
-  it('should not display non-selectable chips', () => {
-    const contentContainers = fixture.debugElement.queryAll(CONTENT_PREDICATE)
-
-    for (const contentContainer of contentContainers) {
-      const chipElement = contentContainer.query(byComponent(ChipComponent))
-      expectIsInLayout(chipElement.nativeElement)
-    }
   })
 
   describe('when JS is disabled', () => {
@@ -105,7 +108,7 @@ describe('ChippedContentComponent', () => {
     let subscription: Subscription
     let displayedContent: ChippedContent | undefined
 
-    beforeEach(() => {
+    beforeEach(fakeAsync(() => {
       fooChipElement = findChipByDisplayName(FOO_CONTENT.displayName)!
       fooContentElement = fixture.debugElement.query(byComponent(FooComponent))
       expect(fooChipElement).withContext('foo chip exists').toBeTruthy()
@@ -116,10 +119,10 @@ describe('ChippedContentComponent', () => {
           displayedContent = newSelectedContent
         },
       )
-      fooChipElement.triggerEventHandler('selectedChange')
-
+      fooChipElement.triggerEventHandler('click')
       fixture.detectChanges()
-    })
+      tickToFinishAnimation()
+    }))
 
     afterEach(() => {
       subscription.unsubscribe()
@@ -139,7 +142,7 @@ describe('ChippedContentComponent', () => {
     })
 
     it('should display its content', () => {
-      expectIsNotInLayout(fooContentElement.nativeElement)
+      expectIsInLayout(fooContentElement.nativeElement)
     })
 
     it('should emit event indicating content has been displayed', () => {
@@ -147,10 +150,11 @@ describe('ChippedContentComponent', () => {
     })
 
     describe('when tapping same chip again', () => {
-      beforeEach(() => {
-        fooChipElement.triggerEventHandler('selectedChange')
+      beforeEach(fakeAsync(() => {
+        fooChipElement.triggerEventHandler('click')
         fixture.detectChanges()
-      })
+        tickToFinishAnimation()
+      }))
 
       it('should mark the chip as unselected', () => {
         expect(getReflectedAttribute(fooChipElement, 'selected')).toEqual(
@@ -159,7 +163,7 @@ describe('ChippedContentComponent', () => {
       })
 
       it('should not display its content', () => {
-        expectIsInLayout(fooContentElement.nativeElement)
+        expectIsNotInLayout(fooContentElement.nativeElement)
       })
 
       it('should emit event indicating no content is selected', () => {
@@ -170,14 +174,15 @@ describe('ChippedContentComponent', () => {
     describe('when tapping another chip', () => {
       let barChipElement: DebugElement
 
-      beforeEach(() => {
+      beforeEach(fakeAsync(() => {
         barChipElement = findChipByDisplayName(BAR_CONTENT.displayName)!
         expect(barChipElement).withContext('bar chip exists').toBeTruthy()
 
-        barChipElement.triggerEventHandler('selectedChange')
+        barChipElement.triggerEventHandler('click')
 
         fixture.detectChanges()
-      })
+        tickToFinishAnimation()
+      }))
 
       it('should mark the previous chip as unselected and just tapped chip as selected', () => {
         expect(getReflectedAttribute(fooChipElement, 'selected')).toBe(
@@ -189,12 +194,12 @@ describe('ChippedContentComponent', () => {
       })
 
       it('should hide currently active content and show the new content', () => {
-        expectIsInLayout(fooContentElement.nativeElement)
+        expectIsNotInLayout(fooContentElement.nativeElement)
 
         const barContentElement = fixture.debugElement.query(
           byComponent(BarComponent),
         )
-        expectIsNotInLayout(barContentElement.nativeElement)
+        expectIsInLayout(barContentElement.nativeElement)
       })
 
       it('should emit event indicating content has been displayed', () => {
@@ -218,36 +223,27 @@ class BarComponent {
   @Input() public data?: string
 }
 
-const FOO_CONTENT_DATA = 'foo-data'
 const FOO_CONTENT = new ChippedContent({
   //id: 'foo',
   displayName: 'Foo',
   component: FooComponent,
-  inputs: { data: FOO_CONTENT_DATA } satisfies Partial<FooComponent>,
+  inputs: { data: 'foo-data' } satisfies Partial<FooComponent>,
 })
-const BAR_CONTENT_DATA = 'bar-data'
 const BAR_CONTENT = new ChippedContent({
   //id: 'bar',
   displayName: 'Bar',
   component: BarComponent,
-  inputs: { data: BAR_CONTENT_DATA } satisfies Partial<BarComponent>,
+  inputs: { data: 'bar-data' } satisfies Partial<BarComponent>,
 })
 
-const CONTENTS = [FOO_CONTENT, BAR_CONTENT]
-function makeSut({
-  platformService,
-}: { platformService?: PlatformService } = {}): [
+const CONTENTS = [FOO_CONTENT, BAR_CONTENT] as const
+function makeSut(): [
   ComponentFixture<ChippedContentComponent>,
   ChippedContentComponent,
 ] {
   const [fixture, component] = componentTestSetup(ChippedContentComponent, {
     imports: [ChippedContentComponent, ChipComponent],
-    providers: [
-      MockProvider(
-        PLATFORM_SERVICE,
-        platformService ?? MOCK_BROWSER_PLATFORM_SERVICE,
-      ),
-    ],
+    providers: [provideNoopAnimations()],
   })
   component.contents = CONTENTS
   return [fixture, component]
