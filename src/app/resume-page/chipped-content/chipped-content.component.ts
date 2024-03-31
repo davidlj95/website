@@ -26,30 +26,21 @@ import { PLATFORM_SERVICE, PlatformService } from '@common/platform.service'
   imports: [NgFor, ChipComponent, TestIdDirective, NgClass, NgComponentOutlet],
   animations: [
     trigger('contentDisplayed', [
-      state('false', style({ height: '0', display: 'none' })),
-      state(
-        'true',
-        style({
-          height: AUTO_STYLE,
-          display: AUTO_STYLE,
-        }),
-      ),
+      state('false', style({ display: 'none' })),
+      state('true', style({ display: AUTO_STYLE })),
       transition('false -> true', [
-        style({ height: '0', visibility: 'hidden', display: AUTO_STYLE }),
+        style({ height: '0', display: AUTO_STYLE }),
         animate(
           `${EMPHASIZED_DURATION_MS}ms ${TIMING_FUNCTION}`,
           style({
             height: AUTO_STYLE,
-            visibility: AUTO_STYLE,
-            display: AUTO_STYLE,
           }),
         ),
       ]),
       transition('true -> false', [
-        style({ height: AUTO_STYLE, visibility: AUTO_STYLE }),
         animate(
           `${EMPHASIZED_DURATION_MS}ms ${TIMING_FUNCTION}`,
-          style({ height: '0', visibility: 'hidden' }),
+          style({ height: '0' }),
         ),
       ]),
     ]),
