@@ -19,7 +19,6 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
     ContentChipComponent,
   ],
   templateUrl: './project-item-technologies.component.html',
-  styleUrl: './project-item-technologies.component.scss',
 })
 export class ProjectItemTechnologiesComponent {
   @Input({ required: true })
