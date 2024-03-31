@@ -16,6 +16,8 @@
   *ngFor="let content of contents"
   [ngClass]="DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS"
   [@contentDisplayed]="_displayedContent === content"
+  (@contentDisplayed.done)="contentElement.scrollIntoView({ block: 'nearest' })"
+  #contentElement
 >
   <app-chip
     [ngClass]="DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS"
