@@ -38,5 +38,6 @@ describe('ResumePageComponent', () => {
     ProfileSectionComponent,
     ExperienceSectionComponent,
     EducationSectionComponent,
+    ProjectsSectionComponent,
   )
 })

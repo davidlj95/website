@@ -49,10 +49,7 @@ const descriptionLineToCollapsibleTreeNode = (
 ): CollapsibleTreeNode =>
   new CollapsibleTreeNode(
     new CollapsibleTreeNodeData(ProfileDescriptionLineComponent, {
-      inputs: { line } satisfies Record<
-        keyof ProfileDescriptionLineComponent,
-        unknown
-      >,
+      inputs: { line } satisfies Partial<ProfileDescriptionLineComponent>,
     }),
     line.children.map(descriptionLineToCollapsibleTreeNode),
   )

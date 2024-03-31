@@ -1,21 +1,14 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 
 import {
   Attribute,
-  ContentId,
   ProjectItemComponent,
   StackContent,
 } from './project-item.component'
-import { MockComponents } from 'ng-mocks'
+import { MockComponents, MockProvider } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
-import { SAMPLE_NEW_PROJECT_ITEM_ARG } from './fixtures'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
 import { ProjectItem, Stack, Technology } from './project-item'
@@ -31,42 +24,20 @@ import { TestIdDirective } from '@common/test-id.directive'
 import { DateRange } from '../../date-range/date-range'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
-import { ChippedContent } from '../../chipped-content/chipped-content'
-import { EventEmitter } from '@angular/core'
-import { ProjectItemDescriptionComponent } from './project-item-description/project-item-description.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { NgIf } from '@angular/common'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { PLATFORM_SERVICE } from '@common/platform.service'
+import { MOCK_BROWSER_PLATFORM_SERVICE } from '@test/helpers/platform-service'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
   let fixture: ComponentFixture<ProjectItemComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        ProjectItemComponent,
-        NgIf,
-        LinkComponent,
-        TestIdDirective,
-        MockComponents(
-          CardComponent,
-          CardHeaderComponent,
-          CardHeaderImageComponent,
-          CardHeaderTextsComponent,
-          CardHeaderTitleComponent,
-          CardHeaderSubtitleComponent,
-          CardHeaderDetailComponent,
-          DateRangeComponent,
-          CardHeaderAttributesComponent,
-          AttributeComponent,
-          ChippedContentComponent,
-          ProjectItemTechnologiesComponent,
-        ),
-      ],
-    })
-    fixture = TestBed.createComponent(ProjectItemComponent)
-    component = fixture.componentInstance
+    ;[fixture, component] = makeSut()
   })
 
   it('should create', () => {
@@ -186,70 +157,75 @@ describe('ProjectItemComponent', () => {
     })
   })
 
-  it('should include chipped contents', () => {
-    const chippedContentsElement = fixture.debugElement.query(
-      byComponent(ChippedContentComponent),
-    )
-    expect(chippedContentsElement).toBeTruthy()
-  })
-
-  it('should generate description content item', fakeAsync(() => {
+  it('should render description content', () => {
     const description = 'It is super cool and does awesome things'
     setProjectItem(fixture, { description })
 
-    const descriptionContent = component.contents.find(
-      (content) => content.id === ContentId.Description,
-    ) as ChippedContent<ContentId, ProjectItemDescriptionComponent>
-    expect(descriptionContent).toBeTruthy()
-
-    expect(descriptionContent!.component).toEqual(
-      ProjectItemDescriptionComponent,
+    const contentContainer = fixture.debugElement.query(
+      byComponent(ChippedContentComponent),
     )
+    expect(contentContainer).toBeTruthy()
+    expect(contentContainer.nativeElement.textContent.trim()).toContain(
+      description,
+    )
+  })
 
-    const mockDescriptionComponent = {
-      enterAndLeaveAnimationDone: new EventEmitter<void>(),
-    } as ProjectItemDescriptionComponent
-    descriptionContent!.setupComponent(mockDescriptionComponent)
-    expect(mockDescriptionComponent.description).toEqual(description)
-
-    let endedAnimation = false
-    descriptionContent
-      .waitForAnimationEnd(mockDescriptionComponent)
-      .then(() => (endedAnimation = true))
-    tick()
-    expect(endedAnimation).toBeFalse()
-    mockDescriptionComponent.enterAndLeaveAnimationDone.emit()
-    tick()
-    expect(endedAnimation).toBeTrue()
-  }))
-
-  it('should generate tech content item', fakeAsync(() => {
+  it('should render techs', () => {
     const technologies = [
-      { id: 'id', version: 'version' },
+      { id: 'tech-1', version: 'version-1' },
+      { id: 'tech-2', version: 'version-2' },
     ] satisfies ReadonlyArray<Technology>
+
     setProjectItem(fixture, { technologies })
 
-    const technologyContent = component.contents.find(
-      (content) => content.id === ContentId.Technologies,
-    ) as ChippedContent<ContentId, ProjectItemTechnologiesComponent>
-    expect(technologyContent).toBeTruthy()
-
-    expect(technologyContent!.component).toEqual(
-      ProjectItemTechnologiesComponent,
+    const techContent = component.contents.find(
+      (content) => content.component === ProjectItemTechnologiesComponent,
     )
-
-    const mockTechnologyComponent = {} as ProjectItemTechnologiesComponent
-    technologyContent!.setupComponent(mockTechnologyComponent)
-    expect(mockTechnologyComponent.technologies).toEqual(technologies)
-  }))
+    expect(techContent).toBeTruthy()
+    expect(techContent!.inputs).toEqual({
+      technologies,
+    } satisfies Partial<ProjectItemTechnologiesComponent>)
+  })
 })
+
+function makeSut() {
+  return componentTestSetup(ProjectItemComponent, {
+    imports: [
+      ProjectItemComponent,
+      NgIf,
+      LinkComponent,
+      TestIdDirective,
+      MockComponents(
+        CardComponent,
+        CardHeaderComponent,
+        CardHeaderImageComponent,
+        CardHeaderTextsComponent,
+        CardHeaderTitleComponent,
+        CardHeaderSubtitleComponent,
+        CardHeaderDetailComponent,
+        DateRangeComponent,
+        CardHeaderAttributesComponent,
+        AttributeComponent,
+        ProjectItemTechnologiesComponent,
+      ),
+    ],
+    providers: [
+      provideNoopAnimations(), // to use real chipped content component
+      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
+    ],
+  })
+}
 
 function setProjectItem(
   fixture: ComponentFixture<ProjectItemComponent>,
   overrides: Partial<ConstructorParameters<typeof ProjectItem>[0]> = {},
 ) {
   fixture.componentInstance.item = new ProjectItem({
-    ...SAMPLE_NEW_PROJECT_ITEM_ARG,
+    ...{
+      name: 'Sample project item',
+      description: 'Project item',
+      dateRange: new DateRange(new Date('2022-01-01'), new Date('2022-12-31')),
+    },
     ...overrides,
   })
   fixture.detectChanges()

@@ -1,22 +1,13 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 
-import {
-  Attribute,
-  ContentId,
-  EducationItemComponent,
-} from './education-item.component'
+import { Attribute, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
 import { NgIf, NgOptimizedImage } from '@angular/common'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { DateRange } from '../../date-range/date-range'
-import { MockComponents } from 'ng-mocks'
+import { MockComponents, MockProvider } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { LinkComponent } from '../../link/link.component'
@@ -31,40 +22,17 @@ import { CardHeaderAttributesComponent } from '../../card/card-header/card-heade
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { byComponent } from '@test/helpers/component-query-predicates'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
-import { ChippedContent } from '../../chipped-content/chipped-content'
-import { EventEmitter } from '@angular/core'
-import { EducationItemScoreComponent } from './education-item-score/education-item-score.component'
-import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
+import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { PLATFORM_SERVICE } from '@common/platform.service'
+import { MOCK_BROWSER_PLATFORM_SERVICE } from '@test/helpers/platform-service'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
   let fixture: ComponentFixture<EducationItemComponent>
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        EducationItemComponent,
-        NgIf,
-        NgOptimizedImage,
-        LinkComponent,
-        CardHeaderImageComponent,
-        CardHeaderTitleComponent,
-        CardHeaderSubtitleComponent,
-        TestIdDirective,
-        MockComponents(
-          CardComponent,
-          DateRangeComponent,
-          CardHeaderDetailComponent,
-          CardHeaderComponent,
-          CardHeaderTextsComponent,
-          CardHeaderAttributesComponent,
-          AttributeComponent,
-          ChippedContentComponent,
-        ),
-      ],
-    })
-    fixture = TestBed.createComponent(EducationItemComponent)
-    component = fixture.componentInstance
+    ;[fixture, component] = makeSut()
   })
 
   it('should create', () => {
@@ -188,6 +156,8 @@ describe('EducationItemComponent', () => {
     ).toBeTruthy()
   })
 
+  const CONTENT_CONTAINER_PREDICATE = byComponent(ChippedContentComponent)
+
   describe('when score is present', () => {
     const score = 'Very good++'
 
@@ -195,30 +165,13 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { score })
     })
 
-    it('should add score content', fakeAsync(() => {
-      const scoreContent = component.contents.find(
-        (content) => content.id === ContentId.Score,
-      ) as ChippedContent<ContentId, EducationItemScoreComponent>
-      expect(scoreContent).toBeTruthy()
+    it('should render score content', () => {
+      const contentContainer = fixture.debugElement.query(
+        CONTENT_CONTAINER_PREDICATE,
+      )
 
-      expect(scoreContent!.component).toEqual(EducationItemScoreComponent)
-
-      const mockScoreComponent = {
-        enterAndLeaveAnimationDone: new EventEmitter<void>(),
-      } as EducationItemScoreComponent
-      scoreContent!.setupComponent(mockScoreComponent)
-      expect(mockScoreComponent.score).toEqual(score)
-
-      let endedAnimation = false
-      scoreContent
-        .waitForAnimationEnd(mockScoreComponent)
-        .then(() => (endedAnimation = true))
-      tick()
-      expect(endedAnimation).toBeFalse()
-      mockScoreComponent.enterAndLeaveAnimationDone.emit()
-      tick()
-      expect(endedAnimation).toBeTrue()
-    }))
+      expect(contentContainer.nativeElement.textContent.trim()).toContain(score)
+    })
   })
 
   describe('when courses are not empty', () => {
@@ -228,32 +181,47 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { courses })
     })
 
-    it('should add courses content', fakeAsync(() => {
-      const coursesContent = component.contents.find(
-        (content) => content.id === ContentId.Courses,
-      ) as ChippedContent<ContentId, EducationItemCoursesComponent>
-      expect(coursesContent).toBeTruthy()
+    it('should render courses content', () => {
+      const contentContainer = fixture.debugElement.query(
+        CONTENT_CONTAINER_PREDICATE,
+      )
 
-      expect(coursesContent!.component).toEqual(EducationItemCoursesComponent)
-
-      const mockCoursesComponent = {
-        enterAndLeaveAnimationDone: new EventEmitter<void>(),
-      } as EducationItemCoursesComponent
-      coursesContent!.setupComponent(mockCoursesComponent)
-      expect(mockCoursesComponent.courses).toEqual(courses)
-
-      let endedAnimation = false
-      coursesContent
-        .waitForAnimationEnd(mockCoursesComponent)
-        .then(() => (endedAnimation = true))
-      tick()
-      expect(endedAnimation).toBeFalse()
-      mockCoursesComponent.enterAndLeaveAnimationDone.emit()
-      tick()
-      expect(endedAnimation).toBeTrue()
-    }))
+      courses.forEach((course) => {
+        expect(contentContainer.nativeElement.textContent.trim()).toContain(
+          course,
+        )
+      })
+    })
   })
 })
+
+function makeSut() {
+  return componentTestSetup(EducationItemComponent, {
+    imports: [
+      EducationItemComponent,
+      NgIf,
+      NgOptimizedImage,
+      LinkComponent,
+      CardHeaderImageComponent,
+      CardHeaderTitleComponent,
+      CardHeaderSubtitleComponent,
+      TestIdDirective,
+      MockComponents(
+        CardComponent,
+        DateRangeComponent,
+        CardHeaderDetailComponent,
+        CardHeaderComponent,
+        CardHeaderTextsComponent,
+        CardHeaderAttributesComponent,
+        AttributeComponent,
+      ),
+    ],
+    providers: [
+      provideNoopAnimations(), // to include real chipped content
+      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
+    ],
+  })
+}
 
 function setEducationItem(
   fixture: ComponentFixture<EducationItemComponent>,

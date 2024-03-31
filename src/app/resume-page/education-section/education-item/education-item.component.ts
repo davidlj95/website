@@ -3,8 +3,6 @@ import { EducationItem } from './education-item'
 import { SocialLeaderboard } from '../../../material-symbols'
 import { SlugGeneratorService } from '@common/slug-generator.service'
 import { ChippedContent } from '../../chipped-content/chipped-content'
-import { EducationItemScoreComponent } from './education-item-score/education-item-score.component'
-import { firstValueFrom } from 'rxjs'
 import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
@@ -20,11 +18,12 @@ import { TestIdDirective } from '@common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
+import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
+import { isNotUndefined } from '@common/is-not-undefined'
 
 @Component({
   selector: 'app-education-item',
   templateUrl: './education-item.component.html',
-  styleUrls: ['./education-item.component.scss'],
   standalone: true,
   imports: [
     CardComponent,
@@ -44,7 +43,42 @@ import { CardComponent } from '../../card/card.component'
   ],
 })
 export class EducationItemComponent {
-  @Input({ required: true }) public item!: EducationItem
+  @Input({ required: true }) public set item(item: EducationItem) {
+    this._item = item
+    if (item.institution.name.length > 15 && item.institution.shortName) {
+      this._institutionDisplayName = item.institution.shortName
+    } else {
+      this._institutionDisplayName = item.institution.name
+    }
+    this._itemIdPrefix = this.slugGenerator.generate(item.institution.name, {
+      prefix: 'edu-',
+    })
+    this._contents = [
+      item.score
+        ? new ChippedContent({
+            displayName: 'Score',
+            component: TextContentComponent,
+            inputs: {
+              text: item.score,
+            } satisfies Partial<TextContentComponent>,
+          })
+        : undefined,
+      item.courses.length > 0
+        ? new ChippedContent({
+            displayName: 'Courses',
+            component: EducationItemCoursesComponent,
+            inputs: {
+              courses: item.courses,
+            } satisfies Partial<EducationItemCoursesComponent>,
+          })
+        : undefined,
+    ].filter(isNotUndefined)
+  }
+
+  protected _item!: EducationItem
+  protected _contents: ReadonlyArray<ChippedContent> = []
+  protected _institutionDisplayName?: string
+  protected _itemIdPrefix?: string
 
   protected readonly MaterialSymbol = {
     SocialLeaderboard,
@@ -53,68 +87,11 @@ export class EducationItemComponent {
 
   constructor(private slugGenerator: SlugGeneratorService) {}
 
-  public get contents() {
-    const contents = []
-    if (this.item.score) {
-      contents.push(
-        new ChippedContent({
-          id: ContentId.Score,
-          displayName: 'Score',
-          component: EducationItemScoreComponent,
-          setupComponent: (component) => {
-            component.score = this.item.score
-          },
-          waitForAnimationEnd: async (component) => {
-            await firstValueFrom(component.enterAndLeaveAnimationDone)
-          },
-        }),
-      )
-    }
-    if (this.item.courses) {
-      contents.push(
-        new ChippedContent({
-          id: ContentId.Courses,
-          displayName: 'Courses',
-          component: EducationItemCoursesComponent,
-          setupComponent: (component) => {
-            component.courses = this.item.courses
-          },
-          waitForAnimationEnd: async (component) => {
-            await firstValueFrom(component.enterAndLeaveAnimationDone)
-          },
-        }),
-      )
-    }
-    return contents
-  }
-
-  public get institutionDisplayName() {
-    if (
-      this.item.institution.name.length > 15 &&
-      this.item.institution.shortName
-    ) {
-      return this.item.institution.shortName
-    }
-    return this.item.institution.name
-  }
-
-  private get itemIdPrefix() {
-    // TODO: this can fall short if we repeat something in the same institution!
-    return this.slugGenerator.generate(this.item.institution.name, {
-      prefix: 'edu-',
-    })
-  }
-
   public getAttributeId(attribute: Attribute) {
-    return `${this.itemIdPrefix}-${attribute}`
+    return `${this._itemIdPrefix}-${attribute}`
   }
 }
 
 export enum Attribute {
   CumLaude = 'cum-laude',
-}
-
-export enum ContentId {
-  Score = 'score',
-  Courses = 'courses',
 }

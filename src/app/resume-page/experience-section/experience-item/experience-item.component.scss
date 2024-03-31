@@ -1,9 +1,0 @@
-:host {
-  app-card {
-    height: 100%;
-  }
-
-  &.expanded {
-    grid-row: span 2;
-  }
-}

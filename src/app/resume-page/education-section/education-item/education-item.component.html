@@ -1,34 +1,34 @@
 <app-card>
   <app-card-header>
-    <app-link [href]="item.institution.website?.toString()" appTestId="image">
+    <app-link [href]="_item.institution.website?.toString()" appTestId="image">
       <app-card-header-image
-        [src]="item.institution.imageSrc"
-        [alt]="item.institution.name + ' logo'"
+        [src]="_item.institution.imageSrc"
+        [alt]="_item.institution.name + ' logo'"
       >
       </app-card-header-image>
     </app-link>
     <app-card-header-texts>
       <app-card-header-title>
         <app-link
-          [href]="item.institution.website?.toString()"
+          [href]="_item.institution.website?.toString()"
           appTestId="institution-name"
         >
-          {{ institutionDisplayName }}
+          {{ _institutionDisplayName }}
         </app-link>
       </app-card-header-title>
       <app-card-header-subtitle appTestId="study-type">
-        {{ item.studyType }}
+        {{ _item.studyType }}
       </app-card-header-subtitle>
       <app-card-header-subtitle appTestId="area">
-        {{ item.area }}
+        {{ _item.area }}
       </app-card-header-subtitle>
       <app-card-header-detail>
-        <app-date-range [range]="item.dateRange"></app-date-range>
+        <app-date-range [range]="_item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
       <app-attribute
-        *ngIf="item.cumLaude"
+        *ngIf="_item.cumLaude"
         [id]="getAttributeId(Attribute.CumLaude)"
         [symbol]="MaterialSymbol.SocialLeaderboard"
         [appTestId]="Attribute.CumLaude"
@@ -37,5 +37,5 @@
       </app-attribute>
     </app-card-header-attributes>
   </app-card-header>
-  <app-chipped-content [contents]="contents"></app-chipped-content>
+  <app-chipped-content [contents]="_contents"></app-chipped-content>
 </app-card>

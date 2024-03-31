@@ -1,31 +1,31 @@
 <app-card>
   <app-card-header>
-    <app-link [href]="item.company.website?.toString()" appTestId="image">
+    <app-link [href]="_item.company.website?.toString()" appTestId="image">
       <app-card-header-image
-        [src]="item.company.imageSrc"
-        [alt]="item.company.name + ' logo'"
+        [src]="_item.company.imageSrc"
+        [alt]="_item.company.name + ' logo'"
       >
       </app-card-header-image>
     </app-link>
     <app-card-header-texts>
       <app-card-header-title>
         <app-link
-          [href]="item.company.website?.toString()"
+          [href]="_item.company.website?.toString()"
           appTestId="company-name"
         >
-          {{ item.company.name }}
+          {{ _item.company.name }}
         </app-link>
       </app-card-header-title>
       <app-card-header-subtitle appTestId="position">
-        {{ item.position }}
+        {{ _item.position }}
       </app-card-header-subtitle>
       <app-card-header-detail>
-        <app-date-range [range]="item.dateRange"></app-date-range>
+        <app-date-range [range]="_item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
       <app-attribute
-        *ngIf="!item.freelance; else freelance"
+        *ngIf="!_item.freelance; else freelance"
         [symbol]="MaterialSymbol.Badge"
         [id]="getAttributeId(Attribute.Employee)"
         [appTestId]="Attribute.Employee"
@@ -42,7 +42,7 @@
         </app-attribute>
       </ng-template>
       <app-attribute
-        *ngIf="item.internship"
+        *ngIf="_item.internship"
         [symbol]="MaterialSymbol.School"
         [id]="getAttributeId(Attribute.Internship)"
         [appTestId]="Attribute.Internship"
@@ -50,7 +50,7 @@
         Internship
       </app-attribute>
       <app-attribute
-        *ngIf="item.morePositions"
+        *ngIf="_item.morePositions"
         [symbol]="MaterialSymbol.More"
         [id]="getAttributeId(Attribute.MorePositions)"
         [appTestId]="Attribute.MorePositions"
@@ -59,7 +59,7 @@
         See summary for details
       </app-attribute>
       <app-attribute
-        *ngIf="item.promotions"
+        *ngIf="_item.promotions"
         [symbol]="MaterialSymbol.ToolsLadder"
         [id]="getAttributeId(Attribute.Promotions)"
         [appTestId]="Attribute.Promotions"
@@ -68,8 +68,5 @@
       </app-attribute>
     </app-card-header-attributes>
   </app-card-header>
-  <app-chipped-content
-    [contents]="contents"
-    (contentDisplayedChange)="expanded = $event"
-  ></app-chipped-content>
+  <app-chipped-content [contents]="contents"></app-chipped-content>
 </app-card>

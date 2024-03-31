@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
-import { ProjectsSectionComponent } from './projects-section/projects-section.component'
-import { EducationSectionComponent } from './education-section/education-section.component'
 import { ExperienceSectionComponent } from './experience-section/experience-section.component'
 import { ProfileSectionComponent } from './profile-section/profile-section.component'
+import { EducationSectionComponent } from './education-section/education-section.component'
+import { ProjectsSectionComponent } from './projects-section/projects-section.component'
 
 @Component({
   selector: 'app-resume-page',

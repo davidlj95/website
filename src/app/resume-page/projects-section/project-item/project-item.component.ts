@@ -3,8 +3,6 @@ import { ProjectItem, Stack } from './project-item'
 import { SlugGeneratorService } from '@common/slug-generator.service'
 import { Apps, Dns, FullStackedBarChart } from '../../../material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
-import { ProjectItemDescriptionComponent } from './project-item-description/project-item-description.component'
-import { firstValueFrom } from 'rxjs'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
@@ -16,15 +14,16 @@ import { CardHeaderTextsComponent } from '../../card/card-header/card-header-tex
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { TestIdDirective } from '@common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
-import { AsyncPipe, NgIf } from '@angular/common'
+import { NgIf } from '@angular/common'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
+import { isNotUndefined } from '@common/is-not-undefined'
+import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 
 @Component({
   selector: 'app-project-item',
   templateUrl: './project-item.component.html',
-  styleUrls: ['./project-item.component.scss'],
   standalone: true,
   imports: [
     CardComponent,
@@ -41,55 +40,48 @@ import { ProjectItemTechnologiesComponent } from './project-item-technologies/pr
     CardHeaderAttributesComponent,
     AttributeComponent,
     ChippedContentComponent,
-    AsyncPipe,
   ],
 })
 export class ProjectItemComponent {
-  @Input({ required: true }) public item!: ProjectItem
-
-  public get contents() {
-    const contents = []
-    if (this.item.description) {
-      contents.push(
-        new ChippedContent({
-          id: ContentId.Description,
-          displayName: 'Description',
-          component: ProjectItemDescriptionComponent,
-          setupComponent: (component) => {
-            component.description = this.item.description
-          },
-          waitForAnimationEnd: async (component) => {
-            await firstValueFrom(component.enterAndLeaveAnimationDone)
-          },
-        }),
-      )
-    }
-    if (this.item.technologies.length > 0) {
-      contents.push(
-        new ChippedContent({
-          id: ContentId.Technologies,
-          displayName: 'Tech',
-          component: ProjectItemTechnologiesComponent,
-          setupComponent: (component) => {
-            component.technologies = this.item.technologies
-          },
-          waitForAnimationEnd: async () => {},
-        }),
-      )
-    }
-    return contents
+  @Input({ required: true }) public set item(item: ProjectItem) {
+    this._item = item
+    this._itemIdPrefix = `project-${this.slugGenerator.generate(item.name)}`
+    this.contents = [
+      item.description
+        ? new ChippedContent({
+            displayName: 'Description',
+            component: TextContentComponent,
+            inputs: {
+              text: item.description,
+            } satisfies Partial<TextContentComponent>,
+          })
+        : undefined,
+      item.technologies.length > 0
+        ? new ChippedContent({
+            displayName: 'Tech',
+            component: ProjectItemTechnologiesComponent,
+            inputs: {
+              technologies: item.technologies,
+            } satisfies Partial<ProjectItemTechnologiesComponent>,
+          })
+        : undefined,
+    ].filter(isNotUndefined)
   }
+
+  protected _item!: ProjectItem
+  /**
+   * @visibleForTesting
+   */
+  public contents: ReadonlyArray<ChippedContent> = []
+  protected _itemIdPrefix?: string
+
   protected readonly StackContent = StackContent
   protected readonly Attribute = Attribute
 
   constructor(private slugGenerator: SlugGeneratorService) {}
 
-  private get itemId(): string {
-    return `project-${this.slugGenerator.generate(this.item.name)}`
-  }
-
   public getAttributeId(attribute: Attribute): string {
-    return `${this.itemId}-${attribute}`
+    return `${this._itemIdPrefix}-${attribute}`
   }
 }
 
@@ -112,9 +104,4 @@ export const StackContent: { [Property in Stack]: StackContent } = {
 export interface StackContent {
   displayName: string
   materialSymbol: string
-}
-
-export enum ContentId {
-  Description = 'description',
-  Technologies = 'tech',
 }
