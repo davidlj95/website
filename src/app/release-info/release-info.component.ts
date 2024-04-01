@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { RELEASE } from '@common/injection-tokens'
+import { RELEASE } from '@/common/injection-tokens'
 import { ReleaseInfoSummary } from './semantic-release'
 
 @Component({

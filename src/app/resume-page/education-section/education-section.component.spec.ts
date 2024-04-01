@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { EducationSectionComponent } from './education-section.component'
 import { EducationItemComponent } from './education-item/education-item.component'
 import { EducationItemsService } from './education-items.service'
-import { byComponent } from '@test/helpers/component-query-predicates'
+import { byComponent } from '@/test/helpers/component-query-predicates'
 import { MockComponents } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { NgForOf } from '@angular/common'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 
 describe('EducationSectionComponent', () => {
   let component: EducationSectionComponent

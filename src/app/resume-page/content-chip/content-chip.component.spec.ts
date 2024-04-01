@@ -1,8 +1,8 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { ContentChipComponent } from './content-chip.component'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
-import { shouldProjectContent } from '@test/helpers/component-testers'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { shouldProjectContent } from '@/test/helpers/component-testers'
 
 describe('ContentChipComponent', () => {
   let component: ContentChipComponent

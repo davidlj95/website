@@ -2,8 +2,8 @@ import { Component, Inject } from '@angular/core'
 import { Lightbulb } from '../material-symbols'
 import { Router } from '@angular/router'
 import { Environment } from '../../environments'
-import { ENVIRONMENT } from '@common/injection-tokens'
-import { MaterialSymbolDirective } from '@common/material-symbol.directive'
+import { ENVIRONMENT } from '@/common/injection-tokens'
+import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 
 @Component({
   selector: 'app-not-found-page',

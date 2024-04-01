@@ -3,7 +3,7 @@ import { EventEmitter } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Subscription } from 'rxjs'
-import { WINDOW } from '@common/injection-tokens'
+import { WINDOW } from '@/common/injection-tokens'
 import { ColorSchemeService, Scheme } from './color-scheme.service'
 
 describe('ColorSchemeService', () => {

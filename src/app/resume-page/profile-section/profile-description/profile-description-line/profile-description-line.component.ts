@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { MaterialSymbolDirective } from '@common/material-symbol.directive'
+import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgIf } from '@angular/common'
 import { DescriptionLine } from '../../../../metadata'
 import { DomSanitizer } from '@angular/platform-browser'

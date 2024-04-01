@@ -1,7 +1,7 @@
 import { ApplicationConfig, mergeApplicationConfig } from '@angular/core'
 import { provideServerRendering } from '@angular/platform-server'
 
-import { WINDOW } from '@common/injection-tokens'
+import { WINDOW } from '@/common/injection-tokens'
 import { appConfig } from './app.config'
 
 const serverConfig: ApplicationConfig = {

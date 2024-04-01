@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common'
 import { Inject, Injectable } from '@angular/core'
-import { WINDOW } from '@common/injection-tokens'
+import { WINDOW } from '@/common/injection-tokens'
 
 // Ensure in SCSS styles that these values alter the color scheme
 // Partially enforced by color scheme tests in color-scheme.spec.ts

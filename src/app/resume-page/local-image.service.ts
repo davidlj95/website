@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { SlugGeneratorService } from '@common/slug-generator.service'
+import { SlugGeneratorService } from '@/common/slug-generator.service'
 
 @Injectable({
   providedIn: 'root',

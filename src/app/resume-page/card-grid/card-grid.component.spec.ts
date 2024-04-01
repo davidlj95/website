@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 import { CardGridComponent } from './card-grid.component'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
-import { shouldProjectContent } from '@test/helpers/component-testers'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { shouldProjectContent } from '@/test/helpers/component-testers'
 
 describe('CardGridComponent', () => {
   let component: CardGridComponent

@@ -7,7 +7,7 @@ import {
 } from './json-resume-experience-item-adapter.service'
 import { Environment } from '../../../environments'
 import { MockProvider } from 'ng-mocks'
-import { ENVIRONMENT } from '@common/injection-tokens'
+import { ENVIRONMENT } from '@/common/injection-tokens'
 import { LocalImageService } from '../local-image.service'
 
 describe('JsonResumeExperienceItemAdapterService', () => {

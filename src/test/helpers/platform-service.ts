@@ -1,4 +1,4 @@
-import { PlatformService } from '@common/platform.service'
+import { PlatformService } from '@/common/platform.service'
 
 function makeMockPlatformService({
   isBrowser,

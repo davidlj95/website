@@ -1,10 +1,10 @@
 import { EXTRA_DISPLAY_NAMES, TechnologyService } from './technology.service'
 import SIMPLE_ICONS_JSON from './simple-icons.json'
-import { serviceTestSetup } from '@test/helpers/service-test-setup'
+import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { EXTRA_ICONS } from './extra-icons'
 import { MockProvider } from 'ng-mocks'
 import { DomSanitizer } from '@angular/platform-browser'
-import { IDENTITY } from '@test/helpers/identity'
+import { IDENTITY } from '@/test/helpers/identity'
 
 describe('TechnologyService', () => {
   let sut: TechnologyService

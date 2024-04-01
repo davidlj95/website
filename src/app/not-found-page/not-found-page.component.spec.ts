@@ -7,7 +7,7 @@ import {
 import { Environment } from '../../environments'
 import { Router } from '@angular/router'
 import { MockProvider } from 'ng-mocks'
-import { ENVIRONMENT } from '@common/injection-tokens'
+import { ENVIRONMENT } from '@/common/injection-tokens'
 
 describe('NotFoundPageComponent', () => {
   let component: NotFoundPageComponent

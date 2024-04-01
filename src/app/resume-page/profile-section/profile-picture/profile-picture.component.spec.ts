@@ -1,10 +1,10 @@
 import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { expectIsHidden } from '@test/helpers/visibility'
+import { expectIsHidden } from '@/test/helpers/visibility'
 
 import { ProfilePictureComponent } from './profile-picture.component'
-import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
+import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
 
 describe('ProfilePictureComponent', () => {
   let component: ProfilePictureComponent

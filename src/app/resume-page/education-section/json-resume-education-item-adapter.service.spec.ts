@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing'
 import resume from '../../../../assets/resume.json'
 import { Environment } from '../../../environments'
 import { MockProvider } from 'ng-mocks'
-import { ENVIRONMENT } from '@common/injection-tokens'
+import { ENVIRONMENT } from '@/common/injection-tokens'
 import {
   JsonResumeEducationItem,
   JsonResumeEducationItemAdapterService,

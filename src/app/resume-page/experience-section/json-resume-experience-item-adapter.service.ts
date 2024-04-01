@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core'
 import resume from '../../../../assets/resume.json'
 import { ExperienceItem } from './experience-item/experience-item'
-import { ENVIRONMENT } from '@common/injection-tokens'
+import { ENVIRONMENT } from '@/common/injection-tokens'
 import { Environment } from '../../../environments'
 import { Organization } from '../organization'
 import { DateRange } from '../date-range/date-range'
