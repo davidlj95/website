@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { ProjectItem, Stack } from './project-item'
-import { SlugGeneratorService } from '@common/slug-generator.service'
+import { SlugGeneratorService } from '@/common/slug-generator.service'
 import { Apps, Dns, FullStackedBarChart } from '../../../material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
@@ -12,13 +12,13 @@ import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
-import { TestIdDirective } from '@common/test-id.directive'
+import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { NgIf } from '@angular/common'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
-import { isNotUndefined } from '@common/is-not-undefined'
+import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 
 @Component({

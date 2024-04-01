@@ -1,13 +1,13 @@
 import { Component, Inject, Input } from '@angular/core'
 import { ChipComponent } from '../chip/chip.component'
 import { NgClass, NgComponentOutlet, NgFor } from '@angular/common'
-import { TestIdDirective } from '@common/test-id.directive'
+import { TestIdDirective } from '@/common/test-id.directive'
 import { ChippedContent } from './chipped-content'
 import {
   DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS,
   DISPLAY_NONE_IF_NO_SCRIPT_CLASS,
-} from '@common/no-script'
-import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '@common/animations'
+} from '@/common/no-script'
+import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '@/common/animations'
 import {
   animate,
   AUTO_STYLE,
@@ -16,7 +16,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations'
-import { PLATFORM_SERVICE, PlatformService } from '@common/platform.service'
+import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
 
 @Component({
   selector: 'app-chipped-content',

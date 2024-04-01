@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { TechnologyComponent } from './technology.component'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { TechnologyItem } from './technology-item'
 import { By } from '@angular/platform-browser'
 

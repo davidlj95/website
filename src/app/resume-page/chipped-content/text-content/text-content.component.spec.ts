@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { TextContentComponent } from './text-content.component'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 
 describe('TextContentComponent', () => {
   let component: TextContentComponent

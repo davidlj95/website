@@ -1,6 +1,6 @@
 import { CardHeaderSubtitleComponent } from './card-header-subtitle.component'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
-import { shouldProjectContent } from '@test/helpers/component-testers'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { shouldProjectContent } from '@/test/helpers/component-testers'
 
 describe('CardHeaderSubtitleComponent', () => {
   it('should create', () => {

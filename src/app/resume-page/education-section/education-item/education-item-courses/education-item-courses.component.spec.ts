@@ -1,9 +1,9 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { EducationItemCoursesComponent } from './education-item-courses.component'
-import { byComponent } from '@test/helpers/component-query-predicates'
+import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 
 describe('EducationItemCoursesComponent', () => {
   let component: EducationItemCoursesComponent

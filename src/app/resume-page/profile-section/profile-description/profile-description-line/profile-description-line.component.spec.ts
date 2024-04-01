@@ -1,11 +1,11 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { ProfileDescriptionLineComponent } from './profile-description-line.component'
-import { MATERIAL_SYMBOLS_SELECTOR } from '@test/helpers/material-symbols'
+import { MATERIAL_SYMBOLS_SELECTOR } from '@/test/helpers/material-symbols'
 import { By } from '@angular/platform-browser'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { DescriptionLine } from '../../../../metadata'
-import { ATTRIBUTE_ARIA_HIDDEN } from '@test/helpers/aria'
+import { ATTRIBUTE_ARIA_HIDDEN } from '@/test/helpers/aria'
 
 describe('ProfileDescriptionLineComponent', () => {
   let component: ProfileDescriptionLineComponent

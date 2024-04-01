@@ -6,7 +6,7 @@ import {
   faTwitter,
   IconDefinition,
 } from '@fortawesome/free-brands-svg-icons'
-import { METADATA } from '@common/injection-tokens'
+import { METADATA } from '@/common/injection-tokens'
 import { Metadata } from '../../../metadata'
 import { FaIconComponent } from '@fortawesome/angular-fontawesome'
 import { NgFor } from '@angular/common'

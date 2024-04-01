@@ -1,6 +1,6 @@
 import { Component, Inject, Input } from '@angular/core'
 import { isSomeEnum } from '../../utils'
-import { METADATA } from '@common/injection-tokens'
+import { METADATA } from '@/common/injection-tokens'
 import { Metadata } from '../metadata'
 import { NgFor, NgIf } from '@angular/common'
 

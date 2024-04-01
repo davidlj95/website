@@ -2,7 +2,7 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights.component'
 import { By } from '@angular/platform-browser'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 
 describe('ExperienceItemHighlightsComponent', () => {
   let component: ExperienceItemHighlightsComponent

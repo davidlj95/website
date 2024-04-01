@@ -4,37 +4,37 @@ import {
   CollapsibleTreeComponent,
   IsCollapsibleFn,
 } from './collapsible-tree.component'
-import { PLATFORM_SERVICE, PlatformService } from '@common/platform.service'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockProvider } from 'ng-mocks'
 import {
   MOCK_BROWSER_PLATFORM_SERVICE,
   MOCK_SERVER_PLATFORM_SERVICE,
-} from '@test/helpers/platform-service'
+} from '@/test/helpers/platform-service'
 import { By } from '@angular/platform-browser'
-import { byComponent } from '@test/helpers/component-query-predicates'
+import { byComponent } from '@/test/helpers/component-query-predicates'
 import {
   ATTRIBUTE_ARIA_CONTROLS,
   ATTRIBUTE_ARIA_EXPANDED,
   ATTRIBUTE_ARIA_HIDDEN,
-} from '@test/helpers/aria'
-import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
+} from '@/test/helpers/aria'
+import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
 import {
   expectIsFlexDisplayedIfNoScript,
   expectIsVisibilityHiddenIfNoScript,
-} from '@test/helpers/no-script'
+} from '@/test/helpers/no-script'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import {
   expectHiddenVisibility,
   expectIsDisplayed,
   expectIsNotDisplayed,
-} from '@test/helpers/visibility'
+} from '@/test/helpers/visibility'
 import {
   CollapsibleTreeNode,
   CollapsibleTreeNodeData,
 } from './collapsible-tree-node'
 import { Component, Input } from '@angular/core'
-import { EmptyComponent } from '@test/helpers/empty-component'
+import { EmptyComponent } from '@/test/helpers/empty-component'
 
 describe('CollapsibleTreeComponent', () => {
   let component: CollapsibleTreeComponent

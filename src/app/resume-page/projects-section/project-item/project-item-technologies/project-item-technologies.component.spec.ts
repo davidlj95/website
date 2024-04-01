@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { ProjectItemTechnologiesComponent } from './project-item-technologies.component'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { Technology } from '../project-item'
 import { MockProvider } from 'ng-mocks'
 import { TechnologyService } from '../../../technology/technology.service'

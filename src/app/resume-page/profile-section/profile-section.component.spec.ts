@@ -7,9 +7,9 @@ import { ProfilePictureComponent } from './profile-picture/profile-picture.compo
 import { ProfileContactTraditionalIconsComponent } from './profile-contact-traditional-icons/profile-contact-traditional-icons.component'
 import { ProfileContactSocialIconsComponent } from './profile-contact-social-icons/profile-contact-social-icons.component'
 import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
-import { METADATA } from '@common/injection-tokens'
+import { METADATA } from '@/common/injection-tokens'
 import { By } from '@angular/platform-browser'
-import { shouldContainComponents } from '@test/helpers/component-testers'
+import { shouldContainComponents } from '@/test/helpers/component-testers'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 
 describe('ProfileSectionComponent', () => {

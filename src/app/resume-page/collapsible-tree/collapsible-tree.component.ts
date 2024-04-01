@@ -5,7 +5,7 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core'
-import { MaterialSymbolDirective } from '@common/material-symbol.directive'
+import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import {
   NgClass,
   NgComponentOutlet,
@@ -13,11 +13,11 @@ import {
   NgIf,
   NgTemplateOutlet,
 } from '@angular/common'
-import { PLATFORM_SERVICE, PlatformService } from '@common/platform.service'
+import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
 import {
   DISPLAY_FLEX_IF_NO_SCRIPT_CLASS,
   VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS,
-} from '@common/no-script'
+} from '@/common/no-script'
 import {
   animate,
   AUTO_STYLE,
@@ -26,7 +26,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations'
-import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '@common/animations'
+import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '@/common/animations'
 import { CollapsibleTreeNode } from './collapsible-tree-node'
 
 export type IsCollapsibleFn = (node: CollapsibleTreeComponent) => boolean

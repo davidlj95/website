@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core'
 import resume from '../../../../assets/resume.json'
 import { ProjectItem, Stack } from './project-item/project-item'
 import { DateRange } from '../date-range/date-range'
-import { ENVIRONMENT } from '@common/injection-tokens'
+import { ENVIRONMENT } from '@/common/injection-tokens'
 import { Environment } from '../../../environments'
 import { LocalImageService } from '../local-image.service'
 

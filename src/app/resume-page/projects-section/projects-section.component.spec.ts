@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ProjectsSectionComponent } from './projects-section.component'
 import { MockComponents } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
-import { byComponent } from '@test/helpers/component-query-predicates'
+import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ProjectItemsService } from './project-items.service'
 import { ProjectItemComponent } from './project-item/project-item.component'
 import { NgFor } from '@angular/common'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 
 describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent

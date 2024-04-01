@@ -3,20 +3,23 @@ import { ChippedContentComponent } from './chipped-content.component'
 import { Component, DebugElement, Input } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
-import { expectIsInLayout, expectIsNotInLayout } from '@test/helpers/visibility'
-import { byComponent } from '@test/helpers/component-query-predicates'
-import { getReflectedAttribute } from '@test/helpers/get-reflected-attribute'
-import { componentTestSetup } from '@test/helpers/component-test-setup'
+import {
+  expectIsInLayout,
+  expectIsNotInLayout,
+} from '@/test/helpers/visibility'
+import { byComponent } from '@/test/helpers/component-query-predicates'
+import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import {
   expectIsBlockDisplayedIfNoScript,
   expectIsNotDisplayedIfNoScript,
-} from '@test/helpers/no-script'
+} from '@/test/helpers/no-script'
 import { By } from '@angular/platform-browser'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
-import { tickToFinishAnimation } from '@test/helpers/tick-to-finish-animation'
+import { tickToFinishAnimation } from '@/test/helpers/tick-to-finish-animation'
 import { MockProvider } from 'ng-mocks'
-import { PLATFORM_SERVICE } from '@common/platform.service'
-import { MOCK_BROWSER_PLATFORM_SERVICE } from '@test/helpers/platform-service'
+import { PLATFORM_SERVICE } from '@/common/platform.service'
+import { MOCK_BROWSER_PLATFORM_SERVICE } from '@/test/helpers/platform-service'
 
 describe('ChippedContentComponent', () => {
   let fixture: ComponentFixture<ChippedContentComponent>

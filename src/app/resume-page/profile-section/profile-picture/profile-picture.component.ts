@@ -1,5 +1,5 @@
 import { Component, HostBinding, Inject } from '@angular/core'
-import { METADATA } from '@common/injection-tokens'
+import { METADATA } from '@/common/injection-tokens'
 import { Metadata } from '../../../metadata'
 import { NgOptimizedImage } from '@angular/common'
 

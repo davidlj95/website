@@ -1,7 +1,7 @@
 import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common'
 import { Component, Inject } from '@angular/core'
-import { MaterialSymbolDirective } from '@common/material-symbol.directive'
-import { METADATA } from '@common/injection-tokens'
+import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
+import { METADATA } from '@/common/injection-tokens'
 import { DescriptionLine, Metadata } from '../../../metadata'
 import {
   CollapsibleTreeComponent,

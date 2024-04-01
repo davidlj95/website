@@ -7,11 +7,11 @@ import {
   JsonResumeProjectItemAdapterService,
 } from './json-resume-project-item-adapter.service'
 import { MockProvider } from 'ng-mocks'
-import { ENVIRONMENT } from '@common/injection-tokens'
+import { ENVIRONMENT } from '@/common/injection-tokens'
 import { Environment } from '../../../environments'
 import { Stack, Technology } from './project-item/project-item'
 import { LocalImageService } from '../local-image.service'
-import { serviceTestSetup } from '@test/helpers/service-test-setup'
+import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 
 describe('JsonResumeProjectItemAdapterService', () => {
   it('should be created', () => {
