@@ -185,8 +185,8 @@ devDependencies:
     specifier: 15.2.2
     version: 15.2.2
   liquidjs:
-    specifier: 10.10.2
-    version: 10.10.2
+    specifier: 10.11.1
+    version: 10.11.1
   ng-mocks:
     specifier: 14.12.2
     version: 14.12.2(@angular/common@17.3.3)(@angular/core@17.3.3)(@angular/forms@17.3.3)(@angular/platform-browser@17.3.3)
@@ -7811,8 +7811,8 @@ packages:
       - supports-color
     dev: true
 
-  /liquidjs@10.10.2:
-    resolution: {integrity: sha512-UcuTUexKg/8CmX6I5KNghk13pl3c8Rqhm+WSWqrc17pQP9LjpYPpOLDKG9OMBeHDBQ70yyn/GOqyZ/EKJ4z5yg==}
+  /liquidjs@10.11.1:
+    resolution: {integrity: sha512-ORlMi7Okt311anHyvuYTRijrdX9He4lbeGEfugSLeHuSYREnFM2M0ppG1/zQHR/k5KSvMP/d4DfUDIFdS8MtqQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
