@@ -54,7 +54,7 @@
     "express": "4.19.2",
     "gardevoir": "1.0.0",
     "rxjs": "7.8.1",
-    "simple-icons": "11.12.0",
+    "simple-icons": "11.13.0",
     "tslib": "2.6.2",
     "zone.js": "0.14.4"
   },
