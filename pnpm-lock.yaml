@@ -39,11 +39,11 @@ dependencies:
     specifier: 1.0.0-beta.2
     version: 1.0.0-beta.2(@angular/common@17.3.3)(@angular/core@17.3.3)(@angular/router@17.3.3)
   '@fontsource/roboto':
-    specifier: 5.0.12
-    version: 5.0.12
+    specifier: 5.0.13
+    version: 5.0.13
   '@fontsource/roboto-mono':
-    specifier: 5.0.17
-    version: 5.0.17
+    specifier: 5.0.18
+    version: 5.0.18
   '@fortawesome/angular-fontawesome':
     specifier: 0.14.1
     version: 0.14.1(@angular/core@17.3.3)(@fortawesome/fontawesome-svg-core@6.5.2)
@@ -2589,12 +2589,12 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/roboto-mono@5.0.17:
-    resolution: {integrity: sha512-MU6FrAyG7DWMCL8mu0JDPvB2tnFcn/lYvVKixzqHb2uefRsLaD6OBFfF1q5RMFsKcFHyPySHM7ZcGw/Q6A1/FA==}
+  /@fontsource/roboto-mono@5.0.18:
+    resolution: {integrity: sha512-hKuwk/cy3i6fWPzazT5xjgWq4YNqZWDHVbJh2Wwj3KYvWGi2v3ToBw/4LKQ+ggEkPLcIG6VU8GpCT3Xtf+mbbA==}
     dev: false
 
-  /@fontsource/roboto@5.0.12:
-    resolution: {integrity: sha512-x0o17jvgoSSbS9OZnUX2+xJmVRvVCfeaYJjkS7w62iN7CuJWtMf5vJj8LqgC7ibqIkitOHVW+XssRjgrcHn62g==}
+  /@fontsource/roboto@5.0.13:
+    resolution: {integrity: sha512-j61DHjsdUCKMXSdNLTOxcG701FWnF0jcqNNQi2iPCDxU8seN/sMxeh62dC++UiagCWq9ghTypX+Pcy7kX+QOeQ==}
     dev: false
 
   /@fortawesome/angular-fontawesome@0.14.1(@angular/core@17.3.3)(@fortawesome/fontawesome-svg-core@6.5.2):
