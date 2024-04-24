@@ -2,7 +2,8 @@
   "files": [
     {
       "path": "dist/@davidlj95/website/browser/*.js",
-      "maxSize": "200kB"
+      "maxSize": "500kB",
+      "compression": "none"
     }
   ],
   "normalizeFilenames": "^.+?(\\..+?)\\.\\w+$",
