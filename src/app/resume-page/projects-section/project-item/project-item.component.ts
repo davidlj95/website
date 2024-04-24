@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core'
 import { ProjectItem, Stack } from './project-item'
-import { SlugGeneratorService } from '@/common/slug-generator.service'
 import { Apps, Dns, FullStackedBarChart } from '../../../material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
@@ -45,7 +44,6 @@ import { TextContentComponent } from '../../chipped-content/text-content/text-co
 export class ProjectItemComponent {
   @Input({ required: true }) public set item(item: ProjectItem) {
     this._item = item
-    this._itemIdPrefix = `project-${this.slugGenerator.generate(item.name)}`
     this.contents = [
       item.description
         ? new ChippedContent({
@@ -73,16 +71,9 @@ export class ProjectItemComponent {
    * @visibleForTesting
    */
   public contents: ReadonlyArray<ChippedContent> = []
-  protected _itemIdPrefix?: string
 
   protected readonly StackContent = StackContent
   protected readonly Attribute = Attribute
-
-  constructor(private slugGenerator: SlugGeneratorService) {}
-
-  public getAttributeId(attribute: Attribute): string {
-    return `${this._itemIdPrefix}-${attribute}`
-  }
 }
 
 export enum Attribute {

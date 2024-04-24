@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { EducationItem } from './education-item'
 import { SocialLeaderboard } from '../../../material-symbols'
-import { SlugGeneratorService } from '@/common/slug-generator.service'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
@@ -50,9 +49,6 @@ export class EducationItemComponent {
     } else {
       this._institutionDisplayName = item.institution.name
     }
-    this._itemIdPrefix = this.slugGenerator.generate(item.institution.name, {
-      prefix: 'edu-',
-    })
     this._contents = [
       item.score
         ? new ChippedContent({
@@ -78,18 +74,11 @@ export class EducationItemComponent {
   protected _item!: EducationItem
   protected _contents: ReadonlyArray<ChippedContent> = []
   protected _institutionDisplayName?: string
-  protected _itemIdPrefix?: string
 
   protected readonly MaterialSymbol = {
     SocialLeaderboard,
   }
   protected readonly Attribute = Attribute
-
-  constructor(private slugGenerator: SlugGeneratorService) {}
-
-  public getAttributeId(attribute: Attribute) {
-    return `${this._itemIdPrefix}-${attribute}`
-  }
 }
 
 export enum Attribute {
