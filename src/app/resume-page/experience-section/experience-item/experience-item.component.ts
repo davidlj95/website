@@ -7,7 +7,6 @@ import {
   ToolsLadder,
   Work,
 } from '../../../material-symbols'
-import { SlugGeneratorService } from '@/common/slug-generator.service'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
@@ -83,18 +82,6 @@ export class ExperienceItemComponent {
     More,
   }
   protected readonly Attribute = Attribute
-
-  constructor(private slugGenerator: SlugGeneratorService) {}
-
-  public getAttributeId(attributeName: string) {
-    return `${this.itemId}${attributeName}`
-  }
-
-  private get itemId() {
-    return this.slugGenerator.generate(this._item.company.name, {
-      prefix: 'exp-pos-',
-    })
-  }
 }
 
 export enum Attribute {
