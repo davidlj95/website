@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-pnpm run commitlint-edit-msg "${1}"
+pnpm run commitlint:edit-msg "${1}"

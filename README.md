@@ -49,7 +49,7 @@ To enforce that, [`commitlint`][commitlint] is used. It reads the commit message
 You can use the following run script to ensure the last commit follows the guidelines:
 
 ```shell
-pnpm run commitlint-last
+pnpm run commitlint:last
 ```
 
 [commitlint]: https://github.com/conventional-changelog/commitlint
