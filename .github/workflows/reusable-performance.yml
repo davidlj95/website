@@ -13,6 +13,8 @@ on:
     secrets:
       LHCI_GITHUB_APP_TOKEN:
         required: true
+      BUNDLEWATCH_GITHUB_TOKEN:
+        required: true
 
 # Add those permissions if reporting test results
 # https://github.com/dorny/test-reporter/issues/229
@@ -49,3 +51,24 @@ jobs:
         with:
           reports: '.lighthouseci'
           github-token: ${{ secrets.GITHUB_TOKEN }}
+  bundlewatch:
+    name: Bundlewatch
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Download built app
+        uses: actions/download-artifact@9c19ed7fe5d278cd354c7dfd5d3b88589c7e2395 # v4
+        with:
+          name: ${{ inputs.build-artifact-name }}
+          path: dist/@davidlj95/website/browser
+      - name: Run bundlewatch
+        env:
+          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+        run: pnpm run bundlewatch

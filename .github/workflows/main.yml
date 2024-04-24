@@ -38,6 +38,7 @@ jobs:
       build-artifact-name: build
     secrets:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
   deploy-gh-pages:
     name: Deploy to GitHub Pages (latest)
     needs: [build, lint, test, performance]
