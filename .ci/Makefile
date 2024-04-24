@@ -27,6 +27,3 @@ test:
 
 	pnpm run test --browsers=ChromeHeadless \
 		--no-watch --no-progress --reporters junit,progress --code-coverage
-
-format-check:
-	cd .. && pnpm run format-check-all
