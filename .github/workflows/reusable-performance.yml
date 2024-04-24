@@ -21,6 +21,9 @@ on:
 # permissions:
 #   checks: write
 
+env:
+  BROWSER_DIST_DIR: dist/@davidlj95/website/browser
+
 jobs:
   lhci:
     name: Lighthouse
@@ -37,13 +40,14 @@ jobs:
         uses: actions/download-artifact@9c19ed7fe5d278cd354c7dfd5d3b88589c7e2395 # v4
         with:
           name: ${{ inputs.build-artifact-name }}
+          path: ${{ env.BROWSER_DIST_DIR }}
       - name: Run Lighthouse CI
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           # Needed for status checks to appear on PR
           # https://github.com/GoogleChrome/lighthouse-ci/issues/859#issuecomment-1574205125
           LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: cd .ci && make lighthouse
+        run: pnpm run lighthouse
       - name: Report results (as status check)
         if: github.ref == 'refs/heads/main'
         # noinspection SpellCheckingInspection
@@ -67,7 +71,7 @@ jobs:
         uses: actions/download-artifact@9c19ed7fe5d278cd354c7dfd5d3b88589c7e2395 # v4
         with:
           name: ${{ inputs.build-artifact-name }}
-          path: dist/@davidlj95/website/browser
+          path: ${{ env.BROWSER_DIST_DIR }}
       - name: Run bundlewatch
         env:
           BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
