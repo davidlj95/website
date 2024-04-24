@@ -12,12 +12,6 @@ install:
 lint:
 	pnpm run lint --format eslint-formatter-multiple --max-warnings 0
 
-render-templates:
-	pnpm run prebuild:render-templates
-
-ensure-no-pending-changes:
-	./ensure-no-pending-changes.sh
-
 test:
 	pnpm run prebuild:font-subsets
 	pnpm run prebuild:simple-icons
