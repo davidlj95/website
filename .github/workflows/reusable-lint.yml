@@ -49,7 +49,7 @@ jobs:
         uses: ./.github/actions/setup
       - name: Lint last commit
         if: github.event_name == 'push'
-        run: cd .ci && make lint-last-commit
+        run: 'pnpm run commitlint:last'
       - name: Lint all PR commits
         if: github.event_name == 'pull_request'
         run: |

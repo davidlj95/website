@@ -12,9 +12,6 @@ install:
 lint:
 	pnpm run lint --format eslint-formatter-multiple --max-warnings 0
 
-lint-last-commit:
-	pnpm run commitlint-last
-
 render-templates:
 	pnpm run prebuild:render-templates
 
