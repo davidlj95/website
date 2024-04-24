@@ -74,4 +74,14 @@ jobs:
       - name: Run bundlewatch
         env:
           BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+          #👇 By default, it doesn't work as:
+          # SHA to create status check on comes from `github.sha`
+          # https://github.com/bundlewatch/bundlewatch/blob/v0.3.3/src/app/config/getCIVars.js#L8
+          # https://github.com/siddharthkp/ci-env/blob/v1.18.0/index.js#L125
+          # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+          # Which refers to the PR's merge branch (not the head one).
+          # And hence it's not visible in the PR
+          # See:
+          # https://github.com/bundlewatch/bundlewatch/issues/220#issuecomment-763438369
+          CI_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
         run: pnpm run bundlewatch
