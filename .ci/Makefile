@@ -1,19 +1,13 @@
 .PHONY: *
 
 # First so that running without command runs a build
-build: prebuild
-	pnpm run prerender
-
-prebuild:
-	pnpm run prebuild
+build:
+	pnpm run prebuild && pnpm run prerender
 
 install:
 	# Despite it's enabled by default on CI. This allows to mock CI locally
 	# https://pnpm.io/cli/install#--frozen-lockfile
 	pnpm install --frozen-lockfile
-
-build-pull-request: prebuild
-	pnpm run prerender:pullRequest
 
 lint:
 	pnpm run lint --format eslint-formatter-multiple --max-warnings 0
