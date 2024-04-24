@@ -18,6 +18,6 @@ let nextId = 0
 })
 export class AttributeComponent {
   @Input({ required: true }) symbol!: string
-  @Input({ required: true }) id!: string
+
   protected _id: string = `${ATTRIBUTE_ID_PREFIX}${nextId++}`
 }
