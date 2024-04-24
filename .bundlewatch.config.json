@@ -1,0 +1,9 @@
+{
+  "files": [
+    {
+      "path": "dist/@davidlj95/website/browser/*.js",
+      "maxSize": "200kB"
+    }
+  ],
+  "normalizeFilenames": "^.+?(\\..+?)\\.\\w+$"
+}

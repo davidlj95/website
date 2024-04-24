@@ -31,7 +31,8 @@
     "format": "prettier --ignore-unknown --write",
     "format-all": "pnpm run format .",
     "scripts:tsc": "cd scripts && tsc",
-    "lighthouse": "lhci autorun"
+    "lighthouse": "lhci autorun",
+    "bundlewatch": "bundlewatch --config .bundlewatch.config.json"
   },
   "dependencies": {
     "@angular/animations": "17.3.5",
@@ -80,6 +81,7 @@
     "@typescript-eslint/eslint-plugin": "7.7.1",
     "@typescript-eslint/parser": "7.7.1",
     "browser-sync": "3.0.2",
+    "bundlewatch": "0.3.3",
     "conventional-changelog-conventionalcommits": "7.0.2",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
