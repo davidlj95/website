@@ -1,17 +1,22 @@
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core'
+import { isDevMode } from '@/common/is-dev-mode'
 
 @Directive({
   selector: '[appTestId]',
   standalone: true,
 })
 export class TestIdDirective implements OnChanges {
-  @Input('appTestId') public id!: string
+  @Input() public appTestId!: string
 
   constructor(private el: ElementRef) {}
 
   ngOnChanges(): void {
-    this.el.nativeElement.setAttribute(TEST_ID_ATTRIBUTE, this.id)
+    if (isDevMode) {
+      this.el.nativeElement.setAttribute(TEST_ID_ATTRIBUTE, this.appTestId)
+    }
   }
 }
 
-export const TEST_ID_ATTRIBUTE = 'data-test-id'
+// As per Testing Library
+// https://testing-library.com/docs/queries/bytestid/
+export const TEST_ID_ATTRIBUTE = 'data-testid'
