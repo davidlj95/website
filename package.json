@@ -26,10 +26,10 @@
     "commitlint:edit-msg": "commitlint --verbose --edit",
     "commitlint:last": "commitlint --verbose --from HEAD~1",
     "validate-renovate-config": "pnpm --package renovate dlx renovate-config-validator",
-    "format-check": "prettier --check",
-    "format-check-all": "pnpm run format-check .",
     "format": "prettier --ignore-unknown --write",
-    "format-all": "pnpm run format .",
+    "format:all": "pnpm run format .",
+    "format:check": "prettier --check",
+    "format:check-all": "pnpm run format-check .",
     "scripts:tsc": "cd scripts && tsc",
     "lighthouse": "lhci autorun",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json"
