@@ -35,11 +35,11 @@ async function generateSimpleIcons() {
   )
   Log.info('%d icons match technology IDs', neededIcons.length)
 
-  const iconsJson = neededIcons.map(({ title, slug, svg, hex }) => ({
+  const iconsJson = neededIcons.map(({ title, slug }) => ({
     title,
     slug,
-    svg,
-    hex,
+    //svg,
+    //hex,
   }))
 
   await writeFile(SIMPLE_ICONS_FILE, JSON.stringify(iconsJson, null, 2))
