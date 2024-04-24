@@ -28,7 +28,6 @@
       <app-attribute
         *ngIf="_item.stack"
         [symbol]="StackContent[_item.stack].materialSymbol"
-        [id]="getAttributeId(Attribute.Stack)"
         [appTestId]="Attribute.Stack"
       >
         {{ StackContent[_item.stack].displayName }}
