@@ -32,7 +32,8 @@
     "format:check-all": "pnpm run format-check .",
     "scripts:tsc": "cd scripts && tsc",
     "lighthouse": "lhci autorun",
-    "bundlewatch": "bundlewatch --config .bundlewatch.config.json"
+    "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
+    "analyze-main-bundle": "pnpm dlx source-map-explorer dist/@davidlj95/website/browser/main*.js"
   },
   "dependencies": {
     "@angular/animations": "17.3.5",
