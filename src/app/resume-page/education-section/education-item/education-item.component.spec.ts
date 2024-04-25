@@ -4,17 +4,15 @@ import { Attribute, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
-import { NgIf, NgOptimizedImage } from '@angular/common'
+import { NgIf } from '@angular/common'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
-import { LinkComponent } from '../../link/link.component'
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
 import { byTestId } from '@/test/helpers/test-id'
-import { TestIdDirective } from '@/common/test-id.directive'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
@@ -25,6 +23,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeEducationItem } from './__tests__/make-education-item'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
+import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -57,9 +56,11 @@ describe('EducationItemComponent', () => {
     expect(anchorElement).toBeTruthy()
     expect(anchorElement.attributes['href']).toEqual(website)
 
-    const imageElement = anchorElement.query(By.css('img'))
+    const imageElement = anchorElement.query(
+      byComponent(CardHeaderImageComponent),
+    )
     expect(imageElement).toBeTruthy()
-    expect(imageElement.attributes['src']).toEqual(imageUrl)
+    expect(getReflectedAttribute(imageElement, 'src')).toEqual(imageUrl)
   })
 
   it("should display institution name with link to company's website", () => {
@@ -155,15 +156,12 @@ function makeSut() {
     imports: [
       EducationItemComponent,
       NgIf,
-      NgOptimizedImage,
-      LinkComponent,
-      CardHeaderImageComponent,
-      CardHeaderTitleComponent,
-      CardHeaderSubtitleComponent,
-      TestIdDirective,
       MockComponents(
         CardComponent,
         DateRangeComponent,
+        CardHeaderImageComponent,
+        CardHeaderTitleComponent,
+        CardHeaderSubtitleComponent,
         CardHeaderDetailComponent,
         CardHeaderComponent,
         CardHeaderTextsComponent,

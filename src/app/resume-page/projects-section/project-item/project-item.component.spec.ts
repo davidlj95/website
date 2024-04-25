@@ -16,17 +16,14 @@ import { CardHeaderTextsComponent } from '../../card/card-header/card-header-tex
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
-import { LinkComponent } from '../../link/link.component'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { byTestId } from '@/test/helpers/test-id'
 import { By } from '@angular/platform-browser'
-import { TestIdDirective } from '@/common/test-id.directive'
 import { DateRange } from '../../date-range/date-range'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { NgIf } from '@angular/common'
-import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProjectItem } from './__tests__/make-project-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
@@ -165,8 +162,6 @@ function makeSut() {
     imports: [
       ProjectItemComponent,
       NgIf,
-      LinkComponent,
-      TestIdDirective,
       MockComponents(
         CardComponent,
         CardHeaderComponent,
@@ -178,7 +173,6 @@ function makeSut() {
         DateRangeComponent,
         CardHeaderAttributesComponent,
         AttributeComponent,
-        ProjectItemTechnologiesComponent,
         ChippedContentComponent,
       ),
     ],
