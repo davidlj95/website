@@ -5,13 +5,13 @@ import {
   ProjectItemComponent,
   StackContent,
 } from './project-item.component'
-import { MockComponents, MockProvider } from 'ng-mocks'
+import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
-import { ProjectItem, Stack, Technology } from './project-item'
+import { ProjectItem, Stack } from './project-item'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
@@ -28,9 +28,9 @@ import { ChippedContentComponent } from '../../chipped-content/chipped-content.c
 import { NgIf } from '@angular/common'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { provideNoopAnimations } from '@angular/platform-browser/animations'
-import { PLATFORM_SERVICE } from '@/common/platform.service'
-import { MOCK_BROWSER_PLATFORM_SERVICE } from '@/test/helpers/platform-service'
+import { makeProjectItem } from './__tests__/make-project-item'
+import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
+import { shouldContainComponent } from '@/test/helpers/component-testers'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -157,35 +157,7 @@ describe('ProjectItemComponent', () => {
     })
   })
 
-  it('should render description content', () => {
-    const description = 'It is super cool and does awesome things'
-    setProjectItem(fixture, { description })
-
-    const contentContainer = fixture.debugElement.query(
-      byComponent(ChippedContentComponent),
-    )
-    expect(contentContainer).toBeTruthy()
-    expect(contentContainer.nativeElement.textContent.trim()).toContain(
-      description,
-    )
-  })
-
-  it('should render techs', () => {
-    const technologies = [
-      { id: 'tech-1', version: 'version-1' },
-      { id: 'tech-2', version: 'version-2' },
-    ] satisfies ReadonlyArray<Technology>
-
-    setProjectItem(fixture, { technologies })
-
-    const techContent = component.contents.find(
-      (content) => content.component === ProjectItemTechnologiesComponent,
-    )
-    expect(techContent).toBeTruthy()
-    expect(techContent!.inputs).toEqual({
-      technologies,
-    } satisfies Partial<ProjectItemTechnologiesComponent>)
-  })
+  shouldContainComponent(() => fixture, ChippedContentComponent)
 })
 
 function makeSut() {
@@ -207,26 +179,16 @@ function makeSut() {
         CardHeaderAttributesComponent,
         AttributeComponent,
         ProjectItemTechnologiesComponent,
+        ChippedContentComponent,
       ),
-    ],
-    providers: [
-      provideNoopAnimations(), // to use real chipped content component
-      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
     ],
   })
 }
 
 function setProjectItem(
   fixture: ComponentFixture<ProjectItemComponent>,
-  overrides: Partial<ConstructorParameters<typeof ProjectItem>[0]> = {},
+  overrides?: ItemFactoryOverrides<typeof ProjectItem>,
 ) {
-  fixture.componentInstance.item = new ProjectItem({
-    ...{
-      name: 'Sample project item',
-      description: 'Project item',
-      dateRange: new DateRange(new Date('2022-01-01'), new Date('2022-12-31')),
-    },
-    ...overrides,
-  })
+  fixture.componentInstance.item = makeProjectItem(overrides)
   fixture.detectChanges()
 }

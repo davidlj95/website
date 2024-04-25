@@ -16,9 +16,7 @@ import { LinkComponent } from '../../link/link.component'
 import { NgIf } from '@angular/common'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
-import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
-import { isNotUndefined } from '@/common/is-not-undefined'
-import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
+import { projectItemToContents } from './project-item-to-contents'
 
 @Component({
   selector: 'app-project-item',
@@ -44,33 +42,11 @@ import { TextContentComponent } from '../../chipped-content/text-content/text-co
 export class ProjectItemComponent {
   @Input({ required: true }) public set item(item: ProjectItem) {
     this._item = item
-    this.contents = [
-      item.description
-        ? new ChippedContent({
-            displayName: 'Description',
-            component: TextContentComponent,
-            inputs: {
-              text: item.description,
-            } satisfies Partial<TextContentComponent>,
-          })
-        : undefined,
-      item.technologies.length > 0
-        ? new ChippedContent({
-            displayName: 'Tech',
-            component: ProjectItemTechnologiesComponent,
-            inputs: {
-              technologies: item.technologies,
-            } satisfies Partial<ProjectItemTechnologiesComponent>,
-          })
-        : undefined,
-    ].filter(isNotUndefined)
+    this._contents = projectItemToContents(item)
   }
 
   protected _item!: ProjectItem
-  /**
-   * @visibleForTesting
-   */
-  public contents: ReadonlyArray<ChippedContent> = []
+  protected _contents: ReadonlyArray<ChippedContent> = []
 
   protected readonly StackContent = StackContent
   protected readonly Attribute = Attribute

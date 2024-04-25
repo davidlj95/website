@@ -7,7 +7,6 @@ import {
   ToolsLadder,
   Work,
 } from '../../../material-symbols'
-import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { NgIf } from '@angular/common'
@@ -23,8 +22,7 @@ import { LinkComponent } from '../../link/link.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
-import { isNotUndefined } from '@/common/is-not-undefined'
-import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
+import { experienceItemToContents } from './experience-item-to-contents'
 
 @Component({
   selector: 'app-experience-item',
@@ -50,30 +48,11 @@ import { TextContentComponent } from '../../chipped-content/text-content/text-co
 export class ExperienceItemComponent {
   @Input({ required: true }) public set item(item: ExperienceItem) {
     this._item = item
-    this.contents = [
-      this._item.summary
-        ? new ChippedContent({
-            displayName: 'Summary',
-            component: TextContentComponent,
-            inputs: {
-              text: this._item.summary,
-            } satisfies Partial<TextContentComponent>,
-          })
-        : undefined,
-      this._item.highlights.length > 0
-        ? new ChippedContent({
-            displayName: 'Highlights',
-            component: ExperienceItemHighlightsComponent,
-            inputs: {
-              highlights: this._item.highlights,
-            } satisfies Partial<ExperienceItemHighlightsComponent>,
-          })
-        : undefined,
-    ].filter(isNotUndefined)
+    this._contents = experienceItemToContents(item)
   }
 
   protected _item!: ExperienceItem
-  public contents: ChippedContent[] = []
+  protected _contents: ReadonlyArray<ChippedContent> = []
   protected readonly MaterialSymbol = {
     Badge,
     Work,

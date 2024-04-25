@@ -6,8 +6,7 @@ import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
 import { NgIf, NgOptimizedImage } from '@angular/common'
 import { DateRangeComponent } from '../../date-range/date-range.component'
-import { DateRange } from '../../date-range/date-range'
-import { MockComponents, MockProvider } from 'ng-mocks'
+import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { LinkComponent } from '../../link/link.component'
@@ -23,9 +22,9 @@ import { AttributeComponent } from '../../attribute/attribute.component'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { provideNoopAnimations } from '@angular/platform-browser/animations'
-import { PLATFORM_SERVICE } from '@/common/platform.service'
-import { MOCK_BROWSER_PLATFORM_SERVICE } from '@/test/helpers/platform-service'
+import { makeEducationItem } from './__tests__/make-education-item'
+import { shouldContainComponent } from '@/test/helpers/component-testers'
+import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -148,51 +147,7 @@ describe('EducationItemComponent', () => {
     })
   })
 
-  it('should add chipped contents component', () => {
-    setEducationItem(fixture)
-
-    expect(
-      fixture.debugElement.query(byComponent(ChippedContentComponent)),
-    ).toBeTruthy()
-  })
-
-  const CONTENT_CONTAINER_PREDICATE = byComponent(ChippedContentComponent)
-
-  describe('when score is present', () => {
-    const score = 'Very good++'
-
-    beforeEach(() => {
-      setEducationItem(fixture, { score })
-    })
-
-    it('should render score content', () => {
-      const contentContainer = fixture.debugElement.query(
-        CONTENT_CONTAINER_PREDICATE,
-      )
-
-      expect(contentContainer.nativeElement.textContent.trim()).toContain(score)
-    })
-  })
-
-  describe('when courses are not empty', () => {
-    const courses = ['Course 1', 'Course 2']
-
-    beforeEach(() => {
-      setEducationItem(fixture, { courses })
-    })
-
-    it('should render courses content', () => {
-      const contentContainer = fixture.debugElement.query(
-        CONTENT_CONTAINER_PREDICATE,
-      )
-
-      courses.forEach((course) => {
-        expect(contentContainer.nativeElement.textContent.trim()).toContain(
-          course,
-        )
-      })
-    })
-  })
+  shouldContainComponent(() => fixture, ChippedContentComponent)
 })
 
 function makeSut() {
@@ -214,31 +169,17 @@ function makeSut() {
         CardHeaderTextsComponent,
         CardHeaderAttributesComponent,
         AttributeComponent,
+        ChippedContentComponent,
       ),
-    ],
-    providers: [
-      provideNoopAnimations(), // to include real chipped content
-      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
     ],
   })
 }
 
 function setEducationItem(
   fixture: ComponentFixture<EducationItemComponent>,
-  newItemArgOverrides?: Partial<ConstructorParameters<typeof EducationItem>[0]>,
+  overrides?: ItemFactoryOverrides<typeof EducationItem>,
 ): void {
-  fixture.componentInstance.item = new EducationItem({
-    institution: new Organization({
-      name: 'Institution name',
-      imageSrc: 'https://example.org/logo.png',
-      website: new URL('https://example.org'),
-    }),
-    area: 'Area',
-    studyType: 'Study type',
-    score: 'Score',
-    dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-12-31')),
-    ...newItemArgOverrides,
-  })
+  fixture.componentInstance.item = makeEducationItem(overrides)
 
   fixture.detectChanges()
 }
