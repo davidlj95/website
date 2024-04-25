@@ -4,6 +4,7 @@ import {
   getRepositoryRootDir,
   isMain,
   Log,
+  objectToJson,
   SECURITY_TXT_REL_PATH,
 } from './utils.mjs'
 import { METADATA } from '../../src/app/metadata'
@@ -95,7 +96,7 @@ function getContext() {
   }
   const CONTEXT = { ...METADATA_CONTEXT, ...EXTRA_CONTEXT }
   Log.info('Context for rendering')
-  Log.info(JSON.stringify(CONTEXT, null, 4))
+  Log.info(objectToJson(CONTEXT))
   return CONTEXT
 }
 
