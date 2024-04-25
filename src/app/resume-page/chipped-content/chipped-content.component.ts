@@ -1,12 +1,7 @@
 import { Component, Inject, Input } from '@angular/core'
 import { ChipComponent } from '../chip/chip.component'
-import { NgClass, NgComponentOutlet, NgFor } from '@angular/common'
-import { TestIdDirective } from '@/common/test-id.directive'
+import { NgComponentOutlet, NgFor } from '@angular/common'
 import { ChippedContent } from './chipped-content'
-import {
-  DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS,
-  DISPLAY_NONE_IF_NO_SCRIPT_CLASS,
-} from '@/common/no-script'
 import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '@/common/animations'
 import {
   animate,
@@ -16,14 +11,14 @@ import {
   transition,
   trigger,
 } from '@angular/animations'
-import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
+import { SCROLL_INTO_VIEW, ScrollIntoView } from '@/common/scroll-into-view'
 
 @Component({
   selector: 'app-chipped-content',
   templateUrl: './chipped-content.component.html',
   styleUrls: ['./chipped-content.component.scss'],
   standalone: true,
-  imports: [NgFor, ChipComponent, TestIdDirective, NgClass, NgComponentOutlet],
+  imports: [NgFor, ChipComponent, NgComponentOutlet],
   animations: [
     trigger('contentDisplayed', [
       state('false', style({ display: 'none' })),
@@ -50,15 +45,18 @@ export class ChippedContentComponent {
   @Input() public contents!: ReadonlyArray<ChippedContent>
 
   constructor(
-    @Inject(PLATFORM_SERVICE) protected _platformService: PlatformService,
+    @Inject(SCROLL_INTO_VIEW) protected _scrollIntoView: ScrollIntoView,
   ) {}
 
-  protected _displayedContent: DisplayedContent
+  protected _active = false
+  protected _activeIndex = 0
 
-  protected readonly DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS =
-    DISPLAY_BLOCK_IF_NO_SCRIPT_CLASS
-  protected readonly DISPLAY_NONE_IF_NO_SCRIPT_CLASS =
-    DISPLAY_NONE_IF_NO_SCRIPT_CLASS
+  onSelect(index: number) {
+    if (this._activeIndex == index) {
+      this._active = !this._active
+      return
+    }
+    this._active = true
+    this._activeIndex = index
+  }
 }
-
-type DisplayedContent = ChippedContent | undefined

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { Type } from '@angular/core'
+import { InjectionToken, Type } from '@angular/core'
 
 /**
  * Sets up a basic service test given the service to test
@@ -13,7 +13,7 @@ import { Type } from '@angular/core'
  * ```
  */
 export function serviceTestSetup<T>(
-  service: Type<T>,
+  service: Type<T> | InjectionToken<T>,
   moduleDef: Parameters<TestBed['configureTestingModule']>[0] = {},
 ): T {
   TestBed.configureTestingModule(moduleDef)

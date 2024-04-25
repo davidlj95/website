@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core'
 import { EducationItem } from './education-item'
 import { SocialLeaderboard } from '../../../material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
-import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { NgIf } from '@angular/common'
@@ -17,8 +16,7 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
-import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
-import { isNotUndefined } from '@/common/is-not-undefined'
+import { educationItemToContents } from './education-item-to-contents'
 
 @Component({
   selector: 'app-education-item',
@@ -49,26 +47,7 @@ export class EducationItemComponent {
     } else {
       this._institutionDisplayName = item.institution.name
     }
-    this._contents = [
-      item.score
-        ? new ChippedContent({
-            displayName: 'Score',
-            component: TextContentComponent,
-            inputs: {
-              text: item.score,
-            } satisfies Partial<TextContentComponent>,
-          })
-        : undefined,
-      item.courses.length > 0
-        ? new ChippedContent({
-            displayName: 'Courses',
-            component: EducationItemCoursesComponent,
-            inputs: {
-              courses: item.courses,
-            } satisfies Partial<EducationItemCoursesComponent>,
-          })
-        : undefined,
-    ].filter(isNotUndefined)
+    this._contents = educationItemToContents(item)
   }
 
   protected _item!: EducationItem

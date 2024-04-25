@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync } from '@angular/core/testing'
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
 import { ChippedContentComponent } from './chipped-content.component'
 import { Component, DebugElement, Input } from '@angular/core'
 import { ChippedContent } from './chipped-content'
@@ -10,16 +10,11 @@ import {
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import {
-  expectIsBlockDisplayedIfNoScript,
-  expectIsNotDisplayedIfNoScript,
-} from '@/test/helpers/no-script'
 import { By } from '@angular/platform-browser'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { tickToFinishAnimation } from '@/test/helpers/tick-to-finish-animation'
 import { MockProvider } from 'ng-mocks'
-import { PLATFORM_SERVICE } from '@/common/platform.service'
-import { MOCK_BROWSER_PLATFORM_SERVICE } from '@/test/helpers/platform-service'
+import { SCROLL_INTO_VIEW } from '@/common/scroll-into-view'
 
 describe('ChippedContentComponent', () => {
   let fixture: ComponentFixture<ChippedContentComponent>
@@ -35,15 +30,10 @@ describe('ChippedContentComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  const SELECTABLE_CHIPS_CONTAINER_PREDICATE = By.css('.selectable-chips')
   const CONTENT_PREDICATE = By.css('.content')
 
-  it('should render all selectable chips unselected with their display names', () => {
-    const selectableChipsContainerElement = fixture.debugElement.query(
-      SELECTABLE_CHIPS_CONTAINER_PREDICATE,
-    )
-
-    const chipElements = selectableChipsContainerElement.queryAll(
+  it('should render selection chips unselected with their display names', () => {
+    const chipElements = fixture.debugElement.queryAll(
       byComponent(ChipComponent),
     )
     expect(chipElements.length).toEqual(CONTENTS.length)
@@ -59,64 +49,36 @@ describe('ChippedContentComponent', () => {
     })
   })
 
-  it('should render all contents without laying out neither its component or its chip', () => {
-    const contentElements = fixture.debugElement.queryAll(CONTENT_PREDICATE)
-    expect(contentElements.length).toEqual(CONTENTS.length)
+  it('should add but not layout first content', () => {
+    const contentElement = fixture.debugElement.query(CONTENT_PREDICATE)
+    expect(contentElement).toBeDefined()
 
-    contentElements.forEach((contentElement, index) => {
-      const content = CONTENTS[index]
-      const componentElement = contentElement.query(
-        byComponent(content.component),
-      )
-      expect(componentElement).toBeTruthy()
+    const firstComponentElement = contentElement.query(
+      byComponent(FIRST_CONTENT.component),
+    )
+    expect(firstComponentElement).toBeTruthy()
 
-      expect(componentElement.nativeElement.textContent.trim()).toEqual(
-        content.inputs!['data'],
-      )
-
-      const chipElement = contentElement.query(byComponent(ChipComponent))
-      expectIsNotInLayout(chipElement.nativeElement)
-
-      expectIsNotInLayout(contentElement.nativeElement)
-    })
-  })
-
-  describe('when JS is disabled', () => {
-    it('should not display selectable chips', () => {
-      const selectableChipsContainerElement = fixture.debugElement.query(
-        SELECTABLE_CHIPS_CONTAINER_PREDICATE,
-      )
-      expectIsNotDisplayedIfNoScript(selectableChipsContainerElement)
-    })
-
-    it('should display all content', () => {
-      const contentContainers = fixture.debugElement.queryAll(CONTENT_PREDICATE)
-      for (const contentContainer of contentContainers) {
-        expectIsBlockDisplayedIfNoScript(contentContainer)
-      }
-    })
-
-    it('should display non-selectable chips', () => {
-      const contentContainers = fixture.debugElement.queryAll(CONTENT_PREDICATE)
-
-      for (const contentContainer of contentContainers) {
-        const chipElement = contentContainer.query(byComponent(ChipComponent))
-        expectIsBlockDisplayedIfNoScript(chipElement)
-      }
-    })
+    expect(firstComponentElement.nativeElement.textContent.trim()).toEqual(
+      FIRST_CONTENT.inputs!['data'],
+    )
+    expectIsNotInLayout(contentElement.nativeElement)
+    expectIsNotInLayout(firstComponentElement.nativeElement)
   })
 
   describe('when tapping on a chip', () => {
-    let fooChipElement: DebugElement
-    let fooContentElement: DebugElement
+    let firstChipElement: DebugElement
+    let firstContentElement: DebugElement
 
     beforeEach(fakeAsync(() => {
-      fooChipElement = findChipByDisplayName(FOO_CONTENT.displayName)!
-      fooContentElement = fixture.debugElement.query(byComponent(FooComponent))
-      expect(fooChipElement).withContext('foo chip exists').toBeTruthy()
-      expect(fooContentElement).withContext('foo content exists').toBeTruthy()
+      firstChipElement = findChipByDisplayName(FIRST_CONTENT.displayName)!
+      firstContentElement = fixture.debugElement.query(
+        byComponent(FIRST_CONTENT.component),
+      )
 
-      fooChipElement.triggerEventHandler('click')
+      expect(firstChipElement).toBeTruthy()
+      expect(firstContentElement).toBeTruthy()
+
+      firstChipElement.triggerEventHandler('click')
       fixture.detectChanges()
       tickToFinishAnimation()
     }))
@@ -131,55 +93,65 @@ describe('ChippedContentComponent', () => {
     }
 
     it('should mark the chip as selected', () => {
-      expect(getReflectedAttribute(fooChipElement, 'selected')).toBe('true')
+      expect(getReflectedAttribute(firstChipElement, 'selected')).toBe(
+        true.toString(),
+      )
     })
 
-    it('should display its content', () => {
-      expectIsInLayout(fooContentElement.nativeElement)
+    it('should layout its content', () => {
+      expectIsInLayout(firstContentElement.nativeElement)
+    })
+
+    it('should scroll content into view', () => {
+      const contentElement = fixture.debugElement.query(CONTENT_PREDICATE)
+      const scrollIntoViewSpy = TestBed.inject(SCROLL_INTO_VIEW) as jasmine.Spy
+      expect(scrollIntoViewSpy).toHaveBeenCalledOnceWith(
+        contentElement.nativeElement,
+      )
     })
 
     describe('when tapping same chip again', () => {
       beforeEach(fakeAsync(() => {
-        fooChipElement.triggerEventHandler('click')
+        firstChipElement.triggerEventHandler('click')
         fixture.detectChanges()
         tickToFinishAnimation()
       }))
 
       it('should mark the chip as unselected', () => {
-        expect(getReflectedAttribute(fooChipElement, 'selected')).toEqual(
+        expect(getReflectedAttribute(firstChipElement, 'selected')).toEqual(
           false.toString(),
         )
       })
 
-      it('should not display its content', () => {
-        expectIsNotInLayout(fooContentElement.nativeElement)
+      it('should not layout its content', () => {
+        expectIsNotInLayout(firstContentElement.nativeElement)
       })
     })
 
     describe('when tapping another chip', () => {
-      let barChipElement: DebugElement
+      let secondChipElement: DebugElement
 
       beforeEach(fakeAsync(() => {
-        barChipElement = findChipByDisplayName(BAR_CONTENT.displayName)!
-        expect(barChipElement).withContext('bar chip exists').toBeTruthy()
+        secondChipElement = findChipByDisplayName(SECOND_CONTENT.displayName)!
+        expect(secondChipElement).toBeTruthy()
 
-        barChipElement.triggerEventHandler('click')
+        secondChipElement.triggerEventHandler('click')
 
         fixture.detectChanges()
         tickToFinishAnimation()
       }))
 
       it('should mark the previous chip as unselected and just tapped chip as selected', () => {
-        expect(getReflectedAttribute(fooChipElement, 'selected')).toBe(
+        expect(getReflectedAttribute(firstChipElement, 'selected')).toBe(
           false.toString(),
         )
-        expect(getReflectedAttribute(barChipElement, 'selected')).toBe(
+        expect(getReflectedAttribute(secondChipElement, 'selected')).toBe(
           true.toString(),
         )
       })
 
-      it('should hide currently active content and show the new content', () => {
-        expectIsNotInLayout(fooContentElement.nativeElement)
+      it('should not layout currently active content and layout the new content', () => {
+        expectIsNotInLayout(firstContentElement.nativeElement)
 
         const barContentElement = fixture.debugElement.query(
           byComponent(BarComponent),
@@ -216,17 +188,15 @@ const BAR_CONTENT = new ChippedContent({
 })
 
 const CONTENTS = [FOO_CONTENT, BAR_CONTENT] as const
-function makeSut(): [
-  ComponentFixture<ChippedContentComponent>,
-  ChippedContentComponent,
-] {
+const FIRST_CONTENT = CONTENTS[0]
+const SECOND_CONTENT = CONTENTS[1]
+function makeSut() {
   const [fixture, component] = componentTestSetup(ChippedContentComponent, {
-    imports: [ChippedContentComponent, ChipComponent],
     providers: [
       provideNoopAnimations(),
-      MockProvider(PLATFORM_SERVICE, MOCK_BROWSER_PLATFORM_SERVICE),
+      MockProvider(SCROLL_INTO_VIEW, jasmine.createSpy()),
     ],
   })
   component.contents = CONTENTS
-  return [fixture, component]
+  return [fixture, component] as const
 }

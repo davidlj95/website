@@ -1,9 +1,9 @@
 import { Type } from '@angular/core'
 
-export class ChippedContent {
+export class ChippedContent<T = unknown> {
   public readonly displayName: string
-  public readonly component: Type<unknown>
-  public readonly inputs?: Record<string, unknown>
+  public readonly component: Type<T>
+  public readonly inputs?: Partial<T>
 
   constructor({
     displayName,
@@ -11,8 +11,8 @@ export class ChippedContent {
     inputs,
   }: {
     displayName: string
-    component: Type<unknown>
-    inputs?: Record<string, unknown>
+    component: Type<T>
+    inputs?: Partial<T>
   }) {
     this.displayName = displayName
     this.component = component

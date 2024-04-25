@@ -5,16 +5,12 @@
   flex-direction: column;
   gap: margins.$m;
 
-  .selectable-chips {
+  .chips {
     display: flex;
     gap: margins.$s;
   }
 
   .content {
-    app-chip {
-      margin-bottom: margins.$s;
-    }
-
     > ::ng-deep * {
       display: block;
     }

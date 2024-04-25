@@ -1,22 +1,22 @@
 import { isPlatformBrowser } from '@angular/common'
-import { FactoryProvider, InjectionToken, PLATFORM_ID } from '@angular/core'
+import { inject, InjectionToken, PLATFORM_ID } from '@angular/core'
+import { isDevMode } from '@/common/is-dev-mode'
 
-export interface PlatformService {
+export class PlatformService {
   readonly isBrowser: boolean
   readonly isServer: boolean
+
+  constructor(isBrowser: boolean) {
+    this.isBrowser = isBrowser
+    this.isServer = !isBrowser
+  }
 }
 
-// Not using `@Injectable` for performance purposes 🧑‍💻
-class AngularPlatformService {
-  public readonly isBrowser = isPlatformBrowser(this._platformId)
-  public readonly isServer = !this.isBrowser
-
-  constructor(private readonly _platformId: object) {}
-}
-
-export const PLATFORM_SERVICE = new InjectionToken<PlatformService>('PlatServ')
-export const PLATFORM_SERVICE_PROVIDER: FactoryProvider = {
-  provide: PLATFORM_SERVICE,
-  useFactory: (platformId: object) => new AngularPlatformService(platformId),
-  deps: [PLATFORM_ID],
-}
+//👇 Not @Injectable for perf purposes
+export const PLATFORM_SERVICE = new InjectionToken<PlatformService>(
+  isDevMode ? 'PlatformService' : 'PS',
+  {
+    providedIn: 'platform',
+    factory: () => new PlatformService(isPlatformBrowser(inject(PLATFORM_ID))),
+  },
+)
