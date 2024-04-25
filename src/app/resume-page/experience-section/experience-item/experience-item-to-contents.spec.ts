@@ -30,15 +30,17 @@ describe('experienceItemToContents', () => {
       const sut = makeSut()
 
       const contents = sut(makeExperienceItem({ highlights }))
-      const highlightContents = contents.filter(
+      const highlightsContents = contents.filter(
         (content) => content.displayName === 'Highlights',
       )
-      expect(highlightContents).toHaveSize(1)
-      const highlightContent = highlightContents[0]
-      expect(highlightContent.component).toEqual(
+      expect(highlightsContents).toHaveSize(1)
+      const highlightsContent = highlightsContents[0]
+      expect(highlightsContent.component).toEqual(
         ExperienceItemHighlightsComponent,
       )
-      expect(highlightContent.inputs).toEqual({ highlights })
+      expect(highlightsContent.inputs).toEqual({
+        highlights,
+      } satisfies Partial<ExperienceItemHighlightsComponent>)
     })
   })
 })

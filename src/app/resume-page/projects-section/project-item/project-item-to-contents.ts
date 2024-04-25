@@ -15,7 +15,7 @@ export const projectItemToContents: ProjectItemToContents = (item) =>
           component: TextContentComponent,
           inputs: {
             text: item.description,
-          } satisfies Partial<TextContentComponent>,
+          },
         })
       : undefined,
     item.technologies.length > 0
@@ -24,7 +24,7 @@ export const projectItemToContents: ProjectItemToContents = (item) =>
           component: ProjectItemTechnologiesComponent,
           inputs: {
             technologies: item.technologies,
-          } satisfies Partial<ProjectItemTechnologiesComponent>,
+          },
         })
       : undefined,
   ].filter(isNotUndefined)

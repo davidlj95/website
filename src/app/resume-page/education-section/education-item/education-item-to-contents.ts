@@ -15,7 +15,7 @@ export const educationItemToContents: EducationItemToContents = (item) =>
           component: TextContentComponent,
           inputs: {
             text: item.score,
-          } satisfies Partial<TextContentComponent>,
+          },
         })
       : undefined,
     item.courses.length > 0
@@ -24,7 +24,7 @@ export const educationItemToContents: EducationItemToContents = (item) =>
           component: EducationItemCoursesComponent,
           inputs: {
             courses: item.courses,
-          } satisfies Partial<EducationItemCoursesComponent>,
+          },
         })
       : undefined,
   ].filter(isNotUndefined)

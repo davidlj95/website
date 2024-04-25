@@ -36,7 +36,9 @@ describe('educationItemToContents', () => {
       expect(coursesContents).toHaveSize(1)
       const courseContent = coursesContents[0]
       expect(courseContent.component).toEqual(EducationItemCoursesComponent)
-      expect(courseContent.inputs).toEqual({ courses })
+      expect(courseContent.inputs).toEqual({
+        courses,
+      } satisfies Partial<EducationItemCoursesComponent>)
     })
   })
 })

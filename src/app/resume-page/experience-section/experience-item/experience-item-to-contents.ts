@@ -15,7 +15,7 @@ export const experienceItemToContents: ExperienceItemToContents = (item) =>
           component: TextContentComponent,
           inputs: {
             text: item.summary,
-          } satisfies Partial<TextContentComponent>,
+          },
         })
       : undefined,
     item.highlights.length > 0
@@ -24,7 +24,7 @@ export const experienceItemToContents: ExperienceItemToContents = (item) =>
           component: ExperienceItemHighlightsComponent,
           inputs: {
             highlights: item.highlights,
-          } satisfies Partial<ExperienceItemHighlightsComponent>,
+          },
         })
       : undefined,
   ].filter(isNotUndefined)
