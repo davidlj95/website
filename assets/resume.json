@@ -558,7 +558,7 @@
       "technologies": [
         { "id": "bitcoin" },
         { "id": "python", "version": "^3" },
-        { "id": "unittest" },
+        { "id": "python-unittest" },
         { "id": "sphinx" },
         { "id": "readthedocs" },
         { "id": "travisci" },

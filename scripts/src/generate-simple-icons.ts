@@ -1,12 +1,17 @@
 import * as RESUME_JSON from '../../assets/resume.json'
 import * as icons from 'simple-icons'
-import { getRepositoryRootDir, isMain, Log } from './utils.mjs'
-import { writeFile } from 'fs/promises'
+import { SimpleIcon } from 'simple-icons'
+import { getRepositoryRootDir, isMain, Log, objectToJson } from './utils.mjs'
+import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
 
 async function generateSimpleIcons() {
   Log.info('Generating simple icons exports')
-  const projects = RESUME_JSON.projects
+  const neededIcons = await findNeededIcons(RESUME_JSON.projects)
+  await createDisplayNameAndColorsFile(neededIcons)
+}
+
+async function findNeededIcons(projects: typeof RESUME_JSON.projects) {
   if (projects.length > 0) {
     Log.info('Found %d projects', projects.length)
   } else {
@@ -34,27 +39,47 @@ async function generateSimpleIcons() {
     technologyIds.includes(icon.slug),
   )
   Log.info('%d icons match technology IDs', neededIcons.length)
-
-  const iconsJson = neededIcons.map(({ title, slug }) => ({
-    title,
-    slug,
-    //svg,
-    //hex,
-  }))
-
-  await writeFile(SIMPLE_ICONS_FILE, JSON.stringify(iconsJson, null, 2))
-  Log.info('Written simple icons file')
-  Log.item("File: '%s'", SIMPLE_ICONS_FILE)
+  return neededIcons
 }
 
-const SIMPLE_ICONS_FILE = join(
+async function createDisplayNameAndColorsFile(
+  neededIcons: ReadonlyArray<SimpleIcon>,
+) {
+  const filepath = await getTechFilepathFromGitignoreOrThrow(
+    'color',
+    'display name and color entries',
+  )
+  Log.info('Writing display name and colors file')
+  Log.item(filepath)
+  const displayNameAndColorsJson = neededIcons.map(({ slug, title, hex }) => [
+    slug,
+    title,
+    hex,
+  ])
+  return writeFile(filepath, objectToJson(displayNameAndColorsJson))
+}
+
+const TECH_DIR = join(
   getRepositoryRootDir(),
   'src',
   'app',
   'resume-page',
   'technology',
-  'simple-icons.json',
 )
+const TECH_DIR_GITIGNORE = join(TECH_DIR, '.gitignore')
+
+const getTechFilepathFromGitignoreOrThrow = async (
+  pattern: string,
+  fileDescription: string,
+) => {
+  const filename = (await readFile(TECH_DIR_GITIGNORE, 'utf8'))
+    .split('\n')
+    .find((line) => line.includes(pattern))
+  if (!filename) {
+    throw new Error(`${fileDescription} filename not found`)
+  }
+  return join(TECH_DIR, filename)
+}
 
 if (isMain(import.meta.url)) {
   await generateSimpleIcons()
