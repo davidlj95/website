@@ -190,17 +190,13 @@ const BAR_CONTENT = new ChippedContent({
 const CONTENTS = [FOO_CONTENT, BAR_CONTENT] as const
 const FIRST_CONTENT = CONTENTS[0]
 const SECOND_CONTENT = CONTENTS[1]
-function makeSut(): [
-  ComponentFixture<ChippedContentComponent>,
-  ChippedContentComponent,
-] {
+function makeSut() {
   const [fixture, component] = componentTestSetup(ChippedContentComponent, {
-    imports: [ChippedContentComponent, ChipComponent],
     providers: [
       provideNoopAnimations(),
       MockProvider(SCROLL_INTO_VIEW, jasmine.createSpy()),
     ],
   })
   component.contents = CONTENTS
-  return [fixture, component]
+  return [fixture, component] as const
 }

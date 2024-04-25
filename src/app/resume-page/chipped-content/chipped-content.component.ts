@@ -1,7 +1,6 @@
 import { Component, Inject, Input } from '@angular/core'
 import { ChipComponent } from '../chip/chip.component'
-import { NgClass, NgComponentOutlet, NgFor, NgIf } from '@angular/common'
-import { TestIdDirective } from '@/common/test-id.directive'
+import { NgComponentOutlet, NgFor } from '@angular/common'
 import { ChippedContent } from './chipped-content'
 import { EMPHASIZED_DURATION_MS, TIMING_FUNCTION } from '@/common/animations'
 import {
@@ -19,14 +18,7 @@ import { SCROLL_INTO_VIEW, ScrollIntoView } from '@/common/scroll-into-view'
   templateUrl: './chipped-content.component.html',
   styleUrls: ['./chipped-content.component.scss'],
   standalone: true,
-  imports: [
-    NgFor,
-    ChipComponent,
-    TestIdDirective,
-    NgClass,
-    NgComponentOutlet,
-    NgIf,
-  ],
+  imports: [NgFor, ChipComponent, NgComponentOutlet],
   animations: [
     trigger('contentDisplayed', [
       state('false', style({ display: 'none' })),
