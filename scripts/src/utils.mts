@@ -8,6 +8,8 @@ export function getRepositoryRootDir() {
   return resolve(__dirname, '..', '..')
 }
 
+export const objectToJson = (object: object) => JSON.stringify(object, null, 2)
+
 export const SECURITY_TXT_REL_PATH = join('.well-known', 'security.txt')
 
 /**

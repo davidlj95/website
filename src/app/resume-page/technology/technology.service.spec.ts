@@ -1,17 +1,19 @@
-import { EXTRA_DISPLAY_NAMES, TechnologyService } from './technology.service'
-import SIMPLE_ICONS_JSON from './simple-icons.json'
+import { TechnologyService } from './technology.service'
+import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-name-and-color-entries.json'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import { EXTRA_ICONS } from './extra-icons'
+import { CUSTOM_DISPLAY_NAME_AND_COLOR_ENTRIES } from './custom-display-name-and-color-entries'
 import { MockProvider } from 'ng-mocks'
 import { DomSanitizer } from '@angular/platform-browser'
 
 describe('TechnologyService', () => {
   let sut: TechnologyService
-  const SIMPLE_ICON = SIMPLE_ICONS_JSON[0]
-  const EXTRA_ICON = EXTRA_ICONS[0]
-  const EXTRA_DISPLAY_NAME_ENTRY = EXTRA_DISPLAY_NAMES[0]
-  const EXTRA_DISPLAY_NAME_SLUG = EXTRA_DISPLAY_NAME_ENTRY[0]
-  const EXTRA_DISPLAY_NAME = EXTRA_DISPLAY_NAME_ENTRY[1]
+  const SIMPLE_ICONS_ENTRIES = SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES[0]
+  const SIMPLE_ICON_SLUG = SIMPLE_ICONS_ENTRIES[0]
+  const SIMPLE_ICON_DISPLAY_NAME = SIMPLE_ICONS_ENTRIES[1]
+  const CUSTOM_ENTRY = CUSTOM_DISPLAY_NAME_AND_COLOR_ENTRIES[0]
+  const CUSTOM_SLUG = CUSTOM_ENTRY[0]
+  const CUSTOM_DISPLAY_NAME = CUSTOM_ENTRY[1]
+
   it('should be created', () => {
     sut = makeSut()
     expect(sut).toBeTruthy()
@@ -57,28 +59,20 @@ describe('TechnologyService', () => {
   })
 
   describe('display name', () => {
-    it('should return display name from simple icons JSON given a technology slug', () => {
+    it('should return display name from simple icons info given a slug', () => {
       sut = makeSut()
 
-      const displayName = sut.getDisplayName(SIMPLE_ICON.slug)
+      const displayName = sut.getDisplayName(SIMPLE_ICON_SLUG)
 
-      expect(displayName).toEqual(SIMPLE_ICON.title)
+      expect(displayName).toEqual(SIMPLE_ICON_DISPLAY_NAME)
     })
 
-    it('should return display name from extra icons given a technology slug', () => {
+    it('should return display name from custom info given a slug', () => {
       sut = makeSut()
 
-      const displayName = sut.getDisplayName(EXTRA_ICON.slug)
+      const displayName = sut.getDisplayName(CUSTOM_SLUG)
 
-      expect(displayName).toEqual(EXTRA_ICON.title)
-    })
-
-    it('should return display name from extra display names given a technology slug', () => {
-      sut = makeSut()
-
-      const displayName = sut.getDisplayName(EXTRA_DISPLAY_NAME_SLUG)
-
-      expect(displayName).toEqual(EXTRA_DISPLAY_NAME)
+      expect(displayName).toEqual(CUSTOM_DISPLAY_NAME)
     })
 
     it('should return null if name cannot be found', () => {
