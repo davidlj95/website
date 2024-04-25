@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core'
 import { SlugGeneratorService } from '@/common/slug-generator.service'
+import { ASSETS_PATH } from '@/common/assets-dir'
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalImageService {
-  public readonly ASSETS_PATH = 'assets'
   public readonly DEFAULT_EXTENSION = '.png'
 
   constructor(private slugGenerator: SlugGeneratorService) {}
@@ -18,7 +18,7 @@ export class LocalImageService {
     subdirectory?: string
   }): string {
     const pathElements = [
-      this.ASSETS_PATH,
+      ASSETS_PATH,
       subdirectory,
       `${this.slugGenerator.generate(name)}${this.DEFAULT_EXTENSION}`,
     ].filter((pathElement) => !!pathElement)

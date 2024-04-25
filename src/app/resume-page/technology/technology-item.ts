@@ -1,5 +1,3 @@
-import { SafeHtml } from '@angular/platform-browser'
-
 export interface TechnologyItem {
   readonly slug: string
   readonly displayName: string
@@ -8,6 +6,6 @@ export interface TechnologyItem {
 }
 
 export interface TechnologyIcon {
-  readonly svg: SafeHtml
-  readonly color?: string
+  readonly path: string
+  readonly color: string
 }

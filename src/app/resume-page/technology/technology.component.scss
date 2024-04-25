@@ -9,9 +9,11 @@
   }
 
   .icon {
+    position: relative;
+    height: 1em;
+    width: 1em;
     ::ng-deep svg {
-      height: 1em;
-      width: 1em;
+      fill: blue;
     }
   }
 }

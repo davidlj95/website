@@ -22,7 +22,10 @@ describe('ProjectItemTechnologiesComponent', () => {
   })
 
   it('should map technologies to items using service', () => {
-    const DUMMY_ICON: TechnologyIcon = { svg: 'svg', color: 'color' }
+    const DUMMY_ICON: TechnologyIcon = {
+      path: 'path/to/file.svg',
+      color: 'color',
+    }
     const DUMMY_DISPLAY_NAME = 'dummy display name'
     const technologyService: Partial<TechnologyService> = {
       getIcon: jasmine.createSpy().and.returnValue(DUMMY_ICON),

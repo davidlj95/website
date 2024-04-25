@@ -12,7 +12,7 @@ describe('TechnologyComponent', () => {
     slug: 'slug',
     displayName: 'displayName',
     icon: {
-      svg: 'svg',
+      path: 'path/to/file.svg',
       color: 'blue',
     },
     version: 'version',
@@ -46,7 +46,7 @@ describe('TechnologyComponent', () => {
     const iconElement = fixture.debugElement.query(ICON_PREDICATE)
     expect(iconElement).not.toBeNull()
     expect(iconElement.nativeElement.innerHTML).toEqual(
-      DUMMY_TECHNOLOGY_ITEM.icon.svg,
+      DUMMY_TECHNOLOGY_ITEM.icon.path,
     )
   })
 

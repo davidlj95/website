@@ -8,7 +8,11 @@ import { join } from 'path'
 async function generateSimpleIcons() {
   Log.info('Generating simple icons exports')
   const neededIcons = await findNeededIcons(RESUME_JSON.projects)
-  await createDisplayNameAndColorsFile(neededIcons)
+  await Promise.all(
+    [createDisplayNameAndColorsFile, createIconFiles].map((f) =>
+      f(neededIcons),
+    ),
+  )
 }
 
 async function findNeededIcons(projects: typeof RESUME_JSON.projects) {
@@ -59,6 +63,16 @@ async function createDisplayNameAndColorsFile(
   return writeFile(filepath, objectToJson(displayNameAndColorsJson))
 }
 
+async function createIconFiles(neededIcons: ReadonlyArray<SimpleIcon>) {
+  Log.info('Writing icon files')
+  Log.item(SIMPLE_ICONS_DIR)
+  await Promise.all(
+    neededIcons.map((icon) =>
+      writeFile(join(SIMPLE_ICONS_DIR, `${icon.slug}.svg`), icon.svg),
+    ),
+  )
+}
+
 const TECH_DIR = join(
   getRepositoryRootDir(),
   'src',
@@ -67,6 +81,13 @@ const TECH_DIR = join(
   'technology',
 )
 const TECH_DIR_GITIGNORE = join(TECH_DIR, '.gitignore')
+
+const SIMPLE_ICONS_DIR = join(
+  getRepositoryRootDir(),
+  'src',
+  'assets',
+  'simple-icons',
+)
 
 const getTechFilepathFromGitignoreOrThrow = async (
   pattern: string,

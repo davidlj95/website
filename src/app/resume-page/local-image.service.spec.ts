@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing'
 
 import { LocalImageService } from './local-image.service'
 import { SlugGeneratorService } from '@/common/slug-generator.service'
+import { ASSETS_PATH } from '@/common/assets-dir'
 
 describe('LocalImageService', () => {
   it('should be created', () => {
@@ -17,7 +18,7 @@ describe('LocalImageService', () => {
 
       const path = sut.generatePath(dummyArgs)
 
-      expect(path.startsWith(sut.ASSETS_PATH)).toBeTruthy()
+      expect(path.startsWith(ASSETS_PATH)).toBeTruthy()
     })
 
     it('should include given subdirectory', () => {
@@ -59,7 +60,7 @@ describe('LocalImageService', () => {
       const path = sut.generatePath({ ...dummyArgs, name })
 
       expect(path).toEqual(
-        `${sut.ASSETS_PATH}/${sluggedName}${sut.DEFAULT_EXTENSION}`,
+        `${ASSETS_PATH}/${sluggedName}${sut.DEFAULT_EXTENSION}`,
       )
     })
 
@@ -74,7 +75,7 @@ describe('LocalImageService', () => {
       const path = sut.generatePath({ ...dummyArgs, name, subdirectory })
 
       expect(path).toEqual(
-        `${sut.ASSETS_PATH}/${subdirectory}/${sluggedName}${sut.DEFAULT_EXTENSION}`,
+        `${ASSETS_PATH}/${subdirectory}/${sluggedName}${sut.DEFAULT_EXTENSION}`,
       )
     })
   })
