@@ -103,8 +103,11 @@ describe('ChippedContentComponent', () => {
     })
 
     it('should scroll content into view', () => {
+      const contentElement = fixture.debugElement.query(CONTENT_PREDICATE)
       const scrollIntoViewSpy = TestBed.inject(SCROLL_INTO_VIEW) as jasmine.Spy
-      expect(scrollIntoViewSpy).toHaveBeenCalledTimes(1)
+      expect(scrollIntoViewSpy).toHaveBeenCalledOnceWith(
+        contentElement.nativeElement,
+      )
     })
 
     describe('when tapping same chip again', () => {
