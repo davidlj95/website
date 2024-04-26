@@ -107,7 +107,7 @@
     "tsx": "4.7.2",
     "typescript": "5.4.5"
   },
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@9.0.6",
   "eslint-formatter-multiple": {
     "formatters": [
       {
