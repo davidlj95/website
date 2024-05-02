@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   build:
-    name: Build and prerender app
+    name: Build app
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -44,10 +44,10 @@ jobs:
           key: ${{ env.cache-name }}-${{ inputs.ref != '' && inputs.ref || github.ref }}
           restore-keys: |
             ${{ env.cache-name }}
-      - name: Prebuild
+      - name: Prebuild tasks
         run: pnpm run prebuild
-      - name: Build and prerender app (SSG)
-        run: pnpm run ${{ inputs.build-run-script}}
+      - name: Build app (includes SSG|R)
+        run: pnpm run ${{ inputs.build-run-script }}
       - name: Upload built app
         if: ${{ inputs.artifact-name != '' }}
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4

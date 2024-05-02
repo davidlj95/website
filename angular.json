@@ -25,11 +25,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/@davidlj95/website/browser",
+            "outputPath": {
+              "base": "dist/@davidlj95/website"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -53,7 +54,13 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/sass"]
             },
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts",
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -72,9 +79,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
@@ -141,80 +146,6 @@
             "scripts": [],
             "karmaConfig": "karma.conf.js"
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/@davidlj95/website/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json",
-            "inlineStyleLanguage": "scss",
-            "stylePreprocessorOptions": {
-              "includePaths": ["src/sass"]
-            }
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false,
-              "vendorChunk": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
-                }
-              ]
-            },
-            "pullRequest": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.pull-request.ts"
-                }
-              ]
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@angular-devkit/build-angular:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "@davidlj95/website:build:development",
-              "serverTarget": "@davidlj95/website:server:development"
-            },
-            "production": {
-              "browserTarget": "@davidlj95/website:build:production",
-              "serverTarget": "@davidlj95/website:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
-          "options": {
-            "routes": ["/"]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "@davidlj95/website:build:production",
-              "serverTarget": "@davidlj95/website:server:production"
-            },
-            "development": {
-              "browserTarget": "@davidlj95/website:build:development",
-              "serverTarget": "@davidlj95/website:server:development"
-            },
-            "pullRequest": {
-              "browserTarget": "@davidlj95/website:build:pullRequest,production",
-              "serverTarget": "@davidlj95/website:server:pullRequest,production"
-            }
-          },
-          "defaultConfiguration": "production"
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",

@@ -11,7 +11,7 @@ jobs:
       contents: write
     with:
       artifact-name: build
-      build-run-script: 'prerender:pullRequest'
+      build-run-script: 'build:pullRequest'
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml

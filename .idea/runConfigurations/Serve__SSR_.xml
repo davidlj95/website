@@ -3,7 +3,7 @@
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="serve:ssr" />
+      <script value="serve:ssr:@davidlj95/website" />
     </scripts>
     <node-interpreter value="project" />
     <envs />
