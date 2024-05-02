@@ -8,6 +8,7 @@ import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
   styleUrls: ['./no-script.component.scss'],
   standalone: true,
   imports: [MaterialSymbolDirective],
+  host: { ngSkipHydration: 'true' },
 })
 export class NoScriptComponent {
   protected readonly MaterialSymbol = {

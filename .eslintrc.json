@@ -27,6 +27,15 @@
             "prefix": "app",
             "style": "kebab-case"
           }
+        ],
+        // Soon this rule will completely change anyway
+        // to use host property instead of decorators
+        // https://github.com/angular/angular/issues/54284
+        "@angular-eslint/no-host-metadata-property": [
+          "error",
+          {
+            "allowStatic": true
+          }
         ]
       }
     },
