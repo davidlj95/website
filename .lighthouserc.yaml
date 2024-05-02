@@ -2,7 +2,7 @@ ci:
   upload:
     target: temporary-public-storage
     url:
-      - 'http://localhost/'
+      - 'http://localhost/resume'
   collect:
     staticDistDir: dist/@davidlj95/website/browser
   assert:
