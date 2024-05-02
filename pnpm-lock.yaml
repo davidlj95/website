@@ -36,7 +36,7 @@ importers:
         specifier: 17.3.7
         version: 17.3.7(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.4))(@angular/platform-browser@17.3.7(@angular/animations@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.4)))(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.4)))(rxjs@7.8.1)
       '@angular/ssr':
-        specifier: ^17.3.6
+        specifier: 17.3.6
         version: 17.3.6(@angular/common@17.3.7(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@17.3.7(rxjs@7.8.1)(zone.js@0.14.4))
       '@davidlj95/ngx-meta':
         specifier: 1.0.0-beta.3
@@ -60,7 +60,7 @@ importers:
         specifier: 1.7.4
         version: 1.7.4
       express:
-        specifier: ^4.18.2
+        specifier: 4.19.2
         version: 4.19.2
       gardevoir:
         specifier: 1.0.0
@@ -118,7 +118,7 @@ importers:
         specifier: 1.7.5
         version: 1.7.5
       '@types/express':
-        specifier: ^4.17.17
+        specifier: 4.17.21
         version: 4.17.21
       '@types/jasmine':
         specifier: 5.1.4
