@@ -6,13 +6,13 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "esModuleInterop": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
@@ -22,7 +22,6 @@
     "lib": ["ES2022", "dom"],
     // Manually added to import release.json into app
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
     "paths": {
       "@/common/*": ["src/app/common/*"],
       // 👇 Could be in `tsconfig.spec.json` but WebStorm doesn't read it. Just the `tsconfig.json` one
