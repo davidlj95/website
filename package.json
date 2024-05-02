@@ -14,7 +14,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prerender:pullRequest": "ng run @davidlj95/website:prerender:pullRequest",
+    "build:pullRequest": "ng run @davidlj95/website:build:pullRequest",
     "security-txt": "tsm scripts/src/generate-security-txt.ts",
     "lint": "ng lint",
     "lint-staged": "lint-staged",
