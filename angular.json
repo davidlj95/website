@@ -46,7 +46,11 @@
                 "output": "/",
                 "followSymlinks": true
               },
-              "src/.well-known",
+              {
+                "glob": "**/!(*.liquid)",
+                "input": "src/.well-known",
+                "output": "/.well-known"
+              },
               "src/robots.txt",
               "src/humans.txt"
             ],
@@ -135,7 +139,11 @@
               "src/site.webmanifest",
               "src/browserconfig.xml",
               "src/profile.jpg",
-              "src/.well-known",
+              {
+                "glob": "**/!(*.liquid)",
+                "input": "src/.well-known",
+                "output": "/.well-known"
+              },
               "src/robots.txt",
               "src/humans.txt"
             ],
