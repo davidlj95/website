@@ -35,13 +35,17 @@ jobs:
           lfs: true
       - name: Setup
         uses: ./.github/actions/setup
+      - name: Generate info for Angular cache key
+        run: echo "week-of-year=$(date --utc '+%V')" >> $GITHUB_ENV
       - name: Cache Angular build
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         env:
           cache-name: angular-cache
         with:
           path: .angular/cache
-          key: ${{ env.cache-name }}-${{ inputs.ref != '' && inputs.ref || github.ref }}
+          # 👇 Update cache once a week. Best effort approach
+          #    Otherwise it would never be invalidated
+          key: ${{ env.cache-name }}-${{ env.week-of-year }}
           restore-keys: |
             ${{ env.cache-name }}
       - name: Prebuild tasks
