@@ -3,9 +3,10 @@ import { ComponentFixture } from '@angular/core/testing'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { Technology } from '../project-item'
-import { MockProvider } from 'ng-mocks'
+import { MockComponent, MockProvider } from 'ng-mocks'
 import { TechnologyService } from '../../../technology/technology.service'
-import { TechnologyIcon } from '../../../technology/technology-item'
+import { SimpleIcon } from '@/common/simple-icon/simple-icon'
+import { TechnologyComponent } from '../../../technology/technology.component'
 
 describe('ProjectItemTechnologiesComponent', () => {
   let component: ProjectItemTechnologiesComponent
@@ -22,7 +23,10 @@ describe('ProjectItemTechnologiesComponent', () => {
   })
 
   it('should map technologies to items using service', () => {
-    const DUMMY_ICON: TechnologyIcon = { svg: 'svg', color: 'color' }
+    const DUMMY_ICON: SimpleIcon = {
+      slug: 'dummy',
+      hex: 'blue',
+    }
     const DUMMY_DISPLAY_NAME = 'dummy display name'
     const technologyService: Partial<TechnologyService> = {
       getIcon: jasmine.createSpy().and.returnValue(DUMMY_ICON),
@@ -66,6 +70,10 @@ function makeSut(
   opts: { technologyService?: Partial<TechnologyService> } = {},
 ) {
   return componentTestSetup(ProjectItemTechnologiesComponent, {
+    imports: [
+      ProjectItemTechnologiesComponent,
+      MockComponent(TechnologyComponent),
+    ],
     providers: [MockProvider(TechnologyService, opts.technologyService)],
   })
 }

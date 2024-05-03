@@ -4,6 +4,8 @@ import { TechnologyComponent } from './technology.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { TechnologyItem } from './technology-item'
 import { By } from '@angular/platform-browser'
+import { MockComponent } from 'ng-mocks'
+import { SimpleIconComponent } from '@/common/simple-icon/simple-icon.component'
 
 describe('TechnologyComponent', () => {
   let component: TechnologyComponent
@@ -12,8 +14,8 @@ describe('TechnologyComponent', () => {
     slug: 'slug',
     displayName: 'displayName',
     icon: {
-      svg: 'svg',
-      color: 'blue',
+      slug: 'slug',
+      hex: 'blue',
     },
     version: 'version',
   } satisfies TechnologyItem
@@ -22,41 +24,6 @@ describe('TechnologyComponent', () => {
     ;[fixture, component] = makeSut()
 
     expect(component).toBeTruthy()
-  })
-
-  const ICON_PREDICATE = By.css('.icon')
-
-  it('should not render icon if does not exist', () => {
-    ;[fixture, component] = makeSut()
-    component.item = {
-      ...DUMMY_TECHNOLOGY_ITEM,
-      icon: undefined,
-    }
-    fixture.detectChanges()
-
-    const iconElement = fixture.debugElement.query(ICON_PREDICATE)
-    expect(iconElement).toBeNull()
-  })
-
-  it('should render icon if exists', () => {
-    ;[fixture, component] = makeSut()
-    component.item = DUMMY_TECHNOLOGY_ITEM
-    fixture.detectChanges()
-
-    const iconElement = fixture.debugElement.query(ICON_PREDICATE)
-    expect(iconElement).not.toBeNull()
-    expect(iconElement.nativeElement.innerHTML).toEqual(
-      DUMMY_TECHNOLOGY_ITEM.icon.svg,
-    )
-  })
-
-  it('should set icon fill color if exists', () => {
-    ;[fixture, component] = makeSut()
-    component.item = DUMMY_TECHNOLOGY_ITEM
-    fixture.detectChanges()
-
-    const iconElement = fixture.debugElement.query(ICON_PREDICATE)
-    expect(iconElement.styles['fill']).toEqual(DUMMY_TECHNOLOGY_ITEM.icon.color)
   })
 
   it('should render display name', () => {
@@ -72,5 +39,7 @@ describe('TechnologyComponent', () => {
 })
 
 function makeSut() {
-  return componentTestSetup(TechnologyComponent)
+  return componentTestSetup(TechnologyComponent, {
+    imports: [TechnologyComponent, MockComponent(SimpleIconComponent)],
+  })
 }

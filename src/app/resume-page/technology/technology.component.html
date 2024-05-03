@@ -1,10 +1,6 @@
 <div class="wrap">
-  <span
-    class="icon"
-    *ngIf="item.icon"
-    [innerHTML]="item.icon.svg"
-    [style.fill]="item.icon.color"
-  >
+  <span class="icon" *ngIf="item.icon">
+    <app-simple-icon [icon]="item.icon"></app-simple-icon>
   </span>
   <span class="name">{{ item.displayName }}</span>
 </div>

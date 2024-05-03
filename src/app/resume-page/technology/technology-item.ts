@@ -1,13 +1,8 @@
-import { SafeHtml } from '@angular/platform-browser'
+import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 
 export interface TechnologyItem {
   readonly slug: string
   readonly displayName: string
-  readonly icon?: TechnologyIcon
+  readonly icon?: SimpleIcon
   readonly version?: string
-}
-
-export interface TechnologyIcon {
-  readonly svg: SafeHtml
-  readonly color?: string
 }

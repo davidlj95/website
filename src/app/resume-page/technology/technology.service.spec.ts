@@ -1,18 +1,18 @@
 import { TechnologyService } from './technology.service'
 import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-name-and-color-entries.json'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import { CUSTOM_DISPLAY_NAME_AND_COLOR_ENTRIES } from './custom-display-name-and-color-entries'
-import { MockProvider } from 'ng-mocks'
-import { DomSanitizer } from '@angular/platform-browser'
+import { CUSTOM_DISPLAY_NAME_ENTRIES } from './custom-display-name-entries'
 
 describe('TechnologyService', () => {
   let sut: TechnologyService
   const SIMPLE_ICONS_ENTRIES = SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES[0]
   const SIMPLE_ICON_SLUG = SIMPLE_ICONS_ENTRIES[0]
   const SIMPLE_ICON_DISPLAY_NAME = SIMPLE_ICONS_ENTRIES[1]
-  const CUSTOM_ENTRY = CUSTOM_DISPLAY_NAME_AND_COLOR_ENTRIES[0]
-  const CUSTOM_SLUG = CUSTOM_ENTRY[0]
-  const CUSTOM_DISPLAY_NAME = CUSTOM_ENTRY[1]
+  const SIMPLE_ICON_COLOR = SIMPLE_ICONS_ENTRIES[2]
+
+  const CUSTOM_DISPLAY_NAME_ENTRY = CUSTOM_DISPLAY_NAME_ENTRIES[0]
+  const CUSTOM_DISPLAY_NAME_SLUG = CUSTOM_DISPLAY_NAME_ENTRY[0]
+  const CUSTOM_DISPLAY_NAME = CUSTOM_DISPLAY_NAME_ENTRY[1]
 
   it('should be created', () => {
     sut = makeSut()
@@ -20,41 +20,20 @@ describe('TechnologyService', () => {
   })
 
   describe('icon', () => {
-    //it('should return icon sanitized SVG and color in hex form from simple icons JSON given a technology slug', () => {
-    //  const domSanitizer: Partial<DomSanitizer> = {
-    //    bypassSecurityTrustHtml: jasmine.createSpy().and.callFake(IDENTITY),
-    //  }
-    //  sut = makeSut({ domSanitizer })
-    //  const icon = sut.getIcon(SIMPLE_ICON.slug)
+    it('should return icon color and path from simple icons', () => {
+      sut = makeSut()
+      const icon = sut.getIcon(SIMPLE_ICON_SLUG)
 
-    //  expect(icon!.svg).toEqual(SIMPLE_ICON.svg)
-    //  expect(domSanitizer.bypassSecurityTrustHtml).toHaveBeenCalledOnceWith(
-    //    SIMPLE_ICON.svg,
-    //  )
-    //  expect(icon!.color).toEqual(`#${SIMPLE_ICON.hex}`)
-    //})
+      expect(icon!.hex).toEqual(SIMPLE_ICON_COLOR)
+      expect(icon!.slug).toEqual(SIMPLE_ICON_SLUG)
+    })
 
-    //it('should return icon sanitized SVG and color in hex form from extra icons given a technology slug', () => {
-    //  const domSanitizer: Partial<DomSanitizer> = {
-    //    bypassSecurityTrustHtml: jasmine.createSpy().and.callFake(IDENTITY),
-    //  }
-    //  sut = makeSut({ domSanitizer })
-
-    //  const icon = sut.getIcon(EXTRA_ICON.slug)
-
-    //  expect(icon!.svg).toEqual(EXTRA_ICON.svg)
-    //  expect(domSanitizer.bypassSecurityTrustHtml).toHaveBeenCalledOnceWith(
-    //    EXTRA_ICON.svg,
-    //  )
-    //  expect(icon!.color).toEqual(`#${EXTRA_ICON.hex}`)
-    //})
-
-    it('should return null when icon does not exist', () => {
+    it('should return nothing when icon does not exist', () => {
       sut = makeSut()
       const nonExistentIconSlug = 'nonExistentIconSlug'
       const icon = sut.getIcon(nonExistentIconSlug)
 
-      expect(icon).toBeNull()
+      expect(icon).toBeUndefined()
     })
   })
 
@@ -67,27 +46,25 @@ describe('TechnologyService', () => {
       expect(displayName).toEqual(SIMPLE_ICON_DISPLAY_NAME)
     })
 
-    it('should return display name from custom info given a slug', () => {
+    it('should return display name from custom display names given a slug', () => {
       sut = makeSut()
 
-      const displayName = sut.getDisplayName(CUSTOM_SLUG)
+      const displayName = sut.getDisplayName(CUSTOM_DISPLAY_NAME_SLUG)
 
       expect(displayName).toEqual(CUSTOM_DISPLAY_NAME)
     })
 
-    it('should return null if name cannot be found', () => {
+    it('should return nothing when display name cannot be found', () => {
       sut = makeSut()
       const nonExistentIconSlug = 'nonExistentIconSlug'
 
       const displayName = sut.getDisplayName(nonExistentIconSlug)
 
-      expect(displayName).toBeNull()
+      expect(displayName).toBeUndefined()
     })
   })
 })
 
-function makeSut(opts: { domSanitizer?: Partial<DomSanitizer> } = {}) {
-  return serviceTestSetup(TechnologyService, {
-    providers: [MockProvider(DomSanitizer, opts.domSanitizer)],
-  })
+function makeSut() {
+  return serviceTestSetup(TechnologyService)
 }
