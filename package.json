@@ -29,7 +29,8 @@
     "scripts:tsc": "cd scripts && tsc",
     "lighthouse": "lhci autorun",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
-    "analyze-main-bundle": "pnpm dlx source-map-explorer dist/@davidlj95/website/browser/main*.js",
+    "//1": "👇 Something weird in source maps after switching to ESBuild",
+    "analyze-main-bundle": "pnpm dlx source-map-explorer dist/@davidlj95/website/browser/main*.js --no-border-checks",
     "serve:ssr:@davidlj95/website": "node dist/@davidlj95/website/server/server.mjs"
   },
   "dependencies": {
