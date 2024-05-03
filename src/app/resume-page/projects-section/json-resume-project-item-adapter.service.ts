@@ -2,19 +2,18 @@ import { Inject, Injectable } from '@angular/core'
 import resume from '../../../../assets/resume.json'
 import { ProjectItem, Stack } from './project-item/project-item'
 import { DateRange } from '../date-range/date-range'
-import { ENVIRONMENT } from '@/common/injection-tokens'
-import { Environment } from '../../../environments'
-import { LocalImageService } from '../local-image.service'
+import {
+  RELATIVIZE_PRODUCTION_URL,
+  RelativizeProductionUrl,
+} from '@/common/relativize-production-url'
 
 @Injectable({
   providedIn: 'root',
 })
 export class JsonResumeProjectItemAdapterService {
-  public readonly ASSETS_SUBDIRECTORY = 'projects'
-
   constructor(
-    @Inject(ENVIRONMENT) private environment: Environment,
-    private localImageService: LocalImageService,
+    @Inject(RELATIVIZE_PRODUCTION_URL)
+    private readonly relativizeUrl: RelativizeProductionUrl,
   ) {}
 
   public adapt(item: JsonResumeProjectItem): ProjectItem {
@@ -28,12 +27,7 @@ export class JsonResumeProjectItemAdapterService {
       website: item.url ? new URL(item.url) : undefined,
       roles: item.roles,
       imageSrc: item.image
-        ? this.environment.mapJsonResumeImages
-          ? this.localImageService.generatePath({
-              name: item.name,
-              subdirectory: this.ASSETS_SUBDIRECTORY,
-            })
-          : item.image
+        ? this.relativizeUrl(new URL(item.image))
         : undefined,
       stack: item.stack ? this.mapStack(item.stack) : undefined,
       technologies: item.technologies,
