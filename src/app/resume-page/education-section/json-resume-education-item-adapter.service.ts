@@ -1,21 +1,20 @@
 import { Inject, Injectable } from '@angular/core'
 import resume from '../../../../assets/resume.json'
-import { ENVIRONMENT } from '@/common/injection-tokens'
-import { Environment } from '../../../environments'
 import { EducationItem } from './education-item/education-item'
 import { Organization } from '../organization'
 import { DateRange } from '../date-range/date-range'
-import { LocalImageService } from '../local-image.service'
+import {
+  RELATIVIZE_PRODUCTION_URL,
+  RelativizeProductionUrl,
+} from '@/common/relativize-production-url'
 
 @Injectable({
   providedIn: 'root',
 })
 export class JsonResumeEducationItemAdapterService {
-  public readonly ASSETS_SUBDIRECTORY = 'education'
-
   constructor(
-    @Inject(ENVIRONMENT) private environment: Environment,
-    private localImageService: LocalImageService,
+    @Inject(RELATIVIZE_PRODUCTION_URL)
+    private readonly relativizeUrl: RelativizeProductionUrl,
   ) {}
 
   // 👇 JSON Schema of "education"
@@ -25,12 +24,7 @@ export class JsonResumeEducationItemAdapterService {
       institution: new Organization({
         name: item.institution,
         website: new URL(item.url),
-        imageSrc: this.environment.mapJsonResumeImages
-          ? this.localImageService.generatePath({
-              name: item.shortName ?? item.institution,
-              subdirectory: this.ASSETS_SUBDIRECTORY,
-            })
-          : item.image,
+        imageSrc: this.relativizeUrl(new URL(item.image)),
         shortName: item.shortName,
       }),
       area: item.area,

@@ -1,13 +1,14 @@
-import { TestBed } from '@angular/core/testing'
 import resume from '../../../../assets/resume.json'
-import { Environment } from '../../../environments'
 import { MockProvider } from 'ng-mocks'
-import { ENVIRONMENT } from '@/common/injection-tokens'
 import {
   JsonResumeEducationItem,
   JsonResumeEducationItemAdapterService,
 } from './json-resume-education-item-adapter.service'
-import { LocalImageService } from '../local-image.service'
+import {
+  RELATIVIZE_PRODUCTION_URL,
+  RelativizeProductionUrl,
+} from '@/common/relativize-production-url'
+import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 
 describe('JsonResumeEducationItemAdapterService', () => {
   it('should be created', () => {
@@ -74,84 +75,35 @@ describe('JsonResumeEducationItemAdapterService', () => {
       expect(item.cumLaude).toBeTrue()
     })
 
-    describe('when image mapping is disabled', () => {
-      it('should map the image', () => {
-        const image = 'https://example.org/logo.png'
+    it('should relativize image URL', () => {
+      const dummyImagePath = '/assets/education/foo.png'
+      const image = `https://example.com${dummyImagePath}`
+      const relativizeProductionUrl = jasmine
+        .createSpy<RelativizeProductionUrl>()
+        .and.returnValue(dummyImagePath)
+      const sut = makeSut({ relativizeProductionUrl })
 
-        const item = makeSut({ mapJsonResumeImages: false }).adapt(
-          makeJsonResumeEducationItem({ image }),
-        )
+      const item = sut.adapt(makeJsonResumeEducationItem({ image }))
 
-        expect(item.institution.imageSrc).toEqual(image)
-      })
-    })
-
-    describe('when images mapping is enabled', () => {
-      const institution = 'Instìtútión Name'
-      const image = 'https://example.org/logo.png'
-      const fakeImageSrc = 'assets/education/institution.png'
-      let sut: JsonResumeEducationItemAdapterService
-      let localImageService: LocalImageService
-
-      beforeEach(() => {
-        sut = makeSut({ mapJsonResumeImages: true })
-        localImageService = TestBed.inject(LocalImageService)
-        spyOn(localImageService, 'generatePath').and.returnValue(fakeImageSrc)
-      })
-
-      it('should generate local image path using service giving proper assets subdirectory', () => {
-        const item = sut.adapt(
-          makeJsonResumeEducationItem({ institution, image }),
-        )
-
-        expect(item.institution.imageSrc).toEqual(fakeImageSrc)
-        expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
-          name: jasmine.anything(),
-          subdirectory: sut.ASSETS_SUBDIRECTORY,
-        })
-      })
-
-      describe('when short name is available', () => {
-        it('should generate local image path based on short name', () => {
-          const shortName = 'FIN'
-
-          sut.adapt(makeJsonResumeEducationItem({ institution, shortName }))
-
-          expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
-            name: shortName,
-            subdirectory: jasmine.anything(),
-          })
-        })
-      })
-      describe('when short name is not available', () => {
-        it('should generate local image path based on name', () => {
-          const shortName = undefined
-
-          sut.adapt(makeJsonResumeEducationItem({ institution, shortName }))
-
-          expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
-            name: institution,
-            subdirectory: jasmine.anything(),
-          })
-        })
-      })
+      expect(relativizeProductionUrl).toHaveBeenCalledOnceWith(new URL(image))
+      expect(item.institution.imageSrc).toEqual(dummyImagePath)
     })
   })
 })
 
-function makeSut({
-  mapJsonResumeImages,
-}: Partial<Environment> = {}): JsonResumeEducationItemAdapterService {
-  let providers: unknown[] | undefined
-  if (mapJsonResumeImages !== undefined) {
-    const environment: Partial<Environment> = {
-      mapJsonResumeImages,
-    }
-    providers = [MockProvider(ENVIRONMENT, environment)]
-  }
-  TestBed.configureTestingModule({ providers })
-  return TestBed.inject(JsonResumeEducationItemAdapterService)
-}
+const makeSut = (
+  opts: {
+    relativizeProductionUrl?: RelativizeProductionUrl
+  } = {},
+): JsonResumeEducationItemAdapterService =>
+  serviceTestSetup(JsonResumeEducationItemAdapterService, {
+    providers: [
+      MockProvider(
+        RELATIVIZE_PRODUCTION_URL,
+        opts.relativizeProductionUrl ?? (() => '/fake/path'),
+      ),
+    ],
+  })
 
 const sampleJsonResumeEducationItem = resume.education[0]
 

@@ -1,5 +1,3 @@
-import { TestBed } from '@angular/core/testing'
-
 import resume from '../../../../assets/resume.json'
 import {
   InvalidStackValueError,
@@ -7,11 +5,12 @@ import {
   JsonResumeProjectItemAdapterService,
 } from './json-resume-project-item-adapter.service'
 import { MockProvider } from 'ng-mocks'
-import { ENVIRONMENT } from '@/common/injection-tokens'
-import { Environment } from '../../../environments'
 import { Stack, Technology } from './project-item/project-item'
-import { LocalImageService } from '../local-image.service'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
+import {
+  RELATIVIZE_PRODUCTION_URL,
+  RelativizeProductionUrl,
+} from '@/common/relativize-production-url'
 
 describe('JsonResumeProjectItemAdapterService', () => {
   it('should be created', () => {
@@ -76,55 +75,31 @@ describe('JsonResumeProjectItemAdapterService', () => {
     })
 
     describe('when image exists', () => {
-      const image = 'https://example.org/project.logo.png'
+      it('should relativize image URL', () => {
+        const dummyImagePath = '/assets/projects/foo.png'
+        const image = `https://example.com${dummyImagePath}`
+        const relativizeProductionUrl = jasmine
+          .createSpy<RelativizeProductionUrl>()
+          .and.returnValue(dummyImagePath)
+        const sut = makeSut({ relativizeProductionUrl })
 
-      describe('when image mapping is disabled', () => {
-        it('should map image', () => {
-          const item = makeSut({ mapJsonResumeImages: false }).adapt(
-            makeJsonResumeProjectItem({ image }),
-          )
-          expect(item.imageSrc).toEqual(image)
-        })
-      })
-      describe('when image mapping is enabled', () => {
-        it('should generate local image path using service', () => {
-          const name = 'Fóò PröJEct'
-          const fakeImageSrc = 'assets/projects/project.png'
-          const sut = makeSut({
-            mapJsonResumeImages: true,
-          })
-          const localImageService = TestBed.inject(LocalImageService)
-          spyOn(localImageService, 'generatePath').and.returnValue(fakeImageSrc)
+        const item = sut.adapt(makeJsonResumeProjectItem({ image }))
 
-          const item = sut.adapt(makeJsonResumeProjectItem({ name, image }))
-
-          expect(item.imageSrc).toEqual(fakeImageSrc)
-          expect(localImageService.generatePath).toHaveBeenCalledOnceWith({
-            name,
-            subdirectory: sut.ASSETS_SUBDIRECTORY,
-          })
-        })
+        expect(relativizeProductionUrl).toHaveBeenCalledOnceWith(new URL(image))
+        expect(item.imageSrc).toEqual(dummyImagePath)
       })
     })
 
     describe('when image does not exist', () => {
-      describe('when image mapping is disabled', () => {
-        it('should map no image', () => {
-          const image = undefined
-          const item = makeSut({ mapJsonResumeImages: false }).adapt(
-            makeJsonResumeProjectItem({ image }),
-          )
-          expect(item.imageSrc).toBeUndefined()
-        })
-      })
-      describe('when image mapping is enabled', () => {
-        it('should map no image', () => {
-          const image = undefined
-          const item = makeSut({
-            mapJsonResumeImages: true,
-          }).adapt(makeJsonResumeProjectItem({ image }))
-          expect(item.imageSrc).toBeUndefined()
-        })
+      it('should map no image', () => {
+        const image = undefined
+        const relativizeProductionUrl =
+          jasmine.createSpy<RelativizeProductionUrl>()
+        const sut = makeSut({ relativizeProductionUrl })
+
+        const item = sut.adapt(makeJsonResumeProjectItem({ image }))
+        expect(relativizeProductionUrl).not.toHaveBeenCalled()
+        expect(item.imageSrc).toBeUndefined()
       })
     })
 
@@ -163,18 +138,17 @@ describe('JsonResumeProjectItemAdapterService', () => {
   })
 })
 
-function makeSut({
-  mapJsonResumeImages,
-}: Partial<Environment> = {}): JsonResumeProjectItemAdapterService {
-  let providers: unknown[] | undefined
-  if (mapJsonResumeImages !== undefined) {
-    const environment: Partial<Environment> = {
-      mapJsonResumeImages,
-    }
-    providers = [MockProvider(ENVIRONMENT, environment)]
-  }
-  return serviceTestSetup(JsonResumeProjectItemAdapterService, { providers })
-}
+const makeSut = (
+  opts: { relativizeProductionUrl?: RelativizeProductionUrl } = {},
+): JsonResumeProjectItemAdapterService =>
+  serviceTestSetup(JsonResumeProjectItemAdapterService, {
+    providers: [
+      MockProvider(
+        RELATIVIZE_PRODUCTION_URL,
+        opts.relativizeProductionUrl ?? (() => '/fake/path'),
+      ),
+    ],
+  })
 
 function makeJsonResumeProjectItem(
   overrides: Partial<JsonResumeProjectItem> = {},
