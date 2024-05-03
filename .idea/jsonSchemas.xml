@@ -56,6 +56,22 @@
             </SchemaInfo>
           </value>
         </entry>
+        <entry key="lighthouserc.schema">
+          <value>
+            <SchemaInfo>
+              <option name="generatedName" value="New Schema" />
+              <option name="name" value="lighthouserc.schema" />
+              <option name="relativePathToSchema" value="https://gist.githubusercontent.com/jfhr/181123d7acc87ea329be3700d9c37594/raw/a85f5c8b64836e513533cfd3edb7ec8e0801a143/lighthouserc.schema.json" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value=".lighthouserc.yaml" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
         <entry key="lint-staged">
           <value>
             <SchemaInfo>

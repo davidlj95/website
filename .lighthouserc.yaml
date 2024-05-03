@@ -1,10 +1,8 @@
 ci:
-  upload:
-    target: temporary-public-storage
-    url:
-      - 'http://localhost/resume/'
   collect:
     staticDistDir: dist/@davidlj95/website/browser
+    url:
+      - 'http://localhost/resume/'
   assert:
     preset: 'lighthouse:no-pwa'
     assertions:
@@ -14,3 +12,5 @@ ci:
       csp-xss: warn
       unused-javascript: warn
       uses-responsive-images: warn
+  upload:
+    target: temporary-public-storage
