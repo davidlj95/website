@@ -1,9 +1,8 @@
 import { Component, Inject } from '@angular/core'
 import { Lightbulb } from '../material-symbols'
 import { Router } from '@angular/router'
-import { Environment } from '../../environments'
-import { ENVIRONMENT } from '@/common/injection-tokens'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
+import { APP_BASE_URL } from '@/common/app-base-url'
 
 @Component({
   selector: 'app-not-found-page',
@@ -18,8 +17,8 @@ export class NotFoundPageComponent {
     Lightbulb,
   }
 
-  constructor(@Inject(ENVIRONMENT) environment: Environment, router: Router) {
-    const currentUrl = new URL(router.url, environment.canonicalUrl)
+  constructor(@Inject(APP_BASE_URL) appBaseUrl: URL, router: Router) {
+    const currentUrl = new URL(router.url, appBaseUrl)
     this.currentUrlInWaybackMachine = new URL(
       `${WAYBACK_MACHINE_URL_PREFIX}${currentUrl}`,
     )
