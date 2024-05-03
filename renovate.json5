@@ -73,19 +73,11 @@
       matchPackageNames: ['zone.js'],
       allowedVersions: '0.14.x',
     },
-    // Font Awesome & Angular v17
-    // https://github.com/FortAwesome/angular-fontawesome#compatibility-table
+    // ng-icons Angular compatibility
+    // https://github.com/ng-icons/ng-icons/tree/master?tab=readme-ov-file#supported-versions
     {
-      matchPackageNames: ['@fortawesome/angular-fontawesome'],
-      allowedVersions: '0.14.x',
-    },
-    {
-      matchPackageNames: [
-        '@fortawesome/fontawesome-svg-core',
-        '@fortawesome/free-brands-svg-icons',
-        '@fortawesome/free-solid-svg-icons',
-      ],
-      allowedVersions: '5.x || 6.x',
+      matchDepPrefixes: ['@ng-icons'],
+      allowedVersions: '26.x || 27.x',
     },
   ],
 }

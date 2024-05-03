@@ -7,7 +7,6 @@
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
 @use 'app/not-found-page/not-found-page-theme';
-@use 'font-awesome';
 @use 'material-symbols';
 @use 'theming';
 @use 'typographies';
@@ -41,9 +40,7 @@ a {
 }
 
 // Needed for some accessibility tricks around
-// Font Awesome already provides this class, but it's copy/pasted to have it when:
-//  CSS loads, but JS hasn't loaded yet and style isn't there yet (it's injected by JS)
-//  No JS
+// Inspired from Font Awesome class
 // https://github.com/FortAwesome/Font-Awesome/blob/6.4.2/scss/_mixins.scss#L22-L35
 .sr-only {
   position: absolute;
@@ -104,6 +101,3 @@ html:not([data-no-motion]) {
   @include resume-page-theme.motion;
   @include navigation-tabs-theme.motion;
 }
-
-// Font Awesome quirk
-@include font-awesome.iconsStaticSizeFix;
