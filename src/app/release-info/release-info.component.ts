@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core'
-import { RELEASE } from '@/common/injection-tokens'
+import { Component } from '@angular/core'
+import RELEASE_JSON from '../../../release.json'
 import { ReleaseInfoSummary } from './semantic-release'
 
 @Component({
@@ -9,16 +9,10 @@ import { ReleaseInfoSummary } from './semantic-release'
   standalone: true,
 })
 export class ReleaseInfoComponent {
-  constructor(@Inject(RELEASE) private release: ReleaseInfoSummary) {}
-
-  protected get releaseAsJsonString() {
-    const nextRelease = this.release.nextRelease
-    const summary = {
-      ...nextRelease,
-      notes: undefined,
-      preview: this.release.preview,
-      fake: this.release.fake,
-    }
-    return JSON.stringify(summary, null, 2)
-  }
+  protected _jsonString = JSON.stringify({
+    ...RELEASE_JSON.nextRelease,
+    notes: undefined,
+    preview: (RELEASE_JSON as ReleaseInfoSummary).preview,
+    fake: (RELEASE_JSON as ReleaseInfoSummary).fake,
+  })
 }

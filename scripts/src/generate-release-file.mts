@@ -271,8 +271,10 @@ type FakeResultObject = ResultObject & { fake: true }
 const RELEASE_FILE = join(getRepositoryRootDir(), 'release.json')
 
 async function writeToReleaseFile(result: object) {
+  const { nextRelease, fake, preview } = result as FakeResultObject &
+    PreviewResultObject
   Log.info("Writing to file '%s'", RELEASE_FILE)
-  writeFileSync(RELEASE_FILE, objectToJson(result))
+  writeFileSync(RELEASE_FILE, objectToJson({ nextRelease, fake, preview }))
 }
 
 if (isMain(import.meta.url)) {
