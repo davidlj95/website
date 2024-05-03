@@ -1,7 +1,7 @@
 import { inject, InjectionToken } from '@angular/core'
 import { isDevMode } from '@/common/is-dev-mode'
 import { HttpClient } from '@angular/common/http'
-import { catchError, EMPTY, Observable, of, tap } from 'rxjs'
+import { catchError, EMPTY, filter, Observable, of, tap } from 'rxjs'
 import { ASSETS_DIR } from '@/common/assets-dir'
 import { SIMPLE_ICONS_DIR } from '@/common/simple-icon/simple-icon.component'
 import { PLATFORM_SERVICE } from '@/common/platform.service'
@@ -39,6 +39,7 @@ export const SIMPLE_ICON_LOADER = new InjectionToken<SimpleIconLoader>(
                 },
               )
               .pipe(
+                filter((svg) => svg.trimStart().startsWith('<svg')),
                 tap((svg) => cache.set(slug, svg)),
                 catchError(() => EMPTY),
               )
