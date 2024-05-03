@@ -30,6 +30,7 @@
     "lighthouse": "lhci autorun",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
     "//1": "👇 Something weird in source maps after switching to ESBuild",
+    "analyze-all-bundles": "pnpm dlx source-map-explorer dist/@davidlj95/website/browser/*.js --no-border-checks",
     "analyze-main-bundle": "pnpm dlx source-map-explorer dist/@davidlj95/website/browser/main*.js --no-border-checks",
     "serve:ssr:@davidlj95/website": "node dist/@davidlj95/website/server/server.mjs"
   },
