@@ -10,7 +10,9 @@ export const _RELATIVIZE_PRODUCTION_URL_FACTORY: (
 ) => RelativizeProductionUrl = (baseUrl, baseHref) => (url) => {
   if (!url.toString().startsWith(baseUrl.toString())) {
     throw new Error(
-      'Cannot map production URL: does not start with base URL for production',
+      isDevMode
+        ? 'Cannot map production URL: does not start with base URL for production'
+        : 'RPU:E:BU',
     )
   }
   switch (baseHref) {
@@ -21,7 +23,9 @@ export const _RELATIVIZE_PRODUCTION_URL_FACTORY: (
     default:
       if (!url.pathname.startsWith(baseHref)) {
         throw new Error(
-          'Cannot map production URL: path does not start with app base href',
+          isDevMode
+            ? 'Cannot map production URL: path does not start with app base href'
+            : 'RPU:E:BH',
         )
       }
       return '/' + url.pathname.replace(baseHref, '')
