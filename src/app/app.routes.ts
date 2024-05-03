@@ -14,7 +14,7 @@ export const routes: Routes = [
   //   },
   //   name: METADATA.siteName,
   //   headline: METADATA.description,
-  //   url: environment.canonicalUrl.toString(),
+  //   url: environment.appBaseUrl.toString(),
   // },
   ...resumePageRoutes,
   ...notFoundPageRoutes,

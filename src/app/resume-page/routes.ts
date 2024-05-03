@@ -12,10 +12,10 @@ export const routes: Routes = [
     data: {
       meta: {
         title: `${METADATA.siteName} | Resume`,
-        canonicalUrl: new URL(RESUME_PATH, environment.canonicalUrl),
+        canonicalUrl: new URL(RESUME_PATH, environment.appBaseUrl),
         description: METADATA.description,
         image: {
-          url: new URL('assets/img/og.jpg', environment.canonicalUrl),
+          url: new URL('assets/img/og.jpg', environment.appBaseUrl),
           alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
         },
         standard: {
