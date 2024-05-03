@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-name-and-color-entries.json'
-import { CUSTOM_DISPLAY_NAME_AND_COLOR_ENTRIES } from './custom-display-name-and-color-entries'
+import { CUSTOM_DISPLAY_NAME_ENTRIES } from './custom-display-name-entries'
 import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 
 @Injectable({
@@ -16,31 +16,23 @@ export class TechnologyService {
   }
 }
 
-const ALL_DISPLAY_NAME_AND_COLOR_ENTRIES = [
-  ...SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES,
-  ...CUSTOM_DISPLAY_NAME_AND_COLOR_ENTRIES,
-]
-
 const DISPLAY_NAME_BY_SLUG = new Map<string, string>(
-  ALL_DISPLAY_NAME_AND_COLOR_ENTRIES.map(
-    ([slug, displayName]) => [slug, displayName] as const,
-  ),
+  [
+    ...SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES,
+    ...CUSTOM_DISPLAY_NAME_ENTRIES,
+  ].map(([slug, displayName]) => [slug, displayName] as const),
 )
-
-// noinspection JSUnusedLocalSymbols
-const entryToIcon = (
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  [slug, displayName, hex]: [string, string, string],
-): [string, SimpleIcon] => [
-  slug,
-  {
-    slug,
-    hex,
-  },
-]
 
 const SIMPLE_ICON_BY_SLUG = new Map<string, SimpleIcon>([
   ...SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES.map(
-    ([slug, displayName, color]) => entryToIcon([slug, displayName, color]),
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    ([slug, displayName, hex]) =>
+      [
+        slug,
+        {
+          slug,
+          hex,
+        },
+      ] as const,
   ),
 ])

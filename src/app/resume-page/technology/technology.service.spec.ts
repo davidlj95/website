@@ -1,8 +1,7 @@
 import { TechnologyService } from './technology.service'
 import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-name-and-color-entries.json'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import { CUSTOM_DISPLAY_NAME_AND_COLOR_ENTRIES } from './custom-display-name-and-color-entries'
-import { isNotUndefined } from '@/common/is-not-undefined'
+import { CUSTOM_DISPLAY_NAME_ENTRIES } from './custom-display-name-entries'
 
 describe('TechnologyService', () => {
   let sut: TechnologyService
@@ -11,11 +10,9 @@ describe('TechnologyService', () => {
   const SIMPLE_ICON_DISPLAY_NAME = SIMPLE_ICONS_ENTRIES[1]
   const SIMPLE_ICON_COLOR = SIMPLE_ICONS_ENTRIES[2]
 
-  const CUSTOM_ENTRY_WITH_COLOR = CUSTOM_DISPLAY_NAME_AND_COLOR_ENTRIES.find(
-    (entry) => isNotUndefined(entry[2]),
-  )!
-  const CUSTOM_WITH_COLOR_SLUG = CUSTOM_ENTRY_WITH_COLOR[0]
-  const CUSTOM_WITH_COLOR_DISPLAY_NAME = CUSTOM_ENTRY_WITH_COLOR[1]
+  const CUSTOM_DISPLAY_NAME_ENTRY = CUSTOM_DISPLAY_NAME_ENTRIES[0]
+  const CUSTOM_DISPLAY_NAME_SLUG = CUSTOM_DISPLAY_NAME_ENTRY[0]
+  const CUSTOM_DISPLAY_NAME = CUSTOM_DISPLAY_NAME_ENTRY[1]
 
   it('should be created', () => {
     sut = makeSut()
@@ -31,25 +28,7 @@ describe('TechnologyService', () => {
       expect(icon!.slug).toEqual(SIMPLE_ICON_SLUG)
     })
 
-    // TODO
-    //it('should return icon color and path from custom icons for an icon with color', () => {
-    //  sut = makeSut()
-    //  const icon = sut.getIcon(CUSTOM_WITH_COLOR_SLUG)
-
-    //  expect(icon!.color).toEqual(`#${CUSTOM_WITH_COLOR_COLOR}`)
-    //  expect(icon!.path).toEqual(
-    //    `${CUSTOM_ICONS_ASSETS_DIR}/${CUSTOM_WITH_COLOR_SLUG}.svg`,
-    //  )
-    //})
-    //
-    //it('should return no icon from custom icons for an icon without color', () => {
-    //  sut = makeSut()
-    //  const icon = sut.getIcon(CUSTOM_WITHOUT_COLOR_SLUG)
-
-    //  expect(icon).toBeNull()
-    //})
-
-    it('should return null when icon does not exist', () => {
+    it('should return nothing when icon does not exist', () => {
       sut = makeSut()
       const nonExistentIconSlug = 'nonExistentIconSlug'
       const icon = sut.getIcon(nonExistentIconSlug)
@@ -67,12 +46,12 @@ describe('TechnologyService', () => {
       expect(displayName).toEqual(SIMPLE_ICON_DISPLAY_NAME)
     })
 
-    it('should return display name from custom info given a slug', () => {
+    it('should return display name from custom display names given a slug', () => {
       sut = makeSut()
 
-      const displayName = sut.getDisplayName(CUSTOM_WITH_COLOR_SLUG)
+      const displayName = sut.getDisplayName(CUSTOM_DISPLAY_NAME_SLUG)
 
-      expect(displayName).toEqual(CUSTOM_WITH_COLOR_DISPLAY_NAME)
+      expect(displayName).toEqual(CUSTOM_DISPLAY_NAME)
     })
 
     it('should return nothing when display name cannot be found', () => {
