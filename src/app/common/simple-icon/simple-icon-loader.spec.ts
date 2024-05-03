@@ -83,6 +83,28 @@ describe('SimpleIconLoader', () => {
       })
     })
 
+    // Can happen in PWA scenarios, where if static asset is not found, you get main index.html
+    describe('when response content is not svg', () => {
+      const flushWithTextHtmlContentType = (testRequest: TestRequest) =>
+        testRequest.flush('<!DOCTYPE html>', {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+        })
+
+      it('should complete without emitting', (done) => {
+        let actualSvg: string | undefined
+        sut(ICON_SLUG).subscribe({
+          next: (svg) => (actualSvg = svg),
+          complete: () => {
+            expect(actualSvg).toBeUndefined()
+            done()
+          },
+        })
+
+        const testRequest = expectTestRequestToIcon(ICON_SLUG)
+        flushWithTextHtmlContentType(testRequest)
+      })
+    })
+
     describe('when an error occurs', () => {
       const flushWithError = (testRequest: TestRequest) =>
         testRequest.flush('', {
