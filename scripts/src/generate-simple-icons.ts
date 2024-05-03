@@ -2,7 +2,7 @@ import * as RESUME_JSON from '../../assets/resume.json'
 import * as icons from 'simple-icons'
 import { SimpleIcon } from 'simple-icons'
 import { getRepositoryRootDir, isMain, Log, objectToJson } from './utils.mjs'
-import { readFile, writeFile } from 'fs/promises'
+import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
 
 async function generateSimpleIcons() {
@@ -66,6 +66,7 @@ async function createDisplayNameAndColorsFile(
 async function createIconFiles(neededIcons: ReadonlyArray<SimpleIcon>) {
   Log.info('Writing icon files')
   Log.item(SIMPLE_ICONS_DIR)
+  await mkdir(SIMPLE_ICONS_DIR, { recursive: true })
   await Promise.all(
     neededIcons.map((icon) =>
       writeFile(join(SIMPLE_ICONS_DIR, `${icon.slug}.svg`), icon.svg),

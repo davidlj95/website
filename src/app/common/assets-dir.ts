@@ -1,1 +1,1 @@
-export const ASSETS_PATH = 'assets'
+export const ASSETS_DIR = 'assets'

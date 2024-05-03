@@ -1,11 +1,8 @@
+import { SimpleIcon } from '@/common/simple-icon/simple-icon'
+
 export interface TechnologyItem {
   readonly slug: string
   readonly displayName: string
-  readonly icon?: TechnologyIcon
+  readonly icon?: SimpleIcon
   readonly version?: string
-}
-
-export interface TechnologyIcon {
-  readonly path: string
-  readonly color: string
 }
