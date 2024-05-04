@@ -146,10 +146,6 @@ won't be in sync.
 
 ## Quirks
 
-### Use latest `npm` version to audit signatures
-
-See https://github.com/npm/cli/issues/7279
-
 ### Preview deployments
 
 Can only be triggered by users with write access to the repo (to prevent secrets from being leaked). Same secret is used for production access, so better keep that one safe.
