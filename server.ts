@@ -4,10 +4,13 @@ import express from 'express'
 import { fileURLToPath } from 'node:url'
 import { dirname, join, resolve } from 'node:path'
 import bootstrap from './src/main.server'
+import compression from 'compression'
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express()
+  // Manually added so Lighthouse doesn't complain about adding text compression
+  server.use(compression())
   const serverDistFolder = dirname(fileURLToPath(import.meta.url))
   const browserDistFolder = resolve(serverDistFolder, '../browser')
   const indexHtml = join(serverDistFolder, 'index.server.html')
