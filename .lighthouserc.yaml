@@ -9,5 +9,14 @@ ci:
       bf-cache: warn
       csp-xss: warn
       uses-responsive-images: warn
+      # 👇 There is an issue with this audit. Lighthouse CI 0.13 didn't take into account
+      #    scoring changes in Lighthouse 11.4.
+      #    https://github.com/GoogleChrome/lighthouse-ci/issues/994
+      #    Manually patching to ensure total payloads are under the recommended value of 1,600 KiB
+      #    https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight
+      #    https://github.com/GoogleChrome/lighthouse-ci/blob/19c7ca669fcb50c28de977dfdeefe3d4c43b014b/docs/configuration.md#assertions
+      total-byte-weight:
+        - error
+        - maxNumericValue: 1677721600 # 1600 * 1024 * 1024
   upload:
     target: temporary-public-storage
