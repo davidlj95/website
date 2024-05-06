@@ -340,7 +340,7 @@
   "references": [],
   "projects": [
     {
-      "name": "Vesto",
+      "name": "Vesto app",
       "description": "Worked on backend stack. Mobile app to introduce users to the world of financial investments. Allows to easily invest in US stock market with card or Bizum. Focused for Spanish market",
       "startDate": "2022-10-10",
       "endDate": "2023-07-14",
