@@ -27,7 +27,7 @@
     "format:check": "prettier --check",
     "format:check-all": "pnpm run format-check .",
     "scripts:tsc": "cd scripts && tsc",
-    "lighthouse": "lhci autorun",
+    "lighthouseci": "lhci autorun",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
     "//1": "👇 Something weird in source maps after switching to ESBuild",
     "analyze-all-bundles": "pnpm dlx source-map-explorer dist/@davidlj95/website/browser/*.js --no-border-checks",
