@@ -1,12 +1,9 @@
-@use 'sass:map';
 @use 'animations';
 
 @mixin color($theme) {
   app-card-header-image {
-    $image-opts: map.get($theme, image);
-
     img {
-      filter: map.get($image-opts, filter);
+      filter: var(--img-filter);
     }
   }
 }
