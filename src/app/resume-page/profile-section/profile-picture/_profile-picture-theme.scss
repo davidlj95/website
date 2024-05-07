@@ -4,7 +4,7 @@
   app-profile-picture {
     img {
       background-color: var(--bg-z1);
-      border-color: map-get($theme, hairline);
+      border-color: var(--hairline);
       filter: var(--img-filter);
     }
 

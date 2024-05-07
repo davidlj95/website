@@ -2,7 +2,7 @@
 
 @mixin color($theme) {
   app-profile-contact-traditional-icons {
-    color: map-get($theme, icon);
+    color: var(--icon);
 
     li:hover {
       color: var(--fg-secondary);
