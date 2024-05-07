@@ -1,7 +1,7 @@
 @use 'sass:math';
 @use 'helpers/units';
 
-@mixin font {
+@mixin imports {
   @font-face {
     font-family: 'Material Symbols Outlined';
     font-style: normal;
@@ -13,7 +13,9 @@
       url('../../assets/material-symbols-outlined-subset.ttf')
         format('truetype');
   }
+}
 
+@mixin styles {
   @include class {
     //noinspection CssNoGenericFontName
     font-family: 'Material Symbols Outlined';

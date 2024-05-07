@@ -1,87 +1,21 @@
 @use 'sass:color';
 @use 'sass:map';
 @use 'animations';
-@use 'app/app-theme' as root-theme;
 @use 'app/resume-page/resume-page-theme';
 @use 'app/header/header-theme';
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
 @use 'app/not-found-page/not-found-page-theme';
-@use 'material-symbols';
 @use 'theming';
-@use 'typographies';
 
-// CSS reset & normalization
-@import 'gardevoir/dist/mini.min.css';
-
-html {
-  scroll-behavior: smooth;
-}
-body {
-  @include typographies.body-font();
-  // Do not allow scroll "bounce" effect
-  overscroll-behavior: none;
-}
-
-@include typographies.header-styles;
-
-code,
-pre {
-  @include typographies.monospace-font();
-}
-
-a {
-  text-decoration-line: underline;
-  text-decoration-thickness: 2px;
-  @include animations.single-transition(
-    text-decoration-color,
-    animations.$emphasized-style
-  );
-}
-
-// Needed for some accessibility tricks around
-// Inspired from Font Awesome class
-// https://github.com/FortAwesome/Font-Awesome/blob/6.4.2/scss/_mixins.scss#L22-L35
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-@include material-symbols.font();
+@import 'app/root';
 
 @mixin app-color($theme) {
-  @include root-theme.color($theme);
   @include header-theme.color($theme);
   @include no-script-theme.color($theme);
   @include resume-page-theme.color($theme);
   @include navigation-tabs-theme.color($theme);
   @include not-found-page-theme.color($theme);
-
-  // TODO: cooler links
-  a {
-    color: inherit;
-    text-decoration-color: inherit;
-    text-decoration-thickness: 1px;
-
-    &:visited {
-      color: inherit;
-    }
-
-    &:hover {
-      color: inherit;
-    }
-
-    &:active {
-      color: inherit;
-    }
-  }
 }
 
 // Render all color themes
@@ -95,7 +29,6 @@ a {
 
 // Add animations
 html:not([data-no-motion]) {
-  @include root-theme.motion;
   @include header-theme.motion;
   @include resume-page-theme.motion;
   @include navigation-tabs-theme.motion;

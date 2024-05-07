@@ -1,0 +1,63 @@
+@use 'typographies';
+@use 'material-symbols';
+@use 'animations';
+@use 'a11y';
+
+// Font imports
+@include typographies.imports;
+@include material-symbols.imports;
+
+// CSS reset & normalization
+@import 'gardevoir/dist/mini.min.css';
+
+@include a11y.sr-only;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-z0);
+  color: var(--fg-primary);
+
+  @include typographies.body-font();
+  // Do not allow scroll "bounce" effect
+  overscroll-behavior: none;
+
+  @include animations.multiple-transitions(
+    (color, background-color),
+    animations.$emphasized-style
+  );
+}
+
+@include typographies.styles;
+@include material-symbols.styles;
+
+code,
+pre {
+  @include typographies.monospace-font();
+}
+
+// TODO: Cooler links
+a {
+  color: inherit;
+  text-decoration-color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  @include animations.single-transition(
+    text-decoration-color,
+    animations.$emphasized-style
+  );
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: inherit;
+  }
+
+  &:active {
+    color: inherit;
+  }
+}
