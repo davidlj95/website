@@ -3,15 +3,14 @@
 
 @mixin color($theme) {
   app-chip {
-    $chip-theme: map.get($theme, chips);
-    background-color: map.get($chip-theme, background);
-    color: map.get($chip-theme, text);
-    border-color: map.get($chip-theme, border);
+    background-color: var(--chips-bg);
+    color: var(--chips-fg);
+    border-color: var(--chips-border);
 
     &.selected {
-      background-color: map.get($chip-theme, selected);
-      border-color: map.get($chip-theme, selected);
-      color: map.get($chip-theme, selectedText);
+      background-color: var(--chips-selected);
+      border-color: var(--chips-selected);
+      color: var(--chips-selected-text);
     }
   }
 }
