@@ -4,7 +4,7 @@
 $panel-width: 1px;
 
 @function panel-color($theme) {
-  @return map.get($theme, hairline);
+  @return var(--hairline);
 }
 
 @mixin panel-style-width($side: 'all') {

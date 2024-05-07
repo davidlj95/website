@@ -8,7 +8,7 @@
     border-bottom-color: borders.panel-color($theme);
 
     .toolbar button {
-      color: map-get($theme, icon);
+      color: var(--icon);
 
       @include touch-or-pointer.primaryInputCanHover {
         &:hover {
