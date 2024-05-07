@@ -10,5 +10,9 @@ $devtools-dark-scheme: (
     // fg-primary: #e8eaedff,
     fg-primary: #bdc6cfff,
     fg-secondary: #9aa0a6ff,
+    // --legacy-tab-selected-fg-color
+    tabs-selected-fg: #eaeaea,
+    tabs-selected-bg: #000000,
+    tabs-selected-border-bottom: none,
   ),
 );
