@@ -1,11 +1,9 @@
 @use 'animations';
 
 @mixin color($theme) {
-  $text-palette: map-get($theme, text);
-
   body {
     background: var(--bg-z0);
-    color: map-get($text-palette, primary);
+    color: var(--fg-primary);
   }
 }
 

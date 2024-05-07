@@ -6,8 +6,6 @@
 @use 'borders';
 
 @mixin color($theme) {
-  $text-palette: map.get($theme, text);
-
   app-card {
     background-color: var(--bg-z1);
     border-color: borders.panel-color($theme);

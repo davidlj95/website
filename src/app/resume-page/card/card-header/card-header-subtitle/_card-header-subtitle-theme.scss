@@ -2,10 +2,8 @@
 @use 'animations';
 
 @mixin color($theme) {
-  $text-palette: map.get($theme, text);
-
   app-card-header-subtitle {
-    color: map.get($text-palette, secondary);
+    color: var(--fg-secondary);
   }
 }
 
