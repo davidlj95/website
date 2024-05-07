@@ -1,0 +1,11 @@
+@import 'constants';
+
+$devtools-light-scheme: (
+  kind: $light-color-scheme-kind,
+  vars: (
+    //bg-z0: #f8f9f9ff,
+    bg-z0: white,
+    bg-z1: #f1f3f4ff,
+    bg-z2: #dee1e6ff,
+  ),
+);

@@ -3,11 +3,10 @@
 @use 'animations';
 
 @mixin color($theme) {
-  $background-palette: map.get($theme, background);
   $text-palette: map.get($theme, text);
 
   app-section-title {
-    background-color: map.get($background-palette, z1);
+    background-color: var(--bg-z1);
     color: map.get($text-palette, secondary);
     border-color: borders.panel-color($theme);
   }

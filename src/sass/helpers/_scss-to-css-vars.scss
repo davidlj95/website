@@ -1,0 +1,6 @@
+// https://github.com/sass/sass/issues/3091#issuecomment-870969698
+@mixin scss-vars-to-css-vars($scss-vars) {
+  @each $name, $value in $scss-vars {
+    --#{$name}: #{$value};
+  }
+}

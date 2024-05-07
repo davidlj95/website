@@ -54,7 +54,7 @@
               "src/robots.txt",
               "src/humans.txt"
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/styles.scss", "src/sass/themes/devtools.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/sass"]
             },
@@ -147,7 +147,7 @@
               "src/robots.txt",
               "src/humans.txt"
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/styles.scss", "src/sass/themes/devtools.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/sass"]
             },

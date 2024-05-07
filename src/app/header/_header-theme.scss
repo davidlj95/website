@@ -4,10 +4,9 @@
 
 @mixin color($theme) {
   $text-palette: map-get($theme, text);
-  $background-palette: map-get($theme, background);
 
   app-header {
-    background-color: map-get($background-palette, z1);
+    background-color: var(--bg-z1);
     border-bottom-color: borders.panel-color($theme);
 
     .toolbar button {

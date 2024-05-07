@@ -1,0 +1,13 @@
+@import 'devtools-light-scheme';
+@import 'devtools-dark-scheme';
+@import '../theming';
+
+$devtools-theme: (
+  slug: 'devtools',
+  schemes: (
+    $devtools-light-scheme,
+    $devtools-dark-scheme,
+  ),
+);
+
+@include define-theme($devtools-theme);
