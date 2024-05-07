@@ -1,0 +1,10 @@
+@import 'constants';
+
+$devtools-dark-scheme: (
+  kind: $dark-color-scheme-kind,
+  vars: (
+    bg-z0: #202023ff,
+    bg-z1: #292a2dff,
+    bg-z2: #35363aff,
+  ),
+);

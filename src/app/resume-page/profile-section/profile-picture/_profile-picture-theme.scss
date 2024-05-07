@@ -1,21 +1,20 @@
 @use 'animations';
 
 @mixin color($theme) {
-  $background-palette: map-get($theme, background);
   $image-opts: map-get($theme, image);
 
   app-profile-picture {
     img {
-      background-color: map-get($background-palette, z1);
+      background-color: var(--bg-z1);
       border-color: map-get($theme, hairline);
       filter: map-get($image-opts, filter);
     }
 
     .comment {
-      background-color: map-get($background-palette, z2);
+      background-color: var(--bg-z2);
 
       &:before {
-        border-right-color: map-get($background-palette, z2) !important;
+        border-right-color: var(--bg-z2) !important;
       }
     }
 
@@ -23,7 +22,7 @@
     @media screen and (max-width: 279.98px) {
       .comment:before {
         border-right-color: transparent !important;
-        border-bottom-color: map-get($background-palette, z2) !important;
+        border-bottom-color: var(--bg-z2) !important;
       }
     }
   }

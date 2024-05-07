@@ -4,8 +4,7 @@
 
 @mixin color($theme) {
   app-content-chip {
-    $background-palette: map.get($theme, background);
-    background-color: map.get($background-palette, z2);
+    background-color: var(--bg-z2);
     border-color: borders.panel-color($theme);
   }
 }

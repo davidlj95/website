@@ -3,7 +3,6 @@
 @use 'borders';
 
 @mixin color($theme) {
-  $background-palette: map.get($theme, background);
   $text-palette: map.get($theme, text);
 
   app-attribute {
@@ -11,7 +10,7 @@
 
     [role='tooltip'] {
       color: map.get($text-palette, primary);
-      background-color: map.get($background-palette, z2);
+      background-color: var(--bg-z2);
       border-color: borders.panel-color($theme);
     }
   }

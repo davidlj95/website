@@ -1,12 +1,11 @@
 @use 'animations';
 
 @mixin color($theme) {
-  $background-palette: map-get($theme, background);
   $color-palette: map-get($theme, text);
   $tabs-palette: map-get($theme, tabs);
 
   app-navigation-tabs {
-    background-color: map-get($background-palette, z1);
+    background-color: var(--bg-z1);
     color: map-get($color-palette, secondary);
 
     ul {
@@ -17,7 +16,7 @@
       }
 
       > :not(.selected):hover {
-        background-color: map-get($background-palette, z2);
+        background-color: var(--bg-z2);
         color: map-get($color-palette, primary);
       }
     }

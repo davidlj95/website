@@ -6,11 +6,10 @@
 @use 'borders';
 
 @mixin color($theme) {
-  $background-palette: map.get($theme, background);
   $text-palette: map.get($theme, text);
 
   app-card {
-    background-color: map.get($background-palette, z1);
+    background-color: var(--bg-z1);
     border-color: borders.panel-color($theme);
 
     @include card-header-image-theme.color($theme);
