@@ -11,5 +11,9 @@ $devtools-light-scheme: (
     //fg-primary: #202124ff,
     fg-primary: #303942ff,
     fg-secondary: #5f6368ff,
+    tabs-selected-fg: #333333ff,
+    tabs-selected-bg: transparent,
+    // --legacy-accent-color
+    tabs-selected-border-bottom: 2px solid #1a73e8,
   ),
 );

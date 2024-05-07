@@ -4,12 +4,6 @@ $default-dark-theme: (
   ),
   accent: #8ab4f8,
   hairline: #494c50ff,
-  tabs: (
-    // --legacy-tab-selected-fg-color
-    selected-foreground: #eaeaea,
-    selected-background: #000000,
-    selected-border-bottom: none,
-  ),
   icon: #919191ff,
   json: (
     // foreground & key are swapped regarding to DevTools. So key is more important (more contrast)
