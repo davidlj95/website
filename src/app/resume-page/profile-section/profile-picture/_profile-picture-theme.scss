@@ -1,13 +1,11 @@
 @use 'animations';
 
 @mixin color($theme) {
-  $image-opts: map-get($theme, image);
-
   app-profile-picture {
     img {
       background-color: var(--bg-z1);
       border-color: map-get($theme, hairline);
-      filter: map-get($image-opts, filter);
+      filter: var(--img-filter);
     }
 
     .comment {
