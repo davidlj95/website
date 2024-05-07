@@ -7,5 +7,9 @@ $devtools-light-scheme: (
     bg-z0: white,
     bg-z1: #f1f3f4ff,
     bg-z2: #dee1e6ff,
+    // Seems this one is overridden for macOs and Linux
+    //fg-primary: #202124ff,
+    fg-primary: #303942ff,
+    fg-secondary: #5f6368ff,
   ),
 );

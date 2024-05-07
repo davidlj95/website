@@ -2,12 +2,6 @@ $default-light-theme: (
   image: (
     filter: none,
   ),
-  text: (
-    // Seems this one is overridden for macOs and Linux
-    //primary: #202124ff,
-    primary: #303942ff,
-    secondary: #5f6368ff,
-  ),
   tabs: (
     // --legacy-tab-selected-fg-color
     selected-foreground: #333333ff,

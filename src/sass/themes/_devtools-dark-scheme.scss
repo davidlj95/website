@@ -6,5 +6,9 @@ $devtools-dark-scheme: (
     bg-z0: #202023ff,
     bg-z1: #292a2dff,
     bg-z2: #35363aff,
+    // Seems this one is overridden for macOS and Linux
+    // fg-primary: #e8eaedff,
+    fg-primary: #bdc6cfff,
+    fg-secondary: #9aa0a6ff,
   ),
 );

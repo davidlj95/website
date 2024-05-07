@@ -3,8 +3,6 @@
 @use 'animations';
 
 @mixin color($theme) {
-  $text-palette: map-get($theme, text);
-
   app-header {
     background-color: var(--bg-z1);
     border-bottom-color: borders.panel-color($theme);
@@ -14,7 +12,7 @@
 
       @include touch-or-pointer.primaryInputCanHover {
         &:hover {
-          color: map-get($text-palette, primary);
+          color: var(--fg-primary);
         }
       }
     }

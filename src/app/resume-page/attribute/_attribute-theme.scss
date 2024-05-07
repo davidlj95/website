@@ -3,13 +3,11 @@
 @use 'borders';
 
 @mixin color($theme) {
-  $text-palette: map.get($theme, text);
-
   app-attribute {
-    color: map.get($text-palette, secondary);
+    color: var(--fg-secondary);
 
     [role='tooltip'] {
-      color: map.get($text-palette, primary);
+      color: var(--fg-primary);
       background-color: var(--bg-z2);
       border-color: borders.panel-color($theme);
     }

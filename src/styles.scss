@@ -64,12 +64,11 @@ a {
   @include navigation-tabs-theme.color($theme);
   @include not-found-page-theme.color($theme);
 
-  // TODO: cool effect for hovering
-  $text-palette: map.get($theme, text);
-  $primary: map.get($text-palette, primary);
+  // TODO: cooler links
   a {
     color: inherit;
-    text-decoration-color: color.adjust($primary, $alpha: -0.75);
+    text-decoration-color: inherit;
+    text-decoration-thickness: 1px;
 
     &:visited {
       color: inherit;

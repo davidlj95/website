@@ -3,11 +3,9 @@
 @use 'animations';
 
 @mixin color($theme) {
-  $text-palette: map.get($theme, text);
-
   app-section-title {
     background-color: var(--bg-z1);
-    color: map.get($text-palette, secondary);
+    color: var(--fg-secondary);
     border-color: borders.panel-color($theme);
   }
 }
