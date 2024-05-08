@@ -1,7 +1,14 @@
 @use 'breakpoints';
 @use 'margins';
+@use 'animations';
 
 :host {
+  color: var(--icon);
+
+  @include animations.define {
+    @include animations.single-transition(color, animations.$emphasized-style);
+  }
+
   ul {
     @include breakpoints.xs {
       margin-left: 0;
@@ -19,6 +26,9 @@
 
     li {
       height: 32px;
+      &:hover {
+        color: var(--fg-secondary);
+      }
     }
 
     ng-icon {
