@@ -4,6 +4,10 @@
 @use 'a11y';
 
 // Font imports
+// Browser should reach them as early as possible to start loading them
+// Though this is actually done automatically by Angular CLI builders via Critters
+// That actually inlines this in the HTML as `<styles>` to load them even before external CSS stylesheets
+// have loaded
 @include typographies.imports;
 @include material-symbols.imports;
 
