@@ -1,6 +1,7 @@
 @use 'touch-or-pointer';
 @use 'margins';
 @use 'paddings';
+@use 'animations';
 
 $picture-size: 128px;
 
@@ -13,6 +14,17 @@ $picture-size: 128px;
     border-radius: $picture-size;
     border-style: solid;
     border-width: 1px;
+    background-color: var(--bg-z1);
+    border-color: var(--hairline);
+    filter: var(--img-filter);
+
+    @include animations.define {
+      transition: animations.transition(opacity),
+        animations.transition(visibility),
+        animations.transition(filter, animations.$emphasized-style),
+        animations.transition(background-color, animations.$emphasized-style),
+        animations.transition(border-color, animations.$emphasized-style);
+    }
   }
 
   .huh {
@@ -28,6 +40,7 @@ $picture-size: 128px;
   .comment {
     visibility: hidden;
     opacity: 0;
+    background-color: var(--bg-z2);
 
     position: absolute;
 
@@ -39,17 +52,28 @@ $picture-size: 128px;
     padding: paddings.$s;
     border-radius: paddings.$s;
 
+    @include animations.define {
+      @include animations.multiple-transitions((opacity, visibility));
+    }
+
     // Speech bubble by
     // https://freefrontend.com/css-speech-bubbles/
     &:before {
       position: absolute;
       content: '';
       border: 8px solid transparent;
+      border-right-color: var(--bg-z2) !important;
 
       border-left: 0;
       left: -8px;
       top: 50%;
       margin-top: -8px;
+
+      // Bubble speech is at top on super small screens
+      @media screen and (max-width: 279.98px) {
+        border-right-color: transparent !important;
+        border-bottom-color: var(--bg-z2) !important;
+      }
     }
 
     .touch {
