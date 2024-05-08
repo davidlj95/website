@@ -1,12 +1,11 @@
 <button
   (click)="colorSchemeService.toggleDarkLight()"
-  aria-label="Color scheme toggle (dark or light)"
-  id="dark-light-scheme-toggle"
+  aria-label="Dark or light mode toggle"
 >
   <span class="light-only" appMaterialSymbol>{{
-    MaterialSymbol.DarkTheme
+    MaterialSymbol.DarkMode
   }}</span>
   <span class="dark-only" appMaterialSymbol>{{
-    MaterialSymbol.LightTheme
+    MaterialSymbol.LightMode
   }}</span>
 </button>

@@ -1,33 +1,26 @@
-import { DOCUMENT } from '@angular/common'
-import { TestBed } from '@angular/core/testing'
 import {
   ColorSchemeService,
   Scheme,
 } from '../app/header/light-dark-toggle/color-scheme.service'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
+import { forceReducedMotion } from '@/test/helpers/motion'
+import { forceColorScheme } from '@/test/helpers/color-scheme'
 
 describe('App color scheme', () => {
   let bodyElement: HTMLElement
-  let colorSchemeService: ColorSchemeService
   const LIGHT_MIN_LUMINANCE = 0.75
   const DARK_MAX_LUMINANCE = 0.25
-  const NO_MOTION_ATTRIBUTE = 'data-reduced-motion'
 
   beforeEach(async () => {
-    colorSchemeService = serviceTestSetup(ColorSchemeService)
-    const document = TestBed.inject(DOCUMENT)
-    document.documentElement.setAttribute(NO_MOTION_ATTRIBUTE, '')
+    serviceTestSetup(ColorSchemeService)
     bodyElement = document.body
   })
-  afterEach(() => {
-    document.documentElement.removeAttribute(NO_MOTION_ATTRIBUTE)
-    colorSchemeService.setSystem()
-  })
+  forceReducedMotion()
 
   describe('when light color scheme is set', () => {
-    it('body should have a light background color (high luminance), whilst text color should be a dark one (low luminance)', async () => {
-      colorSchemeService.setManual(Scheme.Light)
+    forceColorScheme(Scheme.Light)
 
+    it('body should have a light background color (high luminance), whilst text color should be a dark one (low luminance)', async () => {
       const bodyBackgroundColor = getRgbFromCssRgbColor(
         getComputedStyle(bodyElement).backgroundColor,
       )
@@ -42,9 +35,9 @@ describe('App color scheme', () => {
     })
   })
   describe('when dark color scheme is set', () => {
-    it('body should have a dark background color (low luminance), whilst text color should be a light one (high luminance)', async () => {
-      colorSchemeService.setManual(Scheme.Dark)
+    forceColorScheme(Scheme.Dark)
 
+    it('body should have a dark background color (low luminance), whilst text color should be a light one (high luminance)', async () => {
       const bodyBackgroundColor = getRgbFromCssRgbColor(
         getComputedStyle(bodyElement).backgroundColor,
       )

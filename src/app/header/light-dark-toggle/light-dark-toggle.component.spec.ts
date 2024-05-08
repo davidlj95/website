@@ -1,10 +1,18 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { LightDarkToggleComponent } from './light-dark-toggle.component'
-import { ColorSchemeService } from './color-scheme.service'
+import { ColorSchemeService, Scheme } from './color-scheme.service'
 import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockProvider } from 'ng-mocks'
+import { forceColorScheme } from '@/test/helpers/color-scheme'
+import { forceReducedMotion } from '@/test/helpers/motion'
+import { DarkMode, LightMode } from '../../material-symbols'
+import {
+  expectIsInLayout,
+  expectIsNotInLayout,
+} from '@/test/helpers/visibility'
+import { findMaterialSymbolByText } from '@/test/helpers/material-symbols'
 
 describe('LightDarkToggleComponent', () => {
   let component: LightDarkToggleComponent
@@ -13,6 +21,50 @@ describe('LightDarkToggleComponent', () => {
   it('should create', () => {
     ;[fixture, component] = makeSut()
     expect(component).toBeTruthy()
+  })
+
+  describe('when light scheme is set', () => {
+    beforeEach(() => {
+      ;[fixture, component] = makeSut()
+      fixture.detectChanges()
+    })
+
+    forceColorScheme(Scheme.Light)
+    forceReducedMotion()
+
+    it('should not display light mode icon', () => {
+      expectIsNotInLayout(
+        findMaterialSymbolByText(fixture.debugElement, LightMode).nativeElement,
+      )
+    })
+
+    it('should display dark mode icon', () => {
+      expectIsInLayout(
+        findMaterialSymbolByText(fixture.debugElement, DarkMode).nativeElement,
+      )
+    })
+  })
+
+  describe('when dark scheme is set', () => {
+    beforeEach(() => {
+      ;[fixture, component] = makeSut()
+      fixture.detectChanges()
+    })
+
+    forceColorScheme(Scheme.Dark)
+    forceReducedMotion()
+
+    it('should display light mode icon', () => {
+      expectIsInLayout(
+        findMaterialSymbolByText(fixture.debugElement, LightMode).nativeElement,
+      )
+    })
+
+    it('should not display dark mode icon', () => {
+      expectIsNotInLayout(
+        findMaterialSymbolByText(fixture.debugElement, DarkMode).nativeElement,
+      )
+    })
   })
 
   describe('when pressing scheme switcher icon', () => {

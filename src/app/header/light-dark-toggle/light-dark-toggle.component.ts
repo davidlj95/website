@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
-import { DarkTheme, LightTheme } from '../../material-symbols'
+import { DarkMode, LightMode } from '../../material-symbols'
 import { ColorSchemeService } from './color-scheme.service'
 
 @Component({
@@ -12,8 +12,8 @@ import { ColorSchemeService } from './color-scheme.service'
 })
 export class LightDarkToggleComponent {
   protected readonly MaterialSymbol = {
-    DarkTheme,
-    LightTheme,
+    DarkMode,
+    LightMode,
   }
 
   constructor(protected readonly colorSchemeService: ColorSchemeService) {}
