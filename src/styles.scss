@@ -9,19 +9,10 @@
 
 @import 'app/root';
 
-@mixin app-color($theme) {
-  @include no-script-theme.color($theme);
-  @include resume-page-theme.color($theme);
-  @include navigation-tabs-theme.color($theme);
-  @include not-found-page-theme.color($theme);
-}
-
-// Render all color themes
-@each $colorTheme in theming.$colorThemes {
-  @include theming.define-color-theme($colorTheme) {
-    @include app-color(map-get($colorTheme, theme));
-  }
-}
+@include no-script-theme.color(());
+@include resume-page-theme.color(());
+@include navigation-tabs-theme.color(());
+@include not-found-page-theme.color(());
 
 @include theming.display-hide-classes();
 
