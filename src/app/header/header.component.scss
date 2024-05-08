@@ -4,12 +4,23 @@
 @use 'material-symbols';
 @use 'z-index';
 @use 'helpers/units';
+@use 'touch-or-pointer';
+@use 'animations';
 
 :host {
   position: fixed;
   width: 100%;
   @include borders.panel-style-width(bottom);
   z-index: z-index.$header;
+  background-color: var(--bg-z1);
+  border-bottom-color: borders.$panel-color;
+
+  @include animations.define {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
 
   .bar {
     display: flex;
@@ -24,9 +35,16 @@
       height: header.$icons-height;
 
       button {
+        color: var(--icon);
         border-style: none;
         background: transparent;
         font-size: header.$icons-height;
+
+        @include touch-or-pointer.primaryInputCanHover {
+          &:hover {
+            color: var(--fg-primary);
+          }
+        }
       }
 
       @include material-symbols.class {

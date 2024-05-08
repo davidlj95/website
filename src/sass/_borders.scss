@@ -2,6 +2,7 @@
 @use 'sass:map';
 
 $panel-width: 1px;
+$panel-color: var(--hairline);
 
 @function panel-color($theme) {
   @return var(--hairline);

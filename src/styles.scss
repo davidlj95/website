@@ -2,7 +2,6 @@
 @use 'sass:map';
 @use 'animations';
 @use 'app/resume-page/resume-page-theme';
-@use 'app/header/header-theme';
 @use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
 @use 'app/not-found-page/not-found-page-theme';
@@ -11,7 +10,6 @@
 @import 'app/root';
 
 @mixin app-color($theme) {
-  @include header-theme.color($theme);
   @include no-script-theme.color($theme);
   @include resume-page-theme.color($theme);
   @include navigation-tabs-theme.color($theme);
@@ -29,7 +27,6 @@
 
 // Add animations
 html:not([data-reduced-motion]) {
-  @include header-theme.motion;
   @include resume-page-theme.motion;
   @include navigation-tabs-theme.motion;
 }
