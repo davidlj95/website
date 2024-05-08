@@ -1,13 +1,30 @@
 @use 'borders';
 @use 'paddings';
+@use 'animations';
 
 :host {
   padding: paddings.$s;
   @include borders.panel-style-width;
   border-radius: 1em;
   font-size: 1rem;
+  background-color: var(--chips-bg);
+  color: var(--chips-fg);
+  border-color: var(--chips-border);
+
+  @include animations.define {
+    @include animations.multiple-transitions(
+      (background-color, color, border-color),
+      animations.$emphasized-style
+    );
+  }
 
   &.selectable {
     cursor: pointer;
+  }
+
+  &.selected {
+    background-color: var(--chips-selected);
+    border-color: var(--chips-selected);
+    color: var(--chips-selected-text);
   }
 }
