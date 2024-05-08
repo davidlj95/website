@@ -1,7 +1,17 @@
 @use 'borders';
 @use 'paddings';
+@use 'animations';
 
 :host {
   @include borders.panel-style-width;
   padding: paddings.$s;
+  background-color: var(--bg-z2);
+  border-color: borders.$panel-color;
+
+  @include animations.define {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
 }
