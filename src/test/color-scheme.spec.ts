@@ -1,20 +1,19 @@
 import { DOCUMENT } from '@angular/common'
 import { TestBed } from '@angular/core/testing'
 import { ColorSchemeService, Scheme } from '../app/header/color-scheme.service'
+import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 
 describe('App color scheme', () => {
   let bodyElement: HTMLElement
   let colorSchemeService: ColorSchemeService
   const LIGHT_MIN_LUMINANCE = 0.75
   const DARK_MAX_LUMINANCE = 0.25
-  const NO_MOTION_ATTRIBUTE = 'data-no-motion'
+  const NO_MOTION_ATTRIBUTE = 'data-reduced-motion'
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({})
-
+    colorSchemeService = serviceTestSetup(ColorSchemeService)
     const document = TestBed.inject(DOCUMENT)
     document.documentElement.setAttribute(NO_MOTION_ATTRIBUTE, '')
-    colorSchemeService = TestBed.inject(ColorSchemeService)
     bodyElement = document.body
   })
   afterEach(() => {

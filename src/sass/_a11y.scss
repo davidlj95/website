@@ -1,0 +1,18 @@
+@mixin sr-only {
+  /**
+   * Needed for some accessibility tricks around
+   * Inspired from Font Awesome class
+   * https://github.com/FortAwesome/Font-Awesome/blob/6.4.2/scss/_mixins.scss#L22-L35
+   */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}

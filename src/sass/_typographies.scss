@@ -1,6 +1,8 @@
-@import '@fontsource/roboto/400.css';
-@import '@fontsource/roboto/700.css';
-@import '@fontsource/roboto-mono/400.css';
+@mixin imports {
+  @import '@fontsource/roboto/400.css';
+  @import '@fontsource/roboto/700.css';
+  @import '@fontsource/roboto-mono/400.css';
+}
 
 @mixin body-font {
   font-family: 'Roboto', 'Helvetica', sans-serif;
@@ -10,7 +12,7 @@
   font-family: 'Roboto Mono', 'Courier New', monospace;
 }
 
-@mixin header-styles {
+@mixin styles {
   h2 {
     font-size: 1.25em;
   }
