@@ -1,18 +1,8 @@
-@use 'sass:color';
-@use 'sass:map';
-@use 'animations';
-@use 'app/navigation-tabs/navigation-tabs-theme';
 @use 'app/not-found-page/not-found-page-theme';
 @use 'theming';
 
 @import 'app/root';
 
-@include navigation-tabs-theme.color(());
 @include not-found-page-theme.color(());
 
 @include theming.display-hide-classes();
-
-// Add animations
-html:not([data-reduced-motion]) {
-  @include navigation-tabs-theme.motion;
-}
