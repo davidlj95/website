@@ -1,6 +1,7 @@
 @use 'header';
 @use 'touch-or-pointer';
 @use 'material-symbols';
+@use 'sass:selector';
 
 :host {
   button {
@@ -24,5 +25,40 @@
       $grade: 0,
       $size: header.$icons-height
     );
+  }
+}
+
+@mixin light-only {
+  ::ng-deep.light-only {
+    display: initial;
+  }
+
+  ::ng-deep.dark-only {
+    display: none;
+  }
+}
+
+::ng-deep html,
+::ng-deep html[data-color-scheme='light'] {
+  @include light-only;
+}
+
+@mixin dark-only {
+  ::ng-deep.light-only {
+    display: none;
+  }
+
+  ::ng-deep.dark-only {
+    display: initial;
+  }
+}
+
+::ng-deep html[data-color-scheme='dark'] {
+  @include dark-only;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::ng-deep html {
+    @include dark-only;
   }
 }

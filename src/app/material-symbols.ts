@@ -1,5 +1,5 @@
-export const DarkTheme = '\ue51c'
-export const LightTheme = '\ue518'
+export const DarkMode = '\ue51c'
+export const LightMode = '\ue518'
 export const Warning = '\ue002'
 export const Email = '\ue158'
 export const Call = '\ue0b0'
