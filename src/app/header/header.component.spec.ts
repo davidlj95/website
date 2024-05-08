@@ -1,36 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { By } from '@angular/platform-browser'
-import { MockProviders, ngMocks } from 'ng-mocks'
-import { ColorSchemeService } from './color-scheme.service'
+import { ComponentFixture } from '@angular/core/testing'
 import { HeaderComponent } from './header.component'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent
   let fixture: ComponentFixture<HeaderComponent>
 
   beforeEach(() => {
-    ngMocks.autoSpy('jasmine')
-    TestBed.configureTestingModule({
-      providers: [MockProviders(ColorSchemeService)],
-    })
-    fixture = TestBed.createComponent(HeaderComponent)
-    component = fixture.componentInstance
+    ;[fixture, component] = componentTestSetup(HeaderComponent)
     fixture.detectChanges()
   })
 
   it('should create', () => {
     expect(component).toBeTruthy()
-  })
-
-  describe('when pressing scheme switcher icon', () => {
-    it('should call dark / light scheme toggle', () => {
-      const colorSchemeService = TestBed.inject(ColorSchemeService)
-
-      fixture.debugElement
-        .query(By.css('#dark-light-scheme-toggle'))
-        .triggerEventHandler('click')
-
-      expect(colorSchemeService.toggleDarkLight).toHaveBeenCalled()
-    })
   })
 })

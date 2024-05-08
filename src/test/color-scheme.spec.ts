@@ -1,6 +1,9 @@
 import { DOCUMENT } from '@angular/common'
 import { TestBed } from '@angular/core/testing'
-import { ColorSchemeService, Scheme } from '../app/header/color-scheme.service'
+import {
+  ColorSchemeService,
+  Scheme,
+} from '../app/header/light-dark-toggle/color-scheme.service'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 
 describe('App color scheme', () => {

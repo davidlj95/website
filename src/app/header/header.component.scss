@@ -1,10 +1,6 @@
 @use 'borders';
-@use 'paddings';
 @use 'header';
-@use 'material-symbols';
 @use 'z-index';
-@use 'helpers/units';
-@use 'touch-or-pointer';
 @use 'animations';
 
 :host {
@@ -33,29 +29,6 @@
 
     .toolbar {
       height: header.$icons-height;
-
-      button {
-        color: var(--icon);
-        border-style: none;
-        background: transparent;
-        font-size: header.$icons-height;
-
-        @include touch-or-pointer.primaryInputCanHover {
-          &:hover {
-            color: var(--fg-primary);
-          }
-        }
-      }
-
-      @include material-symbols.class {
-        font-size: 1em;
-        @include material-symbols.variation-settings(
-          $fill: false,
-          $weight: 200,
-          $grade: 0,
-          $size: header.$icons-height
-        );
-      }
     }
   }
 }

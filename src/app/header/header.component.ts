@@ -1,8 +1,6 @@
 import { Component } from '@angular/core'
-import { DarkTheme, LightTheme } from '../material-symbols'
-import { ColorSchemeService } from './color-scheme.service'
-import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { DISPLAY_NONE_IF_NO_SCRIPT_CLASS } from '@/common/no-script'
+import { LightDarkToggleComponent } from './light-dark-toggle/light-dark-toggle.component'
 import { NgClass } from '@angular/common'
 
 @Component({
@@ -10,16 +8,9 @@ import { NgClass } from '@angular/common'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [MaterialSymbolDirective, NgClass],
+  imports: [NgClass, LightDarkToggleComponent],
 })
 export class HeaderComponent {
-  protected readonly MaterialSymbol = {
-    DarkTheme,
-    LightTheme,
-  }
-
-  constructor(protected readonly colorSchemeService: ColorSchemeService) {}
-
   protected readonly DISPLAY_NONE_IF_NO_SCRIPT_CLASS =
     DISPLAY_NONE_IF_NO_SCRIPT_CLASS
 }

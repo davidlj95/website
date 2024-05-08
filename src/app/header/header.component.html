@@ -4,17 +4,6 @@
     [ngClass]="DISPLAY_NONE_IF_NO_SCRIPT_CLASS"
     role="toolbar"
   >
-    <button
-      (click)="colorSchemeService.toggleDarkLight()"
-      aria-label="Color scheme toggle (dark or light)"
-      id="dark-light-scheme-toggle"
-    >
-      <span class="light-only" appMaterialSymbol>{{
-        MaterialSymbol.DarkTheme
-      }}</span>
-      <span class="dark-only" appMaterialSymbol>{{
-        MaterialSymbol.LightTheme
-      }}</span>
-    </button>
+    <app-light-dark-toggle></app-light-dark-toggle>
   </div>
 </div>
