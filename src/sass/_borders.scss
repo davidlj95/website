@@ -1,16 +1,26 @@
 $panel-width: 1px;
+$_panel-style: solid;
+$_panel-color: var(--hairline);
+$_panel-border-shorthand: $panel-width $_panel-style $_panel-color;
 
-@mixin panel($side: 'all') {
-  $panel-style: solid;
-  $panel-color: var(--hairline);
-
-  @if ($side == 'all') {
-    border-width: $panel-width;
-    border-style: $panel-style;
-    border-color: $panel-color;
+@mixin panel($sides...) {
+  @if (length($sides) == 0) {
+    border: $_panel-border-shorthand;
+  } @else if(length($sides) == 1) {
+    @include _panel-side(nth($sides, 1));
   } @else {
-    border-#{$side}-style: $panel-style;
-    border-#{$side}-width: $panel-width;
-    border-#{$side}-color: $panel-color;
+    border-color: $_panel-color;
+    border-width: $panel-width;
+    @each $side in $sides {
+      border-#{$side}-style: $_panel-style;
+    }
   }
+}
+
+$_border-sides: (top, bottom, left, right);
+@mixin _panel-side($side) {
+  @if index($_border-sides, $side) == null {
+    @error "Border side #{$side} is invalid";
+  }
+  border-#{$side}: $_panel-border-shorthand;
 }

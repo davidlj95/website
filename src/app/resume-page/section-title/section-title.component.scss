@@ -11,8 +11,7 @@
   z-index: z-index.$headers;
   width: 100%;
   padding: paddings.$s paddings.$l;
-  @include borders.panel('bottom');
-  @include borders.panel('top');
+  @include borders.panel(bottom, top);
   background-color: var(--bg-z1);
   color: var(--fg-secondary);
 
