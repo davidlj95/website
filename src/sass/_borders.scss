@@ -1,12 +1,5 @@
-@use 'sass:list';
-@use 'sass:map';
-
 $panel-width: 1px;
 $panel-color: var(--hairline);
-
-@function panel-color($theme) {
-  @return var(--hairline);
-}
 
 @mixin panel-style-width($side: 'all') {
   $panel-style: solid;
