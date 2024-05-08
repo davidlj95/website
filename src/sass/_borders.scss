@@ -1,14 +1,16 @@
 $panel-width: 1px;
-$panel-color: var(--hairline);
 
-@mixin panel-style-width($side: 'all') {
+@mixin panel($side: 'all') {
   $panel-style: solid;
+  $panel-color: var(--hairline);
 
   @if ($side == 'all') {
     border-width: $panel-width;
     border-style: $panel-style;
+    border-color: $panel-color;
   } @else {
     border-#{$side}-style: $panel-style;
     border-#{$side}-width: $panel-width;
+    border-#{$side}-color: $panel-color;
   }
 }

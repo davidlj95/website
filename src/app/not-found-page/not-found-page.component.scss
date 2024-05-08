@@ -28,12 +28,11 @@
   }
 
   .tip {
-    @include borders.panel-style-width;
+    @include borders.panel;
     padding: paddings.$m;
     display: flex;
     flex-direction: column;
     gap: margins.$s;
-    border-color: borders.$panel-color;
 
     header {
       display: flex;

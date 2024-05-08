@@ -8,9 +8,8 @@
   flex-direction: column;
   gap: margins.$m;
   padding: paddings.$m;
-  @include borders.panel-style-width;
+  @include borders.panel;
   background-color: var(--bg-z1);
-  border-color: borders.$panel-color;
 
   @include animations.define {
     @include animations.multiple-transitions(

@@ -6,10 +6,9 @@
 :host {
   position: fixed;
   width: 100%;
-  @include borders.panel-style-width(bottom);
+  @include borders.panel(bottom);
   z-index: z-index.$header;
   background-color: var(--bg-z1);
-  border-bottom-color: borders.$panel-color;
 
   @include animations.define {
     @include animations.multiple-transitions(

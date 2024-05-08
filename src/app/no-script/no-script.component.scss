@@ -20,9 +20,7 @@
     text-align: center;
     height: 100px;
     background: var(--bg-z1);
-    border-bottom-color: borders.$panel-color;
-
-    @include borders.panel-style-width(bottom);
+    @include borders.panel(bottom);
 
     p:first-child {
       display: flex;
