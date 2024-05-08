@@ -2,14 +2,12 @@
 @use 'sass:map';
 @use 'animations';
 @use 'app/resume-page/resume-page-theme';
-@use 'app/no-script/no-script-theme';
 @use 'app/navigation-tabs/navigation-tabs-theme';
 @use 'app/not-found-page/not-found-page-theme';
 @use 'theming';
 
 @import 'app/root';
 
-@include no-script-theme.color(());
 @include resume-page-theme.color(());
 @include navigation-tabs-theme.color(());
 @include not-found-page-theme.color(());
