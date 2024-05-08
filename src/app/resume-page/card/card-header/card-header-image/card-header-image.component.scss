@@ -1,8 +1,17 @@
+@use 'animations';
+
 :host {
   $size: 64px;
   min-width: $size;
 
   img {
     border-radius: $size;
+    filter: var(--img-filter);
+    @include animations.define {
+      @include animations.single-transition(
+        filter,
+        animations.$emphasized-style
+      );
+    }
   }
 }

@@ -1,3 +1,10 @@
+@use 'animations';
+
 :host {
   font-size: 1.15rem;
+  color: var(--fg-secondary);
+
+  @include animations.define {
+    @include animations.single-transition(color, animations.$emphasized-style);
+  }
 }

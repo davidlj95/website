@@ -1,6 +1,7 @@
 @use 'margins';
 @use 'paddings';
 @use 'borders';
+@use 'animations';
 
 :host {
   display: flex;
@@ -8,4 +9,13 @@
   gap: margins.$m;
   padding: paddings.$m;
   @include borders.panel-style-width;
+  background-color: var(--bg-z1);
+  border-color: borders.$panel-color;
+
+  @include animations.define {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
 }
