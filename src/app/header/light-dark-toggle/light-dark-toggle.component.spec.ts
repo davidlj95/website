@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { LightDarkToggleComponent } from './light-dark-toggle.component'
-import { ColorSchemeService } from '../color-scheme.service'
+import { ColorSchemeService } from './color-scheme.service'
 import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockProvider } from 'ng-mocks'
