@@ -1,5 +1,6 @@
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:selector';
 
 // https://m3.material.io/styles/motion
 // To be in sync with animations.ts
@@ -47,4 +48,12 @@ $emphasized-style: (
 
 @function transition($property, $style: $standard-style) {
   @return $property map.get($style, duration) map.get($style, timing-function);
+}
+
+@mixin define {
+  @at-root #{selector.nest('html:not([data-reduced-motion])', &)} {
+    @media (prefers-reduced-motion: no-preference) {
+      @content;
+    }
+  }
 }

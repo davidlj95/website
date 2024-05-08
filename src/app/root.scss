@@ -24,10 +24,12 @@ body {
   // Do not allow scroll "bounce" effect
   overscroll-behavior: none;
 
-  @include animations.multiple-transitions(
-    (color, background-color),
-    animations.$emphasized-style
-  );
+  @include animations.define {
+    @include animations.multiple-transitions(
+      (color, background-color),
+      animations.$emphasized-style
+    );
+  }
 }
 
 @include typographies.styles;
@@ -44,10 +46,13 @@ a {
   text-decoration-color: inherit;
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
-  @include animations.single-transition(
-    text-decoration-color,
-    animations.$emphasized-style
-  );
+
+  @include animations.define {
+    @include animations.single-transition(
+      text-decoration-color,
+      animations.$emphasized-style
+    );
+  }
 
   &:visited {
     color: inherit;

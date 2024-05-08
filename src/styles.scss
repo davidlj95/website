@@ -28,7 +28,7 @@
 @include theming.display-hide-classes();
 
 // Add animations
-html:not([data-no-motion]) {
+html:not([data-reduced-motion]) {
   @include header-theme.motion;
   @include resume-page-theme.motion;
   @include navigation-tabs-theme.motion;
