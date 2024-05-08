@@ -1,8 +1,0 @@
-@use 'borders';
-
-@mixin color($theme) {
-  app-no-script .contents {
-    background: var(--bg-z1);
-    border-bottom-color: borders.panel-color($theme);
-  }
-}
