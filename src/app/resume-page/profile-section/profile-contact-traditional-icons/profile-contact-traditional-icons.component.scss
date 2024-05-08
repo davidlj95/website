@@ -1,8 +1,15 @@
 @use 'breakpoints';
 @use 'margins';
 @use 'material-symbols';
+@use 'animations';
 
 :host {
+  color: var(--icon);
+
+  @include animations.define {
+    @include animations.single-transition(color, animations.$emphasized-style);
+  }
+
   ul {
     display: flex;
     flex-direction: row;
@@ -15,6 +22,10 @@
 
   li {
     height: 32px;
+
+    &:hover {
+      color: var(--fg-secondary);
+    }
 
     @include material-symbols.class {
       $fontSize: 32px;
