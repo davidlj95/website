@@ -1,8 +1,5 @@
-@use 'app/not-found-page/not-found-page-theme';
 @use 'theming';
 
 @import 'app/root';
-
-@include not-found-page-theme.color(());
 
 @include theming.display-hide-classes();
