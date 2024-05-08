@@ -1,11 +1,39 @@
 @use 'paddings';
+@use 'animations';
 
 :host {
   display: block;
+  background-color: var(--bg-z1);
+  color: var(--fg-secondary);
+
+  @include animations.define {
+    @include animations.multiple-transitions(
+      (background-color, color),
+      animations.$emphasized-style
+    );
+  }
 
   ul {
     display: flex;
     justify-content: space-around;
+
+    > .selected {
+      background-color: var(--tabs-selected-bg);
+      color: var(--tabs-selected-fg);
+      border-bottom: var(--tabs-selected-border-bottom);
+
+      @include animations.define {
+        @include animations.multiple-transitions(
+          (background-color, color),
+          animations.$emphasized-style
+        );
+      }
+    }
+
+    > :not(.selected):hover {
+      background-color: var(--bg-z2);
+      color: var(--fg-primary);
+    }
 
     li {
       display: inline-flex;
