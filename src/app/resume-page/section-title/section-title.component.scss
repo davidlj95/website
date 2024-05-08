@@ -2,6 +2,7 @@
 @use 'header';
 @use 'paddings';
 @use 'z-index';
+@use 'animations';
 
 :host {
   display: block;
@@ -12,4 +13,14 @@
   padding: paddings.$s paddings.$l;
   @include borders.panel-style-width('bottom');
   @include borders.panel-style-width('top');
+  background-color: var(--bg-z1);
+  color: var(--fg-secondary);
+  border-color: borders.$panel-color;
+
+  @include animations.define {
+    @include animations.multiple-transitions(
+      (color, background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
 }
