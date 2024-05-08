@@ -11,11 +11,9 @@
   z-index: z-index.$headers;
   width: 100%;
   padding: paddings.$s paddings.$l;
-  @include borders.panel-style-width('bottom');
-  @include borders.panel-style-width('top');
+  @include borders.panel(bottom, top);
   background-color: var(--bg-z1);
   color: var(--fg-secondary);
-  border-color: borders.$panel-color;
 
   @include animations.define {
     @include animations.multiple-transitions(

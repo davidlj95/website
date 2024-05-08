@@ -27,9 +27,8 @@
     margin: 0 margins.$s;
     padding: paddings.$s;
     text-align: right;
-    @include borders.panel-style-width;
+    @include borders.panel;
     color: var(--fg-primary);
     background-color: var(--bg-z2);
-    border-color: borders.$panel-color;
   }
 }
