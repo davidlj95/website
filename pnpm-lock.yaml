@@ -48,8 +48,8 @@ importers:
         specifier: 5.0.18
         version: 5.0.18
       '@ng-icons/core':
-        specifier: 27.3.1
-        version: 27.3.1
+        specifier: 27.4.0
+        version: 27.4.0
       '@ng-icons/font-awesome':
         specifier: 27.3.1
         version: 27.3.1
@@ -1627,8 +1627,8 @@ packages:
     resolution: {integrity: sha512-/gKJun8NNiWGZJkGzI/Ragc53cOdcLNdzjLaIa+GEjguQs0ulsurx8WN0jijdK9yPqDvziX995sMRLyLt1uZMQ==}
     engines: {node: '>= 0.4'}
 
-  '@ng-icons/core@27.3.1':
-    resolution: {integrity: sha512-kMzzQEaGJcPfrQBhBBFYoMcLNot2EDxjRi1oa5y+L7MoYmsCMcgGTy/ILmh2auMyMoPN0VWAWZwiPqMSW2V9kw==}
+  '@ng-icons/core@27.4.0':
+    resolution: {integrity: sha512-M4Hz4JI2owd8brMTrwrQYJhVjHgGN768bSnhwucAka3mk7HQKeR/zp5ONq5AxPGnAk4UU2xwYhN1DGnETtAnIg==}
 
   '@ng-icons/font-awesome@27.3.1':
     resolution: {integrity: sha512-DWOCVTYRmkJkxBCOF+Yrd1/r/oe/ZX0+iy4OEFGwm9ysGtBVU+GJjO9S3rlyV8K8yfcUo3v/bkvPpY5XeKmDIw==}
@@ -8390,7 +8390,7 @@ snapshots:
     dependencies:
       call-bind: 1.0.7
 
-  '@ng-icons/core@27.3.1':
+  '@ng-icons/core@27.4.0':
     dependencies:
       tslib: 2.6.2
 
