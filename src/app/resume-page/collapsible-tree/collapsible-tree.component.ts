@@ -1,10 +1,4 @@
-import {
-  Component,
-  Inject,
-  Input,
-  QueryList,
-  ViewChildren,
-} from '@angular/core'
+import { Component, Input, QueryList, ViewChildren } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import {
   NgClass,
@@ -13,11 +7,6 @@ import {
   NgIf,
   NgTemplateOutlet,
 } from '@angular/common'
-import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
-import {
-  DISPLAY_FLEX_IF_NO_SCRIPT_CLASS,
-  VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS,
-} from '@/common/no-script'
 import {
   animate,
   AUTO_STYLE,
@@ -73,21 +62,12 @@ export class CollapsibleTreeComponent {
   @Input() public isCollapsibleFn?: IsCollapsibleFn =
     this.parent?.isCollapsibleFn
   @Input()
-  public isExpanded = this._platformService.isServer
+  public isExpanded = false
 
   @ViewChildren(CollapsibleTreeComponent)
   private children!: QueryList<CollapsibleTreeComponent>
 
-  protected readonly VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS =
-    VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS
-  protected readonly DISPLAY_FLEX_IF_NO_SCRIPT_CLASS =
-    DISPLAY_FLEX_IF_NO_SCRIPT_CLASS
   private readonly _id = nextId++
-
-  constructor(
-    @Inject(PLATFORM_SERVICE)
-    protected readonly _platformService: PlatformService,
-  ) {}
 
   public get isCollapsible(): boolean {
     if (!(this.node.children.length > 0)) {
@@ -99,7 +79,7 @@ export class CollapsibleTreeComponent {
     return this.isCollapsibleFn(this)
   }
 
-  public get sluggedId(): string | undefined {
+  public get childListId(): string | undefined {
     if (!this.isCollapsible) {
       return
     }

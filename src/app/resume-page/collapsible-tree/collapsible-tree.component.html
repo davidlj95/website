@@ -4,19 +4,11 @@
       type="button"
       class="data"
       [attr.aria-expanded]="isExpanded"
-      [attr.aria-controls]="sluggedId"
+      [attr.aria-controls]="childListId"
       (click)="isExpanded ? this.collapse() : this.expand()"
     >
-      <span
-        class="caret"
-        aria-hidden="true"
-        [ngClass]="VISIBILITY_HIDDEN_IF_NO_SCRIPT_CLASS"
-      >
-        {{
-          _platformService.isBrowser && isExpanded
-            ? expandedIcon
-            : collapsedIcon
-        }}
+      <span class="caret" aria-hidden="true">
+        {{ isExpanded ? expandedIcon : collapsedIcon }}
       </span>
       <ng-container [ngTemplateOutlet]="data"></ng-container>
     </button>
@@ -34,19 +26,9 @@
 </ng-container>
 <ul
   *ngIf="node.children.length"
-  [attr.id]="sluggedId"
+  [attr.id]="childListId"
   [@expanded]="!isCollapsible || isExpanded"
-  [ngClass]="
-    isCollapsible && _platformService.isServer
-      ? [DISPLAY_FLEX_IF_NO_SCRIPT_CLASS]
-      : undefined
-  "
-  [style.visibility]="
-    isCollapsible && _platformService.isBrowser ? 'hidden' : undefined
-  "
-  [style.display]="
-    isCollapsible && _platformService.isServer ? 'none' : undefined
-  "
+  [style.visibility]="isCollapsible ? 'hidden' : undefined"
 >
   <li *ngFor="let child of node.children">
     <app-collapsible-tree
