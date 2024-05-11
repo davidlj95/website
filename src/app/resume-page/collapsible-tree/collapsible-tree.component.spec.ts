@@ -4,13 +4,7 @@ import {
   CollapsibleTreeComponent,
   IsCollapsibleFn,
 } from './collapsible-tree.component'
-import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { MockProvider } from 'ng-mocks'
-import {
-  MOCK_BROWSER_PLATFORM_SERVICE,
-  MOCK_SERVER_PLATFORM_SERVICE,
-} from '@/test/helpers/platform-service'
 import { By } from '@angular/platform-browser'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import {
@@ -19,15 +13,10 @@ import {
   ATTRIBUTE_ARIA_HIDDEN,
 } from '@/test/helpers/aria'
 import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
-import {
-  expectIsFlexDisplayedIfNoScript,
-  expectIsVisibilityHiddenIfNoScript,
-} from '@/test/helpers/no-script'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import {
   expectHiddenVisibility,
   expectIsDisplayed,
-  expectIsNotDisplayed,
 } from '@/test/helpers/visibility'
 import {
   CollapsibleTreeNode,
@@ -139,90 +128,43 @@ describe('CollapsibleTreeComponent', () => {
       ])
       const ALWAYS_COLLAPSIBLE: IsCollapsibleFn = () => true
       const BUTTON_PREDICATE = By.css('button')
-
-      it('should include button to toggle', () => {
+      beforeEach(() => {
         ;[fixture, component] = makeSut()
         component.node = DUMMY_NODE
         component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
         fixture.detectChanges()
+      })
 
+      it('should include button to toggle', () => {
         const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
         expect(buttonElement).not.toBeNull()
       })
 
       it('should indicate via ARIA which element the button controls', () => {
-        ;[fixture, component] = makeSut()
-        component.node = DUMMY_NODE
-        component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
-        fixture.detectChanges()
-
         const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
         expect(buttonElement.attributes[ATTRIBUTE_ARIA_CONTROLS]).toEqual(
-          component.sluggedId!,
+          component.childListId!,
         )
 
         const listElement = fixture.debugElement.query(LIST_PREDICATE)
         expect(listElement).not.toBeNull()
-        expect(listElement.attributes['id']).toEqual(component.sluggedId!)
+        expect(listElement.attributes['id']).toEqual(component.childListId!)
       })
 
-      describe('when rendering on browser', () => {
-        beforeEach(() => {
-          ;[fixture, component] = makeSut({
-            platformService: MOCK_BROWSER_PLATFORM_SERVICE,
-          })
-          component.node = DUMMY_NODE
-          component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
-          fixture.detectChanges()
-        })
-
-        it('should display list', () => {
-          const listElement = fixture.debugElement.query(LIST_PREDICATE)
-          expectIsDisplayed(listElement.nativeElement)
-        })
-
-        it('should be collapsed by default', () => {
-          expect(component.isExpanded).toBeFalse()
-        })
-
-        //👇 This way, if animations are deferred, the hidden visibility initial status is
-        //   already applied
-        it('should set list visibility to hidden', () => {
-          const listElement = fixture.debugElement.query(LIST_PREDICATE)
-          expectHiddenVisibility(listElement.nativeElement)
-        })
+      it('should display list', () => {
+        const listElement = fixture.debugElement.query(LIST_PREDICATE)
+        expectIsDisplayed(listElement.nativeElement)
       })
 
-      describe('when rendering on server', () => {
-        beforeEach(() => {
-          ;[fixture, component] = makeSut({
-            platformService: MOCK_SERVER_PLATFORM_SERVICE,
-          })
-          component.node = DUMMY_NODE
-          component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
-          fixture.detectChanges()
-        })
+      it('should be collapsed by default', () => {
+        expect(component.isExpanded).toBeFalse()
+      })
 
-        it('should not display list', () => {
-          const listElement = fixture.debugElement.query(LIST_PREDICATE)
-          expectIsNotDisplayed(listElement.nativeElement)
-        })
-
-        it('should force list display if no JS', () => {
-          const listElement = fixture.debugElement.query(LIST_PREDICATE)
-          expectIsFlexDisplayedIfNoScript(listElement)
-        })
-
-        it('should be expanded by default', () => {
-          expect(component.isExpanded).toBeTrue()
-        })
-
-        it('should display collapsed caret icon to avoid layout shift (on browser will be collapsed)', () => {
-          const caretElement = fixture.debugElement.query(CARET_PREDICATE)
-          expect(caretElement.nativeElement.textContent.trim()).toEqual(
-            component.collapsedIcon,
-          )
-        })
+      //👇 This way, if animations are deferred, the hidden visibility initial status is
+      //   already applied
+      it('should set list visibility to hidden', () => {
+        const listElement = fixture.debugElement.query(LIST_PREDICATE)
+        expectHiddenVisibility(listElement.nativeElement)
       })
 
       interface ExpandedTestCase {
@@ -257,9 +199,6 @@ describe('CollapsibleTreeComponent', () => {
             mockParentComponent = jasmine.createSpyObj('node', [
               'collapseAllChildren' satisfies keyof CollapsibleTreeComponent,
             ])
-            ;[fixture, component] = makeSut()
-            component.node = DUMMY_NODE
-            component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
             component.isExpanded = testCase.isExpanded
             component.parent = mockParentComponent
             fixture.detectChanges()
@@ -280,7 +219,7 @@ describe('CollapsibleTreeComponent', () => {
             expect(component.isExpanded).toEqual(!testCase.isExpanded)
           })
 
-          it('should render caret with proper icon, not visible if no script and ARIA hidden', () => {
+          it('should render caret with proper icon and hidden from screen readers', () => {
             const caretElement = fixture.debugElement.query(CARET_PREDICATE)
             expect(caretElement).not.toBeNull()
 
@@ -290,7 +229,6 @@ describe('CollapsibleTreeComponent', () => {
             expect(caretElement.attributes[ATTRIBUTE_ARIA_HIDDEN]).toEqual(
               'true',
             )
-            expectIsVisibilityHiddenIfNoScript(caretElement)
           })
 
           if (testCase.name === 'collapsed') {
@@ -310,16 +248,7 @@ describe('CollapsibleTreeComponent', () => {
   })
 })
 
-function makeSut(
-  opts: { platformService?: PlatformService } = {},
-): [ComponentFixture<CollapsibleTreeComponent>, CollapsibleTreeComponent] {
-  return componentTestSetup(CollapsibleTreeComponent, {
-    providers: [
-      MockProvider(
-        PLATFORM_SERVICE,
-        opts.platformService ?? MOCK_BROWSER_PLATFORM_SERVICE,
-      ),
-      provideNoopAnimations(),
-    ],
+const makeSut = () =>
+  componentTestSetup(CollapsibleTreeComponent, {
+    providers: [provideNoopAnimations()],
   })
-}
