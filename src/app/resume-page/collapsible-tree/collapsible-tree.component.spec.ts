@@ -14,10 +14,7 @@ import {
 } from '@/test/helpers/aria'
 import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
-import {
-  expectHiddenVisibility,
-  expectIsDisplayed,
-} from '@/test/helpers/visibility'
+import { expectIsInLayout } from '@/test/helpers/visibility'
 import {
   CollapsibleTreeNode,
   CollapsibleTreeNodeData,
@@ -93,6 +90,12 @@ describe('CollapsibleTreeComponent', () => {
   })
 
   describe('when data has children', () => {
+    const DUMMY_NODE = new CollapsibleTreeNode(DUMMY_NODE_DATA, [
+      new CollapsibleTreeNode(),
+      new CollapsibleTreeNode(),
+    ])
+    const BUTTON_PREDICATE = By.css('button')
+
     it('should render the list of children (with assigned id and increased depth)', () => {
       const DUMMY_DEPTH = 42
       const DUMMY_CHILDREN = [
@@ -122,12 +125,8 @@ describe('CollapsibleTreeComponent', () => {
     })
 
     describe('when collapsible', () => {
-      const DUMMY_NODE = new CollapsibleTreeNode(DUMMY_NODE_DATA, [
-        new CollapsibleTreeNode(),
-        new CollapsibleTreeNode(),
-      ])
       const ALWAYS_COLLAPSIBLE: IsCollapsibleFn = () => true
-      const BUTTON_PREDICATE = By.css('button')
+
       beforeEach(() => {
         ;[fixture, component] = makeSut()
         component.node = DUMMY_NODE
@@ -153,18 +152,11 @@ describe('CollapsibleTreeComponent', () => {
 
       it('should display list', () => {
         const listElement = fixture.debugElement.query(LIST_PREDICATE)
-        expectIsDisplayed(listElement.nativeElement)
+        expectIsInLayout(listElement.nativeElement)
       })
 
       it('should be collapsed by default', () => {
         expect(component.isExpanded).toBeFalse()
-      })
-
-      //👇 This way, if animations are deferred, the hidden visibility initial status is
-      //   already applied
-      it('should set list visibility to hidden', () => {
-        const listElement = fixture.debugElement.query(LIST_PREDICATE)
-        expectHiddenVisibility(listElement.nativeElement)
       })
 
       interface ExpandedTestCase {
@@ -244,6 +236,26 @@ describe('CollapsibleTreeComponent', () => {
           }
         })
       }
+    })
+    describe('when non collapsible', () => {
+      const NEVER_COLLAPSIBLE: IsCollapsibleFn = () => false
+
+      beforeEach(() => {
+        ;[fixture, component] = makeSut()
+        component.node = DUMMY_NODE
+        component.isCollapsibleFn = NEVER_COLLAPSIBLE
+        fixture.detectChanges()
+      })
+
+      it('should not include button to toggle', () => {
+        const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
+        expect(buttonElement).toBeNull()
+      })
+
+      it('should display list', () => {
+        const listElement = fixture.debugElement.query(LIST_PREDICATE)
+        expectIsInLayout(listElement.nativeElement)
+      })
     })
   })
 })
