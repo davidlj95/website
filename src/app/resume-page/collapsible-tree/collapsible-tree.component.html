@@ -28,7 +28,6 @@
   *ngIf="node.children.length"
   [attr.id]="childListId"
   [@expanded]="!isCollapsible || isExpanded"
-  [style.visibility]="isCollapsible ? 'hidden' : undefined"
 >
   <li *ngFor="let child of node.children">
     <app-collapsible-tree
