@@ -64,6 +64,9 @@
             "prerender": true,
             "ssr": {
               "entry": "server.ts"
+            },
+            "define": {
+              "isDevMode": "true"
             }
           },
           "configurations": {
@@ -80,7 +83,10 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "define": {
+                "isDevMode": "false"
+              }
             },
             "development": {
               "optimization": false,
@@ -129,7 +135,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing",
+              "src/test/esbuild-defines"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [

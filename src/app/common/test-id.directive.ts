@@ -1,5 +1,4 @@
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core'
-import { isDevMode } from '@/common/is-dev-mode'
 
 @Directive({
   selector: '[appTestId]',
