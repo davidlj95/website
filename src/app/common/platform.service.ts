@@ -1,6 +1,5 @@
 import { isPlatformBrowser } from '@angular/common'
 import { inject, InjectionToken, PLATFORM_ID } from '@angular/core'
-import { isDevMode } from '@/common/is-dev-mode'
 
 export class PlatformService {
   readonly isBrowser: boolean

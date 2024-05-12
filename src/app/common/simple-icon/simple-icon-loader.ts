@@ -1,5 +1,4 @@
 import { inject, InjectionToken } from '@angular/core'
-import { isDevMode } from '@/common/is-dev-mode'
 import { HttpClient } from '@angular/common/http'
 import { catchError, EMPTY, filter, Observable, of, tap } from 'rxjs'
 import { ASSETS_DIR } from '@/common/assets-dir'

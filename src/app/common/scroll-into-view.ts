@@ -1,5 +1,4 @@
 import { inject, InjectionToken } from '@angular/core'
-import { isDevMode } from '@/common/is-dev-mode'
 import { PLATFORM_SERVICE } from '@/common/platform.service'
 import { noop } from 'rxjs'
 
