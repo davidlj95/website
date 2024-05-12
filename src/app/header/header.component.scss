@@ -26,7 +26,7 @@
     $vertical-padding-height: header.$vertical-padding-height;
     min-height: calc($icons-height + $vertical-padding-height);
 
-    .toolbar {
+    [role='toolbar'] {
       height: header.$icons-height;
     }
   }

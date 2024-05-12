@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { DISPLAY_NONE_IF_NO_SCRIPT_CLASS } from '@/common/no-script'
 import { LightDarkToggleComponent } from './light-dark-toggle/light-dark-toggle.component'
 import { NgClass } from '@angular/common'
 
@@ -10,7 +9,4 @@ import { NgClass } from '@angular/common'
   standalone: true,
   imports: [NgClass, LightDarkToggleComponent],
 })
-export class HeaderComponent {
-  protected readonly DISPLAY_NONE_IF_NO_SCRIPT_CLASS =
-    DISPLAY_NONE_IF_NO_SCRIPT_CLASS
-}
+export class HeaderComponent {}
