@@ -127,16 +127,14 @@ describe('AdaptJsonResumeProject', () => {
 
   it('should map technologies', () => {
     const jsonResumeTechnology: JsonResumeProject['technologies'][number] = {
-      id: 'slug',
+      slug: 'slug',
       version: 'version',
     }
     const technologies: JsonResumeProject['technologies'] = [
       jsonResumeTechnology,
     ]
     const item = makeSut()(makeJsonResumeProjectItem({ technologies }))
-    expect(item.technologies).toEqual([
-      { slug: jsonResumeTechnology.id, version: jsonResumeTechnology.version },
-    ])
+    expect(item.technologies).toEqual(technologies)
   })
 })
 

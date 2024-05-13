@@ -25,10 +25,7 @@ export const ADAPT_JSON_RESUME_PROJECT =
               ? relativizeUrl(new URL(project.image))
               : undefined,
             stack: project.stack ? mapStack(project.stack) : undefined,
-            technologies: project.technologies.map((technology) => ({
-              slug: technology.id,
-              version: technology.version,
-            })),
+            technologies: project.technologies,
           })
       },
     },
