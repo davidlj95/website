@@ -13,7 +13,7 @@ import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
 import { MockProvider } from 'ng-mocks'
 import {
   MOCK_BROWSER_PLATFORM_SERVICE,
-  MOCK_SERVER_PLATFORM_SERVICE,
+  MOCK_NON_BROWSER_PLATFORM_SERVICE,
 } from '@/test/helpers/platform-service'
 import { HttpStatusCode } from '@angular/common/http'
 import { SVG } from '@/test/mocks/svg'
@@ -31,7 +31,7 @@ describe('SimpleIconLoader', () => {
   describe('when not on browser', () => {
     it('should emit nothing, complete and not request anything', (done) => {
       sut = makeSut({
-        platformService: MOCK_SERVER_PLATFORM_SERVICE,
+        platformService: MOCK_NON_BROWSER_PLATFORM_SERVICE,
       })
 
       let actualSvg: string | undefined
