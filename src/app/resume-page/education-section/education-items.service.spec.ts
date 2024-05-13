@@ -1,63 +1,64 @@
-import { TestBed } from '@angular/core/testing'
-
 import {
   EducationItemsService,
   JSON_RESUME_EDUCATION,
+  JsonResumeEducation,
 } from './education-items.service'
-import resume from '../../../../assets/resume.json'
 import { MockProvider } from 'ng-mocks'
-import { JsonResumeEducationItemAdapterService } from './json-resume-education-item-adapter.service'
 import { EducationItem } from './education-item/education-item'
+import { serviceTestSetup } from '@/test/helpers/service-test-setup'
+import {
+  ADAPT_JSON_RESUME_EDUCATION,
+  AdaptJsonResumeEducation,
+  JsonResumeEducationItem,
+} from './adapt-json-resume-education'
 
 describe('EducationItemsService', () => {
   it('should be created', () => {
-    TestBed.configureTestingModule({})
-    expect(TestBed.inject(EducationItemsService)).toBeTruthy()
+    expect(makeSut()).toBeTruthy()
   })
 
   describe('getEducationItems', () => {
-    const realResumeEducationItems = resume.education
-    const someResumeEducationItems = [
-      realResumeEducationItems[0],
-      realResumeEducationItems[1],
-    ]
-    let sut: EducationItemsService
-    let educationItemAdapter: JsonResumeEducationItemAdapterService
-
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        providers: [
-          MockProvider(JSON_RESUME_EDUCATION, someResumeEducationItems),
-        ],
+    it('should return adapted items from JSON Resume', () => {
+      const jsonResumeEducations = [
+        'item-1' as unknown as JsonResumeEducationItem,
+        'item-2' as unknown as JsonResumeEducationItem,
+      ]
+      const expectedEducationItems =
+        jsonResumeEducations as unknown as ReadonlyArray<EducationItem>
+      const adaptJsonResumeEducation = jasmine
+        .createSpy<AdaptJsonResumeEducation>()
+        .and.returnValues(...expectedEducationItems)
+      const sut = makeSut({
+        jsonResumeEducations,
+        adaptJsonResumeEducation,
       })
-      educationItemAdapter = TestBed.inject(
-        JsonResumeEducationItemAdapterService,
-      )
-      sut = TestBed.inject(EducationItemsService)
-    })
 
-    it('should return as many as in the JSON education section', () => {
-      expect(sut.getEducationItems().length).toBe(
-        someResumeEducationItems.length,
-      )
-    })
+      const items = sut.getEducationItems()
 
-    it('should map each item using the education item adapter', () => {
-      const fakeEducationItem = {} as unknown as EducationItem
-      spyOn(educationItemAdapter, 'adapt').and.returnValue(fakeEducationItem)
-
-      const educationItems = sut.getEducationItems()
-
-      expect(educationItemAdapter.adapt).toHaveBeenCalledTimes(
-        someResumeEducationItems.length,
-      )
-      // noinspection JSVoidFunctionReturnValueUsed
-      expect(educationItems).toEqual(
-        // eslint-disable-next-line prefer-spread
-        Array.apply(null, Array(someResumeEducationItems.length)).map(
-          () => fakeEducationItem,
-        ),
+      expect(items).toEqual(expectedEducationItems)
+      expect(adaptJsonResumeEducation).toHaveBeenCalledTimes(
+        jsonResumeEducations.length,
       )
     })
   })
 })
+
+const makeSut = (
+  opts: {
+    jsonResumeEducations?: JsonResumeEducation
+    adaptJsonResumeEducation?: AdaptJsonResumeEducation
+  } = {},
+) =>
+  serviceTestSetup(EducationItemsService, {
+    providers: [
+      opts.jsonResumeEducations
+        ? MockProvider(JSON_RESUME_EDUCATION, opts.jsonResumeEducations)
+        : [],
+      opts.adaptJsonResumeEducation
+        ? MockProvider(
+            ADAPT_JSON_RESUME_EDUCATION,
+            opts.adaptJsonResumeEducation,
+          )
+        : [],
+    ],
+  })
