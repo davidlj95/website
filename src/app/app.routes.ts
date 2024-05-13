@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router'
-import { routes as notFoundPageRoutes } from './not-found-page/routes'
-import { routes as resumePageRoutes } from './resume-page/routes'
+import { notFoundPageRoutes } from './not-found-page/not-found-page.routes'
+import { resumePageRoutes } from './resume-page/resume-page.routes'
+import { calendarRoutes } from './calendar-page/external-routes'
 
 export const routes: Routes = [
   // Metadata to add when '/' route is ready
@@ -17,5 +18,7 @@ export const routes: Routes = [
   //   url: environment.appBaseUrl.toString(),
   // },
   ...resumePageRoutes,
+  ...calendarRoutes,
+
   ...notFoundPageRoutes,
 ]
