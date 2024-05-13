@@ -1,60 +1,59 @@
-import { TestBed } from '@angular/core/testing'
-
 import {
   ExperienceItemsService,
-  JSON_RESUME_WORK,
+  JSON_RESUME_WORKS,
+  JsonResumeWorks,
 } from './experience-items.service'
-import resume from '../../../../assets/resume.json'
 import { MockProvider } from 'ng-mocks'
-import { JsonResumeExperienceItemAdapterService } from './json-resume-experience-item-adapter.service'
+import {
+  ADAPT_JSON_RESUME_WORK,
+  AdaptJsonResumeWork,
+  JsonResumeWork,
+} from './adapt-json-resume-work'
 import { ExperienceItem } from './experience-item/experience-item'
+import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 
 describe('ExperienceItemsService', () => {
   it('should be created', () => {
-    TestBed.configureTestingModule({})
-    expect(TestBed.inject(ExperienceItemsService)).toBeTruthy()
+    expect(makeSut()).toBeTruthy()
   })
 
   describe('getExperienceItems', () => {
-    const realResumeWorkItems = resume.work
-    const someResumeWorkItems = [
-      realResumeWorkItems[0],
-      realResumeWorkItems[1],
-      realResumeWorkItems[2],
-    ]
-    let sut: ExperienceItemsService
-    let experienceItemAdapter: JsonResumeExperienceItemAdapterService
-
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        providers: [MockProvider(JSON_RESUME_WORK, someResumeWorkItems)],
+    it('should return adapted items from JSON Resume', () => {
+      const jsonResumeWorks = [
+        'item-1' as unknown as JsonResumeWork,
+        'item-2' as unknown as JsonResumeWork,
+      ]
+      const expectedExperienceItems =
+        jsonResumeWorks as unknown as ReadonlyArray<ExperienceItem>
+      const adaptJsonResumeWork = jasmine
+        .createSpy<AdaptJsonResumeWork>()
+        .and.returnValues(...expectedExperienceItems)
+      const sut = makeSut({
+        jsonResumeWorks,
+        adaptJsonResumeWork,
       })
-      experienceItemAdapter = TestBed.inject(
-        JsonResumeExperienceItemAdapterService,
-      )
-      sut = TestBed.inject(ExperienceItemsService)
-    })
 
-    it('should return as many as in the JSON resume work section', () => {
-      expect(sut.getExperienceItems().length).toBe(someResumeWorkItems.length)
-    })
+      const items = sut.getExperienceItems()
 
-    it('should map each item using the adapter', () => {
-      const fakeExperienceItem = {} as unknown as ExperienceItem
-      spyOn(experienceItemAdapter, 'adapt').and.returnValue(fakeExperienceItem)
-
-      const experienceItems = sut.getExperienceItems()
-
-      expect(experienceItemAdapter.adapt).toHaveBeenCalledTimes(
-        someResumeWorkItems.length,
-      )
-      // noinspection JSVoidFunctionReturnValueUsed
-      expect(experienceItems).toEqual(
-        // eslint-disable-next-line prefer-spread
-        Array.apply(null, Array(someResumeWorkItems.length)).map(
-          () => fakeExperienceItem,
-        ),
-      )
+      expect(items).toEqual(expectedExperienceItems)
+      expect(adaptJsonResumeWork).toHaveBeenCalledTimes(jsonResumeWorks.length)
     })
   })
 })
+
+const makeSut = (
+  opts: {
+    jsonResumeWorks?: JsonResumeWorks
+    adaptJsonResumeWork?: AdaptJsonResumeWork
+  } = {},
+) =>
+  serviceTestSetup(ExperienceItemsService, {
+    providers: [
+      opts.jsonResumeWorks
+        ? MockProvider(JSON_RESUME_WORKS, opts.jsonResumeWorks)
+        : [],
+      opts.adaptJsonResumeWork
+        ? MockProvider(ADAPT_JSON_RESUME_WORK, opts.adaptJsonResumeWork)
+        : [],
+    ],
+  })
