@@ -2,13 +2,7 @@ import { isPlatformBrowser } from '@angular/common'
 import { inject, InjectionToken, PLATFORM_ID } from '@angular/core'
 
 export class PlatformService {
-  readonly isBrowser: boolean
-  readonly isServer: boolean
-
-  constructor(isBrowser: boolean) {
-    this.isBrowser = isBrowser
-    this.isServer = !isBrowser
-  }
+  constructor(public readonly isBrowser: boolean) {}
 }
 
 //👇 Not @Injectable for perf purposes

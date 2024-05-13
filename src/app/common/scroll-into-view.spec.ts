@@ -6,7 +6,7 @@ import { MockProvider } from 'ng-mocks'
 import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
 import {
   MOCK_BROWSER_PLATFORM_SERVICE,
-  MOCK_SERVER_PLATFORM_SERVICE,
+  MOCK_NON_BROWSER_PLATFORM_SERVICE,
 } from '@/test/helpers/platform-service'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 
@@ -24,7 +24,9 @@ describe('ScrollIntoView', () => {
   })
   describe('when on server', () => {
     it('should do nothing', () => {
-      const sut = makeSut({ platformService: MOCK_SERVER_PLATFORM_SERVICE })
+      const sut = makeSut({
+        platformService: MOCK_NON_BROWSER_PLATFORM_SERVICE,
+      })
       const dummyElement = jasmine.createSpyObj<HTMLElement>(['scrollIntoView'])
 
       sut(dummyElement)
