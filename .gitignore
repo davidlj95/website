@@ -244,6 +244,7 @@ $RECYCLE.BIN/
 /assets/*-subset.*
 /release.json
 /src/environments/environment.pull-request.ts
+.nx/cache
 # Manual changes:
 # - Remove .idea from angular, we want some settings in the repo
 # - Include dictionaries
@@ -252,4 +253,4 @@ $RECYCLE.BIN/
 # - Add generated subset fonts
 # - Add release file
 # - Add generated pull request environment
-# - Add simple icons JSON file
+# - Nx cache due to Angular ESLint: https://github.com/angular-eslint/angular-eslint/issues/1784
