@@ -3,6 +3,7 @@ import { ExperienceSectionComponent } from './experience-section/experience-sect
 import { ProfileSectionComponent } from './profile-section/profile-section.component'
 import { EducationSectionComponent } from './education-section/education-section.component'
 import { ProjectsSectionComponent } from './projects-section/projects-section.component'
+import { LanguagesSectionComponent } from './languages-section/languages-section.component'
 
 @Component({
   selector: 'app-resume-page',
@@ -14,6 +15,7 @@ import { ProjectsSectionComponent } from './projects-section/projects-section.co
     ExperienceSectionComponent,
     EducationSectionComponent,
     ProjectsSectionComponent,
+    LanguagesSectionComponent,
   ],
 })
 export class ResumePageComponent {
