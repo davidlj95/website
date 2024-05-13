@@ -1,11 +1,11 @@
 @use 'animations';
+@use 'card-header-image';
 
 :host {
-  $size: 64px;
-  min-width: $size;
+  min-width: card-header-image.$size;
 
   img {
-    border-radius: $size;
+    border-radius: card-header-image.$size;
     filter: var(--img-filter);
     @include animations.define {
       @include animations.single-transition(
