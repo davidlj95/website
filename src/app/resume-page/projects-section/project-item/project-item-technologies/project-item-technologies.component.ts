@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { ChipComponent } from '../../../chip/chip.component'
 import { NgForOf } from '@angular/common'
-import { Technology } from '../project-item'
 import { TechnologyComponent } from '../../../technology/technology.component'
-import { TechnologyService } from '../../../technology/technology.service'
 import { TechnologyItem } from '../../../technology/technology-item'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
@@ -21,21 +19,5 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
   templateUrl: './project-item-technologies.component.html',
 })
 export class ProjectItemTechnologiesComponent {
-  @Input({ required: true })
-  public set technologies(technologies: ReadonlyArray<Technology>) {
-    this.items = technologies.map((technology) => ({
-      displayName:
-        this._technologyService.getDisplayName(technology.id) ?? technology.id,
-      icon: this._technologyService.getIcon(technology.id) ?? undefined,
-      slug: technology.id,
-      version: technology.version,
-    }))
-  }
-
-  /**
-   * @visibleForTesting
-   */
-  public items: ReadonlyArray<TechnologyItem> = []
-
-  constructor(private readonly _technologyService: TechnologyService) {}
+  @Input({ required: true }) public items!: ReadonlyArray<TechnologyItem>
 }

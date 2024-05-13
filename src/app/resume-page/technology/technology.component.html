@@ -1,6 +1,8 @@
 <div class="wrap">
-  <span class="icon" *ngIf="item.icon">
-    <app-simple-icon [icon]="item.icon"></app-simple-icon>
-  </span>
-  <span class="name">{{ item.displayName }}</span>
+  @if (_icon) {
+    <span class="icon">
+      <app-simple-icon [icon]="_icon"></app-simple-icon>
+    </span>
+  }
+  <span>{{ _displayName }}</span>
 </div>

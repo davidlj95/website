@@ -1,8 +1,9 @@
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 import { makeProjectItem } from './__tests__/make-project-item'
 import { projectItemToContents } from './project-item-to-contents'
-import { Technology } from './project-item'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
+import { TechnologyItem } from '../../technology/technology-item'
+import { makeTechnologyItem } from '../../technology/__tests__/make-technology-item'
 
 describe('projectItemToContents', () => {
   describe('when description is present', () => {
@@ -25,15 +26,15 @@ describe('projectItemToContents', () => {
   })
 
   describe('when technologies are not empty', () => {
-    const technologies = [
-      { id: 'super-cool-tech' },
-      { id: 'another-super-cool-tech' },
-    ] satisfies ReadonlyArray<Technology>
+    const items = [
+      makeTechnologyItem({ slug: 'super-cool-tech' }),
+      makeTechnologyItem({ slug: 'another-super-cool-tech' }),
+    ] satisfies ReadonlyArray<TechnologyItem>
 
     it('should include technologies content', () => {
       const sut = makeSut()
 
-      const contents = sut(makeProjectItem({ technologies }))
+      const contents = sut(makeProjectItem({ technologies: items }))
       const technologiesContents = contents.filter(
         (content) => content.displayName === 'Tech',
       )
@@ -43,7 +44,7 @@ describe('projectItemToContents', () => {
         ProjectItemTechnologiesComponent,
       )
       expect(technologiesContent.inputs).toEqual({
-        technologies,
+        items,
       } satisfies Partial<ProjectItemTechnologiesComponent>)
     })
   })
