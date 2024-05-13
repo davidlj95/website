@@ -4,7 +4,6 @@ import { NgIf, NgTemplateOutlet } from '@angular/common'
 @Component({
   selector: 'app-link',
   templateUrl: './link.component.html',
-  styleUrls: ['./link.component.scss'],
   standalone: true,
   imports: [NgIf, NgTemplateOutlet],
 })
