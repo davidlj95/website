@@ -1,7 +1,7 @@
 import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { expectIsHidden } from '@/test/helpers/visibility'
+import { expectIsNotVisible } from '@/test/helpers/visibility'
 
 import { ProfilePictureComponent } from './profile-picture.component'
 import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
@@ -37,7 +37,7 @@ describe('ProfilePictureComponent', () => {
     const ngSrcAttribute = getReflectedAttribute(huhProfilePic, 'ng-src')
     expect(ngSrcAttribute).toBeDefined()
     expect(ngSrcAttribute).toContain('profile_huh.png')
-    expectIsHidden(huhProfilePic.nativeElement)
+    expectIsNotVisible(huhProfilePic.nativeElement)
     const styles = getComputedStyle(huhProfilePic.nativeElement)
     expect(styles.opacity).toEqual('0')
   })
