@@ -1,10 +1,10 @@
-import { Component } from '@angular/core'
+import { Component, Inject } from '@angular/core'
 import { ProjectItem } from './project-item/project-item'
-import { ProjectItemsService } from './project-items.service'
 import { ProjectItemComponent } from './project-item/project-item.component'
 import { NgFor } from '@angular/common'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
+import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
 
 @Component({
   selector: 'app-projects-section',
@@ -20,7 +20,7 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
 export class ProjectsSectionComponent {
   public readonly items: ReadonlyArray<ProjectItem>
 
-  constructor(projectItemsService: ProjectItemsService) {
-    this.items = projectItemsService.get()
+  constructor(@Inject(GET_PROJECT_ITEMS) getProjectItems: GetProjectItems) {
+    this.items = getProjectItems()
   }
 }
