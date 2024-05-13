@@ -31,18 +31,18 @@ async function findNeededIcons(projects: typeof RESUME_JSON.projects) {
     process.exit()
   }
 
-  const technologyIds = [
-    ...new Set(technologies.map((technology) => technology.id)),
+  const technologySlugs = [
+    ...new Set(technologies.map((technology) => technology.slug)),
   ]
-  Log.item('Where %d are unique technology IDs', technologyIds.length)
+  Log.item('Where %d are unique technology slugs', technologySlugs.length)
 
   const allIcons = Object.values(icons)
   Log.info('Loaded %d simple icons', allIcons.length)
 
   const neededIcons = allIcons.filter((icon) =>
-    technologyIds.includes(icon.slug),
+    technologySlugs.includes(icon.slug),
   )
-  Log.info('%d icons match technology IDs', neededIcons.length)
+  Log.info('%d icons match technology slugs', neededIcons.length)
   return neededIcons
 }
 
