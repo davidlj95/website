@@ -1,5 +1,5 @@
 export interface LanguageItem {
   readonly name: string
-  readonly level: string
+  readonly fluency: string
   readonly comment?: string
 }

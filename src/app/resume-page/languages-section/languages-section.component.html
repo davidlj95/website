@@ -1,2 +1,7 @@
 <app-section-title><h2 id="languages">Languages</h2></app-section-title>
-<app-card-grid> </app-card-grid>
+<app-card-grid>
+  <app-language-item
+    *ngFor="let item of items"
+    [item]="item"
+  ></app-language-item>
+</app-card-grid>

@@ -1,1 +1,17 @@
-<p>language-item works!</p>
+<app-card>
+  <app-card-header>
+    <app-card-header-texts>
+      <app-card-header-title appTestId="name">
+        {{ item.name }}
+      </app-card-header-title>
+      <app-card-header-subtitle appTestId="fluency">
+        {{ item.fluency }}
+      </app-card-header-subtitle>
+    </app-card-header-texts>
+  </app-card-header>
+  @if (item.comment) {
+    <div appTestId="comment">
+      <p>{{ item.comment }}</p>
+    </div>
+  }
+</app-card>
