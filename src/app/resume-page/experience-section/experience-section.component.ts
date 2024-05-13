@@ -1,10 +1,13 @@
-import { Component } from '@angular/core'
+import { Component, Inject } from '@angular/core'
 import { ExperienceItem } from './experience-item/experience-item'
-import { ExperienceItemsService } from './experience-items.service'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { NgFor } from '@angular/common'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
+import {
+  GET_EXPERIENCE_ITEMS,
+  GetExperienceItems,
+} from './get-experience-items'
 
 @Component({
   selector: 'app-experience-section',
@@ -18,9 +21,11 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
   ],
 })
 export class ExperienceSectionComponent {
-  protected items: ReadonlyArray<ExperienceItem>
+  protected readonly items: ReadonlyArray<ExperienceItem>
 
-  constructor(experienceItemsService: ExperienceItemsService) {
-    this.items = experienceItemsService.getExperienceItems()
+  constructor(
+    @Inject(GET_EXPERIENCE_ITEMS) getExperienceItems: GetExperienceItems,
+  ) {
+    this.items = getExperienceItems()
   }
 }
