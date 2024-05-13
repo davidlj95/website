@@ -5,7 +5,6 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { Technology } from '../project-item'
 import { MockComponent, MockProvider } from 'ng-mocks'
 import { TechnologyService } from '../../../technology/technology.service'
-import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 import { TechnologyComponent } from '../../../technology/technology.component'
 
 describe('ProjectItemTechnologiesComponent', () => {
@@ -23,13 +22,8 @@ describe('ProjectItemTechnologiesComponent', () => {
   })
 
   it('should map technologies to items using service', () => {
-    const DUMMY_ICON: SimpleIcon = {
-      slug: 'dummy',
-      hex: 'blue',
-    }
     const DUMMY_DISPLAY_NAME = 'dummy display name'
     const technologyService: Partial<TechnologyService> = {
-      getIcon: jasmine.createSpy().and.returnValue(DUMMY_ICON),
       getDisplayName: jasmine.createSpy().and.returnValue(DUMMY_DISPLAY_NAME),
     }
 
@@ -42,13 +36,9 @@ describe('ProjectItemTechnologiesComponent', () => {
       {
         slug: DUMMY_TECHNOLOGY.id,
         displayName: DUMMY_DISPLAY_NAME,
-        icon: DUMMY_ICON,
         version: DUMMY_TECHNOLOGY.version,
       },
     ])
-    expect(technologyService.getIcon).toHaveBeenCalledOnceWith(
-      DUMMY_TECHNOLOGY.id,
-    )
     expect(technologyService.getDisplayName).toHaveBeenCalledOnceWith(
       DUMMY_TECHNOLOGY.id,
     )

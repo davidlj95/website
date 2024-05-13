@@ -19,24 +19,6 @@ describe('TechnologyService', () => {
     expect(sut).toBeTruthy()
   })
 
-  describe('icon', () => {
-    it('should return icon color and path from simple icons', () => {
-      sut = makeSut()
-      const icon = sut.getIcon(SIMPLE_ICON_SLUG)
-
-      expect(icon!.hex).toEqual(SIMPLE_ICON_COLOR)
-      expect(icon!.slug).toEqual(SIMPLE_ICON_SLUG)
-    })
-
-    it('should return nothing when icon does not exist', () => {
-      sut = makeSut()
-      const nonExistentIconSlug = 'nonExistentIconSlug'
-      const icon = sut.getIcon(nonExistentIconSlug)
-
-      expect(icon).toBeUndefined()
-    })
-  })
-
   describe('display name', () => {
     it('should return display name from simple icons info given a slug', () => {
       sut = makeSut()

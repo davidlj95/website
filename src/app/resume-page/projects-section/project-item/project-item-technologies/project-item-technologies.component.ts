@@ -26,7 +26,6 @@ export class ProjectItemTechnologiesComponent {
     this.items = technologies.map((technology) => ({
       displayName:
         this._technologyService.getDisplayName(technology.id) ?? technology.id,
-      icon: this._technologyService.getIcon(technology.id) ?? undefined,
       slug: technology.id,
       version: technology.version,
     }))
