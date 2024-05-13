@@ -10,6 +10,8 @@ import { CardHeaderComponent } from '../../card/card-header/card-header.componen
 import { makeLanguageItem } from './__tests__/make-language-item'
 import { LanguageItem } from './language-item'
 import { byTestId } from '@/test/helpers/test-id'
+import { byComponent } from '@/test/helpers/component-query-predicates'
+import { LanguageTagComponent } from './language-tag/language-tag.component'
 
 describe('LanguageItemComponent', () => {
   let component: LanguageItemComponent
@@ -74,6 +76,13 @@ describe('LanguageItemComponent', () => {
       expect(commentElement).toBeNull()
     })
   })
+
+  it('should display tag', () => {
+    const tagElement = fixture.debugElement.query(
+      byComponent(LanguageTagComponent),
+    )
+    expect(tagElement).not.toBeNull()
+  })
 })
 
 function makeSut() {
@@ -85,6 +94,7 @@ function makeSut() {
         CardComponent,
         CardHeaderComponent,
         CardHeaderTitleComponent,
+        LanguageTagComponent,
       ),
     ],
   })

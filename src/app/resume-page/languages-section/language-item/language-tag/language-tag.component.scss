@@ -1,0 +1,34 @@
+@use 'animations';
+
+:host {
+  height: 64px;
+  width: 64px;
+
+  background-color: var(--bg-z2);
+  border-radius: 64px;
+  text-align: center;
+
+  a {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    text-decoration: none;
+    color: inherit;
+    :hover {
+      color: var(--fg-secondary);
+    }
+  }
+
+  code {
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  @include animations.define {
+    @include animations.multiple-transitions(
+      (background-color),
+      animations.$emphasized-style
+    );
+  }
+}
