@@ -1,13 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 import { ExperienceSectionComponent } from './experience-section.component'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
-import { ExperienceItemsService } from './experience-items.service'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { NgFor } from '@angular/common'
-import { MockComponents } from 'ng-mocks'
+import { MockComponents, MockProvider } from 'ng-mocks'
+import {
+  GET_EXPERIENCE_ITEMS,
+  GetExperienceItems,
+} from './get-experience-items'
+import { makeExperienceItem } from './experience-item/__tests__/make-experience-item'
 
 describe('ExperienceSectionComponent', () => {
   let component: ExperienceSectionComponent
@@ -18,28 +22,35 @@ describe('ExperienceSectionComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should display all items', () => {
-    ;[fixture, component] = makeSut()
+  it('should display all experiences', () => {
+    const experienceItems = [makeExperienceItem(), makeExperienceItem()]
+    const getExperienceItems = jasmine
+      .createSpy<GetExperienceItems>()
+      .and.returnValue(experienceItems)
+
+    ;[fixture, component] = makeSut({ getExperienceItems })
     fixture.detectChanges()
 
-    const experienceItemsService = TestBed.inject(ExperienceItemsService)
     const itemElements = fixture.debugElement.queryAll(
       byComponent(ExperienceItemComponent),
     )
-    expect(itemElements.length).toBe(
-      experienceItemsService.getExperienceItems().length,
-    )
+    expect(itemElements.length).toBe(experienceItems.length)
   })
 
   shouldContainComponent(() => makeSut()[0], SectionTitleComponent)
 })
 
-function makeSut() {
+function makeSut(opts: { getExperienceItems?: GetExperienceItems } = {}) {
   return componentTestSetup(ExperienceSectionComponent, {
     imports: [
       ExperienceSectionComponent,
       NgFor,
       MockComponents(SectionTitleComponent, ExperienceItemComponent),
+    ],
+    providers: [
+      opts.getExperienceItems
+        ? MockProvider(GET_EXPERIENCE_ITEMS, opts.getExperienceItems)
+        : [],
     ],
   })
 }

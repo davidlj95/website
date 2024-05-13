@@ -9,6 +9,7 @@ import { ProjectItemComponent } from './project-item/project-item.component'
 import { NgFor } from '@angular/common'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProjectItem } from './project-item/__tests__/make-project-item'
+import { shouldContainComponent } from '@/test/helpers/component-testers'
 
 describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent
@@ -24,6 +25,7 @@ describe('ProjectsSectionComponent', () => {
     const getProjectItems = jasmine
       .createSpy<GetProjectItems>()
       .and.returnValues(projectItems)
+
     ;[fixture, component] = makeSut({ getProjectItems })
     fixture.detectChanges()
 
@@ -32,6 +34,8 @@ describe('ProjectsSectionComponent', () => {
     )
     expect(projectItemElements.length).toEqual(projectItems.length)
   })
+
+  shouldContainComponent(() => makeSut()[0], SectionTitleComponent)
 })
 
 const makeSut = (opts: { getProjectItems?: GetProjectItems } = {}) =>

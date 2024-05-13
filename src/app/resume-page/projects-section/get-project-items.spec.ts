@@ -19,9 +19,10 @@ describe('GetProjectItems', () => {
   })
 
   it('should return adapted items from JSON Resume', () => {
-    const jsonResumeProject1 = 'item-1' as unknown as JsonResumeProject
-    const jsonResumeProject2 = 'item-2' as unknown as JsonResumeProject
-    const jsonResumeProjects = [jsonResumeProject1, jsonResumeProject2]
+    const jsonResumeProjects = [
+      'item-1' as unknown as JsonResumeProject,
+      'item-2' as unknown as JsonResumeProject,
+    ]
     const expectedProjectItems =
       jsonResumeProjects as unknown as ReadonlyArray<ProjectItem>
     const adaptJsonResumeProject = jasmine

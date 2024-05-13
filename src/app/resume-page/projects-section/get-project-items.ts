@@ -17,7 +17,7 @@ export const GET_PROJECT_ITEMS = new InjectionToken<GetProjectItems>(
 )
 
 export const JSON_RESUME_PROJECTS = new InjectionToken<JsonResumeProjects>(
-  isDevMode ? 'JSON Resume projects section' : 'JRPS',
+  isDevMode ? 'JSON Resume projects' : 'JRPs',
   {
     factory: () => resume.projects,
   },
