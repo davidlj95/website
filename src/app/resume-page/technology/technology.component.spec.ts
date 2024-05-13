@@ -2,7 +2,6 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { TechnologyComponent } from './technology.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { TechnologyItem } from './technology-item'
 import { By } from '@angular/platform-browser'
 import { MockComponent, MockProvider } from 'ng-mocks'
 import { SimpleIconComponent } from '@/common/simple-icon/simple-icon.component'
@@ -11,15 +10,16 @@ import {
   GetTechnologyIconFromSlug,
 } from './get-technology-icon-from-slug'
 import { SimpleIcon } from '@/common/simple-icon/simple-icon'
+import {
+  GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
+  GetTechnologyDisplayNameFromSlug,
+} from './get-technology-display-name-from-slug'
+import { makeTechnologyItem } from './__tests__/make-technology-item'
 
 describe('TechnologyComponent', () => {
   let component: TechnologyComponent
   let fixture: ComponentFixture<TechnologyComponent>
-  const DUMMY_TECHNOLOGY_ITEM = {
-    slug: 'slug',
-    displayName: 'displayName',
-    version: 'version',
-  } satisfies TechnologyItem
+  const DUMMY_TECHNOLOGY_ITEM = makeTechnologyItem()
   const DUMMY_ICON: SimpleIcon = {
     slug: DUMMY_TECHNOLOGY_ITEM.slug,
   }
@@ -30,13 +30,21 @@ describe('TechnologyComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should render display name', () => {
-    ;[fixture, component] = makeSut()
+  it('should lookup and render display name', () => {
+    const displayName = 'dummy display name'
+    const getTechnologyDisplayNameFromSlug = jasmine
+      .createSpy<GetTechnologyDisplayNameFromSlug>()
+      .and.returnValue(displayName)
+    ;[fixture, component] = makeSut({ getTechnologyDisplayNameFromSlug })
+
     component.item = DUMMY_TECHNOLOGY_ITEM
     fixture.detectChanges()
 
-    expect(fixture.debugElement.nativeElement.textContent.trim()).toContain(
-      DUMMY_TECHNOLOGY_ITEM.displayName,
+    expect(fixture.debugElement.nativeElement.textContent).toContain(
+      displayName,
+    )
+    expect(getTechnologyDisplayNameFromSlug).toHaveBeenCalledOnceWith(
+      DUMMY_TECHNOLOGY_ITEM.slug,
     )
   })
 
@@ -87,11 +95,20 @@ describe('TechnologyComponent', () => {
 })
 
 function makeSut(
-  opts: { getTechnologyIconFromSlug?: GetTechnologyIconFromSlug } = {},
+  opts: {
+    getTechnologyDisplayNameFromSlug?: GetTechnologyDisplayNameFromSlug
+    getTechnologyIconFromSlug?: GetTechnologyIconFromSlug
+  } = {},
 ) {
   return componentTestSetup(TechnologyComponent, {
     imports: [TechnologyComponent, MockComponent(SimpleIconComponent)],
     providers: [
+      opts.getTechnologyDisplayNameFromSlug
+        ? MockProvider(
+            GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
+            opts.getTechnologyDisplayNameFromSlug,
+          )
+        : [],
       opts.getTechnologyIconFromSlug
         ? MockProvider(
             GET_TECHNOLOGY_ICON_FROM_SLUG,

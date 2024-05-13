@@ -7,6 +7,10 @@ import {
   GET_TECHNOLOGY_ICON_FROM_SLUG,
   GetTechnologyIconFromSlug,
 } from './get-technology-icon-from-slug'
+import {
+  GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
+  GetTechnologyDisplayNameFromSlug,
+} from './get-technology-display-name-from-slug'
 
 @Component({
   selector: 'app-technology',
@@ -17,14 +21,17 @@ import {
 })
 export class TechnologyComponent {
   @Input({ required: true }) set item(item: TechnologyItem) {
-    this._displayName = item.displayName
+    this._displayName = this.getTechnologyDisplayNameFromSlug(item.slug)
     this._icon = this.getTechnologyIconFromSlug(item.slug)
   }
+
   protected _displayName!: string
   protected _icon?: SimpleIcon
 
   constructor(
     @Inject(GET_TECHNOLOGY_ICON_FROM_SLUG)
     private readonly getTechnologyIconFromSlug: GetTechnologyIconFromSlug,
+    @Inject(GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG)
+    private readonly getTechnologyDisplayNameFromSlug: GetTechnologyDisplayNameFromSlug,
   ) {}
 }

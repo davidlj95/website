@@ -6,7 +6,7 @@ import {
   JsonResumeProject,
 } from './adapt-json-resume-project'
 import { MockProvider } from 'ng-mocks'
-import { Stack, Technology } from './project-item/project-item'
+import { Stack } from './project-item/project-item'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   RELATIVIZE_PRODUCTION_URL,
@@ -126,14 +126,17 @@ describe('AdaptJsonResumeProject', () => {
   })
 
   it('should map technologies', () => {
-    const technologies: Technology[] = [
-      {
-        id: 'id',
-        version: 'version',
-      },
+    const jsonResumeTechnology: JsonResumeProject['technologies'][number] = {
+      id: 'slug',
+      version: 'version',
+    }
+    const technologies: JsonResumeProject['technologies'] = [
+      jsonResumeTechnology,
     ]
     const item = makeSut()(makeJsonResumeProjectItem({ technologies }))
-    expect(item.technologies).toEqual(technologies)
+    expect(item.technologies).toEqual([
+      { slug: jsonResumeTechnology.id, version: jsonResumeTechnology.version },
+    ])
   })
 })
 

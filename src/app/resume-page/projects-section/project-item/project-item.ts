@@ -1,5 +1,5 @@
 import { DateRange } from '../../date-range/date-range'
-import { SimpleIcon } from 'simple-icons'
+import { TechnologyItem } from '../../technology/technology-item'
 
 export class ProjectItem {
   public readonly name: string
@@ -9,7 +9,7 @@ export class ProjectItem {
   public readonly roles: ReadonlyArray<string>
   public readonly imageSrc?: string
   public readonly stack?: Stack
-  public readonly technologies: ReadonlyArray<Technology>
+  public readonly technologies: ReadonlyArray<TechnologyItem>
 
   constructor({
     name,
@@ -28,7 +28,7 @@ export class ProjectItem {
     roles?: ReadonlyArray<string>
     imageSrc?: string
     stack?: Stack
-    technologies?: ReadonlyArray<Technology>
+    technologies?: ReadonlyArray<TechnologyItem>
   }) {
     this.name = name
     this.description = description
@@ -45,10 +45,4 @@ export enum Stack {
   Back = 'back',
   Front = 'front',
   Full = 'full',
-}
-
-export interface Technology {
-  readonly id: string
-  readonly version?: string
-  readonly simpleIcon?: SimpleIcon
 }

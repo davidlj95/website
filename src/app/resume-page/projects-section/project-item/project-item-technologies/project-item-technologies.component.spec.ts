@@ -2,18 +2,14 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { ProjectItemTechnologiesComponent } from './project-item-technologies.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { Technology } from '../project-item'
-import { MockComponent, MockProvider } from 'ng-mocks'
-import { TechnologyService } from '../../../technology/technology.service'
+import { MockComponent } from 'ng-mocks'
 import { TechnologyComponent } from '../../../technology/technology.component'
+import { makeTechnologyItem } from '../../../technology/__tests__/make-technology-item'
+import { byComponent } from '@/test/helpers/component-query-predicates'
 
 describe('ProjectItemTechnologiesComponent', () => {
   let component: ProjectItemTechnologiesComponent
   let fixture: ComponentFixture<ProjectItemTechnologiesComponent>
-  const DUMMY_TECHNOLOGY: Technology = {
-    id: 'technology',
-    version: 'version',
-  }
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
@@ -21,49 +17,24 @@ describe('ProjectItemTechnologiesComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should map technologies to items using service', () => {
-    const DUMMY_DISPLAY_NAME = 'dummy display name'
-    const technologyService: Partial<TechnologyService> = {
-      getDisplayName: jasmine.createSpy().and.returnValue(DUMMY_DISPLAY_NAME),
-    }
-
-    ;[fixture, component] = makeSut({ technologyService })
-
-    component.technologies = [DUMMY_TECHNOLOGY]
+  it('should display all technologies', () => {
+    const items = [makeTechnologyItem(), makeTechnologyItem()]
+    ;[fixture, component] = makeSut()
+    component.items = items
     fixture.detectChanges()
 
-    expect(component.items).toEqual([
-      {
-        slug: DUMMY_TECHNOLOGY.id,
-        displayName: DUMMY_DISPLAY_NAME,
-        version: DUMMY_TECHNOLOGY.version,
-      },
-    ])
-    expect(technologyService.getDisplayName).toHaveBeenCalledOnceWith(
-      DUMMY_TECHNOLOGY.id,
+    const itemElements = fixture.debugElement.queryAll(
+      byComponent(TechnologyComponent),
     )
-  })
-
-  it('should map slug as default display name if not available', () => {
-    const technologyService: Partial<TechnologyService> = {
-      getDisplayName: jasmine.createSpy().and.returnValue(null),
-    }
-
-    ;[fixture, component] = makeSut({ technologyService })
-    component.technologies = [DUMMY_TECHNOLOGY]
-    fixture.detectChanges()
-
-    expect(component.items[0].displayName).toEqual(DUMMY_TECHNOLOGY.id)
+    expect(itemElements.length).toEqual(items.length)
   })
 })
-function makeSut(
-  opts: { technologyService?: Partial<TechnologyService> } = {},
-) {
+
+function makeSut() {
   return componentTestSetup(ProjectItemTechnologiesComponent, {
     imports: [
       ProjectItemTechnologiesComponent,
       MockComponent(TechnologyComponent),
     ],
-    providers: [MockProvider(TechnologyService, opts.technologyService)],
   })
 }

@@ -1,15 +1,13 @@
-import { Injectable } from '@angular/core'
+import { InjectionToken } from '@angular/core'
 import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-name-and-color-entries.json'
 import { CUSTOM_DISPLAY_NAME_ENTRIES } from './custom-display-name-entries'
 
-@Injectable({
-  providedIn: 'root',
-})
-export class TechnologyService {
-  public getDisplayName(slug: string): string | undefined {
-    return DISPLAY_NAME_BY_SLUG.get(slug)
-  }
-}
+export type GetTechnologyDisplayNameFromSlug = (slug: string) => string
+export const GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG =
+  new InjectionToken<GetTechnologyDisplayNameFromSlug>(
+    isDevMode ? 'GetTechnologyDisplayNameFromSlug' : 'GTDNFS',
+    { factory: () => (slug) => DISPLAY_NAME_BY_SLUG.get(slug) ?? slug },
+  )
 
 const DISPLAY_NAME_BY_SLUG = new Map<string, string>(
   [

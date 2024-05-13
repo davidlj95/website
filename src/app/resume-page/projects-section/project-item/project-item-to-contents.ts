@@ -23,7 +23,7 @@ export const projectItemToContents: ProjectItemToContents = (item) =>
           displayName: 'Tech',
           component: ProjectItemTechnologiesComponent,
           inputs: {
-            technologies: item.technologies,
+            items: item.technologies,
           },
         })
       : undefined,
