@@ -5,5 +5,6 @@ export const makeLanguageItem = (
 ): LanguageItem => ({
   name: overrides.name ?? 'Sealandic',
   fluency: overrides.fluency ?? 'Awesomic',
+  tag: overrides.tag ?? 'en',
   comment: overrides.comment,
 })

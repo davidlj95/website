@@ -14,6 +14,7 @@ import { DateRangeComponent } from '../../date-range/date-range.component'
 import { LinkComponent } from '../../link/link.component'
 import { NgIf } from '@angular/common'
 import { TestIdDirective } from '@/common/test-id.directive'
+import { LanguageTagComponent } from './language-tag/language-tag.component'
 
 @Component({
   selector: 'app-language-item',
@@ -33,6 +34,7 @@ import { TestIdDirective } from '@/common/test-id.directive'
     LinkComponent,
     NgIf,
     TestIdDirective,
+    LanguageTagComponent,
   ],
   templateUrl: './language-item.component.html',
 })

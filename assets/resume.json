@@ -40,16 +40,19 @@
   "languages": [
     {
       "language": "Spanish",
-      "fluency": "Native"
+      "fluency": "Native",
+      "tag": "es"
     },
     {
       "language": "Catalan",
-      "fluency": "Native"
+      "fluency": "Native",
+      "tag": "ca"
     },
     {
       "language": "English",
       "fluency": "Advanced",
-      "comment": "B2 certified"
+      "comment": "B2 certified",
+      "tag": "en"
     }
   ],
   "work": [

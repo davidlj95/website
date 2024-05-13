@@ -33,6 +33,14 @@ describe('AdaptJsonResumeLanguage', () => {
 
     expect(item.comment).toEqual(comment)
   })
+
+  it('should map tag', () => {
+    const comment = 'es'
+
+    const item = makeSut()(makeJsonResumeLanguageItem({ comment }))
+
+    expect(item.tag).toEqual(comment)
+  })
 })
 
 const makeSut = () => serviceTestSetup(ADAPT_JSON_RESUME_LANGUAGE)
