@@ -3,6 +3,7 @@ import { makeProjectItem } from './__tests__/make-project-item'
 import { projectItemToContents } from './project-item-to-contents'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 import { TechnologyItem } from '../../technology/technology-item'
+import { makeTechnologyItem } from '../../technology/__tests__/make-technology-item'
 
 describe('projectItemToContents', () => {
   describe('when description is present', () => {
@@ -26,8 +27,8 @@ describe('projectItemToContents', () => {
 
   describe('when technologies are not empty', () => {
     const items = [
-      { slug: 'super-cool-tech' },
-      { slug: 'another-super-cool-tech' },
+      makeTechnologyItem({ slug: 'super-cool-tech' }),
+      makeTechnologyItem({ slug: 'another-super-cool-tech' }),
     ] satisfies ReadonlyArray<TechnologyItem>
 
     it('should include technologies content', () => {
