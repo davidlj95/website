@@ -1,10 +1,10 @@
-import { Component } from '@angular/core'
+import { Component, Inject } from '@angular/core'
 import { EducationItem } from './education-item/education-item'
-import { EducationItemsService } from './education-items.service'
 import { EducationItemComponent } from './education-item/education-item.component'
 import { NgFor } from '@angular/common'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
+import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
 
 @Component({
   selector: 'app-education-section',
@@ -18,9 +18,11 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
   ],
 })
 export class EducationSectionComponent {
-  protected items: ReadonlyArray<EducationItem>
+  protected readonly items: ReadonlyArray<EducationItem>
 
-  constructor(educationItemsService: EducationItemsService) {
-    this.items = educationItemsService.getEducationItems()
+  constructor(
+    @Inject(GET_EDUCATION_ITEMS) getEducationItems: GetEducationItems,
+  ) {
+    this.items = getEducationItems()
   }
 }
