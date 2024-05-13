@@ -3,7 +3,7 @@ import { MockProvider } from 'ng-mocks'
 import {
   ADAPT_JSON_RESUME_EDUCATION,
   AdaptJsonResumeEducation,
-  JsonResumeEducationItem,
+  JsonResumeEducation,
 } from './adapt-json-resume-education'
 import {
   RELATIVIZE_PRODUCTION_URL,
@@ -103,10 +103,10 @@ const makeSut = (
 const sampleJsonResumeEducationItem = resume.education[0]
 
 function makeJsonResumeEducationItem(
-  overrides?: Partial<JsonResumeEducationItem>,
-): JsonResumeEducationItem {
+  overrides?: Partial<JsonResumeEducation>,
+): JsonResumeEducation {
   return {
     ...sampleJsonResumeEducationItem,
     ...overrides,
-  } as JsonResumeEducationItem
+  } as JsonResumeEducation
 }

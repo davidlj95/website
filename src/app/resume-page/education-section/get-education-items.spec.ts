@@ -1,7 +1,7 @@
 import {
   GET_EDUCATION_ITEMS,
-  JSON_RESUME_EDUCATION,
-  JsonResumeEducation,
+  JSON_RESUME_EDUCATIONS,
+  JsonResumeEducations,
 } from './get-education-items'
 import { MockProvider } from 'ng-mocks'
 import { EducationItem } from './education-item/education-item'
@@ -9,7 +9,7 @@ import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   ADAPT_JSON_RESUME_EDUCATION,
   AdaptJsonResumeEducation,
-  JsonResumeEducationItem,
+  JsonResumeEducation,
 } from './adapt-json-resume-education'
 
 describe('GetEducationItems', () => {
@@ -19,8 +19,8 @@ describe('GetEducationItems', () => {
 
   it('should return adapted items from JSON Resume', () => {
     const jsonResumeEducations = [
-      'item-1' as unknown as JsonResumeEducationItem,
-      'item-2' as unknown as JsonResumeEducationItem,
+      'item-1' as unknown as JsonResumeEducation,
+      'item-2' as unknown as JsonResumeEducation,
     ]
     const expectedEducationItems =
       jsonResumeEducations as unknown as ReadonlyArray<EducationItem>
@@ -43,14 +43,14 @@ describe('GetEducationItems', () => {
 
 const makeSut = (
   opts: {
-    jsonResumeEducations?: JsonResumeEducation
+    jsonResumeEducations?: JsonResumeEducations
     adaptJsonResumeEducation?: AdaptJsonResumeEducation
   } = {},
 ) =>
   serviceTestSetup(GET_EDUCATION_ITEMS, {
     providers: [
       opts.jsonResumeEducations
-        ? MockProvider(JSON_RESUME_EDUCATION, opts.jsonResumeEducations)
+        ? MockProvider(JSON_RESUME_EDUCATIONS, opts.jsonResumeEducations)
         : [],
       opts.adaptJsonResumeEducation
         ? MockProvider(
