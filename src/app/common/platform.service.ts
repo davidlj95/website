@@ -5,7 +5,6 @@ export class PlatformService {
   constructor(public readonly isBrowser: boolean) {}
 }
 
-//👇 Not @Injectable for perf purposes
 export const PLATFORM_SERVICE = new InjectionToken<PlatformService>(
   isDevMode ? 'PlatformService' : 'PS',
   {
