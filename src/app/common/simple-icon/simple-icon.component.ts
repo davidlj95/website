@@ -13,7 +13,6 @@ import { SimpleIcon } from '@/common/simple-icon/simple-icon'
   standalone: true,
   imports: [AsyncPipe],
   templateUrl: './simple-icon.component.html',
-  styleUrl: './simple-icon.component.scss',
   host: {
     '[style.fill]': '_fillColor',
   },
