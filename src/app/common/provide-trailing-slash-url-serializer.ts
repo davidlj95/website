@@ -31,7 +31,7 @@ const withTrailingSlash = (url: string): string => {
  * That's the case of this site, where the web server is provided by Cloudflare Pages service
  *
  * To avoid that redirection and save that request/response round trip, using a URL serializer that will add a
- * trailing slash to Angular routes. This way, routes will end with `/` and the redirection won't be needed
+ * trailing slash to Angular internalRoutes. This way, internalRoutes will end with `/` and the redirection won't be needed
  *
  * This is a workaround as Angular does not yet support doing this
  *
