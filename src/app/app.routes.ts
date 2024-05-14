@@ -2,6 +2,7 @@ import { Routes } from '@angular/router'
 import { notFoundPageRoutes } from './not-found-page/not-found-page.routes'
 import { resumePageRoutes } from './resume-page/resume-page.routes'
 import { calendarPageRoutes } from './calendar-page/calendar-page.routes'
+import { giftsPageRoutes } from './gifts-page/gifts-page.routes'
 
 export const routes: Routes = [
   // Metadata to add when '/' route is ready
@@ -19,5 +20,6 @@ export const routes: Routes = [
   // },
   ...resumePageRoutes,
   ...calendarPageRoutes,
+  ...giftsPageRoutes,
   ...notFoundPageRoutes,
 ]

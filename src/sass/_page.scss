@@ -1,5 +1,9 @@
+@use 'paddings';
+
 @mixin full-size {
   position: absolute;
   width: 100%;
   min-height: 100%;
 }
+
+$padding: paddings.$l;
