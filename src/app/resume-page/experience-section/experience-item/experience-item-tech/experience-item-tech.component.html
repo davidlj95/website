@@ -1,0 +1,10 @@
+<p>
+  Extracted from {{ _projectCount }}
+  {{ _projectCount > 1 ? 'projects' : 'project' }}: {{ _projectNames }}
+</p>
+<br />
+<app-content-chip-list>
+  <app-content-chip *ngFor="let item of technologies">
+    <app-technology [item]="item"></app-technology>
+  </app-content-chip>
+</app-content-chip-list>

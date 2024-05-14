@@ -1,17 +1,16 @@
-import {
-  GET_PROJECT_ITEMS,
-  GetProjectItems,
-  JSON_RESUME_PROJECTS,
-  JsonResumeProjects,
-} from './get-project-items'
+import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
 import { MockProvider } from 'ng-mocks'
 import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
-  JsonResumeProject,
 } from './adapt-json-resume-project'
 import { ProjectItem } from './project-item/project-item'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
+import {
+  JSON_RESUME_PROJECTS,
+  JsonResumeProject,
+  JsonResumeProjects,
+} from './json-resume-projects'
 
 describe('GetProjectItems', () => {
   it('should be created', () => {

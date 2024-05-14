@@ -1,5 +1,5 @@
-import { JsonResumeProject } from '../adapt-json-resume-project'
 import resume from '../../../../../assets/resume.json'
+import { JsonResumeProject } from '../json-resume-projects'
 
 const sampleJsonResumeProject = resume.projects[0]
 

@@ -1,8 +1,8 @@
 import { inject, InjectionToken } from '@angular/core'
-import resume from '../../../../assets/resume.json'
 import { ProjectItem, Stack } from './project-item/project-item'
 import { DateRange } from '../date-range/date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
+import { JsonResumeProject } from './json-resume-projects'
 
 export type AdaptJsonResumeProject = (project: JsonResumeProject) => ProjectItem
 export const ADAPT_JSON_RESUME_PROJECT =
@@ -42,5 +42,3 @@ export class InvalidStackValueError extends Error {
     super(`Invalid stack value: '${value}'`)
   }
 }
-
-export type JsonResumeProject = (typeof resume.projects)[number]
