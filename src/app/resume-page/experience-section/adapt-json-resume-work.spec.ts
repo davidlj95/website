@@ -21,7 +21,7 @@ describe('AdaptJsonResumeWork', () => {
     const name = 'Cool company name'
     const url = 'https://example.org/'
 
-    const item = makeSut()(makeJsonResumeWorkItem({ name, url }))
+    const item = makeSut()(makeJsonResumeWork({ name, url }))
 
     expect(item.company.name).toEqual(name)
     expect(item.company.website).toEqual(new URL(url))
@@ -33,7 +33,7 @@ describe('AdaptJsonResumeWork', () => {
     const summary = 'Summary'
 
     const item = makeSut()(
-      makeJsonResumeWorkItem({ highlights, position, summary }),
+      makeJsonResumeWork({ highlights, position, summary }),
     )
 
     expect(item.position).toEqual(position)
@@ -45,7 +45,7 @@ describe('AdaptJsonResumeWork', () => {
     const startDate = '2022-12-31'
     const endDate = '2024-01-01'
 
-    const item = makeSut()(makeJsonResumeWorkItem({ startDate, endDate }))
+    const item = makeSut()(makeJsonResumeWork({ startDate, endDate }))
 
     expect(item.dateRange.start).toEqual(new Date(startDate))
     expect(item.dateRange.end).toEqual(new Date(endDate))
@@ -55,7 +55,7 @@ describe('AdaptJsonResumeWork', () => {
     it('should map no end date exists too', () => {
       const endDate = undefined
 
-      const item = makeSut()(makeJsonResumeWorkItem({ endDate }))
+      const item = makeSut()(makeJsonResumeWork({ endDate }))
 
       expect(item.dateRange.end).toBeUndefined()
     })
@@ -69,7 +69,7 @@ describe('AdaptJsonResumeWork', () => {
     const morePositions = true
 
     const item = makeSut()(
-      makeJsonResumeWorkItem({
+      makeJsonResumeWork({
         freelance,
         internship,
         promotions,
@@ -91,7 +91,7 @@ describe('AdaptJsonResumeWork', () => {
       .and.returnValue(dummyImagePath)
     const sut = makeSut({ relativizeProductionUrl })
 
-    const item = sut(makeJsonResumeWorkItem({ image }))
+    const item = sut(makeJsonResumeWork({ image }))
 
     expect(relativizeProductionUrl).toHaveBeenCalledOnceWith(new URL(image))
     expect(item.company.imageSrc).toEqual(dummyImagePath)
@@ -110,13 +110,13 @@ const makeSut = (
     ],
   })
 
-const sampleJsonResumeWorkItem = resume.work[0]
+const sampleJsonResumeWork = resume.work[0]
 
-function makeJsonResumeWorkItem(
+function makeJsonResumeWork(
   overrides?: Partial<JsonResumeWork>,
 ): JsonResumeWork {
   return {
-    ...sampleJsonResumeWorkItem,
+    ...sampleJsonResumeWork,
     ...overrides,
   } as JsonResumeWork
 }
