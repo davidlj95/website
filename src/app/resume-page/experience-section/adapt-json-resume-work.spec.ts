@@ -11,6 +11,16 @@ import {
 } from '@/common/relativize-production-url'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { MockProvider } from 'ng-mocks'
+import { makeJsonResumeProject } from '../projects-section/__tests__/make-json-resume-project'
+import {
+  ADAPT_JSON_RESUME_PROJECT,
+  AdaptJsonResumeProject,
+} from '../projects-section/adapt-json-resume-project'
+import { makeProjectItem } from '../projects-section/__tests__/make-project-item'
+import {
+  JSON_RESUME_PROJECTS,
+  JsonResumeProjects,
+} from '../projects-section/json-resume-projects'
 
 describe('AdaptJsonResumeWork', () => {
   it('should be created', () => {
@@ -96,10 +106,30 @@ describe('AdaptJsonResumeWork', () => {
     expect(relativizeProductionUrl).toHaveBeenCalledOnceWith(new URL(image))
     expect(item.company.imageSrc).toEqual(dummyImagePath)
   })
+
+  it('should add projects whose entity matches company name', () => {
+    const companyName = 'ACME Intl.'
+    const project = makeJsonResumeProject({ entity: companyName })
+    const projectItem = makeProjectItem({ name: project.name })
+    const adaptJsonResumeProject = jasmine
+      .createSpy<AdaptJsonResumeProject>()
+      .and.returnValue(projectItem)
+    const jsonResumeProjects = [project]
+    const sut = makeSut({ adaptJsonResumeProject, jsonResumeProjects })
+
+    const item = sut(makeJsonResumeWork({ name: companyName }))
+
+    expect(item.projects).toEqual([projectItem])
+    expect(adaptJsonResumeProject).toHaveBeenCalledOnceWith(project)
+  })
 })
 
 const makeSut = (
-  opts: { relativizeProductionUrl?: RelativizeProductionUrl } = {},
+  opts: {
+    relativizeProductionUrl?: RelativizeProductionUrl
+    adaptJsonResumeProject?: AdaptJsonResumeProject
+    jsonResumeProjects?: JsonResumeProjects
+  } = {},
 ): AdaptJsonResumeWork =>
   serviceTestSetup(ADAPT_JSON_RESUME_WORK, {
     providers: [
@@ -107,6 +137,12 @@ const makeSut = (
         RELATIVIZE_PRODUCTION_URL,
         opts.relativizeProductionUrl ?? (() => '/fake/path'),
       ),
+      MockProvider(
+        ADAPT_JSON_RESUME_PROJECT,
+        opts.adaptJsonResumeProject ??
+          jasmine.createSpy<AdaptJsonResumeProject>(),
+      ),
+      MockProvider(JSON_RESUME_PROJECTS, opts.jsonResumeProjects ?? []),
     ],
   })
 

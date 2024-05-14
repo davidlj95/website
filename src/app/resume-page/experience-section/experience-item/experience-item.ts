@@ -1,5 +1,6 @@
 import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
+import { ProjectItem } from '../../projects-section/project-item/project-item'
 
 export class ExperienceItem {
   public readonly company: Organization
@@ -11,6 +12,7 @@ export class ExperienceItem {
   public readonly internship: boolean
   public readonly promotions: boolean
   public readonly morePositions: boolean
+  public readonly projects: ReadonlyArray<ProjectItem>
 
   constructor({
     company,
@@ -22,6 +24,7 @@ export class ExperienceItem {
     internship,
     promotions,
     morePositions,
+    projects,
   }: {
     company: Organization
     position: string
@@ -32,6 +35,7 @@ export class ExperienceItem {
     internship?: boolean
     promotions?: boolean
     morePositions?: boolean
+    projects?: ReadonlyArray<ProjectItem>
   }) {
     this.company = company
     this.position = position
@@ -42,5 +46,6 @@ export class ExperienceItem {
     this.internship = internship ?? false
     this.promotions = promotions ?? false
     this.morePositions = morePositions ?? false
+    this.projects = projects ?? []
   }
 }

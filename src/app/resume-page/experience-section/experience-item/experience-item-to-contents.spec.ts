@@ -2,6 +2,10 @@ import { TextContentComponent } from '../../chipped-content/text-content/text-co
 import { experienceItemToContents } from './experience-item-to-contents'
 import { makeExperienceItem } from './__tests__/make-experience-item'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
+import { ProjectItem } from '../../projects-section/project-item/project-item'
+import { makeProjectItem } from '../../projects-section/__tests__/make-project-item'
+import { makeTechnologyItem } from '../../technology/__tests__/make-technology-item'
+import { ExperienceItemTechComponent } from './experience-item-tech/experience-item-tech.component'
 
 describe('experienceItemToContents', () => {
   describe('when summary is present', () => {
@@ -41,6 +45,35 @@ describe('experienceItemToContents', () => {
       expect(highlightsContent.inputs).toEqual({
         highlights,
       } satisfies Partial<ExperienceItemHighlightsComponent>)
+    })
+  })
+
+  describe('when projects technologies are not empty', () => {
+    const aTechnology = makeTechnologyItem({ slug: 'tech-a' })
+    const anotherTechnology = makeTechnologyItem({ slug: 'tech-b' })
+    const technologies = [aTechnology, anotherTechnology]
+    const projects: ReadonlyArray<ProjectItem> = [
+      makeProjectItem({ technologies: [aTechnology], name: 'project A' }),
+      makeProjectItem({
+        technologies: [aTechnology, anotherTechnology],
+        name: 'project B',
+      }),
+    ]
+
+    it('should include technologies content with the set of technologies of all projects', () => {
+      const sut = makeSut()
+
+      const contents = sut(makeExperienceItem({ projects }))
+      const techContents = contents.filter(
+        (content) => content.displayName === 'Tech',
+      )
+      expect(techContents).toHaveSize(1)
+      const techContent = techContents[0]
+      expect(techContent.component).toEqual(ExperienceItemTechComponent)
+      expect(techContent.inputs).toEqual({
+        technologies,
+        projectNames: projects.map((project) => project.name),
+      } satisfies Partial<ExperienceItemTechComponent>)
     })
   })
 })

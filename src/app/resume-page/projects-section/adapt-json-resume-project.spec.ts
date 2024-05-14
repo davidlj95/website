@@ -2,7 +2,6 @@ import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
   InvalidStackValueError,
-  JsonResumeProject,
 } from './adapt-json-resume-project'
 import { MockProvider } from 'ng-mocks'
 import { Stack } from './project-item/project-item'
@@ -12,6 +11,7 @@ import {
   RelativizeProductionUrl,
 } from '@/common/relativize-production-url'
 import { makeJsonResumeProject } from './__tests__/make-json-resume-project'
+import { JsonResumeProject } from './json-resume-projects'
 
 describe('AdaptJsonResumeProject', () => {
   it('should be created', () => {
