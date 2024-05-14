@@ -5,7 +5,7 @@
 :host {
   @include borders.panel;
   padding: paddings.$s;
-  background-color: var(--bg-z2);
+  background-color: var(--sys-color-surface3);
 
   @include animations.define {
     @include animations.multiple-transitions(

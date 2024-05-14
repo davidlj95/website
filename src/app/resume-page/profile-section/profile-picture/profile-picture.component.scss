@@ -14,8 +14,8 @@ $picture-size: 128px;
     border-radius: $picture-size;
     border-style: solid;
     border-width: 1px;
-    background-color: var(--bg-z1);
-    border-color: var(--hairline);
+    background-color: var(--sys-color-surface1);
+    border-color: var(--sys-color-divider);
     filter: var(--img-filter);
 
     @include animations.define {
@@ -40,7 +40,7 @@ $picture-size: 128px;
   .comment {
     visibility: hidden;
     opacity: 0;
-    background-color: var(--bg-z2);
+    background-color: var(--sys-color-surface5);
 
     position: absolute;
 
@@ -62,7 +62,7 @@ $picture-size: 128px;
       position: absolute;
       content: '';
       border: 8px solid transparent;
-      border-right-color: var(--bg-z2) !important;
+      border-right-color: var(--sys-color-surface5) !important;
 
       border-left: 0;
       left: -8px;
@@ -72,7 +72,7 @@ $picture-size: 128px;
       // Bubble speech is at top on super small screens
       @media screen and (max-width: 279.98px) {
         border-right-color: transparent !important;
-        border-bottom-color: var(--bg-z2) !important;
+        border-bottom-color: var(--sys-color-surface5) !important;
       }
     }
 

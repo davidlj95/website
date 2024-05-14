@@ -7,9 +7,9 @@
   @include borders.panel;
   border-radius: 1em;
   font-size: 1rem;
-  background-color: var(--chips-bg);
-  color: var(--chips-fg);
-  border-color: var(--chips-border);
+  background-color: var(--sys-color-neutral-container);
+  color: var(--sys-color-on-surface);
+  border-color: var(--adorner-border-color);
 
   @include animations.define {
     @include animations.multiple-transitions(
@@ -23,8 +23,8 @@
   }
 
   &.selected {
-    background-color: var(--chips-selected);
-    border-color: var(--chips-selected);
-    color: var(--chips-selected-text);
+    background-color: var(--sys-color-primary);
+    border-color: var(--sys-color-primary);
+    color: var(--sys-color-cdt-base-container);
   }
 }

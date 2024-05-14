@@ -21,8 +21,8 @@ html {
 }
 
 body {
-  background: var(--bg-z0);
-  color: var(--fg-primary);
+  background: var(--sys-color-cdt-base-container);
+  color: var(--sys-color-on-surface);
 
   @include typographies.body-font();
   // Do not allow scroll "bounce" effect
@@ -46,27 +46,27 @@ pre {
 
 // TODO: Cooler links
 a {
-  color: inherit;
+  color: var(--sys-color-primary);
   text-decoration-color: inherit;
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
 
   @include animations.define {
-    @include animations.single-transition(
-      text-decoration-color,
+    @include animations.multiple-transitions(
+      (color, text-decoration-color),
       animations.$emphasized-style
     );
   }
 
   &:visited {
-    color: inherit;
+    color: var(--sys-color-primary);
   }
 
   &:hover {
-    color: inherit;
+    color: var(--sys-color-primary);
   }
 
   &:active {
-    color: inherit;
+    color: var(--sys-color-primary);
   }
 }

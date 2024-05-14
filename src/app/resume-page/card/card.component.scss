@@ -9,7 +9,7 @@
   gap: margins.$m;
   padding: paddings.$m;
   @include borders.panel;
-  background-color: var(--bg-z1);
+  background-color: var(--sys-color-surface1);
 
   @include animations.define {
     @include animations.multiple-transitions(

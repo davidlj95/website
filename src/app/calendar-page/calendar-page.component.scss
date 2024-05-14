@@ -15,7 +15,11 @@
     margin-top: paddings.$m;
     width: 100%;
     height: paddings.$s;
-    background: linear-gradient(180deg, var(--bg-z0) 0%, white 100%);
+    background: linear-gradient(
+      180deg,
+      var(--sys-color-cdt-base-container) 0%,
+      white 100%
+    );
   }
 
   iframe {

@@ -2,7 +2,7 @@
 
 :host {
   font-size: 1rem;
-  color: var(--fg-secondary);
+  color: var(--ui-text);
   @include animations.define {
     @include animations.single-transition(color, animations.$emphasized-style);
   }

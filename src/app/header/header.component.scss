@@ -8,7 +8,7 @@
   width: 100%;
   @include borders.panel(bottom);
   z-index: z-index.$header;
-  background-color: var(--bg-z1);
+  background-color: var(--app-color-toolbar-background);
 
   @include animations.define {
     @include animations.multiple-transitions(
