@@ -2,11 +2,14 @@
   "files": [
     {
       "path": "dist/@davidlj95/website/browser/*.js",
-      "maxSize": "500kB",
-      "compression": "none"
+      "maxSize": "50kB",
+      "compression": "gzip"
     }
   ],
-  "normalizeFilenames": "^.+?(\\..+?)\\.\\w+$",
+  "//0 👇": "Chunks are anonymous as per ESBuild design, so can't normalize names there",
+  "//1   ": "whatever/chunk-FOO42.js -> whatever/chunk-FOO42.js",
+  "//2   ": "whatever/main-BAR37.js -> whatever/main.js",
+  "normalizeFilenames": "^(?:[\\w\\d\\@]+\\/)*(?:(?:chunk-\\w+)|(?:.+(-\\w+)))\\.js$",
   "ci": {
     "repoBranchBase": "main",
     "trackBranches": ["main"]
