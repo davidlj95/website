@@ -11,7 +11,7 @@
     "prebuild:release-file": "tsx scripts/src/generate-release-file.mts",
     "prebuild:render-templates": "tsm scripts/src/generate-templated-files.ts",
     "prebuild:simple-icons": "tsm scripts/src/generate-simple-icons.ts",
-    "build": "ng build --named-chunks",
+    "build": "ng build",
     "build:pullRequest": "pnpm run build --configuration pullRequest,production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
