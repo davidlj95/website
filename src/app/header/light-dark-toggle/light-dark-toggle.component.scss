@@ -2,18 +2,26 @@
 @use 'touch-or-pointer';
 @use 'material-symbols';
 @use 'sass:selector';
+@use 'animations';
 
 :host {
   button {
-    color: var(--icon);
+    color: var(--icon-default);
     border-style: none;
     background: transparent;
     font-size: header.$icons-height;
 
     @include touch-or-pointer.primaryInputCanHover {
       &:hover {
-        color: var(--fg-primary);
+        color: var(--icon-default-hover);
       }
+    }
+
+    @include animations.define {
+      @include animations.single-transition(
+        color,
+        animations.$emphasized-style
+      );
     }
   }
 
@@ -21,9 +29,9 @@
     font-size: 1em;
     @include material-symbols.variation-settings(
       $fill: false,
-      $weight: 200,
+      $weight: 300,
       $grade: 0,
-      $size: header.$icons-height
+      $size: 48
     );
   }
 }

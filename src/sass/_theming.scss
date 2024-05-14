@@ -19,10 +19,17 @@
   }
   $vars: map-get($scheme, vars);
 
+  @if $scheme-kind == constants.$common-color-scheme-kind {
+    :root,
+    :root[data-theme='#{$theme-slug}'] {
+      @include scss-vars-to-css-vars($vars);
+    }
+  }
   @if $scheme-kind == constants.$light-color-scheme-kind {
     :root,
     :root[data-theme='#{$theme-slug}'],
-    :root[data-color-scheme='#{$scheme-kind}'] {
+    :root[data-color-scheme='#{$scheme-kind}'],
+    :root[data-theme='#{$theme-slug}'][data-color-scheme='#{$scheme-kind}'] {
       @include scss-vars-to-css-vars($vars);
     }
   } @else if $scheme-kind == constants.$dark-color-scheme-kind {
@@ -32,7 +39,8 @@
         @include scss-vars-to-css-vars($vars);
       }
     }
-    :root[data-color-scheme='#{$scheme-kind}'] {
+    :root[data-color-scheme='#{$scheme-kind}'],
+    :root[data-theme='#{$theme-slug}'][data-color-scheme='#{$scheme-kind}'] {
       @include scss-vars-to-css-vars($vars);
     }
   }

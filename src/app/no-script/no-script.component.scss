@@ -19,7 +19,7 @@
     gap: margins.$xs;
     text-align: center;
     height: var(--no-script-height);
-    background: var(--bg-z1);
+    background: var(--app-color-toolbar-background);
     @include borders.panel(bottom);
 
     p:first-child {

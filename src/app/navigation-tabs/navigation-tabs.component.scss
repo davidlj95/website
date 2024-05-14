@@ -3,8 +3,8 @@
 
 :host {
   display: block;
-  background-color: var(--bg-z1);
-  color: var(--fg-secondary);
+  //background-color: var(--bg-z1);
+  //color: var(--fg-secondary);
 
   @include animations.define {
     @include animations.multiple-transitions(
@@ -18,9 +18,9 @@
     justify-content: space-around;
 
     > .selected {
-      background-color: var(--tabs-selected-bg);
-      color: var(--tabs-selected-fg);
-      border-bottom: var(--tabs-selected-border-bottom);
+      //background-color: var(--tabs-selected-bg);
+      //color: var(--tabs-selected-fg);
+      //border-bottom: var(--tabs-selected-border-bottom);
 
       @include animations.define {
         @include animations.multiple-transitions(
@@ -31,8 +31,8 @@
     }
 
     > :not(.selected):hover {
-      background-color: var(--bg-z2);
-      color: var(--fg-primary);
+      //background-color: var(--bg-z2);
+      //color: var(--fg-primary);
     }
 
     li {

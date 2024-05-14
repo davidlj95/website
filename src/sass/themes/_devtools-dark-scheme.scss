@@ -3,25 +3,45 @@
 $devtools-dark-scheme: (
   kind: $dark-color-scheme-kind,
   vars: (
-    bg-z0: #202023ff,
-    bg-z1: #292a2dff,
-    bg-z2: #35363aff,
-    // Seems this one is overridden for macOS and Linux
-    // fg-primary: #e8eaedff,
-    fg-primary: #bdc6cfff,
-    fg-secondary: #9aa0a6ff,
-    // --legacy-tab-selected-fg-color
-    tabs-selected-fg: #eaeaea,
-    tabs-selected-bg: #000000,
-    tabs-selected-border-bottom: none,
+    sys-color-base: var(--ref-palette-neutral25),
+    app-color-toolbar-background: var(--sys-color-base),
+    sys-color-on-surface: var(--ref-palette-neutral90),
+    sys-color-on-surface-subtle: var(--ref-palette-neutral80),
+    sys-color-cdt-base-container: var(--sys-color-base-container),
+    sys-color-base-container: var(--ref-palette-neutral15),
+    sys-color-divider: var(--ref-palette-neutral40),
+    sys-color-surface1:
+      color-mix(
+        in sRGB,
+        var(--ref-palette-primary80) 5%,
+        var(--ref-palette-neutral10)
+      ),
+    sys-color-surface2:
+      color-mix(
+        in sRGB,
+        var(--ref-palette-primary80) 8%,
+        var(--ref-palette-neutral10)
+      ),
+    sys-color-surface3:
+      color-mix(
+        in sRGB,
+        var(--ref-palette-primary80) 11%,
+        var(--ref-palette-neutral10)
+      ),
+    sys-color-surface4:
+      color-mix(in sRGB, #d1e1ff 12%, var(--ref-palette-neutral10)),
+    sys-color-surface5:
+      color-mix(
+        in sRGB,
+        var(--ref-palette-primary80) 14%,
+        var(--ref-palette-neutral10)
+      ),
+    sys-color-primary: var(--ref-palette-primary80),
+    sys-color-neutral-outline: var(--ref-palette-neutral50),
+    sys-color-neutral-container: var(--ref-palette-neutral25),
+    sys-color-state-hover-dim-blend-protection: rgb(31 31 31/10%),
+    adorner-border-color: var(--sys-color-tonal-outline),
+    sys-color-tonal-outline: var(--ref-palette-secondary50),
     img-filter: grayscale(0.5),
-    accent: #8ab4f8,
-    hairline: #494c50ff,
-    icon: #919191ff,
-    chips-border: #5db0d7,
-    chips-bg: #282828,
-    chips-fg: #e3e3e3,
-    chips-selected: #5db0d7,
-    chips-selected-text: #202124,
   ),
 );

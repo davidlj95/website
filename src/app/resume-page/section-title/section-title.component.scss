@@ -12,8 +12,8 @@
   width: 100%;
   padding: paddings.$s paddings.$l;
   @include borders.panel(bottom, top);
-  background-color: var(--bg-z1);
-  color: var(--fg-secondary);
+  background-color: var(--app-color-toolbar-background);
+  color: var(--ui-text);
 
   @include animations.define {
     @include animations.multiple-transitions(

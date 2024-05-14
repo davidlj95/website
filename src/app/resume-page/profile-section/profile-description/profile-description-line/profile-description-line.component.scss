@@ -10,11 +10,6 @@
   gap: margins.$s;
   text-align: left;
 
-  // If we move it outside this selector, conflicts with root <a> styles
-  ::ng-deep a {
-    text-decoration-thickness: 1px;
-  }
-
   @include material-symbols.class {
     font-size: 1em;
     @include material-symbols.variation-settings(
@@ -23,10 +18,5 @@
       $grade: 200,
       $size: 24
     );
-  }
-
-  // Content-specific customizations
-  ::ng-deep a.craft {
-    text-decoration-color: currentColor;
   }
 }

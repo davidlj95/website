@@ -1,6 +1,6 @@
 $panel-width: 1px;
 $_panel-style: solid;
-$_panel-color: var(--hairline);
+$_panel-color: var(--sys-color-divider);
 $_panel-border-shorthand: $panel-width $_panel-style $_panel-color;
 
 @mixin panel($sides...) {

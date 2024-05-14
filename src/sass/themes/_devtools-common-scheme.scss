@@ -1,0 +1,32 @@
+@import 'constants';
+
+$devtools-common-scheme: (
+  kind: $common-color-scheme-kind,
+  vars: (
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/7500d2916c463c136fc5ce2547ceb469c61454b4/front_end/ui/legacy/tokens.css
+    // Or locally by `devtools://theme/colors.css?sets=ui,chrome` (may change depending on current theme)
+    ref-palette-primary40: rgb(11 87 208 / 100%),
+    ref-palette-primary80: rgb(168 199 250 / 100%),
+    ref-palette-primary90: rgb(211 227 253 / 100%),
+    ref-palette-secondary50: rgb(4 125 183 / 100%),
+    ref-palette-neutral10: rgb(31 31 31 / 100%),
+    ref-palette-neutral15: rgb(40 40 40 / 100%),
+    ref-palette-neutral25: rgb(60 60 60 / 100%),
+    ref-palette-neutral30: rgb(71 71 71 / 100%),
+    ref-palette-neutral40: rgb(94 94 94 / 100%),
+    ref-palette-neutral50: rgb(117 117 117 / 100%),
+    ref-palette-neutral60: rgb(143 143 143 / 100%),
+    ref-palette-neutral80: rgb(199 199 199 / 100%),
+    ref-palette-neutral90: rgb(227 227 227 / 100%),
+    ref-palette-neutral95: rgb(242 242 242 / 100%),
+    ref-palette-neutral99: rgb(253 252 251 / 100%),
+    ref-palette-neutral100: rgb(255 255 255 / 100%),
+    // Common for both themes
+    icon-default: var(--sys-color-on-surface-subtle),
+    icon-default-hover: var(--sys-color-on-surface),
+    ui-text: var(--sys-color-on-surface-subtle),
+    text-primary: var(--sys-color-on-surface),
+    adorner-border-color:
+      var(--override-adorner-border-color, var(--sys-color-neutral-outline)),
+  ),
+);

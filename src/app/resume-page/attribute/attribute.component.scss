@@ -6,7 +6,7 @@
 :host {
   position: relative;
   cursor: pointer;
-  color: var(--fg-secondary);
+  color: var(--ui-text);
 
   @include animations.define {
     @include animations.single-transition(color);
@@ -28,7 +28,7 @@
     padding: paddings.$s;
     text-align: right;
     @include borders.panel;
-    color: var(--fg-primary);
-    background-color: var(--bg-z2);
+    color: var(--ui-text);
+    background-color: var(--sys-color-surface5);
   }
 }

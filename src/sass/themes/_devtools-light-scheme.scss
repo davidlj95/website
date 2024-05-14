@@ -3,28 +3,43 @@
 $devtools-light-scheme: (
   kind: $light-color-scheme-kind,
   vars: (
-    //bg-z0: #f8f9f9ff,
-    bg-z0: white,
-    bg-z1: #f1f3f4ff,
-    bg-z2: #dee1e6ff,
-    // Seems this one is overridden for macOs and Linux
-    //fg-primary: #202124ff,
-    fg-primary: #303942ff,
-    fg-secondary: #5f6368ff,
-    tabs-selected-fg: #333333ff,
-    tabs-selected-bg: transparent,
-    // --legacy-accent-color
-    tabs-selected-border-bottom: 2px solid #1a73e8,
+    app-color-toolbar-background: var(--sys-color-surface4),
+    sys-color-on-surface: var(--ref-palette-neutral10),
+    sys-color-on-surface-subtle: var(--ref-palette-neutral30),
+    sys-color-cdt-base-container: var(--sys-color-base),
+    sys-color-base: var(--ref-palette-neutral100),
+    sys-color-divider: var(--ref-palette-primary90),
+    sys-color-surface1:
+      color-mix(
+        in sRGB,
+        var(--ref-palette-primary40) 5%,
+        var(--ref-palette-neutral99)
+      ),
+    sys-color-surface2:
+      color-mix(
+        in sRGB,
+        var(--ref-palette-primary40) 8%,
+        var(--ref-palette-neutral99)
+      ),
+    sys-color-surface3:
+      color-mix(
+        in sRGB,
+        var(--ref-palette-primary40) 11%,
+        var(--ref-palette-neutral99)
+      ),
+    sys-color-surface4:
+      color-mix(in sRGB, #6991d6 12%, var(--ref-palette-neutral100)),
+    sys-color-surface5:
+      color-mix(
+        in sRGB,
+        var(--ref-palette-primary40) 14%,
+        var(--ref-palette-neutral99)
+      ),
+    sys-color-primary: var(--ref-palette-primary40),
+    sys-color-neutral-outline: var(--ref-palette-neutral80),
+    sys-color-neutral-container: var(--ref-palette-neutral95),
+    sys-color-state-hover-dim-blend-protection: rgb(6 46 111/18%),
+    adorner-border-color: var(--sys-color-neutral-outline),
     img-filter: none,
-    accent: #8ab4f8,
-    hairline: #cacdd1ff,
-    icon: #6e6e6eff,
-    chips-border: #c7c7c7,
-    // Original was too light, almost same colour as z1
-    //chips-bg: #f2f2f2,
-    chips-bg: #eaeaea,
-    chips-fg: #1f1f1f,
-    chips-selected: #0b57d0,
-    chips-selected-text: white,
   ),
 );
