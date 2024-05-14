@@ -11,7 +11,7 @@
   "//2   ": "whatever/chunk-FOO42.js -> whatever/chunk-FOO42.js",
   "//3   ": "whatever/main-BAR37.js -> whatever/main.js",
   "//4   ": "whatever/routes-BOB73.js -> whatever/routes-BOB73.js",
-  "normalizeFilenames": "^(?:[\\w\\d\\@]+\\/)*(?:(?:(?:chunk|routes)-\\w+)|(?:.+(-\\w+)))\\.js$",
+  "normalizeFilenames": "^(?:[\\w\\d\\@]+\\/)*(?:(?:(?:chunk|routes)-\\w+)|(?:.+(-\\w+))|(?:.+))\\.js$",
   "ci": {
     "repoBranchBase": "main",
     "trackBranches": ["main"]
