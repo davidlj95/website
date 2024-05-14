@@ -2,11 +2,17 @@
   "files": [
     {
       "path": "dist/@davidlj95/website/browser/*.js",
-      "maxSize": "500kB",
-      "compression": "none"
+      "maxSize": "50kB",
+      "compression": "gzip"
     }
   ],
-  "normalizeFilenames": "^.+?(\\..+?)\\.\\w+$",
+  "//0 👇": "Chunks are anonymous as per ESBuild design, so can't normalize names there",
+  "//1   ": "Using named chunks when building helps a little though",
+  "//2   ": "whatever/chunk-FOO42.js -> whatever/chunk-FOO42.js",
+  "//3   ": "whatever/main-BAR37.js -> whatever/main.js",
+  "//4   ": "whatever/routes-BOB73.js -> whatever/routes-BOB73.js",
+  "//5   ": "whatever/not-hashed.js -> whatever/not-hashed.js",
+  "normalizeFilenames": "^(?:[\\w\\d\\@]+\\/)*(?:(?:(?:chunk|routes)-\\w+)|(?:.+(-\\w+))|(?:.+))\\.js$",
   "ci": {
     "repoBranchBase": "main",
     "trackBranches": ["main"]

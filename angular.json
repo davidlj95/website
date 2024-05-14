@@ -86,7 +86,8 @@
               "outputHashing": "all",
               "define": {
                 "isDevMode": "false"
-              }
+              },
+              "namedChunks": true
             },
             "development": {
               "optimization": false,
