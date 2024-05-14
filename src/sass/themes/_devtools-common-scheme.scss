@@ -26,7 +26,5 @@ $devtools-common-scheme: (
     icon-default-hover: var(--sys-color-on-surface),
     ui-text: var(--sys-color-on-surface-subtle),
     text-primary: var(--sys-color-on-surface),
-    adorner-border-color:
-      var(--override-adorner-border-color, var(--sys-color-neutral-outline)),
   ),
 );
