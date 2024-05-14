@@ -13,7 +13,7 @@ describe('AdaptJsonResumeLanguage', () => {
   it('should map language name', () => {
     const language = 'English'
 
-    const item = makeSut()(makeJsonResumeLanguageItem({ language }))
+    const item = makeSut()(makeJsonResumeLanguage({ language }))
 
     expect(item.name).toEqual(language)
   })
@@ -21,7 +21,7 @@ describe('AdaptJsonResumeLanguage', () => {
   it('should map fluency', () => {
     const fluency = 'Real good'
 
-    const item = makeSut()(makeJsonResumeLanguageItem({ fluency }))
+    const item = makeSut()(makeJsonResumeLanguage({ fluency }))
 
     expect(item.fluency).toEqual(fluency)
   })
@@ -29,7 +29,7 @@ describe('AdaptJsonResumeLanguage', () => {
   it('should map comment', () => {
     const comment = 'Lived in Sealand for 4 months'
 
-    const item = makeSut()(makeJsonResumeLanguageItem({ comment }))
+    const item = makeSut()(makeJsonResumeLanguage({ comment }))
 
     expect(item.comment).toEqual(comment)
   })
@@ -37,7 +37,7 @@ describe('AdaptJsonResumeLanguage', () => {
   it('should map tag', () => {
     const comment = 'es'
 
-    const item = makeSut()(makeJsonResumeLanguageItem({ comment }))
+    const item = makeSut()(makeJsonResumeLanguage({ comment }))
 
     expect(item.tag).toEqual(comment)
   })
@@ -45,12 +45,12 @@ describe('AdaptJsonResumeLanguage', () => {
 
 const makeSut = () => serviceTestSetup(ADAPT_JSON_RESUME_LANGUAGE)
 
-const sampleJsonResumeLanguageItem = resume.languages[0]
+const sampleJsonResumeLanguage = resume.languages[0]
 
-const makeJsonResumeLanguageItem = (
+const makeJsonResumeLanguage = (
   overrides?: Partial<JsonResumeLanguage>,
 ): JsonResumeLanguage =>
   ({
-    ...sampleJsonResumeLanguageItem,
+    ...sampleJsonResumeLanguage,
     ...overrides,
   }) as JsonResumeLanguage

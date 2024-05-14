@@ -25,7 +25,7 @@ import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { NgIf } from '@angular/common'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { makeProjectItem } from './__tests__/make-project-item'
+import { makeProjectItem } from '../__tests__/make-project-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
 

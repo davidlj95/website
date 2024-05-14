@@ -1,5 +1,5 @@
-import { ProjectItem } from '../project-item'
-import { DateRange } from '../../../date-range/date-range'
+import { ProjectItem } from '../project-item/project-item'
+import { DateRange } from '../../date-range/date-range'
 import { makeItemFactory } from '@/test/helpers/make-item-factory'
 
 export const makeProjectItem = makeItemFactory(ProjectItem, {

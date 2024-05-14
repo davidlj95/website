@@ -22,7 +22,7 @@ describe('AdaptJsonResumeEducation', () => {
     const shortName = 'FIN'
 
     const item = makeSut()(
-      makeJsonResumeEducationItem({ institution, url, shortName }),
+      makeJsonResumeEducation({ institution, url, shortName }),
     )
 
     expect(item.institution.name).toEqual(institution)
@@ -35,9 +35,7 @@ describe('AdaptJsonResumeEducation', () => {
     const studyType = 'Study type'
     const score = 'Score'
 
-    const item = makeSut()(
-      makeJsonResumeEducationItem({ area, studyType, score }),
-    )
+    const item = makeSut()(makeJsonResumeEducation({ area, studyType, score }))
 
     expect(item.area).toEqual(area)
     expect(item.studyType).toEqual(studyType)
@@ -48,7 +46,7 @@ describe('AdaptJsonResumeEducation', () => {
     const startDate = '2022-12-31'
     const endDate = '2024-01-01'
 
-    const item = makeSut()(makeJsonResumeEducationItem({ startDate, endDate }))
+    const item = makeSut()(makeJsonResumeEducation({ startDate, endDate }))
 
     expect(item.dateRange.start).toEqual(new Date(startDate))
     expect(item.dateRange.end).toEqual(new Date(endDate))
@@ -58,7 +56,7 @@ describe('AdaptJsonResumeEducation', () => {
     it('should map no end date exists too', () => {
       const endDate = undefined
 
-      const item = makeSut()(makeJsonResumeEducationItem({ endDate }))
+      const item = makeSut()(makeJsonResumeEducation({ endDate }))
 
       expect(item.dateRange.end).toBeUndefined()
     })
@@ -66,7 +64,7 @@ describe('AdaptJsonResumeEducation', () => {
 
   // Non standard fields
   it('should map the cum laude field', () => {
-    const item = makeSut()(makeJsonResumeEducationItem({ cumLaude: true }))
+    const item = makeSut()(makeJsonResumeEducation({ cumLaude: true }))
 
     expect(item.cumLaude).toBeTrue()
   })
@@ -79,7 +77,7 @@ describe('AdaptJsonResumeEducation', () => {
       .and.returnValue(dummyImagePath)
     const sut = makeSut({ relativizeProductionUrl })
 
-    const item = sut(makeJsonResumeEducationItem({ image }))
+    const item = sut(makeJsonResumeEducation({ image }))
 
     expect(relativizeProductionUrl).toHaveBeenCalledOnceWith(new URL(image))
     expect(item.institution.imageSrc).toEqual(dummyImagePath)
@@ -100,13 +98,13 @@ const makeSut = (
     ],
   })
 
-const sampleJsonResumeEducationItem = resume.education[0]
+const sampleJsonResumeEducation = resume.education[0]
 
-function makeJsonResumeEducationItem(
+function makeJsonResumeEducation(
   overrides?: Partial<JsonResumeEducation>,
 ): JsonResumeEducation {
   return {
-    ...sampleJsonResumeEducationItem,
+    ...sampleJsonResumeEducation,
     ...overrides,
   } as JsonResumeEducation
 }
