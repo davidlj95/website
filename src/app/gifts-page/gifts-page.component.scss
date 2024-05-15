@@ -1,21 +1,10 @@
 @use 'page';
 @use 'paddings';
+@use 'texts';
 
 :host {
   display: block;
   padding: page.$padding;
 
-  ul {
-    list-style-type: square;
-    margin-inline-start: 1em;
-    padding-inline-start: 1em;
-  }
-
-  h1 {
-    padding-bottom: paddings.$m;
-  }
-
-  h2 {
-    padding: paddings.$m 0;
-  }
+  @include texts.page;
 }
