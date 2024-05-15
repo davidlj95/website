@@ -10,6 +10,7 @@ import {
   faBrandTwitter,
 } from '@ng-icons/font-awesome/brands'
 import { NgIcon, provideIcons } from '@ng-icons/core'
+import { isNotUndefined } from '@/common/is-not-undefined'
 
 const icons = {
   faBrandGithub,
@@ -72,19 +73,28 @@ const getMapsSearchUrl = (location: string): URL => {
 const jsonResumeBasicsToSocialContacts = (
   jsonResumeBasics: JsonResumeBasics,
 ): ReadonlyArray<ContactItem> =>
-  jsonResumeBasics.profiles.map((profile) => ({
-    name: `${profile.username} at ${profile.network}`,
-    href: profile.url,
-    icon: getIconFromNetwork(profile.network),
-  }))
+  jsonResumeBasics.profiles
+    .map((profile) => {
+      const maybeIcon = getIconFromNetwork(profile.network)
+      if (!maybeIcon) {
+        if (isDevMode) {
+          console.error(
+            `ProfileContacts: Icon not found for network '${profile.network}'`,
+          )
+        }
+        return undefined
+      }
+      return {
+        name: `${profile.username} at ${profile.network}`,
+        href: profile.url,
+        icon: maybeIcon,
+      } satisfies ContactItem
+    })
+    .filter(isNotUndefined)
 
-const getIconFromNetwork = (network: string): string => {
+const getIconFromNetwork = (network: string): string | undefined => {
   const normalizedNetwork = network.toLowerCase()
-  const icon = iconsByNetwork.get(normalizedNetwork)
-  if (!icon) {
-    throw new Error(`Icon not found for ${normalizedNetwork}`)
-  }
-  return icon
+  return iconsByNetwork.get(normalizedNetwork)
 }
 
 const iconNameToNetworkName: { [key in keyof typeof icons]: string } = {
