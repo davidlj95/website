@@ -7,6 +7,7 @@ export type AdaptJsonResumeLanguage = (
 ) => LanguageItem
 export const ADAPT_JSON_RESUME_LANGUAGE =
   new InjectionToken<AdaptJsonResumeLanguage>(
+    /* istanbul ignore next */
     isDevMode ? 'AdaptJsonResumeLanguage' : 'AJRL',
     {
       // tag: ISO 639-1 2 char tag

@@ -10,6 +10,7 @@ export type AdaptJsonResumeEducation = (
 ) => EducationItem
 export const ADAPT_JSON_RESUME_EDUCATION =
   new InjectionToken<AdaptJsonResumeEducation>(
+    /* istanbul ignore next */
     isDevMode ? 'AdaptJsonResumeEducation' : 'AJRE',
     {
       factory: () => {

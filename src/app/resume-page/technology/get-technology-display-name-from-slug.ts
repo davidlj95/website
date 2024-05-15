@@ -5,6 +5,7 @@ import { CUSTOM_DISPLAY_NAME_ENTRIES } from './custom-display-name-entries'
 export type GetTechnologyDisplayNameFromSlug = (slug: string) => string
 export const GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG =
   new InjectionToken<GetTechnologyDisplayNameFromSlug>(
+    /* istanbul ignore next */
     isDevMode ? 'GetTechnologyDisplayNameFromSlug' : 'GTDNFS',
     { factory: () => (slug) => DISPLAY_NAME_BY_SLUG.get(slug) ?? slug },
   )

@@ -6,6 +6,7 @@ export class PlatformService {
 }
 
 export const PLATFORM_SERVICE = new InjectionToken<PlatformService>(
+  /* istanbul ignore next */
   isDevMode ? 'PlatformService' : 'PS',
   {
     providedIn: 'platform',

@@ -5,6 +5,7 @@ import { ADAPT_JSON_RESUME_LANGUAGE } from './adapt-json-resume-language'
 
 export type GetLanguageItems = () => ReadonlyArray<LanguageItem>
 export const GET_LANGUAGE_ITEMS = new InjectionToken<GetLanguageItems>(
+  /* istanbul ignore next */
   isDevMode ? 'GetLanguageItems' : 'GLI',
   {
     factory: () => {
@@ -16,6 +17,7 @@ export const GET_LANGUAGE_ITEMS = new InjectionToken<GetLanguageItems>(
 )
 
 export const JSON_RESUME_LANGUAGES = new InjectionToken<JsonResumeLanguages>(
+  /* istanbul ignore next */
   isDevMode ? 'JSON Resume languages' : 'JRLs',
   { factory: () => resume.languages },
 )

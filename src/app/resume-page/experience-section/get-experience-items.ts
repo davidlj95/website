@@ -5,6 +5,7 @@ import { ExperienceItem } from './experience-item/experience-item'
 
 export type GetExperienceItems = () => ReadonlyArray<ExperienceItem>
 export const GET_EXPERIENCE_ITEMS = new InjectionToken<GetExperienceItems>(
+  /* istanbul ignore next */
   isDevMode ? 'GetExperienceItems' : 'GEI',
   {
     factory: () => {
@@ -16,6 +17,7 @@ export const GET_EXPERIENCE_ITEMS = new InjectionToken<GetExperienceItems>(
 )
 
 export const JSON_RESUME_WORKS = new InjectionToken<JsonResumeWorks>(
+  /* istanbul ignore next */
   isDevMode ? 'JSON Resume works' : 'JRWs',
   {
     factory: () => resume.work,

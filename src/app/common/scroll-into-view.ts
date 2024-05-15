@@ -20,6 +20,7 @@ export type ScrollIntoView = (element: HTMLElement) => void
 export const _SCROLL_INTO_VIEW_FACTORY: () => ScrollIntoView = () =>
   inject(PLATFORM_SERVICE).isBrowser ? scrollIntoView : noop
 export const SCROLL_INTO_VIEW = new InjectionToken<ScrollIntoView>(
+  /* istanbul ignore next */
   isDevMode ? 'ScrollIntoView' : 'SIV',
   {
     providedIn: 'platform',
