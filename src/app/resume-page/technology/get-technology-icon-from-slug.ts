@@ -5,6 +5,7 @@ import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-
 export type GetTechnologyIconFromSlug = (slug: string) => SimpleIcon | undefined
 export const GET_TECHNOLOGY_ICON_FROM_SLUG =
   new InjectionToken<GetTechnologyIconFromSlug>(
+    /* istanbul ignore next */
     isDevMode ? 'GetTechnologyIconFromSlug' : 'GTIFS',
     { factory: () => (slug) => SIMPLE_ICON_BY_SLUG.get(slug) },
   )

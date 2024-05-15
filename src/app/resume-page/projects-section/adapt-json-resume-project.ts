@@ -7,6 +7,7 @@ import { JsonResumeProject } from './json-resume-projects'
 export type AdaptJsonResumeProject = (project: JsonResumeProject) => ProjectItem
 export const ADAPT_JSON_RESUME_PROJECT =
   new InjectionToken<AdaptJsonResumeProject>(
+    /* istanbul ignore next */
     isDevMode ? 'AdaptJsonResumeProject' : 'AJRP',
     {
       factory: () => {

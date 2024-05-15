@@ -9,6 +9,7 @@ export const _RELATIVIZE_PRODUCTION_URL_FACTORY: (
 ) => RelativizeProductionUrl = (baseUrl, baseHref) => (url) => {
   if (!url.toString().startsWith(baseUrl.toString())) {
     throw new Error(
+      /* istanbul ignore next */
       isDevMode
         ? 'Cannot map production URL: does not start with base URL for production'
         : 'RPU:E:BU',
@@ -22,6 +23,7 @@ export const _RELATIVIZE_PRODUCTION_URL_FACTORY: (
     default:
       if (!url.pathname.startsWith(baseHref)) {
         throw new Error(
+          /* istanbul ignore next */
           isDevMode
             ? 'Cannot map production URL: path does not start with app base href'
             : 'RPU:E:BH',
@@ -32,6 +34,7 @@ export const _RELATIVIZE_PRODUCTION_URL_FACTORY: (
 }
 export const RELATIVIZE_PRODUCTION_URL =
   new InjectionToken<RelativizeProductionUrl>(
+    /* istanbul ignore next */
     isDevMode ? 'RelativizeProductionUrl' : 'RPU',
     {
       factory: () =>
@@ -43,6 +46,7 @@ export const RELATIVIZE_PRODUCTION_URL =
   )
 
 export const APP_BASE_URL_PRODUCTION = new InjectionToken<URL>(
+  /* istanbul ignore next */
   isDevMode ? 'App base URL for production' : 'ABUfP',
   {
     factory: () => new URL(`https://${METADATA.domainName}`),

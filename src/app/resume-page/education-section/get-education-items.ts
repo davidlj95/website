@@ -5,6 +5,7 @@ import { ADAPT_JSON_RESUME_EDUCATION } from './adapt-json-resume-education'
 
 export type GetEducationItems = () => ReadonlyArray<EducationItem>
 export const GET_EDUCATION_ITEMS = new InjectionToken<GetEducationItems>(
+  /* istanbul ignore next */
   isDevMode ? 'GetEducationItems' : 'GEI',
   {
     factory: () => {
@@ -16,6 +17,7 @@ export const GET_EDUCATION_ITEMS = new InjectionToken<GetEducationItems>(
 )
 
 export const JSON_RESUME_EDUCATIONS = new InjectionToken<JsonResumeEducations>(
+  /* istanbul ignore next */
   isDevMode ? 'JSON Resume educations' : 'JREs',
   {
     factory: () => resume.education,

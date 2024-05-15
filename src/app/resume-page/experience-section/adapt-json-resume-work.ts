@@ -9,6 +9,7 @@ import { ADAPT_JSON_RESUME_PROJECT } from '../projects-section/adapt-json-resume
 
 export type AdaptJsonResumeWork = (work: JsonResumeWork) => ExperienceItem
 export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
+  /* istanbul ignore next */
   isDevMode ? 'AdaptJsonResumeWork' : 'AJRW',
   {
     factory: () => {

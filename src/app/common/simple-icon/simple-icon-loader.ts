@@ -18,6 +18,7 @@ export type SimpleIconLoader = (slug: string) => Observable<string>
  * https://github.com/davidlj95/chrislb/tree/72f4f5e6c11719bf2c2ba81941967a04c43d542b/src/app/common/json-fetcher
  */
 export const SIMPLE_ICON_LOADER = new InjectionToken<SimpleIconLoader>(
+  /* istanbul ignore next */
   isDevMode ? 'SimpleIconLoader' : 'SIL',
   {
     factory: () => {
@@ -49,6 +50,7 @@ export const SIMPLE_ICON_LOADER = new InjectionToken<SimpleIconLoader>(
 export type SimpleIconLoaderCache = Map<string, string>
 export const SIMPLE_ICON_LOADER_CACHE =
   new InjectionToken<SimpleIconLoaderCache>(
+    /* istanbul ignore next */
     isDevMode ? 'SimpleIconLoaderCache' : 'SILC',
     {
       factory: () => new Map(),

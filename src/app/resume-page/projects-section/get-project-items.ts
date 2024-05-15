@@ -6,6 +6,7 @@ import { JSON_RESUME_PROJECTS } from './json-resume-projects'
 export type GetProjectItems = () => ReadonlyArray<ProjectItem>
 
 export const GET_PROJECT_ITEMS = new InjectionToken<GetProjectItems>(
+  /* istanbul ignore next */
   isDevMode ? 'GetProjectItems' : 'GPI',
   {
     factory: () => {
