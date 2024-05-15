@@ -95,6 +95,20 @@ describe('ProfileContactsComponent', () => {
       })
     }
   })
+
+  it(`should not display link if icon cannot be found`, () => {
+    const profile = makeJsonResumeBasicsProfile('non-existent')
+    const profiles = [profile]
+    const jsonResumeBasics = makeJsonResumeBasics({ profiles })
+
+    ;[fixture, component] = makeSut({ jsonResumeBasics })
+    fixture.detectChanges()
+
+    const anchorElement = fixture.debugElement.query(
+      By.css(`a[href="${profile.url}"]`),
+    )
+    expect(anchorElement).toBeNull()
+  })
 })
 
 const sampleJsonResumeBasics: JsonResumeBasics = resume.basics
