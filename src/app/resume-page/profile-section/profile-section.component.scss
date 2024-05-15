@@ -43,11 +43,7 @@
     font-size: 1.5rem;
   }
 
-  .contacts {
-    display: flex;
-    gap: margins.$m;
-    flex-wrap: wrap;
-    flex-direction: row;
+  app-profile-contacts {
     margin-top: margins.$s;
   }
 }

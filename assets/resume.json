@@ -2,7 +2,7 @@
   "basics": {
     "name": "David Lozano Jarque",
     "label": "Full stack software engineer: from scratch to production",
-    "image": "https://www.davidlj95.com/assets/img/profile.png",
+    "image": "https://davidlj95.com/assets/img/profile.png",
     "email": "mail@davidlj95.com",
     "phone": "+34 644 449 360",
     "url": "https://davidlj95.com",
@@ -26,14 +26,14 @@
         "url": "https://www.linkedin.com/in/davidlj95"
       },
       {
-        "network": "Twitter",
-        "username": "davidlj95",
-        "url": "https://twitter.com/davidlj95"
-      },
-      {
         "network": "StackOverflow",
         "username": "davidlj95",
         "url": "https://stackoverflow.com/users/3263250/davidlj95"
+      },
+      {
+        "network": "Twitter",
+        "username": "davidlj95",
+        "url": "https://twitter.com/davidlj95"
       }
     ]
   },

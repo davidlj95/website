@@ -1,11 +1,10 @@
 import { Component, Inject } from '@angular/core'
 import { DescriptionLine, Metadata } from '../../metadata'
 import { METADATA } from '@/common/injection-tokens'
-import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
-import { ProfileContactSocialIconsComponent } from './profile-contact-social-icons/profile-contact-social-icons.component'
-import { ProfileContactTraditionalIconsComponent } from './profile-contact-traditional-icons/profile-contact-traditional-icons.component'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
+import { ProfileContactsComponent } from './profile-contacts/profile-contacts.component'
+import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
 
 @Component({
   selector: 'app-profile-section',
@@ -13,10 +12,9 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
   styleUrls: ['./profile-section.component.scss'],
   standalone: true,
   imports: [
-    SectionTitleComponent,
     ProfilePictureComponent,
-    ProfileContactTraditionalIconsComponent,
-    ProfileContactSocialIconsComponent,
+    SectionTitleComponent,
+    ProfileContactsComponent,
     ProfileDescriptionComponent,
   ],
 })

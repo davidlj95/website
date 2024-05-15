@@ -4,18 +4,18 @@
 @use 'animations';
 
 :host {
+  display: flex;
+  gap: margins.$m;
+  flex-wrap: wrap;
+  flex-direction: row;
+
   ul {
     display: flex;
     flex-direction: row;
     gap: margins.$s;
-
-    @include breakpoints.xs() {
-      justify-content: center;
-    }
   }
 
   li {
-    height: 32px;
     a {
       text-decoration-line: none;
       color: var(--icon-default);
@@ -29,16 +29,20 @@
         );
       }
     }
+  }
 
-    @include material-symbols.class {
-      $fontSize: 32px;
-      font-size: $fontSize;
-      @include material-symbols.variation-settings(
-        $fill: true,
-        $weight: 700,
-        $grade: 200,
-        $size: $fontSize
-      );
-    }
+  $icons-height: 32px;
+  @include material-symbols.class {
+    font-size: $icons-height;
+    @include material-symbols.variation-settings(
+      $fill: true,
+      $weight: 700,
+      $grade: 200,
+      $size: $icons-height
+    );
+  }
+
+  ng-icon {
+    font-size: $icons-height;
   }
 }
