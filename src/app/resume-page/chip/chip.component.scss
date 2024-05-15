@@ -22,6 +22,10 @@
     cursor: pointer;
   }
 
+  &:hover {
+    background-color: var(--sys-color-state-hover-dim-blend-protection);
+  }
+
   &.selected {
     background-color: var(--sys-color-primary);
     border-color: var(--sys-color-primary);
