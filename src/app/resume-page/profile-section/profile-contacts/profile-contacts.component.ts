@@ -7,7 +7,7 @@ import {
   faBrandGithub,
   faBrandLinkedinIn,
   faBrandStackOverflow,
-  faBrandTwitter,
+  faBrandXTwitter,
 } from '@ng-icons/font-awesome/brands'
 import { NgIcon, provideIcons } from '@ng-icons/core'
 import { isNotUndefined } from '@/common/is-not-undefined'
@@ -17,7 +17,7 @@ const ngIconsByName = new Map<string, NgIcons>([
   ['github', { faBrandGithub }],
   ['linkedin', { faBrandLinkedinIn }],
   ['stackoverflow', { faBrandStackOverflow }],
-  ['twitter', { faBrandTwitter }],
+  ['x', { faBrandXTwitter }],
 ])
 const ngIcons: NgIcons = [...ngIconsByName.values()].reduce<NgIcons>(
   (acc, curr) => ({ ...acc, ...curr }),
