@@ -40,8 +40,11 @@ $devtools-dark-scheme: (
     sys-color-neutral-outline: var(--ref-palette-neutral50),
     sys-color-neutral-container: var(--ref-palette-neutral25),
     sys-color-state-hover-dim-blend-protection: rgb(31 31 31/10%),
-    adorner-border-color: var(--sys-color-tonal-outline),
     sys-color-tonal-outline: var(--ref-palette-secondary50),
+    sys-color-on-primary: var(--ref-palette-primary20),
+    sys-color-state-hover-on-prominent:
+      color-mix(in sRGB, var(--ref-palette-neutral99) 10%, transparent),
+    adorner-border-color: var(--sys-color-tonal-outline),
     img-filter: grayscale(0.5),
   ),
 );

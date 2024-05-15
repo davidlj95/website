@@ -5,9 +5,11 @@ $devtools-common-scheme: (
   vars: (
     // https://github.com/ChromeDevTools/devtools-frontend/blob/7500d2916c463c136fc5ce2547ceb469c61454b4/front_end/ui/legacy/tokens.css
     // Or locally by `devtools://theme/colors.css?sets=ui,chrome` (may change depending on current theme)
+    ref-palette-primary20: rgb(6 46 111 / 100%),
     ref-palette-primary40: rgb(11 87 208 / 100%),
     ref-palette-primary80: rgb(168 199 250 / 100%),
     ref-palette-primary90: rgb(211 227 253 / 100%),
+    ref-palette-primary100: rgb(255 255 255 / 100%),
     ref-palette-secondary50: rgb(4 125 183 / 100%),
     ref-palette-neutral10: rgb(31 31 31 / 100%),
     ref-palette-neutral15: rgb(40 40 40 / 100%),

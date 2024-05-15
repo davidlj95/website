@@ -45,3 +45,16 @@
     }
   }
 }
+
+@mixin only-dark-mode {
+  @at-root {
+    ::ng-deep html[data-color-scheme='dark'] {
+      @content;
+    }
+    @media (prefers-color-scheme: dark) {
+      ::ng-deep html:not([data-color-scheme]) {
+        @content;
+      }
+    }
+  }
+}
