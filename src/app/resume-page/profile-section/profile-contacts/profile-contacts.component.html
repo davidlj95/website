@@ -1,0 +1,17 @@
+<ul>
+  <li *ngFor="let contact of _traditional">
+    <a
+      [href]="contact.href"
+      [attr.aria-label]="contact.name"
+      appMaterialSymbol
+      >{{ contact.icon }}</a
+    >
+  </li>
+</ul>
+<ul class="social">
+  <li *ngFor="let contact of _social">
+    <a [href]="contact.href" [attr.aria-label]="contact.name">
+      <ng-icon [svg]="contact.icon"></ng-icon>
+    </a>
+  </li>
+</ul>

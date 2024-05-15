@@ -1,16 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 
 import { ProfileSectionComponent } from './profile-section.component'
 import { Metadata } from '../../metadata'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
-import { ProfileContactTraditionalIconsComponent } from './profile-contact-traditional-icons/profile-contact-traditional-icons.component'
-import { ProfileContactSocialIconsComponent } from './profile-contact-social-icons/profile-contact-social-icons.component'
+import { ProfileContactsComponent } from './profile-contacts/profile-contacts.component'
 import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
-import { METADATA } from '@/common/injection-tokens'
 import { By } from '@angular/platform-browser'
 import { shouldContainComponents } from '@/test/helpers/component-testers'
 import { SectionTitleComponent } from '../section-title/section-title.component'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { METADATA } from '@/common/injection-tokens'
 
 describe('ProfileSectionComponent', () => {
   let component: ProfileSectionComponent
@@ -22,21 +22,18 @@ describe('ProfileSectionComponent', () => {
   } as Pick<Metadata, 'nickname' | 'realName' | 'title'> as Metadata
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
+    ;[fixture, component] = componentTestSetup(ProfileSectionComponent, {
       imports: [
         ProfileSectionComponent,
         MockComponents(
           SectionTitleComponent,
           ProfilePictureComponent,
-          ProfileContactTraditionalIconsComponent,
-          ProfileContactSocialIconsComponent,
+          ProfileContactsComponent,
           ProfileDescriptionComponent,
         ),
       ],
       providers: [MockProvider(METADATA, fakeMetadata)],
     })
-    fixture = TestBed.createComponent(ProfileSectionComponent)
-    component = fixture.componentInstance
     fixture.detectChanges()
   })
 
@@ -67,8 +64,7 @@ describe('ProfileSectionComponent', () => {
     () => fixture,
     SectionTitleComponent,
     ProfilePictureComponent,
-    ProfileContactTraditionalIconsComponent,
-    ProfileContactSocialIconsComponent,
+    ProfileContactsComponent,
     ProfileDescriptionComponent,
   )
 })
