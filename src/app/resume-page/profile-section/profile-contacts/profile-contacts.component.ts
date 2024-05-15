@@ -104,7 +104,8 @@ const iconNameToNetworkName: { [key in keyof typeof icons]: string } = {
   faBrandTwitter: 'twitter',
 }
 const iconsByNetwork = new Map<string, string>(
-  Object.entries(icons).map(([name, icon]) => {
-    return [iconNameToNetworkName[name as keyof typeof icons], icon]
-  }),
+  Object.entries(icons).map(([name, icon]) => [
+    iconNameToNetworkName[name as keyof typeof icons],
+    icon,
+  ]),
 )
