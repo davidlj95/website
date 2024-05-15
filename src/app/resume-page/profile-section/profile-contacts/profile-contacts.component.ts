@@ -12,12 +12,17 @@ import {
 import { NgIcon, provideIcons } from '@ng-icons/core'
 import { isNotUndefined } from '@/common/is-not-undefined'
 
-const icons = {
-  faBrandGithub,
-  faBrandLinkedinIn,
-  faBrandStackOverflow,
-  faBrandTwitter,
-} satisfies Parameters<typeof provideIcons>[0]
+type NgIcons = Parameters<typeof provideIcons>[0]
+const ngIconsByName = new Map<string, NgIcons>([
+  ['github', { faBrandGithub }],
+  ['linkedin', { faBrandLinkedinIn }],
+  ['stackoverflow', { faBrandStackOverflow }],
+  ['twitter', { faBrandTwitter }],
+])
+const ngIcons: NgIcons = [...ngIconsByName.values()].reduce<NgIcons>(
+  (acc, curr) => ({ ...acc, ...curr }),
+  {},
+)
 
 @Component({
   selector: 'app-profile-contacts',
@@ -25,7 +30,7 @@ const icons = {
   styleUrls: ['./profile-contacts.component.scss'],
   standalone: true,
   imports: [NgFor, MaterialSymbolDirective, NgIcon],
-  providers: [provideIcons(icons)],
+  providers: [provideIcons(ngIcons)],
 })
 export class ProfileContactsComponent {
   protected readonly _traditional: ReadonlyArray<ContactItem>
@@ -94,18 +99,9 @@ const jsonResumeBasicsToSocialContacts = (
 
 const getIconFromNetwork = (network: string): string | undefined => {
   const normalizedNetwork = network.toLowerCase()
-  return iconsByNetwork.get(normalizedNetwork)
+  const icons = ngIconsByName.get(normalizedNetwork)
+  if (!icons) {
+    return
+  }
+  return Object.values(icons)[0]
 }
-
-const iconNameToNetworkName: { [key in keyof typeof icons]: string } = {
-  faBrandGithub: 'github',
-  faBrandLinkedinIn: 'linkedin',
-  faBrandStackOverflow: 'stackoverflow',
-  faBrandTwitter: 'twitter',
-}
-const iconsByNetwork = new Map<string, string>(
-  Object.entries(icons).map(([name, icon]) => [
-    iconNameToNetworkName[name as keyof typeof icons],
-    icon,
-  ]),
-)
