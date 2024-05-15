@@ -87,9 +87,14 @@ const getIconFromNetwork = (network: string): string => {
   return icon
 }
 
-const iconsByNetwork = new Map<string, string>([
-  ['github', icons.faBrandGithub],
-  ['linkedin', icons.faBrandLinkedinIn],
-  ['stackoverflow', icons.faBrandStackOverflow],
-  ['twitter', icons.faBrandTwitter],
-])
+const iconNameToNetworkName: { [key in keyof typeof icons]: string } = {
+  faBrandGithub: 'github',
+  faBrandLinkedinIn: 'linkedin',
+  faBrandStackOverflow: 'stackoverflow',
+  faBrandTwitter: 'twitter',
+}
+const iconsByNetwork = new Map<string, string>(
+  Object.entries(icons).map(([name, icon]) => {
+    return [iconNameToNetworkName[name as keyof typeof icons], icon]
+  }),
+)
