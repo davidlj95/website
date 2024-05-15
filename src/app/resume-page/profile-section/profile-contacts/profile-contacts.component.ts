@@ -7,7 +7,7 @@ import {
   faBrandGithub,
   faBrandLinkedinIn,
   faBrandStackOverflow,
-  faBrandXTwitter,
+  faBrandTwitter,
 } from '@ng-icons/font-awesome/brands'
 import { NgIcon, provideIcons } from '@ng-icons/core'
 
@@ -15,7 +15,7 @@ const icons = {
   faBrandGithub,
   faBrandLinkedinIn,
   faBrandStackOverflow,
-  faBrandXTwitter,
+  faBrandTwitter,
 } satisfies Parameters<typeof provideIcons>[0]
 
 @Component({
@@ -91,5 +91,5 @@ const iconsByNetwork = new Map<string, string>([
   ['github', icons.faBrandGithub],
   ['linkedin', icons.faBrandLinkedinIn],
   ['stackoverflow', icons.faBrandStackOverflow],
-  ['x', icons.faBrandXTwitter],
+  ['twitter', icons.faBrandTwitter],
 ])

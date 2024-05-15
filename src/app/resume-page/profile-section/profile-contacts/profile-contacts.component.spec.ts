@@ -75,7 +75,7 @@ describe('ProfileContactsComponent', () => {
       makeJsonResumeBasicsProfile('GiTHuB'),
       makeJsonResumeBasicsProfile('LiNKedIN'),
       makeJsonResumeBasicsProfile('STAckOverFLOw'),
-      makeJsonResumeBasicsProfile('X'),
+      makeJsonResumeBasicsProfile('TwiTTer'),
     ] satisfies JsonResumeBasics['profiles']
     for (const profile of profiles) {
       const networkName = profile.network.toLowerCase()
