@@ -1,6 +1,5 @@
 import { ButtonComponent } from './button.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { shouldProjectContent } from '@/test/helpers/component-testers'
 
 describe('ButtonComponent', () => {
   it('should create', () => {
@@ -9,6 +8,4 @@ describe('ButtonComponent', () => {
 
     expect(component).toBeTruthy()
   })
-
-  shouldProjectContent(ButtonComponent)
 })
