@@ -39,6 +39,9 @@ $devtools-light-scheme: (
     sys-color-neutral-outline: var(--ref-palette-neutral80),
     sys-color-neutral-container: var(--ref-palette-neutral95),
     sys-color-state-hover-dim-blend-protection: rgb(6 46 111/18%),
+    sys-color-on-primary: var(--ref-palette-primary100),
+    sys-color-state-hover-on-prominent:
+      color-mix(in sRGB, var(--ref-palette-neutral10) 6%, transparent),
     adorner-border-color: var(--sys-color-neutral-outline),
     img-filter: none,
   ),

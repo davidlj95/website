@@ -1,0 +1,38 @@
+@use 'page';
+@use 'texts';
+@use 'theming';
+@use 'animations';
+@use 'margins';
+@use 'paddings';
+@use 'borders';
+
+:host {
+  display: block;
+  padding: page.$padding;
+
+  @include texts.page;
+  img.sports-equation {
+    @include animations.single-transition(filter, animations.$emphasized-style);
+  }
+  @include theming.only-dark-mode {
+    img.sports-equation {
+      filter: invert(1);
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+
+  .minimal-card {
+    display: flex;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  iframe {
+    border: none;
+  }
+}
