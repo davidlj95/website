@@ -3,7 +3,7 @@ import { METADATA } from '../metadata'
 import { environment } from '../../environments'
 import { Routes } from '@angular/router'
 
-const RESUME_PATH = 'resume'
+export const RESUME_PATH = 'resume'
 export const resumePageRoutes: Routes = [
   { path: '', redirectTo: `/${RESUME_PATH}`, pathMatch: 'full' },
   {

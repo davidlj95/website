@@ -1,0 +1,14 @@
+<nav>
+  <app-tabs>
+    @for (item of items; track item.displayName) {
+      <app-tab
+        [selected]="rla.isActive"
+        [routerLink]="item.routerLink"
+        routerLinkActive
+        #rla="routerLinkActive"
+      >
+        {{ item.displayName }}
+      </app-tab>
+    }
+  </app-tabs>
+</nav>

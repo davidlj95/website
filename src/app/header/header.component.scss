@@ -10,7 +10,6 @@
   width: 100%;
 
   display: flex;
-  justify-content: flex-end;
   @include borders.panel(bottom);
   background-color: var(--app-color-toolbar-background);
 
