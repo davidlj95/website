@@ -5,9 +5,13 @@
 
 :host {
   position: fixed;
-  width: 100%;
-  @include borders.panel(bottom);
   z-index: z-index.$header;
+  height: header.$height;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  @include borders.panel(bottom);
   background-color: var(--app-color-toolbar-background);
 
   @include animations.define {
@@ -15,19 +19,5 @@
       (background-color, border-color),
       animations.$emphasized-style
     );
-  }
-
-  .bar {
-    display: flex;
-    padding: header.$vertical-padding;
-    flex-direction: row;
-    justify-content: flex-end;
-    $icons-height: header.$icons-height;
-    $vertical-padding-height: header.$vertical-padding-height;
-    min-height: calc($icons-height + $vertical-padding-height);
-
-    [role='toolbar'] {
-      height: header.$icons-height;
-    }
   }
 }
