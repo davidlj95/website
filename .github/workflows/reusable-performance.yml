@@ -26,7 +26,7 @@ env:
 
 jobs:
   lhci:
-    name: Lighthouse
+    name: Lighthouse CI
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
