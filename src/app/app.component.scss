@@ -10,8 +10,7 @@
   .after-header {
     position: absolute;
     top: header.$height;
-    $headerHeight: header.$height;
-    min-height: calc(100% - $headerHeight);
+    min-height: calc(100% - #{header.$height});
     width: 100%;
   }
 }

@@ -1,0 +1,5 @@
+@use 'header';
+
+:host {
+  padding: header.$vertical-padding;
+}
