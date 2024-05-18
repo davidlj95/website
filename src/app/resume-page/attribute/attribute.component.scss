@@ -29,7 +29,7 @@
     right: 150%;
     opacity: 0;
     @include animations.define {
-      @include animations.multiple-transitions((right, opacity));
+      @include animations.multiple-transitions((right, opacity, visibility));
     }
 
     font-size: 1rem;
