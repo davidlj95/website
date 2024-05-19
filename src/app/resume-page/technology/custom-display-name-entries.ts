@@ -1,7 +1,6 @@
 export const CUSTOM_DISPLAY_NAME_ENTRIES: ReadonlyArray<[string, string]> = [
   ['rspec', 'RSpec'],
   ['redsys', 'Redsys'],
-  ['rubymine', 'RubyMine'],
   ['zenqms', 'ZenQMS'],
   ['karmarunner', 'Karma Runner'],
   ['http', 'HTTP'],
