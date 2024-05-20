@@ -9,6 +9,7 @@ import { TabComponent } from '../tab/tab.component'
 import { provideRouter, Route, RouterLink, Routes } from '@angular/router'
 import { EmptyComponent } from '@/test/helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
+import { getComponentInstance } from '@/test/helpers/get-component-instance'
 
 describe('NavigationTabsComponent', () => {
   const FOO_ROUTE = { path: 'foo', component: EmptyComponent } satisfies Route
@@ -70,7 +71,7 @@ describe('NavigationTabsComponent', () => {
       )
     expect(fooTabElement).not.toBeNull()
     expect(
-      (fooTabElement!.componentInstance as TabComponent).selected,
+      getComponentInstance(fooTabElement!, TabComponent).selected,
     ).toBeTrue()
 
     const barTabElement = fixture.debugElement
@@ -82,7 +83,7 @@ describe('NavigationTabsComponent', () => {
     expect(barTabElement).not.toBeNull()
 
     expect(
-      (barTabElement!.componentInstance as TabComponent).selected,
+      getComponentInstance(barTabElement!, TabComponent).selected,
     ).toBeFalse()
   })
 
