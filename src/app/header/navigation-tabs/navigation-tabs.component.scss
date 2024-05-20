@@ -1,0 +1,13 @@
+@use 'borders';
+
+:host {
+  display: block;
+  overflow: hidden;
+
+  app-tab {
+    font-size: 1.25rem;
+    // 👇 Bottom border over panel border
+    position: relative;
+    bottom: -#{borders.$panel-width};
+  }
+}

@@ -44,6 +44,7 @@ $devtools-dark-scheme: (
     sys-color-on-primary: var(--ref-palette-primary20),
     sys-color-state-hover-on-prominent:
       color-mix(in sRGB, var(--ref-palette-neutral99) 10%, transparent),
+    sys-color-primary-bright: var(--ref-palette-primary70),
     adorner-border-color: var(--sys-color-tonal-outline),
     img-filter: grayscale(0.5),
   ),
