@@ -10,7 +10,6 @@ import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { byComponent } from '@/test/helpers/component-query-predicates'
-import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
 import { ProjectItem, Stack } from './project-item'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
@@ -28,6 +27,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProjectItem } from '../__tests__/make-project-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
+import { getComponentInstance } from '@/test/helpers/get-component-instance'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -69,7 +69,9 @@ describe('ProjectItemComponent', () => {
         byComponent(CardHeaderImageComponent),
       )
       expect(imageElement).toBeTruthy()
-      expect(getReflectedAttribute(imageElement, 'src')).toEqual(imageSrc)
+      expect(
+        getComponentInstance(imageElement, CardHeaderImageComponent).src,
+      ).toBe(imageSrc)
     })
   })
 
@@ -145,9 +147,9 @@ describe('ProjectItemComponent', () => {
         byTestId(Attribute.Stack),
       )
       expect(stackAttributeElement).toBeTruthy()
-      expect(getReflectedAttribute(stackAttributeElement, 'symbol')).toEqual(
-        stackContent.materialSymbol,
-      )
+      expect(
+        getComponentInstance(stackAttributeElement, AttributeComponent).symbol,
+      ).toBe(stackContent.materialSymbol)
       expect(stackAttributeElement.nativeElement.textContent.trim()).toEqual(
         stackContent.displayName,
       )

@@ -22,7 +22,7 @@ import { byComponent } from '@/test/helpers/component-query-predicates'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeExperienceItem } from './__tests__/make-experience-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
-import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
+import { getComponentInstance } from '@/test/helpers/get-component-instance'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -61,7 +61,9 @@ describe('ExperienceItem', () => {
         byComponent(CardHeaderImageComponent),
       )
       expect(imageElement).toBeTruthy()
-      expect(getReflectedAttribute(imageElement, 'src')).toEqual(imageUrl)
+      expect(
+        getComponentInstance(imageElement, CardHeaderImageComponent).src,
+      ).toBe(imageUrl)
     })
 
     it("should display company name with link to company's website", () => {

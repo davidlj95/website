@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser'
 import { expectIsNotVisible } from '@/test/helpers/visibility'
 
 import { ProfilePictureComponent } from './profile-picture.component'
-import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
+import { NgOptimizedImage } from '@angular/common'
 
 describe('ProfilePictureComponent', () => {
   let component: ProfilePictureComponent
@@ -24,22 +24,21 @@ describe('ProfilePictureComponent', () => {
   })
 
   it('should display profile picture', () => {
-    const profilePic = fixture.debugElement.query(PROFILE_PIC_MAIN_SELECTOR)
-    expect(profilePic).toBeTruthy()
-    const ngSrcAttribute = getReflectedAttribute(profilePic, 'ng-src')
-    expect(ngSrcAttribute).toBeDefined()
-    expect(ngSrcAttribute).toContain('profile.png')
+    expect(
+      fixture.debugElement
+        .query(PROFILE_PIC_MAIN_SELECTOR)
+        .injector.get(NgOptimizedImage).ngSrc,
+    ).toContain('profile.png')
   })
 
   it('should contain "huh" profile picture, despite hidden', () => {
-    const huhProfilePic = fixture.debugElement.query(PROFILE_PIC_HUH_SELECTOR)
-    expect(huhProfilePic).toBeTruthy()
-    const ngSrcAttribute = getReflectedAttribute(huhProfilePic, 'ng-src')
-    expect(ngSrcAttribute).toBeDefined()
-    expect(ngSrcAttribute).toContain('profile_huh.png')
-    expectIsNotVisible(huhProfilePic.nativeElement)
-    const styles = getComputedStyle(huhProfilePic.nativeElement)
-    expect(styles.opacity).toEqual('0')
+    const profileHuhImgElement = fixture.debugElement.query(
+      PROFILE_PIC_HUH_SELECTOR,
+    )
+    expect(profileHuhImgElement.injector.get(NgOptimizedImage).ngSrc).toContain(
+      'profile_huh.png',
+    )
+    expectIsNotVisible(profileHuhImgElement.nativeElement)
   })
 
   describe('accessible easter egg', () => {

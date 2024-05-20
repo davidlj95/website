@@ -8,13 +8,13 @@ import {
   expectIsNotInLayout,
 } from '@/test/helpers/visibility'
 import { byComponent } from '@/test/helpers/component-query-predicates'
-import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { By } from '@angular/platform-browser'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { tickToFinishAnimation } from '@/test/helpers/tick-to-finish-animation'
 import { MockProvider } from 'ng-mocks'
 import { SCROLL_INTO_VIEW } from '@/common/scroll-into-view'
+import { getComponentInstance } from '@/test/helpers/get-component-instance'
 
 describe('ChippedContentComponent', () => {
   let fixture: ComponentFixture<ChippedContentComponent>
@@ -40,9 +40,9 @@ describe('ChippedContentComponent', () => {
 
     chipElements.forEach((chipElement, index) => {
       const content = CONTENTS[index]
-      expect(getReflectedAttribute(chipElement, 'selected'))
+      expect(getComponentInstance(chipElement, ChipComponent).selected)
         .withContext(`chip ${index} is unselected`)
-        .toBe('false')
+        .toBeFalse()
       expect(chipElement.nativeElement.textContent.trim())
         .withContext(`chip ${index} display name`)
         .toEqual(content.displayName)
@@ -93,9 +93,9 @@ describe('ChippedContentComponent', () => {
     }
 
     it('should mark the chip as selected', () => {
-      expect(getReflectedAttribute(firstChipElement, 'selected')).toBe(
-        true.toString(),
-      )
+      expect(
+        getComponentInstance(firstChipElement, ChipComponent).selected,
+      ).toBe(true)
     })
 
     it('should layout its content', () => {
@@ -118,9 +118,9 @@ describe('ChippedContentComponent', () => {
       }))
 
       it('should mark the chip as unselected', () => {
-        expect(getReflectedAttribute(firstChipElement, 'selected')).toEqual(
-          false.toString(),
-        )
+        expect(
+          getComponentInstance(firstChipElement, ChipComponent).selected,
+        ).toBeFalse()
       })
 
       it('should not layout its content', () => {
@@ -142,12 +142,12 @@ describe('ChippedContentComponent', () => {
       }))
 
       it('should mark the previous chip as unselected and just tapped chip as selected', () => {
-        expect(getReflectedAttribute(firstChipElement, 'selected')).toBe(
-          false.toString(),
-        )
-        expect(getReflectedAttribute(secondChipElement, 'selected')).toBe(
-          true.toString(),
-        )
+        expect(
+          getComponentInstance(firstChipElement, ChipComponent).selected,
+        ).toBeFalse()
+        expect(
+          getComponentInstance(secondChipElement, ChipComponent).selected,
+        ).toBeTrue()
       })
 
       it('should not layout currently active content and layout the new content', () => {
