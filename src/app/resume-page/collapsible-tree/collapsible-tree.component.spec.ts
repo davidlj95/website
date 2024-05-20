@@ -12,7 +12,6 @@ import {
   ATTRIBUTE_ARIA_EXPANDED,
   ATTRIBUTE_ARIA_HIDDEN,
 } from '@/test/helpers/aria'
-import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { expectIsInLayout } from '@/test/helpers/visibility'
 import {
@@ -21,6 +20,7 @@ import {
 } from './collapsible-tree-node'
 import { Component, Input } from '@angular/core'
 import { EmptyComponent } from '@/test/helpers/empty-component'
+import { getComponentInstance } from '@/test/helpers/get-component-instance'
 
 describe('CollapsibleTreeComponent', () => {
   let component: CollapsibleTreeComponent
@@ -126,9 +126,9 @@ describe('CollapsibleTreeComponent', () => {
         )
         expect(itemElement).not.toBeNull()
 
-        expect(getReflectedAttribute(itemElement, 'depth')).toEqual(
-          (DUMMY_DEPTH + 1).toString(),
-        )
+        expect(
+          getComponentInstance(itemElement, CollapsibleTreeComponent).depth,
+        ).toBe(DUMMY_DEPTH + 1)
       }
     })
 

@@ -23,7 +23,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeEducationItem } from './__tests__/make-education-item'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
-import { getReflectedAttribute } from '@/test/helpers/get-reflected-attribute'
+import { getComponentInstance } from '@/test/helpers/get-component-instance'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -60,7 +60,9 @@ describe('EducationItemComponent', () => {
       byComponent(CardHeaderImageComponent),
     )
     expect(imageElement).toBeTruthy()
-    expect(getReflectedAttribute(imageElement, 'src')).toEqual(imageUrl)
+    expect(
+      getComponentInstance(imageElement, CardHeaderImageComponent).src,
+    ).toEqual(imageUrl)
   })
 
   it("should display institution name with link to company's website", () => {
