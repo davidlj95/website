@@ -1,13 +1,14 @@
 @use 'borders';
+@use 'header';
 
 :host {
   display: block;
-  overflow: hidden;
+  font-size: 1.25rem;
+}
 
-  app-tab {
-    font-size: 1.25rem;
-    // 👇 Bottom border over panel border
-    position: relative;
-    bottom: -#{borders.$panel-width};
-  }
+app-tabs {
+  height: header.$height;
+}
+app-tab {
+  height: 100%;
 }
