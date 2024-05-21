@@ -50,11 +50,11 @@
 
 $_no-color-scheme-attribute-selector: ':not([data-color-scheme])';
 $_dark-mode-attribute-selector: '[data-color-scheme="dark"]';
-@mixin when-dark-mode-host-context {
-  @include root-attribute.host-context($_dark-mode-attribute-selector) {
+@mixin when-dark-mode {
+  @include root-attribute.context($_dark-mode-attribute-selector) {
     @content;
   }
-  @include root-attribute.host-context($_no-color-scheme-attribute-selector) {
+  @include root-attribute.context($_no-color-scheme-attribute-selector) {
     @media (prefers-color-scheme: dark) {
       @content;
     }

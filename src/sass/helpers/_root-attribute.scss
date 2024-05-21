@@ -2,7 +2,20 @@
 @use 'sass:string';
 
 $_root-selector: 'html'; // could use :root 🤷
-@mixin host-context($attributeSelector) {
+
+@mixin context($attributeSelector, $hostContext: true) {
+  @if ($hostContext) {
+    @include _host-context($attributeSelector) {
+      @content;
+    }
+  } @else {
+    @include _root-context($attributeSelector) {
+      @content;
+    }
+  }
+}
+
+@mixin _host-context($attributeSelector) {
   @at-root {
     // 👇 Angular adds [_nghost-ng-g4rb4g3] when using :host-context(selector) twice to:
     //      - Match selector in host: `selector:host`
@@ -24,7 +37,7 @@ $_root-selector: 'html'; // could use :root 🤷
   }
 }
 
-@mixin context($attributeSelector) {
+@mixin _root-context($attributeSelector) {
   @at-root {
     #{selector.nest(_root-attribute-selector($attributeSelector), &)} {
       @content;

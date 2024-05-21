@@ -15,7 +15,7 @@ button {
     }
   }
 
-  @include animations.when-motion-host-context {
+  @include animations.when-motion {
     @include animations.single-transition(color, animations.$emphasized-style);
   }
 

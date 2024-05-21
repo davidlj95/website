@@ -11,10 +11,10 @@
 @include texts.page;
 
 img.sports-equation {
-  @include theming.when-dark-mode-host-context {
+  @include theming.when-dark-mode {
     filter: invert(1);
   }
-  @include animations.when-motion-host-context {
+  @include animations.when-motion {
     @include animations.single-transition(filter, animations.$emphasized-style);
   }
 }

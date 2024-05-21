@@ -27,7 +27,7 @@ code {
   font-weight: bold;
   font-size: math.div(3 * card-header-image.$size, 8);
 
-  @include animations.when-motion-host-context {
+  @include animations.when-motion {
     @include animations.multiple-transitions(
       (background-color),
       animations.$emphasized-style

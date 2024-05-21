@@ -4,7 +4,7 @@
   font-size: 1.15rem;
   color: var(--ui-text);
 
-  @include animations.when-motion-host-context {
+  @include animations.when-motion {
     @include animations.single-transition(color, animations.$emphasized-style);
   }
 }
