@@ -1,5 +1,7 @@
 @use 'themes/constants';
+@use 'sass:selector';
 @import 'helpers/scss-to-css-vars';
+@import 'helpers/define-global-host-context';
 
 @mixin define-theme($theme) {
   @each $scheme in map-get($theme, schemes) {
@@ -46,15 +48,15 @@
   }
 }
 
-@mixin only-dark-mode {
-  @at-root {
-    ::ng-deep html[data-color-scheme='dark'] {
-      @content;
-    }
+$_no-color-scheme-attribute-selector: ':not([data-color-scheme])';
+$_dark-mode-attribute-selector: '[data-color-scheme="dark"]';
+@mixin host-context-dark-mode-only {
+  @include define-global-host-context($_dark-mode-attribute-selector) {
+    @content;
+  }
+  @include define-global-host-context($_no-color-scheme-attribute-selector) {
     @media (prefers-color-scheme: dark) {
-      ::ng-deep html:not([data-color-scheme]) {
-        @content;
-      }
+      @content;
     }
   }
 }
