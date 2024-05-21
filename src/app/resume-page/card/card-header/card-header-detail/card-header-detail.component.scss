@@ -3,7 +3,7 @@
 :host {
   font-size: 1rem;
   color: var(--ui-text);
-  @include animations.define {
+  @include animations.define-with-host-context {
     @include animations.single-transition(color, animations.$emphasized-style);
   }
 }

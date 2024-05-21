@@ -2,37 +2,35 @@
 @use '../../../card/card-header/card-header-image/card-header-image';
 @use 'sass:math';
 
-:host {
-  a {
-    text-decoration: none;
-    color: var(--sys-color-on-surface);
-    :hover {
-      color: var(--ui-text);
-    }
+a {
+  text-decoration: none;
+  color: var(--sys-color-on-surface);
+  :hover {
+    color: var(--ui-text);
+  }
+}
+
+code {
+  display: block;
+  text-align: center;
+
+  height: card-header-image.$size;
+  width: card-header-image.$size;
+  border-radius: card-header-image.$size;
+  line-height: card-header-image.$size;
+
+  background-color: var(--sys-color-surface5);
+  &:hover {
+    background-color: var(--sys-color-surface2);
   }
 
-  code {
-    display: block;
-    text-align: center;
+  font-weight: bold;
+  font-size: math.div(3 * card-header-image.$size, 8);
 
-    height: card-header-image.$size;
-    width: card-header-image.$size;
-    border-radius: card-header-image.$size;
-    line-height: card-header-image.$size;
-
-    background-color: var(--sys-color-surface5);
-    &:hover {
-      background-color: var(--sys-color-surface2);
-    }
-
-    font-weight: bold;
-    font-size: math.div(3 * card-header-image.$size, 8);
-
-    @include animations.define {
-      @include animations.multiple-transitions(
-        (background-color, color),
-        animations.$emphasized-style
-      );
-    }
+  @include animations.define-with-host-context {
+    @include animations.multiple-transitions(
+      (background-color),
+      animations.$emphasized-style
+    );
   }
 }

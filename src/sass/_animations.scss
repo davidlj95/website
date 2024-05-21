@@ -50,7 +50,8 @@ $emphasized-style: (
   @return $property map.get($style, duration) map.get($style, timing-function);
 }
 
-@mixin motion-host-context() {
+$_reduced-motion-selector: 'html:not([data-reduced-motion])';
+@mixin define-with-host-context() {
   @at-root {
     // 👇 Angular adds [_nghost-ng-g4rb4g3] when using :host-context(selector) twice to:
     //      - Match selector in host: `selector:host`
@@ -66,7 +67,7 @@ $emphasized-style: (
     //    https://github.com/angular/angular/issues/51954
     //    But the point of applying `:host-context(html)` was not successfully explained
     //    It's appearing in production builds. Taking note to create an issue about this.
-    #{selector.nest(':host-context(html:not([data-reduced-motion]))', &)} {
+    #{selector.nest(':host-context(#{$_reduced-motion-selector})', &)} {
       @media (prefers-reduced-motion: no-preference) {
         @content;
       }
@@ -75,9 +76,11 @@ $emphasized-style: (
 }
 
 @mixin define {
-  @at-root #{selector.nest('html:not([data-reduced-motion])', &)} {
-    @media (prefers-reduced-motion: no-preference) {
-      @content;
+  @at-root {
+    #{selector.nest($_reduced-motion-selector, &)} {
+      @media (prefers-reduced-motion: no-preference) {
+        @content;
+      }
     }
   }
 }

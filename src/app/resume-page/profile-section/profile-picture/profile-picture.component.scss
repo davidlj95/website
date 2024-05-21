@@ -18,7 +18,7 @@ $picture-size: 128px;
     border-color: var(--sys-color-divider);
     filter: var(--img-filter);
 
-    @include animations.define {
+    @include animations.define-with-host-context {
       transition: animations.transition(opacity),
         animations.transition(visibility),
         animations.transition(filter, animations.$emphasized-style),
@@ -52,7 +52,7 @@ $picture-size: 128px;
     padding: paddings.$s;
     border-radius: paddings.$s;
 
-    @include animations.define {
+    @include animations.define-with-host-context {
       @include animations.multiple-transitions((opacity, visibility));
     }
 

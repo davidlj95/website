@@ -27,7 +27,7 @@
     }
   }
 
-  @include animations.define {
+  @include animations.define-with-host-context {
     @include animations.multiple-transitions(
       (border-bottom-color, color),
       animations.$emphasized-style

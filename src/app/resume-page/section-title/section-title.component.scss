@@ -16,7 +16,7 @@
   background-color: var(--app-color-toolbar-background);
   color: var(--ui-text);
 
-  @include animations.define {
+  @include animations.define-with-host-context {
     @include animations.multiple-transitions(
       (color, background-color, border-color),
       animations.$emphasized-style

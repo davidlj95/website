@@ -11,7 +11,7 @@
   color: var(--sys-color-on-surface);
   border-color: var(--adorner-border-color);
 
-  @include animations.define {
+  @include animations.define-with-host-context {
     @include animations.multiple-transitions(
       (background-color, color, border-color),
       animations.$emphasized-style
