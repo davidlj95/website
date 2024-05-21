@@ -7,7 +7,7 @@
   padding: paddings.$s;
   background-color: var(--sys-color-surface3);
 
-  @include animations.define {
+  @include animations.define-with-host-context {
     @include animations.multiple-transitions(
       (background-color, border-color),
       animations.$emphasized-style

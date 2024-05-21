@@ -8,7 +8,7 @@
   cursor: pointer;
   color: var(--ui-text);
 
-  @include animations.define {
+  @include animations.define-with-host-context {
     @include animations.single-transition(color);
   }
 
@@ -19,26 +19,26 @@
       opacity: 1;
     }
   }
+}
 
-  [role='tooltip'] {
-    position: absolute;
-    top: 0;
+[role='tooltip'] {
+  position: absolute;
+  top: 0;
 
-    // 👇 For animation purposes
-    visibility: hidden;
-    right: 150%;
-    opacity: 0;
-    @include animations.define {
-      @include animations.multiple-transitions((right, opacity, visibility));
-    }
-
-    font-size: 1rem;
-    width: max-content;
-    margin: 0 margins.$s;
-    padding: paddings.$s;
-    text-align: right;
-    @include borders.panel;
-    color: var(--ui-text);
-    background-color: var(--sys-color-surface5);
+  // 👇 For animation purposes
+  visibility: hidden;
+  right: 150%;
+  opacity: 0;
+  @include animations.define-with-host-context {
+    @include animations.multiple-transitions((right, opacity, visibility));
   }
+
+  font-size: 1rem;
+  width: max-content;
+  margin: 0 margins.$s;
+  padding: paddings.$s;
+  text-align: right;
+  @include borders.panel;
+  color: var(--ui-text);
+  background-color: var(--sys-color-surface5);
 }

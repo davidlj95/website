@@ -4,24 +4,19 @@
 @use 'sass:selector';
 @use 'animations';
 
-:host {
-  button {
-    color: var(--icon-default);
-    border-style: none;
-    background: transparent;
+button {
+  color: var(--icon-default);
+  border-style: none;
+  background: transparent;
 
-    @include touch-or-pointer.primaryInputCanHover {
-      &:hover {
-        color: var(--icon-default-hover);
-      }
+  @include touch-or-pointer.primaryInputCanHover {
+    &:hover {
+      color: var(--icon-default-hover);
     }
+  }
 
-    @include animations.define {
-      @include animations.single-transition(
-        color,
-        animations.$emphasized-style
-      );
-    }
+  @include animations.define-with-host-context {
+    @include animations.single-transition(color, animations.$emphasized-style);
   }
 
   @include material-symbols.class {

@@ -2,16 +2,13 @@
 @use 'card-header-image';
 
 :host {
-  min-width: card-header-image.$size;
+  width: card-header-image.$size;
+}
 
-  img {
-    border-radius: card-header-image.$size;
-    filter: var(--img-filter);
-    @include animations.define {
-      @include animations.single-transition(
-        filter,
-        animations.$emphasized-style
-      );
-    }
+img {
+  border-radius: card-header-image.$size;
+  filter: var(--img-filter);
+  @include animations.define-with-host-context {
+    @include animations.single-transition(filter, animations.$emphasized-style);
   }
 }
