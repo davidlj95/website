@@ -28,7 +28,7 @@ body {
   // Do not allow scroll "bounce" effect
   overscroll-behavior: none;
 
-  @include animations.define {
+  @include animations.when-motion {
     @include animations.multiple-transitions(
       (color, background-color),
       animations.$emphasized-style
@@ -51,7 +51,7 @@ a {
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
 
-  @include animations.define {
+  @include animations.when-motion {
     @include animations.multiple-transitions(
       (color, text-decoration-color),
       animations.$emphasized-style

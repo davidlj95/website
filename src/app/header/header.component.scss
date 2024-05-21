@@ -15,7 +15,7 @@ header {
   @include borders.panel(bottom);
   background-color: var(--app-color-toolbar-background);
 
-  @include animations.define-with-host-context {
+  @include animations.when-motion-host-context {
     @include animations.multiple-transitions(
       (background-color, border-color),
       animations.$emphasized-style

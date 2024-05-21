@@ -44,7 +44,7 @@ img {
   border-color: var(--sys-color-divider);
   filter: var(--img-filter);
 
-  @include animations.define-with-host-context {
+  @include animations.when-motion-host-context {
     transition: animations.transition(opacity),
       animations.transition(visibility),
       animations.transition(filter, animations.$emphasized-style),
@@ -78,7 +78,7 @@ img {
   padding: paddings.$s;
   border-radius: paddings.$s;
 
-  @include animations.define-with-host-context {
+  @include animations.when-motion-host-context {
     @include animations.multiple-transitions((opacity, visibility));
   }
 

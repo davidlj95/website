@@ -8,7 +8,7 @@
   cursor: pointer;
   color: var(--ui-text);
 
-  @include animations.define-with-host-context {
+  @include animations.when-motion-host-context {
     @include animations.single-transition(color);
   }
 
@@ -29,8 +29,11 @@
   visibility: hidden;
   right: 150%;
   opacity: 0;
-  @include animations.define-with-host-context {
-    @include animations.multiple-transitions((right, opacity, visibility));
+  @include animations.when-motion-host-context {
+    @include animations.multiple-transitions(
+      (right, opacity, visibility, background-color, color, border-color),
+      animations.$emphasized-style
+    );
   }
 
   font-size: 1rem;

@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:selector';
+@use 'helpers/root-attribute';
 
 // https://m3.material.io/styles/motion
 // To be in sync with animations.ts
@@ -50,37 +51,25 @@ $emphasized-style: (
   @return $property map.get($style, duration) map.get($style, timing-function);
 }
 
-$_reduced-motion-selector: 'html:not([data-reduced-motion])';
-@mixin define-with-host-context() {
-  @at-root {
-    // 👇 Angular adds [_nghost-ng-g4rb4g3] when using :host-context(selector) twice to:
-    //      - Match selector in host: `selector:host`
-    //      - Match selector in any host's ancestor: `selector :host`
-    //    In this case, given selector is `html`, `html:host` makes no sense as we know the component
-    //    will never be `<html>`
-    //
-    //    Example output:
-    //      html:not([data-reduced-motion])[_nghost-ng-g4rb4g3] selector[_ngcontent-ng-cp00p],
-    //      html:not([data-reduced-motion]) [_nghost-ng-g4rb4g3] selector[_ngcontent-ng-cp00p],
-    //
-    //    First one could be omitted. There is an issue that slightly talks about it in Angular repo:
-    //    https://github.com/angular/angular/issues/51954
-    //    But the point of applying `:host-context(html)` was not successfully explained
-    //    It's appearing in production builds. Taking note to create an issue about this.
-    #{selector.nest(':host-context(#{$_reduced-motion-selector})', &)} {
-      @media (prefers-reduced-motion: no-preference) {
-        @content;
-      }
+$_reduced-motion-attribute-selector: '[data-reduced-motion]';
+$_no-reduced-motion-selector: ':not(#{$_reduced-motion-attribute-selector})';
+@mixin when-motion-host-context() {
+  @include root-attribute.host-context($_no-reduced-motion-selector) {
+    @include no-reduced-motion-preference {
+      @content;
+    }
+  }
+}
+@mixin when-motion() {
+  @include root-attribute.context($_no-reduced-motion-selector) {
+    @include no-reduced-motion-preference {
+      @content;
     }
   }
 }
 
-@mixin define {
-  @at-root {
-    #{selector.nest($_reduced-motion-selector, &)} {
-      @media (prefers-reduced-motion: no-preference) {
-        @content;
-      }
-    }
+@mixin no-reduced-motion-preference() {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
   }
 }

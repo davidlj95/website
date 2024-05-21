@@ -1,8 +1,8 @@
 @use 'sass:selector';
 @use 'sass:string';
 
-@mixin define-global-host-context($attributeSelector) {
-  $selector: assert-is-attribute-selector($attributeSelector);
+$_root-selector: 'html'; // could use :root 🤷
+@mixin host-context($attributeSelector) {
   @at-root {
     // 👇 Angular adds [_nghost-ng-g4rb4g3] when using :host-context(selector) twice to:
     //      - Match selector in host: `selector:host`
@@ -18,13 +18,28 @@
     //    https://github.com/angular/angular/issues/51954
     //    But the point of applying `:host-context(html)` was not successfully explained
     //    It's appearing in production builds. Taking note to create an issue about this.
-    #{selector.nest(':host-context(html#{$selector})', &)} {
+    #{selector.nest(':host-context(#{_root-attribute-selector($attributeSelector)})', &)} {
       @content;
     }
   }
 }
 
-@function assert-is-attribute-selector($selector) {
+@mixin context($attributeSelector) {
+  @at-root {
+    #{selector.nest(_root-attribute-selector($attributeSelector), &)} {
+      @content;
+    }
+  }
+}
+
+@function _root-attribute-selector($attributeSelector) {
+  @return selector.append(
+    $_root-selector,
+    _assert-is-attribute-selector($attributeSelector)
+  );
+}
+
+@function _assert-is-attribute-selector($selector) {
   $openingBrace: string.index($selector, '[');
   $closingBrace: string.index($selector, ']');
 
