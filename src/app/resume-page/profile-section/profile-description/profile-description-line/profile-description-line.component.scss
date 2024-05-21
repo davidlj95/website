@@ -11,7 +11,7 @@
   text-align: left;
 
   @include material-symbols.class {
-    font-size: 1em;
+    @include material-symbols.font-size(1em);
     @include material-symbols.variation-settings(
       $fill: true,
       $weight: 700,

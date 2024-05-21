@@ -7,7 +7,7 @@
 :host {
   display: block;
   position: sticky;
-  top: header.$height - header.$border-height;
+  top: calc(#{header.$height} - #{header.$border-height});
   z-index: z-index.$headers;
   width: 100%;
   padding: paddings.$s paddings.$l;
