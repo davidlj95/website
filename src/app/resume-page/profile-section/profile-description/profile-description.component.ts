@@ -1,6 +1,4 @@
-import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common'
 import { Component, Inject } from '@angular/core'
-import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { METADATA } from '@/common/injection-tokens'
 import { DescriptionLine, Metadata } from '../../../metadata'
 import {
@@ -22,14 +20,7 @@ import { ProfileDescriptionLineComponent } from './profile-description-line/prof
     ></app-collapsible-tree>
   `,
   standalone: true,
-  imports: [
-    NgIf,
-    NgTemplateOutlet,
-    MaterialSymbolDirective,
-    NgFor,
-    NgClass,
-    CollapsibleTreeComponent,
-  ],
+  imports: [CollapsibleTreeComponent],
 })
 export class ProfileDescriptionComponent {
   protected readonly ROOT_NODE = new CollapsibleTreeNode(

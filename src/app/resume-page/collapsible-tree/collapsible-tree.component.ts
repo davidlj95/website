@@ -1,12 +1,6 @@
 import { Component, Input, QueryList, ViewChildren } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
-import {
-  NgClass,
-  NgComponentOutlet,
-  NgForOf,
-  NgIf,
-  NgTemplateOutlet,
-} from '@angular/common'
+import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
 import {
   animate,
   AUTO_STYLE,
@@ -28,14 +22,7 @@ let nextId = 0
 @Component({
   selector: 'app-collapsible-tree',
   standalone: true,
-  imports: [
-    MaterialSymbolDirective,
-    NgIf,
-    NgTemplateOutlet,
-    NgClass,
-    NgForOf,
-    NgComponentOutlet,
-  ],
+  imports: [MaterialSymbolDirective, NgTemplateOutlet, NgComponentOutlet],
   templateUrl: './collapsible-tree.component.html',
   styleUrl: './collapsible-tree.component.scss',
   animations: [
