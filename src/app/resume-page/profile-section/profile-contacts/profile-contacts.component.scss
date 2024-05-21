@@ -8,40 +8,40 @@
   gap: margins.$m;
   flex-wrap: wrap;
   flex-direction: row;
+}
 
-  ul {
-    display: flex;
-    flex-direction: row;
-    gap: margins.$s;
-  }
+ul {
+  display: flex;
+  flex-direction: row;
+  gap: margins.$s;
+}
 
-  li {
-    a {
-      text-decoration-line: none;
-      color: var(--icon-default);
-      &:hover {
-        color: var(--sys-color-on-surface);
-      }
-      @include animations.define-with-host-context {
-        @include animations.single-transition(
-          color,
-          animations.$emphasized-style
-        );
-      }
+li {
+  a {
+    text-decoration-line: none;
+    color: var(--icon-default);
+    &:hover {
+      color: var(--sys-color-on-surface);
+    }
+    @include animations.define-with-host-context {
+      @include animations.single-transition(
+        color,
+        animations.$emphasized-style
+      );
     }
   }
+}
 
-  $icons-font-size: 2rem;
-  @include material-symbols.class {
-    @include material-symbols.font-size($icons-font-size);
-    @include material-symbols.variation-settings(
-      $fill: true,
-      $weight: 700,
-      $grade: 200
-    );
-  }
+$icons-font-size: 2rem;
+@include material-symbols.class {
+  @include material-symbols.font-size($icons-font-size);
+  @include material-symbols.variation-settings(
+    $fill: true,
+    $weight: 700,
+    $grade: 200
+  );
+}
 
-  ng-icon {
-    font-size: $icons-font-size;
-  }
+ng-icon {
+  font-size: $icons-font-size;
 }

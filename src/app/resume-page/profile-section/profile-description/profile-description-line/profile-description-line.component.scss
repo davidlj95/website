@@ -9,14 +9,14 @@
   font-size: 1.25rem;
   gap: margins.$s;
   text-align: left;
+}
 
-  @include material-symbols.class {
-    @include material-symbols.font-size(1em);
-    @include material-symbols.variation-settings(
-      $fill: true,
-      $weight: 700,
-      $grade: 200,
-      $size: 24
-    );
-  }
+@include material-symbols.class {
+  @include material-symbols.font-size(1em);
+  @include material-symbols.variation-settings(
+    $fill: true,
+    $weight: 700,
+    $grade: 200,
+    $size: 24
+  );
 }

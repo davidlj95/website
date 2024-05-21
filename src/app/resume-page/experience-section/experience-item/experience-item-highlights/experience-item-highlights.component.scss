@@ -1,9 +1,7 @@
 @use 'margins';
 
-:host {
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: margins.$s;
-  }
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: margins.$s;
 }

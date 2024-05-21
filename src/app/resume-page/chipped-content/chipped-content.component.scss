@@ -4,17 +4,17 @@
   display: flex;
   flex-direction: column;
   gap: margins.$m;
+}
 
-  .chips {
-    display: flex;
-    gap: margins.$s;
+.chips {
+  display: flex;
+  gap: margins.$s;
+}
+
+.content {
+  > ::ng-deep * {
+    display: block;
   }
 
-  .content {
-    > ::ng-deep * {
-      display: block;
-    }
-
-    overflow: hidden;
-  }
+  overflow: hidden;
 }
