@@ -1,7 +1,5 @@
 @use 'page';
 @use 'paddings';
-@use 'borders';
-@use 'animations';
 
 :host {
   @include page.full-size;
