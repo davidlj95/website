@@ -4,7 +4,11 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Subscription } from 'rxjs'
 import { WINDOW } from '@/common/injection-tokens'
-import { ColorSchemeService, Scheme } from './color-scheme.service'
+import {
+  ColorSchemeService,
+  HTML_COLOR_SCHEME_ATTRIBUTE,
+  Scheme,
+} from './color-scheme.service'
 
 describe('ColorSchemeService', () => {
   let mockDocumentElement: HTMLElement
@@ -83,26 +87,34 @@ describe('ColorSchemeService', () => {
 
     describe('when can detect system preference', () => {
       it('should remove the manual scheme preference to reflect change (if applies)', () => {
-        const sut = TestBed.inject(ColorSchemeService)
-        mockDocumentElement.setAttribute(sut.htmlAttribute, manuallySetScheme)
+        TestBed.inject(ColorSchemeService)
+        mockDocumentElement.setAttribute(
+          HTML_COLOR_SCHEME_ATTRIBUTE,
+          manuallySetScheme,
+        )
 
         prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent)
 
-        expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+        expect(
+          mockDocumentElement.getAttribute(HTML_COLOR_SCHEME_ATTRIBUTE),
+        ).toBeNull()
       })
     })
 
     describe('when cannot detect system preference', () => {
       it('should do nothing', () => {
         mockWindow = {} as Window
-        const sut = TestBed.inject(ColorSchemeService)
-        mockDocumentElement.setAttribute(sut.htmlAttribute, manuallySetScheme)
+        TestBed.inject(ColorSchemeService)
+        mockDocumentElement.setAttribute(
+          HTML_COLOR_SCHEME_ATTRIBUTE,
+          manuallySetScheme,
+        )
 
         prefersDarkMatchMediaChangesEmitter.emit({} as MediaQueryListEvent)
 
-        expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBe(
-          manuallySetScheme,
-        )
+        expect(
+          mockDocumentElement.getAttribute(HTML_COLOR_SCHEME_ATTRIBUTE),
+        ).toBe(manuallySetScheme)
       })
     })
   })
@@ -119,7 +131,7 @@ describe('ColorSchemeService', () => {
           sut.toggleDarkLight()
 
           const schemeAttributeValue = mockDocumentElement.getAttribute(
-            sut.htmlAttribute,
+            HTML_COLOR_SCHEME_ATTRIBUTE,
           )
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         })
@@ -130,7 +142,7 @@ describe('ColorSchemeService', () => {
           sut.toggleDarkLight()
 
           const schemeAttributeValue = mockDocumentElement.getAttribute(
-            sut.htmlAttribute,
+            HTML_COLOR_SCHEME_ATTRIBUTE,
           )
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         })
@@ -141,7 +153,7 @@ describe('ColorSchemeService', () => {
           sut.toggleDarkLight()
 
           const schemeAttributeValue = mockDocumentElement.getAttribute(
-            sut.htmlAttribute,
+            HTML_COLOR_SCHEME_ATTRIBUTE,
           )
           expect(schemeAttributeValue).toBe(Scheme.Light)
         })
@@ -150,22 +162,28 @@ describe('ColorSchemeService', () => {
     describe('when color scheme is manually set', () => {
       describe('when set to light', () => {
         it('should manually set the scheme to dark', () => {
-          mockDocumentElement.setAttribute(sut.htmlAttribute, Scheme.Light)
+          mockDocumentElement.setAttribute(
+            HTML_COLOR_SCHEME_ATTRIBUTE,
+            Scheme.Light,
+          )
           sut.toggleDarkLight()
 
           const schemeAttributeValue = mockDocumentElement.getAttribute(
-            sut.htmlAttribute,
+            HTML_COLOR_SCHEME_ATTRIBUTE,
           )
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         })
       })
       describe('when set to dark', () => {
         it('should manually set the scheme to light', () => {
-          mockDocumentElement.setAttribute(sut.htmlAttribute, Scheme.Dark)
+          mockDocumentElement.setAttribute(
+            HTML_COLOR_SCHEME_ATTRIBUTE,
+            Scheme.Dark,
+          )
           sut.toggleDarkLight()
 
           const schemeAttributeValue = mockDocumentElement.getAttribute(
-            sut.htmlAttribute,
+            HTML_COLOR_SCHEME_ATTRIBUTE,
           )
           expect(schemeAttributeValue).toBe(Scheme.Light)
         })
@@ -176,14 +194,16 @@ describe('ColorSchemeService', () => {
   describe('#setColorScheme', () => {
     it('should manually set the scheme as an HTML tag attribute', () => {
       const sut = TestBed.inject(ColorSchemeService)
-      expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+      expect(
+        mockDocumentElement.getAttribute(HTML_COLOR_SCHEME_ATTRIBUTE),
+      ).toBeNull()
       const randomScheme = Scheme.Dark
 
       sut.setManual(randomScheme)
 
-      expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBe(
-        randomScheme,
-      )
+      expect(
+        mockDocumentElement.getAttribute(HTML_COLOR_SCHEME_ATTRIBUTE),
+      ).toBe(randomScheme)
     })
   })
 
@@ -191,11 +211,16 @@ describe('ColorSchemeService', () => {
     it('should remove the manually set scheme as an HTML tag attribute', () => {
       const sut = TestBed.inject(ColorSchemeService)
       const randomScheme = Scheme.Dark
-      mockDocumentElement.setAttribute(sut.htmlAttribute, randomScheme)
+      mockDocumentElement.setAttribute(
+        HTML_COLOR_SCHEME_ATTRIBUTE,
+        randomScheme,
+      )
 
       sut.setSystem()
 
-      expect(mockDocumentElement.getAttribute(sut.htmlAttribute)).toBeNull()
+      expect(
+        mockDocumentElement.getAttribute(HTML_COLOR_SCHEME_ATTRIBUTE),
+      ).toBeNull()
     })
   })
 })
