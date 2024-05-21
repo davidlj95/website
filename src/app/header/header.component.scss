@@ -6,9 +6,11 @@
 :host {
   position: fixed;
   z-index: z-index.$header;
-  height: header.$height;
   width: 100%;
+}
 
+header {
+  height: header.$height;
   display: flex;
   @include borders.panel(bottom);
   background-color: var(--app-color-toolbar-background);
