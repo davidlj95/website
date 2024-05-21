@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core'
 import { METADATA } from '@/common/injection-tokens'
 import { DescriptionLine, Metadata } from '../../../metadata'
 import {
@@ -21,6 +21,7 @@ import { ProfileDescriptionLineComponent } from './profile-description-line/prof
   `,
   standalone: true,
   imports: [CollapsibleTreeComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileDescriptionComponent {
   protected readonly ROOT_NODE = new CollapsibleTreeNode(
