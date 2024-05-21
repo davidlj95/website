@@ -53,23 +53,10 @@ $emphasized-style: (
 
 $_reduced-motion-attribute-selector: '[data-reduced-motion]';
 $_no-reduced-motion-selector: ':not(#{$_reduced-motion-attribute-selector})';
-@mixin when-motion-host-context() {
-  @include root-attribute.host-context($_no-reduced-motion-selector) {
-    @include no-reduced-motion-preference {
+@mixin when-motion($hostContext: true) {
+  @include root-attribute.context($_no-reduced-motion-selector, $hostContext) {
+    @media (prefers-reduced-motion: no-preference) {
       @content;
     }
-  }
-}
-@mixin when-motion() {
-  @include root-attribute.context($_no-reduced-motion-selector) {
-    @include no-reduced-motion-preference {
-      @content;
-    }
-  }
-}
-
-@mixin no-reduced-motion-preference() {
-  @media (prefers-reduced-motion: no-preference) {
-    @content;
   }
 }

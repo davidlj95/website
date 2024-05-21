@@ -27,7 +27,7 @@
     }
   }
 
-  @include animations.when-motion-host-context {
+  @include animations.when-motion {
     @include animations.multiple-transitions(
       (border-bottom-color, color),
       animations.$emphasized-style
