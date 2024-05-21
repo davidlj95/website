@@ -1,0 +1,25 @@
+@use 'margins';
+@use 'page';
+
+app-content-page {
+  display: block;
+  padding: page.$padding;
+}
+
+h1 {
+  margin-block-end: margins.$m;
+}
+
+h2 {
+  margin-block: margins.$m;
+}
+
+p {
+  margin-block: 1em;
+}
+
+ul {
+  list-style-type: square;
+  margin-inline-start: 1em;
+  padding-inline-start: 1em;
+}
