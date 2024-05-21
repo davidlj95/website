@@ -1,4 +1,10 @@
-import { Component, Input, QueryList, ViewChildren } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  QueryList,
+  ViewChildren,
+} from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
 import {
@@ -39,6 +45,7 @@ let nextId = 0
       ),
     ]),
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CollapsibleTreeComponent {
   @Input({ required: true }) public node!: CollapsibleTreeNode
