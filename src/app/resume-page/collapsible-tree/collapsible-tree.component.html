@@ -1,5 +1,5 @@
-<ng-container *ngIf="node.data">
-  <ng-container *ngIf="isCollapsible; else leaf">
+@if (node.data) {
+  @if (isCollapsible) {
     <button
       type="button"
       class="data"
@@ -12,30 +12,29 @@
       </span>
       <ng-container [ngTemplateOutlet]="data"></ng-container>
     </button>
-  </ng-container>
-  <ng-template #leaf>
+  } @else {
     <div class="data">
       <ng-container [ngTemplateOutlet]="data"></ng-container>
     </div>
-  </ng-template>
+  }
   <ng-template #data>
     <ng-container
       *ngComponentOutlet="node.data.component; inputs: node.data.options.inputs"
     ></ng-container>
   </ng-template>
-</ng-container>
-<ul
-  *ngIf="node.children.length"
-  [attr.id]="childListId"
-  [@expanded]="!isCollapsible || isExpanded"
->
-  <li *ngFor="let child of node.children">
-    <app-collapsible-tree
-      [node]="child"
-      [isCollapsibleFn]="isCollapsibleFn"
-      [depth]="depth + 1"
-      [parent]="this"
-    >
-    </app-collapsible-tree>
-  </li>
-</ul>
+}
+@if (node.children.length) {
+  <ul [attr.id]="childListId" [@expanded]="!isCollapsible || isExpanded">
+    @for (child of node.children; track child.data) {
+      <li>
+        <app-collapsible-tree
+          [node]="child"
+          [isCollapsibleFn]="isCollapsibleFn"
+          [depth]="depth + 1"
+          [parent]="this"
+        >
+        </app-collapsible-tree>
+      </li>
+    }
+  </ul>
+}
