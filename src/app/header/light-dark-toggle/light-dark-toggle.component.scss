@@ -1,8 +1,8 @@
 @use 'header';
 @use 'touch-or-pointer';
 @use 'material-symbols';
-@use 'sass:selector';
 @use 'animations';
+@use 'theming';
 
 button {
   color: var(--icon-default);
@@ -29,37 +29,13 @@ button {
   }
 }
 
-@mixin light-only {
-  ::ng-deep.light-only {
-    display: initial;
-  }
-
-  ::ng-deep.dark-only {
+.light-only {
+  @include theming.when-dark-mode {
     display: none;
   }
 }
-
-::ng-deep html,
-::ng-deep html[data-color-scheme='light'] {
-  @include light-only;
-}
-
-@mixin dark-only {
-  ::ng-deep.light-only {
+.dark-only {
+  @include theming.when-light-mode {
     display: none;
-  }
-
-  ::ng-deep.dark-only {
-    display: initial;
-  }
-}
-
-::ng-deep html[data-color-scheme='dark'] {
-  @include dark-only;
-}
-
-@media (prefers-color-scheme: dark) {
-  ::ng-deep html {
-    @include dark-only;
   }
 }

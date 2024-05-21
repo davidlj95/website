@@ -48,7 +48,18 @@
   }
 }
 
+$_light-mode-attribute-selector: '[data-color-scheme="light"]';
 $_no-color-scheme-attribute-selector: ':not([data-color-scheme])';
+@mixin when-light-mode {
+  @include root-attribute.context($_light-mode-attribute-selector) {
+    @content;
+  }
+  @include root-attribute.context($_no-color-scheme-attribute-selector) {
+    @media (not (prefers-color-scheme: dark)) {
+      @content;
+    }
+  }
+}
 $_dark-mode-attribute-selector: '[data-color-scheme="dark"]';
 @mixin when-dark-mode {
   @include root-attribute.context($_dark-mode-attribute-selector) {
