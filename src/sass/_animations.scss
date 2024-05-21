@@ -50,6 +50,30 @@ $emphasized-style: (
   @return $property map.get($style, duration) map.get($style, timing-function);
 }
 
+@mixin motion-host-context() {
+  @at-root {
+    // 👇 Angular adds [_nghost-ng-g4rb4g3] when using :host-context(selector) twice to:
+    //      - Match selector in host: `selector:host`
+    //      - Match selector in any host's ancestor: `selector :host`
+    //    In this case, given selector is `html`, `html:host` makes no sense as we know the component
+    //    will never be `<html>`
+    //
+    //    Example output:
+    //      html:not([data-reduced-motion])[_nghost-ng-g4rb4g3] selector[_ngcontent-ng-cp00p],
+    //      html:not([data-reduced-motion]) [_nghost-ng-g4rb4g3] selector[_ngcontent-ng-cp00p],
+    //
+    //    First one could be omitted. There is an issue that slightly talks about it in Angular repo:
+    //    https://github.com/angular/angular/issues/51954
+    //    But the point of applying `:host-context(html)` was not successfully explained
+    //    It's appearing in production builds. Taking note to create an issue about this.
+    #{selector.nest(':host-context(html:not([data-reduced-motion]))', &)} {
+      @media (prefers-reduced-motion: no-preference) {
+        @content;
+      }
+    }
+  }
+}
+
 @mixin define {
   @at-root #{selector.nest('html:not([data-reduced-motion])', &)} {
     @media (prefers-reduced-motion: no-preference) {
