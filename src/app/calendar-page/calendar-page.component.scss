@@ -1,7 +1,5 @@
 @use 'page';
 @use 'paddings';
-@use 'borders';
-@use 'animations';
 
 :host {
   @include page.full-size;
@@ -10,23 +8,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
-  .pre {
-    margin-top: paddings.$m;
-    width: 100%;
-    height: paddings.$s;
-    background: linear-gradient(
-      180deg,
-      var(--sys-color-cdt-base-container) 0%,
-      white 100%
-    );
-  }
+.pre {
+  margin-top: paddings.$m;
+  width: 100%;
+  height: paddings.$s;
+  background: linear-gradient(
+    180deg,
+    var(--sys-color-cdt-base-container) 0%,
+    white 100%
+  );
+}
 
-  iframe {
-    // Appointments page does not support dark mode
-    background: white;
-    border: 0;
-    width: 100%;
-    flex-grow: 1;
-  }
+iframe {
+  // Appointments page does not support dark mode
+  background: white;
+  border: 0;
+  width: 100%;
+  flex-grow: 1;
 }

@@ -10,36 +10,32 @@
   top: header.$height;
   width: 100%;
   z-index: z-index.$no-script;
+}
 
-  .contents {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: paddings.$m;
-    gap: margins.$xs;
-    text-align: center;
-    height: var(--no-script-height);
-    background: var(--app-color-toolbar-background);
-    @include borders.panel(bottom);
+.contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: paddings.$m;
+  gap: margins.$xs;
+  text-align: center;
+  height: var(--no-script-height);
+  background: var(--app-color-toolbar-background);
+  @include borders.panel(bottom);
+}
+p:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: margins.$s;
+  font-size: 1.15em;
+}
 
-    p:first-child {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: margins.$s;
-    }
-
-    p:not(:first-child) {
-      font-size: 14px;
-    }
-
-    @include material-symbols.class {
-      @include material-symbols.font-size(1em);
-      @include material-symbols.variation-settings(
-        $fill: false,
-        $weight: 700,
-        $grade: 0
-      );
-    }
-  }
+@include material-symbols.class {
+  @include material-symbols.font-size(1em);
+  @include material-symbols.variation-settings(
+    $fill: false,
+    $weight: 700,
+    $grade: 0
+  );
 }

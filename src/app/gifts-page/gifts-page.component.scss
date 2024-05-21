@@ -1,10 +1,9 @@
 @use 'page';
-@use 'paddings';
 @use 'texts';
 
 :host {
   display: block;
   padding: page.$padding;
-
-  @include texts.page;
 }
+
+@include texts.page;
