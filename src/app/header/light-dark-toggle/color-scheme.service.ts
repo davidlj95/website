@@ -13,17 +13,13 @@ export enum Scheme {
   providedIn: 'root',
 })
 export class ColorSchemeService {
-  // Ensure in SCSS styles that this attribute in <html> changes color schemes accordingly
-  // Partially enforced by color scheme tests in color-scheme.spec.ts
-  public htmlAttribute = 'data-color-scheme'
-
-  private documentElement: HTMLElement
+  private _htmlElement: HTMLElement
 
   constructor(
     @Inject(DOCUMENT) document: Document,
-    @Inject(WINDOW) private window: Window,
+    @Inject(WINDOW) private _window: Window,
   ) {
-    this.documentElement = document.documentElement
+    this._htmlElement = document.documentElement
     this.listenForMatchMediaPreferenceChanges()
   }
 
@@ -32,15 +28,15 @@ export class ColorSchemeService {
   }
 
   private get matchMediaQuery() {
-    if (!this.window.matchMedia) {
+    if (!this._window.matchMedia) {
       return null
     }
-    return this.window.matchMedia('(prefers-color-scheme: dark)')
+    return this._window.matchMedia('(prefers-color-scheme: dark)')
   }
 
   toggleDarkLight() {
-    const manuallySetScheme = this.documentElement.getAttribute(
-      this.htmlAttribute,
+    const manuallySetScheme = this._htmlElement.getAttribute(
+      HTML_COLOR_SCHEME_ATTRIBUTE,
     )
     if (!manuallySetScheme) {
       this.setManual(this.userPrefersDark ? Scheme.Light : Scheme.Dark)
@@ -53,11 +49,11 @@ export class ColorSchemeService {
   }
 
   setManual(scheme: Scheme) {
-    this.documentElement.setAttribute(this.htmlAttribute, scheme)
+    this._htmlElement.setAttribute(HTML_COLOR_SCHEME_ATTRIBUTE, scheme)
   }
 
   setSystem() {
-    this.documentElement.removeAttribute(this.htmlAttribute)
+    this._htmlElement.removeAttribute(HTML_COLOR_SCHEME_ATTRIBUTE)
   }
 
   private listenForMatchMediaPreferenceChanges() {
@@ -66,3 +62,7 @@ export class ColorSchemeService {
     })
   }
 }
+
+// Ensure in SCSS styles that this attribute in <html> changes color schemes accordingly
+// Partially enforced by color scheme tests in color-scheme.spec.ts
+export const HTML_COLOR_SCHEME_ATTRIBUTE = 'data-color-scheme'
