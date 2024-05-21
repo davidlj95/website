@@ -11,4 +11,18 @@
   top: header.$height;
   min-height: calc(100% - #{header.$height});
   width: 100%;
+
+  display: flex;
+}
+
+main {
+  // 👇 For children to grow to max height
+  display: flex;
+  width: 100%;
+  ::ng-deep > * {
+    width: 100%;
+  }
+}
+router-outlet {
+  display: none;
 }

@@ -2,8 +2,7 @@
 @use 'paddings';
 
 :host {
-  @include page.full-size;
-  padding-top: paddings.$l;
+  padding-top: page.$padding;
 
   display: flex;
   flex-direction: column;
