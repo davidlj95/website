@@ -11,7 +11,7 @@
   @include borders.panel;
   background-color: var(--sys-color-surface1);
 
-  @include animations.define-with-host-context {
+  @include animations.when-motion-host-context {
     @include animations.multiple-transitions(
       (background-color, border-color),
       animations.$emphasized-style

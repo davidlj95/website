@@ -1,7 +1,7 @@
 @use 'themes/constants';
 @use 'sass:selector';
+@use 'helpers/root-attribute';
 @import 'helpers/scss-to-css-vars';
-@import 'helpers/define-global-host-context';
 
 @mixin define-theme($theme) {
   @each $scheme in map-get($theme, schemes) {
@@ -50,11 +50,11 @@
 
 $_no-color-scheme-attribute-selector: ':not([data-color-scheme])';
 $_dark-mode-attribute-selector: '[data-color-scheme="dark"]';
-@mixin host-context-dark-mode-only {
-  @include define-global-host-context($_dark-mode-attribute-selector) {
+@mixin when-dark-mode-host-context {
+  @include root-attribute.host-context($_dark-mode-attribute-selector) {
     @content;
   }
-  @include define-global-host-context($_no-color-scheme-attribute-selector) {
+  @include root-attribute.host-context($_no-color-scheme-attribute-selector) {
     @media (prefers-color-scheme: dark) {
       @content;
     }

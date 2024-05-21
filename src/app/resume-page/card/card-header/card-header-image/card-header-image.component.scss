@@ -8,7 +8,7 @@
 img {
   border-radius: card-header-image.$size;
   filter: var(--img-filter);
-  @include animations.define-with-host-context {
+  @include animations.when-motion-host-context {
     @include animations.single-transition(filter, animations.$emphasized-style);
   }
 }
