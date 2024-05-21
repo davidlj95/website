@@ -1,21 +1,19 @@
 @use 'paddings';
 @use 'animations';
-@use 'header';
 @use 'touch-or-pointer';
 
 :host {
-  $bottom-border-width: 2px;
-  cursor: pointer;
-  float: left;
-  padding: 0 paddings.$l;
-  height: calc(#{header.$height} - $bottom-border-width);
   display: flex;
-  flex-grow: 1;
-  justify-content: center;
   align-items: center;
-  border-bottom-width: $bottom-border-width;
+
+  padding: paddings.$xs paddings.$l;
+
+  cursor: pointer;
+
+  border-bottom-width: 2px;
   border-bottom-color: transparent;
   border-bottom-style: solid;
+
   color: var(--ui-text);
 
   &[aria-selected='true'] {
