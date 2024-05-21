@@ -5,17 +5,19 @@
 @use 'paddings';
 
 :host {
-  @include page.full-size;
   display: flex;
+  flex-direction: column;
+
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+
   gap: margins.$m;
-  padding: paddings.$m;
+  padding: page.$padding;
 }
 
 .icon {
   font-size: 96px;
+  line-height: 1;
 }
 
 main,
