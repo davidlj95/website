@@ -9,13 +9,13 @@
 }
 
 @include texts.page;
-img.sports-equation {
-  @include animations.single-transition(filter, animations.$emphasized-style);
-}
 
-@include theming.only-dark-mode {
-  img.sports-equation {
+img.sports-equation {
+  @include theming.host-context-dark-mode-only {
     filter: invert(1);
+  }
+  @include animations.define-with-host-context {
+    @include animations.single-transition(filter, animations.$emphasized-style);
   }
 }
 
