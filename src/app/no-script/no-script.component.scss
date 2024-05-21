@@ -34,12 +34,11 @@
     }
 
     @include material-symbols.class {
-      font-size: 1em;
+      @include material-symbols.font-size(1em);
       @include material-symbols.variation-settings(
         $fill: false,
         $weight: 700,
-        $grade: 0,
-        $size: 16
+        $grade: 0
       );
     }
   }

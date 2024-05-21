@@ -41,7 +41,7 @@
       gap: margins.$xs;
 
       @include material-symbols.class {
-        font-size: 1em;
+        @include material-symbols.font-size(1em);
       }
     }
   }

@@ -9,7 +9,6 @@
     color: var(--icon-default);
     border-style: none;
     background: transparent;
-    font-size: header.$icons-height;
 
     @include touch-or-pointer.primaryInputCanHover {
       &:hover {
@@ -26,12 +25,11 @@
   }
 
   @include material-symbols.class {
-    font-size: 1em;
+    @include material-symbols.font-size(header.$icons-height);
     @include material-symbols.variation-settings(
       $fill: false,
       $weight: 300,
-      $grade: 0,
-      $size: 48
+      $grade: 0
     );
   }
 }

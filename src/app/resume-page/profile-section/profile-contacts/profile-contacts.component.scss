@@ -31,18 +31,17 @@
     }
   }
 
-  $icons-height: 32px;
+  $icons-font-size: 2rem;
   @include material-symbols.class {
-    font-size: $icons-height;
+    @include material-symbols.font-size($icons-font-size);
     @include material-symbols.variation-settings(
       $fill: true,
       $weight: 700,
-      $grade: 200,
-      $size: $icons-height
+      $grade: 200
     );
   }
 
   ng-icon {
-    font-size: $icons-height;
+    font-size: $icons-font-size;
   }
 }

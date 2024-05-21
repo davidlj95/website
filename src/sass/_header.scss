@@ -2,7 +2,7 @@
 @use 'borders';
 
 $vertical-padding: paddings.$xs;
-$icons-height: 32px;
+$icons-height: 2rem;
 $vertical-padding-height: calc(2 * $vertical-padding);
 $border-height: borders.$panel-width;
 

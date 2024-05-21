@@ -21,7 +21,10 @@
     font-family: 'Material Symbols Outlined';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
+    //font-size: 24px;
+    // 👇 To allow scale match font size
+    //    It will probably also be 24px if user has default font size set (16px)
+    @include font-size(1.5em);
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
@@ -42,6 +45,10 @@
   .material-symbols-outlined {
     @content;
   }
+}
+
+@mixin font-size($size) {
+  font-size: max($size, 20px);
 }
 
 @mixin variation-settings($fill: false, $weight: 400, $grade: 0, $size: 24) {
