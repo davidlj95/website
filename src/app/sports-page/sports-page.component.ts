@@ -8,6 +8,7 @@ import { CardHeaderSubtitleComponent } from '../resume-page/card/card-header/car
 import { CardHeaderTextsComponent } from '../resume-page/card/card-header/card-header-texts/card-header-texts.component'
 import { ButtonComponent } from '../resume-page/button/button.component'
 import { CardHeaderDetailComponent } from '../resume-page/card/card-header/card-header-detail/card-header-detail.component'
+import { ContentPageComponent } from '../content-page/content-page.component'
 
 @Component({
   selector: 'app-sports-page',
@@ -23,6 +24,7 @@ import { CardHeaderDetailComponent } from '../resume-page/card/card-header/card-
     ButtonComponent,
     CardHeaderDetailComponent,
     NgTemplateOutlet,
+    ContentPageComponent,
   ],
   templateUrl: './sports-page.component.html',
   styleUrl: './sports-page.component.scss',

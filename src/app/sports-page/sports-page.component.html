@@ -1,90 +1,93 @@
-<h1>👟 Sports</h1>
-<p>
-  Physical activity is crucial for a healthy lifestyle. Sports are fun (some are
-  subjectively more than others 😜). So:
-</p>
-<img
-  class="sports-equation"
-  ngSrc="assets/img/sports-equation.png"
-  priority
-  alt="Sports = Health + Fun"
-  height="25"
-  width="260"
-/>
-<p>
-  Sports you keep healthy and have fun. Isn't that awesome? Here are the ones I
-  play.
-</p>
-<p>Come on, let's play a padel match, or go running together! 🏃</p>
-<h2>🎾 Padel</h2>
-<p>It's the sport I play the most lately. Twice or three times a week.</p>
-<p>
-  It's like tennis, but
-  <a href="https://en.m.wikipedia.org/wiki/Padel"
-    >typically played in doubles on a smaller enclosed court</a
-  >.
-</p>
-<p>
-  Do not confuse with
-  <a href="https://en.wikipedia.org/wiki/Paddleboarding">paddleboarding</a>
-</p>
-<ng-template #playtomicCard let-sport="sport">
-  <div class="minimal-card">
-    <app-card>
-      <app-card-header>
-        <a [href]="_playtomicProfileUrl">
-          <app-card-header-image
-            src="assets/img/playtomic.svg"
-            alt="Playtomic"
-          ></app-card-header-image>
-        </a>
-        <app-card-header-texts>
-          <app-card-header-title>
-            <a [href]="_playtomicProfileUrl"> {{ sport }} player profile </a>
-          </app-card-header-title>
-          <app-card-header-subtitle> Via Playtomic </app-card-header-subtitle>
-        </app-card-header-texts>
-      </app-card-header>
-      <form [action]="_playtomicProfileUrl" method="GET">
-        <button app-button>Let's play a match!</button>
-      </form>
-    </app-card>
-  </div>
-</ng-template>
-<ng-container
-  [ngTemplateOutlet]="playtomicCard"
-  [ngTemplateOutletContext]="{ sport: 'Padel' }"
-></ng-container>
-<h2>🏃 Running</h2>
-<p>Started on summer 2023 as a way to do some cardio ❤️</p>
-<p>
-  Better than running on a gym's treadmill: I'm under a roof most of the day 🧑‍💻
-  So it's a healthy way to get some sunlight ☀️
-</p>
-<p>Plus I challenge myself 💪 Whilst being quite cheap 🤑</p>
-<p>
-  👇 Checkout here my latest runs on
-  <a href="https://www.strava.com">Strava</a> 😳
-</p>
-<iframe
-  height="454"
-  width="300"
-  allowtransparency="true"
-  src="https://www.strava.com/athletes/116896062/latest-rides/2258b4e99aeb51898175a798dc9a4a15067dfc26"
-></iframe>
-<h2>🎾 Tennis</h2>
-<p>
-  Used to play it when I was a kid. 6+ years training every week. Some
-  competitions
-</p>
-<p>Haven't played for many years. But that can change...</p>
-<ng-container
-  [ngTemplateOutlet]="playtomicCard"
-  [ngTemplateOutletContext]="{ sport: 'Tennis' }"
-></ng-container>
-<h2>🏊 Swimming</h2>
-<p>Spent many years swimming as a school's extracurricular activity</p>
-<p>But don't fancy it much 🤷</p>
-<p>
-  Nowadays I prefer a bathing in a swimming pool, hot tube or in the sea 🌊😌 🍹
-</p>
+<app-content-page>
+  <h1>👟 Sports</h1>
+  <p>
+    Physical activity is crucial for a healthy lifestyle. Sports are fun (some
+    are subjectively more than others 😜). So:
+  </p>
+  <img
+    class="sports-equation"
+    ngSrc="assets/img/sports-equation.png"
+    priority
+    alt="Sports = Health + Fun"
+    height="25"
+    width="260"
+  />
+  <p>
+    Sports you keep healthy and have fun. Isn't that awesome? Here are the ones
+    I play.
+  </p>
+  <p>Come on, let's play a padel match, or go running together! 🏃</p>
+  <h2>🎾 Padel</h2>
+  <p>It's the sport I play the most lately. Twice or three times a week.</p>
+  <p>
+    It's like tennis, but
+    <a href="https://en.m.wikipedia.org/wiki/Padel"
+      >typically played in doubles on a smaller enclosed court</a
+    >.
+  </p>
+  <p>
+    Do not confuse with
+    <a href="https://en.wikipedia.org/wiki/Paddleboarding">paddleboarding</a>
+  </p>
+  <ng-template #playtomicCard let-sport="sport">
+    <div class="card-wrapper">
+      <app-card>
+        <app-card-header>
+          <a [href]="_playtomicProfileUrl">
+            <app-card-header-image
+              src="assets/img/playtomic.svg"
+              alt="Playtomic"
+            ></app-card-header-image>
+          </a>
+          <app-card-header-texts>
+            <app-card-header-title>
+              <a [href]="_playtomicProfileUrl"> {{ sport }} player profile </a>
+            </app-card-header-title>
+            <app-card-header-subtitle> Via Playtomic </app-card-header-subtitle>
+          </app-card-header-texts>
+        </app-card-header>
+        <form [action]="_playtomicProfileUrl" method="GET">
+          <button app-button>Let's play a match!</button>
+        </form>
+      </app-card>
+    </div>
+  </ng-template>
+  <ng-container
+    [ngTemplateOutlet]="playtomicCard"
+    [ngTemplateOutletContext]="{ sport: 'Padel' }"
+  ></ng-container>
+  <h2>🏃 Running</h2>
+  <p>Started on summer 2023 as a way to do some cardio ❤️</p>
+  <p>
+    Better than running on a gym's treadmill: I'm under a roof most of the day
+    🧑‍💻 So it's a healthy way to get some sunlight ☀️
+  </p>
+  <p>Plus I challenge myself 💪 Whilst being quite cheap 🤑</p>
+  <p>
+    👇 Checkout here my latest runs on
+    <a href="https://www.strava.com">Strava</a> 😳
+  </p>
+  <iframe
+    height="454"
+    width="300"
+    allowtransparency="true"
+    src="https://www.strava.com/athletes/116896062/latest-rides/2258b4e99aeb51898175a798dc9a4a15067dfc26"
+  ></iframe>
+  <h2>🎾 Tennis</h2>
+  <p>
+    Used to play it when I was a kid. 6+ years training every week. Some
+    competitions
+  </p>
+  <p>Haven't played for many years. But that can change...</p>
+  <ng-container
+    [ngTemplateOutlet]="playtomicCard"
+    [ngTemplateOutletContext]="{ sport: 'Tennis' }"
+  ></ng-container>
+  <h2>🏊 Swimming</h2>
+  <p>Spent many years swimming as a school's extracurricular activity</p>
+  <p>But don't fancy it much 🤷</p>
+  <p>
+    Nowadays I prefer a bathing in a swimming pool, hot tube or in the sea 🌊😌
+    🍹
+  </p>
+</app-content-page>

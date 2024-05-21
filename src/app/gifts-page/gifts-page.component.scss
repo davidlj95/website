@@ -1,9 +1,0 @@
-@use 'page';
-@use 'texts';
-
-:host {
-  display: block;
-  padding: page.$padding;
-}
-
-@include texts.page;

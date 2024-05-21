@@ -1,14 +1,6 @@
 @use 'page';
-@use 'texts';
 @use 'theming';
 @use 'animations';
-
-:host {
-  display: block;
-  padding: page.$padding;
-}
-
-@include texts.page;
 
 img.sports-equation {
   @include theming.when-dark-mode {
@@ -23,14 +15,10 @@ h2 {
   font-weight: bold;
 }
 
-.minimal-card {
+.card-wrapper {
   display: flex;
 }
 
 form {
   text-align: center;
-}
-
-iframe {
-  border: none;
 }
