@@ -4,6 +4,7 @@
   "schematics": {
     "@schematics/angular": {
       "component": {
+        "changeDetection": "OnPush",
         "module": "app"
       },
       "directive": {
