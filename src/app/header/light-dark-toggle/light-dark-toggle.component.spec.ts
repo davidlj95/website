@@ -2,7 +2,6 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { LightDarkToggleComponent } from './light-dark-toggle.component'
 import { ColorSchemeService, Scheme } from './color-scheme.service'
-import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockProvider } from 'ng-mocks'
 import { forceColorScheme } from '@/test/helpers/color-scheme'
@@ -13,6 +12,8 @@ import {
   expectIsNotInLayout,
 } from '@/test/helpers/visibility'
 import { findMaterialSymbolByText } from '@/test/helpers/material-symbols'
+import { byComponent } from '@/test/helpers/component-query-predicates'
+import { ToolbarIconComponent } from '../toolbar-icon/toolbar-icon.component'
 
 describe('LightDarkToggleComponent', () => {
   let component: LightDarkToggleComponent
@@ -74,7 +75,9 @@ describe('LightDarkToggleComponent', () => {
       ])
       ;[fixture, component] = makeSut({ colorSchemeService })
 
-      fixture.debugElement.query(By.css('button')).triggerEventHandler('click')
+      fixture.debugElement
+        .query(byComponent(ToolbarIconComponent))
+        .triggerEventHandler('click')
 
       expect(colorSchemeService.toggleDarkLight).toHaveBeenCalled()
     })
