@@ -1,0 +1,29 @@
+@use 'header';
+@use 'touch-or-pointer';
+@use 'material-symbols';
+@use 'animations';
+
+:host {
+  display: inline flow-root;
+}
+
+button {
+  color: var(--icon-default);
+  border-style: none;
+  background: transparent;
+
+  @include touch-or-pointer.primaryInputCanHover {
+    &:hover {
+      color: var(--icon-default-hover);
+    }
+  }
+
+  @include animations.when-motion {
+    @include animations.single-transition(color, animations.$emphasized-style);
+  }
+
+  @include material-symbols.class {
+    @include material-symbols.font-size(header.$icons-height);
+    @include material-symbols.variation-settings($fill: false, $weight: 200);
+  }
+}
