@@ -39,8 +39,8 @@ importers:
         specifier: 17.3.8
         version: 17.3.8(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))
       '@davidlj95/ngx-meta':
-        specifier: 1.0.0-beta.3
-        version: 1.0.0-beta.3(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(@angular/router@17.3.10(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.10(@angular/animations@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))
+        specifier: 1.0.0-beta.4
+        version: 1.0.0-beta.4(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(@angular/router@17.3.10(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.10(@angular/animations@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))
       '@fontsource/roboto':
         specifier: 5.0.13
         version: 5.0.13
@@ -1086,12 +1086,12 @@ packages:
     resolution: {integrity: sha512-tpyc+7i6bPG9mvaBbtKUeghfyZSDgWquIDfMgqYtTbmZ9Y9VzEm2je9EYcQ0aoz5o7NvGS+rcDec93yO08MHYA==}
     engines: {node: '>=v18'}
 
-  '@davidlj95/ngx-meta@1.0.0-beta.3':
-    resolution: {integrity: sha512-sVnB6I+mEgGPXD4orgWlvCUXGDQHQ2R9T3hYDRd/S+7zsgEmlIMV+m+YcIMBMR8o36aVNayLTioNNhj1Msr4WA==}
+  '@davidlj95/ngx-meta@1.0.0-beta.4':
+    resolution: {integrity: sha512-CnE59z7mHsQ3UHQ+QdEdH6Tx9TOSezMjTj8hObefQScmpVJ5W0nu3i3jFwF1jZK4pdfC3/XaA+je5Mz3Em0kbg==}
     peerDependencies:
-      '@angular/common': ^17 || ^16 || ^15
-      '@angular/core': ^17 || ^16 || ^15
-      '@angular/router': ^17 || ^16 || ^15
+      '@angular/common': ^18 || ^17 || ^16 || ^15
+      '@angular/core': ^18 || ^17 || ^16 || ^15
+      '@angular/router': ^18 || ^17 || ^16 || ^15
     peerDependenciesMeta:
       '@angular/router':
         optional: true
@@ -8033,7 +8033,7 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.0
       chalk: 5.3.0
 
-  '@davidlj95/ngx-meta@1.0.0-beta.3(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(@angular/router@17.3.10(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.10(@angular/animations@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))':
+  '@davidlj95/ngx-meta@1.0.0-beta.4(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(@angular/router@17.3.10(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(@angular/platform-browser@17.3.10(@angular/animations@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5)))(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5)))(rxjs@7.8.1))':
     dependencies:
       '@angular/common': 17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.5))(rxjs@7.8.1)
       '@angular/core': 17.3.10(rxjs@7.8.1)(zone.js@0.14.5)
