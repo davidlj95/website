@@ -4,8 +4,8 @@ import {
   SimpleIconLoader,
 } from '@/common/simple-icon/simple-icon-loader'
 import {
-  HttpClientTestingModule,
   HttpTestingController,
+  provideHttpClientTesting,
   TestRequest,
 } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
@@ -15,7 +15,7 @@ import {
   MOCK_BROWSER_PLATFORM_SERVICE,
   MOCK_NON_BROWSER_PLATFORM_SERVICE,
 } from '@/test/helpers/platform-service'
-import { HttpStatusCode } from '@angular/common/http'
+import { HttpStatusCode, provideHttpClient } from '@angular/common/http'
 import { SVG } from '@/test/mocks/svg'
 
 describe('SimpleIconLoader', () => {
@@ -131,8 +131,9 @@ describe('SimpleIconLoader', () => {
 
 const makeSut = (opts: { platformService?: PlatformService } = {}) =>
   serviceTestSetup(SIMPLE_ICON_LOADER, {
-    imports: [HttpClientTestingModule],
     providers: [
+      provideHttpClient(),
+      provideHttpClientTesting(),
       MockProvider(
         PLATFORM_SERVICE,
         opts.platformService ?? MOCK_BROWSER_PLATFORM_SERVICE,
