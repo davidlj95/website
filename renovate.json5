@@ -5,7 +5,7 @@
     'config:recommended',
     'config:best-practices',
     'config:js-app',
-    'github>davidlj95/renovate-config:angular/v18.0.x', // Angular v18.0.x compatibilities
+    'github>davidlj95/renovate-config:angular/v18-lts',
   ],
   prHourlyLimit: 0,
   prConcurrentLimit: 5,
