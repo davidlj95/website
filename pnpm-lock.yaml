@@ -193,8 +193,8 @@ importers:
         specifier: 14.12.2
         version: 14.12.2(@angular/common@18.0.1(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6))(@angular/forms@18.0.1(@angular/common@18.0.1(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6))(@angular/platform-browser@18.0.1(@angular/animations@18.0.1(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6)))(@angular/common@18.0.1(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6)))(rxjs@7.8.1))(@angular/platform-browser@18.0.1(@angular/animations@18.0.1(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6)))(@angular/common@18.0.1(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(@angular/core@18.0.1(rxjs@7.8.1)(zone.js@0.14.6)))
       prettier:
-        specifier: 3.2.5
-        version: 3.2.5
+        specifier: 3.3.0
+        version: 3.3.0
       semantic-release:
         specifier: 23.1.1
         version: 23.1.1(typescript@5.4.5)
@@ -5457,8 +5457,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  prettier@3.3.0:
+    resolution: {integrity: sha512-J9odKxERhCQ10OC2yb93583f6UnYutOeiV5i0zEDS7UGTdUt0u+y8erxl3lBKvwo/JHyyoEdXjwp4dke9oyZ/g==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -12703,7 +12703,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.2.5: {}
+  prettier@3.3.0: {}
 
   pretty-format@29.7.0:
     dependencies:
