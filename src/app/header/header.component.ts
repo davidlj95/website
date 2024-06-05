@@ -3,6 +3,7 @@ import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.compo
 import { ToolbarComponent } from './toolbar/toolbar.component'
 import { LightDarkToggleComponent } from './light-dark-toggle/light-dark-toggle.component'
 import { NAVIGATION_ITEMS } from './navigation-items'
+import { ToolbarDividerComponent } from './toolbar-divider/toolbar-divider.component'
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { NAVIGATION_ITEMS } from './navigation-items'
     NavigationTabsComponent,
     ToolbarComponent,
     LightDarkToggleComponent,
+    ToolbarDividerComponent,
   ],
 })
 export class HeaderComponent {

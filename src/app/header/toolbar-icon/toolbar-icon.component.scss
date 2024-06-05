@@ -4,10 +4,15 @@
 @use 'animations';
 
 :host {
-  display: inline flow-root;
+  display: inline flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 button {
+  display: contents;
+  cursor: pointer;
+
   color: var(--icon-default);
   border-style: none;
   background: transparent;

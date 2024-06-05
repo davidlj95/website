@@ -42,6 +42,7 @@ $devtools-dark-scheme: (
     sys-color-state-hover-dim-blend-protection: rgb(31 31 31/10%),
     sys-color-tonal-outline: var(--ref-palette-secondary50),
     sys-color-on-primary: var(--ref-palette-primary20),
+    sys-color-on-base-divider: var(--ref-palette-neutral40),
     sys-color-state-hover-on-prominent:
       color-mix(in sRGB, var(--ref-palette-neutral99) 10%, transparent),
     sys-color-primary-bright: var(--ref-palette-primary70),

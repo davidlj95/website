@@ -3,7 +3,7 @@
 @use 'touch-or-pointer';
 
 :host {
-  display: flex;
+  display: inline flex;
   align-items: center;
 
   padding: paddings.$xs paddings.$l;
