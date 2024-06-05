@@ -1,9 +1,14 @@
 :host {
   display: flex;
-  flex-wrap: wrap;
-  overflow: hidden;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
-app-tab {
-  flex-grow: 0;
+// https://blog.hubspot.com/website/hide-scrollbar-css
+:host {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+:host::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }

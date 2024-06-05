@@ -6,23 +6,28 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { TabsComponent } from '../tabs/tabs.component'
 import { TabComponent } from '../tab/tab.component'
-import { provideRouter, Route, RouterLink, Routes } from '@angular/router'
+import {
+  provideRouter,
+  Route,
+  Router,
+  RouterLink,
+  Routes,
+} from '@angular/router'
 import { EmptyComponent } from '@/test/helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
+import { TestBed } from '@angular/core/testing'
+import {
+  expectIsInViewport,
+  expectIsNotInViewport,
+} from '@/test/helpers/scroll'
 
 describe('NavigationTabsComponent', () => {
   const FOO_ROUTE = { path: 'foo', component: EmptyComponent } satisfies Route
   const BAR_ROUTE = { path: 'bar', component: EmptyComponent } satisfies Route
   const ROUTES: Routes = [FOO_ROUTE, BAR_ROUTE]
-  const FOO_ITEM = {
-    displayName: 'Foo',
-    routerLink: FOO_ROUTE.path,
-  } satisfies NavigationItem
-  const BAR_ITEM = {
-    displayName: 'Bar',
-    routerLink: BAR_ROUTE.path,
-  } satisfies NavigationItem
+  const FOO_ITEM = makeNavigationItemFromRoutePath(FOO_ROUTE.path)
+  const BAR_ITEM = makeNavigationItemFromRoutePath(BAR_ROUTE.path)
   const ITEMS = [FOO_ITEM, BAR_ITEM]
 
   it('should create', () => {
@@ -87,8 +92,75 @@ describe('NavigationTabsComponent', () => {
     ).toBeFalse()
   })
 
+  describe('when active route changes', () => {
+    const DUMMY_ROUTES_COUNT = 5
+    it('should scroll to active route', async () => {
+      const [fixture, component] = makeSut()
+      //👇 Make it narrow
+      fixture.debugElement.styles['width'] = '320px'
+      component.items = [
+        FOO_ITEM,
+        //👇 Dummy routes to ensure scrolling
+        ...[...Array(DUMMY_ROUTES_COUNT).keys()].map((i) =>
+          makeNavigationItemFromRoutePath(`route ${i}`),
+        ),
+        BAR_ITEM,
+      ]
+      fixture.detectChanges()
+
+      const router = TestBed.inject(Router)
+      await fixture.ngZone?.run(
+        async () => await router.navigateByUrl(FOO_ROUTE.path),
+      )
+      fixture.detectChanges()
+
+      const tabsGroupElement = fixture.debugElement.query(
+        byComponent(TabsComponent),
+      )
+      const tabElements = fixture.debugElement.queryAll(
+        byComponent(TabComponent),
+      )
+      const firstTab = tabElements.at(0)
+      const lastTab = tabElements.at(-1)
+
+      // First tab should be visible, but not last
+      await expectIsInViewport(firstTab!.nativeElement, {
+        context: 'first tab',
+        viewport: tabsGroupElement.nativeElement,
+      })
+      await expectIsNotInViewport(lastTab!.nativeElement, {
+        context: 'last tab',
+        viewport: tabsGroupElement.nativeElement,
+      })
+
+      await fixture.ngZone?.run(async () => {
+        await router.navigateByUrl(BAR_ROUTE.path)
+      })
+      fixture.detectChanges()
+
+      // Last tab should be visible
+      await expectIsInViewport(lastTab!.nativeElement, {
+        context: 'last tab',
+        viewport: tabsGroupElement.nativeElement,
+        waitForChange: true,
+      })
+      await expectIsNotInViewport(firstTab!.nativeElement, {
+        context: 'first tab',
+        viewport: tabsGroupElement.nativeElement,
+      })
+    })
+  })
+
   const makeSut = () =>
     componentTestSetup(NavigationTabsComponent, {
       providers: [provideRouter(ROUTES)],
     })
 })
+
+function makeNavigationItemFromRoutePath(path: string): NavigationItem {
+  return {
+    displayName:
+      path.substring(0, 1).toUpperCase() + path.substring(1).toLowerCase(),
+    routerLink: path,
+  }
+}

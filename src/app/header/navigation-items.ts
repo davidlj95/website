@@ -9,4 +9,4 @@ export const NAVIGATION_ITEMS: ReadonlyArray<NavigationItem> = [
   { displayName: 'Calendar', routerLink: CALENDAR_PATH },
   { displayName: 'Sports', routerLink: SPORTS_PATH },
   { displayName: 'Gifts', routerLink: GIFTS_PATH },
-].filter((_, index) => index < 2)
+]
