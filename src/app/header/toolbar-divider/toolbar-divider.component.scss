@@ -5,7 +5,7 @@
   display: inline;
   background-color: var(--sys-color-on-base-divider);
   width: 1px;
-  height: 2em;
+  height: 1.75em;
   margin: 0 margins.$xs;
 
   @include animations.single-transition(
