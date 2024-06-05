@@ -1,8 +1,15 @@
+@use 'animations';
 @use 'margins';
+
 :host {
   display: inline;
   background-color: var(--sys-color-on-base-divider);
   width: 1px;
   height: 2em;
   margin: 0 margins.$xs;
+
+  @include animations.single-transition(
+    background-color,
+    animations.$emphasized-style
+  );
 }
