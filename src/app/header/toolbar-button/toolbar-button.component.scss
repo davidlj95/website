@@ -13,8 +13,12 @@
   border-style: none;
   background: transparent;
 
+  &:disabled {
+    opacity: 0.5;
+  }
+
   @include touch-or-pointer.primaryInputCanHover {
-    &:hover {
+    &:enabled:hover {
       color: var(--icon-default-hover);
     }
   }

@@ -11,5 +11,6 @@ import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarButtonComponent {
-  @Input({ required: true }) public icon!: string
+  @Input({ required: true }) icon!: string
+  // https://github.com/angular/components/blob/18.0.5/src/material/button/button-base.ts#L257-L266
 }

@@ -1,5 +1,6 @@
 import {
   afterRender,
+  AfterRenderPhase,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -30,31 +31,36 @@ export class NavigationTabsComponent {
   @Input({ required: true })
   items!: ReadonlyArray<NavigationItem>
 
+  // 👇 Scroll to active tab
   @ViewChildren(TabComponent, { read: ElementRef })
-  private _tabElements!: QueryList<ElementRef>
+  private _tabsElRefs!: QueryList<ElementRef>
   private _scrollToIndex: number | undefined
 
   constructor() {
-    // 👇 Can't be done when active route changed, as at that moment
-    //    the tab element will be updated with the `active` styling.
-    //    We need to wait for that to happen or scrolling won't work if element gets updated whilst scrolling.
-    afterRender(() => {
-      if (this._scrollToIndex === undefined) {
-        return
-      }
-      const tabElement = this._tabElements.get(this._scrollToIndex)
-      ;(tabElement?.nativeElement as HTMLElement).scrollIntoView({
-        behavior: 'smooth',
-      })
-      this._scrollToIndex = undefined
-    })
+    afterRender(
+      () => {
+        // 👇 Can't be done when active route changed, as at that moment
+        //    the tab element will be updated with the `active` styling.
+        //    We need to wait for that to happen or scrolling won't work if element gets updated whilst scrolling.
+        this._scrollIfNeeded()
+      },
+      { phase: AfterRenderPhase.Read },
+    )
   }
 
   onActiveRouteChange(index: number) {
-    if (this._scrollToIndex === index) {
+    this._scrollToIndex = index
+  }
+
+  private _scrollIfNeeded() {
+    if (this._scrollToIndex === undefined || !this._tabsElRefs) {
       return
     }
-    this._scrollToIndex = index
+    const tabElement = this._tabsElRefs.get(this._scrollToIndex)
+    ;(tabElement?.nativeElement as HTMLElement).scrollIntoView({
+      behavior: 'smooth',
+    })
+    this._scrollToIndex = undefined
   }
 }
 

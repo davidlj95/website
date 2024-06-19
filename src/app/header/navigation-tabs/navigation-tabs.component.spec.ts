@@ -16,7 +16,7 @@ import {
 import { EmptyComponent } from '@/test/helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
-import { TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import {
   expectIsInViewport,
   expectIsNotInViewport,
@@ -92,58 +92,66 @@ describe('NavigationTabsComponent', () => {
     ).toBeFalse()
   })
 
-  it('should scroll to active route when active route changes', async () => {
+  describe('when not all tabs fit on screen', () => {
     const DUMMY_ROUTES_COUNT = 5
-    const [fixture, component] = makeSut()
-    //👇 Make it narrow
-    fixture.debugElement.styles['width'] = '320px'
-    component.items = [
-      FOO_ITEM,
-      //👇 Dummy routes to ensure scrolling
-      ...[...Array(DUMMY_ROUTES_COUNT).keys()].map((i) =>
-        makeNavigationItemFromRoutePath(`route ${i}`),
-      ),
-      BAR_ITEM,
-    ]
-    fixture.detectChanges()
+    let fixture: ComponentFixture<NavigationTabsComponent>
+    let component: NavigationTabsComponent
 
-    const router = TestBed.inject(Router)
-    await fixture.ngZone?.run(
-      async () => await router.navigateByUrl(FOO_ROUTE.path),
-    )
-    fixture.detectChanges()
-
-    const tabsGroupElement = fixture.debugElement.query(
-      byComponent(TabsComponent),
-    )
-    const tabElements = fixture.debugElement.queryAll(byComponent(TabComponent))
-    const firstTab = tabElements.at(0)
-    const lastTab = tabElements.at(-1)
-
-    // First tab should be visible, but not last
-    await expectIsInViewport(firstTab!.nativeElement, {
-      context: 'first tab',
-      viewport: tabsGroupElement.nativeElement,
-    })
-    await expectIsNotInViewport(lastTab!.nativeElement, {
-      context: 'last tab',
-      viewport: tabsGroupElement.nativeElement,
+    beforeEach(() => {
+      ;[fixture, component] = makeSut()
+      fixture.debugElement.styles['width'] = '320px'
+      component.items = [
+        FOO_ITEM,
+        //👇 Dummy routes to ensure scrolling
+        ...[...Array(DUMMY_ROUTES_COUNT).keys()].map((i) =>
+          makeNavigationItemFromRoutePath(`route ${i}`),
+        ),
+        BAR_ITEM,
+      ]
+      fixture.detectChanges()
     })
 
-    await fixture.ngZone?.run(async () => {
-      await router.navigateByUrl(BAR_ROUTE.path)
-    })
-    fixture.detectChanges()
+    it('should scroll to active route when active route changes', async () => {
+      const router = TestBed.inject(Router)
+      await fixture.ngZone?.run(
+        async () => await router.navigateByUrl(FOO_ROUTE.path),
+      )
+      fixture.detectChanges()
 
-    // Last tab should be visible
-    await expectIsInViewport(lastTab!.nativeElement, {
-      context: 'last tab',
-      viewport: tabsGroupElement.nativeElement,
-      waitForChange: true,
-    })
-    await expectIsNotInViewport(firstTab!.nativeElement, {
-      context: 'first tab',
-      viewport: tabsGroupElement.nativeElement,
+      const tabsGroupElement = fixture.debugElement.query(
+        byComponent(TabsComponent),
+      )
+      const tabElements = fixture.debugElement.queryAll(
+        byComponent(TabComponent),
+      )
+      const firstTab = tabElements.at(0)
+      const lastTab = tabElements.at(-1)
+
+      // First tab should be visible, but not last
+      await expectIsInViewport(firstTab!.nativeElement, {
+        context: 'first tab',
+        viewport: tabsGroupElement.nativeElement,
+      })
+      await expectIsNotInViewport(lastTab!.nativeElement, {
+        context: 'last tab',
+        viewport: tabsGroupElement.nativeElement,
+      })
+
+      await fixture.ngZone?.run(async () => {
+        await router.navigateByUrl(BAR_ROUTE.path)
+      })
+      fixture.detectChanges()
+
+      // Last tab should be visible
+      await expectIsInViewport(lastTab!.nativeElement, {
+        context: 'last tab',
+        viewport: tabsGroupElement.nativeElement,
+        waitForChange: true,
+      })
+      await expectIsNotInViewport(firstTab!.nativeElement, {
+        context: 'first tab',
+        viewport: tabsGroupElement.nativeElement,
+      })
     })
   })
 
