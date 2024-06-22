@@ -75,12 +75,10 @@ describe('EducationItemComponent', () => {
     })
     setEducationItem(fixture, { institution })
 
-    const anchorElement = fixture.debugElement
-      .query(byTestId('institution-name'))
-      .query(By.css('a'))
-    expect(anchorElement).toBeTruthy()
-    expect(anchorElement.attributes['href']).toEqual(website)
-    expect(anchorElement.nativeElement.textContent.trim()).toEqual(name)
+    const titleElement = fixture.debugElement.query(
+      byTestId('institution-name'),
+    )
+    expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
   })
 
   describe('when name is long and there is short name', () => {

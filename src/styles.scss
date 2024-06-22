@@ -58,14 +58,8 @@ a {
     );
   }
 
-  &:visited {
-    color: var(--sys-color-primary);
-  }
-
-  &:hover {
-    color: var(--sys-color-primary);
-  }
-
+  &:visited,
+  &:hover,
   &:active {
     color: var(--sys-color-primary);
   }

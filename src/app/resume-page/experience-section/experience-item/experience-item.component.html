@@ -8,13 +8,8 @@
       </app-card-header-image>
     </app-link>
     <app-card-header-texts>
-      <app-card-header-title>
-        <app-link
-          [href]="_item.company.website?.toString()"
-          appTestId="company-name"
-        >
-          {{ _item.company.name }}
-        </app-link>
+      <app-card-header-title appTestId="company-name">
+        {{ _item.company.name }}
       </app-card-header-title>
       <app-card-header-subtitle appTestId="position">
         {{ _item.position }}

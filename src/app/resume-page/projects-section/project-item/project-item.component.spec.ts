@@ -81,13 +81,8 @@ describe('ProjectItemComponent', () => {
 
     setProjectItem(fixture, { name, website })
 
-    const anchorElement = fixture.debugElement
-      .query(byTestId('name'))
-      .query(By.css('a'))
-    expect(anchorElement).toBeTruthy()
-    expect(anchorElement.attributes['href']).toEqual(website.toString())
-
-    expect(anchorElement.nativeElement.textContent.trim()).toEqual(name)
+    const titleElement = fixture.debugElement.query(byTestId('name'))
+    expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
   })
 
   describe('when no roles exist', () => {
