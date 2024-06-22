@@ -8,13 +8,8 @@
       </app-card-header-image>
     </app-link>
     <app-card-header-texts>
-      <app-card-header-title>
-        <app-link
-          [href]="_item.institution.website?.toString()"
-          appTestId="institution-name"
-        >
-          {{ _institutionDisplayName }}
-        </app-link>
+      <app-card-header-title appTestId="institution-name">
+        {{ _institutionDisplayName }}
       </app-card-header-title>
       <app-card-header-subtitle appTestId="study-type">
         {{ _item.studyType }}

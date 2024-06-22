@@ -66,7 +66,7 @@ describe('ExperienceItem', () => {
       ).toBe(imageUrl)
     })
 
-    it("should display company name with link to company's website", () => {
+    it('should display company name', () => {
       const name = 'Sample company name'
       const website = 'https://example.org/'
       setExperienceItem(fixture, {
@@ -77,13 +77,8 @@ describe('ExperienceItem', () => {
         }),
       })
 
-      const anchorElement = fixture.debugElement
-        .query(byTestId('company-name'))
-        .query(By.css('a'))
-      expect(anchorElement).toBeTruthy()
-      expect(anchorElement.attributes['href']).toEqual(website)
-
-      expect(anchorElement.nativeElement.textContent.trim()).toEqual(name)
+      const titleElement = fixture.debugElement.query(byTestId('company-name'))
+      expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
     })
   })
   describe('position', () => {

@@ -12,9 +12,7 @@
     </app-link>
     <app-card-header-texts>
       <app-card-header-title appTestId="name">
-        <app-link [href]="_item.website?.toString()">
-          {{ _item.name }}
-        </app-link>
+        {{ _item.name }}
       </app-card-header-title>
       <app-card-header-subtitle *ngIf="_item.roles.length" appTestId="role">
         <!-- TODO: display all roles, for current case just 1 is enough -->
