@@ -245,6 +245,7 @@ $RECYCLE.BIN/
 /release.json
 /src/environments/environment.pull-request.ts
 .nx/cache
+.idea/git_toolbox_blame.xml
 # Manual changes:
 # - Remove .idea from angular, we want some settings in the repo
 # - Include dictionaries
