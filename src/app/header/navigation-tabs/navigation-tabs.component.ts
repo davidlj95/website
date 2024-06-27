@@ -10,7 +10,7 @@ import {
 import { TabComponent } from '../tab/tab.component'
 import { TabsComponent } from '../tabs/tabs.component'
 import { RouterLink, RouterLinkActive } from '@angular/router'
-import { ToolbarIconComponent } from '../toolbar-icon/toolbar-icon.component'
+import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
 
 @Component({
   selector: 'app-navigation-tabs',
@@ -20,7 +20,7 @@ import { ToolbarIconComponent } from '../toolbar-icon/toolbar-icon.component'
     TabComponent,
     RouterLink,
     RouterLinkActive,
-    ToolbarIconComponent,
+    ToolbarButtonComponent,
   ],
   templateUrl: './navigation-tabs.component.html',
   styleUrl: './navigation-tabs.component.scss',
