@@ -1,14 +1,14 @@
-<app-toolbar-icon
+<button
+  app-toolbar-button
   [icon]="MaterialSymbol.DarkMode"
   (click)="colorSchemeService.toggleDarkLight()"
-  ariaLabel="Switch to dark mode"
+  aria-label="Switch to dark mode"
   class="light-only"
-  role="status"
-></app-toolbar-icon>
-<app-toolbar-icon
+></button>
+<button
+  app-toolbar-button
   [icon]="MaterialSymbol.LightMode"
   (click)="colorSchemeService.toggleDarkLight()"
-  ariaLabel="Switch to light mode"
+  aria-label="Switch to light mode"
   class="dark-only"
-  role="status"
-></app-toolbar-icon>
+></button>

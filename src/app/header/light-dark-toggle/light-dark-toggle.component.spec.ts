@@ -13,7 +13,7 @@ import {
 } from '@/test/helpers/visibility'
 import { findMaterialSymbolByText } from '@/test/helpers/material-symbols'
 import { byComponent } from '@/test/helpers/component-query-predicates'
-import { ToolbarIconComponent } from '../toolbar-icon/toolbar-icon.component'
+import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
 
 describe('LightDarkToggleComponent', () => {
   let component: LightDarkToggleComponent
@@ -76,7 +76,7 @@ describe('LightDarkToggleComponent', () => {
       ;[fixture, component] = makeSut({ colorSchemeService })
 
       fixture.debugElement
-        .query(byComponent(ToolbarIconComponent))
+        .query(byComponent(ToolbarButtonComponent))
         .triggerEventHandler('click')
 
       expect(colorSchemeService.toggleDarkLight).toHaveBeenCalled()

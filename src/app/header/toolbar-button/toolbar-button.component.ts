@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 
 @Component({
-  selector: 'app-toolbar-icon',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[app-toolbar-button]',
   standalone: true,
   imports: [MaterialSymbolDirective],
-  templateUrl: './toolbar-icon.component.html',
-  styleUrl: './toolbar-icon.component.scss',
+  templateUrl: './toolbar-button.component.html',
+  styleUrl: './toolbar-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToolbarIconComponent {
+export class ToolbarButtonComponent {
   @Input({ required: true }) public icon!: string
-  @Input({ required: true }) public ariaLabel!: string
 }
