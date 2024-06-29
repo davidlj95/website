@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, ElementRef, inject, Input } from '@angular/core'
 
 @Component({
   selector: 'app-tab',
@@ -12,7 +12,6 @@ import { Component, Input } from '@angular/core'
   },
 })
 export class TabComponent {
+  elRef = inject(ElementRef)
   @Input() selected = false
-
-  constructor() {}
 }

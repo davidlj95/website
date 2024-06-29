@@ -1,12 +1,10 @@
 <nav>
-  <app-tabs>
-    @for (item of items; track item.displayName; let idx = $index) {
+  <app-tabs [selectedIndex]="_selectedIndex">
+    @for (item of items; track item.displayName) {
       <app-tab
-        [selected]="rla.isActive"
         [routerLink]="item.routerLink"
-        (isActiveChange)="$event ? onActiveRouteChange(idx) : undefined"
+        (isActiveChange)="$event ? onActiveRouteChange($index) : undefined"
         routerLinkActive
-        #rla="routerLinkActive"
       >
         {{ item.displayName }}
       </app-tab>

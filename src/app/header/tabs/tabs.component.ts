@@ -1,11 +1,15 @@
 import {
   afterNextRender,
+  afterRender,
   AfterRenderPhase,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   contentChildren,
   effect,
   ElementRef,
+  Input,
+  numberAttribute,
   OnDestroy,
   signal,
   viewChild,
@@ -33,8 +37,9 @@ export class TabsComponent implements OnDestroy {
 
   private _tabs = contentChildren(TabComponent, {
     descendants: false,
-    read: ElementRef<Element>,
   })
+
+  // Pagination
   private _tabList = viewChild<ElementRef<HTMLElement>>('tabList')
   private _firstTab?: ElementRef<HTMLElement>
   private _lastTab?: ElementRef<HTMLElement>
@@ -42,7 +47,20 @@ export class TabsComponent implements OnDestroy {
   protected _nextButtonDisabled = signal(true)
   public _intersectionObserver!: IntersectionObserver
 
-  constructor(private elRef: ElementRef) {
+  // Selected management
+  private _currentTabs: ReadonlyArray<TabComponent> = []
+  private _indexToSelect?: number
+  private _selectedIndex?: number
+  @Input({ transform: numberAttribute }) set selectedIndex(index: number) {
+    this._indexToSelect = index
+  }
+  /// Scroll to selected
+  private _indexToScrollTo?: number
+
+  constructor(
+    private elRef: ElementRef,
+    private cdRef: ChangeDetectorRef,
+  ) {
     afterNextRender(
       () => {
         this._intersectionObserver = new IntersectionObserver(
@@ -52,7 +70,46 @@ export class TabsComponent implements OnDestroy {
       },
       { phase: AfterRenderPhase.Read },
     )
+    afterRender(
+      () => {
+        this._updateSelectedIfNeeded()
+        this._scrollToTabIfNeeded()
+      },
+      { phase: AfterRenderPhase.Read },
+    )
     effect(this._onTabsChanged.bind(this))
+  }
+
+  private _updateSelectedIfNeeded(): void {
+    if (
+      this._indexToSelect === undefined ||
+      isNaN(this._indexToSelect) ||
+      this._currentTabs.length === 0 ||
+      (this._selectedIndex !== undefined &&
+        this._selectedIndex === this._indexToSelect)
+    )
+      return
+    this._currentTabs.forEach(
+      (tab, index) => (tab.selected = index === this._indexToSelect),
+    )
+    this._selectedIndex = this._indexToSelect
+    this._indexToScrollTo = this._indexToSelect
+    this._indexToSelect = undefined
+    this.cdRef.markForCheck()
+  }
+
+  private _scrollToTabIfNeeded(): void {
+    if (
+      this._indexToScrollTo === undefined ||
+      this._indexToScrollTo < 0 ||
+      this._indexToScrollTo >= this._currentTabs.length
+    )
+      return
+    ;(
+      this._currentTabs.at(this._indexToScrollTo)?.elRef
+        .nativeElement as HTMLElement
+    ).scrollIntoView({ behavior: 'smooth' })
+    this._indexToScrollTo = undefined
   }
 
   ngOnDestroy(): void {
@@ -61,11 +118,12 @@ export class TabsComponent implements OnDestroy {
 
   private _onTabsChanged() {
     const tabs = this._tabs()
+    this._currentTabs = tabs
     if (!this._intersectionObserver || tabs.length === 0) {
       return
     }
     this._intersectionObserver.disconnect()
-    ;[this._firstTab, this._lastTab] = [tabs.at(0)!, tabs.at(-1)!]
+    ;[this._firstTab, this._lastTab] = [tabs.at(0)!.elRef, tabs.at(-1)!.elRef]
     this._intersectionObserver.observe(this._firstTab.nativeElement)
     this._intersectionObserver.observe(this._lastTab.nativeElement)
   }

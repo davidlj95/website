@@ -111,6 +111,7 @@ describe('NavigationTabsComponent', () => {
       fixture.detectChanges()
     })
 
+    // Migrate to component tests? Can be slow
     it('should scroll to active route when active route changes', async () => {
       const router = TestBed.inject(Router)
       await fixture.ngZone?.run(
