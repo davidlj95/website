@@ -1,14 +1,22 @@
 :host {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
-// https://blog.hubspot.com/website/hide-scrollbar-css
-:host {
+[role='tablist'] {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  justify-content: flex-start;
+  align-items: stretch;
+  // https://blog.hubspot.com/website/hide-scrollbar-css
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
-}
-:host::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
 }

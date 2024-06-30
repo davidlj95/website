@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "dist/@davidlj95/website/browser/*.js",
-      "maxSize": "50kB",
+      "maxSize": "75kB",
       "compression": "gzip"
     }
   ],

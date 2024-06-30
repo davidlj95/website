@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing'
 import { DOCUMENT } from '@angular/common'
 
-interface ExpectInViewportOpts {
-  readonly viewport?: HTMLElement
+type ExpectInViewportOpts = Omit<
+  ElementIntersectsOptions,
+  'expectedIntersecting'
+> & {
   readonly context?: string
-  readonly waitForChange?: boolean
 }
 export async function expectIsInViewport(
   element: HTMLElement,
@@ -26,9 +27,16 @@ export async function expectIsNotInViewport(
     .withContext(`${opts.context ? opts.context + ' ' : ''}is not in viewport`)
     .toBeFalse()
 }
+
+interface ElementIntersectsOptions {
+  readonly viewport?: HTMLElement
+  readonly waitForChange?: boolean
+  readonly expectedIntersecting: boolean
+}
+
 async function elementIntersects(
   element: HTMLElement,
-  opts: ExpectInViewportOpts & { expectedIntersecting: boolean },
+  opts: ElementIntersectsOptions,
 ) {
   return new Promise<boolean>((resolve) => {
     new IntersectionObserver(
