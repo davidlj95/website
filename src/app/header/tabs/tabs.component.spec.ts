@@ -20,12 +20,12 @@ describe('TabsComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  const TAB_GROUP_SELECTOR = By.css('[role="tablist"]')
+  const TAB_CONTAINER_SELECTOR = By.css('[role="tablist"]')
   it('should assign tab list ARIA role to tab group element', () => {
     const [fixture] = makeSut()
     fixture.detectChanges()
 
-    expect(fixture.debugElement.query(TAB_GROUP_SELECTOR)).toBeTruthy()
+    expect(fixture.debugElement.query(TAB_CONTAINER_SELECTOR)).toBeTruthy()
   })
 
   it('should mark the given tab as selected and the rest as not selected', async () => {
