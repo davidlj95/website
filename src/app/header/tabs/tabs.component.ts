@@ -43,7 +43,7 @@ export class TabsComponent implements OnDestroy {
   private _tabList = viewChild<ElementRef<HTMLElement>>('tabList')
   private _firstTab?: ElementRef<HTMLElement>
   private _lastTab?: ElementRef<HTMLElement>
-  protected _previousButtonDisabled = signal(true)
+  protected _prevButtonDisabled = signal(true)
   protected _nextButtonDisabled = signal(true)
   public _intersectionObserver!: IntersectionObserver
 
@@ -58,14 +58,17 @@ export class TabsComponent implements OnDestroy {
   private _indexToScrollTo?: number
 
   constructor(
-    private elRef: ElementRef,
-    private cdRef: ChangeDetectorRef,
+    private _elRef: ElementRef,
+    private _cdRef: ChangeDetectorRef,
   ) {
     afterNextRender(
       () => {
         this._intersectionObserver = new IntersectionObserver(
           this._onIntersectChange.bind(this),
-          { root: this.elRef.nativeElement, threshold: [0.8] },
+          {
+            root: this._elRef.nativeElement,
+            threshold: [INTERSECTION_THRESHOLD],
+          },
         )
       },
       { phase: AfterRenderPhase.Read },
@@ -95,7 +98,7 @@ export class TabsComponent implements OnDestroy {
     this._selectedIndex = this._indexToSelect
     this._indexToScrollTo = this._indexToSelect
     this._indexToSelect = undefined
-    this.cdRef.markForCheck()
+    this._cdRef.markForCheck()
   }
 
   private _scrollToTabIfNeeded(): void {
@@ -118,10 +121,16 @@ export class TabsComponent implements OnDestroy {
 
   private _onTabsChanged() {
     const tabs = this._tabs()
-    this._currentTabs = tabs
     if (!this._intersectionObserver || tabs.length === 0) {
+      if (isDevMode) {
+        console.log(
+          'TabsComponent: either intersection observer is not defined or no tabs present. Not updating tabs list',
+          { tabs, intersectionObserver: this._intersectionObserver },
+        )
+      }
       return
     }
+    this._currentTabs = tabs
     this._intersectionObserver.disconnect()
     ;[this._firstTab, this._lastTab] = [tabs.at(0)!.elRef, tabs.at(-1)!.elRef]
     this._intersectionObserver.observe(this._firstTab.nativeElement)
@@ -131,12 +140,18 @@ export class TabsComponent implements OnDestroy {
   private _onIntersectChange(
     entries: ReadonlyArray<IntersectionObserverEntry>,
   ) {
-    const [firstTabIntersecting, lastTabIntersecting] =
-      areFirstLastTabIntersecting([this._firstTab!, this._lastTab!], entries)
-    firstTabIntersecting !== undefined &&
-      this._previousButtonDisabled.set(firstTabIntersecting)
-    lastTabIntersecting !== undefined &&
-      this._nextButtonDisabled.set(lastTabIntersecting)
+    ;(
+      [
+        [this._firstTab!, this._prevButtonDisabled],
+        [this._lastTab!, this._nextButtonDisabled],
+      ] as const
+    ).forEach(([tabElement, signalToUpdate]) => {
+      const entry = findEntryByTarget(entries, tabElement.nativeElement)
+      if (entry === undefined) {
+        return
+      }
+      signalToUpdate.set(entry.isIntersecting)
+    })
   }
 
   protected _scrollABit(scrollDirection: ScrollDirection) {
@@ -144,7 +159,9 @@ export class TabsComponent implements OnDestroy {
     /* istanbul ignore next */
     if (!tabListContainer) {
       if (isDevMode) {
-        console.log('TabsComponent: Missing tab list container element')
+        console.log(
+          'TabsComponent: Not scrolling. Reason: tab list container element is missing',
+        )
       }
       return
     }
@@ -163,17 +180,11 @@ export class TabsComponent implements OnDestroy {
   }
 }
 
+const INTERSECTION_THRESHOLD = 0.8
+
 type ScrollDirection = typeof DIRECTION_PREVIOUS | typeof DIRECTION_NEXT
 const DIRECTION_PREVIOUS = -1
 const DIRECTION_NEXT = 1
-
-const areFirstLastTabIntersecting = (
-  [firstTab, lastTab]: [ElementRef<Element>, ElementRef<Element>],
-  entries: ReadonlyArray<IntersectionObserverEntry>,
-): [boolean | undefined, boolean | undefined] => [
-  findEntryByTarget(entries, firstTab.nativeElement)?.isIntersecting,
-  findEntryByTarget(entries, lastTab.nativeElement)?.isIntersecting,
-]
 
 const findEntryByTarget = (
   entries: ReadonlyArray<IntersectionObserverEntry>,
