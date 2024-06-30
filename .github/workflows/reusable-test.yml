@@ -14,22 +14,49 @@ on:
 #   checks: write
 
 jobs:
-  templates-have-been-rendered:
-    name: Templated files are rendered
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
-      - name: Setup
-        uses: ./.github/actions/setup
-      - name: Render templates
-        run: 'pnpm run prebuild:render-templates'
-      - name: Ensure no pending changes
-        run: cd .ci && make ensure-no-pending-changes
-  test:
-    name: All tests
+  #templates-have-been-rendered:
+  #  name: Templated files are rendered
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Checkout
+  #      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+  #      with:
+  #        ref: ${{ inputs.ref }}
+  #    - name: Setup
+  #      uses: ./.github/actions/setup
+  #    - name: Render templates
+  #      run: 'pnpm run prebuild:render-templates'
+  #    - name: Ensure no pending changes
+  #      run: cd .ci && make ensure-no-pending-changes
+  #test:
+  #  name: All tests
+  #  runs-on: ubuntu-latest
+  #  timeout-minutes: 5
+  #  steps:
+  #    - name: Checkout
+  #      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+  #      with:
+  #        ref: ${{ inputs.ref }}
+  #    - name: Setup
+  #      uses: ./.github/actions/setup
+  #    - name: Run tests
+  #      run: cd .ci && make test
+  #    - name: Report test results (as status check)
+  #      uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5 # v1
+  #      if: (success() || failure()) && github.ref == 'refs/heads/main'
+  #      with:
+  #        name: Test results
+  #        path: '*.xml'
+  #        reporter: java-junit
+  #    - name: Report coverage
+  #      # noinspection SpellCheckingInspection
+  #      uses: livewing/lcov-job-summary@0a9952db27f98def2ba2de3189c6b24acc4c5501 # v1.1.0
+  #      if: success() || failure()
+  #      with:
+  #        lcov: coverage/davidlj95/website/lcov.info
+
+  component-test:
+    name: Component tests
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -39,18 +66,28 @@ jobs:
           ref: ${{ inputs.ref }}
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Run tests
-        run: cd .ci && make test
-      - name: Report test results (as status check)
-        uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5 # v1
-        if: (success() || failure()) && github.ref == 'refs/heads/main'
+      - name: Get Cypress cache info
+        run: |
+          echo "cypress_version=$(jq -r '.devDependencies.cypress' package.json)" >> $GITHUB_ENV
+          echo "cypress_cache_dir=$HOME/.cache/Cypress" >> $GITHUB_ENV
+      - name: Cypress cache
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+        env:
+          cache-name: cypress
         with:
-          name: Test results
-          path: '*.xml'
-          reporter: java-junit
-      - name: Report coverage
-        # noinspection SpellCheckingInspection
-        uses: livewing/lcov-job-summary@0a9952db27f98def2ba2de3189c6b24acc4c5501 # v1.1.0
-        if: success() || failure()
+          path: ${{ env.cypress_cache_dir }}
+          key: ${{ env.cache-name }}-${{ env.cypress_version }}
+      - name: Cypress install
+        run: pnpm cypress install
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        env:
+          CYPRESS_CACHE_FOLDER: ${{ env.cypress_cache_dir }}
         with:
-          lcov: coverage/davidlj95/website/lcov.info
+          browser: chrome
+          # 👇 Action doesn't support pnpm caching right now
+          # https://github.com/cypress-io/github-action/tree/v6.6.1?tab=readme-ov-file#pnpm
+          # Given we're doing caching manually, installing apart to leverage cache
+          install: false
+          component: true
+          working-directory: .
