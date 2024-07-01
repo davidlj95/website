@@ -68,25 +68,21 @@ jobs:
         uses: ./.github/actions/setup
       - name: Get Cypress cache info
         run: |
-          echo "cypress_version=$(jq -r '.devDependencies.cypress' package.json)" >> $GITHUB_ENV
-          echo "cypress_cache_dir=$HOME/.cache/Cypress" >> $GITHUB_ENV
+          echo "CYPRESS_PKG_JSON_VERSION=$(jq -r '.devDependencies.cypress' package.json)" >> $GITHUB_ENV
+          # 👇 Cypress caching. Env var to specify dir + use default dir
+          # https://docs.cypress.io/guides/continuous-integration/introduction#Caching
+          echo "CYPRESS_CACHE_FOLDER=$HOME/.cache/Cypress" >> $GITHUB_ENV
       - name: Cypress cache
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         env:
-          cache-name: cypress
+          CACHE_NAME: cypress
         with:
-          path: ${{ env.cypress_cache_dir }}
-          key: ${{ env.cache-name }}-${{ env.cypress_version }}
+          path: ${{ env.CYPRESS_CACHE_FOLDER }}
+          key: ${{ env.CACHE_NAME }}-${{ env.CYPRESS_PKG_JSON_VERSION }}
       - name: Cypress install
         run: pnpm cypress install
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        env:
-          CYPRESS_CACHE_FOLDER: ${{ env.cypress_cache_dir }}
         with:
           browser: chrome
           # 👇 Action doesn't support pnpm caching right now
