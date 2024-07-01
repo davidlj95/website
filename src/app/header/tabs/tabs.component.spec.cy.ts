@@ -45,6 +45,7 @@ describe('TabsComponent', () => {
           imports: [TabsComponent, TabComponent],
         },
       ).then((wrapper) => {
+        // noinspection CYUnusedAlias (used below)
         cy.wrap(wrapper).as('angular')
       })
     })
@@ -88,10 +89,8 @@ describe('TabsComponent', () => {
     const MIDDLE_TAB_INDEX = Math.ceil(TABS.length / 2)
     const MIDDLE_TAB_SELECTOR = `app-tab:nth-child(${MIDDLE_TAB_INDEX})`
     describe('when scrolled in the middle', () => {
-      beforeEach((done) => {
-        cy.get(MIDDLE_TAB_SELECTOR)
-          .scrollIntoView()
-          .then(() => done())
+      beforeEach(() => {
+        cy.get(MIDDLE_TAB_SELECTOR).scrollIntoView()
       })
 
       it('should enable previous paginator', () => {
@@ -108,11 +107,8 @@ describe('TabsComponent', () => {
         return element.scrollWidth - element.offsetWidth
       }
 
-      beforeEach((done) => {
-        // noinspection CypressCommandSubjectValidation
-        cy.get('app-tab:last-child')
-          .scrollIntoView()
-          .then(() => done())
+      beforeEach(() => {
+        cy.get('app-tab:last-child').scrollIntoView()
       })
 
       beforeEach(() => {
