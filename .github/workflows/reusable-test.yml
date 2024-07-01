@@ -83,6 +83,8 @@ jobs:
         run: pnpm cypress install
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        env:
+          DEBUG: '@cypress/github-action'
         with:
           browser: chrome
           # 👇 Action doesn't support pnpm caching right now
