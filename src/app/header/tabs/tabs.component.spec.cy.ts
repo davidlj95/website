@@ -54,8 +54,7 @@ describe('TabsComponent', () => {
       beforeEach(() => {
         cy.get(TABS_CONTAINER_SELECTOR).should(($element) => {
           expect($element).to.have.length(1)
-          const scrollLeft = $element[0].scrollLeft
-          expect(scrollLeft).to.equal(
+          expect($element[0].scrollLeft).to.equal(
             0,
             'tabs container should not be scrolled',
           )
@@ -117,7 +116,7 @@ describe('TabsComponent', () => {
           const element = $element[0]
           expect(element.scrollLeft).to.equal(
             maxScrollLeft(element),
-            'tabs container should be scrolled at the end',
+            'tabs container should be scrolled until the end',
           )
         })
       })
