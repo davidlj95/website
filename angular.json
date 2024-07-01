@@ -181,9 +181,6 @@
       "path": ".angular/cache"
     },
     "packageManager": "pnpm",
-    "schematicCollections": [
-      "@angular-eslint/schematics",
-      "@schematics/angular"
-    ]
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }
