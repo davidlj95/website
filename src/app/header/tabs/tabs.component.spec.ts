@@ -66,16 +66,6 @@ describe('TabsComponent', () => {
     expect(findLeftArrow(fixture.debugElement)).toBeTruthy()
     expect(findRightArrow(fixture.debugElement)).toBeTruthy()
   })
-
-  // TODO: Component tests for
-  //  - Enabled/disabled arrows:
-  //     - All disabled if fit in screen
-  //     - Prev disabled when first tab visible
-  //     - Next disabled when last tab visible
-  //     - None disabled if in mid
-  //  - Scroll
-  //     - When tapping prev/next buttons
-  //     - When active
 })
 
 const makeSut = () => componentTestSetup(TabsComponent)
