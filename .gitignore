@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci
+# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci,cypressio
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci,cypressio
 
 ### Angular ###
 ## Angular ##
@@ -32,6 +32,15 @@ e2e/*.map
 
 # System Files
 .DS_Store/
+
+### CypressIO ###
+# gitignore template for the CypressIO, browser test framework
+# website: https://www.cypress.io/
+
+cypress/results/*
+cypress/reports/*
+cypress/screenshots/*
+cypress/videos/*
 
 ### LighthouseCI ###
 # Lighthouse reports
@@ -237,7 +246,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci
+# End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci,cypressio
 ## Manual files
 /junit-test.xml
 /junit-lint.xml

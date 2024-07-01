@@ -28,6 +28,7 @@ jobs:
         run: 'pnpm run prebuild:render-templates'
       - name: Ensure no pending changes
         run: cd .ci && make ensure-no-pending-changes
+
   test:
     name: All tests
     runs-on: ubuntu-latest
@@ -54,3 +55,50 @@ jobs:
         if: success() || failure()
         with:
           lcov: coverage/davidlj95/website/lcov.info
+
+  component-test:
+    name: Component tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        with:
+          ref: ${{ inputs.ref }}
+        # 👇 Needed in order for the Cypress GitHub Action to work
+        #    Action uses Cypress Module API to work & later report the result in check summary
+        #    https://docs.cypress.io/guides/guides/module-api
+        #    However, if not using a classic `node_modules` structure, Cypress can't find `@angular*` packages
+        #    and fails. CLI works, but prefer to use the GitHub Action w/ Module API to get the results there
+      - name: Configure pnpm to use hoisted node linker
+        run: echo "node-linker=hoisted" >> .npmrc
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Get Cypress cache info
+        run: |
+          echo "CYPRESS_PKG_JSON_VERSION=$(jq -r '.devDependencies.cypress' package.json)" >> $GITHUB_ENV
+          # 👇 Cypress caching. Env var to specify dir + use default dir
+          # https://docs.cypress.io/guides/continuous-integration/introduction#Caching
+          echo "CYPRESS_CACHE_FOLDER=$HOME/.cache/Cypress" >> $GITHUB_ENV
+      - name: Cypress cache
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+        env:
+          CACHE_NAME: cypress
+        with:
+          path: ${{ env.CYPRESS_CACHE_FOLDER }}
+          key: ${{ env.CACHE_NAME }}-${{ env.CYPRESS_PKG_JSON_VERSION }}
+        # 👇 Just in case first run fails and installed Cypress is not cached
+        #    In that scenario, `cypress run` does not install it again and errors
+      - name: Cypress install
+        run: pnpm cypress install
+      - name: Generate font subsets
+        run: pnpm run prebuild:font-subsets
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          # 👇 Action doesn't support pnpm caching right now
+          # https://github.com/cypress-io/github-action/tree/v6.6.1?tab=readme-ov-file#pnpm
+          # Given we're doing caching manually, installing apart to leverage cache
+          install: false
+          component: true
