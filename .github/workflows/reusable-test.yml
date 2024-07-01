@@ -58,7 +58,7 @@ jobs:
   component-test:
     name: Component tests
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
@@ -79,6 +79,10 @@ jobs:
           key: ${{ env.cache-name }}-${{ env.cypress_version }}
       - name: Cypress install
         run: pnpm cypress install
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
