@@ -5,7 +5,7 @@ Some things about me:
 
 ┌ Full stack
 ├ From scratch to production
-├ 9+ years crafting
+├ 10+ years crafting
 │ ├ Frontends
 │ │ ├ Cross-platform mobile apps
 │ │ └ Websites and web apps
