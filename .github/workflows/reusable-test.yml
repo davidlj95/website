@@ -64,6 +64,8 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ inputs.ref }}
+      - name: Configure pnpm to use hoisted node-linker via .npmrc
+        run: echo "node-linker=hoisted" >> .npmrc
       - name: Setup
         uses: ./.github/actions/setup
       - name: Get Cypress cache info
@@ -92,4 +94,3 @@ jobs:
           # Given we're doing caching manually, installing apart to leverage cache
           install: false
           component: true
-          working-directory: .
