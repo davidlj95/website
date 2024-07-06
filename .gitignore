@@ -255,6 +255,7 @@ $RECYCLE.BIN/
 /src/environments/environment.pull-request.ts
 .nx/cache
 .idea/git_toolbox_blame.xml
+.nyc_output
 # Manual changes:
 # - Remove .idea from angular, we want some settings in the repo
 # - Include dictionaries
@@ -264,3 +265,4 @@ $RECYCLE.BIN/
 # - Add release file
 # - Add generated pull request environment
 # - Nx cache due to Angular ESLint: https://github.com/angular-eslint/angular-eslint/issues/1784
+# - NYC output from Cypress code coverage plugin

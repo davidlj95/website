@@ -1,4 +1,6 @@
 import { defineConfig } from 'cypress'
+import { CoverageWebpackConfig } from './cypress/coverage-webpack-config'
+import registerCodeCoverageTasks from '@cypress/code-coverage/task'
 
 export default defineConfig({
   e2e: {
@@ -29,7 +31,12 @@ export default defineConfig({
           },
         },
       },
+      webpackConfig: CoverageWebpackConfig,
     },
     specPattern: '**/*.cy.ts',
+    setupNodeEvents(on, config) {
+      registerCodeCoverageTasks(on, config)
+      return config
+    },
   },
 })
