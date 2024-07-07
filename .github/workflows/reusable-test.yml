@@ -37,8 +37,8 @@ jobs:
       - name: Ensure no pending changes
         run: cd .ci && make ensure-no-pending-changes
 
-  test:
-    name: All tests
+  unit-test:
+    name: Unit tests
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -119,7 +119,7 @@ jobs:
 
   coverage:
     name: Coverage
-    needs: [test, component-test]
+    needs: [unit-test, component-test]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
