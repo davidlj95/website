@@ -31,7 +31,6 @@ module.exports = function (config) {
       reporters: [
         { type: 'text-summary' },
         { type: 'json', file: 'unit-testing.json' },
-        { type: 'html' },
       ],
       check: {
         global: {

@@ -1,4 +1,0 @@
-{
-  "//1": "Currently applies for Cypress testing coverage only",
-  "reporter": ["json"]
-}

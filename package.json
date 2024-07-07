@@ -17,7 +17,8 @@
     "test": "ng test",
     "test:coverage": "ng test --code-coverage --watch false",
     "coverage:merge": "rm -rf .nyc_output && nyc merge coverage .nyc_output/all.json",
-    "coverage:report": "nyc report --reporter html --report-dir coverage/html && open coverage/html/index.html",
+    "//0": "👇 Can't be 'coverage:report', look for that run script comments for reason",
+    "coverage:report-all": "rm -rf .nyc_output && mkdir .nyc_output && mv coverage/*.json .nyc_output && nyc report --reporter html --report-dir coverage/html && open coverage/html/index.html",
     "security-txt": "tsm scripts/src/generate-security-txt.ts",
     "lint": "ng lint",
     "lint-staged": "lint-staged",
@@ -39,7 +40,11 @@
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:run:ct": "cypress run --component && mv -f coverage/coverage-final.json coverage/component-testing.json"
+    "cypress:run:ct": "cypress run --component",
+    "//2": "👇 Cypress executes it to perform custom reporting. With this:",
+    "//3": "    - **same filename for local/CI**: the 'mv' command is run in both local & CI, so JSON coverage filename is the same",
+    "//4": "    - **.nycrc* config files avoided:** could be mistakenly used by other tools",
+    "coverage:report": "nyc report --reporter json --report-dir coverage && mv -f coverage/coverage-final.json coverage/component-testing.json"
   },
   "dependencies": {
     "@angular/animations": "18.0.5",
