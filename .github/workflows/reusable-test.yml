@@ -136,7 +136,7 @@ jobs:
           path: ${{ env.COVERAGE_DIR }}
           merge-multiple: true
       - name: Merge coverage reports
-        run: pnpm run coverage:merge
+        run: pnpm run coverage:report:all
       - name: Upload to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
