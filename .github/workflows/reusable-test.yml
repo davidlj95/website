@@ -38,7 +38,7 @@ jobs:
         run: cd .ci && make ensure-no-pending-changes
 
   test:
-    name: Unit tests
+    name: All tests
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
