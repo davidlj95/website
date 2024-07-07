@@ -65,7 +65,7 @@ jobs:
           retention-days: 5
 
   component-test:
-    name: Component tests (with Cypress)
+    name: Component tests
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
