@@ -26,9 +26,13 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/davidlj95/website'),
+      dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
-      reporters: [{ type: 'text-summary' }, { type: 'lcov' }],
+      reporters: [
+        { type: 'text-summary' },
+        { type: 'json', file: 'unit-testing.json' },
+        { type: 'html' },
+      ],
       check: {
         global: {
           statements: 80,

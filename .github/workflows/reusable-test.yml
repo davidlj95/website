@@ -13,6 +13,10 @@ on:
 # permissions:
 #   checks: write
 
+env:
+  COVERAGE_ARTIFACT_NAME_PREFIX: coverage-
+  COVERAGE_DIR: coverage
+
 jobs:
   templates-have-been-rendered:
     name: Templated files are rendered
@@ -30,7 +34,7 @@ jobs:
         run: cd .ci && make ensure-no-pending-changes
 
   test:
-    name: All tests
+    name: Unit tests
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -49,15 +53,15 @@ jobs:
           name: Test results
           path: '*.xml'
           reporter: java-junit
-      - name: Report coverage
-        # noinspection SpellCheckingInspection
-        uses: livewing/lcov-job-summary@0a9952db27f98def2ba2de3189c6b24acc4c5501 # v1.1.0
-        if: success() || failure()
+      - name: Upload coverage results
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
         with:
-          lcov: coverage/davidlj95/website/lcov.info
+          name: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}${{ github.job }}
+          path: ${{ env.COVERAGE_DIR }}
+          retention-days: 5
 
   component-test:
-    name: Component tests
+    name: Component tests (with Cypress)
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -102,3 +106,9 @@ jobs:
           # Given we're doing caching manually, installing apart to leverage cache
           install: false
           component: true
+      - name: Upload coverage results
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
+        with:
+          name: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}${{ github.job }}
+          path: ${{ env.COVERAGE_DIR }}
+          retention-days: 5
