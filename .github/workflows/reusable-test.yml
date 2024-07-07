@@ -7,6 +7,10 @@ on:
         type: string
         required: false
         default: ''
+    secrets:
+      codecov-token:
+        description: Token to use to upload coverage to Codecov. Can be empty for forks https://about.codecov.io/blog/january-product-update-updating-the-codecov-ci-uploaders-to-the-codecov-cli/
+        required: true
 
 # Add those permissions if reporting test results
 # https://github.com/dorny/test-reporter/issues/229
@@ -112,3 +116,28 @@ jobs:
           name: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}${{ github.job }}
           path: ${{ env.COVERAGE_DIR }}
           retention-days: 5
+
+  coverage:
+    name: Coverage
+    needs: [test, component-test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Download code coverage reports
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4
+        with:
+          pattern: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}*
+          path: ${{ env.COVERAGE_DIR }}
+          merge-multiple: true
+      - name: Merge coverage reports
+        run: pnpm run coverage:merge
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.codecov-token }}
