@@ -20,6 +20,8 @@ jobs:
     uses: ./.github/workflows/reusable-test.yml
     permissions:
       checks: write
+    secrets:
+      codecov-token: ${{ secrets.CODECOV_TOKEN }}
   lint:
     name: Lint
     uses: ./.github/workflows/reusable-lint.yml

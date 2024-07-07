@@ -7,11 +7,19 @@ on:
         type: string
         required: false
         default: ''
+    secrets:
+      codecov-token:
+        description: Token to use to upload coverage to Codecov. Can be empty for forks https://about.codecov.io/blog/january-product-update-updating-the-codecov-ci-uploaders-to-the-codecov-cli/
+        required: true
 
 # Add those permissions if reporting test results
 # https://github.com/dorny/test-reporter/issues/229
 # permissions:
 #   checks: write
+
+env:
+  COVERAGE_ARTIFACT_NAME_PREFIX: coverage-
+  COVERAGE_DIR: coverage
 
 jobs:
   templates-have-been-rendered:
@@ -49,12 +57,12 @@ jobs:
           name: Test results
           path: '*.xml'
           reporter: java-junit
-      - name: Report coverage
-        # noinspection SpellCheckingInspection
-        uses: livewing/lcov-job-summary@0a9952db27f98def2ba2de3189c6b24acc4c5501 # v1.1.0
-        if: success() || failure()
+      - name: Upload coverage results
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
         with:
-          lcov: coverage/davidlj95/website/lcov.info
+          name: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}${{ github.job }}
+          path: ${{ env.COVERAGE_DIR }}
+          retention-days: 5
 
   component-test:
     name: Component tests
@@ -102,3 +110,35 @@ jobs:
           # Given we're doing caching manually, installing apart to leverage cache
           install: false
           component: true
+      - name: Upload coverage results
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
+        with:
+          name: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}${{ github.job }}
+          path: ${{ env.COVERAGE_DIR }}
+          retention-days: 5
+
+  coverage:
+    name: Coverage
+    needs: [test, component-test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Download code coverage reports
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4
+        with:
+          pattern: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}*
+          path: ${{ env.COVERAGE_DIR }}
+          merge-multiple: true
+      - name: Merge coverage reports
+        run: pnpm run coverage:report:all
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          directory: ${{ env.COVERAGE_DIR }}
+          token: ${{ secrets.codecov-token }}

@@ -15,6 +15,10 @@
     "build:pullRequest": "pnpm run build --configuration pullRequest,production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:coverage": "ng test --code-coverage --watch false",
+    "//0": "👇 Can't be 'coverage:report', look for that run script comments for reason",
+    "coverage:report:all": "pnpm run coverage:move-to-nyc-output && nyc report --reporter lcov --report-dir coverage",
+    "coverage:move-to-nyc-output": "rm -rf .nyc_output && mkdir .nyc_output && cp -f coverage/*.json .nyc_output",
     "security-txt": "tsm scripts/src/generate-security-txt.ts",
     "lint": "ng lint",
     "lint-staged": "lint-staged",
@@ -36,7 +40,11 @@
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:run-ct": "cypress run --component"
+    "cypress:run:ct": "cypress run --component",
+    "//2": "👇 Cypress executes it to perform custom reporting. With this:",
+    "//3": "    - **same filename for local/CI**: the 'mv' command is run in both local & CI, so JSON coverage filename is the same",
+    "//4": "    - **.nycrc* config files avoided:** could be mistakenly used by other tools",
+    "coverage:report": "nyc report --reporter json --report-dir coverage && mv -f coverage/coverage-final.json coverage/component-testing.json"
   },
   "dependencies": {
     "@angular/animations": "18.0.5",
@@ -106,6 +114,7 @@
     "lint-staged": "15.2.7",
     "liquidjs": "10.14.0",
     "ng-mocks": "14.13.0",
+    "nyc": "17.0.0",
     "prettier": "3.3.2",
     "semantic-release": "24.0.0",
     "subset-font": "2.3.0",
