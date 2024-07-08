@@ -177,11 +177,11 @@ commands that will be run in CI/CD pipelines. So you can test those locally easi
 Just:
 
 ```shell
-cd .ci && make test # for instance
+cd .ci && make unit-test # for instance
 ```
 
 And see how a command run in the CI/CD behaves locally. Notice your machine's state may differ from the CI/CD machine
-one.
+one. Not all commands are there, only the ones that differ from regular `package.json` run scripts.
 
 ## Further help
 
