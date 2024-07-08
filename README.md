@@ -1,5 +1,31 @@
 # @davidlj95/website
 
+[![Main CI/CD workflow](https://github.com/davidlj95/ngx/actions/workflows/main.yml/badge.svg)](https://github.com/davidlj95/ngx/actions/workflows/main.yml)
+[![Codecov](https://codecov.io/gh/davidlj95/website/graph/badge.svg)](https://codecov.io/gh/davidlj95/website)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/davidlj95/website/main?logo=github&label=Last%20commit&link=https%3A%2F%2Fgithub.com%2Fdavidlj95%2Fwebsite%2Fcommits%2Fmain%2F)](https://github.com/davidlj95/website/commits/main/)
+[![License](https://img.shields.io/github/license/davidlj95/website?label=License&link=https%3A%2F%2Fgithub.com%2Fdavidlj95%2Fwebsite%2Fblob%2Fmain%2FLICENSE)](https://github.com/davidlj95/website/blob/main/LICENSE)
+
+👋 Welcome to my small place in the web 🏠
+
+## Tooling
+
+[![Coded in Typescript](https://img.shields.io/badge/Coded_in-TypeScript-007ACC?logo=typescript&logoColor=white&link=https%3A%2F%2Fwww.typescriptlang.org)](https://www.typescriptlang.org)
+[![Angular](https://img.shields.io/badge/Made_with-Angular-red?logo=angular&logoColor=white&link=https%3A%2F%2Fangular.dev%2F)](https://angular.dev/)
+![Angular SSR](https://custom-icon-badges.demolab.com/badge/Uses-Angular_SSR-blue.svg?logo=angular-universal&link=https%3A%2F%2Fangular.dev%2Fguide%2Fssr)
+[![Git](https://img.shields.io/badge/VCS-Git-f05032?logo=git&logoColor=f05032&link=https%3A%2F%git-scm.com%2F)](https://git-scm.com/)
+[![GitHub](https://img.shields.io/badge/Repository%20hosting-GitHub-181717?logo=github&logoColor=181717&link=https%3A%2F%github.com%2F)](https://github.com/)
+[![Package manager: pnpm](https://img.shields.io/badge/Package_manager-pnpm-f69220?logo=pnpm&link=https%3A%2F%2Fpnpm.io%2F)](https://pnpm.io/)
+[![Linted with ESLint](https://img.shields.io/badge/Linted_with-eslint-3A33D1?logo=eslint&logoColor=white&link=https%3A%2F%2Feslint.org)](https://eslint.org)
+[![Unit tests with Jasmine](https://img.shields.io/badge/Unit_tests_with-Jasmine-8A4182?logo=Jasmine&logoColor=white&link=https%3A%2F%2Fjasmine.github.io)](https://jasmine.github.io)
+[![Unit tests ran by Karma](https://custom-icon-badges.demolab.com/badge/Unit_tests_ran_by-Karma-42beae.svg?logo=karma-runner&link=https%3A%2F%2Fkarma-runner.github.io)](https://karma-runner.github.io)
+[![Component Testing with Cypress](https://img.shields.io/badge/Component_Testing_with-Cypress-green?logo=cypress&link=https%3A%2F%2Fwww.cypress.io)](https://www.cypress.io)
+[![Formatted with Prettier](https://img.shields.io/badge/Formatted_with-prettier-1A2C34?logo=prettier&logoColor=F7BA3E&link=https%3A%2F%2Fprettier.io)](https://prettier.io)
+[![Commits follow Conventional Commits convention](https://img.shields.io/badge/Commits_convention-Conventional_Commits-%23FE5196?logo=conventionalcommits&logoColor=white&link=https%3A%2F%2Fconventionalcommits.org)](https://conventionalcommits.org)
+[![Commit hooks with Husky](https://img.shields.io/badge/Commit_hooks_with-Husky%F0%9F%90%B6-1a1a1e?link=https%3A%2F%2Ftypicode.github.io%2Fhusky%2F)](https://typicode.github.io/husky/)
+[![Released with Semantic Release](https://img.shields.io/badge/Released_with-Semantic_Release-e10079?logo=semantic-release&link=https%3A%2F%2Fgithub.com%2Fsemantic-release%2Fsemantic-release)](https://github.com/semantic-release/semantic-release)
+[![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovate&logoColor=1a1f6c&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
+[![Deployed via Cloudflare Pages](https://img.shields.io/badge/Deployed_via-Cloudflare%20Pages-f38020?logo=cloudflarepages&link=https%3A%2F%pages.cloudflare.com%2F)](https://pages.cloudflare.com/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## To start
