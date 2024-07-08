@@ -44,7 +44,8 @@
     "//2": "👇 Cypress executes it to perform custom reporting. With this:",
     "//3": "    - **same filename for local/CI**: the 'mv' command is run in both local & CI, so JSON coverage filename is the same",
     "//4": "    - **.nycrc* config files avoided:** could be mistakenly used by other tools",
-    "coverage:report": "nyc report --reporter json --report-dir coverage && mv -f coverage/coverage-final.json coverage/component-testing.json"
+    "coverage:report": "nyc report --reporter json --report-dir coverage && mv -f coverage/coverage-final.json coverage/component-testing.json",
+    "validate-codecov-yml": "curl -X POST --data-binary @codecov.yml https://codecov.io/validate"
   },
   "dependencies": {
     "@angular/animations": "18.0.5",

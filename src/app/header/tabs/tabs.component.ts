@@ -63,13 +63,7 @@ export class TabsComponent implements OnDestroy {
   ) {
     afterNextRender(
       () => {
-        this._intersectionObserver = new IntersectionObserver(
-          this._onIntersectChange.bind(this),
-          {
-            root: this._elRef.nativeElement,
-            threshold: [INTERSECTION_THRESHOLD],
-          },
-        )
+        this._setupIntersectionObserver()
       },
       { phase: AfterRenderPhase.Read },
     )
@@ -137,23 +131,28 @@ export class TabsComponent implements OnDestroy {
     this._intersectionObserver.observe(this._lastTab.nativeElement)
   }
 
-  private _onIntersectChange(
-    entries: ReadonlyArray<IntersectionObserverEntry>,
-  ) {
-    ;(
-      [
-        [this._firstTab!, this._prevButtonDisabled],
-        [this._lastTab!, this._nextButtonDisabled],
-      ] as const
-    ).forEach(([tabElement, signalToUpdate]) => {
-      const entry = findEntryByTarget(entries, tabElement.nativeElement)
-      if (entry === undefined) {
-        return
-      }
-      signalToUpdate.set(entry.isIntersecting)
-    })
+  private _setupIntersectionObserver() {
+    this._intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        ;(
+          [
+            [this._firstTab!, this._prevButtonDisabled],
+            [this._lastTab!, this._nextButtonDisabled],
+          ] as const
+        ).forEach(([tabElement, signalToUpdate]) => {
+          const entry = entries.find(
+            (entry) => entry.target === tabElement.nativeElement,
+          )
+          if (!entry) return
+          signalToUpdate.set(entry.isIntersecting)
+        })
+      },
+      {
+        root: this._elRef.nativeElement,
+        threshold: [INTERSECTION_THRESHOLD],
+      },
+    )
   }
-
   protected _scrollABit(scrollDirection: ScrollDirection) {
     const tabListContainer = this._tabList()?.nativeElement
     /* istanbul ignore next */
@@ -185,8 +184,3 @@ const INTERSECTION_THRESHOLD = 0.8
 type ScrollDirection = typeof DIRECTION_PREVIOUS | typeof DIRECTION_NEXT
 const DIRECTION_PREVIOUS = -1
 const DIRECTION_NEXT = 1
-
-const findEntryByTarget = (
-  entries: ReadonlyArray<IntersectionObserverEntry>,
-  target: Element,
-) => entries.find((entry) => entry.target === target)
