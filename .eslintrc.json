@@ -1,6 +1,7 @@
 {
   "root": false,
   "ignorePatterns": ["projects/**/*"],
+  "extends": ["plugin:cypress/recommended"],
   "overrides": [
     {
       "files": ["*.ts"],

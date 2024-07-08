@@ -100,6 +100,7 @@
     "cypress": "13.13.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-cypress": "3.3.0",
     "execa": "9.3.0",
     "glob": "10.4.2",
     "husky": "9.0.11",
