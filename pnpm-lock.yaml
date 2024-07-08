@@ -192,9 +192,6 @@ importers:
       karma-jasmine-html-reporter:
         specifier: 2.1.0
         version: 2.1.0(jasmine-core@5.1.2)(karma-jasmine@5.1.0(karma@6.4.3))(karma@6.4.3)
-      karma-junit-reporter:
-        specifier: 2.0.1
-        version: 2.0.1(karma@6.4.3)
       lint-staged:
         specifier: 15.2.7
         version: 15.2.7
@@ -4940,12 +4937,6 @@ packages:
     peerDependencies:
       karma: ^6.0.0
 
-  karma-junit-reporter@2.0.1:
-    resolution: {integrity: sha512-VtcGfE0JE4OE1wn0LK8xxDKaTP7slN8DO3I+4xg6gAi1IoAHAXOJ1V9G/y45Xg6sxdxPOR3THCFtDlAfBo9Afw==}
-    engines: {node: '>= 8'}
-    peerDependencies:
-      karma: '>=0.9'
-
   karma-source-map-support@1.4.0:
     resolution: {integrity: sha512-RsBECncGO17KAoJCYXjv+ckIz+Ii9NCi+9enk+rq6XC81ezYkb4/RHE6CTXdA7IOJqoF3wcaLfVG0CPmE5ca6A==}
 
@@ -7416,10 +7407,6 @@ packages:
   xhr2@0.2.1:
     resolution: {integrity: sha512-sID0rrVCqkVNUn8t6xuv9+6FViXjUVXq8H5rWOH2rz9fDNQEd4g0EA2XlcEdJXRz5BMEn4O1pJFdT+z4YHhoWw==}
     engines: {node: '>= 6'}
-
-  xmlbuilder@12.0.0:
-    resolution: {integrity: sha512-lMo8DJ8u6JRWp0/Y4XLa/atVDr75H9litKlb2E5j3V3MesoL50EBgZDWoLT3F/LztVnG67GjPXLZpqcky/UMnQ==}
-    engines: {node: '>=6.0'}
 
   xmlhttprequest-ssl@2.0.0:
     resolution: {integrity: sha512-QKxVRxiRACQcVuQEYFsI1hhkrMlrXHPegbbd1yn9UHOmRxY+si12nQYzri3vbzt8VdTTRviqcKxcyllFas5z2A==}
@@ -13420,12 +13407,6 @@ snapshots:
       jasmine-core: 4.6.0
       karma: 6.4.3
 
-  karma-junit-reporter@2.0.1(karma@6.4.3):
-    dependencies:
-      karma: 6.4.3
-      path-is-absolute: 1.0.1
-      xmlbuilder: 12.0.0
-
   karma-source-map-support@1.4.0:
     dependencies:
       source-map-support: 0.5.21
@@ -16157,8 +16138,6 @@ snapshots:
   xdg-basedir@4.0.0: {}
 
   xhr2@0.2.1: {}
-
-  xmlbuilder@12.0.0: {}
 
   xmlhttprequest-ssl@2.0.0: {}
 

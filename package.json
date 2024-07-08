@@ -110,7 +110,6 @@
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "karma-junit-reporter": "2.0.1",
     "lint-staged": "15.2.7",
     "liquidjs": "10.14.0",
     "ng-mocks": "14.13.0",
