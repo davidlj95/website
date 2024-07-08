@@ -20,4 +20,4 @@ unit-test:
 	cp ../src/test/mocks/release.json ..
 
 	pnpm run test:unit --browsers=ChromeHeadless \
-		--no-watch --no-progress --reporters junit,progress --code-coverage
+		--no-watch --no-progress --reporters progress --code-coverage

@@ -12,11 +12,6 @@ on:
         description: Token to use to upload coverage to Codecov. Can be empty for forks https://about.codecov.io/blog/january-product-update-updating-the-codecov-ci-uploaders-to-the-codecov-cli/
         required: true
 
-# Add those permissions if reporting test results
-# https://github.com/dorny/test-reporter/issues/229
-# permissions:
-#   checks: write
-
 env:
   COVERAGE_ARTIFACT_NAME_PREFIX: coverage-
   COVERAGE_DIR: coverage
@@ -50,13 +45,6 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run tests
         run: cd .ci && make unit-test
-      - name: Report test results (as status check)
-        uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5 # v1
-        if: (success() || failure()) && github.ref == 'refs/heads/main'
-        with:
-          name: Test results
-          path: '*.xml'
-          reporter: java-junit
       - name: Upload coverage results
         uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
         with:
