@@ -10,7 +10,7 @@ install:
 	pnpm install --frozen-lockfile
 
 lint:
-	pnpm run lint --format eslint-formatter-multiple --max-warnings 0
+	pnpm run lint --max-warnings 0
 
 unit-test:
 	pnpm run prebuild:font-subsets

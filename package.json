@@ -100,7 +100,6 @@
     "cypress": "13.13.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-formatter-multiple": "2.0.0",
     "execa": "9.3.0",
     "glob": "10.4.2",
     "husky": "9.0.11",
@@ -122,19 +121,6 @@
     "typescript": "5.4.5"
   },
   "packageManager": "pnpm@9.4.0",
-  "eslint-formatter-multiple": {
-    "formatters": [
-      {
-        "name": "stylish",
-        "output": "console"
-      },
-      {
-        "name": "junit",
-        "output": "file",
-        "path": "junit-lint.xml"
-      }
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/davidlj95/website.git"

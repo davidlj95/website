@@ -162,9 +162,6 @@ importers:
       eslint-config-prettier:
         specifier: 9.1.0
         version: 9.1.0(eslint@8.57.0)
-      eslint-formatter-multiple:
-        specifier: 2.0.0
-        version: 2.0.0
       execa:
         specifier: 9.3.0
         version: 9.3.0
@@ -3794,9 +3791,6 @@ packages:
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
-
-  eslint-formatter-multiple@2.0.0:
-    resolution: {integrity: sha512-0EakEintis8YFn+UAw+fWp15pHBNgyaEMEPfYnQ1irIdSIHe0npNFMYkX7fEoEYw1otN1bDh1+ui+UeSsf90jw==}
 
   eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
@@ -12119,10 +12113,6 @@ snapshots:
   eslint-config-prettier@9.1.0(eslint@8.57.0):
     dependencies:
       eslint: 8.57.0
-
-  eslint-formatter-multiple@2.0.0:
-    dependencies:
-      mkdirp: 1.0.4
 
   eslint-scope@5.1.1:
     dependencies:
