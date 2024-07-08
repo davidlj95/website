@@ -23,8 +23,6 @@ jobs:
   lint:
     name: Lint
     uses: ./.github/workflows/reusable-lint.yml
-    permissions:
-      checks: write
   style:
     name: Style
     uses: ./.github/workflows/reusable-style.yml
