@@ -12,12 +12,12 @@ install:
 lint:
 	pnpm run lint --format eslint-formatter-multiple --max-warnings 0
 
-test:
+unit-test:
 	pnpm run prebuild:font-subsets
 	pnpm run prebuild:simple-icons
 
 	# In CI, this file is not generated because should be mocked when testing
 	cp ../src/test/mocks/release.json ..
 
-	pnpm run test --browsers=ChromeHeadless \
+	pnpm run test:unit --browsers=ChromeHeadless \
 		--no-watch --no-progress --reporters junit,progress --code-coverage
