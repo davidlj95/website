@@ -1,7 +1,6 @@
 import {
   afterNextRender,
   afterRender,
-  AfterRenderPhase,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -61,19 +60,17 @@ export class TabsComponent implements OnDestroy {
     private _elRef: ElementRef,
     private _cdRef: ChangeDetectorRef,
   ) {
-    afterNextRender(
-      () => {
+    afterNextRender({
+      read: () => {
         this._setupIntersectionObserver()
       },
-      { phase: AfterRenderPhase.Read },
-    )
-    afterRender(
-      () => {
+    })
+    afterRender({
+      read: () => {
         this._updateSelectedIfNeeded()
         this._scrollToTabIfNeeded()
       },
-      { phase: AfterRenderPhase.Read },
-    )
+    })
     effect(this._onTabsChanged.bind(this))
   }
 
