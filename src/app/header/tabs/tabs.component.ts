@@ -1,7 +1,6 @@
 import {
   afterNextRender,
   afterRender,
-  AfterRenderPhase,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -30,30 +29,23 @@ import { TabComponent } from '../tab/tab.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsComponent implements OnDestroy {
+  public _intersectionObserver!: IntersectionObserver
   protected readonly MaterialSymbol = {
     KeyboardDoubleArrowLeft,
     KeyboardDoubleArrowRight,
   }
-
+  protected _prevButtonDisabled = signal(true)
+  protected _nextButtonDisabled = signal(true)
   private _tabs = contentChildren(TabComponent, {
     descendants: false,
   })
-
   // Pagination
   private _tabList = viewChild<ElementRef<HTMLElement>>('tabList')
   private _firstTab?: ElementRef<HTMLElement>
   private _lastTab?: ElementRef<HTMLElement>
-  protected _prevButtonDisabled = signal(true)
-  protected _nextButtonDisabled = signal(true)
-  public _intersectionObserver!: IntersectionObserver
-
   // Selected management
   private _currentTabs: ReadonlyArray<TabComponent> = []
   private _indexToSelect?: number
-  private _selectedIndex?: number
-  @Input({ transform: numberAttribute }) set selectedIndex(index: number) {
-    this._indexToSelect = index
-  }
   /// Scroll to selected
   private _indexToScrollTo?: number
 
@@ -61,20 +53,53 @@ export class TabsComponent implements OnDestroy {
     private _elRef: ElementRef,
     private _cdRef: ChangeDetectorRef,
   ) {
-    afterNextRender(
-      () => {
+    afterNextRender({
+      read: () => {
         this._setupIntersectionObserver()
       },
-      { phase: AfterRenderPhase.Read },
-    )
-    afterRender(
-      () => {
+    })
+    afterRender({
+      read: () => {
         this._updateSelectedIfNeeded()
         this._scrollToTabIfNeeded()
       },
-      { phase: AfterRenderPhase.Read },
-    )
+    })
     effect(this._onTabsChanged.bind(this))
+  }
+
+  private _selectedIndex?: number
+
+  @Input({ transform: numberAttribute }) set selectedIndex(index: number) {
+    this._indexToSelect = index
+  }
+
+  ngOnDestroy(): void {
+    this._intersectionObserver?.disconnect()
+  }
+
+  protected _scrollABit(scrollDirection: ScrollDirection) {
+    const tabListContainer = this._tabList()?.nativeElement
+    /* istanbul ignore next */
+    if (!tabListContainer) {
+      if (isDevMode) {
+        console.log(
+          'TabsComponent: Not scrolling. Reason: tab list container element is missing',
+        )
+      }
+      return
+    }
+    //👇 Amount to scroll extracted from MatTab
+    //   https://github.com/angular/components/blob/18.0.5/src/material/tabs/paginated-tab-header.ts#L473-L488
+    const tabListContainerLength = tabListContainer.offsetWidth
+    const scrollAmount = tabListContainerLength / 3
+    const newScrollPosition = Math.max(
+      tabListContainer.scrollLeft + scrollAmount * scrollDirection,
+      0,
+    )
+    tabListContainer.scrollTo({
+      behavior: 'smooth',
+      left: newScrollPosition,
+    })
   }
 
   private _updateSelectedIfNeeded(): void {
@@ -107,10 +132,6 @@ export class TabsComponent implements OnDestroy {
         .nativeElement as HTMLElement
     ).scrollIntoView({ behavior: 'smooth' })
     this._indexToScrollTo = undefined
-  }
-
-  ngOnDestroy(): void {
-    this._intersectionObserver?.disconnect()
   }
 
   private _onTabsChanged() {
@@ -152,30 +173,6 @@ export class TabsComponent implements OnDestroy {
         threshold: [INTERSECTION_THRESHOLD],
       },
     )
-  }
-  protected _scrollABit(scrollDirection: ScrollDirection) {
-    const tabListContainer = this._tabList()?.nativeElement
-    /* istanbul ignore next */
-    if (!tabListContainer) {
-      if (isDevMode) {
-        console.log(
-          'TabsComponent: Not scrolling. Reason: tab list container element is missing',
-        )
-      }
-      return
-    }
-    //👇 Amount to scroll extracted from MatTab
-    //   https://github.com/angular/components/blob/18.0.5/src/material/tabs/paginated-tab-header.ts#L473-L488
-    const tabListContainerLength = tabListContainer.offsetWidth
-    const scrollAmount = tabListContainerLength / 3
-    const newScrollPosition = Math.max(
-      tabListContainer.scrollLeft + scrollAmount * scrollDirection,
-      0,
-    )
-    tabListContainer.scrollTo({
-      behavior: 'smooth',
-      left: newScrollPosition,
-    })
   }
 }
 
