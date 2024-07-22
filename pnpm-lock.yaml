@@ -196,8 +196,8 @@ importers:
         specifier: 15.2.7
         version: 15.2.7
       liquidjs:
-        specifier: 10.15.0
-        version: 10.15.0
+        specifier: 10.16.0
+        version: 10.16.0
       ng-mocks:
         specifier: 14.13.0
         version: 14.13.0(@angular/common@18.1.1(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8))(rxjs@7.8.1))(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8))(@angular/forms@18.1.1(@angular/common@18.1.1(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8))(rxjs@7.8.1))(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8))(@angular/platform-browser@18.1.1(@angular/animations@18.1.1(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8)))(@angular/common@18.1.1(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8))(rxjs@7.8.1))(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8)))(rxjs@7.8.1))(@angular/platform-browser@18.1.1(@angular/animations@18.1.1(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8)))(@angular/common@18.1.1(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8))(rxjs@7.8.1))(@angular/core@18.1.1(rxjs@7.8.1)(zone.js@0.14.8)))
@@ -4945,8 +4945,8 @@ packages:
     engines: {node: '>=18.12.0'}
     hasBin: true
 
-  liquidjs@10.15.0:
-    resolution: {integrity: sha512-u5lYWhW8ioT+O3FdCcp5U+hiPEGNO4xASCFlCHA+k5rMTJwDIa2c2KF111ZDKc2xGM7LXPvMoNRIrBfbLNpRBg==}
+  liquidjs@10.16.0:
+    resolution: {integrity: sha512-XIgkYmiEXt1dS6Pi3IMIed43mMf9IuejnmmRiIo9g56GsKtYvPW5Y1AcM3cN1yyMsl0H5PfRoj4Y5DUpbNmg9g==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -13027,7 +13027,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  liquidjs@10.15.0:
+  liquidjs@10.16.0:
     dependencies:
       commander: 10.0.1
 
