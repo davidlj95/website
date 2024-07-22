@@ -104,7 +104,7 @@
     "execa": "9.3.0",
     "glob": "11.0.0",
     "husky": "9.1.1",
-    "jasmine-core": "5.1.2",
+    "jasmine-core": "5.2.0",
     "karma": "6.4.3",
     "karma-chrome-launcher": "3.2.0",
     "karma-coverage": "2.2.1",
