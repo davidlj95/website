@@ -1,12 +1,13 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Input,
   QueryList,
   ViewChildren,
 } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
-import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
+import { NgComponentOutlet, NgForOf, NgTemplateOutlet } from '@angular/common'
 import {
   animate,
   AUTO_STYLE,
@@ -28,7 +29,12 @@ let nextId = 0
 @Component({
   selector: 'app-collapsible-tree',
   standalone: true,
-  imports: [MaterialSymbolDirective, NgTemplateOutlet, NgComponentOutlet],
+  imports: [
+    MaterialSymbolDirective,
+    NgTemplateOutlet,
+    NgComponentOutlet,
+    NgForOf,
+  ],
   templateUrl: './collapsible-tree.component.html',
   styleUrl: './collapsible-tree.component.scss',
   animations: [
@@ -63,6 +69,8 @@ export class CollapsibleTreeComponent {
 
   private readonly _id = nextId++
 
+  constructor(private readonly cdRef: ChangeDetectorRef) {}
+
   public get isCollapsible(): boolean {
     if (!(this.node.children.length > 0)) {
       return false
@@ -81,12 +89,17 @@ export class CollapsibleTreeComponent {
   }
 
   collapse() {
-    this.isExpanded = false
+    if (this.isExpanded) {
+      this.isExpanded = false
+      this.cdRef.markForCheck()
+    }
   }
 
   expand() {
-    this.isExpanded = true
-    this.parent?.collapseAllChildren({ except: this })
+    if (!this.isExpanded) {
+      this.isExpanded = true
+      this.parent?.collapseAllChildren({ except: this })
+    }
   }
 
   collapseAllChildren({ except }: { except?: CollapsibleTreeComponent } = {}) {
