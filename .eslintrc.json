@@ -1,7 +1,6 @@
 {
   "root": false,
   "ignorePatterns": ["projects/**/*"],
-  "extends": ["plugin:cypress/recommended"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -42,6 +41,10 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {}
+    },
+    {
+      "files": ["*.cy.ts"],
+      "extends": ["plugin:cypress/recommended"]
     }
   ]
 }
