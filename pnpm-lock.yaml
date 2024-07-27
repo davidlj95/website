@@ -148,8 +148,8 @@ importers:
         specifier: 3.0.2
         version: 3.0.2
       bundlewatch:
-        specifier: 0.3.3
-        version: 0.3.3
+        specifier: 0.4.0
+        version: 0.4.0
       conventional-changelog-conventionalcommits:
         specifier: 8.0.0
         version: 8.0.0
@@ -2626,8 +2626,8 @@ packages:
     resolution: {integrity: sha512-QbUdXJVTpvUTHU7871ppZkdOLBeGUKBQWHkHrvN2V9IQWGMt61zf3B45BtzjxEJzYuj0JBjBZP/hmYS/R9pmAw==}
     engines: {node: '>=4'}
 
-  axios@0.24.0:
-    resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
+  axios@0.28.1:
+    resolution: {integrity: sha512-iUcGA5a7p0mVb4Gm/sy+FSECNkPFT4y7wt6OM/CDpO/OnNCvSs3PoMG8ibrC9jRoGYU0gUK5pXVC4NPXq6lHRQ==}
 
   axios@1.6.8:
     resolution: {integrity: sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==}
@@ -2789,9 +2789,9 @@ packages:
     resolution: {integrity: sha512-tjwM5exMg6BGRI+kNmTntNsvdZS1X8BFYS6tnJ2hdH0kVxM6/eVZ2xy+FqStSWvYmtfFMDLIxurorHwDKfDz5Q==}
     engines: {node: '>=18'}
 
-  bundlewatch@0.3.3:
-    resolution: {integrity: sha512-qzSVWrZyyWXa546JpAPRPTFmnXms9YNVnfzB05DRJKmN6wRRa7SkxE4OgKQmbAY74Z6CM2mKAc6vwvd2R+1lUQ==}
-    engines: {node: '>=10'}
+  bundlewatch@0.4.0:
+    resolution: {integrity: sha512-w8w4K8RdrsHMZD9Ss4Ailfsrax/0zSIgh25GCaiudNHg45xXuh/u/xezzjbu+WCQJGjL9O1Fg9k9TEdS/XkZFA==}
+    engines: {node: '>=16'}
     hasBin: true
 
   bytes@3.0.0:
@@ -10344,9 +10344,11 @@ snapshots:
 
   axe-core@4.9.1: {}
 
-  axios@0.24.0:
+  axios@0.28.1:
     dependencies:
       follow-redirects: 1.15.6(debug@4.3.5)
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
 
@@ -10592,9 +10594,9 @@ snapshots:
     dependencies:
       run-applescript: 7.0.0
 
-  bundlewatch@0.3.3:
+  bundlewatch@0.4.0:
     dependencies:
-      axios: 0.24.0
+      axios: 0.28.1
       bytes: 3.1.2
       chalk: 4.1.2
       ci-env: 1.17.0
