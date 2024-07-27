@@ -1,4 +1,5 @@
 export const CUSTOM_DISPLAY_NAME_ENTRIES: ReadonlyArray<[string, string]> = [
+  ['microsoftword', 'Microsoft Word'],
   ['rspec', 'RSpec'],
   ['zenqms', 'ZenQMS'],
   ['karmarunner', 'Karma Runner'],
