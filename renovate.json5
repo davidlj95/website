@@ -57,13 +57,13 @@
     // Angular v18
     {
       // 👇 Includes devkit & eslint
-      matchPackagePrefixes: ['@angular'],
+      matchDepNames: ['@angular{/,}**'],
       allowedVersions: '^18',
     },
     // ng-icons Angular compatibility
     // https://github.com/ng-icons/ng-icons/tree/master?tab=readme-ov-file#supported-versions
     {
-      matchDepPrefixes: ['@ng-icons'],
+      matchDepNames: ['@ng-icons{/,}**'],
       allowedVersions: '26.x || 27.x',
     },
   ],
