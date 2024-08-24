@@ -118,7 +118,7 @@
     "semantic-release": "24.1.0",
     "subset-font": "2.3.0",
     "tsm": "2.3.0",
-    "tsx": "4.17.0",
+    "tsx": "4.18.0",
     "typescript": "5.4.5"
   },
   "packageManager": "pnpm@9.7.1",
