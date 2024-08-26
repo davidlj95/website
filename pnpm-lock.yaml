@@ -66,8 +66,8 @@ importers:
         specifier: 7.8.1
         version: 7.8.1
       simple-icons:
-        specifier: 13.6.0
-        version: 13.6.0
+        specifier: 13.7.0
+        version: 13.7.0
       tslib:
         specifier: 2.7.0
         version: 2.7.0
@@ -6523,8 +6523,8 @@ packages:
     resolution: {integrity: sha512-q+o8L2ebiWD1AxD17eglf1pFrl9jtW7FHa0ygqY6EKvibK8JHyq9Z26v9MZXeDiw+RbfOJ9j2v70M10Hd6E06A==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
-  simple-icons@13.6.0:
-    resolution: {integrity: sha512-hKhxwp9SDjMjEE+aFL3gzh2XZBQSN5xlIygpsKgiMcn+65BtWoUIS0nmIkmDQ15Ge+2AXGfHCrjn5vE55UdjDg==}
+  simple-icons@13.7.0:
+    resolution: {integrity: sha512-vEBRehBv/DSypfBGx0Dqplch1Ik2sQidebLeAWoaXxZTZiiw1JPRpk9/GwQh1+I8vRHhzIRIcQ7Ng8hm4hB01A==}
     engines: {node: '>=0.12.18'}
 
   skin-tone@2.0.0:
@@ -7516,7 +7516,7 @@ snapshots:
       '@vitejs/plugin-basic-ssl': 1.1.0(vite@5.4.0(@types/node@20.16.1)(less@4.2.0)(sass@1.77.6)(terser@5.31.6))
       ansi-colors: 4.1.3
       autoprefixer: 10.4.20(postcss@8.4.41)
-      babel-loader: 9.1.3(@babel/core@7.25.2)(webpack@5.93.0)
+      babel-loader: 9.1.3(@babel/core@7.25.2)(webpack@5.93.0(esbuild@0.23.0))
       browserslist: 4.23.2
       copy-webpack-plugin: 12.0.2(webpack@5.93.0(esbuild@0.23.0))
       critters: 0.0.24
@@ -11165,7 +11165,7 @@ snapshots:
       schema-utils: 4.2.0
       webpack: 5.93.0(esbuild@0.23.0)
 
-  babel-loader@9.1.3(@babel/core@7.25.2)(webpack@5.93.0):
+  babel-loader@9.1.3(@babel/core@7.25.2)(webpack@5.93.0(esbuild@0.23.0)):
     dependencies:
       '@babel/core': 7.25.2
       find-cache-dir: 4.0.0
@@ -15434,7 +15434,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  simple-icons@13.6.0: {}
+  simple-icons@13.7.0: {}
 
   skin-tone@2.0.0:
     dependencies:
