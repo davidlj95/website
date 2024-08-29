@@ -196,8 +196,8 @@ importers:
         specifier: 15.2.9
         version: 15.2.9
       liquidjs:
-        specifier: 10.16.5
-        version: 10.16.5
+        specifier: 10.16.6
+        version: 10.16.6
       ng-mocks:
         specifier: 14.13.1
         version: 14.13.1(@angular/common@18.2.1(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10))(@angular/forms@18.2.1(@angular/common@18.2.1(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.1(@angular/animations@18.2.1(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.1(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))(@angular/platform-browser@18.2.1(@angular/animations@18.2.1(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.1(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.1(rxjs@7.8.1)(zone.js@0.14.10)))
@@ -5004,8 +5004,8 @@ packages:
     engines: {node: '>=18.12.0'}
     hasBin: true
 
-  liquidjs@10.16.5:
-    resolution: {integrity: sha512-vg/B5/QdqdlCL8r4MztWvt8/rK8hrW+H/sDKxg0VYTWRV6kRqU1lSA2oj2kRwDBqerjuG1wm4jx+xgynmYffKw==}
+  liquidjs@10.16.6:
+    resolution: {integrity: sha512-nQJH9bOXs+NBD3fwgZi5QCnDwbzCkrGRYVWyaYA3P/MzGRUH13SS2BJJ+vyMdNg1uL1mnl7DXWWxx3wuZgVTGg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -7481,7 +7481,7 @@ snapshots:
       '@vitejs/plugin-basic-ssl': 1.1.0(vite@5.4.0(@types/node@20.16.1)(less@4.2.0)(sass@1.77.6)(terser@5.31.6))
       ansi-colors: 4.1.3
       autoprefixer: 10.4.20(postcss@8.4.41)
-      babel-loader: 9.1.3(@babel/core@7.25.2)(webpack@5.93.0)
+      babel-loader: 9.1.3(@babel/core@7.25.2)(webpack@5.93.0(esbuild@0.23.0))
       browserslist: 4.23.2
       copy-webpack-plugin: 12.0.2(webpack@5.93.0(esbuild@0.23.0))
       critters: 0.0.24
@@ -11059,7 +11059,7 @@ snapshots:
       schema-utils: 4.2.0
       webpack: 5.93.0(esbuild@0.23.0)
 
-  babel-loader@9.1.3(@babel/core@7.25.2)(webpack@5.93.0):
+  babel-loader@9.1.3(@babel/core@7.25.2)(webpack@5.93.0(esbuild@0.23.0)):
     dependencies:
       '@babel/core': 7.25.2
       find-cache-dir: 4.0.0
@@ -13749,7 +13749,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  liquidjs@10.16.5:
+  liquidjs@10.16.6:
     dependencies:
       commander: 10.0.1
 
