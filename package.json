@@ -97,7 +97,7 @@
     "browser-sync": "3.0.2",
     "bundlewatch": "0.4.0",
     "conventional-changelog-conventionalcommits": "8.0.0",
-    "cypress": "13.14.0",
+    "cypress": "13.14.1",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-cypress": "3.5.0",
