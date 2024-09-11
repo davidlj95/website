@@ -109,8 +109,8 @@ importers:
         specifier: 19.0.3
         version: 19.0.3
       '@cypress/code-coverage':
-        specifier: 3.12.46
-        version: 3.12.46(@babel/core@7.24.5)(@babel/preset-env@7.25.3(@babel/core@7.24.5))(babel-loader@9.1.3(@babel/core@7.24.5)(webpack@5.94.0))(cypress@13.14.1)(webpack@5.94.0(esbuild@0.23.0))
+        specifier: 3.12.48
+        version: 3.12.48(@babel/core@7.24.5)(@babel/preset-env@7.25.3(@babel/core@7.24.5))(babel-loader@9.1.3(@babel/core@7.24.5)(webpack@5.94.0))(cypress@13.14.1)(webpack@5.94.0(esbuild@0.23.0))
       '@lhci/cli':
         specifier: 0.14.0
         version: 0.14.0(encoding@0.1.13)
@@ -1229,8 +1229,8 @@ packages:
     resolution: {integrity: sha512-tpyc+7i6bPG9mvaBbtKUeghfyZSDgWquIDfMgqYtTbmZ9Y9VzEm2je9EYcQ0aoz5o7NvGS+rcDec93yO08MHYA==}
     engines: {node: '>=v18'}
 
-  '@cypress/code-coverage@3.12.46':
-    resolution: {integrity: sha512-Y6lG3VjJX8R64mZH5lSqZPw2aj89C1v7e8uC9Ngob1r1DgaAVRQtXZD6mXeHm23FHh131ZMckQ9b+AzCUeJ0mg==}
+  '@cypress/code-coverage@3.12.48':
+    resolution: {integrity: sha512-Vr9CzmcI+Cx+a1x2lZW9S/pQiHkVoCWwKj2l3sPB4EcEztBDIpXCEMdAiYqrmAfpGwot3scJwW2y1HYxUec0fg==}
     peerDependencies:
       '@babel/core': ^7.0.1
       '@babel/preset-env': ^7.0.0
@@ -3179,6 +3179,9 @@ packages:
   dayjs@1.11.12:
     resolution: {integrity: sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==}
 
+  dayjs@1.11.13:
+    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
+
   debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -3215,6 +3218,15 @@ packages:
 
   debug@4.3.6:
     resolution: {integrity: sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
+  debug@4.3.7:
+    resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -7343,7 +7355,7 @@ snapshots:
       '@vitejs/plugin-basic-ssl': 1.1.0(vite@5.4.0(@types/node@20.16.3)(less@4.2.0)(sass@1.77.6)(terser@5.31.6))
       ansi-colors: 4.1.3
       autoprefixer: 10.4.20(postcss@8.4.41)
-      babel-loader: 9.1.3(@babel/core@7.25.2)(webpack@5.94.0)
+      babel-loader: 9.1.3(@babel/core@7.25.2)(webpack@5.94.0(esbuild@0.23.0))
       browserslist: 4.23.3
       copy-webpack-plugin: 12.0.2(webpack@5.94.0(esbuild@0.23.0))
       critters: 0.0.24
@@ -9318,7 +9330,7 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.0
       chalk: 5.3.0
 
-  '@cypress/code-coverage@3.12.46(@babel/core@7.24.5)(@babel/preset-env@7.25.3(@babel/core@7.24.5))(babel-loader@9.1.3(@babel/core@7.24.5)(webpack@5.94.0))(cypress@13.14.1)(webpack@5.94.0(esbuild@0.23.0))':
+  '@cypress/code-coverage@3.12.48(@babel/core@7.24.5)(@babel/preset-env@7.25.3(@babel/core@7.24.5))(babel-loader@9.1.3(@babel/core@7.24.5)(webpack@5.94.0))(cypress@13.14.1)(webpack@5.94.0(esbuild@0.23.0))':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/preset-env': 7.25.3(@babel/core@7.24.5)
@@ -9326,8 +9338,8 @@ snapshots:
       babel-loader: 9.1.3(@babel/core@7.24.5)(webpack@5.94.0)
       chalk: 4.1.2
       cypress: 13.14.1
-      dayjs: 1.11.12
-      debug: 4.3.6(supports-color@8.1.1)
+      dayjs: 1.11.13
+      debug: 4.3.7
       execa: 4.1.0
       globby: 11.1.0
       istanbul-lib-coverage: 3.2.2
@@ -9364,7 +9376,7 @@ snapshots:
       '@babel/preset-env': 7.25.3(@babel/core@7.24.5)
       babel-loader: 9.1.3(@babel/core@7.24.5)(webpack@5.94.0)
       bluebird: 3.7.1
-      debug: 4.3.6(supports-color@8.1.1)
+      debug: 4.3.7
       lodash: 4.17.21
       webpack: 5.94.0(esbuild@0.23.0)
     transitivePeerDependencies:
@@ -10754,7 +10766,7 @@ snapshots:
       schema-utils: 4.2.0
       webpack: 5.94.0(esbuild@0.23.0)
 
-  babel-loader@9.1.3(@babel/core@7.25.2)(webpack@5.94.0):
+  babel-loader@9.1.3(@babel/core@7.25.2)(webpack@5.94.0(esbuild@0.23.0)):
     dependencies:
       '@babel/core': 7.25.2
       find-cache-dir: 4.0.0
@@ -11523,6 +11535,8 @@ snapshots:
 
   dayjs@1.11.12: {}
 
+  dayjs@1.11.13: {}
+
   debug@2.6.9:
     dependencies:
       ms: 2.0.0
@@ -11546,6 +11560,10 @@ snapshots:
       ms: 2.1.2
     optionalDependencies:
       supports-color: 8.1.1
+
+  debug@4.3.7:
+    dependencies:
+      ms: 2.1.3
 
   decamelize@1.2.0: {}
 
