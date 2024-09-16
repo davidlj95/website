@@ -42,11 +42,11 @@ importers:
         specifier: 1.0.0-beta.11
         version: 1.0.0-beta.11(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/router@18.2.2(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.2(@angular/animations@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))
       '@fontsource/roboto':
-        specifier: 5.0.15
-        version: 5.0.15
+        specifier: 5.1.0
+        version: 5.1.0
       '@fontsource/roboto-mono':
-        specifier: 5.0.20
-        version: 5.0.20
+        specifier: 5.1.0
+        version: 5.1.0
       '@ng-icons/core':
         specifier: 27.5.2
         version: 27.5.2
@@ -1579,11 +1579,11 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@fontsource/roboto-mono@5.0.20':
-    resolution: {integrity: sha512-QxeGGLF37FfBcTX/qQLbL95PbaSzItft8UczmkBz8mqw/h84OgDkUPQ/OxvCpGA3EKYEvVT6HvBFkjOsG71UBg==}
+  '@fontsource/roboto-mono@5.1.0':
+    resolution: {integrity: sha512-7lIxTeanF2XrwAIukUrOUvO9veGkQiG7L7vizMxVjl+lrTwS4GAYyOvziyGZ6/3kU80K3lGd/FnWrmoTud0V6A==}
 
-  '@fontsource/roboto@5.0.15':
-    resolution: {integrity: sha512-352XiID9jfwmYaHpdmS3ocGJi3PA+vOm4HzJIRfSyPEyLP6dZN8iiEKUbdAfB5YXQO3YxO2KZpR+R28q2zMiYw==}
+  '@fontsource/roboto@5.1.0':
+    resolution: {integrity: sha512-cFRRC1s6RqPygeZ8Uw/acwVHqih8Czjt6Q0MwoUoDe9U3m4dH1HmNDRBZyqlMSFwgNAUKgFImncKdmDHyKpwdg==}
 
   '@formatjs/ecma402-abstract@1.18.2':
     resolution: {integrity: sha512-+QoPW4csYALsQIl8GbN14igZzDbuwzcpWrku9nyMXlaqAlwRBgl5V+p0vWMGFqHOw37czNXaP/lEk4wbLgcmtA==}
@@ -9578,9 +9578,9 @@ snapshots:
 
   '@eslint/js@8.57.0': {}
 
-  '@fontsource/roboto-mono@5.0.20': {}
+  '@fontsource/roboto-mono@5.1.0': {}
 
-  '@fontsource/roboto@5.0.15': {}
+  '@fontsource/roboto@5.1.0': {}
 
   '@formatjs/ecma402-abstract@1.18.2':
     dependencies:
