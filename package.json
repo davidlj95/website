@@ -92,7 +92,7 @@
     "@types/subset-font": "1.4.3",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
-    "babel-loader": "9.1.3",
+    "babel-loader": "9.2.1",
     "babel-plugin-istanbul": "7.0.0",
     "browser-sync": "3.0.2",
     "bundlewatch": "0.4.0",
