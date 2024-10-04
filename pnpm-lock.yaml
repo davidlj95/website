@@ -39,8 +39,8 @@ importers:
         specifier: 18.2.2
         version: 18.2.2(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))
       '@davidlj95/ngx-meta':
-        specifier: 1.0.0-beta.11
-        version: 1.0.0-beta.11(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/router@18.2.2(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.2(@angular/animations@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))
+        specifier: 1.0.0-beta.15
+        version: 1.0.0-beta.15(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/router@18.2.2(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.2(@angular/animations@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))
       '@fontsource/roboto':
         specifier: 5.1.0
         version: 5.1.0
@@ -1253,8 +1253,8 @@ packages:
   '@cypress/xvfb@1.2.4':
     resolution: {integrity: sha512-skbBzPggOVYCbnGgV+0dmBdW/s77ZkAOXIC1knS8NagwDjBrNC1LuXtQJeiN6l+m7lzmHtaoUw/ctJKdqkG57Q==}
 
-  '@davidlj95/ngx-meta@1.0.0-beta.11':
-    resolution: {integrity: sha512-EIBT48Qwr2QPIuhqu+4KzkoZPdyhv9lOhpoaq0mBFAu7OEtI1aB5FWb4QWWc8fFk0QtW+vOYaqkgElSCi3Y6SQ==}
+  '@davidlj95/ngx-meta@1.0.0-beta.15':
+    resolution: {integrity: sha512-O0OEZrYdhq651ecuk2DnKnoym7LYUb4vjXpbi4T08ba41pHks8n/Phd6LvXy0aZ7brgH9W0Z0/DKa3ApO/Ml7Q==}
     peerDependencies:
       '@angular/common': ^18 || ^17 || ^16 || ^15
       '@angular/core': ^18 || ^17 || ^16 || ^15
@@ -9416,7 +9416,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@davidlj95/ngx-meta@1.0.0-beta.11(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/router@18.2.2(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.2(@angular/animations@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))':
+  '@davidlj95/ngx-meta@1.0.0-beta.15(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/router@18.2.2(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.2(@angular/animations@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))':
     dependencies:
       '@angular/common': 18.2.2(@angular/core@18.2.2(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
       '@angular/core': 18.2.2(rxjs@7.8.1)(zone.js@0.14.10)
