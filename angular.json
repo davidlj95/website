@@ -59,7 +59,13 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/sass"]
             },
-            "scripts": [],
+            "scripts": [
+              {
+                "input": "src/app/console-easter-egg.js",
+                "bundleName": "console-easter-egg",
+                "inject": false
+              }
+            ],
             "browser": "src/main.ts",
             "server": "src/main.server.ts",
             "prerender": true,

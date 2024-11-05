@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router'
 import { NoScriptComponent } from './no-script/no-script.component'
 import { HeaderComponent } from './header/header.component'
 import { ReleaseInfoComponent } from './release-info/release-info.component'
+import { maybeLoadConsoleEasterEgg } from './maybe-load-console-easter-egg'
 
 @Component({
   selector: 'app-root',
@@ -16,4 +17,8 @@ import { ReleaseInfoComponent } from './release-info/release-info.component'
     RouterOutlet,
   ],
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor() {
+    maybeLoadConsoleEasterEgg()
+  }
+}
