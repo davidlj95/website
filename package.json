@@ -6,6 +6,7 @@
     "start": "ng serve",
     "start:public": "ng serve --host 0.0.0.0 --disable-host-check",
     "start:pullRequest": "ng serve --configuration pullRequest",
+    "start:prod": "pnpm dlx http-server dist/@davidlj95/website/browser -a localhost",
     "prebuild": "pnpm run '/prebuild:.*/'",
     "prebuild:font-subsets": "tsm scripts/src/generate-font-subsets.ts",
     "prebuild:release-file": "tsx scripts/src/generate-release-file.mts",
