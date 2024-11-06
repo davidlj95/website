@@ -97,6 +97,7 @@ describe('ProfileContactsComponent', () => {
   })
 
   it(`should not display link if icon cannot be found`, () => {
+    const consoleErrorSpy = spyOn(console, 'error')
     const profile = makeJsonResumeBasicsProfile('non-existent')
     const profiles = [profile]
     const jsonResumeBasics = makeJsonResumeBasics({ profiles })
@@ -108,6 +109,9 @@ describe('ProfileContactsComponent', () => {
       By.css(`a[href="${profile.url}"]`),
     )
     expect(anchorElement).toBeNull()
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      jasmine.stringContaining('Icon not found'),
+    )
   })
 })
 
