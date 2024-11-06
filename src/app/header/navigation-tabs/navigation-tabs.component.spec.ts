@@ -19,6 +19,11 @@ describe('NavigationTabsComponent', () => {
   const BAR_ITEM = makeNavigationItemFromRoutePath(BAR_ROUTE.path)
   const ITEMS = [FOO_ITEM, BAR_ITEM]
 
+  beforeEach(() => {
+    // do not log tabs component messages
+    spyOn(console, 'log')
+  })
+
   it('should create', () => {
     const [fixture, component] = makeSut()
     fixture.detectChanges()

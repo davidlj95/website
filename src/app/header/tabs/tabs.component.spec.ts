@@ -13,6 +13,10 @@ import { By } from '@angular/platform-browser'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 
 describe('TabsComponent', () => {
+  beforeEach(() => {
+    spyOn(console, 'log')
+  })
+
   it('should create', () => {
     const [fixture, component] = makeSut()
     fixture.detectChanges()
@@ -53,18 +57,22 @@ describe('TabsComponent', () => {
   const findToolbarIcons = (debugElement: DebugElement) =>
     debugElement.queryAll(byComponent(ToolbarButtonComponent))
 
-  const findLeftArrow = (debugElement: DebugElement) =>
-    findByText(findToolbarIcons(debugElement), KeyboardDoubleArrowLeft)!
-
-  const findRightArrow = (debugElement: DebugElement) =>
-    findByText(findToolbarIcons(debugElement), KeyboardDoubleArrowRight)!
-
   it('should display left and right arrows', () => {
     const [fixture] = makeSut()
     fixture.detectChanges()
 
-    expect(findLeftArrow(fixture.debugElement)).toBeTruthy()
-    expect(findRightArrow(fixture.debugElement)).toBeTruthy()
+    expect(
+      findByText(
+        findToolbarIcons(fixture.debugElement),
+        KeyboardDoubleArrowLeft,
+      )!,
+    ).toBeTruthy()
+    expect(
+      findByText(
+        findToolbarIcons(fixture.debugElement),
+        KeyboardDoubleArrowRight,
+      )!,
+    ).toBeTruthy()
   })
 })
 
