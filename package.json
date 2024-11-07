@@ -22,7 +22,6 @@
     "coverage:move-to-nyc-output": "rm -rf .nyc_output && mkdir .nyc_output && cp -f coverage/*.json .nyc_output",
     "security-txt": "tsm scripts/src/generate-security-txt.ts",
     "lint": "ng lint",
-    "lint-staged": "lint-staged",
     "git-hooks": "husky",
     "commitlint:edit-msg": "commitlint --verbose --edit",
     "commitlint:last": "commitlint --verbose --from HEAD~1",
