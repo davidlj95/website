@@ -9,8 +9,8 @@ import semanticRelease, {
   ReleaseType,
   Result,
 } from 'semantic-release'
-// But we get type safety given Typescript reads the JSON
 // We can always go back to an old boring read file sync if experiment goes wrong :P
+// But we get type safety given Typescript reads the JSON
 import realReleaseOptions from '../../.releaserc.json' assert { type: 'json' }
 import { getRepositoryRootDir, isMain, Log, objectToJson } from './utils.mjs'
 import { join } from 'path'
