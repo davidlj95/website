@@ -9,9 +9,6 @@ install:
 	# https://pnpm.io/cli/install#--frozen-lockfile
 	pnpm install --frozen-lockfile
 
-lint:
-	pnpm run lint --max-warnings 0
-
 unit-test:
 	pnpm run prebuild:font-subsets
 	pnpm run prebuild:simple-icons

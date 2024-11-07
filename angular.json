@@ -179,7 +179,8 @@
               "src/**/*.html",
               "cypress/**/*.ts",
               "scripts/**/*.?(m)ts"
-            ]
+            ],
+            "maxWarnings": 0
           }
         }
       }
