@@ -28,34 +28,36 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          ref: ${{ inputs.ref }}
-          lfs: true
-      - name: Setup
-        uses: ./.github/actions/setup
-      - name: Generate info for Angular cache key
-        run: echo "week-of-year=$(date --utc '+%V')" >> $GITHUB_ENV
-      - name: Cache Angular build
-        uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
-        env:
-          cache-name: angular-cache
-        with:
-          path: .angular/cache
-          # 👇 Update cache once a week. Best effort approach
-          #    Otherwise it would never be invalidated
-          key: ${{ env.cache-name }}-${{ env.week-of-year }}
-          restore-keys: |
-            ${{ env.cache-name }}
-      - name: Prebuild tasks
-        run: pnpm run prebuild
-      - name: Build app (includes SSG|R)
-        run: pnpm run ${{ inputs.build-run-script }}
-      - name: Upload built app
-        if: ${{ inputs.artifact-name != '' }}
-        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
-        with:
-          name: ${{ inputs.artifact-name }}
-          path: 'dist/@davidlj95/website/browser'
-          retention-days: 5
+      - name: Debug
+        run: echo ${{ github.workflow }}
+    # - name: Checkout
+    #   uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+    #   with:
+    #     ref: ${{ inputs.ref }}
+    #     lfs: true
+    # - name: Setup
+    #   uses: ./.github/actions/setup
+    # - name: Generate info for Angular cache key
+    #   run: echo "week-of-year=$(date --utc '+%V')" >> $GITHUB_ENV
+    # - name: Cache Angular build
+    #   uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
+    #   env:
+    #     cache-name: angular-cache
+    #   with:
+    #     path: .angular/cache
+    #     # 👇 Update cache once a week. Best effort approach
+    #     #    Otherwise it would never be invalidated
+    #     key: ${{ env.cache-name }}-${{ env.week-of-year }}
+    #     restore-keys: |
+    #       ${{ env.cache-name }}
+    # - name: Prebuild tasks
+    #   run: pnpm run prebuild
+    # - name: Build app (includes SSG|R)
+    #   run: pnpm run ${{ inputs.build-run-script }}
+    # - name: Upload built app
+    #   if: ${{ inputs.artifact-name != '' }}
+    #   uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
+    #   with:
+    #     name: ${{ inputs.artifact-name }}
+    #     path: 'dist/@davidlj95/website/browser'
+    #     retention-days: 5
