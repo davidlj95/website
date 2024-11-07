@@ -23,6 +23,18 @@ jobs:
       - name: Run linter
         run: pnpm run lint:code
 
+  github-actions:
+    name: GitHub Actions
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - name: Run GitHub Actions linter
+        uses: docker://rhysd/actionlint:latest@sha256:7617f05bd698cd2f1c3aedc05bc733ccec92cca0738f3e8722c32c5b42c70ae6
+        with:
+          args: -color
+
   commit-messages:
     name: Commit messages
     runs-on: ubuntu-latest

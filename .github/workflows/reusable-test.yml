@@ -72,10 +72,10 @@ jobs:
         uses: ./.github/actions/setup
       - name: Get Cypress cache info
         run: |
-          echo "CYPRESS_PKG_JSON_VERSION=$(jq -r '.devDependencies.cypress' package.json)" >> $GITHUB_ENV
+          echo "CYPRESS_PKG_JSON_VERSION=$(jq -r '.devDependencies.cypress' package.json)" >> "$GITHUB_ENV"
           # 👇 Cypress caching. Env var to specify dir + use default dir
           # https://docs.cypress.io/guides/continuous-integration/introduction#Caching
-          echo "CYPRESS_CACHE_FOLDER=$HOME/.cache/Cypress" >> $GITHUB_ENV
+          echo "CYPRESS_CACHE_FOLDER=$HOME/.cache/Cypress" >> "$GITHUB_ENV"
       - name: Cypress cache
         uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
         env:

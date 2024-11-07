@@ -24,6 +24,7 @@
     "lint": "pnpm run '/^lint:.*/'",
     "lint:code": "ng lint --max-warnings 0",
     "lint:commit-message": "pnpm run commitlint:edit-msg",
+    "lint:gh-actions": "actionlint || true",
     "git-hooks": "husky",
     "commitlint:edit-msg": "commitlint --verbose --edit",
     "commitlint:last": "commitlint --verbose --last",
