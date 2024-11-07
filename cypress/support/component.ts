@@ -23,6 +23,8 @@ import { mount } from 'cypress/angular'
 // Cypress code coverage
 import '@cypress/code-coverage/support'
 
+// https://youtrack.jetbrains.com/issue/AQUA-3130/
+// noinspection CypressCommandWithoutDeclaration
 Cypress.Commands.add('mount', mount)
 
 // Example use:

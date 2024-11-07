@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["**/*.ts", "support/cypress.d.ts"],
+  "include": ["**/*.ts"],
   "compilerOptions": {
     "sourceMap": false,
     "types": ["cypress"]

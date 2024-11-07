@@ -1,4 +1,4 @@
-import { mount } from 'cypress/angular'
+import { type mount } from 'cypress/angular'
 
 declare global {
   namespace Cypress {
