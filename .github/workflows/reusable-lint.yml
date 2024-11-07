@@ -21,7 +21,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run linter
-        run: cd .ci && make lint
+        run: pnpm run lint:code
 
   commit-messages:
     name: Commit messages
@@ -37,7 +37,7 @@ jobs:
         uses: ./.github/actions/setup
       - name: Lint last commit
         if: github.event_name == 'push'
-        run: 'pnpm run commitlint:last'
+        run: pnpm run commitlint:last
       - name: Lint all PR commits
         if: github.event_name == 'pull_request'
         run: |
