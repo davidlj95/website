@@ -26,7 +26,7 @@
     "lint:commit-message": "pnpm run commitlint:edit-msg",
     "git-hooks": "husky",
     "commitlint:edit-msg": "commitlint --verbose --edit",
-    "commitlint:last": "commitlint --verbose --from HEAD~1",
+    "commitlint:last": "commitlint --verbose --last",
     "validate-renovate-config": "pnpm --package renovate dlx renovate-config-validator",
     "format": "prettier --ignore-unknown --write",
     "format:all": "pnpm run format .",
