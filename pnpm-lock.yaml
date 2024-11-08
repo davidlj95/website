@@ -66,8 +66,8 @@ importers:
         specifier: 7.8.1
         version: 7.8.1
       simple-icons:
-        specifier: 13.13.0
-        version: 13.13.0
+        specifier: 13.16.0
+        version: 13.16.0
       tslib:
         specifier: 2.7.0
         version: 2.7.0
@@ -6342,8 +6342,8 @@ packages:
     resolution: {integrity: sha512-q+o8L2ebiWD1AxD17eglf1pFrl9jtW7FHa0ygqY6EKvibK8JHyq9Z26v9MZXeDiw+RbfOJ9j2v70M10Hd6E06A==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
-  simple-icons@13.13.0:
-    resolution: {integrity: sha512-lHit5FeMG4Uga9M81Hf6UKugVTC9xnuSYM+AqZ4UMIoaRnkraq2T1RvvgRGk2T1CjONim3NfwzLx26hbDhvZlg==}
+  simple-icons@13.16.0:
+    resolution: {integrity: sha512-aMg1efZ0IvYPKdvqUW0woVGSJwb199y9z7j1+6D5zPMn95eMQN0xzKAHefsqQW2K/5LwfgtFK3Gxn9n1eafX0A==}
     engines: {node: '>=0.12.18'}
 
   skin-tone@2.0.0:
@@ -14948,7 +14948,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  simple-icons@13.13.0: {}
+  simple-icons@13.16.0: {}
 
   skin-tone@2.0.0:
     dependencies:
