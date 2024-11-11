@@ -63,7 +63,8 @@
           {
             "versionHint": "pin"
           }
-        ]
+        ],
+        "json-files/sort-package-json": "error"
       }
     }
   ]
