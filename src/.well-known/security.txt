@@ -4,26 +4,26 @@ Hash: SHA256
 Canonical: https://davidlj95.com/.well-known/security.txt
 Contact: mailto:security@davidlj95.com
 Encryption: openpgp4fpr:d214e5c66c18eec58b2111ce1441fa435de6ac64
-Expires: 2024-02-20 05:23:25+00:00
+Expires: 2025-05-11 18:45:44+00:00
 Preferred-Languages: en, es, ca
 
 # Not in standard, but found it in
 # https://vdp.cabinetoffice.gov.uk/.well-known/security.txt
 # https://github.com/alphagov/security.txt/blob/f7ab027ac26bae3fee2e5d51703d6fecc512e67c/Makefile
-Last-Updated: 2023-08-20 04:23:25+00:00
+Last-Updated: 2024-11-11 19:45:44+00:00
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEE0hTlxmwY7sWLIRHOFEH6Q13mrGQFAmThlT0ACgkQFEH6Q13m
-rGREXA//ZSVtZdpe/MrYoD6IduXq7MNutfhIiPfmW7AMRaHkpcvp0ngncwNTJoLQ
-nfQgozXUg1WO/95gEiz5f/nMHLUzR0gEbUlZAHwlQ/8q0YspcQQ+g1R4WXZCwhJE
-BMvu7q5kkAro3A2fMJLLWhGqX+gS11O5Uoy4DBGXV0leUnPr3U9k5AAL/AOY9WWv
-7nB4/shYnZLF09ef4hoOwsOcgpgVrj9F4dN2Kj0UtctAs4ZGatRTYKsnrji6uL4A
-9LTVt7faxFw4cWNx5knjymh5uunp3E8qn0XQJpRkUejhlIiLBxPVARXfr9q70Vim
-7bsDXE2MnyWXXTpPZwckMjzLWfUGauPcYhjTvaIguWtH57HTjQjAqCSKw2uVrwg2
-ik12rHgqo4jahOPqmlGh7WvV38Bn+S1lJQcTm9pgt5n9IOI3Htty4o8I4qCJJNE5
-q+t6IKJ04NdMLjrDXKOJVRasJYS/OTcHUK67F8x3/bZMvURl7vEzL4MI5oan2h9j
-Ki73OZH6UbVq6i2Pt5zbItzTFIyTYK0yUEpCnYVZ8fcxF34PSMYvQ/Q3Pb3N4v8L
-yLcqFBwvuTEJOegsRPGNIjL+ULx89k7aZvL1bEDAFcVZwF87FFzJDyHvHpa02kSP
-oVLxDzHg6XyM9LTh9wSc2qdcGCP0IjYcB50NDYMDg6ZRtIfkHqA=
-=Q/Dm
+iQIzBAEBCAAdFiEE0hTlxmwY7sWLIRHOFEH6Q13mrGQFAmcyXukACgkQFEH6Q13m
+rGS5UQ//QX3pbbZOC38+o2FB6lJvy58VgFtNNKewWw1vNYyIG92kbns9/fuDO7fu
+3yyObtDic0HkyqztGZoEV4+/3rGbtXToQqr1Yte0B8y0PTNeUtiar5FCHgx6Ddkj
+VCBCuRoiX0W5A3IjoMq+CS54UcuqB1epeMRRrnSwDJu4qel2Db7+9kuWl35I8/8Z
+PKZqPePJSenZnj862RxTo386h+5Tylw8kGQNpDvvB7byXbe0Jsapn+6PDH0Fjzav
+CrcI3xVstNiefB6bBjOaXaOY282LWuJv4PIfg7XNq7vREXcA2QWm50HuNusIwSsm
+ihq1UDbZl9J82Sn82b4cOrmQ5GaqCaczJ8NdjuLS3jJm3XL2HZyhyQW5RQXZAP2p
+OvYZSAIPjNYLGnts3t863yGzyRwFZOq0I3YK0MblQx9BZQrS3Lja03gNQBZpkQ6G
+5m/NMdPd1uhNdjZhUwAbRIZu0AmkImOGZI/8imSEl3sBndAE7iq42yOIJJ8q46vq
+KvANstcIcmy33k6/6y5O5LogLulzOJm0aKkrKVriMoUJPm4T6ak6M3q+4wkZo8AA
+MHVLXB9qrc5xtTIm1o1i7GKFy006aFA2CdiWdxpl1977gjy4y2+z2J90AiAUjcA+
+vfGdso6HQZIkw5WeV2r68G9GO77FWKwRmn98HDL6Sdklcew8fxA=
+=oN15
 -----END PGP SIGNATURE-----
