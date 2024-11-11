@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Compile scripts" type="js.build_tools.npm">
+  <configuration default="false" name="Build sripts" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="scripts:tsc" />
+      <script value="build:scripts" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

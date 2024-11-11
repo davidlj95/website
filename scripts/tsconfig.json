@@ -12,6 +12,7 @@
     "strict": true,
     "skipLibCheck": true,
     // -- Our configs
+    "noEmit": true,
     "lib": ["esnext"],
     "outDir": "dist",
     //👇 So we can use imports without extension with ESM
