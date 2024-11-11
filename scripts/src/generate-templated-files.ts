@@ -42,15 +42,11 @@ async function generateTemplatedFiles() {
     Log.item("'%s'", templateFile)
   }
 
-  const context = getContext()
-
   Log.info('Rendering files from templates...')
-  const engine = new Liquid({ root: repoRootDir })
-
   for (const templateFile of templateFiles) {
     await generateTemplatedFile(templateFile, {
-      context: context,
-      engine: engine,
+      context: getContext(),
+      engine: new Liquid({ root: repoRootDir }),
     })
   }
   Log.ok('Done')
@@ -59,16 +55,18 @@ async function generateTemplatedFiles() {
 export async function generateTemplatedFile(
   templateFile: string,
   opts: {
-    context?: unknown
+    context?: object
     engine?: Liquid
   } = {},
 ) {
-  const context = opts.context ?? getContext()
   const engine = opts.engine ?? new Liquid()
 
   Log.group("Rendering '%s'", templateFile)
 
-  const renderedContents = await engine.renderFile(templateFile, context)
+  const renderedContents = await engine.renderFile(
+    templateFile,
+    getContext(opts.context),
+  )
   Log.ok('Rendered successfully')
 
   const outputFile = templateFile.substring(0, templateFile.lastIndexOf('.'))
@@ -78,21 +76,19 @@ export async function generateTemplatedFile(
   Log.groupEnd()
 }
 
-function getContext() {
+function getContext(extraContext?: object) {
   const METADATA_CONTEXT = {
     ...METADATA,
   }
-  const today = new Date()
-  const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6))
   const EXTRA_CONTEXT = {
     manifestJsonMaskableIconSizes: [48, 72, 96, 128, 192, 384, 512],
     browserconfigIconSquareSizes: [70, 150, 310],
-    securityTxtExpiration: sixMonthsFromToday,
     prBranchName:
       // Use CI environment variable, or default to branch name to work locally
       process.env['GITHUB_HEAD_REF'] ??
       // https://stackoverflow.com/a/35778030/3263250
       execSync('git rev-parse --abbrev-ref HEAD').toString().trim(),
+    ...extraContext,
   }
   const CONTEXT = { ...METADATA_CONTEXT, ...EXTRA_CONTEXT }
   Log.info('Context for rendering')
