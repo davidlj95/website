@@ -1,3 +1,5 @@
 {
-  "*": "pnpm run format"
+  "!*.{html,ts,mts,json}": ["pnpm run format"],
+  "**/*.{html,ts,mts,json}": ["pnpm run lint:code:raw", "pnpm run format"],
+  ".github/**/*.y?(a)ml": ["pnpm run lint:gh-actions"]
 }

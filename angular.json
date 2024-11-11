@@ -174,12 +174,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.{html,ts,json}",
-              "cypress/**/*.{ts,json}",
-              "scripts/**/*.{mts,ts,json}",
-              "*.json"
-            ],
+            "lintFilePatterns": ["."],
             "maxWarnings": 0
           }
         }
