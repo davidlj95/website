@@ -21,12 +21,16 @@ async function generateSecurityTxt() {
     'src',
     SECURITY_TXT_REL_PATH,
   )
-  const engine = new Liquid({
-    dateFormat: '%Y-%m-%d %H:%M:%S+00:00',
-    timezoneOffset: 0,
-  })
+
+  const today = new Date()
+  const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6))
+
   await generateTemplatedFile(`${securityTxtFile}${LIQUID_EXTENSION}`, {
-    engine: engine,
+    context: { securityTxtExpiration: sixMonthsFromToday },
+    engine: new Liquid({
+      dateFormat: '%Y-%m-%d %H:%M:%S+00:00',
+      timezoneOffset: 0,
+    }),
   })
 
   Log.info('Signing file with GPG')
