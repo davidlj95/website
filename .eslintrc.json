@@ -3,7 +3,7 @@
   // 👇 Added `(coverage|dist)/**/*` to be able to run 'eslint .' successfully
   //    When upgrading to v9, can include .gitignore here. In v8, you need to add a CLI flag
   //    Given 'eslint .' is not something ran often, it's good enough as ienough as is
-  "ignorePatterns": ["projects/**/*", "coverage/**/*", "dist/**/*"],
+  "ignorePatterns": ["projects/**/*", "coverage/**/*", "dist/**/*", "!.*.json"],
   "overrides": [
     {
       "files": ["*.ts", "*.mts"],
@@ -48,6 +48,23 @@
     {
       "files": ["*.cy.ts"],
       "extends": ["plugin:cypress/recommended"]
+    },
+    {
+      "files": ["*.json"],
+      "extends": ["plugin:json/recommended-with-comments-legacy"]
+    },
+    {
+      "files": ["package.json"],
+      "plugins": ["json-files"],
+      "rules": {
+        "json-files/require-unique-dependency-names": "error",
+        "json-files/restrict-ranges": [
+          "error",
+          {
+            "versionHint": "pin"
+          }
+        ]
+      }
     }
   ]
 }
