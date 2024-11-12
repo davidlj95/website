@@ -6,13 +6,14 @@
     "url": "https://github.com/davidlj95/website.git"
   },
   "scripts": {
-    "analyze-all-bundles": "pnpm dlx source-map-explorer dist/@davidlj95/website/browser/*.js --no-border-checks",
-    "analyze-main-bundle": "pnpm dlx source-map-explorer dist/@davidlj95/website/browser/main*.js --no-border-checks",
-    "analyze-main-bundle//": "☝️ Something weird in source maps after switching to ESBuild. So `--no-border-checks` was added",
     "prebuild": "pnpm run '/prebuild:.*/'",
     "build": "ng build",
     "build:pullRequest": "pnpm run build --configuration pullRequest,production",
     "build:scripts": "cd scripts && tsc",
+    "bundle:analyze": "pnpm run bundle:analyze:files '*.js'",
+    "bundle:analyze:files": "cd dist/@davidlj95/website/browser && pnpm dlx source-map-explorer --no-border-checks",
+    "bundle:analyze:files//": "☝️ Something weird in source maps after switching to ESBuild. So `--no-border-checks` was added",
+    "bundle:analyze:main": "pnpm run bundle:analyze:files 'main*.js'",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
     "commitlint:edit-msg": "commitlint --verbose --edit",
     "commitlint:last": "commitlint --verbose --last",
