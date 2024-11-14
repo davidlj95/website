@@ -5,11 +5,20 @@ export const createReleaseItConfig = ({
   gitRawCommitsOpts,
 }: ExtraConfig = {}): Config => ({
   git: {
+    requireBranch: 'main',
+    tag: true, // default, but for explicitness
     commit: false,
-    push: false,
+    push: true, // default, but for explicitness
   },
   // @ts-expect-error Invalid type definition. TODO: PR for this
   npm: false,
+  github: {
+    release: true,
+    releaseName: 'v${version}',
+    comments: {
+      submit: true,
+    },
+  },
   plugins: {
     '@release-it/conventional-changelog': {
       preset: {
@@ -96,7 +105,15 @@ const whatBump: Preset['whatBump'] = async (commits) => {
       if (commit.type === 'feat' || commit.type === 'feature') {
         return addToResults(RELEASE_LEVEL_MINOR)
       }
-      if (commit.type === 'fix' || commit.type === 'perf') {
+      const isReleaseCommit = () =>
+        commit.type === 'chore' &&
+        commit.scope === 'release' &&
+        commit.subject?.includes('manual')
+      if (
+        commit.type === 'fix' ||
+        commit.type === 'perf' ||
+        isReleaseCommit()
+      ) {
         return addToResults(RELEASE_LEVEL_PATCH)
       }
       return results

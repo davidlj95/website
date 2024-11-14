@@ -62,17 +62,25 @@ const generateReleaseInfo = async (): Promise<ReleaseData> => {
 
 const dryRunReleaseIt = (extraConfig?: ExtraConfig) => {
   const config = createReleaseItConfig(extraConfig)
+  const dryRunConfig: Config = {
+    git: {
+      ...config.git,
+      requireCleanWorkingDir: false,
+      requireUpstream: false,
+      requireBranch: false,
+      push: false,
+      tag: false,
+    },
+    github: {
+      ...config.github,
+      release: false,
+    },
+    // @ts-expect-error Invalid definition. TODO: issue a PR
+    dryRun: true,
+  }
   return releaseIt({
     ...config,
-    ...{
-      git: {
-        ...config.git,
-        requireCleanWorkingDir: false,
-        requireUpstream: false,
-        tag: false,
-      },
-      dryRun: true,
-    },
+    ...dryRunConfig,
   })
 }
 
