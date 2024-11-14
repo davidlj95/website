@@ -2,12 +2,6 @@ name: Build
 on:
   workflow_call:
 
-# Needed for prebuild step: dry run a release.
-# Git permissions are checked even in dry run mode 🙃
-# https://github.com/semantic-release/semantic-release/blob/v21.1.1/index.js#L88
-permissions:
-  contents: write
-
 jobs:
   build:
     name: Build app

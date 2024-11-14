@@ -22,7 +22,7 @@
 [![Formatted with Prettier](https://img.shields.io/badge/Formatted_with-prettier-1A2C34?logo=prettier&logoColor=F7BA3E&link=https%3A%2F%2Fprettier.io)](https://prettier.io)
 [![Commits follow Conventional Commits convention](https://img.shields.io/badge/Commits_convention-Conventional_Commits-%23FE5196?logo=conventionalcommits&logoColor=white&link=https%3A%2F%2Fconventionalcommits.org)](https://conventionalcommits.org)
 [![Git hooks with Husky](https://img.shields.io/badge/Git_hooks_with-Husky%F0%9F%90%B6-1a1a1e?link=https%3A%2F%2Ftypicode.github.io%2Fhusky%2F)](https://typicode.github.io/husky/)
-[![Released with Semantic Release](https://img.shields.io/badge/Released_with-Semantic_Release-e10079?logo=semantic-release&link=https%3A%2F%2Fgithub.com%2Fsemantic-release%2Fsemantic-release)](https://github.com/semantic-release/semantic-release)
+[![Released with Release It!](https://img.shields.io/badge/Released_with-%F0%9F%9A%80_Release_It!-black?link=https%3A%2F%2Fgithub.com%2Frelease-it%2Frelease-it)](https://github.com/release-it/release-it)
 [![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovate&logoColor=white&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
 [![Deployed via Cloudflare Pages](https://img.shields.io/badge/Deployed_via-Cloudflare%20Pages-f38020?logo=cloudflarepages&link=https%3A%2F%pages.cloudflare.com%2F)](https://pages.cloudflare.com/)
 
@@ -61,11 +61,9 @@ package that implements end-to-end testing capabilities.
 
 ## Commit message guidelines
 
-Commit messages follow the [conventional commits][conventional-commits] guidelines. This allows for automating the
-semantic versioning release process using [semantic release][semantic-release]
+Commit messages follow the [conventional commits][conventional-commits] guidelines. This allows for automating the release process. By bumping the version depending on the type specified in the commit message. See [release](#release) for more info.
 
 [conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
-[semantic-release]: https://semantic-release.gitbook.io/semantic-release/
 
 ### Commit message lint
 
@@ -82,57 +80,37 @@ pnpm run commitlint:last
 
 ## Release
 
-[Semantic Release][semantic-release] is used to automate the release process. Based on commit messages, a new major,
-minor or patch release is generated for every push to main branch. For every release, a Git tag will be created, a
-GitHub release will be created and a new version of the app will be published to `npm` public registry. All of this
-is managed automatically by [Semantic Release][semantic-release] and CI/CD pipelines.
+[Release It!][release-it] is used to automate the release process. With the [conventional changelog plugin][release-it-cc] in order to automatically decide which kind of bump to perform (major, minor, patch) based on unreleased commits' messages.
+
+For every push to `main` branch, [Release It!][release-it] will run and check if a new release is needed. In case it is, a `git` tag will be assigned to that commit and a GitHub release will be created containing the built app as an asset.
+
+[release-it]: https://github.com/release-it/release-it
+[release-it-cc]: https://github.com/release-it/conventional-changelog
 
 > Config has been tweaked so all commits appear in the release notes. To do so, `types` of commits included are all
-> of those defined in [Conventional Changelog type defaults][conventional-changelog-type-defaults]. But none is
+> of the available in [Conventional Changelog](https://github.com/conventional-changelog/conventional-changelog/blob/conventional-changelog-conventionalcommits-v7.0.1/packages/conventional-changelog-conventionalcommits/constants.js#L3). But none is
 > hidden. That list comprehends
 > all [commit types that `commitlint`](https://github.com/conventional-changelog/commitlint/blob/v17.7.1/%40commitlint/config-conventional/index.js#L22-L32)
 > will lint.
 
-[conventional-changelog-type-defaults]: https://github.com/conventional-changelog/conventional-changelog/blob/conventional-changelog-conventionalcommits-v7.0.1/packages/conventional-changelog-conventionalcommits/constants.js#L3
-
 ### Getting release info
 
-In order to embed release information in the app, a script was created to export that kind of information using
-[Semantic Release's JavaScript API](https://semantic-release.gitbook.io/semantic-release/developer-guide/js-api).
+In order to embed release information in the app, a script runs to export that kind of information using
+[Release It!'s programmatic API](https://github.com/release-it/release-it/blob/main/docs/recipes/programmatic.md).
 
 To generate the release info, run
 
 ```shell
-pnpm run prebuild:generate-release-file
+pnpm run prebuild:release-info
 ```
 
-It will generate a `release.json` file in the root of the repository containing all info about releases that
-[Semantic Release][semantic-release] provides.
+It will generate a `release.json` file in the source directory of the app containing the:
 
-> ⚠️ **Next release can be fake**
->
-> The API only outputs information when a new release has to be generated. As a
-> workaround, a fake
-> patch release is generated in case no release was needed to get access to all that info.
->
-> **To distinguish a real run from a faked run, a `fake` property exists in that JSON** with value set to `true`. The
-> only faked properties are about next release (`nextRelease` and `releases` at the moment of writing this). Info
-> about last release
-> remains correct even when faking the release to generate the output (`lastRelease` at the moment of writing this)
+- Commit SHA
+- Current release version & CHANGELOG
+- Unreleased changes CHANGELOG
 
-> ⚠️ **Next release can be a preview**
->
-> If running the script from a branch that's not configured to trigger releases, the default API behaviour is to
-> output no data. As a workaround, we simulate being on the `main` branch and see what would happen in that scenario
-> when including commits from the current branch.
->
-> **To distinguish a real run from a faked run, a `preview` property exists in that JSON** with value set to `true`.
-> This is because it's a simulation of this branch being merged into main branch. But you could want to merge that
-> against another (the script could be smarter and simulate that too, but not yet :P).
-
-> ⚠️ **Next release can be fake and preview**
-> If both of previous situations happen at same time (commits of branch are not enough to trigger a release and
-> branch is not one configured for releases)
+Checkout the [script](./scripts/src/generate-release-info.mts) for more information.
 
 ## Git hooks
 
