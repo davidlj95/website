@@ -1,12 +1,6 @@
 name: Build
 on:
   workflow_call:
-    inputs:
-      build-run-script:
-        description: Build run script in package.json to execute
-        type: string
-        required: false
-        default: build
 
 # Needed for prebuild step: dry run a release.
 # Git permissions are checked even in dry run mode 🙃
@@ -43,7 +37,7 @@ jobs:
       - name: Prebuild tasks
         run: pnpm run prebuild
       - name: Build app (includes SSG|R)
-        run: pnpm run ${{ inputs.build-run-script }}
+        run: pnpm run ${{ github.event_name == 'pull_request' && 'build:pull-request' || 'build' }}
       - name: Upload built app
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
         with:

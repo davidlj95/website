@@ -9,8 +9,6 @@ jobs:
     uses: ./.github/workflows/reusable-build.yml
     permissions:
       contents: write
-    with:
-      build-run-script: 'build:pullRequest'
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
