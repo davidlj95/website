@@ -1,9 +1,6 @@
 name: Release
 on:
   workflow_call:
-    secrets:
-      npm-token:
-        required: true
 
 # Required by
 # https://github.com/semantic-release/github
