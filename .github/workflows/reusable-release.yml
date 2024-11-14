@@ -10,8 +10,6 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
-  # For NPM provenance
-  id-token: write
 
 # Run one after another
 concurrency:
