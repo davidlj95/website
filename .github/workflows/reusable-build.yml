@@ -2,11 +2,6 @@ name: Build
 on:
   workflow_call:
     inputs:
-      ref:
-        description: Git reference to checkout. Defaults to @actions/checkout default.
-        type: string
-        required: false
-        default: ''
       build-run-script:
         description: Build run script in package.json to execute
         type: string
@@ -30,7 +25,6 @@ jobs:
         with:
           #👇 To generate release information
           fetch-depth: 0
-          ref: ${{ inputs.ref }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Generate info for Angular cache key
