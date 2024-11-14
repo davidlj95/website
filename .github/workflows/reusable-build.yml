@@ -36,7 +36,7 @@ jobs:
             ${{ env.cache-name }}
       - name: Prebuild tasks
         run: pnpm run prebuild
-      - name: Build app (includes SSG|R)
+      - name: Build app (with SSG)
         run: pnpm run ${{ github.event_name == 'pull_request' && 'build:pull-request' || 'build' }}
       - name: Upload built app
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
