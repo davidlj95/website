@@ -15,9 +15,14 @@ export const createReleaseItConfig = ({
   github: {
     release: true,
     releaseName: 'v${version}',
+    assets: ['dist/*.zip'],
     comments: {
       submit: true,
     },
+  },
+  hooks: {
+    'before:release':
+      'cd dist/@davidlj95/website/browser && zip -r ../../../build.zip .',
   },
   plugins: {
     '@release-it/conventional-changelog': {
