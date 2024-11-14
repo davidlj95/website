@@ -41,6 +41,7 @@
               "src/assets",
               "src/site.webmanifest",
               "src/browserconfig.xml",
+              "src/release.json",
               {
                 "glob": "profile.jpg",
                 "input": "src/",
