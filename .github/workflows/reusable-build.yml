@@ -2,9 +2,6 @@ name: Build
 on:
   workflow_call:
     inputs:
-      artifact-name:
-        required: false
-        type: string
       ref:
         description: Git reference to checkout. Defaults to @actions/checkout default.
         type: string
@@ -54,9 +51,8 @@ jobs:
       - name: Build app (includes SSG|R)
         run: pnpm run ${{ inputs.build-run-script }}
       - name: Upload built app
-        if: ${{ inputs.artifact-name != '' }}
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
         with:
-          name: ${{ inputs.artifact-name }}
+          name: build
           path: 'dist/@davidlj95/website/browser'
           retention-days: 5

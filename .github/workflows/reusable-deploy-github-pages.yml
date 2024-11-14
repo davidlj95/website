@@ -5,10 +5,6 @@ name: Deploy to GitHub Pages
 
 on:
   workflow_call:
-    inputs:
-      build-artifact-name:
-        required: true
-        type: string
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -34,7 +30,7 @@ jobs:
       - name: Download built app
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ inputs.build-artifact-name }}
+          name: build
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload artifact

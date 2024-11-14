@@ -2,9 +2,6 @@ name: Performance
 on:
   workflow_call:
     inputs:
-      build-artifact-name:
-        required: true
-        type: string
       ref:
         description: Git reference to checkout. Defaults to @actions/checkout default.
         type: string
@@ -39,7 +36,7 @@ jobs:
       - name: Download built app
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ inputs.build-artifact-name }}
+          name: build
           path: ${{ env.BROWSER_DIST_DIR }}
       - name: Run Lighthouse CI
         env:
@@ -69,7 +66,7 @@ jobs:
       - name: Download built app
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ inputs.build-artifact-name }}
+          name: build
           path: ${{ env.BROWSER_DIST_DIR }}
       - name: Run bundlewatch
         env:

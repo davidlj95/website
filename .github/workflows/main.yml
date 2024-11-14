@@ -13,8 +13,6 @@ jobs:
     uses: ./.github/workflows/reusable-build.yml
     permissions:
       contents: write
-    with:
-      artifact-name: build
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
@@ -32,8 +30,6 @@ jobs:
     uses: ./.github/workflows/reusable-performance.yml
     permissions:
       checks: write
-    with:
-      build-artifact-name: build
     secrets:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
@@ -41,8 +37,6 @@ jobs:
     name: Deploy to GitHub Pages (latest)
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-github-pages.yml
-    with:
-      build-artifact-name: build
     permissions:
       contents: read
       pages: write
@@ -52,8 +46,6 @@ jobs:
     if: fromJSON(vars.DEPLOY_TO_PRO_ON_MAIN)
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
-    with:
-      build-artifact-name: build
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}

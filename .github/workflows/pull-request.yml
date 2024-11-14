@@ -10,7 +10,6 @@ jobs:
     permissions:
       contents: write
     with:
-      artifact-name: build
       build-run-script: 'build:pullRequest'
   test:
     name: Test
@@ -27,8 +26,6 @@ jobs:
     name: Performance
     needs: build
     uses: ./.github/workflows/reusable-performance.yml
-    with:
-      build-artifact-name: build
     secrets:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
@@ -36,8 +33,6 @@ jobs:
     name: Deploy preview
     needs: [build]
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
-    with:
-      build-artifact-name: build
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
