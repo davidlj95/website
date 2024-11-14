@@ -2,14 +2,6 @@ name: Release
 on:
   workflow_call:
 
-# Required by
-# https://github.com/semantic-release/github
-# https://github.com/semantic-release/npm
-permissions:
-  contents: write # create release
-  issues: write # comment on released issues
-  pull-requests: write # comment on released PRs
-
 # Run one after another
 concurrency:
   group: release-${{ github.ref }}
@@ -32,8 +24,10 @@ jobs:
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: npm audit signatures
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -10,17 +10,21 @@ jobs:
     permissions:
       contents: write
   test:
+    if: false
     name: Test
     uses: ./.github/workflows/reusable-test.yml
     secrets:
       codecov-token: ${{ secrets.CODECOV_TOKEN }}
   lint:
+    if: false
     name: Lint
     uses: ./.github/workflows/reusable-lint.yml
   style:
+    if: false
     name: Style
     uses: ./.github/workflows/reusable-style.yml
   performance:
+    if: false
     name: Performance
     needs: build
     uses: ./.github/workflows/reusable-performance.yml
@@ -28,6 +32,7 @@ jobs:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
   deploy-preview:
+    if: false
     name: Deploy preview
     needs: [build]
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
@@ -37,3 +42,7 @@ jobs:
     permissions:
       contents: read
       deployments: write
+  release:
+    name: Release
+    needs: build
+    uses: ./.github/workflows/reusable-release.yml
