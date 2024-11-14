@@ -6,7 +6,6 @@ import { ResumePageComponent } from './resume-page/resume-page.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
 import { NoScriptComponent } from './no-script/no-script.component'
-import { ReleaseInfoComponent } from './release-info/release-info.component'
 import { By } from '@angular/platform-browser'
 
 describe('AppComponent', () => {
@@ -17,12 +16,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         AppComponent,
-        MockComponents(
-          ReleaseInfoComponent,
-          NoScriptComponent,
-          HeaderComponent,
-          ResumePageComponent,
-        ),
+        MockComponents(NoScriptComponent, HeaderComponent, ResumePageComponent),
         RouterTestingModule,
       ],
     })
@@ -40,10 +34,5 @@ describe('AppComponent', () => {
     expect(fixture.debugElement.query(By.css('router-outlet'))).toBeTruthy()
   })
 
-  shouldContainComponents(
-    () => fixture,
-    ReleaseInfoComponent,
-    NoScriptComponent,
-    HeaderComponent,
-  )
+  shouldContainComponents(() => fixture, NoScriptComponent, HeaderComponent)
 })

@@ -7,8 +7,6 @@ jobs:
   build:
     name: Build
     uses: ./.github/workflows/reusable-build.yml
-    permissions:
-      contents: write
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml

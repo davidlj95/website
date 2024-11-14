@@ -13,8 +13,5 @@ unit-test:
 	pnpm run prebuild:font-subsets
 	pnpm run prebuild:simple-icons
 
-	# In CI, this file is not generated because should be mocked when testing
-	cp ../src/test/mocks/release.json ..
-
 	pnpm run test:unit --browsers=ChromeHeadless \
 		--no-watch --no-progress --reporters progress --code-coverage
