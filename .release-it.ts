@@ -21,8 +21,7 @@ export const createReleaseItConfig = ({
     },
   },
   hooks: {
-    'before:release':
-      'cd dist/@davidlj95/website/browser && zip -r ../../../build.zip .',
+    'before:release': 'pnpm run build:pack',
   },
   plugins: {
     '@release-it/conventional-changelog': {
