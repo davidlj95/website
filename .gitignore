@@ -252,6 +252,7 @@ $RECYCLE.BIN/
 /junit-lint.xml
 /assets/*-subset.*
 /release.json
+/src/release.json
 /src/environments/environment.pull-request.ts
 .nx/cache
 .idea/git_toolbox_blame.xml
