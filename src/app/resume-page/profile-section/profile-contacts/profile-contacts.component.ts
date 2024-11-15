@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { Call, Email, MyLocation } from '../../../material-symbols'
+import { Call, Email, MyLocation } from '@/data/material-symbols'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgFor } from '@angular/common'
 import { JSON_RESUME_BASICS, JsonResumeBasics } from '../json-resume-basics'

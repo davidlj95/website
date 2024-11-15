@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core'
-import resume from '../../../../assets/resume.json'
+import resume from '@/data/resume.json'
 import { ADAPT_JSON_RESUME_WORK } from './adapt-json-resume-work'
 import { ExperienceItem } from './experience-item/experience-item'
 

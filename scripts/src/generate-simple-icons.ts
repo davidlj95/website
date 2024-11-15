@@ -1,13 +1,13 @@
-import * as RESUME_JSON from '../../assets/resume.json'
+import JSON_RESUME from '@/data/resume.json' assert { type: 'json' }
 import * as icons from 'simple-icons'
 import { SimpleIcon } from 'simple-icons'
-import { getRepositoryRootDir, isMain, Log, objectToJson } from './utils.mjs'
+import { getRepositoryRootDir, isMain, Log, objectToJson } from './utils.js'
 import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
 
 async function generateSimpleIcons() {
   Log.info('Generating simple icons exports')
-  const neededIcons = await findNeededIcons(RESUME_JSON.projects)
+  const neededIcons = await findNeededIcons(JSON_RESUME.projects)
   await Promise.all(
     [createDisplayNameAndColorsFile, createIconFiles].map((f) =>
       f(neededIcons),
@@ -15,7 +15,9 @@ async function generateSimpleIcons() {
   )
 }
 
-async function findNeededIcons(projects: typeof RESUME_JSON.projects) {
+async function findNeededIcons(
+  projects: typeof JSON_RESUME.projects,
+): Promise<ReadonlyArray<SimpleIcon>> {
   if (projects.length > 0) {
     Log.info('Found %d projects', projects.length)
   } else {
@@ -36,7 +38,7 @@ async function findNeededIcons(projects: typeof RESUME_JSON.projects) {
   ]
   Log.item('Where %d are unique technology slugs', technologySlugs.length)
 
-  const allIcons = Object.values(icons)
+  const allIcons = Object.values(icons) as ReadonlyArray<SimpleIcon>
   Log.info('Loaded %d simple icons', allIcons.length)
 
   const neededIcons = allIcons.filter((icon) =>

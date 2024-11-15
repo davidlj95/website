@@ -1,8 +1,7 @@
 {
-  "files": [".release-it.ts"],
+  "include": ["**/.release-it.ts"],
   "compilerOptions": {
-    "noEmit": true,
     "target": "esnext",
-    "moduleResolution": "bundler"
+    "module": "nodenext"
   }
 }

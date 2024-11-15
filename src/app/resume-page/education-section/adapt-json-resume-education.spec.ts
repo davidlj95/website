@@ -1,4 +1,4 @@
-import resume from '../../../../assets/resume.json'
+import resume from '@/data/resume.json'
 import { MockProvider } from 'ng-mocks'
 import {
   ADAPT_JSON_RESUME_EDUCATION,

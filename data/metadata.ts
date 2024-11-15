@@ -15,7 +15,7 @@ import {
   Smartphone,
   Terminal,
   Web,
-} from './material-symbols'
+} from './material-symbols.js'
 
 /**
  * Metadata used around the app. Either in the Angular app or accessory files.

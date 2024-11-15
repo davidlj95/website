@@ -17,7 +17,7 @@ import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.compone
 import {
   KeyboardDoubleArrowLeft,
   KeyboardDoubleArrowRight,
-} from '../../material-symbols'
+} from '@/data/material-symbols'
 import { TabComponent } from '../tab/tab.component'
 
 @Component({

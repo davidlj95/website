@@ -3,7 +3,7 @@ import {
   ADAPT_JSON_RESUME_LANGUAGE,
   JsonResumeLanguage,
 } from './adapt-json-resume-language'
-import resume from '../../../../assets/resume.json'
+import resume from '@/data/resume.json'
 
 describe('AdaptJsonResumeLanguage', () => {
   it('should be created', () => {

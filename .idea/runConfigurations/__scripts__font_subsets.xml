@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Build scripts" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/package.json" />
+  <configuration default="false" name="@/scripts: font subsets" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/scripts/package.json" />
     <command value="run" />
     <scripts>
-      <script value="build:scripts" />
+      <script value="generate:font-subsets" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

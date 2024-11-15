@@ -6,8 +6,8 @@ import {
   Log,
   objectToJson,
   SECURITY_TXT_REL_PATH,
-} from './utils.mjs'
-import { METADATA } from '../../src/app/metadata'
+} from './utils.js'
+import { METADATA } from '@/data/metadata.js'
 import { resolve } from 'path'
 import { writeFile } from 'fs/promises'
 import { execSync } from 'child_process'
@@ -19,7 +19,12 @@ async function generateTemplatedFiles() {
     (exclusion) => `**/${exclusion}${LIQUID_EXTENSION}`,
   )
   const repoRootDir = getRepositoryRootDir()
-  const globExpression = resolve('src', '**', `*${LIQUID_EXTENSION}`)
+  const globExpression = resolve(
+    getRepositoryRootDir(),
+    'src',
+    '**',
+    `*${LIQUID_EXTENSION}`,
+  )
   Log.info('Looking for Liquid files...')
   Log.item("Extension: '%s'", LIQUID_EXTENSION)
   Log.item("Directory: '%s'", globExpression)

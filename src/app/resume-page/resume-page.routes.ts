@@ -1,5 +1,5 @@
 import { ResumePageComponent } from './resume-page.component'
-import { METADATA } from '../metadata'
+import { METADATA } from '@/data/metadata'
 import { environment } from '../../environments'
 import { Routes } from '@angular/router'
 

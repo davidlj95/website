@@ -1,12 +1,13 @@
 import subsetFont from 'subset-font'
-import * as MaterialSymbols from '../../src/app/material-symbols'
-import { isMain, Log } from './utils.mjs'
+import * as MaterialSymbols from '@/data/material-symbols.js'
+import { getRepositoryRootDir, isMain, Log } from './utils.js'
 import { readFileSync, writeFileSync } from 'fs'
+import { join } from 'path'
 
 async function generateFonts() {
   Log.info('Generating font subset for Material Symbols Outlined')
   const materialSymbolsFont = readFileSync(
-    'assets/material-symbols-outlined.woff2',
+    join(getRepositoryRootDir(), 'assets', 'material-symbols-outlined.woff2'),
   )
   const fontBuffer = Buffer.from(materialSymbolsFont)
 
@@ -17,7 +18,11 @@ async function generateFonts() {
   const glyphText = glyphs.join('')
 
   Log.info('Output')
-  const baseFilename = 'assets/material-symbols-outlined-subset'
+  const baseFilename = join(
+    getRepositoryRootDir(),
+    'assets',
+    'material-symbols-outlined-subset',
+  )
   const formats = ['ttf', 'woff', 'woff2']
   Log.item("Base filename: '%s'", baseFilename)
   Log.item("Formats: '%s'", formats)
@@ -45,9 +50,9 @@ async function generateFontSubsets(
   await Promise.all(
     formats.map((format) =>
       generateFontSubset(fontBuffer, {
-        text: text,
-        format: format,
-        filename: filename,
+        text,
+        format,
+        filename,
       }),
     ),
   )

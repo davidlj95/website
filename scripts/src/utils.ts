@@ -5,7 +5,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 export function getRepositoryRootDir() {
-  return resolve(__dirname, '..', '..')
+  // Relative to `dist`, as this file will be output there
+  return resolve(__dirname, '..', '..', '..')
 }
 
 export const objectToJson = (object: object) => JSON.stringify(object, null, 2)

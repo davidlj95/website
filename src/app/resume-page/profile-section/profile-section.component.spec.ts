@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { ProfileSectionComponent } from './profile-section.component'
-import { Metadata } from '../../metadata'
+import { Metadata } from '@/data/metadata'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
 import { ProfileContactsComponent } from './profile-contacts/profile-contacts.component'

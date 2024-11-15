@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core'
 import { METADATA } from '@/common/injection-tokens'
-import { DescriptionLine, Metadata } from '../../../metadata'
+import { DescriptionLine, Metadata } from '@/data/metadata'
 import {
   CollapsibleTreeComponent,
   IsCollapsibleFn,

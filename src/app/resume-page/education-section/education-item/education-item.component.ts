@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { EducationItem } from './education-item'
-import { SocialLeaderboard } from '../../../material-symbols'
+import { SocialLeaderboard } from '@/data/material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'

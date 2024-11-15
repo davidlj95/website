@@ -1,12 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { ExperienceItem } from './experience-item'
-import {
-  Badge,
-  More,
-  School,
-  ToolsLadder,
-  Work,
-} from '../../../material-symbols'
+import { Badge, More, School, ToolsLadder, Work } from '@/data/material-symbols'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { NgIf } from '@angular/common'
