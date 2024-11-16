@@ -76,7 +76,7 @@ jobs:
       - name: Cypress install
         run: pnpm cypress install
       - name: Generate font subsets
-        run: cd scripts && pnpm run generate:font-subsets
+        run: cd scripts && pnpm run build && pnpm run generate:font-subsets
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:

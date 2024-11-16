@@ -10,7 +10,8 @@ install:
 	pnpm install --frozen-lockfile
 
 unit-test:
-	cd scripts
+	cd ../scripts
+	pnpm run build
 	pnpm run generate:font-subsets
 	pnpm run generate:simple-icons
 	cd ..
