@@ -20,7 +20,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Render templates
-        run: cd scripts && pnpm run generate:templated-files
+        run: cd scripts && pnpm run build && pnpm run generate:templated-files
       - name: Ensure no pending changes
         run: cd .ci && make ensure-no-pending-changes
 
