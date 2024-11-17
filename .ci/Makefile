@@ -10,11 +10,6 @@ install:
 	pnpm install --frozen-lockfile
 
 unit-test:
-	cd ../scripts
-	pnpm run build
-	pnpm run generate:font-subsets
-	pnpm run generate:simple-icons
-	cd ..
-
+	pnpm run prebuild
 	pnpm run test:unit --browsers=ChromeHeadless \
 		--no-watch --no-progress --reporters progress --code-coverage
