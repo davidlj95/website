@@ -10,6 +10,5 @@ install:
 	pnpm install --frozen-lockfile
 
 unit-test:
-	pnpm run prebuild
 	pnpm run test:unit --browsers=ChromeHeadless \
 		--no-watch --no-progress --reporters progress --code-coverage
