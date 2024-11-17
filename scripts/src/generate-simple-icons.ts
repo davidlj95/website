@@ -15,9 +15,7 @@ async function generateSimpleIcons() {
   )
 }
 
-async function findNeededIcons(
-  projects: typeof JSON_RESUME.projects,
-): Promise<ReadonlyArray<SimpleIcon>> {
+async function findNeededIcons(projects: typeof JSON_RESUME.projects) {
   if (projects.length > 0) {
     Log.info('Found %d projects', projects.length)
   } else {
@@ -38,7 +36,7 @@ async function findNeededIcons(
   ]
   Log.item('Where %d are unique technology slugs', technologySlugs.length)
 
-  const allIcons = Object.values(icons) as ReadonlyArray<SimpleIcon>
+  const allIcons = Object.values(icons)
   Log.info('Loaded %d simple icons', allIcons.length)
 
   const neededIcons = allIcons.filter((icon) =>
