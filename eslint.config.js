@@ -8,6 +8,8 @@ const path = require('path')
 
 const gitignorePath = path.resolve(__dirname, '.gitignore')
 
+const cypressPlugin = require('eslint-plugin-cypress/flat')
+
 module.exports = tseslint.config(
   eslintCompat.includeIgnoreFile(gitignorePath),
   {
@@ -48,5 +50,9 @@ module.exports = tseslint.config(
       ...angular.configs.templateAccessibility,
     ],
     rules: {},
+  },
+  {
+    files: ['**/*.cy.ts'],
+    ...cypressPlugin.configs.recommended,
   },
 )
