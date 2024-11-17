@@ -3,7 +3,7 @@ import resume from '@/data/resume.json'
 import { EducationItem } from './education-item/education-item'
 import { ADAPT_JSON_RESUME_EDUCATION } from './adapt-json-resume-education'
 
-export type GetEducationItems = () => ReadonlyArray<EducationItem>
+export type GetEducationItems = () => readonly EducationItem[]
 export const GET_EDUCATION_ITEMS = new InjectionToken<GetEducationItems>(
   /* istanbul ignore next */
   isDevMode ? 'GetEducationItems' : 'GEI',

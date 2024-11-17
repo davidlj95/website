@@ -7,7 +7,7 @@ export class EducationItem {
   public readonly studyType: string
   public readonly dateRange: DateRange
   public readonly score: string
-  public readonly courses: ReadonlyArray<string>
+  public readonly courses: readonly string[]
   public readonly cumLaude: boolean
 
   constructor({
@@ -24,7 +24,7 @@ export class EducationItem {
     studyType: string
     dateRange: DateRange
     score: string
-    courses?: ReadonlyArray<string>
+    courses?: readonly string[]
     cumLaude?: boolean
   }) {
     this.institution = institution

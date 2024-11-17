@@ -32,7 +32,7 @@ export function shouldContainComponent<T, U>(
  */
 export function shouldContainComponents<T>(
   fixtureGetter: () => ComponentFixture<T>,
-  ...components: Array<Type<unknown>>
+  ...components: Type<unknown>[]
 ) {
   for (const component of components) {
     shouldContainComponent(fixtureGetter, component)

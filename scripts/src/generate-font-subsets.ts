@@ -52,7 +52,7 @@ async function generateFontSubsets(
     text,
     formats,
     filename,
-  }: Omit<GenerateFontSubsetOptions, 'format'> & { formats: Array<FontFormat> },
+  }: Omit<GenerateFontSubsetOptions, 'format'> & { formats: FontFormat[] },
 ) {
   await Promise.all(
     formats.map((format) =>

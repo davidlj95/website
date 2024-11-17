@@ -44,7 +44,7 @@ describe('ColorSchemeService', () => {
   }
   let prefersDark: boolean
   let prefersDarkMatchMediaChangesEmitter: EventEmitter<MediaQueryListEvent>
-  let prefersDarkMatchMediaSubscriptions: Array<Subscription>
+  let prefersDarkMatchMediaSubscriptions: Subscription[]
 
   beforeEach(() => {
     prefersDark = false

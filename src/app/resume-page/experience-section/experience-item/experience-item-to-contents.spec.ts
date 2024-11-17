@@ -52,7 +52,7 @@ describe('experienceItemToContents', () => {
     const aTechnology = makeTechnologyItem({ slug: 'tech-a' })
     const anotherTechnology = makeTechnologyItem({ slug: 'tech-b' })
     const technologies = [aTechnology, anotherTechnology]
-    const projects: ReadonlyArray<ProjectItem> = [
+    const projects: readonly ProjectItem[] = [
       makeProjectItem({ technologies: [aTechnology], name: 'project A' }),
       makeProjectItem({
         technologies: [aTechnology, anotherTechnology],

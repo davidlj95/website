@@ -19,7 +19,7 @@ import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.compone
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationTabsComponent {
-  @Input({ required: true }) items!: ReadonlyArray<NavigationItem>
+  @Input({ required: true }) items!: readonly NavigationItem[]
   protected _selectedIndex?: number
 
   onActiveRouteChange(index: number) {

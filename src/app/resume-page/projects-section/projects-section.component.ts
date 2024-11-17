@@ -18,7 +18,7 @@ import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
   ],
 })
 export class ProjectsSectionComponent {
-  protected readonly items: ReadonlyArray<ProjectItem>
+  protected readonly items: readonly ProjectItem[]
 
   constructor(@Inject(GET_PROJECT_ITEMS) getProjectItems: GetProjectItems) {
     this.items = getProjectItems()

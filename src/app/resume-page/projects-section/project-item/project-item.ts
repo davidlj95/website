@@ -6,10 +6,10 @@ export class ProjectItem {
   public readonly description: string
   public readonly dateRange: DateRange
   public readonly website?: URL
-  public readonly roles: ReadonlyArray<string>
+  public readonly roles: readonly string[]
   public readonly imageSrc?: string
   public readonly stack?: Stack
-  public readonly technologies: ReadonlyArray<TechnologyItem>
+  public readonly technologies: readonly TechnologyItem[]
 
   constructor({
     name,
@@ -25,10 +25,10 @@ export class ProjectItem {
     description: string
     dateRange: DateRange
     website?: URL
-    roles?: ReadonlyArray<string>
+    roles?: readonly string[]
     imageSrc?: string
     stack?: Stack
-    technologies?: ReadonlyArray<TechnologyItem>
+    technologies?: readonly TechnologyItem[]
   }) {
     this.name = name
     this.description = description

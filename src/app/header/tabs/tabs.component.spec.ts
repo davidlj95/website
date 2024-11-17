@@ -80,7 +80,7 @@ const makeSut = () => componentTestSetup(TabsComponent)
 
 const TAB_WIDTH_PX = 100
 const makeHostComponent = (
-  opts: { tabs?: ReadonlyArray<string>; selectedIndex?: number } = {},
+  opts: { tabs?: readonly string[]; selectedIndex?: number } = {},
 ) => {
   @Component({
     template: `

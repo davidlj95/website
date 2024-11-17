@@ -197,7 +197,7 @@ describe('CollapsibleTreeComponent', () => {
           isExpanded: false,
           iconProperty: 'collapsedIcon',
         },
-      ] as const satisfies ReadonlyArray<ExpandedTestCase>
+      ] as const satisfies readonly ExpandedTestCase[]
       for (const testCase of EXPANDED_TEST_CASES) {
         describe(`when ${testCase.name}`, () => {
           let mockParentComponent: jasmine.SpyObj<CollapsibleTreeComponent>

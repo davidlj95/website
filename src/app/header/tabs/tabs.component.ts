@@ -47,7 +47,7 @@ export class TabsComponent implements OnDestroy {
   public _intersectionObserver!: IntersectionObserver
 
   // Selected management
-  private _currentTabs: ReadonlyArray<TabComponent> = []
+  private _currentTabs: readonly TabComponent[] = []
   private _indexToSelect?: number
   private _selectedIndex?: number
   @Input({ transform: numberAttribute }) set selectedIndex(index: number) {
@@ -178,6 +178,4 @@ export class TabsComponent implements OnDestroy {
 
 const INTERSECTION_THRESHOLD = 0.8
 
-type ScrollDirection = typeof DIRECTION_PREVIOUS | typeof DIRECTION_NEXT
-const DIRECTION_PREVIOUS = -1
-const DIRECTION_NEXT = 1
+type ScrollDirection = -1 | 1

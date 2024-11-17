@@ -51,7 +51,7 @@ export class EducationItemComponent {
   }
 
   protected _item!: EducationItem
-  protected _contents: ReadonlyArray<ChippedContent> = []
+  protected _contents: readonly ChippedContent[] = []
   protected _institutionDisplayName?: string
 
   protected readonly MaterialSymbol = {

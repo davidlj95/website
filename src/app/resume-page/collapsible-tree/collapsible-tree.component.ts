@@ -55,7 +55,7 @@ let nextId = 0
 })
 export class CollapsibleTreeComponent {
   @Input({ required: true }) public node!: CollapsibleTreeNode
-  @Input() public depth: number = 0
+  @Input() public depth = 0
   @Input() public parent?: CollapsibleTreeComponent
   @Input() public collapsedIcon: string = this.parent?.collapsedIcon ?? '▶'
   @Input() public expandedIcon: string = this.parent?.expandedIcon ?? '▼'

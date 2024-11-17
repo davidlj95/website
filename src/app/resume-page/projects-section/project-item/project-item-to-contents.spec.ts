@@ -29,7 +29,7 @@ describe('projectItemToContents', () => {
     const items = [
       makeTechnologyItem({ slug: 'super-cool-tech' }),
       makeTechnologyItem({ slug: 'another-super-cool-tech' }),
-    ] satisfies ReadonlyArray<TechnologyItem>
+    ] satisfies readonly TechnologyItem[]
 
     it('should include technologies content', () => {
       const sut = makeSut()

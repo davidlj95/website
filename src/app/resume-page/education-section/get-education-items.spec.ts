@@ -23,7 +23,7 @@ describe('GetEducationItems', () => {
       'item-2' as unknown as JsonResumeEducation,
     ]
     const expectedEducationItems =
-      jsonResumeEducations as unknown as ReadonlyArray<EducationItem>
+      jsonResumeEducations as unknown as readonly EducationItem[]
     const adaptJsonResumeEducation = jasmine
       .createSpy<AdaptJsonResumeEducation>()
       .and.returnValues(...expectedEducationItems)
