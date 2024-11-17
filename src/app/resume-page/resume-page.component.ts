@@ -17,6 +17,4 @@ import { LanguagesSectionComponent } from './languages-section/languages-section
     LanguagesSectionComponent,
   ],
 })
-export class ResumePageComponent {
-  constructor() {}
-}
+export class ResumePageComponent {}
