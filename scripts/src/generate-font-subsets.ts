@@ -79,7 +79,7 @@ async function generateFontSubset(
 ) {
   const subsetBuffer = await subsetFont(fontBuffer, text, {
     targetFormat: format,
-    // @ts-expect-error Missing definition
+    // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/pull/71188
     variationAxes: {
       FILL: { min: 0, max: 1 },
     },
