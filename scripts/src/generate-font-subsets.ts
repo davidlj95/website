@@ -13,7 +13,7 @@ async function generateFonts() {
       '@fontsource-variable',
       'material-symbols-outlined',
       'files',
-      'material-symbols-outlined-latin-wght-normal.woff2',
+      'material-symbols-outlined-latin-full-normal.woff2',
     ),
   )
   const fontBuffer = Buffer.from(materialSymbolsFont)
@@ -79,6 +79,10 @@ async function generateFontSubset(
 ) {
   const subsetBuffer = await subsetFont(fontBuffer, text, {
     targetFormat: format,
+    // @ts-expect-error Missing definition
+    variationAxes: {
+      FILL: { min: 0, max: 1 },
+    },
   })
   writeFileSync(`${filename}.${getExtensionFromFormat(format)}`, subsetBuffer)
 }
