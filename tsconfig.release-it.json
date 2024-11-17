@@ -2,6 +2,7 @@
   "include": ["**/.release-it.ts"],
   "compilerOptions": {
     "target": "esnext",
-    "module": "nodenext"
+    "module": "nodenext",
+    "moduleResolution": "bundler"
   }
 }

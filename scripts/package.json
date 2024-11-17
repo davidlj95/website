@@ -10,7 +10,7 @@
     "generate:font-subsets": "node dist/src/generate-font-subsets.js",
     "generate:release-info": "node dist/src/generate-release-info.js",
     "generate:simple-icons": "node dist/src/generate-simple-icons.js",
-    "generate:templated-files": "node dist/src/generate-templated-files.js",
+    "generate:templated-files": "node --import=extensionless/register dist/src/generate-templated-files.js",
     "security.txt": "node dist/src/generate-security-txt.js",
     "watch": "tsc --watch"
   },

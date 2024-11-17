@@ -1,4 +1,3 @@
-// @ts-expect-error no def imp
 import release, { Config } from 'release-it'
 import { createReleaseItConfig, ExtraConfig } from '@/data/.release-it.js'
 import { getRepositoryRootDir, isMain, objectToJson } from './utils.js'
@@ -75,7 +74,7 @@ const dryRunReleaseIt = (extraConfig?: ExtraConfig) => {
       ...config.github,
       release: false,
     },
-    // TODO: Invalid definition, issue a PR
+    // @ts-expect-error TODO: Invalid definition, issue a PR
     dryRun: true,
   }
   return releaseIt({

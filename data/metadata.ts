@@ -15,7 +15,7 @@ import {
   Smartphone,
   Terminal,
   Web,
-} from './material-symbols.js'
+} from './material-symbols'
 
 /**
  * Metadata used around the app. Either in the Angular app or accessory files.
@@ -25,11 +25,13 @@ import {
 const NICKNAME = 'davidlj95'
 const REAL_NAME = 'David LJ'
 const TITLE = 'Senior software engineer'
-// PoliceTranslator the earliest code found at 2023. But I started the project / did more things earlier!
+// PoliceTranslator's was the earliest code I found at 2023.
+// Though I started the project / did more things earlier!
 const FIRST_JOB_START_DATE = new Date('2014-06-19')
 const TIMESTAMP_DIFF = Date.now() - FIRST_JOB_START_DATE.getTime()
 const YEARS_OF_EXPERIENCE = Math.abs(
-  // Oh dear JavaScript, why you make things so difficult? https://stackoverflow.com/a/24181701/3263250
+  // Oh dear JavaScript, why you make things so difficult?
+  // https://stackoverflow.com/a/24181701/3263250
   new Date(TIMESTAMP_DIFF).getUTCFullYear() - 1970,
 )
 

@@ -177,6 +177,9 @@ importers:
       execa:
         specifier: 9.5.1
         version: 9.5.1
+      extensionless:
+        specifier: 1.9.9
+        version: 1.9.9
       glob:
         specifier: 11.0.0
         version: 11.0.0
@@ -3711,6 +3714,9 @@ packages:
 
   extend@3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
+
+  extensionless@1.9.9:
+    resolution: {integrity: sha512-fz0cWfLA4pgc2nwmg6lc2UH+g+NlFuD63VWqp8n1wGAZSSbPNoARkA54BxXRjYCYW9LvhBnA3NyJaGS2KudkWw==}
 
   external-editor@3.1.0:
     resolution: {integrity: sha512-hMQ4CX1p1izmuLYyZqLMO/qGNw10wSv9QDCPfzXfyFrOaCSSoRfqE1Kf1s5an66J5JZC62NewG+mK49jOCtQew==}
@@ -11795,6 +11801,8 @@ snapshots:
       - supports-color
 
   extend@3.0.2: {}
+
+  extensionless@1.9.9: {}
 
   external-editor@3.1.0:
     dependencies:

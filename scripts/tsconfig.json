@@ -11,13 +11,14 @@
     //👇 Won't be emitted anyway
     "target": "esnext",
     //👇 So we can use "bundler" resolution
-    "module": "nodenext",
+    "module": "esnext",
     //👇 Not needed :)
     "esModuleInterop": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     // -- Our configs
+    "moduleResolution": "bundler",
     "lib": ["esnext"],
     "outDir": "dist",
     "resolveJsonModule": true

@@ -10,7 +10,7 @@ export const createReleaseItConfig = ({
     commit: false,
     push: true, // default, but for explicitness
   },
-  // TODO: Invalid type definition, PR for this
+  // @ts-expect-error TODO: Invalid type definition, PR for this
   npm: false,
   github: {
     release: true,
