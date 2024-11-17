@@ -7,7 +7,14 @@ import { join } from 'path'
 async function generateFonts() {
   Log.info('Generating font subset for Material Symbols Outlined')
   const materialSymbolsFont = readFileSync(
-    join(getRepositoryRootDir(), 'assets', 'material-symbols-outlined.woff2'),
+    join(
+      getRepositoryRootDir(),
+      'node_modules',
+      '@fontsource-variable',
+      'material-symbols-outlined',
+      'files',
+      'material-symbols-outlined-latin-wght-normal.woff2',
+    ),
   )
   const fontBuffer = Buffer.from(materialSymbolsFont)
 
