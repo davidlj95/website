@@ -47,7 +47,7 @@ async function findNeededIcons(projects: typeof JSON_RESUME.projects) {
 }
 
 async function createDisplayNameAndColorsFile(
-  neededIcons: ReadonlyArray<SimpleIcon>,
+  neededIcons: readonly SimpleIcon[],
 ) {
   const filepath = await getTechFilepathFromGitignoreOrThrow(
     'color',
@@ -63,7 +63,7 @@ async function createDisplayNameAndColorsFile(
   return writeFile(filepath, objectToJson(displayNameAndColorsJson))
 }
 
-async function createIconFiles(neededIcons: ReadonlyArray<SimpleIcon>) {
+async function createIconFiles(neededIcons: readonly SimpleIcon[]) {
   Log.info('Writing icon files')
   Log.item(SIMPLE_ICONS_DIR)
   await mkdir(SIMPLE_ICONS_DIR, { recursive: true })

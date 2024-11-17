@@ -37,11 +37,11 @@ const YEARS_OF_EXPERIENCE = Math.abs(
 
 export class DescriptionLine {
   public readonly data?: DescriptionLineData
-  public readonly children: ReadonlyArray<DescriptionLine>
+  public readonly children: readonly DescriptionLine[]
 
   public constructor(
     data?: DescriptionLineData,
-    children?: ReadonlyArray<DescriptionLine>,
+    children?: readonly DescriptionLine[],
   ) {
     this.data = data
     this.children = children ?? []
@@ -49,7 +49,7 @@ export class DescriptionLine {
 
   public static fromData(
     dataArg: ConstructorParameters<typeof DescriptionLineData>[0],
-    children?: ReadonlyArray<DescriptionLine>,
+    children?: readonly DescriptionLine[],
   ) {
     return new this(new DescriptionLineData(dataArg), children)
   }
@@ -78,7 +78,7 @@ export class DescriptionLineData {
   }
 }
 
-const DESCRIPTION_LINES: ReadonlyArray<DescriptionLine> = [
+const DESCRIPTION_LINES: readonly DescriptionLine[] = [
   DescriptionLine.fromData({
     symbol: Code,
     html: 'Full stack',
@@ -171,7 +171,7 @@ const DOMAIN_NAME = `${NICKNAME}.com`
 
 const getDescriptionFromTitleAndLines = (
   title: string,
-  lines: ReadonlyArray<DescriptionLine>,
+  lines: readonly DescriptionLine[],
 ): string => {
   const formatter = new Intl.ListFormat('en')
   return [`${title}. `]
