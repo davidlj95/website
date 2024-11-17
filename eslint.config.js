@@ -9,6 +9,7 @@ const path = require('path')
 const gitignorePath = path.resolve(__dirname, '.gitignore')
 
 const cypressPlugin = require('eslint-plugin-cypress/flat')
+const jsonFiles = require('eslint-plugin-json-files')
 
 module.exports = tseslint.config(
   eslintCompat.includeIgnoreFile(gitignorePath),
@@ -54,5 +55,32 @@ module.exports = tseslint.config(
   {
     files: ['**/*.cy.ts'],
     ...cypressPlugin.configs.recommended,
+  },
+  {
+    files: ['**/*.json'],
+    plugins: { 'json-files': jsonFiles },
+    processor: jsonFiles.processors.json,
+    rules: {
+      'json-files/require-unique-dependency-names': 'error',
+      'json-files/restrict-ranges': [
+        'error',
+        {
+          versionHint: 'pin',
+        },
+      ],
+      'json-files/sort-package-json': 'error',
+    },
+  },
+  {
+    files: ['scripts/package.json'],
+    rules: {
+      'json-files/restrict-ranges': [
+        'error',
+        {
+          versionRegex: 'workspace:\\*',
+        },
+      ],
+      'json-files/sort-package-json': 'error',
+    },
   },
 )
