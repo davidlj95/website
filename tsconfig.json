@@ -24,8 +24,7 @@
     "resolveJsonModule": true,
     "paths": {
       "@/common/*": ["src/app/common/*"],
-      // 👇 Could be in `tsconfig.spec.json` but WebStorm doesn't read it. Just the `tsconfig.json` one
-      // https://youtrack.jetbrains.com/issue/WEB-60673
+      "@/data/*": ["data/*"],
       "@/test/*": ["src/test/*"]
     }
   },

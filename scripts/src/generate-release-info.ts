@@ -1,9 +1,8 @@
 import release, { Config } from 'release-it'
-import { createReleaseItConfig, ExtraConfig } from '../../.release-it'
-import { getRepositoryRootDir, isMain, objectToJson } from './utils.mjs'
-import packageJson from '../../package.json' assert { type: 'json' }
+import { createReleaseItConfig, ExtraConfig } from '@/data/.release-it.js'
+import { getRepositoryRootDir, isMain, objectToJson } from './utils.js'
 import { execSync } from 'child_process'
-import { writeFile } from 'fs/promises'
+import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
 
 interface ReleaseData {
@@ -55,7 +54,7 @@ const generateReleaseInfo = async (): Promise<ReleaseData> => {
   return {
     ...currentReleaseData,
     next: {
-      changelog: fixUnreleasedChangelog(dryRunReleaseResult.changelog),
+      changelog: await fixUnreleasedChangelog(dryRunReleaseResult.changelog),
     },
   }
 }
@@ -75,7 +74,7 @@ const dryRunReleaseIt = (extraConfig?: ExtraConfig) => {
       ...config.github,
       release: false,
     },
-    // @ts-expect-error Invalid definition. TODO: issue a PR
+    // @ts-expect-error TODO: Invalid definition, issue a PR
     dryRun: true,
   }
   return releaseIt({
@@ -101,15 +100,26 @@ const getPreviousVersion = (): string =>
     .toString()
     .trim()
 
-const fixUnreleasedChangelog = (changelog: string): string =>
-  changelog.replace(VERSION_PLACEHOLDER, 'Unreleased').replace('vnull', 'main')
-const VERSION_PLACEHOLDER = packageJson.version
+const fixUnreleasedChangelog = async (changelog: string): Promise<string> =>
+  changelog
+    .replace(await getVersionPlaceHolder(), 'Unreleased')
+    .replace('vnull', 'main')
+const getVersionPlaceHolder = async (): Promise<string> => {
+  const packageJson = JSON.parse(
+    await readFile(join(getRepositoryRootDir(), 'package.json'), 'utf-8'),
+  ) as { version: string }
+  return packageJson.version
+}
 
 if (isMain(import.meta.url)) {
+  //👇 Otherwise version field for unreleased changes CHANGELOG is empty
+  process.chdir(getRepositoryRootDir())
+
   await writeFile(
     join(getRepositoryRootDir(), 'src', 'release.json'),
     objectToJson(await generateReleaseInfo()),
   )
+
   // 👇 37 handles open at this point😅 So Node.js doesn't exit
   // Mainly due to `conventional-changelog`'s monorepo libs
   // Maybe that's why `semantic-release` also hangs

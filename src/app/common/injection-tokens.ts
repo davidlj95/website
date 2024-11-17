@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core'
-import { METADATA as METADATA_OBJECT, Metadata } from '../metadata'
+import { METADATA as METADATA_OBJECT, Metadata } from '../../../data/metadata'
 
 /* istanbul ignore next */
 export const METADATA = new InjectionToken<Metadata>(

@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Prebuild: font subsets" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/package.json" />
+  <configuration default="false" name="@/scripts: simple icons" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/scripts/package.json" />
     <command value="run" />
     <scripts>
-      <script value="prebuild:font-subsets" />
+      <script value="generate:simple-icons" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

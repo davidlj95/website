@@ -1,0 +1,19 @@
+{
+  "extends": "../.eslintrc.json",
+  "ignorePatterns": ["dist/**"],
+  "overrides": [
+    {
+      "files": ["package.json"],
+      "plugins": ["json-files"],
+      "rules": {
+        "json-files/restrict-ranges": [
+          "error",
+          {
+            "versionRegex": "workspace:\\*"
+          }
+        ],
+        "json-files/sort-package-json": "error"
+      }
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Prebuild: render templates" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/package.json" />
+  <configuration default="false" name="@/scripts: build" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/scripts/package.json" />
     <command value="run" />
     <scripts>
-      <script value="prebuild:render-templates" />
+      <script value="build" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

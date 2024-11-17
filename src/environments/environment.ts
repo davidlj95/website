@@ -1,4 +1,4 @@
-import { METADATA } from '../app/metadata'
+import { METADATA } from '@/data/metadata'
 import { Environment } from './environment-interface'
 
 export const environment: Environment = {

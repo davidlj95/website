@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { DescriptionLine, Metadata } from '../../metadata'
+import { DescriptionLine, Metadata } from '@/data/metadata'
 import { METADATA } from '@/common/injection-tokens'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'

@@ -4,7 +4,7 @@ import { ProfileDescriptionLineComponent } from './profile-description-line.comp
 import { MATERIAL_SYMBOLS_SELECTOR } from '@/test/helpers/material-symbols'
 import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { DescriptionLine } from '../../../../metadata'
+import { DescriptionLine } from '@/data/metadata'
 import { ATTRIBUTE_ARIA_HIDDEN } from '@/test/helpers/aria'
 
 describe('ProfileDescriptionLineComponent', () => {

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router'
 import { CalendarPageComponent } from './calendar-page.component'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
-import { METADATA } from '../metadata'
+import { METADATA } from '@/data/metadata'
 import { CALENDAR_PATH } from './calendar-page.routes'
 import { environment } from '../../environments'
 

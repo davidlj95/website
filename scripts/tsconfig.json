@@ -1,5 +1,11 @@
 /* Dedicated to run several dev scripts */
 {
+  "include": [
+    "src/**/*.ts",
+    "node_modules/@/data/**/*.ts",
+    "node_modules/@/data/**/.*.ts",
+    "node_modules/@/data/**/*.json"
+  ],
   "compilerOptions": {
     // -- Base configs (based upon `tsc --init`)
     //👇 Won't be emitted anyway
@@ -12,11 +18,9 @@
     "strict": true,
     "skipLibCheck": true,
     // -- Our configs
-    "noEmit": true,
+    "moduleResolution": "bundler",
     "lib": ["esnext"],
     "outDir": "dist",
-    //👇 So we can use imports without extension with ESM
-    "moduleResolution": "bundler",
     "resolveJsonModule": true
   }
 }

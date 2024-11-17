@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Prebuild: simple icons" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/package.json" />
+  <configuration default="false" name="@/scripts: release-info" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/scripts/package.json" />
     <command value="run" />
     <scripts>
-      <script value="prebuild:simple-icons" />
+      <script value="generate:release-info" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

@@ -98,10 +98,10 @@ For every push to `main` branch, [Release It!][release-it] will run and check if
 In order to embed release information in the app, a script runs to export that kind of information using
 [Release It!'s programmatic API](https://github.com/release-it/release-it/blob/main/docs/recipes/programmatic.md).
 
-To generate the release info, run
+To generate the release info, go to `scripts` directory and run
 
 ```shell
-pnpm run prebuild:release-info
+pnpm run generate:release-info
 ```
 
 It will generate a `release.json` file in the source directory of the app containing the:
@@ -110,7 +110,7 @@ It will generate a `release.json` file in the source directory of the app contai
 - Current release version & CHANGELOG
 - Unreleased changes CHANGELOG
 
-Checkout the [script](./scripts/src/generate-release-info.mts) for more information.
+Checkout the [script](scripts/src/generate-release-info.ts) for more information.
 
 ## Git hooks
 
@@ -160,10 +160,10 @@ See https://github.com/davidlj95/website/pull/289 for more info.
 
 ## Rendering font subsets
 
-Some fonts included are a subset of a big font file. Before doing anything, please run
+Some fonts included are a subset of a big font file. Before doing anything, please go to `scripts` directory and run
 
 ```shell
-pnpm run prebuild:font-subsets
+pnpm run generate:font-subsets
 ```
 
 To generate them. Otherwise, those fonts won't be found and you may get some errors. Also, remember to run it if

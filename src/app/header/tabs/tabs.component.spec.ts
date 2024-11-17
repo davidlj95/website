@@ -7,7 +7,7 @@ import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.compone
 import {
   KeyboardDoubleArrowLeft,
   KeyboardDoubleArrowRight,
-} from '../../material-symbols'
+} from '@/data/material-symbols'
 import { findByText } from '@/test/helpers/find-by-text'
 import { By } from '@angular/platform-browser'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'

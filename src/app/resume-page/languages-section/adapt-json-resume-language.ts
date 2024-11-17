@@ -1,5 +1,5 @@
 import { LanguageItem } from './language-item/language-item'
-import resume from '../../../../assets/resume.json'
+import resume from '@/data/resume.json'
 import { InjectionToken } from '@angular/core'
 
 export type AdaptJsonResumeLanguage = (

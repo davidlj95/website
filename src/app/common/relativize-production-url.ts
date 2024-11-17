@@ -1,6 +1,6 @@
 import { inject, InjectionToken } from '@angular/core'
 import { APP_BASE_HREF } from '@angular/common'
-import { METADATA } from '../metadata'
+import { METADATA } from '@/data/metadata'
 
 export type RelativizeProductionUrl = (url: URL) => string
 export const _RELATIVIZE_PRODUCTION_URL_FACTORY: (

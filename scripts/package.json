@@ -1,0 +1,20 @@
+{
+  "name": "@/scripts",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "Scripts to power website generation",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "pregenerate": "build",
+    "generate": "pnpm run '/^generate:.*/'",
+    "generate:font-subsets": "node dist/src/generate-font-subsets.js",
+    "generate:release-info": "node dist/src/generate-release-info.js",
+    "generate:simple-icons": "node dist/src/generate-simple-icons.js",
+    "generate:templated-files": "node --import=extensionless/register dist/src/generate-templated-files.js",
+    "security.txt": "node --import=extensionless/register dist/src/generate-security-txt.js",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@/data": "workspace:*"
+  }
+}

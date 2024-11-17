@@ -6,7 +6,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockProvider } from 'ng-mocks'
 import { forceColorScheme } from '@/test/helpers/color-scheme'
 import { forceReducedMotion } from '@/test/helpers/motion'
-import { DarkMode, LightMode } from '../../material-symbols'
+import { DarkMode, LightMode } from '@/data/material-symbols'
 import {
   expectIsInLayout,
   expectIsNotInLayout,

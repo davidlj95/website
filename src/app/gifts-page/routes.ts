@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
-import { METADATA } from '../metadata'
+import { METADATA } from '@/data/metadata'
 import { GIFTS_PATH } from './gifts-page.routes'
 import { environment } from '../../environments'
 import { GiftsPageComponent } from './gifts-page.component'

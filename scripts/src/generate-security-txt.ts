@@ -2,13 +2,13 @@ import { Liquid } from 'liquidjs'
 import {
   generateTemplatedFile,
   LIQUID_EXTENSION,
-} from './generate-templated-files'
+} from './generate-templated-files.js'
 import {
   getRepositoryRootDir,
   isMain,
   Log,
   SECURITY_TXT_REL_PATH,
-} from './utils.mjs'
+} from './utils.js'
 import { resolve } from 'path'
 import { promisify } from 'util'
 import { exec } from 'child_process'

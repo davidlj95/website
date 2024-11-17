@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { Warning } from '../material-symbols'
+import { Warning } from '@/data/material-symbols'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 
 @Component({

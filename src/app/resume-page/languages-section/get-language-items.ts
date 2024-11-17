@@ -1,6 +1,6 @@
 import { LanguageItem } from './language-item/language-item'
 import { inject, InjectionToken } from '@angular/core'
-import resume from '../../../../assets/resume.json'
+import resume from '@/data/resume.json'
 import { ADAPT_JSON_RESUME_LANGUAGE } from './adapt-json-resume-language'
 
 export type GetLanguageItems = () => ReadonlyArray<LanguageItem>

@@ -1,11 +1,11 @@
 import { ComponentFixture } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import resume from '../../../../../assets/resume.json'
+import resume from '@/data/resume.json'
 
 import { ProfileContactsComponent } from './profile-contacts.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockProvider } from 'ng-mocks'
-import { Call, Email, MyLocation } from '../../../material-symbols'
+import { Call, Email, MyLocation } from '@/data/material-symbols'
 import { ATTRIBUTE_ARIA_LABEL } from '@/test/helpers/aria'
 import { JSON_RESUME_BASICS, JsonResumeBasics } from '../json-resume-basics'
 import { NgIcon } from '@ng-icons/core'

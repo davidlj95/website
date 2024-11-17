@@ -1,4 +1,4 @@
-import { METADATA } from './metadata'
+import { METADATA } from '@/data/metadata'
 import {
   OPEN_GRAPH_TYPE_WEBSITE,
   OpenGraphMetadata,

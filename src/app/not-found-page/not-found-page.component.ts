@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { Lightbulb } from '../material-symbols'
+import { Lightbulb } from '@/data/material-symbols'
 import { Router } from '@angular/router'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { APP_BASE_URL } from '@/common/app-base-url'

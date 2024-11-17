@@ -20,7 +20,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Render templates
-        run: 'pnpm run prebuild:render-templates'
+        run: cd scripts && pnpm run build && pnpm run generate:templated-files
       - name: Ensure no pending changes
         run: cd .ci && make ensure-no-pending-changes
 
@@ -33,6 +33,12 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Setup
         uses: ./.github/actions/setup
+      - name: Generate files
+        run: |
+          cd scripts
+          pnpm run build
+          pnpm run generate:simple-icons
+          pnpm run generate:font-subsets
       - name: Run tests
         run: cd .ci && make unit-test
       - name: Upload coverage results
@@ -76,7 +82,7 @@ jobs:
       - name: Cypress install
         run: pnpm cypress install
       - name: Generate font subsets
-        run: pnpm run prebuild:font-subsets
+        run: cd scripts && pnpm run build && pnpm run generate:font-subsets
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
