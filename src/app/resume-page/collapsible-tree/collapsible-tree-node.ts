@@ -3,7 +3,7 @@ import { NgComponentOutlet } from '@angular/common'
 export class CollapsibleTreeNode {
   constructor(
     public readonly data?: CollapsibleTreeNodeData,
-    public readonly children: ReadonlyArray<CollapsibleTreeNode> = [],
+    public readonly children: readonly CollapsibleTreeNode[] = [],
   ) {}
 }
 

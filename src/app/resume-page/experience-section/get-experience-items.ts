@@ -3,7 +3,7 @@ import resume from '@/data/resume.json'
 import { ADAPT_JSON_RESUME_WORK } from './adapt-json-resume-work'
 import { ExperienceItem } from './experience-item/experience-item'
 
-export type GetExperienceItems = () => ReadonlyArray<ExperienceItem>
+export type GetExperienceItems = () => readonly ExperienceItem[]
 export const GET_EXPERIENCE_ITEMS = new InjectionToken<GetExperienceItems>(
   /* istanbul ignore next */
   isDevMode ? 'GetExperienceItems' : 'GEI',

@@ -6,7 +6,7 @@ import { TextContentComponent } from '../../chipped-content/text-content/text-co
 
 export type EducationItemToContents = (
   item: EducationItem,
-) => ReadonlyArray<ChippedContent>
+) => readonly ChippedContent[]
 export const educationItemToContents: EducationItemToContents = (item) =>
   [
     item.score

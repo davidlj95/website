@@ -46,7 +46,7 @@ export class ProjectItemComponent {
   }
 
   protected _item!: ProjectItem
-  protected _contents: ReadonlyArray<ChippedContent> = []
+  protected _contents: readonly ChippedContent[] = []
 
   protected readonly StackContent = StackContent
   protected readonly Attribute = Attribute
@@ -56,7 +56,7 @@ export enum Attribute {
   Stack = 'stack',
 }
 
-export const StackContent: { [Property in Stack]: StackContent } = {
+export const StackContent: Record<Stack, StackContent> = {
   [Stack.Back]: {
     displayName: 'Backend',
     materialSymbol: Dns,

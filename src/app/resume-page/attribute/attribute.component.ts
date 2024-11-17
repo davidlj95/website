@@ -19,5 +19,5 @@ let nextId = 0
 export class AttributeComponent {
   @Input({ required: true }) symbol!: string
 
-  protected _id: string = `${ATTRIBUTE_ID_PREFIX}${nextId++}`
+  protected _id = `${ATTRIBUTE_ID_PREFIX}${nextId++}`
 }

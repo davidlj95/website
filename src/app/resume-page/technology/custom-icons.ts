@@ -9,7 +9,7 @@ import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 //   Or not adding logos from companies excessively protective with their brands
 //   https://github.com/simple-icons/simple-icons/blob/develop/CONTRIBUTING.md#forbidden-brands
 // noinspection JSUnusedGlobalSymbols
-export const CUSTOM_ICONS: ReadonlyArray<SimpleIcon> = [
+export const CUSTOM_ICONS: readonly SimpleIcon[] = [
   // From https://github.com/rspec/rspec.github.io/blob/source/logo.svg
   // Creator doesn't want it to be modified:
   // it can't be made monochrome to be included in simple icons

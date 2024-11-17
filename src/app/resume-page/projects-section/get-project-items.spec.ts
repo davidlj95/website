@@ -23,7 +23,7 @@ describe('GetProjectItems', () => {
       'item-2' as unknown as JsonResumeProject,
     ]
     const expectedProjectItems =
-      jsonResumeProjects as unknown as ReadonlyArray<ProjectItem>
+      jsonResumeProjects as unknown as readonly ProjectItem[]
     const adaptJsonResumeProject = jasmine
       .createSpy<AdaptJsonResumeProject>()
       .and.returnValues(...expectedProjectItems)

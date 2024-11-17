@@ -4,9 +4,7 @@ import { TextContentComponent } from '../../chipped-content/text-content/text-co
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 import { isNotUndefined } from '@/common/is-not-undefined'
 
-type ProjectItemToContents = (
-  item: ProjectItem,
-) => ReadonlyArray<ChippedContent>
+type ProjectItemToContents = (item: ProjectItem) => readonly ChippedContent[]
 export const projectItemToContents: ProjectItemToContents = (item) =>
   [
     item.description

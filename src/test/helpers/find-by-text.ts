@@ -1,7 +1,7 @@
 import { DebugElement } from '@angular/core'
 
 export const findByText = (
-  debugElements: ReadonlyArray<DebugElement>,
+  debugElements: readonly DebugElement[],
   textMatcher: string,
 ): DebugElement | undefined =>
   debugElements.find(

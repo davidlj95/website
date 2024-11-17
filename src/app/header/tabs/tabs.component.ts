@@ -47,7 +47,7 @@ export class TabsComponent implements OnDestroy {
   public _intersectionObserver!: IntersectionObserver
 
   // Selected management
-  private _currentTabs: ReadonlyArray<TabComponent> = []
+  private _currentTabs: readonly TabComponent[] = []
   private _indexToSelect?: number
   private _selectedIndex?: number
   @Input({ transform: numberAttribute }) set selectedIndex(index: number) {

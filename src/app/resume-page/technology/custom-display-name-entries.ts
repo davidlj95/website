@@ -1,4 +1,4 @@
-export const CUSTOM_DISPLAY_NAME_ENTRIES: ReadonlyArray<[string, string]> = [
+export const CUSTOM_DISPLAY_NAME_ENTRIES: readonly [string, string][] = [
   ['microsoftword', 'Microsoft Word'],
   ['rspec', 'RSpec'],
   ['zenqms', 'ZenQMS'],

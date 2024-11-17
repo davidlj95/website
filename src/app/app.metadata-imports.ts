@@ -9,9 +9,10 @@ import { provideNgxMetaTwitterCard } from '@davidlj95/ngx-meta/twitter-card'
 import { METADATA_DEFAULTS } from './app.metadata-defaults'
 import { EnvironmentProviders, Provider } from '@angular/core'
 
-export const APP_METADATA_PROVIDERS: ReadonlyArray<
-  Provider | EnvironmentProviders
-> = [
+export const APP_METADATA_PROVIDERS: readonly (
+  | Provider
+  | EnvironmentProviders
+)[] = [
   provideNgxMetaCore(withNgxMetaDefaults(METADATA_DEFAULTS)),
   provideNgxMetaRouting(),
   provideNgxMetaStandard(),

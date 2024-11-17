@@ -19,5 +19,5 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
   templateUrl: './project-item-technologies.component.html',
 })
 export class ProjectItemTechnologiesComponent {
-  @Input({ required: true }) public items!: ReadonlyArray<TechnologyItem>
+  @Input({ required: true }) public items!: readonly TechnologyItem[]
 }

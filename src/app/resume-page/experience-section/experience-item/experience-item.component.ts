@@ -46,7 +46,7 @@ export class ExperienceItemComponent {
   }
 
   protected _item!: ExperienceItem
-  protected _contents: ReadonlyArray<ChippedContent> = []
+  protected _contents: readonly ChippedContent[] = []
   protected readonly MaterialSymbol = {
     Badge,
     Work,

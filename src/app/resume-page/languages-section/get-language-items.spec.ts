@@ -23,7 +23,7 @@ describe('GetLanguageItems', () => {
       'item-2' as unknown as JsonResumeLanguage,
     ]
     const expectedLanguageItems =
-      jsonResumeLanguages as unknown as ReadonlyArray<LanguageItem>
+      jsonResumeLanguages as unknown as readonly LanguageItem[]
     const adaptJsonResumeLanguage = jasmine
       .createSpy<AdaptJsonResumeLanguage>()
       .and.returnValues(...expectedLanguageItems)

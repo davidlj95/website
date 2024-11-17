@@ -8,7 +8,7 @@ import { TechnologyItem } from '../../technology/technology-item'
 
 type ExperienceItemToContents = (
   item: ExperienceItem,
-) => ReadonlyArray<ChippedContent>
+) => readonly ChippedContent[]
 export const experienceItemToContents: ExperienceItemToContents = (item) => {
   const summaryContent = item.summary
     ? new ChippedContent({

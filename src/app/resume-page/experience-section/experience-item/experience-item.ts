@@ -7,12 +7,12 @@ export class ExperienceItem {
   public readonly position: string
   public readonly dateRange: DateRange
   public readonly summary: string
-  public readonly highlights: ReadonlyArray<string>
+  public readonly highlights: readonly string[]
   public readonly freelance: boolean
   public readonly internship: boolean
   public readonly promotions: boolean
   public readonly morePositions: boolean
-  public readonly projects: ReadonlyArray<ProjectItem>
+  public readonly projects: readonly ProjectItem[]
 
   constructor({
     company,
@@ -30,12 +30,12 @@ export class ExperienceItem {
     position: string
     dateRange: DateRange
     summary: string
-    highlights?: ReadonlyArray<string>
+    highlights?: readonly string[]
     freelance?: boolean
     internship?: boolean
     promotions?: boolean
     morePositions?: boolean
-    projects?: ReadonlyArray<ProjectItem>
+    projects?: readonly ProjectItem[]
   }) {
     this.company = company
     this.position = position

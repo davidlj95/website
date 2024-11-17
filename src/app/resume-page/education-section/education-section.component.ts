@@ -18,7 +18,7 @@ import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
   ],
 })
 export class EducationSectionComponent {
-  protected readonly items: ReadonlyArray<EducationItem>
+  protected readonly items: readonly EducationItem[]
 
   constructor(
     @Inject(GET_EDUCATION_ITEMS) getEducationItems: GetEducationItems,

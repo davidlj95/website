@@ -21,7 +21,7 @@ import {
   ],
 })
 export class ExperienceSectionComponent {
-  protected readonly items: ReadonlyArray<ExperienceItem>
+  protected readonly items: readonly ExperienceItem[]
 
   constructor(
     @Inject(GET_EXPERIENCE_ITEMS) getExperienceItems: GetExperienceItems,

@@ -3,7 +3,7 @@ import { ProjectItem } from './project-item/project-item'
 import { ADAPT_JSON_RESUME_PROJECT } from './adapt-json-resume-project'
 import { JSON_RESUME_PROJECTS } from './json-resume-projects'
 
-export type GetProjectItems = () => ReadonlyArray<ProjectItem>
+export type GetProjectItems = () => readonly ProjectItem[]
 
 export const GET_PROJECT_ITEMS = new InjectionToken<GetProjectItems>(
   /* istanbul ignore next */

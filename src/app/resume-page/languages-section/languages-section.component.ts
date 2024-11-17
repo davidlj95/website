@@ -20,7 +20,7 @@ import { LanguageItemComponent } from './language-item/language-item.component'
   templateUrl: './languages-section.component.html',
 })
 export class LanguagesSectionComponent {
-  protected readonly items: ReadonlyArray<LanguageItem>
+  protected readonly items: readonly LanguageItem[]
 
   constructor(@Inject(GET_LANGUAGE_ITEMS) getLanguageItems: GetLanguageItems) {
     this.items = getLanguageItems()

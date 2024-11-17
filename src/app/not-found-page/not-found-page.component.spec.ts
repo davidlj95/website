@@ -12,7 +12,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 describe('NotFoundPageComponent', () => {
   let component: NotFoundPageComponent
   let fixture: ComponentFixture<NotFoundPageComponent>
-  const dummyAppUrlNoTrailingSlash: string = 'https://example.com'
+  const dummyAppUrlNoTrailingSlash = 'https://example.com'
   const dummyRouter: Pick<Router, 'url'> = {
     url: '/foo',
   }

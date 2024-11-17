@@ -33,8 +33,8 @@ const ngIcons: NgIcons = [...ngIconsByName.values()].reduce<NgIcons>(
   providers: [provideIcons(ngIcons)],
 })
 export class ProfileContactsComponent {
-  protected readonly _traditional: ReadonlyArray<ContactItem>
-  protected readonly _social: ReadonlyArray<ContactItem>
+  protected readonly _traditional: readonly ContactItem[]
+  protected readonly _social: readonly ContactItem[]
 
   constructor(@Inject(JSON_RESUME_BASICS) jsonResumeBasics: JsonResumeBasics) {
     this._traditional = jsonResumeBasicsToTraditionalContacts(jsonResumeBasics)
@@ -50,7 +50,7 @@ interface ContactItem {
 
 const jsonResumeBasicsToTraditionalContacts = (
   jsonResumeBasics: JsonResumeBasics,
-): ReadonlyArray<ContactItem> => [
+): readonly ContactItem[] => [
   {
     name: 'Email',
     icon: Email,
@@ -77,7 +77,7 @@ const getMapsSearchUrl = (location: string): URL => {
 
 const jsonResumeBasicsToSocialContacts = (
   jsonResumeBasics: JsonResumeBasics,
-): ReadonlyArray<ContactItem> =>
+): readonly ContactItem[] =>
   jsonResumeBasics.profiles
     .map((profile) => {
       const maybeIcon = getIconFromNetwork(profile.network)
