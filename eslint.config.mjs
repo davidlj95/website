@@ -22,6 +22,7 @@ export default tsEslint.config(
   {
     // Symlinked file may not exist if file hasn't been generated
     ignores: [
+      'src/manifest.json',
       'src/release.json',
       'src/environments/environment.pull-request.ts',
     ],
