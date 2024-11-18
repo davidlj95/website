@@ -3,13 +3,13 @@ import {
   GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
   GetTechnologyDisplayNameFromSlug,
 } from './get-technology-display-name-from-slug'
-import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-name-and-color-entries.json'
+import SIMPLE_ICONS_JSON from '@/data/generated/simple-icons.json'
 import { CUSTOM_DISPLAY_NAME_ENTRIES } from './custom-display-name-entries'
 
 describe('GetTechnologyDisplayNameFromSlug', () => {
   let sut: GetTechnologyDisplayNameFromSlug
 
-  const SIMPLE_ICONS_ENTRIES = SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES[0]
+  const SIMPLE_ICONS_ENTRIES = SIMPLE_ICONS_JSON[0]
   const SIMPLE_ICON_SLUG = SIMPLE_ICONS_ENTRIES[0]
   const SIMPLE_ICON_DISPLAY_NAME = SIMPLE_ICONS_ENTRIES[1]
 

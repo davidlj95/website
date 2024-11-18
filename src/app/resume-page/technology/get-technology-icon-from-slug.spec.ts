@@ -1,4 +1,4 @@
-import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-name-and-color-entries.json'
+import SIMPLE_ICONS_JSON from '@/data/generated/simple-icons.json'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   GET_TECHNOLOGY_ICON_FROM_SLUG,
@@ -7,7 +7,7 @@ import {
 
 describe('GetTechnologyIconFromSlug', () => {
   let sut: GetTechnologyIconFromSlug
-  const SIMPLE_ICONS_ENTRIES = SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES[0]
+  const SIMPLE_ICONS_ENTRIES = SIMPLE_ICONS_JSON[0]
   const SIMPLE_ICON_SLUG = SIMPLE_ICONS_ENTRIES[0]
   const SIMPLE_ICON_COLOR = SIMPLE_ICONS_ENTRIES[2]
 
