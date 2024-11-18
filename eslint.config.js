@@ -11,6 +11,7 @@ const gitignorePath = path.resolve(__dirname, '.gitignore')
 const eslintCypressPlugin = require('eslint-plugin-cypress/flat')
 const eslintJsonFilesPlugin = require('eslint-plugin-json-files')
 const eslintConfigPrettier = require('eslint-config-prettier')
+const eslintPluginJasmine = require('eslint-plugin-jasmine')
 
 module.exports = tseslint.config(
   eslintCompat.includeIgnoreFile(gitignorePath),
@@ -52,6 +53,11 @@ module.exports = tseslint.config(
       ...angular.configs.templateAccessibility,
     ],
     rules: {},
+  },
+  {
+    files: ['src/**/*.spec.ts'],
+    plugins: { jasmine: eslintPluginJasmine },
+    ...eslintPluginJasmine.configs.recommended,
   },
   {
     files: ['**/*.cy.ts', 'cypress/**/*.ts'],
