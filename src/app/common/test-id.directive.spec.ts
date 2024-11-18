@@ -16,6 +16,7 @@ describe('TestIdDirective', () => {
     fixture.detectChanges()
 
     const childElement = fixture.debugElement.query(By.css(elementTag))
+
     expect(childElement).toBeTruthy()
     expect(childElement.attributes[TEST_ID_ATTRIBUTE]).toEqual(testId)
   })

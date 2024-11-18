@@ -45,6 +45,7 @@ describe('CollapsibleTreeComponent', () => {
 
     it('should not render data element', () => {
       const dataElement = fixture.debugElement.query(DATA_PREDICATE)
+
       expect(dataElement).toBeNull()
     })
   })
@@ -75,9 +76,11 @@ describe('CollapsibleTreeComponent', () => {
 
     it('should render data element and project node data component binding its inputs', () => {
       const dataElement = fixture.debugElement.query(DATA_PREDICATE)
+
       expect(dataElement).not.toBeNull()
 
       const nodeDataElement = dataElement.query(byComponent(DummyComponent))
+
       expect(nodeDataElement).not.toBeNull()
 
       expect(nodeDataElement.nativeElement.textContent.trim()).toEqual(
@@ -95,6 +98,7 @@ describe('CollapsibleTreeComponent', () => {
 
     it('should not render the list of children', () => {
       const listElement = fixture.debugElement.query(LIST_PREDICATE)
+
       expect(listElement).toBeNull()
     })
   })
@@ -118,12 +122,14 @@ describe('CollapsibleTreeComponent', () => {
 
       const listElement = fixture.debugElement.query(LIST_PREDICATE)
       const listItemElements = listElement.queryAll(By.css('li'))
+
       expect(listItemElements).toHaveSize(DUMMY_CHILDREN.length)
 
       for (const listItemElement of listItemElements) {
         const itemElement = listItemElement.query(
           byComponent(CollapsibleTreeComponent),
         )
+
         expect(itemElement).not.toBeNull()
 
         expect(
@@ -148,6 +154,7 @@ describe('CollapsibleTreeComponent', () => {
           fixture.detectChanges()
 
           const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
+
           expect(buttonElement).not.toBeNull()
         })
 
@@ -155,11 +162,13 @@ describe('CollapsibleTreeComponent', () => {
           fixture.detectChanges()
 
           const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
+
           expect(buttonElement.attributes[ATTRIBUTE_ARIA_CONTROLS]).toEqual(
             component.childListId!,
           )
 
           const listElement = fixture.debugElement.query(LIST_PREDICATE)
+
           expect(listElement).not.toBeNull()
           expect(listElement.attributes['id']).toEqual(component.childListId!)
         })
@@ -214,6 +223,7 @@ describe('CollapsibleTreeComponent', () => {
 
           it('should indicate it via ARIA', () => {
             const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
+
             expect(buttonElement.attributes[ATTRIBUTE_ARIA_EXPANDED]).toEqual(
               testCase.isExpanded.toString(),
             )
@@ -230,10 +240,12 @@ describe('CollapsibleTreeComponent', () => {
 
           it('should render caret with proper icon and hidden from screen readers', () => {
             const caretElement = fixture.debugElement.query(CARET_PREDICATE)
+
             expect(caretElement).not.toBeNull()
             expect(caretElement.nativeElement.textContent.trim()).toEqual(
               component[testCase.iconProperty],
             )
+
             expect(caretElement.attributes[ATTRIBUTE_ARIA_HIDDEN]).toEqual(
               'true',
             )
@@ -266,6 +278,7 @@ describe('CollapsibleTreeComponent', () => {
 
       it('should not include button to toggle', () => {
         const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
+
         expect(buttonElement).toBeNull()
       })
 

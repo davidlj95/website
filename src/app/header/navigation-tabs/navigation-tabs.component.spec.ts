@@ -37,15 +37,19 @@ describe('NavigationTabsComponent', () => {
     fixture.detectChanges()
 
     const tabsElement = fixture.debugElement.query(byComponent(TabsComponent))
+
     expect(tabsElement).not.toBeNull()
 
     const tabElements = tabsElement.queryAll(byComponent(TabComponent))
+
     expect(tabElements.length).toEqual(ITEMS.length)
     tabElements.forEach((tabElement, i) => {
       const item = ITEMS[i]
+
       expect(tabElement.nativeElement.textContent.trim()).toEqual(
         item.displayName,
       )
+
       expect(tabElement.injector.get(RouterLink).urlTree?.toString()).toBe(
         '/' + item.routerLink,
       )
@@ -68,6 +72,7 @@ describe('NavigationTabsComponent', () => {
         (element) =>
           element.nativeElement.textContent.trim() === FOO_ITEM.displayName,
       )
+
     expect(fooTabElement).not.toBeNull()
     expect(
       getComponentInstance(fooTabElement!, TabComponent).selected,
@@ -79,6 +84,7 @@ describe('NavigationTabsComponent', () => {
         (element) =>
           element.nativeElement.textContent.trim() === BAR_ITEM.displayName,
       )
+
     expect(barTabElement).not.toBeNull()
 
     expect(

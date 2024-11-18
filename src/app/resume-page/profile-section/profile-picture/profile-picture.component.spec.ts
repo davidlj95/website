@@ -35,6 +35,7 @@ describe('ProfilePictureComponent', () => {
     const profileHuhImgElement = fixture.debugElement.query(
       PROFILE_PIC_HUH_SELECTOR,
     )
+
     expect(profileHuhImgElement.injector.get(NgOptimizedImage).ngSrc).toContain(
       'profile_huh.png',
     )
@@ -57,9 +58,11 @@ describe('ProfilePictureComponent', () => {
       // So we include profile picture instead
       it('main profile pic should be in tab sequence', () => {
         const profilePic = fixture.debugElement.query(PROFILE_PIC_MAIN_SELECTOR)
+
         expect(profilePic.attributes['tabindex']).toBe('0')
       })
     })
+
     describe('after profile picture has received focus at least one', () => {
       let profilePicEl: DebugElement
 
@@ -76,9 +79,11 @@ describe('ProfilePictureComponent', () => {
           ],
         ).toBe(true.toString())
       })
+
       it('component should be included in tab sequence', () => {
         expect(fixture.debugElement.attributes['tabindex']).toBe('0')
       })
+
       it('profile pic should no longer be in tab sequence', () => {
         expect(profilePicEl.attributes['tabindex']).toBe('-1')
       })

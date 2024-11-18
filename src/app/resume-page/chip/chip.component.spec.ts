@@ -8,6 +8,7 @@ describe('ChipComponent', () => {
   it('should create', () => {
     const [fixture, component] = componentTestSetup(ChipComponent)
     fixture.detectChanges()
+
     expect(component).toBeTruthy()
   })
 
@@ -70,6 +71,7 @@ describe('ChipComponent', () => {
         .subscribe((selected) => (newSelectedValue = selected))
       fixture.detectChanges()
     })
+
     afterEach(() => {
       subscription?.unsubscribe()
     })

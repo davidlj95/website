@@ -17,6 +17,7 @@ describe('ProjectsSectionComponent', () => {
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
+
     expect(component).toBeTruthy()
   })
 
@@ -32,6 +33,7 @@ describe('ProjectsSectionComponent', () => {
     const projectItemElements = fixture.debugElement.queryAll(
       byComponent(ProjectItemComponent),
     )
+
     expect(projectItemElements.length).toEqual(projectItems.length)
   })
 

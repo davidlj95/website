@@ -50,9 +50,11 @@ describe('ProfileDescriptionLineComponent', () => {
       const materialSymbolSpan = fixture.debugElement.query(
         MATERIAL_SYMBOLS_SELECTOR,
       )
+
       expect(materialSymbolSpan.nativeElement.textContent)
         .withContext('symbol')
         .toEqual(DUMMY_LINE.data!.symbol)
+
       expect(materialSymbolSpan.attributes[ATTRIBUTE_ARIA_HIDDEN])
         .withContext('symbol is hidden from screen readers')
         .toBe(true.toString())
@@ -60,6 +62,7 @@ describe('ProfileDescriptionLineComponent', () => {
 
     it('should display HTML content', () => {
       const htmlSpan = fixture.debugElement.query(By.css('.content'))
+
       expect(htmlSpan.nativeElement.innerHTML)
         .withContext('html')
         .toEqual(DUMMY_LINE.data!.html)

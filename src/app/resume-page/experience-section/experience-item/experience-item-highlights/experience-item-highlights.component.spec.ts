@@ -23,6 +23,7 @@ describe('ExperienceItemHighlightsComponent', () => {
 
   it('should display all highlights', () => {
     const listElements = fixture.debugElement.queryAll(By.css('li'))
+
     expect(listElements.length).toBe(HIGHLIGHTS.length)
     listElements.forEach((listElement, index) => {
       expect(listElement.nativeElement.textContent.trim()).toEqual(

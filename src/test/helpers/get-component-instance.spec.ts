@@ -42,6 +42,7 @@ describe('GetComponentInstance', () => {
       expect(error?.message)
         .withContext('should indicate expected type')
         .toMatch(/E|expected[\s:'"]+EmptyComponent/)
+
       expect(error?.message)
         .withContext('should indicate actual type')
         .toMatch(/A|actual[\s:'"]+TestComponent/)

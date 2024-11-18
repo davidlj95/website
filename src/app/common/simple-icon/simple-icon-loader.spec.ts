@@ -55,11 +55,14 @@ describe('SimpleIconLoader', () => {
 
     it('should fetch the SVG file by slug and emit its response', (complete) => {
       sut(ICON_SLUG).subscribe({
-        next: (actualSvg) => expect(actualSvg).toEqual(ICON_SVG),
+        next: (actualSvg) =>
+
+        expect(actualSvg).toEqual(ICON_SVG),
         complete,
       })
 
       const testRequest = expectTestRequestToIcon(ICON_SLUG)
+
       expect(testRequest.request.method).toEqual('GET')
 
       testRequest.flush(ICON_SVG)

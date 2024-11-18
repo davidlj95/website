@@ -22,8 +22,10 @@ describe('CalendarPageComponent', () => {
     fixture.detectChanges()
 
     const iframe = fixture.debugElement.query(By.css('iframe'))
+
     expect(iframe).not.toBeNull()
     const iframeSource = iframe.attributes['src']
+
     expect(iframeSource).toEqual(
       jasmine.stringMatching(/^https:\/\/calendar.google.com/),
     )

@@ -33,6 +33,7 @@ describe('LanguageItemComponent', () => {
     setLanguageItem(fixture, { name })
 
     const nameElement = fixture.debugElement.query(byTestId('name'))
+
     expect(nameElement.nativeElement.textContent.trim()).toEqual(name)
   })
 
@@ -42,6 +43,7 @@ describe('LanguageItemComponent', () => {
     setLanguageItem(fixture, { fluency })
 
     const fluencyElement = fixture.debugElement.query(byTestId('fluency'))
+
     expect(fluencyElement.nativeElement.textContent.trim()).toEqual(fluency)
   })
 
@@ -58,6 +60,7 @@ describe('LanguageItemComponent', () => {
       const commentElement = fixture.debugElement.query(
         COMMENT_ELEMENT_SELECTOR,
       )
+
       expect(commentElement.nativeElement.textContent.trim()).toEqual(comment)
     })
   })
@@ -73,6 +76,7 @@ describe('LanguageItemComponent', () => {
       const commentElement = fixture.debugElement.query(
         COMMENT_ELEMENT_SELECTOR,
       )
+
       expect(commentElement).toBeNull()
     })
   })
@@ -81,6 +85,7 @@ describe('LanguageItemComponent', () => {
     const tagElement = fixture.debugElement.query(
       byComponent(LanguageTagComponent),
     )
+
     expect(tagElement).not.toBeNull()
   })
 })

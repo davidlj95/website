@@ -39,6 +39,7 @@ describe('ProjectItemComponent', () => {
 
   it('should create', () => {
     setProjectItem(fixture)
+
     expect(component).toBeTruthy()
   })
 
@@ -48,6 +49,7 @@ describe('ProjectItemComponent', () => {
       setProjectItem(fixture, { imageSrc })
 
       const linkElement = fixture.debugElement.query(byTestId('image'))
+
       expect(linkElement).toBeFalsy()
     })
   })
@@ -62,12 +64,14 @@ describe('ProjectItemComponent', () => {
       const anchorElement = fixture.debugElement
         .query(byTestId('image'))
         .query(By.css('a'))
+
       expect(anchorElement).toBeTruthy()
       expect(anchorElement.attributes['href']).toEqual(website.toString())
 
       const imageElement = anchorElement.query(
         byComponent(CardHeaderImageComponent),
       )
+
       expect(imageElement).toBeTruthy()
       expect(
         getComponentInstance(imageElement, CardHeaderImageComponent).src,
@@ -82,6 +86,7 @@ describe('ProjectItemComponent', () => {
     setProjectItem(fixture, { name, website })
 
     const titleElement = fixture.debugElement.query(byTestId('name'))
+
     expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
   })
 
@@ -91,6 +96,7 @@ describe('ProjectItemComponent', () => {
       setProjectItem(fixture, { roles })
 
       const roleElement = fixture.debugElement.query(byTestId('role'))
+
       expect(roleElement).toBeFalsy()
     })
   })
@@ -102,6 +108,7 @@ describe('ProjectItemComponent', () => {
       setProjectItem(fixture, { roles })
 
       const roleElement = fixture.debugElement.query(byTestId('role'))
+
       expect(roleElement).toBeTruthy()
       expect(roleElement.nativeElement.textContent.trim()).toEqual(roles[0])
     })
@@ -115,6 +122,7 @@ describe('ProjectItemComponent', () => {
     const dateRangeElement = fixture.debugElement.query(
       byComponent(DateRangeComponent),
     )
+
     expect(dateRangeElement).toBeTruthy()
   })
 
@@ -127,6 +135,7 @@ describe('ProjectItemComponent', () => {
       const stackAttributeElement = fixture.debugElement.query(
         byTestId(Attribute.Stack),
       )
+
       expect(stackAttributeElement).toBeFalsy()
     })
   })
@@ -141,10 +150,12 @@ describe('ProjectItemComponent', () => {
       const stackAttributeElement = fixture.debugElement.query(
         byTestId(Attribute.Stack),
       )
+
       expect(stackAttributeElement).toBeTruthy()
       expect(
         getComponentInstance(stackAttributeElement, AttributeComponent).symbol,
       ).toBe(stackContent.materialSymbol)
+
       expect(stackAttributeElement.nativeElement.textContent.trim()).toEqual(
         stackContent.displayName,
       )

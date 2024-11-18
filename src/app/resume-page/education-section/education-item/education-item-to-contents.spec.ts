@@ -14,8 +14,10 @@ describe('educationItemToContents', () => {
       const scoreContents = contents.filter(
         (content) => content.displayName === 'Score',
       )
+
       expect(scoreContents).toHaveSize(1)
       const scoreContent = scoreContents[0]
+
       expect(scoreContent.component).toEqual(TextContentComponent)
       expect(scoreContent.inputs).toEqual({
         text: score,
@@ -33,8 +35,10 @@ describe('educationItemToContents', () => {
       const coursesContents = contents.filter(
         (content) => content.displayName === 'Courses',
       )
+
       expect(coursesContents).toHaveSize(1)
       const courseContent = coursesContents[0]
+
       expect(courseContent.component).toEqual(EducationItemCoursesComponent)
       expect(courseContent.inputs).toEqual({
         courses,

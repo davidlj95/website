@@ -15,6 +15,7 @@ describe('ToolbarButtonComponent', () => {
     fixture.detectChanges()
 
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
+
     expect(iconElement.nativeElement.textContent.trim()).toBe(DUMMY_ICON)
   })
 })

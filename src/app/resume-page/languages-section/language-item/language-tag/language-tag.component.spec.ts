@@ -32,6 +32,7 @@ describe('LanguageTagComponent', () => {
     fixture.detectChanges()
 
     const anchorElement = fixture.debugElement.query(By.css('a'))
+
     expect(anchorElement).not.toBeNull()
     expect(anchorElement.attributes['href']).toEqual(
       `https://www.loc.gov/standards/iso639-2/php/langcodes_name.php?iso_639_1=${tag}`,

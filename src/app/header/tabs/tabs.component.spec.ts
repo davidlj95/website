@@ -46,6 +46,7 @@ describe('TabsComponent', () => {
     const tabElements = fixture.debugElement.queryAll(byComponent(TabComponent))
     tabElements.forEach((tabElement, index) => {
       const shouldBeSelected = index === selectedIndex
+
       expect(getComponentInstance(tabElement, TabComponent).selected)
         .withContext(
           `tab ${index} is ${shouldBeSelected ? 'selected' : 'not selected'}`,
@@ -67,6 +68,7 @@ describe('TabsComponent', () => {
         KeyboardDoubleArrowLeft,
       )!,
     ).toBeTruthy()
+
     expect(
       findByText(
         findToolbarIcons(fixture.debugElement),

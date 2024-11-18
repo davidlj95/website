@@ -54,12 +54,14 @@ describe('ExperienceItem', () => {
       const anchorElement = fixture.debugElement
         .query(byTestId('image'))
         .query(By.css('a'))
+
       expect(anchorElement).toBeTruthy()
       expect(anchorElement.attributes['href']).toEqual(website)
 
       const imageElement = anchorElement.query(
         byComponent(CardHeaderImageComponent),
       )
+
       expect(imageElement).toBeTruthy()
       expect(
         getComponentInstance(imageElement, CardHeaderImageComponent).src,
@@ -78,9 +80,11 @@ describe('ExperienceItem', () => {
       })
 
       const titleElement = fixture.debugElement.query(byTestId('company-name'))
+
       expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
     })
   })
+
   describe('position', () => {
     it('should display position', () => {
       const position = 'Sample position'
@@ -89,10 +93,12 @@ describe('ExperienceItem', () => {
       })
 
       const positionElement = fixture.debugElement.query(byTestId('position'))
+
       expect(positionElement).toBeTruthy()
       expect(positionElement.nativeElement.textContent.trim()).toEqual(position)
     })
   })
+
   describe('dates', () => {
     it('should display date range component', () => {
       setExperienceItem(fixture)
@@ -100,9 +106,11 @@ describe('ExperienceItem', () => {
       const dateRangeElement = fixture.debugElement.query(
         byComponent(DateRangeComponent),
       )
+
       expect(dateRangeElement).toBeTruthy()
     })
   })
+
   describe('attributes', () => {
     function testShouldNotDisplayItsAttribute(
       fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
@@ -112,6 +120,7 @@ describe('ExperienceItem', () => {
         const fixture = fixtureGetter()
 
         const attributeElement = fixture.debugElement.query(byTestId(attribute))
+
         expect(attributeElement).toBeFalsy()
       })
     }
@@ -124,6 +133,7 @@ describe('ExperienceItem', () => {
         const fixture = fixtureGetter()
 
         const attributeElement = fixture.debugElement.query(byTestId(attribute))
+
         expect(attributeElement).toBeTruthy()
       })
     }

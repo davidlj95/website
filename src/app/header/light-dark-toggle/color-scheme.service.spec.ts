@@ -72,6 +72,7 @@ describe('ColorSchemeService', () => {
       ],
     })
   })
+
   afterEach(() => {
     prefersDarkMatchMediaSubscriptions.forEach((subscription) =>
       subscription.unsubscribe(),
@@ -124,6 +125,7 @@ describe('ColorSchemeService', () => {
     beforeEach(() => {
       sut = TestBed.inject(ColorSchemeService)
     })
+
     describe('when no color scheme has been manually set', () => {
       describe('when cannot detect system preference', () => {
         it('should manually set the scheme to dark, given default is light', () => {
@@ -133,9 +135,11 @@ describe('ColorSchemeService', () => {
           const schemeAttributeValue = mockDocumentElement.getAttribute(
             HTML_COLOR_SCHEME_ATTRIBUTE,
           )
+
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         })
       })
+
       describe('when user does not prefer dark color scheme', () => {
         it('should manually set the scheme to dark', () => {
           prefersDark = false
@@ -144,9 +148,11 @@ describe('ColorSchemeService', () => {
           const schemeAttributeValue = mockDocumentElement.getAttribute(
             HTML_COLOR_SCHEME_ATTRIBUTE,
           )
+
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         })
       })
+
       describe('when user prefers dark color scheme', () => {
         it('should manually set the scheme to light', () => {
           prefersDark = true
@@ -155,10 +161,12 @@ describe('ColorSchemeService', () => {
           const schemeAttributeValue = mockDocumentElement.getAttribute(
             HTML_COLOR_SCHEME_ATTRIBUTE,
           )
+
           expect(schemeAttributeValue).toBe(Scheme.Light)
         })
       })
     })
+
     describe('when color scheme is manually set', () => {
       describe('when set to light', () => {
         it('should manually set the scheme to dark', () => {
@@ -171,9 +179,11 @@ describe('ColorSchemeService', () => {
           const schemeAttributeValue = mockDocumentElement.getAttribute(
             HTML_COLOR_SCHEME_ATTRIBUTE,
           )
+
           expect(schemeAttributeValue).toBe(Scheme.Dark)
         })
       })
+
       describe('when set to dark', () => {
         it('should manually set the scheme to light', () => {
           mockDocumentElement.setAttribute(
@@ -185,6 +195,7 @@ describe('ColorSchemeService', () => {
           const schemeAttributeValue = mockDocumentElement.getAttribute(
             HTML_COLOR_SCHEME_ATTRIBUTE,
           )
+
           expect(schemeAttributeValue).toBe(Scheme.Light)
         })
       })
@@ -194,6 +205,7 @@ describe('ColorSchemeService', () => {
   describe('#setColorScheme', () => {
     it('should manually set the scheme as an HTML tag attribute', () => {
       const sut = TestBed.inject(ColorSchemeService)
+
       expect(
         mockDocumentElement.getAttribute(HTML_COLOR_SCHEME_ATTRIBUTE),
       ).toBeNull()

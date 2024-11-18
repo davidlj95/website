@@ -53,12 +53,14 @@ describe('EducationItemComponent', () => {
     const anchorElement = fixture.debugElement
       .query(byTestId('image'))
       .query(By.css('a'))
+
     expect(anchorElement).toBeTruthy()
     expect(anchorElement.attributes['href']).toEqual(website)
 
     const imageElement = anchorElement.query(
       byComponent(CardHeaderImageComponent),
     )
+
     expect(imageElement).toBeTruthy()
     expect(
       getComponentInstance(imageElement, CardHeaderImageComponent).src,
@@ -78,6 +80,7 @@ describe('EducationItemComponent', () => {
     const titleElement = fixture.debugElement.query(
       byTestId('institution-name'),
     )
+
     expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
   })
 
@@ -96,6 +99,7 @@ describe('EducationItemComponent', () => {
       const institutionNameElement = fixture.debugElement.query(
         byTestId('institution-name'),
       )
+
       expect(institutionNameElement.nativeElement.textContent.trim()).toEqual(
         shortName,
       )
@@ -107,6 +111,7 @@ describe('EducationItemComponent', () => {
     setEducationItem(fixture, { area })
 
     const areaElement = fixture.debugElement.query(byTestId('area'))
+
     expect(areaElement).toBeTruthy()
     expect(areaElement.nativeElement.textContent.trim()).toEqual(area)
   })
@@ -116,6 +121,7 @@ describe('EducationItemComponent', () => {
     setEducationItem(fixture, { studyType })
 
     const studyTypeElement = fixture.debugElement.query(byTestId('study-type'))
+
     expect(studyTypeElement).toBeTruthy()
     expect(studyTypeElement.nativeElement.textContent.trim()).toEqual(studyType)
   })

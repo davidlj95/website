@@ -41,6 +41,7 @@ describe('LanguagesSectionComponent', () => {
     const itemElements = fixture.debugElement.queryAll(
       byComponent(LanguageItemComponent),
     )
+
     expect(itemElements.length).toBe(languageItems.length)
   })
 

@@ -33,6 +33,7 @@ describe('ExperienceItemTechComponent', () => {
     const techElements = fixture.debugElement.queryAll(
       byComponent(TechnologyComponent),
     )
+
     expect(techElements.length).toEqual(technologies.length)
   })
 

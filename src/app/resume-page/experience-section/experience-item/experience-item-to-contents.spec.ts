@@ -18,8 +18,10 @@ describe('experienceItemToContents', () => {
       const summaryContents = contents.filter(
         (content) => content.displayName === 'Summary',
       )
+
       expect(summaryContents).toHaveSize(1)
       const summaryContent = summaryContents[0]
+
       expect(summaryContent.component).toEqual(TextContentComponent)
       expect(summaryContent.inputs).toEqual({
         text: summary,
@@ -37,11 +39,14 @@ describe('experienceItemToContents', () => {
       const highlightsContents = contents.filter(
         (content) => content.displayName === 'Highlights',
       )
+
       expect(highlightsContents).toHaveSize(1)
       const highlightsContent = highlightsContents[0]
+
       expect(highlightsContent.component).toEqual(
         ExperienceItemHighlightsComponent,
       )
+
       expect(highlightsContent.inputs).toEqual({
         highlights,
       } satisfies Partial<ExperienceItemHighlightsComponent>)
@@ -67,8 +72,10 @@ describe('experienceItemToContents', () => {
       const techContents = contents.filter(
         (content) => content.displayName === 'Tech',
       )
+
       expect(techContents).toHaveSize(1)
       const techContent = techContents[0]
+
       expect(techContent.component).toEqual(ExperienceItemTechComponent)
       expect(techContent.inputs).toEqual({
         technologies,

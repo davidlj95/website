@@ -21,6 +21,7 @@ describe('LightDarkToggleComponent', () => {
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
+
     expect(component).toBeTruthy()
   })
 
