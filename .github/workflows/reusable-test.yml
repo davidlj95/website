@@ -33,12 +33,11 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Generate files
+      - name: Generate simple icons and font subset files
         run: |
-          cd scripts
-          pnpm run build
-          pnpm run generate:simple-icons
-          pnpm run generate:font-subsets
+          pnpm run --filter scripts build
+          pnpm run --filter scripts generate:font-subsets
+          pnpm run --filter scripts generate:simple-icons
       - name: Run tests
         run: cd .ci && make unit-test
       - name: Upload coverage results
@@ -82,7 +81,9 @@ jobs:
       - name: Cypress install
         run: pnpm cypress install
       - name: Generate font subsets
-        run: cd scripts && pnpm run build && pnpm run generate:font-subsets
+        run: |
+          pnpm run --filter scripts build
+          pnpm run --filter scripts generate:font-subsets
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
