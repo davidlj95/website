@@ -4,10 +4,15 @@ on:
   pull_request:
 
 jobs:
+  data:
+    name: Data
+    uses: ./.github/workflows/reusable-data.yml
   build:
+    needs: data
     name: Build
     uses: ./.github/workflows/reusable-build.yml
   test:
+    needs: data
     name: Test
     uses: ./.github/workflows/reusable-test.yml
     secrets:

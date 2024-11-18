@@ -1,0 +1,27 @@
+name: Data
+on:
+  workflow_call:
+
+jobs:
+  data:
+    name: Data
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          #👇 To generate release information
+          fetch-depth: 0
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Build scripts
+        run: pnpm run --filter scripts build
+      - name: Run data generation scripts
+        run: pnpm run --filter scripts generate
+      - name: Upload generated data
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
+        with:
+          name: data
+          path: data/generated
+          retention-days: 5
