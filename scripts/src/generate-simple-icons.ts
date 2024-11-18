@@ -3,10 +3,10 @@ import * as icons from 'simple-icons'
 import { SimpleIcon } from 'simple-icons'
 import { mkdir, writeFile } from 'fs/promises'
 import { join, resolve } from 'path'
-import { objectToJson } from './utils/object-to-json.js'
-import { isMain } from './utils/is-main.js'
-import { Log } from './utils/log.js'
-import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir.js'
+import { objectToJson } from './utils/object-to-json'
+import { isMain } from './utils/is-main'
+import { Log } from './utils/log'
+import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
 
 async function generateSimpleIcons() {
   Log.info('Generating simple icons exports')

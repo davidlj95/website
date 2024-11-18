@@ -1,12 +1,12 @@
 import release, { Config } from 'release-it'
-import { createReleaseItConfig, ExtraConfig } from '@/data/.release-it.js'
+import { createReleaseItConfig, ExtraConfig } from '@/data/release-it'
 import { execSync } from 'child_process'
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
-import { objectToJson } from './utils/object-to-json.js'
-import { isMain } from './utils/is-main.js'
-import { getRepositoryRootDir } from './utils/get-repository-root-dir.js'
-import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir.js'
+import { objectToJson } from './utils/object-to-json'
+import { isMain } from './utils/is-main'
+import { getRepositoryRootDir } from './utils/get-repository-root-dir'
+import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
 
 interface ReleaseData {
   commitSha: string

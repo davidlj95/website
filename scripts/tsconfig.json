@@ -3,8 +3,7 @@
   "include": [
     "src/**/*.ts",
     "node_modules/@/data/*.ts",
-    "node_modules/@/data/.*.ts",
-    "node_modules/@/data/**/*.json"
+    "node_modules/@/data/*.json"
   ],
   "compilerOptions": {
     // -- Base configs (based upon `tsc --init`)

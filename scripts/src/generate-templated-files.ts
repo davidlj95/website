@@ -1,12 +1,12 @@
 import { Liquid } from 'liquidjs'
-import { METADATA } from '@/data/metadata.js'
+import { METADATA } from '@/data/metadata'
 import { join } from 'path'
 import { mkdir, readdir, writeFile } from 'fs/promises'
 import { execSync } from 'child_process'
-import { isMain } from './utils/is-main.js'
-import { Log } from './utils/log.js'
-import { getRepositoryRootDir } from './utils/get-repository-root-dir.js'
-import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir.js'
+import { isMain } from './utils/is-main'
+import { Log } from './utils/log'
+import { getRepositoryRootDir } from './utils/get-repository-root-dir'
+import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
 
 export const LIQUID_EXTENSION = '.liquid'
 
