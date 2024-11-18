@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { dirname, join, resolve } from 'path'
+import { dirname, resolve } from 'path'
 import { mkdir } from 'fs/promises'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -17,8 +17,6 @@ export async function createAndGetGeneratedDataDir() {
 }
 
 export const objectToJson = (object: object) => JSON.stringify(object, null, 2)
-
-export const SECURITY_TXT_REL_PATH = join('.well-known', 'security.txt')
 
 /**
  * isMain(import.meta.url)
