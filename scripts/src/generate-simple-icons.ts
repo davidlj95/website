@@ -1,9 +1,14 @@
 import JSON_RESUME from '@/data/resume.json' assert { type: 'json' }
 import * as icons from 'simple-icons'
 import { SimpleIcon } from 'simple-icons'
-import { getRepositoryRootDir, isMain, Log, objectToJson } from './utils.js'
-import { mkdir, readFile, writeFile } from 'fs/promises'
-import { join } from 'path'
+import {
+  createAndGetGeneratedDataDir,
+  isMain,
+  Log,
+  objectToJson,
+} from './utils.js'
+import { mkdir, writeFile } from 'fs/promises'
+import { join, resolve } from 'path'
 
 async function generateSimpleIcons() {
   Log.info('Generating simple icons exports')
@@ -49,9 +54,9 @@ async function findNeededIcons(projects: typeof JSON_RESUME.projects) {
 async function createDisplayNameAndColorsFile(
   neededIcons: readonly SimpleIcon[],
 ) {
-  const filepath = await getTechFilepathFromGitignoreOrThrow(
-    'color',
-    'display name and color entries',
+  const filepath = resolve(
+    await createAndGetGeneratedDataDir(),
+    'simple-icons.json',
   )
   Log.info('Writing display name and colors file')
   Log.item(filepath)
@@ -65,6 +70,10 @@ async function createDisplayNameAndColorsFile(
 
 async function createIconFiles(neededIcons: readonly SimpleIcon[]) {
   Log.info('Writing icon files')
+  const SIMPLE_ICONS_DIR = join(
+    await createAndGetGeneratedDataDir(),
+    'simple-icons',
+  )
   Log.item(SIMPLE_ICONS_DIR)
   await mkdir(SIMPLE_ICONS_DIR, { recursive: true })
   await Promise.all(
@@ -72,35 +81,6 @@ async function createIconFiles(neededIcons: readonly SimpleIcon[]) {
       writeFile(join(SIMPLE_ICONS_DIR, `${icon.slug}.svg`), icon.svg),
     ),
   )
-}
-
-const TECH_DIR = join(
-  getRepositoryRootDir(),
-  'src',
-  'app',
-  'resume-page',
-  'technology',
-)
-const TECH_DIR_GITIGNORE = join(TECH_DIR, '.gitignore')
-
-const SIMPLE_ICONS_DIR = join(
-  getRepositoryRootDir(),
-  'src',
-  'assets',
-  'simple-icons',
-)
-
-const getTechFilepathFromGitignoreOrThrow = async (
-  pattern: string,
-  fileDescription: string,
-) => {
-  const filename = (await readFile(TECH_DIR_GITIGNORE, 'utf8'))
-    .split('\n')
-    .find((line) => line.includes(pattern))
-  if (!filename) {
-    throw new Error(`${fileDescription} filename not found`)
-  }
-  return join(TECH_DIR, filename)
 }
 
 if (isMain(import.meta.url)) {

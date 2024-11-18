@@ -1,6 +1,6 @@
 import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 import { InjectionToken } from '@angular/core'
-import SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES from './simple-icons-display-name-and-color-entries.json'
+import SIMPLE_ICONS_JSON from '@/data/generated/simple-icons.json'
 
 export type GetTechnologyIconFromSlug = (slug: string) => SimpleIcon | undefined
 export const GET_TECHNOLOGY_ICON_FROM_SLUG =
@@ -11,7 +11,7 @@ export const GET_TECHNOLOGY_ICON_FROM_SLUG =
   )
 
 const SIMPLE_ICON_BY_SLUG = new Map<string, SimpleIcon>([
-  ...SIMPLE_ICONS_DISPLAY_NAME_AND_COLOR_ENTRIES.map(
+  ...SIMPLE_ICONS_JSON.map(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ([slug, displayName, hex]) =>
       [

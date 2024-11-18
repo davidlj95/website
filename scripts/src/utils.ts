@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url'
 import { dirname, join, resolve } from 'path'
+import { mkdir } from 'fs/promises'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -7,6 +8,12 @@ const __dirname = dirname(__filename)
 export function getRepositoryRootDir() {
   // Relative to `dist`, as this file will be output there
   return resolve(__dirname, '..', '..', '..')
+}
+
+export async function createAndGetGeneratedDataDir() {
+  const generatedDataDir = resolve(getRepositoryRootDir(), 'data', 'generated')
+  await mkdir(generatedDataDir, { recursive: true })
+  return generatedDataDir
 }
 
 export const objectToJson = (object: object) => JSON.stringify(object, null, 2)

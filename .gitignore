@@ -257,6 +257,7 @@ $RECYCLE.BIN/
 .nx/cache
 .idea/git_toolbox_blame.xml
 .nyc_output
+data/generated
 # Manual changes:
 # - Remove .idea from angular, we want some settings in the repo
 # - Include dictionaries

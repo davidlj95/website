@@ -1,5 +1,4 @@
 import { Component, Inject, Input } from '@angular/core'
-import { NgIf, NgOptimizedImage } from '@angular/common'
 import { TechnologyItem } from './technology-item'
 import { SimpleIconComponent } from '@/common/simple-icon/simple-icon.component'
 import { SimpleIcon } from '@/common/simple-icon/simple-icon'
@@ -15,7 +14,7 @@ import {
 @Component({
   selector: 'app-technology',
   standalone: true,
-  imports: [NgIf, NgOptimizedImage, SimpleIconComponent],
+  imports: [SimpleIconComponent],
   templateUrl: './technology.component.html',
   styleUrl: './technology.component.scss',
 })
