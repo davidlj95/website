@@ -6,7 +6,6 @@
     "url": "https://github.com/davidlj95/website.git"
   },
   "scripts": {
-    "prebuild": "cd scripts && pnpm run build && pnpm run generate",
     "build": "ng build",
     "build:pack": "DIST_DIR=dist/@davidlj95/website/browser; [ -d \"$DIST_DIR\" ] && cd $DIST_DIR && zip -r ../../../build.zip . || true",
     "build:pull-request": "pnpm run build --configuration pullRequest,production",
@@ -25,6 +24,7 @@
     "coverage:report:all": "pnpm run coverage:move-to-nyc-output && nyc report --reporter lcov --report-dir coverage",
     "coverage:report:all//": "☝️ Can't be 'coverage:report', look for that run script comments for reason",
     "cypress:open": "cypress open",
+    "data": "pnpm run --filter scripts generate",
     "e2e": "ng e2e",
     "format": "pnpm run format:files .",
     "format:check": "pnpm run format:check:files .",

@@ -30,10 +30,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## To start
 
-First, run the `prebuild` command, to generate files that are required for the app to work
+First, run the `data` command, to generate data files that are required for the app to work
 
 ```shell
-pnpm run prebuild
+pnpm run data
 ```
 
 ## Development server
