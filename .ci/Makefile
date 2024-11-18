@@ -2,7 +2,7 @@
 
 # First so that running without command runs a build
 build:
-	pnpm run prebuild && pnpm run build
+	pnpm run data && pnpm run build
 
 install:
 	# Despite it's enabled by default on CI. This allows to mock CI locally
