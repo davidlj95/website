@@ -1,14 +1,12 @@
 import subsetFont from 'subset-font'
 import * as MaterialSymbols from '@/data/material-symbols.js'
-import {
-  createAndGetGeneratedDataDir,
-  getRepositoryRootDir,
-  isMain,
-  Log,
-} from './utils.js'
 import { readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { mkdir } from 'fs/promises'
+import { isMain } from './utils/is-main.js'
+import { Log } from './utils/log.js'
+import { getRepositoryRootDir } from './utils/get-repository-root-dir.js'
+import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir.js'
 
 async function generateFonts() {
   Log.info('Generating font subset for Material Symbols Outlined')
@@ -33,7 +31,7 @@ async function generateFonts() {
 
   Log.info('Output')
   const fontSubsetsDir = join(
-    await createAndGetGeneratedDataDir(),
+    await getAndCreateGeneratedDataDir(),
     'font-subsets',
   )
   await mkdir(fontSubsetsDir, { recursive: true })

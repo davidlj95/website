@@ -1,14 +1,12 @@
 import JSON_RESUME from '@/data/resume.json' assert { type: 'json' }
 import * as icons from 'simple-icons'
 import { SimpleIcon } from 'simple-icons'
-import {
-  createAndGetGeneratedDataDir,
-  isMain,
-  Log,
-  objectToJson,
-} from './utils.js'
 import { mkdir, writeFile } from 'fs/promises'
 import { join, resolve } from 'path'
+import { objectToJson } from './utils/object-to-json.js'
+import { isMain } from './utils/is-main.js'
+import { Log } from './utils/log.js'
+import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir.js'
 
 async function generateSimpleIcons() {
   Log.info('Generating simple icons exports')
@@ -55,7 +53,7 @@ async function createDisplayNameAndColorsFile(
   neededIcons: readonly SimpleIcon[],
 ) {
   const filepath = resolve(
-    await createAndGetGeneratedDataDir(),
+    await getAndCreateGeneratedDataDir(),
     'simple-icons.json',
   )
   Log.info('Writing display name and colors file')
@@ -71,7 +69,7 @@ async function createDisplayNameAndColorsFile(
 async function createIconFiles(neededIcons: readonly SimpleIcon[]) {
   Log.info('Writing icon files')
   const SIMPLE_ICONS_DIR = join(
-    await createAndGetGeneratedDataDir(),
+    await getAndCreateGeneratedDataDir(),
     'simple-icons',
   )
   Log.item(SIMPLE_ICONS_DIR)
