@@ -1,19 +1,26 @@
 import subsetFont from 'subset-font'
 import * as MaterialSymbols from '@/data/material-symbols.js'
-import { getRepositoryRootDir, isMain, Log } from './utils.js'
+import {
+  createAndGetGeneratedDataDir,
+  getRepositoryRootDir,
+  isMain,
+  Log,
+} from './utils.js'
 import { readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
+import { mkdir } from 'fs/promises'
 
 async function generateFonts() {
   Log.info('Generating font subset for Material Symbols Outlined')
+  const FONT_PACKAGE = 'material-symbols-outlined'
   const materialSymbolsFont = readFileSync(
     join(
       getRepositoryRootDir(),
       'node_modules',
       '@fontsource-variable',
-      'material-symbols-outlined',
+      FONT_PACKAGE,
       'files',
-      'material-symbols-outlined-latin-full-normal.woff2',
+      `${FONT_PACKAGE}-latin-full-normal.woff2`,
     ),
   )
   const fontBuffer = Buffer.from(materialSymbolsFont)
@@ -25,14 +32,15 @@ async function generateFonts() {
   const glyphText = glyphs.join('')
 
   Log.info('Output')
-  const baseFilename = join(
-    getRepositoryRootDir(),
-    'assets',
-    'material-symbols-outlined-subset',
+  const fontSubsetsDir = join(
+    await createAndGetGeneratedDataDir(),
+    'font-subsets',
   )
+  await mkdir(fontSubsetsDir, { recursive: true })
+  const baseFilepath = join(fontSubsetsDir, FONT_PACKAGE)
   const formats = ['ttf', 'woff', 'woff2']
-  Log.item("Base filename: '%s'", baseFilename)
-  Log.item("Formats: '%s'", formats)
+  Log.item("Base filepath: '%s'", baseFilepath)
+  Log.item('Formats:       %s', formats)
 
   await generateFontSubsets(fontBuffer, {
     text: glyphText,
@@ -41,7 +49,7 @@ async function generateFonts() {
     // https://caniuse.com/woff
     // https://caniuse.com/ttf
     formats: ['truetype', 'woff', 'woff2'],
-    filename: baseFilename,
+    filename: baseFilepath,
   })
   Log.ok('Done')
 }
