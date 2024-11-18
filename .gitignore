@@ -248,16 +248,12 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,vim,visualstudiocode,webstorm+iml,angular,lighthouseci,cypressio
 ## Manual files
-/junit-test.xml
-/junit-lint.xml
-.nx/cache
 .idea/git_toolbox_blame.xml
 .nyc_output
 data/generated
 # Manual changes:
 # - Remove .idea from angular, we want some settings in the repo
-# - Include dictionaries
-# - Add junit-(lint|test).xml generated for CI/CD purposes
-# - Add Lighthouse CI (to avoid having to generate everything again)
-# - Nx cache due to Angular ESLint: https://github.com/angular-eslint/angular-eslint/issues/1784
+# - Include .idea dictionaries
+# - Add .idea Git Toolbox blame plugin
 # - NYC output from Cypress code coverage plugin
+# - Generated data files
