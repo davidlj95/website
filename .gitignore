@@ -250,7 +250,6 @@ $RECYCLE.BIN/
 ## Manual files
 /junit-test.xml
 /junit-lint.xml
-/src/environments/environment.pull-request.ts
 .nx/cache
 .idea/git_toolbox_blame.xml
 .nyc_output
@@ -260,6 +259,5 @@ data/generated
 # - Include dictionaries
 # - Add junit-(lint|test).xml generated for CI/CD purposes
 # - Add Lighthouse CI (to avoid having to generate everything again)
-# - Add generated pull request environment
 # - Nx cache due to Angular ESLint: https://github.com/angular-eslint/angular-eslint/issues/1784
 # - NYC output from Cypress code coverage plugin

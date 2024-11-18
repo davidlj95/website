@@ -1,37 +1,20 @@
-import { Liquid } from 'liquidjs'
-import {
-  generateTemplatedFile,
-  LIQUID_EXTENSION,
-} from './generate-templated-files.js'
-import {
-  getRepositoryRootDir,
-  isMain,
-  Log,
-  SECURITY_TXT_REL_PATH,
-} from './utils.js'
-import { resolve } from 'path'
+import { getRepositoryRootDir, isMain, Log } from './utils.js'
+import { join, resolve } from 'path'
 import { promisify } from 'util'
 import { exec } from 'child_process'
 import { writeFile } from 'fs/promises'
+
+export const SECURITY_TXT = 'security.txt'
 
 async function generateSecurityTxt() {
   Log.info('Rendering security.txt from template')
   const securityTxtFile = resolve(
     getRepositoryRootDir(),
-    'src',
-    SECURITY_TXT_REL_PATH,
+    'data',
+    'generated',
+    'from-templates',
+    SECURITY_TXT,
   )
-
-  const today = new Date()
-  const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6))
-
-  await generateTemplatedFile(`${securityTxtFile}${LIQUID_EXTENSION}`, {
-    context: { securityTxtExpiration: sixMonthsFromToday },
-    engine: new Liquid({
-      dateFormat: '%Y-%m-%d %H:%M:%S+00:00',
-      timezoneOffset: 0,
-    }),
-  })
 
   Log.info('Signing file with GPG')
   const execAsync = promisify(exec)
@@ -41,7 +24,10 @@ async function generateSecurityTxt() {
   Log.ok('Signed')
 
   Log.info('Writing signed file')
-  await writeFile(securityTxtFile, result['stdout'])
+  await writeFile(
+    join(getRepositoryRootDir(), 'src', '.well-known', SECURITY_TXT),
+    result['stdout'],
+  )
   Log.ok('Done')
 }
 

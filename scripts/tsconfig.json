@@ -2,8 +2,8 @@
 {
   "include": [
     "src/**/*.ts",
-    "node_modules/@/data/**/*.ts",
-    "node_modules/@/data/**/.*.ts",
+    "node_modules/@/data/*.ts",
+    "node_modules/@/data/.*.ts",
     "node_modules/@/data/**/*.json"
   ],
   "compilerOptions": {

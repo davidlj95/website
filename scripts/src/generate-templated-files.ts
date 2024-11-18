@@ -1,42 +1,23 @@
-import { glob } from 'glob'
 import { Liquid } from 'liquidjs'
 import {
+  createAndGetGeneratedDataDir,
   getRepositoryRootDir,
   isMain,
   Log,
-  objectToJson,
-  SECURITY_TXT_REL_PATH,
 } from './utils.js'
 import { METADATA } from '@/data/metadata.js'
-import { resolve } from 'path'
-import { writeFile } from 'fs/promises'
+import { join } from 'path'
+import { mkdir, readdir, writeFile } from 'fs/promises'
 import { execSync } from 'child_process'
 
 export const LIQUID_EXTENSION = '.liquid'
 
 async function generateTemplatedFiles() {
-  const EXCLUSIONS = [SECURITY_TXT_REL_PATH].map(
-    (exclusion) => `**/${exclusion}${LIQUID_EXTENSION}`,
-  )
-  const repoRootDir = getRepositoryRootDir()
-  const globExpression = resolve(
-    getRepositoryRootDir(),
-    'src',
-    '**',
-    `*${LIQUID_EXTENSION}`,
-  )
   Log.info('Looking for Liquid files...')
   Log.item("Extension: '%s'", LIQUID_EXTENSION)
-  Log.item("Directory: '%s'", globExpression)
-  Log.item('Exclusions: %s', EXCLUSIONS)
 
-  const templateFiles = await glob(globExpression, {
-    absolute: false,
-    cwd: repoRootDir,
-    dot: true,
-    ignore: EXCLUSIONS,
-  })
-
+  const templatesDir = join(getRepositoryRootDir(), 'data', 'templates')
+  const templateFiles = await readdir(templatesDir)
   if (templateFiles.length == 0) {
     Log.warn('No files with Liquid extension found')
     process.exit()
@@ -48,43 +29,37 @@ async function generateTemplatedFiles() {
   }
 
   Log.info('Rendering files from templates...')
+  const context = getContext()
+  const engine = new Liquid({
+    root: templatesDir,
+    dateFormat: '%Y-%m-%d %H:%M:%S+00:00',
+    timezoneOffset: 0,
+  })
+  const outputDir = await getAndCreateOutputDir()
   for (const templateFile of templateFiles) {
-    await generateTemplatedFile(templateFile, {
-      context: getContext(),
-      engine: new Liquid({ root: repoRootDir }),
-    })
+    Log.group("Rendering '%s'", templateFile)
+
+    const renderedContents = await engine.renderFile(templateFile, context)
+    Log.ok('Rendered successfully')
+
+    const outputFilename = templateFile.substring(
+      0,
+      templateFile.lastIndexOf('.'),
+    )
+    const outputFilepath = join(outputDir, outputFilename)
+    await writeFile(outputFilepath, renderedContents)
+    Log.ok("Output saved to '%s'", outputFilepath)
+    Log.groupEnd()
   }
   Log.ok('Done')
 }
 
-export async function generateTemplatedFile(
-  templateFile: string,
-  opts: {
-    context?: object
-    engine?: Liquid
-  } = {},
-) {
-  const engine = opts.engine ?? new Liquid()
-
-  Log.group("Rendering '%s'", templateFile)
-
-  const renderedContents = await engine.renderFile(
-    templateFile,
-    getContext(opts.context),
-  )
-  Log.ok('Rendered successfully')
-
-  const outputFile = templateFile.substring(0, templateFile.lastIndexOf('.'))
-  await writeFile(resolve(engine.options.root[0], outputFile), renderedContents)
-  Log.ok("Output saved to '%s'", outputFile)
-
-  Log.groupEnd()
-}
-
-function getContext(extraContext?: object) {
+function getContext() {
   const METADATA_CONTEXT = {
     ...METADATA,
   }
+  const today = new Date()
+  const sixMonthsFromToday = new Date(new Date().setMonth(today.getMonth() + 6))
   const EXTRA_CONTEXT = {
     manifestJsonMaskableIconSizes: [48, 72, 96, 128, 192, 384, 512],
     browserconfigIconSquareSizes: [70, 150, 310],
@@ -93,12 +68,15 @@ function getContext(extraContext?: object) {
       process.env['GITHUB_HEAD_REF'] ??
       // https://stackoverflow.com/a/35778030/3263250
       execSync('git rev-parse --abbrev-ref HEAD').toString().trim(),
-    ...extraContext,
+    securityTxtExpiration: sixMonthsFromToday,
   }
-  const CONTEXT = { ...METADATA_CONTEXT, ...EXTRA_CONTEXT }
-  Log.info('Context for rendering')
-  Log.info(objectToJson(CONTEXT))
-  return CONTEXT
+  return { ...METADATA_CONTEXT, ...EXTRA_CONTEXT }
+}
+
+async function getAndCreateOutputDir() {
+  const outputDir = join(await createAndGetGeneratedDataDir(), 'from-templates')
+  await mkdir(outputDir, { recursive: true })
+  return outputDir
 }
 
 if (isMain(import.meta.url)) {
