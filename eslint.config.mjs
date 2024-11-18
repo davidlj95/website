@@ -20,6 +20,10 @@ const gitignorePath = resolve(__dirname, '.gitignore')
 export default tsEslint.config(
   includeIgnoreFile(gitignorePath),
   {
+    // Symlinked file may not exist if file hasn't been generated
+    ignores: ['src/release.json'],
+  },
+  {
     files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,

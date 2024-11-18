@@ -1,6 +1,11 @@
 import release, { Config } from 'release-it'
 import { createReleaseItConfig, ExtraConfig } from '@/data/.release-it.js'
-import { getRepositoryRootDir, isMain, objectToJson } from './utils.js'
+import {
+  createAndGetGeneratedDataDir,
+  getRepositoryRootDir,
+  isMain,
+  objectToJson,
+} from './utils.js'
 import { execSync } from 'child_process'
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
@@ -116,7 +121,7 @@ if (isMain(import.meta.url)) {
   process.chdir(getRepositoryRootDir())
 
   await writeFile(
-    join(getRepositoryRootDir(), 'src', 'release.json'),
+    join(await createAndGetGeneratedDataDir(), 'release.json'),
     objectToJson(await generateReleaseInfo()),
   )
 
