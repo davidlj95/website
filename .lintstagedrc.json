@@ -1,6 +1,6 @@
 {
-  "!*.{html,ts,mts,json}": ["pnpm run format:files"],
-  "**/*.{html,ts,mts,json}": [
+  "!*.{html,ts,json}": ["pnpm run format:files"],
+  "**/*.{html,ts,json}": [
     "pnpm run lint:code:files --fix",
     "pnpm run format:files"
   ],
