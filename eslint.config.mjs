@@ -21,7 +21,10 @@ export default tsEslint.config(
   includeIgnoreFile(gitignorePath),
   {
     // Symlinked file may not exist if file hasn't been generated
-    ignores: ['src/release.json'],
+    ignores: [
+      'src/release.json',
+      'src/environments/environment.pull-request.ts',
+    ],
   },
   {
     files: ['**/*.ts'],
