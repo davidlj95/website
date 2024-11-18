@@ -1,26 +1,30 @@
 // @ts-check
 // noinspection NpmUsedModulesInstalled
-const eslint = require('@eslint/js')
-const tseslint = require('typescript-eslint')
-const angular = require('angular-eslint')
-const eslintCompat = require('@eslint/compat')
-const path = require('path')
+import eslint from '@eslint/js'
+import tsEslint from 'typescript-eslint'
+import angular from 'angular-eslint'
 
-const gitignorePath = path.resolve(__dirname, '.gitignore')
+import { includeIgnoreFile } from '@eslint/compat'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 
-const eslintCypressPlugin = require('eslint-plugin-cypress/flat')
-const eslintJsonFilesPlugin = require('eslint-plugin-json-files')
-const eslintConfigPrettier = require('eslint-config-prettier')
-const eslintPluginJasmine = require('eslint-plugin-jasmine')
+import eslintConfigPrettier from 'eslint-config-prettier'
+import eslintPluginCypress from 'eslint-plugin-cypress/flat'
+import eslintPluginJasmine from 'eslint-plugin-jasmine'
+import eslintPluginJsonFiles from 'eslint-plugin-json-files'
 
-module.exports = tseslint.config(
-  eslintCompat.includeIgnoreFile(gitignorePath),
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const gitignorePath = resolve(__dirname, '.gitignore')
+
+export default tsEslint.config(
+  includeIgnoreFile(gitignorePath),
   {
     files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...tseslint.configs.stylistic,
+      ...tsEslint.configs.recommended,
+      ...tsEslint.configs.stylistic,
     ],
   },
   {
@@ -61,12 +65,12 @@ module.exports = tseslint.config(
   },
   {
     files: ['**/*.cy.ts', 'cypress/**/*.ts'],
-    ...eslintCypressPlugin.configs.recommended,
+    ...eslintPluginCypress.configs.recommended,
   },
   {
     files: ['**/*.json'],
-    plugins: { 'json-files': eslintJsonFilesPlugin },
-    processor: eslintJsonFilesPlugin.processors.json,
+    plugins: { 'json-files': eslintPluginJsonFiles },
+    processor: eslintPluginJsonFiles.processors.json,
     rules: {
       'json-files/require-unique-dependency-names': 'error',
       'json-files/restrict-ranges': [
