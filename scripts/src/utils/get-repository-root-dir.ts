@@ -6,5 +6,5 @@ const __dirname = dirname(__filename)
 
 export function getRepositoryRootDir() {
   // Relative to `dist`, as this file will be output there
-  return resolve(__dirname, '..', '..', '..')
+  return resolve(__dirname, '..', '..', '..', '..')
 }
