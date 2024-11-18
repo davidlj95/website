@@ -140,6 +140,7 @@ const makeSut = (
       MockProvider(
         ADAPT_JSON_RESUME_PROJECT,
         opts.adaptJsonResumeProject ??
+          // eslint-disable-next-line jasmine/no-unsafe-spy
           jasmine.createSpy<AdaptJsonResumeProject>(),
       ),
       MockProvider(JSON_RESUME_PROJECTS, opts.jsonResumeProjects ?? []),

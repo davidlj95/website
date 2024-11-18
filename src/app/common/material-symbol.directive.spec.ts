@@ -15,6 +15,7 @@ describe('MaterialSymbolDirective', () => {
     fixture.detectChanges()
 
     const childElement = fixture.debugElement.query(By.css(elementTag))
+
     expect(childElement).toBeTruthy()
     expect(childElement.classes[MATERIAL_SYMBOLS_CLASS]).toBeTrue()
   })

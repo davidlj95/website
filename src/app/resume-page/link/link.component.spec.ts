@@ -7,6 +7,7 @@ describe('LinkComponent', () => {
   it('should create', () => {
     const [fixture, component] = componentTestSetup(LinkComponent)
     fixture.detectChanges()
+
     expect(component).toBeTruthy()
   })
 
@@ -28,6 +29,7 @@ describe('LinkComponent', () => {
       const [fixture] = componentTestSetup(LinkComponent)
 
       const anchorElement = fixture.debugElement.query(By.css('a'))
+
       expect(anchorElement).toBeFalsy()
     })
 
@@ -43,6 +45,7 @@ describe('LinkComponent', () => {
       fixture.detectChanges()
 
       const anchorElement = fixture.debugElement.query(By.css('a'))
+
       expect(anchorElement).toBeTruthy()
     })
 

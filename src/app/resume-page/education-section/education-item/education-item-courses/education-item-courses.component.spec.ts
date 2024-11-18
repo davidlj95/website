@@ -24,6 +24,7 @@ describe('EducationItemCoursesComponent', () => {
     const courseElements = fixture.debugElement.queryAll(
       byComponent(ContentChipComponent),
     )
+
     expect(courseElements.length).toEqual(COURSES.length)
     courseElements.forEach((courseElement, index) => {
       expect(courseElement.nativeElement.textContent.trim()).toEqual(

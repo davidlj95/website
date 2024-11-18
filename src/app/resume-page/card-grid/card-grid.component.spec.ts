@@ -10,6 +10,7 @@ describe('CardGridComponent', () => {
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
+
     expect(component).toBeTruthy()
   })
 

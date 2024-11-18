@@ -21,6 +21,7 @@ describe('GiftsPageComponent', () => {
     const giftPreferencesAnchorElement = fixture.debugElement.query(
       By.css('a[href="https://www.giftster.com/preferences/1747782/"]'),
     )
+
     expect(giftPreferencesAnchorElement).not.toBeNull()
   })
 
@@ -28,6 +29,7 @@ describe('GiftsPageComponent', () => {
     const wishlistAnchorElement = fixture.debugElement.query(
       By.css('a[href="https://www.giftster.com/list/hz6ij/"]'),
     )
+
     expect(wishlistAnchorElement).not.toBeNull()
   })
 })

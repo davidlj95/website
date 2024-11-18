@@ -108,6 +108,7 @@ describe('App SEO metadata', () => {
       htmlElement = document.documentElement
     })
 
+    // eslint-disable-next-line jasmine/no-suite-dupes
     describe('Standard metas', () => {
       shouldSetTitle(routeMetadata.title)
       shouldIncludeMetaWithName('description', routeMetadata.description)
@@ -124,6 +125,7 @@ describe('App SEO metadata', () => {
         const canonicalLinkElement = headElement.querySelector(
           `link[rel="canonical"]`,
         )
+
         expect(canonicalLinkElement).not.toBeNull()
         expect(canonicalLinkElement?.getAttribute('href')).toEqual(
           routeMetadata.canonicalUrl.toString(),
@@ -131,6 +133,7 @@ describe('App SEO metadata', () => {
       })
     })
 
+    // eslint-disable-next-line jasmine/no-suite-dupes
     describe('Open Graph', () => {
       shouldIncludeMetaWithProperty('og:title', routeMetadata.title)
       shouldIncludeMetaWithProperty(
@@ -194,6 +197,7 @@ describe('App SEO metadata', () => {
   function shouldSetTitle(expectedTitle: string) {
     it('should set title', () => {
       const titleElement = headElement.querySelector('title')
+
       expect(titleElement).not.toBeNull()
       expect(titleElement?.innerText).toEqual(expectedTitle)
     })
@@ -202,6 +206,7 @@ describe('App SEO metadata', () => {
   function shouldSetHtmlLangAttribute(expectedLocale: string) {
     it("should set HTML element's lang attribute", () => {
       const langAttribute = htmlElement.getAttribute('lang')
+
       expect(langAttribute).toEqual(expectedLocale)
     })
   }
@@ -237,6 +242,7 @@ describe('App SEO metadata', () => {
       const metaElement = headElement.querySelector(
         `meta[${keyAttributeName}="${keyAttributeValue}"]`,
       )
+
       expect(metaElement).not.toBeNull()
       if (expectedContent) {
         expect(metaElement?.getAttribute('content')).toEqual(expectedContent)

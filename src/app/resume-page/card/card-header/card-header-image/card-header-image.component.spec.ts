@@ -25,6 +25,7 @@ describe('CardHeaderImageComponent', () => {
 
   it('should include image with source and alternative text attributes set', () => {
     const imageElement = fixture.debugElement.query(By.css('img'))
+
     expect(imageElement).toBeTruthy()
 
     expect(imageElement.attributes['src']).toEqual(src)

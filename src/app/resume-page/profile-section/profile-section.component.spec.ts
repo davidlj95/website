@@ -43,6 +43,7 @@ describe('ProfileSectionComponent', () => {
 
   it('should display real name', () => {
     const realNameElement = fixture.debugElement.query(By.css('.real-name'))
+
     expect(realNameElement.nativeElement.textContent).toContain(
       fakeMetadata.realName,
     )
@@ -50,6 +51,7 @@ describe('ProfileSectionComponent', () => {
 
   it("should display nickname preceded by '@' in primary header", () => {
     const nicknameElement = fixture.debugElement.query(By.css('.nickname'))
+
     expect(nicknameElement.nativeElement.textContent).toContain(
       `@${fakeMetadata.nickname}`,
     )
@@ -57,6 +59,7 @@ describe('ProfileSectionComponent', () => {
 
   it('should display title', () => {
     const headline = fixture.debugElement.query(By.css('.headline'))
+
     expect(headline.nativeElement.textContent).toEqual(fakeMetadata.title)
   })
 

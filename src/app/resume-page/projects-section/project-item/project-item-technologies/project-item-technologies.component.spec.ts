@@ -26,6 +26,7 @@ describe('ProjectItemTechnologiesComponent', () => {
     const itemElements = fixture.debugElement.queryAll(
       byComponent(TechnologyComponent),
     )
+
     expect(itemElements.length).toEqual(items.length)
   })
 })

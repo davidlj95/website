@@ -25,6 +25,7 @@ describe('AttributeComponent', () => {
     const [fixture] = makeSut()
 
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
+
     expect(iconElement).toBeTruthy()
     expect(iconElement.nativeElement.textContent.trim()).toEqual(symbol)
   })
@@ -35,11 +36,14 @@ describe('AttributeComponent', () => {
     const tooltipElement = fixture.debugElement.query(
       By.css("[role='tooltip']"),
     )
+
     expect(tooltipElement).toBeTruthy()
     const tooltipId = tooltipElement.attributes['id']
+
     expect(tooltipId).toMatch(`^${ATTRIBUTE_ID_PREFIX}`)
 
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
+
     expect(iconElement).toBeTruthy()
     expect(iconElement.attributes['aria-describedby']).toEqual(tooltipId)
   })
@@ -48,6 +52,7 @@ describe('AttributeComponent', () => {
     const [fixture] = makeSut()
 
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
+
     expect(iconElement).toBeTruthy()
     expect(iconElement.attributes['tabindex']).toEqual('0')
   })

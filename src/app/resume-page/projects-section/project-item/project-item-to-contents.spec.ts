@@ -16,8 +16,10 @@ describe('projectItemToContents', () => {
       const descriptionContents = contents.filter(
         (content) => content.displayName === 'Description',
       )
+
       expect(descriptionContents).toHaveSize(1)
       const descriptionContent = descriptionContents[0]
+
       expect(descriptionContent.component).toEqual(TextContentComponent)
       expect(descriptionContent.inputs).toEqual({
         text: description,
@@ -38,11 +40,14 @@ describe('projectItemToContents', () => {
       const technologiesContents = contents.filter(
         (content) => content.displayName === 'Tech',
       )
+
       expect(technologiesContents).toHaveSize(1)
       const technologiesContent = technologiesContents[0]
+
       expect(technologiesContent.component).toEqual(
         ProjectItemTechnologiesComponent,
       )
+
       expect(technologiesContent.inputs).toEqual({
         items,
       } satisfies Partial<ProjectItemTechnologiesComponent>)

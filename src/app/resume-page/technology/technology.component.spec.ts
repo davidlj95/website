@@ -43,6 +43,7 @@ describe('TechnologyComponent', () => {
     expect(fixture.debugElement.nativeElement.textContent).toContain(
       displayName,
     )
+
     expect(getTechnologyDisplayNameFromSlug).toHaveBeenCalledOnceWith(
       DUMMY_TECHNOLOGY_ITEM.slug,
     )

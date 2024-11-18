@@ -36,13 +36,16 @@ describe('ChippedContentComponent', () => {
     const chipElements = fixture.debugElement.queryAll(
       byComponent(ChipComponent),
     )
+
     expect(chipElements.length).toEqual(CONTENTS.length)
 
     chipElements.forEach((chipElement, index) => {
       const content = CONTENTS[index]
+
       expect(getComponentInstance(chipElement, ChipComponent).selected)
         .withContext(`chip ${index} is unselected`)
         .toBeFalse()
+
       expect(chipElement.nativeElement.textContent.trim())
         .withContext(`chip ${index} display name`)
         .toEqual(content.displayName)
@@ -51,11 +54,13 @@ describe('ChippedContentComponent', () => {
 
   it('should add but not layout first content', () => {
     const contentElement = fixture.debugElement.query(CONTENT_PREDICATE)
+
     expect(contentElement).toBeDefined()
 
     const firstComponentElement = contentElement.query(
       byComponent(FIRST_CONTENT.component),
     )
+
     expect(firstComponentElement).toBeTruthy()
 
     expect(firstComponentElement.nativeElement.textContent.trim()).toEqual(
@@ -75,7 +80,9 @@ describe('ChippedContentComponent', () => {
         byComponent(FIRST_CONTENT.component),
       )
 
+      // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
       expect(firstChipElement).toBeTruthy()
+      // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
       expect(firstContentElement).toBeTruthy()
 
       firstChipElement.triggerEventHandler('click')
@@ -105,6 +112,7 @@ describe('ChippedContentComponent', () => {
     it('should scroll content into view', () => {
       const contentElement = fixture.debugElement.query(CONTENT_PREDICATE)
       const scrollIntoViewSpy = TestBed.inject(SCROLL_INTO_VIEW) as jasmine.Spy
+
       expect(scrollIntoViewSpy).toHaveBeenCalledOnceWith(
         contentElement.nativeElement,
       )
@@ -133,6 +141,8 @@ describe('ChippedContentComponent', () => {
 
       beforeEach(fakeAsync(() => {
         secondChipElement = findChipByDisplayName(SECOND_CONTENT.displayName)!
+
+        // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
         expect(secondChipElement).toBeTruthy()
 
         secondChipElement.triggerEventHandler('click')
@@ -145,6 +155,7 @@ describe('ChippedContentComponent', () => {
         expect(
           getComponentInstance(firstChipElement, ChipComponent).selected,
         ).toBeFalse()
+
         expect(
           getComponentInstance(secondChipElement, ChipComponent).selected,
         ).toBeTrue()
@@ -194,6 +205,7 @@ function makeSut() {
   const [fixture, component] = componentTestSetup(ChippedContentComponent, {
     providers: [
       provideNoopAnimations(),
+      // eslint-disable-next-line jasmine/no-unsafe-spy
       MockProvider(SCROLL_INTO_VIEW, jasmine.createSpy()),
     ],
   })

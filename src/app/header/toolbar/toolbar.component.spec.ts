@@ -11,6 +11,7 @@ describe('ToolbarComponent', () => {
   it('should create', () => {
     ;[fixture, component] = componentTestSetup(ToolbarComponent)
     fixture.detectChanges()
+
     expect(component).toBeTruthy()
   })
 

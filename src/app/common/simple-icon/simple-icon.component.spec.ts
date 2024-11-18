@@ -16,6 +16,7 @@ describe('SimpleIconComponent', () => {
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
+
     expect(component).toBeTruthy()
   })
 
@@ -38,6 +39,7 @@ describe('SimpleIconComponent', () => {
     component.icon = { slug: 'whatever', hex }
 
     fixture.detectChanges()
+
     expect(fixture.debugElement.styles['fill']).toEqual('rgb(0, 16, 32)')
   })
 

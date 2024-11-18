@@ -21,6 +21,7 @@ describe('SportsPageComponent', () => {
     const playtomicAnchorElement = fixture.debugElement.query(
       By.css('a[href="https://app.playtomic.io/profile/user/1463090"]'),
     )
+
     expect(playtomicAnchorElement).not.toBeNull()
   })
 
@@ -30,6 +31,7 @@ describe('SportsPageComponent', () => {
         'iframe[src="https://www.strava.com/athletes/116896062/latest-rides/2258b4e99aeb51898175a798dc9a4a15067dfc26"]',
       ),
     )
+
     expect(stravaLatestRunsIframeElement).not.toBeNull()
   })
 })

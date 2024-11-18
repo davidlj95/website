@@ -38,6 +38,7 @@ describe('TabComponent', () => {
         true.toString(),
       )
     })
+
     it('should include it in tab sequence as focusable node', () => {
       expect(fixture.debugElement.attributes['tabindex']).toEqual('0')
     })
@@ -54,6 +55,7 @@ describe('TabComponent', () => {
         false.toString(),
       )
     })
+
     it('should include it in tab sequence as not focusable node', () => {
       expect(fixture.debugElement.attributes['tabindex']).toEqual('-1')
     })

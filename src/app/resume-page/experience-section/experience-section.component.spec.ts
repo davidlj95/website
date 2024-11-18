@@ -19,6 +19,7 @@ describe('ExperienceSectionComponent', () => {
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
+
     expect(component).toBeTruthy()
   })
 
@@ -34,6 +35,7 @@ describe('ExperienceSectionComponent', () => {
     const itemElements = fixture.debugElement.queryAll(
       byComponent(ExperienceItemComponent),
     )
+
     expect(itemElements.length).toBe(experienceItems.length)
   })
 

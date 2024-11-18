@@ -21,18 +21,21 @@ describe('AdaptJsonResumeProject', () => {
   it('should map name', () => {
     const name = 'Super cool project'
     const item = makeSut()(makeJsonResumeProject({ name }))
+
     expect(item.name).toEqual(name)
   })
 
   it('should map description', () => {
     const description = 'Does magic things'
     const item = makeSut()(makeJsonResumeProject({ description }))
+
     expect(item.description).toEqual(description)
   })
 
   it('should map start date', () => {
     const startDate = '2022-12-31'
     const item = makeSut()(makeJsonResumeProject({ startDate }))
+
     expect(item.dateRange.start).toEqual(new Date(startDate))
   })
 
@@ -40,6 +43,7 @@ describe('AdaptJsonResumeProject', () => {
     it('should map end date', () => {
       const endDate = '2023-12-31'
       const item = makeSut()(makeJsonResumeProject({ endDate }))
+
       expect(item.dateRange.end).toEqual(new Date(endDate))
     })
   })
@@ -48,6 +52,7 @@ describe('AdaptJsonResumeProject', () => {
     it('should map no end date', () => {
       const endDate = undefined
       const item = makeSut()(makeJsonResumeProject({ endDate }))
+
       expect(item.dateRange.end).toBeUndefined()
     })
   })
@@ -56,6 +61,7 @@ describe('AdaptJsonResumeProject', () => {
     it('should map website', () => {
       const url = 'https://example.org/website'
       const item = makeSut()(makeJsonResumeProject({ url }))
+
       expect(item.website).toEqual(new URL(url))
     })
   })
@@ -64,6 +70,7 @@ describe('AdaptJsonResumeProject', () => {
     it('should map no website', () => {
       const url = undefined
       const item = makeSut()(makeJsonResumeProject({ url }))
+
       expect(item.website).toBeUndefined()
     })
   })
@@ -71,6 +78,7 @@ describe('AdaptJsonResumeProject', () => {
   it('should map roles', () => {
     const roles = ['Role A', 'Role B']
     const item = makeSut()(makeJsonResumeProject({ roles }))
+
     expect(item.roles).toEqual(roles)
   })
 
@@ -98,6 +106,7 @@ describe('AdaptJsonResumeProject', () => {
       const sut = makeSut({ relativizeProductionUrl })
 
       const item = sut(makeJsonResumeProject({ image }))
+
       expect(relativizeProductionUrl).not.toHaveBeenCalled()
       expect(item.imageSrc).toBeUndefined()
     })
@@ -107,10 +116,13 @@ describe('AdaptJsonResumeProject', () => {
     it('should map stack', () => {
       const stack = Stack.Full
       const item = makeSut()(makeJsonResumeProject({ stack }))
+
       expect(item.stack).toEqual(stack)
     })
+
     it('should raise error if invalid', () => {
       const stack = 'kata-croquet'
+
       expect(() => makeSut()(makeJsonResumeProject({ stack }))).toThrowError(
         InvalidStackValueError,
       )
@@ -121,6 +133,7 @@ describe('AdaptJsonResumeProject', () => {
     it('should map no stack', () => {
       const stack = undefined
       const item = makeSut()(makeJsonResumeProject({ stack }))
+
       expect(item.stack).toBeUndefined()
     })
   })
@@ -134,6 +147,7 @@ describe('AdaptJsonResumeProject', () => {
       jsonResumeTechnology,
     ]
     const item = makeSut()(makeJsonResumeProject({ technologies }))
+
     expect(item.technologies).toEqual(technologies)
   })
 })

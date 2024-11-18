@@ -22,6 +22,7 @@ describe('ScrollIntoView', () => {
       expect(dummyElement.scrollIntoView).toHaveBeenCalledOnceWith(DEFAULT_ARGS)
     })
   })
+
   describe('when on server', () => {
     it('should do nothing', () => {
       const sut = makeSut({

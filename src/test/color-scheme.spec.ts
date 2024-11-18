@@ -26,14 +26,17 @@ describe('App color scheme', () => {
       )
       const bodyBackgroundColorLuminance =
         getRelativeLuminance(bodyBackgroundColor)
+
       expect(bodyBackgroundColorLuminance).toBeGreaterThan(LIGHT_MIN_LUMINANCE)
       const bodyTextColor = getRgbFromCssRgbColor(
         getComputedStyle(bodyElement).color,
       )
       const bodyTextColorLuminance = getRelativeLuminance(bodyTextColor)
+
       expect(bodyTextColorLuminance).toBeLessThan(DARK_MAX_LUMINANCE)
     })
   })
+
   describe('when dark color scheme is set', () => {
     forceColorScheme(Scheme.Dark)
 
@@ -43,12 +46,14 @@ describe('App color scheme', () => {
       )
       const bodyBackgroundColorLuminance =
         getRelativeLuminance(bodyBackgroundColor)
+
       expect(bodyBackgroundColorLuminance).toBeLessThan(DARK_MAX_LUMINANCE)
 
       const bodyTextColor = getRgbFromCssRgbColor(
         getComputedStyle(bodyElement).color,
       )
       const bodyTextColorLuminance = getRelativeLuminance(bodyTextColor)
+
       expect(bodyTextColorLuminance).toBeGreaterThan(LIGHT_MIN_LUMINANCE)
     })
   })

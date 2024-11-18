@@ -29,9 +29,11 @@ describe('DateRangeComponent', () => {
     setRangeAndDetectChanges(new DateRange(sampleStartDate))
 
     const startDateElement = fixture.debugElement.query(By.css('.start'))
+
     expect(startDateElement)
       .withContext('start date element exists')
       .toBeTruthy()
+
     expect(startDateElement.nativeElement.textContent.trim())
       .withContext('start date is displayed with proper format')
       .toEqual(expectedFormattedStartDate)
@@ -41,6 +43,7 @@ describe('DateRangeComponent', () => {
     setRangeAndDetectChanges(new DateRange(new Date()))
 
     const separatorElement = fixture.debugElement.query(By.css('.separator'))
+
     expect(separatorElement)
       .withContext('separator element exists')
       .toBeTruthy()
@@ -53,12 +56,14 @@ describe('DateRangeComponent', () => {
 
     it('should display present as end date', () => {
       const endDateElement = fixture.debugElement.query(By.css('.end'))
+
       expect(endDateElement).withContext('end date element exists').toBeTruthy()
       expect(endDateElement.nativeElement.textContent.trim())
         .withContext('end date is present')
         .toEqual('Present')
     })
   })
+
   describe('when end date exists', () => {
     const sampleRange = new DateRange(
       new Date('2023-12-31'),
@@ -69,8 +74,10 @@ describe('DateRangeComponent', () => {
     beforeEach(() => {
       setRangeAndDetectChanges(sampleRange)
     })
+
     it('should display end date formatted as month abbreviation and year', () => {
       const endDateElement = fixture.debugElement.query(By.css('.end'))
+
       expect(endDateElement).withContext('end date element exists').toBeTruthy()
       expect(endDateElement.nativeElement.textContent.trim())
         .withContext('end date is displayed with proper format')
