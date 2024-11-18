@@ -127,6 +127,7 @@ describe('ColorSchemeService', () => {
     })
 
     describe('when no color scheme has been manually set', () => {
+      // eslint-disable-next-line jasmine/no-suite-dupes
       describe('when cannot detect system preference', () => {
         it('should manually set the scheme to dark, given default is light', () => {
           mockWindow = {} as Window
@@ -169,6 +170,7 @@ describe('ColorSchemeService', () => {
 
     describe('when color scheme is manually set', () => {
       describe('when set to light', () => {
+        // eslint-disable-next-line jasmine/no-spec-dupes
         it('should manually set the scheme to dark', () => {
           mockDocumentElement.setAttribute(
             HTML_COLOR_SCHEME_ATTRIBUTE,
@@ -185,6 +187,7 @@ describe('ColorSchemeService', () => {
       })
 
       describe('when set to dark', () => {
+        // eslint-disable-next-line jasmine/no-spec-dupes
         it('should manually set the scheme to light', () => {
           mockDocumentElement.setAttribute(
             HTML_COLOR_SCHEME_ATTRIBUTE,

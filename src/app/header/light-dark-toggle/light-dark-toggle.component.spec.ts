@@ -80,7 +80,7 @@ describe('LightDarkToggleComponent', () => {
         .query(byComponent(ToolbarButtonComponent))
         .triggerEventHandler('click')
 
-      expect(colorSchemeService.toggleDarkLight).toHaveBeenCalled()
+      expect(colorSchemeService.toggleDarkLight).toHaveBeenCalledWith()
     })
   })
 })

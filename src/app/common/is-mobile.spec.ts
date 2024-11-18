@@ -45,6 +45,7 @@ describe('isMobile', () => {
       const MOBILE_USER_AGENT =
         'Mozilla/5.0 (Linux; Android 11; SM-A217F Build/RP1A.200720.012; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/102.0.5005.99 Mobile Safari/537.36'
 
+      // eslint-disable-next-line jasmine/no-spec-dupes
       it('should return true', () => {
         const sut = makeSut({
           userAgent: MOBILE_USER_AGENT,

@@ -65,6 +65,7 @@ describe('RelativizeProductionUrl', () => {
   })
 
   describe('when base href does not match', () => {
+    // eslint-disable-next-line jasmine/no-spec-dupes
     it('should throw an error', () => {
       const sut = makeSut({
         APP_BASE_URL_PRODUCTION,

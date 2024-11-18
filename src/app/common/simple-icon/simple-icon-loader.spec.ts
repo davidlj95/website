@@ -55,9 +55,9 @@ describe('SimpleIconLoader', () => {
 
     it('should fetch the SVG file by slug and emit its response', (complete) => {
       sut(ICON_SLUG).subscribe({
-        next: (actualSvg) =>
-
-        expect(actualSvg).toEqual(ICON_SVG),
+        next: (actualSvg) => {
+          expect(actualSvg).toEqual(ICON_SVG)
+        },
         complete,
       })
 
@@ -115,6 +115,7 @@ describe('SimpleIconLoader', () => {
           statusText: 'Not Found',
         })
 
+      // eslint-disable-next-line jasmine/no-spec-dupes
       it('should complete without emitting', (done) => {
         let actualSvg: string | undefined
         sut(ICON_SLUG).subscribe({

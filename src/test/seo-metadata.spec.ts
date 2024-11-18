@@ -108,6 +108,7 @@ describe('App SEO metadata', () => {
       htmlElement = document.documentElement
     })
 
+    // eslint-disable-next-line jasmine/no-suite-dupes
     describe('Standard metas', () => {
       shouldSetTitle(routeMetadata.title)
       shouldIncludeMetaWithName('description', routeMetadata.description)
@@ -132,6 +133,7 @@ describe('App SEO metadata', () => {
       })
     })
 
+    // eslint-disable-next-line jasmine/no-suite-dupes
     describe('Open Graph', () => {
       shouldIncludeMetaWithProperty('og:title', routeMetadata.title)
       shouldIncludeMetaWithProperty(

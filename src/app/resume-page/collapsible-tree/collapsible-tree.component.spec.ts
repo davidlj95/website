@@ -282,6 +282,7 @@ describe('CollapsibleTreeComponent', () => {
         expect(buttonElement).toBeNull()
       })
 
+      // eslint-disable-next-line jasmine/no-spec-dupes
       it('should display list', () => {
         const listElement = fixture.debugElement.query(LIST_PREDICATE)
         expectIsInLayout(listElement.nativeElement)

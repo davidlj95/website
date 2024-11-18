@@ -80,7 +80,9 @@ describe('ChippedContentComponent', () => {
         byComponent(FIRST_CONTENT.component),
       )
 
+      // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
       expect(firstChipElement).toBeTruthy()
+      // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
       expect(firstContentElement).toBeTruthy()
 
       firstChipElement.triggerEventHandler('click')
@@ -140,6 +142,7 @@ describe('ChippedContentComponent', () => {
       beforeEach(fakeAsync(() => {
         secondChipElement = findChipByDisplayName(SECOND_CONTENT.displayName)!
 
+        // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
         expect(secondChipElement).toBeTruthy()
 
         secondChipElement.triggerEventHandler('click')
@@ -202,6 +205,7 @@ function makeSut() {
   const [fixture, component] = componentTestSetup(ChippedContentComponent, {
     providers: [
       provideNoopAnimations(),
+      // eslint-disable-next-line jasmine/no-unsafe-spy
       MockProvider(SCROLL_INTO_VIEW, jasmine.createSpy()),
     ],
   })
