@@ -1,14 +1,12 @@
 import { Liquid } from 'liquidjs'
-import {
-  createAndGetGeneratedDataDir,
-  getRepositoryRootDir,
-  isMain,
-  Log,
-} from './utils.js'
 import { METADATA } from '@/data/metadata.js'
 import { join } from 'path'
 import { mkdir, readdir, writeFile } from 'fs/promises'
 import { execSync } from 'child_process'
+import { isMain } from './utils/is-main.js'
+import { Log } from './utils/log.js'
+import { getRepositoryRootDir } from './utils/get-repository-root-dir.js'
+import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir.js'
 
 export const LIQUID_EXTENSION = '.liquid'
 
@@ -74,7 +72,7 @@ function getContext() {
 }
 
 async function getAndCreateOutputDir() {
-  const outputDir = join(await createAndGetGeneratedDataDir(), 'from-templates')
+  const outputDir = join(await getAndCreateGeneratedDataDir(), 'from-templates')
   await mkdir(outputDir, { recursive: true })
   return outputDir
 }

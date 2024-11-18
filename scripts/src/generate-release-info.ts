@@ -1,14 +1,12 @@
 import release, { Config } from 'release-it'
 import { createReleaseItConfig, ExtraConfig } from '@/data/.release-it.js'
-import {
-  createAndGetGeneratedDataDir,
-  getRepositoryRootDir,
-  isMain,
-  objectToJson,
-} from './utils.js'
 import { execSync } from 'child_process'
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
+import { objectToJson } from './utils/object-to-json.js'
+import { isMain } from './utils/is-main.js'
+import { getRepositoryRootDir } from './utils/get-repository-root-dir.js'
+import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir.js'
 
 interface ReleaseData {
   commitSha: string
@@ -121,7 +119,7 @@ if (isMain(import.meta.url)) {
   process.chdir(getRepositoryRootDir())
 
   await writeFile(
-    join(await createAndGetGeneratedDataDir(), 'release.json'),
+    join(await getAndCreateGeneratedDataDir(), 'release.json'),
     objectToJson(await generateReleaseInfo()),
   )
 
