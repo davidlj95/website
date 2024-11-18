@@ -12,7 +12,7 @@
     "generate:simple-icons": "pnpm run script dist/src/generate-simple-icons.js",
     "generate:templated-files": "pnpm run script dist/src/generate-templated-files.js",
     "script": "node --import=extensionless/register",
-    "security.txt": "pnpm run script dist/src/generate-security-txt.js",
+    "update-security.txt": "pnpm run script dist/src/update-security-txt.js",
     "watch": "tsc --watch"
   },
   "dependencies": {

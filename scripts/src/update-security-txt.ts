@@ -8,8 +8,7 @@ import { getRepositoryRootDir } from './utils/get-repository-root-dir'
 
 export const SECURITY_TXT = 'security.txt'
 
-async function generateSecurityTxt() {
-  Log.info('Rendering security.txt from template')
+async function updateSecurityTxt() {
   const securityTxtFile = resolve(
     getRepositoryRootDir(),
     'data',
@@ -34,5 +33,5 @@ async function generateSecurityTxt() {
 }
 
 if (isMain(import.meta.url)) {
-  await generateSecurityTxt()
+  await updateSecurityTxt()
 }
