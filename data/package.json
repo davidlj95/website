@@ -4,6 +4,9 @@
   "description": "Data files needed by both app and scripts",
   "type": "module",
   "exports": {
-    "./*": "./*"
+    "./*": {
+      "default": "./*",
+      "types": "./*.ts"
+    }
   }
 }

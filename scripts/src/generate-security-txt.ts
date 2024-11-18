@@ -2,9 +2,9 @@ import { join, resolve } from 'path'
 import { promisify } from 'util'
 import { exec } from 'child_process'
 import { writeFile } from 'fs/promises'
-import { isMain } from './utils/is-main.js'
-import { Log } from './utils/log.js'
-import { getRepositoryRootDir } from './utils/get-repository-root-dir.js'
+import { isMain } from './utils/is-main'
+import { Log } from './utils/log'
+import { getRepositoryRootDir } from './utils/get-repository-root-dir'
 
 export const SECURITY_TXT = 'security.txt'
 
