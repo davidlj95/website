@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="@/scripts: security.txt" type="js.build_tools.npm">
+  <configuration default="false" name="@/scripts: update security.txt" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/scripts/package.json" />
     <command value="run" />
     <scripts>
-      <script value="security.txt" />
+      <script value="update-security.txt" />
     </scripts>
     <node-interpreter value="project" />
     <envs />
