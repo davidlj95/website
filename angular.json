@@ -36,25 +36,15 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
+              "src/browserconfig.xml",
               "src/favicon.ico",
               "src/favicon.svg",
-              "src/assets",
+              "src/humans.txt",
               "src/manifest.json",
-              "src/browserconfig.xml",
+              "src/profile.jpg",
               "src/release.json",
-              {
-                "glob": "profile.jpg",
-                "input": "src/",
-                "output": "/",
-                "followSymlinks": true
-              },
-              {
-                "glob": "**/!(*.liquid)",
-                "input": "src/.well-known",
-                "output": "/.well-known"
-              },
-              "src/robots.txt",
-              "src/humans.txt"
+              "src/robots.txt"
             ],
             "styles": ["src/styles.scss", "src/sass/themes/devtools.scss"],
             "stylePreprocessorOptions": {
@@ -149,21 +139,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/favicon.svg",
-              "src/assets",
-              "src/manifest.json",
-              "src/browserconfig.xml",
-              "src/profile.jpg",
-              {
-                "glob": "**/!(*.liquid)",
-                "input": "src/.well-known",
-                "output": "/.well-known"
-              },
-              "src/robots.txt",
-              "src/humans.txt"
-            ],
+            "assets": ["src/favicon.ico", "src/favicon.svg", "src/assets"],
             "styles": ["src/styles.scss", "src/sass/themes/devtools.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/sass"]
