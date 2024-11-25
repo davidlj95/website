@@ -3,7 +3,10 @@ import { Organization } from '../../../organization'
 import { DateRange } from '../../../date-range/date-range'
 import { makeItemFactory } from '@/test/helpers/make-item-factory'
 
-export const makeExperienceItem = makeItemFactory(ExperienceItem, {
+export const makeExperienceItem = makeItemFactory<
+  ExperienceItem,
+  ConstructorParameters<typeof ExperienceItem>[0]
+>(ExperienceItem, {
   company: new Organization({
     name: 'Dummy company',
     imageSrc: 'https://fakeCompany.example.com/logo.jpg',
