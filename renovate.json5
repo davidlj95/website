@@ -5,7 +5,7 @@
     'config:recommended',
     'config:best-practices',
     'config:js-app',
-    'github>davidlj95/renovate-config:angular/v18-lts',
+    'github>davidlj95/renovate-config:angular/v19-lts',
   ],
   prHourlyLimit: 0,
   prConcurrentLimit: 5,
@@ -54,11 +54,11 @@
       matchDepTypes: ['devDependencies'],
       automerge: true,
     },
-    // Angular v18
+    // Angular major version
     {
       // 👇 Includes devkit & eslint
-      matchDepNames: ['@angular{/,}**'],
-      allowedVersions: '^18',
+      matchDepNames: ['@angular{/,}**', 'angular-eslint'],
+      allowedVersions: '^19',
     },
     // ng-icons Angular compatibility
     // https://github.com/ng-icons/ng-icons/tree/master?tab=readme-ov-file#supported-versions
