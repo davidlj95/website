@@ -1,4 +1,4 @@
-import JSON_RESUME from '@/data/resume.json' assert { type: 'json' }
+import JSON_RESUME from '@/data/resume.json' with { type: 'json' }
 import * as icons from 'simple-icons'
 import { SimpleIcon } from 'simple-icons'
 import { mkdir, writeFile } from 'fs/promises'
@@ -18,7 +18,9 @@ async function generateSimpleIcons() {
   )
 }
 
-async function findNeededIcons(projects: typeof JSON_RESUME.projects) {
+async function findNeededIcons(
+  projects: typeof JSON_RESUME.projects,
+): Promise<readonly SimpleIcon[]> {
   if (projects.length > 0) {
     Log.info('Found %d projects', projects.length)
   } else {
@@ -39,7 +41,7 @@ async function findNeededIcons(projects: typeof JSON_RESUME.projects) {
   ]
   Log.item('Where %d are unique technology slugs', technologySlugs.length)
 
-  const allIcons = Object.values(icons)
+  const allIcons = Object.values(icons) as readonly SimpleIcon[]
   Log.info('Loaded %d simple icons', allIcons.length)
 
   const neededIcons = allIcons.filter((icon) =>
