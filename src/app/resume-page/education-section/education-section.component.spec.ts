@@ -9,6 +9,7 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
 import { NgForOf } from '@angular/common'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeEducationItem } from './education-item/__tests__/make-education-item'
+import { CardGridComponent } from '../card-grid/card-grid.component'
 
 describe('EducationSectionComponent', () => {
   let component: EducationSectionComponent
@@ -42,7 +43,11 @@ function makeSut(opts: { getEducationItems?: GetEducationItems } = {}) {
     imports: [
       EducationSectionComponent,
       NgForOf,
-      MockComponents(SectionTitleComponent, EducationItemComponent),
+      MockComponents(
+        SectionTitleComponent,
+        EducationItemComponent,
+        CardGridComponent,
+      ),
     ],
     providers: [
       opts.getEducationItems

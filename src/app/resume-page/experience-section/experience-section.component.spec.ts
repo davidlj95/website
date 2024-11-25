@@ -12,6 +12,7 @@ import {
   GetExperienceItems,
 } from './get-experience-items'
 import { makeExperienceItem } from './experience-item/__tests__/make-experience-item'
+import { CardGridComponent } from '../card-grid/card-grid.component'
 
 describe('ExperienceSectionComponent', () => {
   let component: ExperienceSectionComponent
@@ -47,7 +48,11 @@ function makeSut(opts: { getExperienceItems?: GetExperienceItems } = {}) {
     imports: [
       ExperienceSectionComponent,
       NgFor,
-      MockComponents(SectionTitleComponent, ExperienceItemComponent),
+      MockComponents(
+        SectionTitleComponent,
+        ExperienceItemComponent,
+        CardGridComponent,
+      ),
     ],
     providers: [
       opts.getExperienceItems

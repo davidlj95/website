@@ -5,6 +5,7 @@ import { MockComponents } from 'ng-mocks'
 import { ToolbarComponent } from './toolbar/toolbar.component'
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component'
 import { LightDarkToggleComponent } from './light-dark-toggle/light-dark-toggle.component'
+import { ToolbarDividerComponent } from './toolbar-divider/toolbar-divider.component'
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent
@@ -28,6 +29,7 @@ const makeSut = () =>
         NavigationTabsComponent,
         ToolbarComponent,
         LightDarkToggleComponent,
+        ToolbarDividerComponent,
       ),
     ],
   })

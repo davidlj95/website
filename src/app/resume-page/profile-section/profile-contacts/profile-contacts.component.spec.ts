@@ -9,6 +9,7 @@ import { Call, Email, MyLocation } from '@/data/material-symbols'
 import { ATTRIBUTE_ARIA_LABEL } from '@/test/helpers/aria'
 import { JSON_RESUME_BASICS, JsonResumeBasics } from '../json-resume-basics'
 import { NgIcon } from '@ng-icons/core'
+import { NgForOf } from '@angular/common'
 
 describe('ProfileContactsComponent', () => {
   let component: ProfileContactsComponent
@@ -128,7 +129,7 @@ const makeJsonResumeBasics = (overrides: Partial<JsonResumeBasics>) => ({
 
 const makeSut = (opts: { jsonResumeBasics?: JsonResumeBasics } = {}) =>
   componentTestSetup(ProfileContactsComponent, {
-    imports: [ProfileContactsComponent, NgIcon],
+    imports: [ProfileContactsComponent, NgIcon, NgForOf],
     providers: [
       opts.jsonResumeBasics
         ? MockProvider(JSON_RESUME_BASICS, opts.jsonResumeBasics)

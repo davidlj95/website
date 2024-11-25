@@ -24,6 +24,8 @@ import { makeEducationItem } from './__tests__/make-education-item'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
+import { LinkComponent } from '../../link/link.component'
+import { TestIdDirective } from '@/common/test-id.directive'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -162,6 +164,8 @@ function makeSut() {
     imports: [
       EducationItemComponent,
       NgIf,
+      TestIdDirective,
+      LinkComponent,
       MockComponents(
         CardComponent,
         DateRangeComponent,
