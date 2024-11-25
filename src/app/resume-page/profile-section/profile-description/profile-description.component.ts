@@ -19,7 +19,6 @@ import { ProfileDescriptionLineComponent } from './profile-description-line/prof
       [isCollapsibleFn]="IS_COLLAPSIBLE_FN"
     ></app-collapsible-tree>
   `,
-  standalone: true,
   imports: [CollapsibleTreeComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

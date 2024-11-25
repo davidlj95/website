@@ -13,7 +13,6 @@ let nextId = 0
   selector: 'app-attribute',
   templateUrl: './attribute.component.html',
   styleUrls: ['./attribute.component.scss'],
-  standalone: true,
   imports: [MaterialSymbolDirective],
 })
 export class AttributeComponent {

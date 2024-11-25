@@ -12,7 +12,6 @@ import { ContentPageComponent } from '../content-page/content-page.component'
 
 @Component({
   selector: 'app-sports-page',
-  standalone: true,
   imports: [
     NgOptimizedImage,
     CardComponent,

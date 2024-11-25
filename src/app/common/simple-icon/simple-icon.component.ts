@@ -10,7 +10,6 @@ import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 
 @Component({
   selector: 'app-simple-icon',
-  standalone: true,
   imports: [AsyncPipe],
   templateUrl: './simple-icon.component.html',
   host: {

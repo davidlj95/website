@@ -21,7 +21,6 @@ import { experienceItemToContents } from './experience-item-to-contents'
 @Component({
   selector: 'app-experience-item',
   templateUrl: './experience-item.component.html',
-  standalone: true,
   imports: [
     CardComponent,
     CardHeaderComponent,

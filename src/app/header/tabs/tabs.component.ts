@@ -22,7 +22,6 @@ import { TabComponent } from '../tab/tab.component'
 
 @Component({
   selector: 'app-tabs',
-  standalone: true,
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
   imports: [ToolbarButtonComponent],

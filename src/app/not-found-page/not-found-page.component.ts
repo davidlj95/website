@@ -8,7 +8,6 @@ import { APP_BASE_URL } from '@/common/app-base-url'
   selector: 'app-not-found-page',
   templateUrl: './not-found-page.component.html',
   styleUrls: ['./not-found-page.component.scss'],
-  standalone: true,
   imports: [MaterialSymbolDirective],
 })
 export class NotFoundPageComponent {

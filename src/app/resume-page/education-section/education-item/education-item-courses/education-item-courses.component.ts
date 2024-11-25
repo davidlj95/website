@@ -6,7 +6,6 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
 @Component({
   selector: 'app-education-item-courses',
   templateUrl: './education-item-courses.component.html',
-  standalone: true,
   imports: [NgFor, ContentChipListComponent, ContentChipComponent],
 })
 export class EducationItemCoursesComponent {

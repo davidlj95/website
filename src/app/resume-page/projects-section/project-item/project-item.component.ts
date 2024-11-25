@@ -21,7 +21,6 @@ import { projectItemToContents } from './project-item-to-contents'
 @Component({
   selector: 'app-project-item',
   templateUrl: './project-item.component.html',
-  standalone: true,
   imports: [
     CardComponent,
     CardHeaderComponent,

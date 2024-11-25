@@ -9,7 +9,6 @@ import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
 @Component({
   selector: 'app-projects-section',
   templateUrl: './projects-section.component.html',
-  standalone: true,
   imports: [
     SectionTitleComponent,
     CardGridComponent,

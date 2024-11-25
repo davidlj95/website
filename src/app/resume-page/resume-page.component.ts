@@ -8,7 +8,6 @@ import { LanguagesSectionComponent } from './languages-section/languages-section
 @Component({
   selector: 'app-resume-page',
   templateUrl: './resume-page.component.html',
-  standalone: true,
   imports: [
     ProfileSectionComponent,
     ExperienceSectionComponent,

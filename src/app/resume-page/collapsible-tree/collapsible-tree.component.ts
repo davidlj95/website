@@ -28,7 +28,6 @@ let nextId = 0
 
 @Component({
   selector: 'app-collapsible-tree',
-  standalone: true,
   imports: [
     MaterialSymbolDirective,
     NgTemplateOutlet,

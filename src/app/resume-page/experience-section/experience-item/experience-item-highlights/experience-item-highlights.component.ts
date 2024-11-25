@@ -9,7 +9,6 @@ import { NgFor } from '@angular/common'
     </li>
   </ul>`,
   styleUrls: ['./experience-item-highlights.component.scss'],
-  standalone: true,
   imports: [NgFor],
 })
 export class ExperienceItemHighlightsComponent {

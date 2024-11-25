@@ -18,7 +18,6 @@ import { LanguageTagComponent } from './language-tag/language-tag.component'
 
 @Component({
   selector: 'app-language-item',
-  standalone: true,
   imports: [
     AttributeComponent,
     CardComponent,

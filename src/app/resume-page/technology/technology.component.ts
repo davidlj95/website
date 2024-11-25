@@ -13,7 +13,6 @@ import {
 
 @Component({
   selector: 'app-technology',
-  standalone: true,
   imports: [SimpleIconComponent],
   templateUrl: './technology.component.html',
   styleUrl: './technology.component.scss',

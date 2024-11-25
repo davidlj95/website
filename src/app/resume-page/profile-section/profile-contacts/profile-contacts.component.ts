@@ -28,7 +28,6 @@ const ngIcons: NgIcons = [...ngIconsByName.values()].reduce<NgIcons>(
   selector: 'app-profile-contacts',
   templateUrl: './profile-contacts.component.html',
   styleUrls: ['./profile-contacts.component.scss'],
-  standalone: true,
   imports: [NgFor, MaterialSymbolDirective, NgIcon],
   providers: [provideIcons(ngIcons)],
 })

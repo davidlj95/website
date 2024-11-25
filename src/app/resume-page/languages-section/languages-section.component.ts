@@ -9,7 +9,6 @@ import { LanguageItemComponent } from './language-item/language-item.component'
 
 @Component({
   selector: 'app-languages-section',
-  standalone: true,
   imports: [
     CardGridComponent,
     ExperienceItemComponent,
