@@ -3,6 +3,7 @@ import { ComponentFixture } from '@angular/core/testing'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights.component'
 import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ExperienceItemHighlightsComponent', () => {
   let component: ExperienceItemHighlightsComponent
@@ -26,9 +27,7 @@ describe('ExperienceItemHighlightsComponent', () => {
 
     expect(listElements.length).toBe(HIGHLIGHTS.length)
     listElements.forEach((listElement, index) => {
-      expect(listElement.nativeElement.textContent.trim()).toEqual(
-        HIGHLIGHTS[index],
-      )
+      expect(textContent(listElement)).toEqual(HIGHLIGHTS[index])
     })
   })
 })

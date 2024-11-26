@@ -4,6 +4,7 @@ import { EducationItemCoursesComponent } from './education-item-courses.componen
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('EducationItemCoursesComponent', () => {
   let component: EducationItemCoursesComponent
@@ -27,9 +28,7 @@ describe('EducationItemCoursesComponent', () => {
 
     expect(courseElements.length).toEqual(COURSES.length)
     courseElements.forEach((courseElement, index) => {
-      expect(courseElement.nativeElement.textContent.trim()).toEqual(
-        COURSES[index],
-      )
+      expect(textContent(courseElement)).toEqual(COURSES[index])
     })
   })
 })

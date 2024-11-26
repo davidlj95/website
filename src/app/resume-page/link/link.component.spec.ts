@@ -2,6 +2,7 @@ import { LinkComponent } from './link.component'
 import { By } from '@angular/platform-browser'
 import { Component, Type } from '@angular/core'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('LinkComponent', () => {
   it('should create', () => {
@@ -18,9 +19,7 @@ describe('LinkComponent', () => {
       const [fixture] = componentTestSetup(hostComponent)
       fixture.detectChanges()
 
-      expect(fixture.debugElement.nativeElement.textContent.trim()).toEqual(
-        someText,
-      )
+      expect(textContent(fixture.debugElement)).toEqual(someText)
     })
   }
 

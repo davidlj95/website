@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { DateRangeComponent } from './date-range.component'
 import { By } from '@angular/platform-browser'
 import { DateRange } from './date-range'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('DateRangeComponent', () => {
   let component: DateRangeComponent
@@ -34,7 +35,7 @@ describe('DateRangeComponent', () => {
       .withContext('start date element exists')
       .toBeTruthy()
 
-    expect(startDateElement.nativeElement.textContent.trim())
+    expect(textContent(startDateElement))
       .withContext('start date is displayed with proper format')
       .toEqual(expectedFormattedStartDate)
   })
@@ -58,7 +59,7 @@ describe('DateRangeComponent', () => {
       const endDateElement = fixture.debugElement.query(By.css('.end'))
 
       expect(endDateElement).withContext('end date element exists').toBeTruthy()
-      expect(endDateElement.nativeElement.textContent.trim())
+      expect(textContent(endDateElement))
         .withContext('end date is present')
         .toEqual('Present')
     })
@@ -79,7 +80,7 @@ describe('DateRangeComponent', () => {
       const endDateElement = fixture.debugElement.query(By.css('.end'))
 
       expect(endDateElement).withContext('end date element exists').toBeTruthy()
-      expect(endDateElement.nativeElement.textContent.trim())
+      expect(textContent(endDateElement))
         .withContext('end date is displayed with proper format')
         .toEqual(expectedFormattedEndDate)
     })

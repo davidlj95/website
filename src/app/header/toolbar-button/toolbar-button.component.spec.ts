@@ -1,6 +1,7 @@
 import { ToolbarButtonComponent } from './toolbar-button.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MATERIAL_SYMBOLS_SELECTOR } from '@/test/helpers/material-symbols'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ToolbarButtonComponent', () => {
   it('should create', () => {
@@ -16,7 +17,7 @@ describe('ToolbarButtonComponent', () => {
 
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
 
-    expect(iconElement.nativeElement.textContent.trim()).toBe(DUMMY_ICON)
+    expect(textContent(iconElement)).toBe(DUMMY_ICON)
   })
 })
 

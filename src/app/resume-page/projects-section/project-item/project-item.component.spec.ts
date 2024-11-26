@@ -30,6 +30,7 @@ import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -89,7 +90,7 @@ describe('ProjectItemComponent', () => {
 
     const titleElement = fixture.debugElement.query(byTestId('name'))
 
-    expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
+    expect(textContent(titleElement)).toEqual(name)
   })
 
   describe('when no roles exist', () => {
@@ -112,7 +113,7 @@ describe('ProjectItemComponent', () => {
       const roleElement = fixture.debugElement.query(byTestId('role'))
 
       expect(roleElement).toBeTruthy()
-      expect(roleElement.nativeElement.textContent.trim()).toEqual(roles[0])
+      expect(textContent(roleElement)).toEqual(roles[0])
     })
   })
 
@@ -158,7 +159,7 @@ describe('ProjectItemComponent', () => {
         getComponentInstance(stackAttributeElement, AttributeComponent).symbol,
       ).toBe(stackContent.materialSymbol)
 
-      expect(stackAttributeElement.nativeElement.textContent.trim()).toEqual(
+      expect(textContent(stackAttributeElement)).toEqual(
         stackContent.displayName,
       )
     })

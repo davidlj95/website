@@ -26,6 +26,7 @@ import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -83,7 +84,7 @@ describe('EducationItemComponent', () => {
       byTestId('institution-name'),
     )
 
-    expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
+    expect(textContent(titleElement)).toEqual(name)
   })
 
   describe('when name is long and there is short name', () => {
@@ -102,9 +103,7 @@ describe('EducationItemComponent', () => {
         byTestId('institution-name'),
       )
 
-      expect(institutionNameElement.nativeElement.textContent.trim()).toEqual(
-        shortName,
-      )
+      expect(textContent(institutionNameElement)).toEqual(shortName)
     })
   })
 
@@ -115,7 +114,7 @@ describe('EducationItemComponent', () => {
     const areaElement = fixture.debugElement.query(byTestId('area'))
 
     expect(areaElement).toBeTruthy()
-    expect(areaElement.nativeElement.textContent.trim()).toEqual(area)
+    expect(textContent(areaElement)).toEqual(area)
   })
 
   it('should display study type', () => {
@@ -125,7 +124,7 @@ describe('EducationItemComponent', () => {
     const studyTypeElement = fixture.debugElement.query(byTestId('study-type'))
 
     expect(studyTypeElement).toBeTruthy()
-    expect(studyTypeElement.nativeElement.textContent.trim()).toEqual(studyType)
+    expect(textContent(studyTypeElement)).toEqual(studyType)
   })
 
   it('should display date range component', () => {
