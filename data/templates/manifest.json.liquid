@@ -7,13 +7,13 @@
   "theme_color": "{{ themeColor }}",
   "icons": [
     {%  for iconSize in manifestJsonMaskableIconSizes %}{
-      "src": "assets/favicons/maskable-icon-x{{ iconSize }}.png",
+      "src": "images/favicons/maskable-icon-x{{ iconSize }}.png",
       "sizes": "{{ iconSize }}x{{ iconSize }}",
       "type": "image/png",
       "purpose": "any maskable monochrome"
     },
     {%  endfor %}{
-      "src": "assets/favicons/maskable-icon.png",
+      "src": "images/favicons/maskable-icon.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any maskable monochrome"

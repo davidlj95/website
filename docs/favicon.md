@@ -107,7 +107,7 @@ Added maskable icons
 
 ```json
 {
-  "src": "assets/favicons/maskable-icon-x48.png",
+  "src": "images/favicons/maskable-icon-x48.png",
   "sizes": "48x48",
   "type": "image/png",
   "purpose": "any maskable monochrome"
@@ -136,10 +136,10 @@ A `browserconfig.xml` file is created to provided tiles for legacy Windows Phone
 <browserconfig>
   <msapplication>
     <tile>
-      <square70x70logo src="/assets/favicons/mstile-70x70.png"/>
-      <square150x150logo src="/assets/favicons/mstile-150x150.png"/>
-      <square310x310logo src="/assets/favicons/mstile-310x310.png"/>
-      <wide310x150logo src="/assets/favicons/mstile-310x150.png"/>
+      <square70x70logo src="/images/favicons/mstile-70x70.png"/>
+      <square150x150logo src="/images/favicons/mstile-150x150.png"/>
+      <square310x310logo src="/images/favicons/mstile-310x310.png"/>
+      <wide310x150logo src="/images/favicons/mstile-310x150.png"/>
       <TileColor>#202023</TileColor>
     </tile>
   </msapplication>

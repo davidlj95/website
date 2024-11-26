@@ -38,8 +38,7 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              "src/assets"
+              }
             ],
             "styles": ["src/styles.scss", "src/sass/themes/devtools.scss"],
             "stylePreprocessorOptions": {
@@ -134,8 +133,7 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              "src/assets"
+              }
             ],
             "styles": ["src/styles.scss", "src/sass/themes/devtools.scss"],
             "stylePreprocessorOptions": {

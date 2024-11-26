@@ -2,9 +2,9 @@
 <browserconfig>
   <msapplication>
     <tile>
-      {% for size in browserconfigIconSquareSizes %}<square{{ size }}x{{ size }}logo src="/assets/favicons/mstile-{{ size }}x{{ size }}.png"/>{% unless forloop.last %}
+      {% for size in browserconfigIconSquareSizes %}<square{{ size }}x{{ size }}logo src="/images/favicons/mstile-{{ size }}x{{ size }}.png"/>{% unless forloop.last %}
       {% endunless %}{% endfor %}
-      <wide310x150logo src="/assets/favicons/mstile-310x150.png"/>
+      <wide310x150logo src="/images/favicons/mstile-310x150.png"/>
       <TileColor>{{ themeColor }}</TileColor>
     </tile>
   </msapplication>
