@@ -33,11 +33,13 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Generate simple icons and font subset files
+      - name: Generate data
         run: |
           pnpm run --filter scripts build
           pnpm run --filter scripts generate:font-subsets
           pnpm run --filter scripts generate:simple-icons
+          pnpm run --filter scripts generate:templated-files
+          touch data/generated/release.json
       - name: Run tests
         run: cd .ci && make unit-test
       - name: Upload coverage results
@@ -80,10 +82,13 @@ jobs:
         #    In that scenario, `cypress run` does not install it again and errors
       - name: Cypress install
         run: pnpm cypress install
-      - name: Generate font subsets
+      - name: Generate data
         run: |
           pnpm run --filter scripts build
           pnpm run --filter scripts generate:font-subsets
+          pnpm run --filter scripts generate:simple-icons
+          pnpm run --filter scripts generate:templated-files
+          touch data/generated/release.json
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
