@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "ng build",
+    "postbuild": "cp dist/@davidlj95/website/browser/index.csr.html dist/@davidlj95/website/browser/index.html",
     "build:pack": "DIST_DIR=dist/@davidlj95/website/browser; [ -d \"$DIST_DIR\" ] && cd $DIST_DIR && zip -r ../../../build.zip . || true",
     "build:pull-request": "pnpm run build --configuration pullRequest,production",
     "bundle:analyze": "pnpm run bundle:analyze:files '*.js'",
