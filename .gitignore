@@ -250,7 +250,11 @@ $RECYCLE.BIN/
 ## Manual files
 .idea/git_toolbox_blame.xml
 .nyc_output
-data/generated
+data/generated/from-templates/environment.pull-request.ts
+data/generated/from-templates/security.txt
+data/generated/release.json
+data/generated/simple-icons
+data/generated/simple-icons.json
 # Manual changes:
 # - Remove .idea from angular, we want some settings in the repo
 # - Include .idea dictionaries

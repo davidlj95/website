@@ -1,4 +1,4 @@
-import JSON_RESUME from '@/data/resume.json' assert { type: 'json' }
+import JSON_RESUME from '@/data/resume.json' with { type: 'json' }
 import * as icons from 'simple-icons'
 import { SimpleIcon } from 'simple-icons'
 import { mkdir, writeFile } from 'fs/promises'
