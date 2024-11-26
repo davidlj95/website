@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { DescriptionLine, Metadata } from '@/data/metadata'
+import { Metadata } from '@/data/metadata'
 import { METADATA } from '@/common/injection-tokens'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
@@ -18,13 +18,13 @@ import { ProfileDescriptionComponent } from './profile-description/profile-descr
   ],
 })
 export class ProfileSectionComponent {
-  public readonly realName = this.metadata.realName
-  public readonly nickname = this.metadata.nickname
-  public readonly title = this.metadata.title
-  public readonly rootLine = new DescriptionLine(
-    undefined,
-    this.metadata.descriptionLines,
-  )
+  readonly realName: string
+  readonly nickname: string
+  readonly title: string
 
-  constructor(@Inject(METADATA) private metadata: Metadata) {}
+  constructor(@Inject(METADATA) metadata: Metadata) {
+    this.realName = metadata.realName
+    this.nickname = metadata.nickname
+    this.title = metadata.title
+  }
 }

@@ -10,7 +10,7 @@ import { NgOptimizedImage } from '@angular/common'
   imports: [NgOptimizedImage],
 })
 export class ProfilePictureComponent {
-  protected realName: string = this.metadata.realName
+  readonly realName: string
   protected _hasBeenFocused = false
 
   public static HAS_BEEN_FOCUSED_ATTR = 'data-has-been-focused'
@@ -26,7 +26,9 @@ export class ProfilePictureComponent {
 
   @HostBinding('attr.aria-label') public ariaLabel = 'Profile picture'
 
-  constructor(@Inject(METADATA) private metadata: Metadata) {}
+  constructor(@Inject(METADATA) metadata: Metadata) {
+    this.realName = metadata.realName
+  }
 
   onFocus() {
     this._hasBeenFocused = true

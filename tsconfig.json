@@ -16,7 +16,9 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    // Manually added to import release.json into app
+    // Added for paths to work
+    "baseUrl": "./",
+    // Manually added to import JSONs in the app
     "resolveJsonModule": true,
     "paths": {
       "@/common/*": ["src/app/common/*"],
