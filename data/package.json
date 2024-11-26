@@ -5,8 +5,8 @@
   "type": "module",
   "exports": {
     "./*": {
-      "default": "./*",
-      "types": "./*.ts"
+      "types": "./*.ts",
+      "default": "./*"
     }
   }
 }
