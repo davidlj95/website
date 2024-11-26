@@ -2,17 +2,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { TabComponent } from '../tab/tab.component'
 import { TabsComponent } from '../tabs/tabs.component'
 import { RouterLink, RouterLinkActive } from '@angular/router'
-import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
 
 @Component({
   selector: 'app-navigation-tabs',
-  imports: [
-    TabsComponent,
-    TabComponent,
-    RouterLink,
-    RouterLinkActive,
-    ToolbarButtonComponent,
-  ],
+  imports: [TabsComponent, TabComponent, RouterLink, RouterLinkActive],
   templateUrl: './navigation-tabs.component.html',
   styleUrl: './navigation-tabs.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -4,13 +4,12 @@ import {
   SimpleIconLoader,
 } from '@/common/simple-icon/simple-icon-loader'
 import { tap } from 'rxjs'
-import { AsyncPipe } from '@angular/common'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 
 @Component({
   selector: 'app-simple-icon',
-  imports: [AsyncPipe],
+  imports: [],
   templateUrl: './simple-icon.component.html',
   host: {
     '[style.fill]': '_fillColor',

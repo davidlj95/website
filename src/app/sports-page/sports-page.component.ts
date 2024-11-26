@@ -7,7 +7,6 @@ import { CardHeaderTitleComponent } from '../resume-page/card/card-header/card-h
 import { CardHeaderSubtitleComponent } from '../resume-page/card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderTextsComponent } from '../resume-page/card/card-header/card-header-texts/card-header-texts.component'
 import { ButtonComponent } from '../resume-page/button/button.component'
-import { CardHeaderDetailComponent } from '../resume-page/card/card-header/card-header-detail/card-header-detail.component'
 import { ContentPageComponent } from '../content-page/content-page.component'
 
 @Component({
@@ -21,7 +20,6 @@ import { ContentPageComponent } from '../content-page/content-page.component'
     CardHeaderSubtitleComponent,
     CardHeaderTextsComponent,
     ButtonComponent,
-    CardHeaderDetailComponent,
     NgTemplateOutlet,
     ContentPageComponent,
   ],
