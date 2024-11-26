@@ -7,12 +7,16 @@ import {
 import express from 'express'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import compression from 'compression'
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url))
 const browserDistFolder = resolve(serverDistFolder, '../browser')
 
 const app = express()
 const angularApp = new AngularNodeAppEngine()
+
+// Manually added so Lighthouse doesn't complain about adding text compression
+app.use(compression())
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -60,6 +64,7 @@ if (isMainModule(import.meta.url)) {
   })
 }
 
+// noinspection JSUnusedGlobalSymbols - Will be used, as commented below
 /**
  * The request handler used by the Angular CLI (dev-server and during build).
  */
