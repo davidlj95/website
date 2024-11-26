@@ -50,6 +50,8 @@ use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+> Remember to run the data generation scripts first
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -135,18 +137,8 @@ Some metadata about the app (like title, author, theme color...) was repeated ac
 templates into generated files using metadata defined in `metadata.ts` file (and some hardcoded constants in the
 generation script)
 
-If you update some metadata in that file, run the script to update files generated from templates. Otherwise, they
-won't be in sync.
-
-> Automatically updating generated files is not straightforward. Doing something before/after an Angular app build
-> runs is [not an option right now][angular-build-hooks-issue]. Adding a bunch of
-> [pre `npm` run scripts][npm-pre-post-scripts] left the `package.json` file quite cluttered. Also, won't work if
-> issuing `ng` commands. So decided to leave the task to update generated files to the developer. At some point a CI
-> check could be introduced to ensure generated files are up-to-date. Generated files are left in the repo because of
-> that reason (and also so you can clone & run without issues). That metadata won't change often anyway.
-
-[angular-build-hooks-issue]: https://github.com/angular/angular-cli/issues/11787
-[npm-pre-post-scripts]: https://docs.npmjs.com/cli/v9/using-npm/scripts#pre--post-scripts
+If you update some metadata in that file, run the script to update files generated from templates. Otherwise, you
+won't see those changes.
 
 ## Quirks
 
