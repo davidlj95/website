@@ -29,12 +29,6 @@
   visibility: hidden;
   right: 150%;
   opacity: 0;
-  @include animations.when-motion {
-    @include animations.multiple-transitions(
-      (right, opacity, visibility, background-color, color, border-color),
-      animations.$emphasized-style
-    );
-  }
 
   font-size: 1rem;
   width: max-content;
@@ -44,4 +38,11 @@
   @include borders.panel;
   color: var(--ui-text);
   background-color: var(--sys-color-surface5);
+
+  @include animations.when-motion {
+    @include animations.multiple-transitions(
+      (right, opacity, visibility, background-color, color, border-color),
+      animations.$emphasized-style
+    );
+  }
 }
