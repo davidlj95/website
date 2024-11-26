@@ -15,7 +15,7 @@ export const resumePageRoutes: Routes = [
         canonicalUrl: new URL(RESUME_PATH, environment.appBaseUrl),
         description: METADATA.description,
         image: {
-          url: new URL('assets/img/og.jpg', environment.appBaseUrl),
+          url: new URL('images/misc/og.jpg', environment.appBaseUrl),
           alt: `A portrait of ${METADATA.realName}. Slightly smiling and wearing geek-ish glasses`,
         },
         standard: {

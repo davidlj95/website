@@ -35,15 +35,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/assets",
-              "src/browserconfig.xml",
-              "src/favicon.ico",
-              "src/favicon.svg",
-              "src/humans.txt",
-              "src/manifest.json",
-              "src/profile.jpg",
-              "src/release.json",
-              "src/robots.txt"
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": ["src/styles.scss", "src/sass/themes/devtools.scss"],
             "stylePreprocessorOptions": {
@@ -134,7 +129,12 @@
               "src/test/esbuild-defines"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "assets": ["src/favicon.ico", "src/favicon.svg", "src/assets"],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
             "styles": ["src/styles.scss", "src/sass/themes/devtools.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/sass"]

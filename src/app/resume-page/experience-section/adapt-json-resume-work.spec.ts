@@ -94,7 +94,7 @@ describe('AdaptJsonResumeWork', () => {
   })
 
   it('should relativize image URL', () => {
-    const dummyImagePath = '/assets/companies/foo.png'
+    const dummyImagePath = '/images/companies/foo.png'
     const image = `https://example.com${dummyImagePath}`
     const relativizeProductionUrl = jasmine
       .createSpy<RelativizeProductionUrl>()

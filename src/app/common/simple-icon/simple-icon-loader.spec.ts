@@ -148,4 +148,4 @@ const makeSut = (opts: { platformService?: PlatformService } = {}) =>
 const expectTestRequestToIcon = (slug: string) =>
   TestBed.inject(HttpTestingController).expectOne(getIconUrlBySlug(slug))
 
-const getIconUrlBySlug = (slug: string) => `/assets/simple-icons/${slug}.svg`
+const getIconUrlBySlug = (slug: string) => `/images/simple-icons/${slug}.svg`

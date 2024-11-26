@@ -8,7 +8,7 @@ import { APP_BASE_HREF } from '@angular/common'
 
 describe('RelativizeProductionUrl', () => {
   const APP_BASE_URL_PRODUCTION = 'https://example.com'
-  const RELATIVE_IMAGE_PATH = 'assets/foo.png'
+  const RELATIVE_IMAGE_PATH = 'images/foo.png'
   const expectedImagePath = `/${RELATIVE_IMAGE_PATH}`
 
   describe('when production base URL and base href match', () => {
