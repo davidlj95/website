@@ -13,6 +13,7 @@ jobs:
         with:
           #👇 To generate release information
           fetch-depth: 0
+          lfs: true
       - name: Setup
         uses: ./.github/actions/setup
       - name: Generate info for Angular cache key
