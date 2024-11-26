@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { NoScriptComponent } from './no-script/no-script.component'
 import { HeaderComponent } from './header/header.component'
-import { maybeLoadConsoleEasterEgg } from './maybe-load-console-easter-egg'
+import { maybeLoadConsoleEasterEgg } from './console-easter-egg/maybe-load-console-easter-egg'
 
 @Component({
   selector: 'app-root',
