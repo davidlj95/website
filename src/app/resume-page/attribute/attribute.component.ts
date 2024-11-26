@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, input } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 
 /**
@@ -16,7 +16,7 @@ let nextId = 0
   imports: [MaterialSymbolDirective],
 })
 export class AttributeComponent {
-  @Input({ required: true }) symbol!: string
+  readonly symbol = input.required<string>()
 
   protected _id = `${ATTRIBUTE_ID_PREFIX}${nextId++}`
 }

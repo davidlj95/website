@@ -65,7 +65,7 @@ describe('EducationItemComponent', () => {
 
     expect(imageElement).toBeTruthy()
     expect(
-      getComponentInstance(imageElement, CardHeaderImageComponent).src,
+      getComponentInstance(imageElement, CardHeaderImageComponent).src(),
     ).toEqual(imageUrl)
   })
 

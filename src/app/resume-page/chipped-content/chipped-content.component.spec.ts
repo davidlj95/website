@@ -1,6 +1,6 @@
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
 import { ChippedContentComponent } from './chipped-content.component'
-import { Component, DebugElement, Input } from '@angular/core'
+import { Component, DebugElement, input } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
 import {
@@ -43,7 +43,7 @@ describe('ChippedContentComponent', () => {
     chipElements.forEach((chipElement, index) => {
       const content = CONTENTS[index]
 
-      expect(getComponentInstance(chipElement, ChipComponent).selected)
+      expect(getComponentInstance(chipElement, ChipComponent).selected())
         .withContext(`chip ${index} is unselected`)
         .toBeFalse()
 
@@ -102,7 +102,7 @@ describe('ChippedContentComponent', () => {
 
     it('should mark the chip as selected', () => {
       expect(
-        getComponentInstance(firstChipElement, ChipComponent).selected,
+        getComponentInstance(firstChipElement, ChipComponent).selected(),
       ).toBe(true)
     })
 
@@ -128,7 +128,7 @@ describe('ChippedContentComponent', () => {
 
       it('should mark the chip as unselected', () => {
         expect(
-          getComponentInstance(firstChipElement, ChipComponent).selected,
+          getComponentInstance(firstChipElement, ChipComponent).selected(),
         ).toBeFalse()
       })
 
@@ -154,11 +154,11 @@ describe('ChippedContentComponent', () => {
 
       it('should mark the previous chip as unselected and just tapped chip as selected', () => {
         expect(
-          getComponentInstance(firstChipElement, ChipComponent).selected,
+          getComponentInstance(firstChipElement, ChipComponent).selected(),
         ).toBeFalse()
 
         expect(
-          getComponentInstance(secondChipElement, ChipComponent).selected,
+          getComponentInstance(secondChipElement, ChipComponent).selected(),
         ).toBeTrue()
       })
 
@@ -175,17 +175,17 @@ describe('ChippedContentComponent', () => {
 })
 @Component({
   selector: 'app-foo',
-  template: `{{ data }}`,
+  template: `{{ data() }}`,
 })
 class FooComponent {
-  @Input() public data?: string
+  public readonly data = input<string>()
 }
 @Component({
   selector: 'app-bar',
-  template: `{{ data }}`,
+  template: `{{ data() }}`,
 })
 class BarComponent {
-  @Input() public data?: string
+  public readonly data = input<string>()
 }
 
 const FOO_CONTENT = new ChippedContent({

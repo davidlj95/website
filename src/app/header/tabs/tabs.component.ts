@@ -49,6 +49,8 @@ export class TabsComponent implements OnDestroy {
   private _currentTabs: readonly TabComponent[] = []
   private _indexToSelect?: number
   private _selectedIndex?: number
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input({ transform: numberAttribute }) set selectedIndex(index: number) {
     this._indexToSelect = index
   }

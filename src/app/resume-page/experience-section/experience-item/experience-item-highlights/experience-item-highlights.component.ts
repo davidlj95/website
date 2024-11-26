@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core'
+import { Component, input } from '@angular/core'
 
 @Component({
   selector: 'app-experience-item-highlights',
   template: `<ul>
-    @for (highlight of highlights; track highlight) {
+    @for (highlight of highlights(); track highlight) {
       <li>
         {{ highlight }}
       </li>
@@ -13,5 +13,5 @@ import { Component, Input } from '@angular/core'
   imports: [],
 })
 export class ExperienceItemHighlightsComponent {
-  @Input({ required: true }) public highlights!: readonly string[]
+  public readonly highlights = input.required<readonly string[]>()
 }

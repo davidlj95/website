@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core'
+import { Component, Inject, input } from '@angular/core'
 import { ChipComponent } from '../chip/chip.component'
 import { NgComponentOutlet } from '@angular/common'
 import { ChippedContent } from './chipped-content'
@@ -41,7 +41,7 @@ import { SCROLL_INTO_VIEW, ScrollIntoView } from '@/common/scroll-into-view'
   ],
 })
 export class ChippedContentComponent {
-  @Input() public contents!: readonly ChippedContent[]
+  public readonly contents = input.required<readonly ChippedContent[]>()
 
   constructor(
     @Inject(SCROLL_INTO_VIEW) protected _scrollIntoView: ScrollIntoView,

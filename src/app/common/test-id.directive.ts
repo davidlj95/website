@@ -1,17 +1,17 @@
-import { Directive, ElementRef, Input, OnChanges } from '@angular/core'
+import { Directive, ElementRef, OnChanges, input } from '@angular/core'
 
 @Directive({
   selector: '[appTestId]',
   standalone: true,
 })
 export class TestIdDirective implements OnChanges {
-  @Input() public appTestId!: string
+  public readonly appTestId = input.required<string>()
 
   constructor(private el: ElementRef) {}
 
   ngOnChanges(): void {
     if (isDevMode) {
-      this.el.nativeElement.setAttribute(TEST_ID_ATTRIBUTE, this.appTestId)
+      this.el.nativeElement.setAttribute(TEST_ID_ATTRIBUTE, this.appTestId())
     }
   }
 }

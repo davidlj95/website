@@ -1,5 +1,5 @@
-@if (href) {
-  <a [href]="href">
+@if (href()) {
+  <a [href]="href()">
     <ng-template [ngTemplateOutlet]="content"></ng-template>
   </a>
 } @else {

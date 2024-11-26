@@ -18,6 +18,8 @@ import {
   styleUrl: './technology.component.scss',
 })
 export class TechnologyComponent {
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input({ required: true }) set item(item: TechnologyItem) {
     this._displayName = this.getTechnologyDisplayNameFromSlug(item.slug)
     this._icon = this.getTechnologyIconFromSlug(item.slug)

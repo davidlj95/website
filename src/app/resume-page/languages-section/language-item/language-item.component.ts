@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, input } from '@angular/core'
 import { LanguageItem } from './language-item'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
@@ -22,5 +22,5 @@ import { LanguageTagComponent } from './language-tag/language-tag.component'
   templateUrl: './language-item.component.html',
 })
 export class LanguageItemComponent {
-  @Input({ required: true }) item!: LanguageItem
+  readonly item = input.required<LanguageItem>()
 }

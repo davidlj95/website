@@ -24,7 +24,7 @@ describe('TabComponent', () => {
   })
 
   it('should not be selected by default', () => {
-    expect(component.selected).toBeFalse()
+    expect(component.selected()).toBeFalse()
   })
 
   describe('when selected', () => {

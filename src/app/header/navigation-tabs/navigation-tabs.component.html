@@ -1,6 +1,6 @@
 <nav>
   <app-tabs [selectedIndex]="_selectedIndex">
-    @for (item of items; track item.displayName) {
+    @for (item of items(); track item.displayName) {
       <app-tab
         [routerLink]="item.routerLink"
         (isActiveChange)="$event ? onActiveRouteChange($index) : undefined"

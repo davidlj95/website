@@ -22,6 +22,6 @@ describe('TextContentComponent', () => {
     component.text = 'dummy text'
     fixture.detectChanges()
 
-    expect(textContent(fixture.debugElement)).toEqual(component.text)
+    expect(textContent(fixture.debugElement)).toEqual(component.text())
   })
 })

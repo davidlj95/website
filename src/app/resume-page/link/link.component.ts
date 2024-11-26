@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, input } from '@angular/core'
 import { NgTemplateOutlet } from '@angular/common'
 
 @Component({
@@ -7,5 +7,5 @@ import { NgTemplateOutlet } from '@angular/common'
   imports: [NgTemplateOutlet],
 })
 export class LinkComponent {
-  @Input({ required: true }) public href?: string
+  public readonly href = input.required<string | undefined>()
 }

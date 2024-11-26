@@ -76,7 +76,7 @@ describe('ProjectItemComponent', () => {
 
       expect(imageElement).toBeTruthy()
       expect(
-        getComponentInstance(imageElement, CardHeaderImageComponent).src,
+        getComponentInstance(imageElement, CardHeaderImageComponent).src(),
       ).toBe(imageSrc)
     })
   })
@@ -155,7 +155,10 @@ describe('ProjectItemComponent', () => {
 
       expect(stackAttributeElement).toBeTruthy()
       expect(
-        getComponentInstance(stackAttributeElement, AttributeComponent).symbol,
+        getComponentInstance(
+          stackAttributeElement,
+          AttributeComponent,
+        ).symbol(),
       ).toBe(stackContent.materialSymbol)
 
       expect(textContent(stackAttributeElement)).toEqual(
