@@ -5,7 +5,6 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { NgFor } from '@angular/common'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import {
   GET_EXPERIENCE_ITEMS,
@@ -47,7 +46,6 @@ function makeSut(opts: { getExperienceItems?: GetExperienceItems } = {}) {
   return componentTestSetup(ExperienceSectionComponent, {
     imports: [
       ExperienceSectionComponent,
-      NgFor,
       MockComponents(
         SectionTitleComponent,
         ExperienceItemComponent,

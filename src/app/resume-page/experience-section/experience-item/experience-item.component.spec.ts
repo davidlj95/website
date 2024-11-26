@@ -1,7 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 import { Attribute, ExperienceItemComponent } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
-import { NgIf } from '@angular/common'
 import { By } from '@angular/platform-browser'
 import { Organization } from '../../organization'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
@@ -212,7 +211,6 @@ function makeSut() {
   return componentTestSetup(ExperienceItemComponent, {
     imports: [
       ExperienceItemComponent,
-      NgIf,
       LinkComponent,
       TestIdDirective,
       MockComponents(
