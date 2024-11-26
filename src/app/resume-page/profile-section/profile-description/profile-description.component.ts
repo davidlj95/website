@@ -23,16 +23,18 @@ import { ProfileDescriptionLineComponent } from './profile-description-line/prof
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileDescriptionComponent {
-  protected readonly ROOT_NODE = new CollapsibleTreeNode(
-    undefined,
-    this.metadata.descriptionLines.map(descriptionLineToCollapsibleTreeNode),
-  )
+  protected readonly ROOT_NODE: CollapsibleTreeNode
 
   protected readonly IS_COLLAPSIBLE_FN: IsCollapsibleFn = (
     node: CollapsibleTreeComponent,
   ) => node.depth > 1
 
-  constructor(@Inject(METADATA) private readonly metadata: Metadata) {}
+  constructor(@Inject(METADATA) metadata: Metadata) {
+    this.ROOT_NODE = new CollapsibleTreeNode(
+      undefined,
+      metadata.descriptionLines.map(descriptionLineToCollapsibleTreeNode),
+    )
+  }
 }
 
 const descriptionLineToCollapsibleTreeNode = (
