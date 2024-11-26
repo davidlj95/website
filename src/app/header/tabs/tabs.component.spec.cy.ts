@@ -2,6 +2,7 @@ import { TabsComponent } from './tabs.component'
 import { TabComponent } from '../tab/tab.component'
 import { MountResponse } from 'cypress/angular'
 import { By } from '@angular/platform-browser'
+import { Component } from '@angular/core'
 
 describe('TabsComponent', () => {
   it('should mount', () => {
@@ -14,9 +15,14 @@ describe('TabsComponent', () => {
   describe('when all tabs fit the screen', () => {
     beforeEach(() => {
       cy.viewport('macbook-16')
-      cy.mount('<app-tabs><app-tab>Hello World</app-tab></app-tabs>', {
+      //👇 Explicit component declaration for Cypress to support v19
+      @Component({
+        template: '<app-tabs><app-tab>Hello World</app-tab></app-tabs>',
         imports: [TabsComponent, TabComponent],
       })
+      class HostComponent {}
+
+      cy.mount(HostComponent)
     })
 
     it('should disable previous paginator', () => {
@@ -32,20 +38,20 @@ describe('TabsComponent', () => {
     const TABS = [...Array(11).keys()]
     beforeEach(() => {
       cy.viewport('iphone-x')
-      cy.mount(
-        `
-        <app-tabs [style.max-width.%]="100">
-        @for(tab of ${JSON.stringify(TABS)}; track $index) {
+      //👇 Explicit component declaration for Cypress to support v19
+      @Component({
+        template: ` <app-tabs [style.max-width.%]="100">
+          @for (tab of ${JSON.stringify(TABS)}; track $index) {
             <app-tab>
-                <span style="white-space: nowrap">Tab {{ tab }}</span>
+              <span style="white-space: nowrap">Tab {{ tab }}</span>
             </app-tab>
-        }
+          }
         </app-tabs>`,
-        {
-          imports: [TabsComponent, TabComponent],
-        },
-      ).then((wrapper) => {
-        // noinspection CYUnusedAlias (used below)
+        imports: [TabsComponent, TabComponent],
+      })
+      class HostComponent {}
+
+      cy.mount(HostComponent).then((wrapper) => {
         cy.wrap(wrapper).as('angular')
       })
     })
@@ -150,7 +156,6 @@ describe('TabsComponent', () => {
 
     describe('when marking a tab as active', () => {
       beforeEach(() => {
-        // noinspection CYUnresolvedAlias
         cy.get<MountResponse<unknown>>('@angular').then((angular) => {
           const tabsElement = angular.fixture.debugElement.query(
             By.css('app-tabs'),
