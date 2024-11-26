@@ -19,29 +19,21 @@
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      @if (!_item.freelance) {
+      @if (_item.freelance) {
+        <app-attribute
+          [symbol]="MaterialSymbol.Work"
+          [appTestId]="Attribute.Freelance"
+        >
+          Freelance
+        </app-attribute>
+      } @else {
         <app-attribute
           [symbol]="MaterialSymbol.Badge"
           [appTestId]="Attribute.Employee"
         >
           Employee
         </app-attribute>
-      } @else {
-        <app-attribute
-          [symbol]="MaterialSymbol.Work"
-          [appTestId]="Attribute.Freelance"
-        >
-          Freelance
-        </app-attribute>
       }
-      <ng-template #freelance>
-        <app-attribute
-          [symbol]="MaterialSymbol.Work"
-          [appTestId]="Attribute.Freelance"
-        >
-          Freelance
-        </app-attribute>
-      </ng-template>
       @if (_item.internship) {
         <app-attribute
           [symbol]="MaterialSymbol.School"
