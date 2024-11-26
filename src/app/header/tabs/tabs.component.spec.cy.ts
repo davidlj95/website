@@ -138,8 +138,7 @@ describe('TabsComponent', () => {
       describe('when tapping previous paginator', () => {
         beforeEach(() => {
           cy.get(PREV_BUTTON_SELECTOR).should('be.enabled')
-          //👇 Why click needs to be forced? No idea 🙃
-          cy.get(PREV_BUTTON_SELECTOR).click({ force: true })
+          cy.get(PREV_BUTTON_SELECTOR).click()
         })
 
         it('should scroll a bit to see previous tabs', () => {
