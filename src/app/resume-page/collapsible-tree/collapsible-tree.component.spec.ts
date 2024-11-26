@@ -21,6 +21,7 @@ import {
 import { Component, Input } from '@angular/core'
 import { EmptyComponent } from '@/test/helpers/empty-component'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('CollapsibleTreeComponent', () => {
   let component: CollapsibleTreeComponent
@@ -83,9 +84,7 @@ describe('CollapsibleTreeComponent', () => {
 
       expect(nodeDataElement).not.toBeNull()
 
-      expect(nodeDataElement.nativeElement.textContent.trim()).toEqual(
-        DUMMY_COMPONENT_CONTENTS,
-      )
+      expect(textContent(nodeDataElement)).toEqual(DUMMY_COMPONENT_CONTENTS)
     })
   })
 
@@ -242,7 +241,7 @@ describe('CollapsibleTreeComponent', () => {
             const caretElement = fixture.debugElement.query(CARET_PREDICATE)
 
             expect(caretElement).not.toBeNull()
-            expect(caretElement.nativeElement.textContent.trim()).toEqual(
+            expect(textContent(caretElement)).toEqual(
               component[testCase.iconProperty],
             )
 

@@ -15,6 +15,7 @@ import { tickToFinishAnimation } from '@/test/helpers/tick-to-finish-animation'
 import { MockProvider } from 'ng-mocks'
 import { SCROLL_INTO_VIEW } from '@/common/scroll-into-view'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ChippedContentComponent', () => {
   let fixture: ComponentFixture<ChippedContentComponent>
@@ -46,7 +47,7 @@ describe('ChippedContentComponent', () => {
         .withContext(`chip ${index} is unselected`)
         .toBeFalse()
 
-      expect(chipElement.nativeElement.textContent.trim())
+      expect(textContent(chipElement))
         .withContext(`chip ${index} display name`)
         .toEqual(content.displayName)
     })
@@ -63,7 +64,7 @@ describe('ChippedContentComponent', () => {
 
     expect(firstComponentElement).toBeTruthy()
 
-    expect(firstComponentElement.nativeElement.textContent.trim()).toEqual(
+    expect(textContent(firstComponentElement)).toEqual(
       FIRST_CONTENT.inputs!['data'],
     )
     expectIsNotInLayout(contentElement.nativeElement)

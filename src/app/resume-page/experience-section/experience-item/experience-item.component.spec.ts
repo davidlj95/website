@@ -25,6 +25,7 @@ import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -83,7 +84,7 @@ describe('ExperienceItem', () => {
 
       const titleElement = fixture.debugElement.query(byTestId('company-name'))
 
-      expect(titleElement.nativeElement.textContent.trim()).toEqual(name)
+      expect(textContent(titleElement)).toEqual(name)
     })
   })
 
@@ -97,7 +98,7 @@ describe('ExperienceItem', () => {
       const positionElement = fixture.debugElement.query(byTestId('position'))
 
       expect(positionElement).toBeTruthy()
-      expect(positionElement.nativeElement.textContent.trim()).toEqual(position)
+      expect(textContent(positionElement)).toEqual(position)
     })
   })
 

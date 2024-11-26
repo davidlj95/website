@@ -15,6 +15,7 @@ import { LanguageTagComponent } from './language-tag/language-tag.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { TestIdDirective } from '@/common/test-id.directive'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('LanguageItemComponent', () => {
   let component: LanguageItemComponent
@@ -37,7 +38,7 @@ describe('LanguageItemComponent', () => {
 
     const nameElement = fixture.debugElement.query(byTestId('name'))
 
-    expect(nameElement.nativeElement.textContent.trim()).toEqual(name)
+    expect(textContent(nameElement)).toEqual(name)
   })
 
   it('should display fluency', () => {
@@ -47,7 +48,7 @@ describe('LanguageItemComponent', () => {
 
     const fluencyElement = fixture.debugElement.query(byTestId('fluency'))
 
-    expect(fluencyElement.nativeElement.textContent.trim()).toEqual(fluency)
+    expect(textContent(fluencyElement)).toEqual(fluency)
   })
 
   const COMMENT_ELEMENT_SELECTOR = byTestId('comment')
@@ -64,7 +65,7 @@ describe('LanguageItemComponent', () => {
         COMMENT_ELEMENT_SELECTOR,
       )
 
-      expect(commentElement.nativeElement.textContent.trim()).toEqual(comment)
+      expect(textContent(commentElement)).toEqual(comment)
     })
   })
 

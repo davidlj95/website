@@ -10,6 +10,7 @@ import { ATTRIBUTE_ARIA_LABEL } from '@/test/helpers/aria'
 import { JSON_RESUME_BASICS, JsonResumeBasics } from '../json-resume-basics'
 import { NgIcon } from '@ng-icons/core'
 import { NgForOf } from '@angular/common'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ProfileContactsComponent', () => {
   let component: ProfileContactsComponent
@@ -33,7 +34,7 @@ describe('ProfileContactsComponent', () => {
       By.css(`a[href="mailto:${email}"]`),
     )
 
-    expect(anchorElement.nativeElement.textContent.trim()).toEqual(Email)
+    expect(textContent(anchorElement)).toEqual(Email)
     expect(anchorElement.attributes[ATTRIBUTE_ARIA_LABEL]).toEqual('Email')
   })
 
@@ -48,7 +49,7 @@ describe('ProfileContactsComponent', () => {
       By.css(`a[href="tel:${phone}"]`),
     )
 
-    expect(anchorElement.nativeElement.textContent.trim()).toEqual(Call)
+    expect(textContent(anchorElement)).toEqual(Call)
     expect(anchorElement.attributes[ATTRIBUTE_ARIA_LABEL]).toEqual('Phone')
   })
 
@@ -70,7 +71,7 @@ describe('ProfileContactsComponent', () => {
       By.css(`a[href="${mapsUrl}"]`),
     )
 
-    expect(anchorElement.nativeElement.textContent.trim()).toEqual(MyLocation)
+    expect(textContent(anchorElement)).toEqual(MyLocation)
     expect(anchorElement.attributes[ATTRIBUTE_ARIA_LABEL]).toEqual('Location')
   })
 

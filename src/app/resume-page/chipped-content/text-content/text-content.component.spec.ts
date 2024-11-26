@@ -2,6 +2,7 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { TextContentComponent } from './text-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('TextContentComponent', () => {
   let component: TextContentComponent
@@ -21,8 +22,6 @@ describe('TextContentComponent', () => {
     component.text = 'dummy text'
     fixture.detectChanges()
 
-    expect(fixture.debugElement.nativeElement.textContent.trim()).toEqual(
-      component.text,
-    )
+    expect(textContent(fixture.debugElement)).toEqual(component.text)
   })
 })

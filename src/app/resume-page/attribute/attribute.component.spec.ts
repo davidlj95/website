@@ -3,6 +3,7 @@ import { MATERIAL_SYMBOLS_SELECTOR } from '@/test/helpers/material-symbols'
 import { By } from '@angular/platform-browser'
 import { shouldProjectContent } from '@/test/helpers/component-testers'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('AttributeComponent', () => {
   const symbol = 'some symbol'
@@ -27,7 +28,7 @@ describe('AttributeComponent', () => {
     const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
 
     expect(iconElement).toBeTruthy()
-    expect(iconElement.nativeElement.textContent.trim()).toEqual(symbol)
+    expect(textContent(iconElement)).toEqual(symbol)
   })
 
   it('should be ARIA accessible: icon is described by tooltip', () => {

@@ -10,6 +10,7 @@ import { provideRouter, Route, RouterLink, Routes } from '@angular/router'
 import { EmptyComponent } from '@/test/helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('NavigationTabsComponent', () => {
   const FOO_ROUTE = { path: 'foo', component: EmptyComponent } satisfies Route
@@ -46,9 +47,7 @@ describe('NavigationTabsComponent', () => {
     tabElements.forEach((tabElement, i) => {
       const item = ITEMS[i]
 
-      expect(tabElement.nativeElement.textContent.trim()).toEqual(
-        item.displayName,
-      )
+      expect(textContent(tabElement)).toEqual(item.displayName)
 
       expect(tabElement.injector.get(RouterLink).urlTree?.toString()).toBe(
         '/' + item.routerLink,
@@ -68,10 +67,7 @@ describe('NavigationTabsComponent', () => {
 
     const fooTabElement = fixture.debugElement
       .queryAll(byComponent(TabComponent))
-      .find(
-        (element) =>
-          element.nativeElement.textContent.trim() === FOO_ITEM.displayName,
-      )
+      .find((element) => textContent(element) === FOO_ITEM.displayName)
 
     expect(fooTabElement).not.toBeNull()
     expect(
@@ -80,10 +76,7 @@ describe('NavigationTabsComponent', () => {
 
     const barTabElement = fixture.debugElement
       .queryAll(byComponent(TabComponent))
-      .find(
-        (element) =>
-          element.nativeElement.textContent.trim() === BAR_ITEM.displayName,
-      )
+      .find((element) => textContent(element) === BAR_ITEM.displayName)
 
     expect(barTabElement).not.toBeNull()
 

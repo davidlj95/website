@@ -3,6 +3,7 @@ import { ComponentFixture } from '@angular/core/testing'
 import { LanguageTagComponent } from './language-tag.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { By } from '@angular/platform-browser'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('LanguageTagComponent', () => {
   let component: LanguageTagComponent
@@ -22,7 +23,7 @@ describe('LanguageTagComponent', () => {
     component.tag = tag
     fixture.detectChanges()
 
-    expect(fixture.debugElement.nativeElement.textContent.trim()).toContain(tag)
+    expect(textContent(fixture.debugElement)).toContain(tag)
   })
 
   it('should link tag to ISO page', () => {
