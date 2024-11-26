@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core'
 import { TechnologyItem } from '../../../technology/technology-item'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
-import { NgForOf } from '@angular/common'
+
 import { TechnologyComponent } from '../../../technology/technology.component'
 
 @Component({
@@ -10,7 +10,6 @@ import { TechnologyComponent } from '../../../technology/technology.component'
   imports: [
     ContentChipComponent,
     ContentChipListComponent,
-    NgForOf,
     TechnologyComponent,
   ],
   templateUrl: './experience-item-tech.component.html',

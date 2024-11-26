@@ -1,7 +1,6 @@
 <app-section-title><h2 id="education">Education</h2></app-section-title>
 <app-card-grid>
-  <app-education-item
-    *ngFor="let item of items"
-    [item]="item"
-  ></app-education-item>
+  @for (item of items; track item) {
+    <app-education-item [item]="item"></app-education-item>
+  }
 </app-card-grid>

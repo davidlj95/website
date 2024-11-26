@@ -4,7 +4,6 @@ import { Attribute, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
-import { NgIf } from '@angular/common'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
@@ -162,7 +161,6 @@ function makeSut() {
   return componentTestSetup(EducationItemComponent, {
     imports: [
       EducationItemComponent,
-      NgIf,
       TestIdDirective,
       LinkComponent,
       MockComponents(

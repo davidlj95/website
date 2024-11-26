@@ -7,7 +7,6 @@ import { makeTechnologyItem } from '../../../technology/__tests__/make-technolog
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
 import { MockComponents } from 'ng-mocks'
-import { NgForOf } from '@angular/common'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 
 describe('ProjectItemTechnologiesComponent', () => {
@@ -38,7 +37,6 @@ function makeSut() {
   return componentTestSetup(ProjectItemTechnologiesComponent, {
     imports: [
       ProjectItemTechnologiesComponent,
-      NgForOf,
       MockComponents(
         TechnologyComponent,
         ContentChipListComponent,

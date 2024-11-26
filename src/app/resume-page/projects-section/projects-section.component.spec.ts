@@ -6,7 +6,6 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
 import { ProjectItemComponent } from './project-item/project-item.component'
-import { NgFor } from '@angular/common'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProjectItem } from './__tests__/make-project-item'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
@@ -45,7 +44,6 @@ const makeSut = (opts: { getProjectItems?: GetProjectItems } = {}) =>
   componentTestSetup(ProjectsSectionComponent, {
     imports: [
       ProjectsSectionComponent,
-      NgFor,
       CardGridComponent,
       MockComponents(SectionTitleComponent, ProjectItemComponent),
     ],

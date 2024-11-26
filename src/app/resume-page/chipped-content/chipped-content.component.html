@@ -1,11 +1,12 @@
 <div class="chips">
-  <app-chip
-    *ngFor="let content of contents; let i = index"
-    [selected]="_active && _activeIndex === i"
-    (selectedChange)="onSelect(i)"
-  >
-    {{ content.displayName }}
-  </app-chip>
+  @for (content of contents; track content; let i = $index) {
+    <app-chip
+      [selected]="_active && _activeIndex === i"
+      (selectedChange)="onSelect(i)"
+    >
+      {{ content.displayName }}
+    </app-chip>
+  }
 </div>
 <div
   class="content"

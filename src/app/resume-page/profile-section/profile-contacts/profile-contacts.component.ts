@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core'
 import { Call, Email, MyLocation } from '@/data/material-symbols'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
-import { NgFor } from '@angular/common'
+
 import { JSON_RESUME_BASICS, JsonResumeBasics } from '../json-resume-basics'
 import {
   faBrandGithub,
@@ -28,7 +28,7 @@ const ngIcons: NgIcons = [...ngIconsByName.values()].reduce<NgIcons>(
   selector: 'app-profile-contacts',
   templateUrl: './profile-contacts.component.html',
   styleUrls: ['./profile-contacts.component.scss'],
-  imports: [NgFor, MaterialSymbolDirective, NgIcon],
+  imports: [MaterialSymbolDirective, NgIcon],
   providers: [provideIcons(ngIcons)],
 })
 export class ProfileContactsComponent {

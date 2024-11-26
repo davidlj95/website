@@ -61,7 +61,7 @@ function makeHostComponent(
     imports: [LinkComponent],
   })
   class TestHostComponent {
-    public readonly href = href
+    public href = href
   }
   return TestHostComponent
 }

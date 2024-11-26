@@ -2,8 +2,7 @@
   ><h2 id="experience">Professional experience</h2></app-section-title
 >
 <app-card-grid>
-  <app-experience-item
-    *ngFor="let item of items"
-    [item]="item"
-  ></app-experience-item>
+  @for (item of items; track item) {
+    <app-experience-item [item]="item"></app-experience-item>
+  }
 </app-card-grid>

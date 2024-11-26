@@ -1,35 +1,36 @@
 <app-card>
   <app-card-header>
-    <app-link
-      *ngIf="_item.imageSrc"
-      [href]="_item.website?.toString()"
-      appTestId="image"
-    >
-      <app-card-header-image
-        [src]="_item.imageSrc"
-        [alt]="_item.name + ' logo'"
-      ></app-card-header-image>
-    </app-link>
+    @if (_item.imageSrc) {
+      <app-link [href]="_item.website?.toString()" appTestId="image">
+        <app-card-header-image
+          [src]="_item.imageSrc"
+          [alt]="_item.name + ' logo'"
+        ></app-card-header-image>
+      </app-link>
+    }
     <app-card-header-texts>
       <app-card-header-title appTestId="name">
         {{ _item.name }}
       </app-card-header-title>
-      <app-card-header-subtitle *ngIf="_item.roles.length" appTestId="role">
-        <!-- TODO: display all roles, for current case just 1 is enough -->
-        {{ _item.roles[0] }}
-      </app-card-header-subtitle>
+      @if (_item.roles.length) {
+        <app-card-header-subtitle appTestId="role">
+          <!-- TODO: display all roles, for current case just 1 is enough -->
+          {{ _item.roles[0] }}
+        </app-card-header-subtitle>
+      }
       <app-card-header-detail>
         <app-date-range [range]="_item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      <app-attribute
-        *ngIf="_item.stack"
-        [symbol]="StackContent[_item.stack].materialSymbol"
-        [appTestId]="Attribute.Stack"
-      >
-        {{ StackContent[_item.stack].displayName }}
-      </app-attribute>
+      @if (_item.stack) {
+        <app-attribute
+          [symbol]="StackContent[_item.stack].materialSymbol"
+          [appTestId]="Attribute.Stack"
+        >
+          {{ StackContent[_item.stack].displayName }}
+        </app-attribute>
+      }
     </app-card-header-attributes>
   </app-card-header>
   <app-chipped-content [contents]="_contents"></app-chipped-content>

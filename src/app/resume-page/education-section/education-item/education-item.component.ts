@@ -4,7 +4,7 @@ import { SocialLeaderboard } from '@/data/material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
-import { NgIf } from '@angular/common'
+
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
@@ -33,7 +33,6 @@ import { educationItemToContents } from './education-item-to-contents'
     CardHeaderDetailComponent,
     DateRangeComponent,
     CardHeaderAttributesComponent,
-    NgIf,
     AttributeComponent,
     ChippedContentComponent,
   ],

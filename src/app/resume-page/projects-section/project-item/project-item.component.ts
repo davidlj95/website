@@ -13,7 +13,7 @@ import { CardHeaderTextsComponent } from '../../card/card-header/card-header-tex
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
-import { NgIf } from '@angular/common'
+
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
 import { projectItemToContents } from './project-item-to-contents'
@@ -24,7 +24,6 @@ import { projectItemToContents } from './project-item-to-contents'
   imports: [
     CardComponent,
     CardHeaderComponent,
-    NgIf,
     LinkComponent,
     TestIdDirective,
     CardHeaderImageComponent,

@@ -3,7 +3,7 @@ import { ExperienceItem } from './experience-item'
 import { Badge, More, School, ToolsLadder, Work } from '@/data/material-symbols'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
-import { NgIf } from '@angular/common'
+
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
@@ -33,7 +33,6 @@ import { experienceItemToContents } from './experience-item-to-contents'
     CardHeaderDetailComponent,
     DateRangeComponent,
     CardHeaderAttributesComponent,
-    NgIf,
     AttributeComponent,
     ChippedContentComponent,
   ],

@@ -22,7 +22,6 @@ import { DateRange } from '../../date-range/date-range'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
-import { NgIf } from '@angular/common'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProjectItem } from '../__tests__/make-project-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
@@ -172,7 +171,6 @@ function makeSut() {
   return componentTestSetup(ProjectItemComponent, {
     imports: [
       ProjectItemComponent,
-      NgIf,
       TestIdDirective,
       LinkComponent,
       MockComponents(

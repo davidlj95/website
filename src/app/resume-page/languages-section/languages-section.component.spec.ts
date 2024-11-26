@@ -3,7 +3,6 @@ import { byComponent } from '@/test/helpers/component-query-predicates'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { NgFor } from '@angular/common'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { makeLanguageItem } from './language-item/__tests__/make-language-item'
 import { GET_LANGUAGE_ITEMS, GetLanguageItems } from './get-language-items'
@@ -42,7 +41,6 @@ function makeSut(opts: { getLanguageItems?: GetLanguageItems } = {}) {
     imports: [
       CardGridComponent,
       LanguagesSectionComponent,
-      NgFor,
       MockComponents(SectionTitleComponent, LanguageItemComponent),
     ],
     providers: [

@@ -2,7 +2,6 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { LanguageItemComponent } from './language-item.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { NgIf } from '@angular/common'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
@@ -98,7 +97,6 @@ function makeSut() {
   return componentTestSetup(LanguageItemComponent, {
     imports: [
       LanguageItemComponent,
-      NgIf,
       TestIdDirective,
       MockComponents(
         CardComponent,

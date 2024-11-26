@@ -1,8 +1,9 @@
 <span class="start">{{ range.start | date: 'MMM yyyy' }}</span>
 <span class="separator"> → </span>
 <span class="end">
-  <ng-container *ngIf="range.end; else present">
+  @if (range.end) {
     {{ range.end | date: 'MMM yyyy' }}
-  </ng-container>
-  <ng-template #present>Present</ng-template>
+  } @else {
+    Present
+  }
 </span>

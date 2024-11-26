@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { NgForOf } from '@angular/common'
+
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { TechnologyItem } from '../../../technology/technology-item'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
@@ -8,7 +8,6 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
 @Component({
   selector: 'app-project-item-technologies',
   imports: [
-    NgForOf,
     TechnologyComponent,
     ContentChipListComponent,
     ContentChipComponent,

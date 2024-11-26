@@ -6,7 +6,6 @@ import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
-import { NgForOf } from '@angular/common'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeEducationItem } from './education-item/__tests__/make-education-item'
 import { CardGridComponent } from '../card-grid/card-grid.component'
@@ -42,7 +41,6 @@ function makeSut(opts: { getEducationItems?: GetEducationItems } = {}) {
   return componentTestSetup(EducationSectionComponent, {
     imports: [
       EducationSectionComponent,
-      NgForOf,
       MockComponents(
         SectionTitleComponent,
         EducationItemComponent,
