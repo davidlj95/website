@@ -175,7 +175,6 @@ describe('ChippedContentComponent', () => {
 @Component({
   selector: 'app-foo',
   template: `{{ data }}`,
-  standalone: false,
 })
 class FooComponent {
   @Input() public data?: string
@@ -183,7 +182,6 @@ class FooComponent {
 @Component({
   selector: 'app-bar',
   template: `{{ data }}`,
-  standalone: false,
 })
 class BarComponent {
   @Input() public data?: string
