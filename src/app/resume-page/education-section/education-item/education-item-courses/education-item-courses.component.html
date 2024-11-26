@@ -1,5 +1,5 @@
 <app-content-chip-list>
-  <app-content-chip *ngFor="let course of courses">{{
-    course
-  }}</app-content-chip>
+  @for (course of courses; track course) {
+    <app-content-chip>{{ course }}</app-content-chip>
+  }
 </app-content-chip-list>

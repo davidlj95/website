@@ -22,13 +22,14 @@
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      <app-attribute
-        *ngIf="_item.cumLaude"
-        [symbol]="MaterialSymbol.SocialLeaderboard"
-        [appTestId]="Attribute.CumLaude"
-      >
-        Cum laude
-      </app-attribute>
+      @if (_item.cumLaude) {
+        <app-attribute
+          [symbol]="MaterialSymbol.SocialLeaderboard"
+          [appTestId]="Attribute.CumLaude"
+        >
+          Cum laude
+        </app-attribute>
+      }
     </app-card-header-attributes>
   </app-card-header>
   <app-chipped-content [contents]="_contents"></app-chipped-content>
