@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common'
 import { Component } from '@angular/core'
 import { MockProvider } from 'ng-mocks'
 import { IS_MOBILE } from '@/common/is-mobile'
-import AngularJson from '../../angular.json'
+import AngularJson from '../../../angular.json'
 
 describe('maybeLoadConsoleEasterEgg', () => {
   it('should asynchronously load the script when not using a mobile device', () => {

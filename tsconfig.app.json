@@ -9,7 +9,7 @@
     "src/main.ts",
     "src/main.server.ts",
     "src/server.ts",
-    "src/app/console-easter-egg.ts"
+    "src/app/console-easter-egg/console-easter-egg.ts"
   ],
   "include": ["src/**/*.d.ts"]
 }

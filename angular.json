@@ -46,7 +46,7 @@
             },
             "scripts": [
               {
-                "input": "src/app/console-easter-egg.js",
+                "input": "src/app/console-easter-egg/console-easter-egg.js",
                 "bundleName": "console-easter-egg",
                 "inject": false
               }
