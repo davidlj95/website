@@ -44,7 +44,6 @@ const makeSut = ({ isMobile }: { isMobile: boolean }) => {
 
   @Component({
     template: '',
-    standalone: false,
   })
   class ExampleComponent {
     constructor() {
