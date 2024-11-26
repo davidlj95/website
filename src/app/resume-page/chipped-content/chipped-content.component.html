@@ -1,5 +1,5 @@
 <div class="chips">
-  @for (content of contents(); track content; let i = $index) {
+  @for (content of contents; track content; let i = $index) {
     <app-chip
       [selected]="_active && _activeIndex === i"
       (selectedChange)="onSelect(i)"
@@ -15,7 +15,7 @@
   #contentElement
 >
   <ng-container
-    [ngComponentOutlet]="contents()[_activeIndex].component"
-    [ngComponentOutletInputs]="contents()[_activeIndex].inputs"
+    [ngComponentOutlet]="contents[_activeIndex].component"
+    [ngComponentOutletInputs]="contents[_activeIndex].inputs"
   ></ng-container>
 </div>

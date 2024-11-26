@@ -114,6 +114,6 @@ function setLanguageItem(
   fixture: ComponentFixture<LanguageItemComponent>,
   overrides?: Partial<LanguageItem>,
 ) {
-  fixture.componentInstance.item = makeLanguageItem(overrides)
+  fixture.componentRef.setInput('item', makeLanguageItem(overrides))
   fixture.detectChanges()
 }

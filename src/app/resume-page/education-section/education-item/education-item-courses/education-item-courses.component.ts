@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
@@ -9,5 +9,5 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
   imports: [ContentChipListComponent, ContentChipComponent],
 })
 export class EducationItemCoursesComponent {
-  readonly courses = input.required<readonly string[]>()
+  @Input({ required: true }) courses!: readonly string[]
 }

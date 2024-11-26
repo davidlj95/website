@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { TechnologyItem } from '../../../technology/technology-item'
@@ -15,5 +15,5 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
   templateUrl: './project-item-technologies.component.html',
 })
 export class ProjectItemTechnologiesComponent {
-  public readonly items = input.required<readonly TechnologyItem[]>()
+  @Input({ required: true }) public items!: readonly TechnologyItem[]
 }

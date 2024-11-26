@@ -1,6 +1,6 @@
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
 import { ChippedContentComponent } from './chipped-content.component'
-import { Component, DebugElement, input } from '@angular/core'
+import { Component, DebugElement, Input } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
 import {
@@ -175,17 +175,17 @@ describe('ChippedContentComponent', () => {
 })
 @Component({
   selector: 'app-foo',
-  template: `{{ data() }}`,
+  template: `{{ data }}`,
 })
 class FooComponent {
-  public readonly data = input<string>()
+  @Input() public data?: string
 }
 @Component({
   selector: 'app-bar',
-  template: `{{ data() }}`,
+  template: `{{ data }}`,
 })
 class BarComponent {
-  public readonly data = input<string>()
+  @Input() public data?: string
 }
 
 const FOO_CONTENT = new ChippedContent({

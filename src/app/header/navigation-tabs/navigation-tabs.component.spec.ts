@@ -33,8 +33,8 @@ describe('NavigationTabsComponent', () => {
   })
 
   it('should display all items as tabs with their route links', () => {
-    const [fixture, component] = makeSut()
-    component.items = ITEMS
+    const [fixture] = makeSut()
+    fixture.componentRef.setInput('items', ITEMS)
     fixture.detectChanges()
 
     const tabsElement = fixture.debugElement.query(byComponent(TabsComponent))
@@ -56,8 +56,8 @@ describe('NavigationTabsComponent', () => {
   })
 
   it('should mark only active page tab as selected', async () => {
-    const [fixture, component] = makeSut()
-    component.items = ITEMS
+    const [fixture] = makeSut()
+    fixture.componentRef.setInput('items', ITEMS)
     fixture.detectChanges()
 
     await fixture.ngZone?.run(
@@ -71,7 +71,7 @@ describe('NavigationTabsComponent', () => {
 
     expect(fooTabElement).not.toBeNull()
     expect(
-      getComponentInstance(fooTabElement!, TabComponent).selected(),
+      getComponentInstance(fooTabElement!, TabComponent).selected,
     ).toBeTrue()
 
     const barTabElement = fixture.debugElement
@@ -81,7 +81,7 @@ describe('NavigationTabsComponent', () => {
     expect(barTabElement).not.toBeNull()
 
     expect(
-      getComponentInstance(barTabElement!, TabComponent).selected(),
+      getComponentInstance(barTabElement!, TabComponent).selected,
     ).toBeFalse()
   })
 

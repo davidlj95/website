@@ -4,7 +4,7 @@
 </p>
 <br />
 <app-content-chip-list>
-  @for (item of technologies(); track item) {
+  @for (item of technologies; track item) {
     <app-content-chip>
       <app-technology [item]="item"></app-technology>
     </app-content-chip>

@@ -18,7 +18,7 @@ import {
   CollapsibleTreeNode,
   CollapsibleTreeNodeData,
 } from './collapsible-tree-node'
-import { Component, input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { EmptyComponent } from '@/test/helpers/empty-component'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { textContent } from '@/test/helpers/text-content'
@@ -55,11 +55,11 @@ describe('CollapsibleTreeComponent', () => {
     const DUMMY_COMPONENT_CONTENTS = 'dummy contents'
     @Component({
       standalone: true,
-      template: '{{ contents() }}',
+      template: '{{ contents }}',
       selector: 'app-dummy-component',
     })
     class DummyComponent {
-      readonly contents = input.required<string>()
+      @Input({ required: true }) contents!: string
     }
 
     beforeEach(() => {
@@ -132,7 +132,7 @@ describe('CollapsibleTreeComponent', () => {
         expect(itemElement).not.toBeNull()
 
         expect(
-          getComponentInstance(itemElement, CollapsibleTreeComponent).depth(),
+          getComponentInstance(itemElement, CollapsibleTreeComponent).depth,
         ).toBe(DUMMY_DEPTH + 1)
       }
     })
@@ -178,7 +178,7 @@ describe('CollapsibleTreeComponent', () => {
         })
 
         it('should be collapsed', () => {
-          expect(component.isExpanded()).toBeFalse()
+          expect(component.isExpanded).toBeFalse()
         })
       })
 
@@ -234,7 +234,7 @@ describe('CollapsibleTreeComponent', () => {
 
             fixture.detectChanges()
 
-            expect(component.isExpanded()).toEqual(!testCase.isExpanded)
+            expect(component.isExpanded).toEqual(!testCase.isExpanded)
           })
 
           it('should render caret with proper icon and hidden from screen readers', () => {

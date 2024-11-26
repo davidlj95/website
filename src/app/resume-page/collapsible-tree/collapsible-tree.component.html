@@ -1,14 +1,14 @@
-@if (node().data) {
+@if (node.data) {
   @if (isCollapsible) {
     <button
       type="button"
       class="data"
-      [attr.aria-expanded]="isExpanded()"
+      [attr.aria-expanded]="isExpanded"
       [attr.aria-controls]="childListId"
-      (click)="isExpanded() ? this.collapse() : this.expand()"
+      (click)="isExpanded ? this.collapse() : this.expand()"
     >
       <span class="caret" aria-hidden="true">
-        {{ isExpanded() ? expandedIcon() : collapsedIcon() }}
+        {{ isExpanded ? expandedIcon : collapsedIcon }}
       </span>
       <ng-container [ngTemplateOutlet]="data"></ng-container>
     </button>
@@ -19,21 +19,18 @@
   }
   <ng-template #data>
     <ng-container
-      *ngComponentOutlet="
-        node().data.component;
-        inputs: node().data.options.inputs
-      "
+      *ngComponentOutlet="node.data.component; inputs: node.data.options.inputs"
     ></ng-container>
   </ng-template>
 }
-@if (node().children.length) {
-  <ul [attr.id]="childListId" [@expanded]="!isCollapsible || isExpanded()">
-    @for (child of node().children; track child) {
+@if (node.children.length) {
+  <ul [attr.id]="childListId" [@expanded]="!isCollapsible || isExpanded">
+    @for (child of node.children; track child) {
       <li>
         <app-collapsible-tree
           [node]="child"
-          [isCollapsibleFn]="isCollapsibleFn()"
-          [depth]="depth() + 1"
+          [isCollapsibleFn]="isCollapsibleFn"
+          [depth]="depth + 1"
           [parent]="this"
         >
         </app-collapsible-tree>

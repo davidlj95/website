@@ -20,7 +20,7 @@ describe('DateRangeComponent', () => {
   })
 
   function setRangeAndDetectChanges(range: DateRange) {
-    component.range = range
+    fixture.componentRef.setInput('range', range)
     fixture.detectChanges()
   }
 

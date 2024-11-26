@@ -2,8 +2,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  input,
-  viewChildren,
+  Input,
+  QueryList,
+  ViewChildren,
 } from '@angular/core'
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
 import {
@@ -46,33 +47,31 @@ let nextId = 0
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CollapsibleTreeComponent {
-  public readonly node = input.required<CollapsibleTreeNode>()
-  public readonly depth = input(0)
-  public readonly parent = input<CollapsibleTreeComponent>()
-  public readonly collapsedIcon = input<string>(
-    this.parent?.collapsedIcon ?? '▶',
-  )
-  public readonly expandedIcon = input<string>(this.parent?.expandedIcon ?? '▼')
-  public readonly isCollapsibleFn = input<IsCollapsibleFn | undefined>(
-    this.parent?.isCollapsibleFn,
-  )
-  public readonly isExpanded = input(false)
+  @Input({ required: true }) public node!: CollapsibleTreeNode
+  @Input() public depth = 0
+  @Input() public parent?: CollapsibleTreeComponent
+  @Input() public collapsedIcon: string = this.parent?.collapsedIcon ?? '▶'
+  @Input() public expandedIcon: string = this.parent?.expandedIcon ?? '▼'
+  @Input() public isCollapsibleFn?: IsCollapsibleFn =
+    this.parent?.isCollapsibleFn
+  @Input()
+  public isExpanded = false
 
-  readonly children = viewChildren(CollapsibleTreeComponent)
+  @ViewChildren(CollapsibleTreeComponent)
+  private children!: QueryList<CollapsibleTreeComponent>
 
   private readonly _id = nextId++
 
   constructor(private readonly cdRef: ChangeDetectorRef) {}
 
   public get isCollapsible(): boolean {
-    if (!(this.node().children.length > 0)) {
+    if (!(this.node.children.length > 0)) {
       return false
     }
-    const isCollapsibleFn = this.isCollapsibleFn()
-    if (!isCollapsibleFn) {
+    if (!this.isCollapsibleFn) {
       return false
     }
-    return isCollapsibleFn(this)
+    return this.isCollapsibleFn(this)
   }
 
   public get childListId(): string | undefined {
@@ -83,23 +82,21 @@ export class CollapsibleTreeComponent {
   }
 
   collapse() {
-    if (this.isExpanded()) {
+    if (this.isExpanded) {
       this.isExpanded = false
       this.cdRef.markForCheck()
     }
   }
 
   expand() {
-    if (!this.isExpanded()) {
+    if (!this.isExpanded) {
       this.isExpanded = true
-      this.parent()?.collapseAllChildren({ except: this })
+      this.parent?.collapseAllChildren({ except: this })
     }
   }
 
   collapseAllChildren({ except }: { except?: CollapsibleTreeComponent } = {}) {
-    const childrenToCollapse = this.children().filter(
-      (child) => child !== except,
-    )
+    const childrenToCollapse = this.children.filter((child) => child !== except)
     for (const child of childrenToCollapse) {
       child.collapse()
     }

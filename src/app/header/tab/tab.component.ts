@@ -1,4 +1,4 @@
-import { Component, ElementRef, input } from '@angular/core'
+import { Component, ElementRef, Input } from '@angular/core'
 
 @Component({
   selector: 'app-tab',
@@ -7,12 +7,12 @@ import { Component, ElementRef, input } from '@angular/core'
   standalone: true,
   host: {
     role: 'tab',
-    '[attr.aria-selected]': 'selected()',
-    '[attr.tabindex]': 'selected() ? 0 : -1',
+    '[attr.aria-selected]': 'selected',
+    '[attr.tabindex]': 'selected ? 0 : -1',
   },
 })
 export class TabComponent {
-  readonly selected = input(false)
+  @Input() selected = false
 
   constructor(
     //👇 Useful for tabs group component to access the HTML native element

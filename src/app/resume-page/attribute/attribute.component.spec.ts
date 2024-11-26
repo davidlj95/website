@@ -10,7 +10,7 @@ describe('AttributeComponent', () => {
 
   function makeSut() {
     const [fixture, component] = componentTestSetup(AttributeComponent)
-    component.symbol = symbol
+    fixture.componentRef.setInput('symbol', symbol)
     fixture.detectChanges()
     return [fixture, component] as const
   }

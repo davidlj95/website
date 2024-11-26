@@ -1,9 +1,9 @@
-@if (line().data) {
+@if (line.data) {
   <span class="symbol" aria-hidden="true" appMaterialSymbol>{{
-    line().data.symbol
+    line.data.symbol
   }}</span>
   <span
     class="content"
-    [innerHtml]="_domSanitizer.bypassSecurityTrustHtml(line().data.html)"
+    [innerHtml]="_domSanitizer.bypassSecurityTrustHtml(line.data.html)"
   ></span>
 }
