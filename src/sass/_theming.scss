@@ -1,30 +1,31 @@
 @use 'themes/constants';
 @use 'sass:selector';
 @use 'helpers/root-attribute';
-@import 'helpers/scss-to-css-vars';
+@use 'sass:map';
+@use 'helpers/scss-to-css-vars';
 
 @mixin define-theme($theme) {
-  @each $scheme in map-get($theme, schemes) {
+  @each $scheme in map.get($theme, schemes) {
     // When more themes are added, here we can do different if theme is not the default
     @include define-default-color-scheme($theme, $scheme);
   }
 }
 
 @mixin define-default-color-scheme($theme, $scheme) {
-  $theme-slug: map-get($theme, slug);
+  $theme-slug: map.get($theme, slug);
   @if not $theme-slug or $theme-slug == '' {
     @error "Theme slug is missing";
   }
-  $scheme-kind: map-get($scheme, kind);
+  $scheme-kind: map.get($scheme, kind);
   @if not $scheme-kind or $scheme-kind == '' {
     @error "Scheme kind is missing";
   }
-  $vars: map-get($scheme, vars);
+  $vars: map.get($scheme, vars);
 
   @if $scheme-kind == constants.$common-color-scheme-kind {
     :root,
     :root[data-theme='#{$theme-slug}'] {
-      @include scss-vars-to-css-vars($vars);
+      @include scss-to-css-vars.scss-vars-to-css-vars($vars);
     }
   }
   @if $scheme-kind == constants.$light-color-scheme-kind {
@@ -32,18 +33,18 @@
     :root[data-theme='#{$theme-slug}'],
     :root[data-color-scheme='#{$scheme-kind}'],
     :root[data-theme='#{$theme-slug}'][data-color-scheme='#{$scheme-kind}'] {
-      @include scss-vars-to-css-vars($vars);
+      @include scss-to-css-vars.scss-vars-to-css-vars($vars);
     }
   } @else if $scheme-kind == constants.$dark-color-scheme-kind {
     @media (prefers-color-scheme: dark) {
       :root,
       :root[data-theme='#{$theme-slug}'] {
-        @include scss-vars-to-css-vars($vars);
+        @include scss-to-css-vars.scss-vars-to-css-vars($vars);
       }
     }
     :root[data-color-scheme='#{$scheme-kind}'],
     :root[data-theme='#{$theme-slug}'][data-color-scheme='#{$scheme-kind}'] {
-      @include scss-vars-to-css-vars($vars);
+      @include scss-to-css-vars.scss-vars-to-css-vars($vars);
     }
   }
 }

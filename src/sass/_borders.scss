@@ -1,13 +1,14 @@
+@use 'sass:list';
 $panel-width: 1px;
 $_panel-style: solid;
 $_panel-color: var(--sys-color-divider);
 $_panel-border-shorthand: $panel-width $_panel-style $_panel-color;
 
 @mixin panel($sides...) {
-  @if (length($sides) == 0) {
+  @if (list.length($sides) == 0) {
     border: $_panel-border-shorthand;
-  } @else if(length($sides) == 1) {
-    @include _panel-side(nth($sides, 1));
+  } @else if(list.length($sides) == 1) {
+    @include _panel-side(list.nth($sides, 1));
   } @else {
     border-color: $_panel-color;
     border-width: $panel-width;
@@ -19,7 +20,7 @@ $_panel-border-shorthand: $panel-width $_panel-style $_panel-color;
 
 $_border-sides: (top, bottom, left, right);
 @mixin _panel-side($side) {
-  @if index($_border-sides, $side) == null {
+  @if list.index($_border-sides, $side) == null {
     @error "Border side #{$side} is invalid";
   }
   border-#{$side}: $_panel-border-shorthand;

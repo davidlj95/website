@@ -1,7 +1,7 @@
-@import 'constants';
+@use 'constants';
 
-$devtools-light-scheme: (
-  kind: $light-color-scheme-kind,
+$scheme: (
+  kind: constants.$light-color-scheme-kind,
   vars: (
     app-color-toolbar-background: var(--sys-color-surface4),
     sys-color-on-surface: var(--ref-palette-neutral10),
