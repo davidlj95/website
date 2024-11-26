@@ -1,15 +1,15 @@
-@import 'devtools-common-scheme';
-@import 'devtools-light-scheme';
-@import 'devtools-dark-scheme';
-@import '../theming';
+@use 'devtools-common-scheme';
+@use 'devtools-light-scheme';
+@use 'devtools-dark-scheme';
+@use '../theming';
 
 $devtools-theme: (
   slug: 'devtools',
   schemes: (
-    $devtools-common-scheme,
-    $devtools-light-scheme,
-    $devtools-dark-scheme,
+    devtools-common-scheme.$scheme,
+    devtools-light-scheme.$scheme,
+    devtools-dark-scheme.$scheme,
   ),
 );
 
-@include define-theme($devtools-theme);
+@include theming.define-theme($devtools-theme);

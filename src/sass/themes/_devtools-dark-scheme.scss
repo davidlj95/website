@@ -1,7 +1,7 @@
-@import 'constants';
+@use 'constants';
 
-$devtools-dark-scheme: (
-  kind: $dark-color-scheme-kind,
+$scheme: (
+  kind: constants.$dark-color-scheme-kind,
   vars: (
     sys-color-base: var(--ref-palette-neutral25),
     app-color-toolbar-background: var(--sys-color-base),

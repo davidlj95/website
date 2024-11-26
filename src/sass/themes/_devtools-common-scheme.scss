@@ -1,7 +1,7 @@
-@import 'constants';
+@use 'constants';
 
-$devtools-common-scheme: (
-  kind: $common-color-scheme-kind,
+$scheme: (
+  kind: constants.$common-color-scheme-kind,
   vars: (
     // https://github.com/ChromeDevTools/devtools-frontend/blob/7500d2916c463c136fc5ce2547ceb469c61454b4/front_end/ui/legacy/tokens.css
     // Or locally by `devtools://theme/colors.css?sets=ui,chrome` (may change depending on current theme)
