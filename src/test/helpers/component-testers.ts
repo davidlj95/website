@@ -58,7 +58,6 @@ export function shouldProjectContent(
     const componentSelector = getComponentSelector(component)
     @Component({
       template: `<${componentSelector}>${contentToProject}</${componentSelector}>`,
-      standalone: true,
       imports: [component],
     })
     class HostComponent {}

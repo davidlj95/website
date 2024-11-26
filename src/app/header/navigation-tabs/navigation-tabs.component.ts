@@ -6,7 +6,6 @@ import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.compone
 
 @Component({
   selector: 'app-navigation-tabs',
-  standalone: true,
   imports: [
     TabsComponent,
     TabComponent,

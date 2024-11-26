@@ -6,7 +6,6 @@ import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
   selector: 'app-no-script',
   templateUrl: './no-script.component.html',
   styleUrls: ['./no-script.component.scss'],
-  standalone: true,
   imports: [MaterialSymbolDirective],
   host: { ngSkipHydration: 'true' },
 })

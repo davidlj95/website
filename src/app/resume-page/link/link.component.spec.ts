@@ -59,7 +59,6 @@ function makeHostComponent(
 ): Type<unknown> {
   @Component({
     template: `<app-link [href]="href">${textContent}</app-link>`,
-    standalone: true,
     imports: [LinkComponent],
   })
   class TestHostComponent {

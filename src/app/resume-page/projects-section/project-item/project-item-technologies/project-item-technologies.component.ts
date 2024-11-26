@@ -8,7 +8,6 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
 
 @Component({
   selector: 'app-project-item-technologies',
-  standalone: true,
   imports: [
     ChipComponent,
     NgForOf,

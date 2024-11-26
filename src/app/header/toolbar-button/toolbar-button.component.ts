@@ -4,7 +4,6 @@ import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-toolbar-button]',
-  standalone: true,
   imports: [MaterialSymbolDirective],
   templateUrl: './toolbar-button.component.html',
   styleUrl: './toolbar-button.component.scss',

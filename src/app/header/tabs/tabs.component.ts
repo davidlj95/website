@@ -22,7 +22,6 @@ import { TabComponent } from '../tab/tab.component'
 
 @Component({
   selector: 'app-tabs',
-  standalone: true,
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
   imports: [ToolbarButtonComponent],
@@ -112,20 +111,9 @@ export class TabsComponent implements OnDestroy {
 
   private _onTabsChanged() {
     const tabs = this._tabs()
-    if (!this._intersectionObserver || tabs.length === 0) {
-      if (isDevMode) {
-        console.log(
-          'TabsComponent: either intersection observer is not defined or no tabs present. Not updating tabs list',
-          { tabs, intersectionObserver: this._intersectionObserver },
-        )
-      }
-      return
-    }
     this._currentTabs = tabs
-    this._intersectionObserver.disconnect()
-    ;[this._firstTab, this._lastTab] = [tabs.at(0)!.elRef, tabs.at(-1)!.elRef]
-    this._intersectionObserver.observe(this._firstTab.nativeElement)
-    this._intersectionObserver.observe(this._lastTab.nativeElement)
+    ;[this._firstTab, this._lastTab] = [tabs.at(0)?.elRef, tabs.at(-1)?.elRef]
+    this._resetIntersectionObserverTargets()
   }
 
   private _setupIntersectionObserver() {
@@ -149,7 +137,17 @@ export class TabsComponent implements OnDestroy {
         threshold: [INTERSECTION_THRESHOLD],
       },
     )
+    this._resetIntersectionObserverTargets()
   }
+
+  private _resetIntersectionObserverTargets(): void {
+    if (this._intersectionObserver && this._firstTab && this._lastTab) {
+      this._intersectionObserver.disconnect()
+      this._intersectionObserver.observe(this._firstTab!.nativeElement)
+      this._intersectionObserver.observe(this._lastTab!.nativeElement)
+    }
+  }
+
   protected _scrollABit(scrollDirection: ScrollDirection) {
     const tabListContainer = this._tabList()?.nativeElement
     /* istanbul ignore next */

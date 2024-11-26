@@ -23,6 +23,8 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeExperienceItem } from './__tests__/make-experience-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
+import { LinkComponent } from '../../link/link.component'
+import { TestIdDirective } from '@/common/test-id.directive'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -210,6 +212,8 @@ function makeSut() {
     imports: [
       ExperienceItemComponent,
       NgIf,
+      LinkComponent,
+      TestIdDirective,
       MockComponents(
         CardComponent,
         DateRangeComponent,

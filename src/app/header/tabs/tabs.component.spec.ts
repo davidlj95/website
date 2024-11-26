@@ -96,7 +96,6 @@ const makeHostComponent = (
         }
       </app-tabs>
     `,
-    standalone: true,
     imports: [TabsComponent, TabComponent],
   })
   class HostComponent {

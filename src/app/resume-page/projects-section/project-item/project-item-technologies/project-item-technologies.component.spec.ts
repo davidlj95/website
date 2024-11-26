@@ -2,10 +2,13 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { ProjectItemTechnologiesComponent } from './project-item-technologies.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { MockComponent } from 'ng-mocks'
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { makeTechnologyItem } from '../../../technology/__tests__/make-technology-item'
 import { byComponent } from '@/test/helpers/component-query-predicates'
+import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
+import { MockComponents } from 'ng-mocks'
+import { NgForOf } from '@angular/common'
+import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 
 describe('ProjectItemTechnologiesComponent', () => {
   let component: ProjectItemTechnologiesComponent
@@ -35,7 +38,12 @@ function makeSut() {
   return componentTestSetup(ProjectItemTechnologiesComponent, {
     imports: [
       ProjectItemTechnologiesComponent,
-      MockComponent(TechnologyComponent),
+      NgForOf,
+      MockComponents(
+        TechnologyComponent,
+        ContentChipListComponent,
+        ContentChipComponent,
+      ),
     ],
   })
 }

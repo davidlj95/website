@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture } from '@angular/core/testing'
 import { MockComponents } from 'ng-mocks'
 import { shouldContainComponents } from '@/test/helpers/component-testers'
 import { ResumePageComponent } from './resume-page/resume-page.component'
@@ -6,21 +6,21 @@ import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
 import { NoScriptComponent } from './no-script/no-script.component'
 import { By } from '@angular/platform-browser'
+import { componentTestSetup } from '@/test/helpers/component-test-setup'
+import { RouterOutlet } from '@angular/router'
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>
   let component: AppComponent
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    ;[fixture, component] = componentTestSetup(AppComponent, {
       imports: [
         AppComponent,
         MockComponents(NoScriptComponent, HeaderComponent, ResumePageComponent),
+        RouterOutlet,
       ],
     })
-
-    fixture = TestBed.createComponent(AppComponent)
-    component = fixture.componentInstance
     fixture.detectChanges()
   })
 

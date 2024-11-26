@@ -7,7 +7,6 @@ import { NgOptimizedImage } from '@angular/common'
   selector: 'app-profile-picture',
   templateUrl: './profile-picture.component.html',
   styleUrls: ['./profile-picture.component.scss'],
-  standalone: true,
   imports: [NgOptimizedImage],
 })
 export class ProfilePictureComponent {

@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core'
 import { CardGridComponent } from '../card-grid/card-grid.component'
-import { ExperienceItemComponent } from '../experience-section/experience-item/experience-item.component'
 import { NgForOf } from '@angular/common'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { LanguageItem } from './language-item/language-item'
@@ -9,10 +8,8 @@ import { LanguageItemComponent } from './language-item/language-item.component'
 
 @Component({
   selector: 'app-languages-section',
-  standalone: true,
   imports: [
     CardGridComponent,
-    ExperienceItemComponent,
     NgForOf,
     SectionTitleComponent,
     LanguageItemComponent,

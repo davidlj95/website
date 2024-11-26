@@ -9,7 +9,6 @@ import { ToolbarDividerComponent } from './toolbar-divider/toolbar-divider.compo
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  standalone: true,
   imports: [
     NavigationTabsComponent,
     ToolbarComponent,

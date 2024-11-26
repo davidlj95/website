@@ -7,7 +7,6 @@ import { TechnologyComponent } from '../../../technology/technology.component'
 
 @Component({
   selector: 'app-experience-item-tech',
-  standalone: true,
   imports: [
     ContentChipComponent,
     ContentChipListComponent,

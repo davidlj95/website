@@ -9,7 +9,6 @@ import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
 @Component({
   selector: 'app-education-section',
   templateUrl: './education-section.component.html',
-  standalone: true,
   imports: [
     SectionTitleComponent,
     CardGridComponent,

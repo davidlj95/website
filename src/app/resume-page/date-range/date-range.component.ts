@@ -5,7 +5,6 @@ import { DatePipe, NgIf } from '@angular/common'
 @Component({
   selector: 'app-date-range',
   templateUrl: './date-range.component.html',
-  standalone: true,
   imports: [NgIf, DatePipe],
 })
 export class DateRangeComponent {

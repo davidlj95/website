@@ -1,5 +1,3 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-
 import { LanguagesSectionComponent } from './languages-section.component'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
@@ -10,22 +8,13 @@ import { MockComponents, MockProvider } from 'ng-mocks'
 import { makeLanguageItem } from './language-item/__tests__/make-language-item'
 import { GET_LANGUAGE_ITEMS, GetLanguageItems } from './get-language-items'
 import { LanguageItemComponent } from './language-item/language-item.component'
+import { CardGridComponent } from '../card-grid/card-grid.component'
 
 describe('LanguagesSectionComponent', () => {
-  let component: LanguagesSectionComponent
-  let fixture: ComponentFixture<LanguagesSectionComponent>
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [LanguagesSectionComponent],
-    }).compileComponents()
-
-    fixture = TestBed.createComponent(LanguagesSectionComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
-
   it('should create', () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_fixture, component] = makeSut()
+
     expect(component).toBeTruthy()
   })
 
@@ -35,7 +24,7 @@ describe('LanguagesSectionComponent', () => {
       .createSpy<GetLanguageItems>()
       .and.returnValue(languageItems)
 
-    ;[fixture, component] = makeSut({ getLanguageItems })
+    const [fixture] = makeSut({ getLanguageItems })
     fixture.detectChanges()
 
     const itemElements = fixture.debugElement.queryAll(
@@ -51,6 +40,7 @@ describe('LanguagesSectionComponent', () => {
 function makeSut(opts: { getLanguageItems?: GetLanguageItems } = {}) {
   return componentTestSetup(LanguagesSectionComponent, {
     imports: [
+      CardGridComponent,
       LanguagesSectionComponent,
       NgFor,
       MockComponents(SectionTitleComponent, LanguageItemComponent),

@@ -3,7 +3,10 @@ import { DateRange } from '../../../date-range/date-range'
 import { EducationItem } from '../education-item'
 import { makeItemFactory } from '@/test/helpers/make-item-factory'
 
-export const makeEducationItem = makeItemFactory(EducationItem, {
+export const makeEducationItem = makeItemFactory<
+  EducationItem,
+  ConstructorParameters<typeof EducationItem>[0]
+>(EducationItem, {
   institution: new Organization({
     name: 'Institution name',
     imageSrc: 'https://example.org/logo.png',

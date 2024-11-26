@@ -28,6 +28,8 @@ import { makeProjectItem } from '../__tests__/make-project-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
+import { TestIdDirective } from '@/common/test-id.directive'
+import { LinkComponent } from '../../link/link.component'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -170,6 +172,8 @@ function makeSut() {
     imports: [
       ProjectItemComponent,
       NgIf,
+      TestIdDirective,
+      LinkComponent,
       MockComponents(
         CardComponent,
         CardHeaderComponent,

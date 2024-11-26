@@ -10,6 +10,7 @@ import { NgFor } from '@angular/common'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProjectItem } from './__tests__/make-project-item'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
+import { CardGridComponent } from '../card-grid/card-grid.component'
 
 describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent
@@ -45,6 +46,7 @@ const makeSut = (opts: { getProjectItems?: GetProjectItems } = {}) =>
     imports: [
       ProjectsSectionComponent,
       NgFor,
+      CardGridComponent,
       MockComponents(SectionTitleComponent, ProjectItemComponent),
     ],
     providers: [

@@ -42,7 +42,10 @@ const makeSut = ({ isMobile }: { isMobile: boolean }) => {
   // Clear scripts created by this or other test suites
   getScripts().forEach((script) => script.remove())
 
-  @Component({ template: '' })
+  @Component({
+    template: '',
+    standalone: false,
+  })
   class ExampleComponent {
     constructor() {
       maybeLoadConsoleEasterEgg()

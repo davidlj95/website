@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'app-language-tag',
-  standalone: true,
   imports: [],
   templateUrl: './language-tag.component.html',
   styleUrl: './language-tag.component.scss',

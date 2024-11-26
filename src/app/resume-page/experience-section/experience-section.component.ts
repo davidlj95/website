@@ -12,7 +12,6 @@ import {
 @Component({
   selector: 'app-experience-section',
   templateUrl: './experience-section.component.html',
-  standalone: true,
   imports: [
     SectionTitleComponent,
     CardGridComponent,

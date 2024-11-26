@@ -5,7 +5,6 @@ import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.compone
 
 @Component({
   selector: 'app-light-dark-toggle',
-  standalone: true,
   imports: [ToolbarButtonComponent],
   templateUrl: './light-dark-toggle.component.html',
   styleUrl: './light-dark-toggle.component.scss',

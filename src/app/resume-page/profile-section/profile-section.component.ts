@@ -10,7 +10,6 @@ import { ProfileDescriptionComponent } from './profile-description/profile-descr
   selector: 'app-profile-section',
   templateUrl: './profile-section.component.html',
   styleUrls: ['./profile-section.component.scss'],
-  standalone: true,
   imports: [
     ProfilePictureComponent,
     SectionTitleComponent,

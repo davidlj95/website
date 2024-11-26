@@ -17,7 +17,6 @@ import { SCROLL_INTO_VIEW, ScrollIntoView } from '@/common/scroll-into-view'
   selector: 'app-chipped-content',
   templateUrl: './chipped-content.component.html',
   styleUrls: ['./chipped-content.component.scss'],
-  standalone: true,
   imports: [NgFor, ChipComponent, NgComponentOutlet],
   animations: [
     trigger('contentDisplayed', [

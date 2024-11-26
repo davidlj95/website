@@ -8,7 +8,6 @@ import { maybeLoadConsoleEasterEgg } from './maybe-load-console-easter-egg'
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: true,
   imports: [HeaderComponent, NoScriptComponent, RouterOutlet],
 })
 export class AppComponent {

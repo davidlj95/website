@@ -24,7 +24,6 @@ describe('MaterialSymbolDirective', () => {
 function makeComponentWithDirective(elementTag: string): Type<unknown> {
   @Component({
     template: `<${elementTag} appMaterialSymbol></${elementTag}>`,
-    standalone: true,
     imports: [MaterialSymbolDirective],
   })
   class MaterialSymbolComponent {}

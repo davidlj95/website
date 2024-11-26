@@ -21,7 +21,6 @@ import { educationItemToContents } from './education-item-to-contents'
 @Component({
   selector: 'app-education-item',
   templateUrl: './education-item.component.html',
-  standalone: true,
   imports: [
     CardComponent,
     CardHeaderComponent,

@@ -12,6 +12,9 @@ import { LanguageItem } from './language-item'
 import { byTestId } from '@/test/helpers/test-id'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { LanguageTagComponent } from './language-tag/language-tag.component'
+import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
+import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
+import { TestIdDirective } from '@/common/test-id.directive'
 
 describe('LanguageItemComponent', () => {
   let component: LanguageItemComponent
@@ -95,10 +98,13 @@ function makeSut() {
     imports: [
       LanguageItemComponent,
       NgIf,
+      TestIdDirective,
       MockComponents(
         CardComponent,
         CardHeaderComponent,
         CardHeaderTitleComponent,
+        CardHeaderTextsComponent,
+        CardHeaderSubtitleComponent,
         LanguageTagComponent,
       ),
     ],

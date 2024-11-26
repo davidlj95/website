@@ -5,7 +5,6 @@ import { NgOptimizedImage } from '@angular/common'
   selector: 'app-card-header-image',
   templateUrl: './card-header-image.component.html',
   styleUrls: ['./card-header-image.component.scss'],
-  standalone: true,
   imports: [NgOptimizedImage],
 })
 export class CardHeaderImageComponent {
