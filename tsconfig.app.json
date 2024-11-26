@@ -8,7 +8,7 @@
   "files": [
     "src/main.ts",
     "src/main.server.ts",
-    "server.ts",
+    "src/server.ts",
     "src/app/console-easter-egg.ts"
   ],
   "include": ["src/**/*.d.ts"]
