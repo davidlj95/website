@@ -2,7 +2,7 @@ import { ComponentFixture } from '@angular/core/testing'
 import { TabComponent } from './tab.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { ATTRIBUTE_ARIA_SELECTED } from '@/test/helpers/aria'
-import { setFixtureInput } from '@/test/helpers/set-input'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('TabComponent', () => {
   let component: TabComponent
@@ -30,7 +30,7 @@ describe('TabComponent', () => {
 
   describe('when selected', () => {
     beforeEach(() => {
-      setFixtureInput(fixture, 'isSelected', true)
+      setFixtureInputsAndDetectChanges(fixture, { isSelected: true })
     })
 
     it('should mark it as selected via ARIA', () => {
@@ -46,7 +46,7 @@ describe('TabComponent', () => {
 
   describe('when not selected', () => {
     beforeEach(() => {
-      setFixtureInput(fixture, 'isSelected', false)
+      setFixtureInputsAndDetectChanges(fixture, { isSelected: false })
     })
 
     it('should mark it as not selected via ARIA', () => {

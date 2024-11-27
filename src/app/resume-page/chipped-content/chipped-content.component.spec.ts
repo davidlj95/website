@@ -16,7 +16,7 @@ import { MockProvider } from 'ng-mocks'
 import { SCROLL_INTO_VIEW } from '@/common/scroll-into-view'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { textContent } from '@/test/helpers/text-content'
-import { setFixtureInput } from '@/test/helpers/set-input'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ChippedContentComponent', () => {
   let fixture: ComponentFixture<ChippedContentComponent>
@@ -209,6 +209,6 @@ function makeSut() {
       MockProvider(SCROLL_INTO_VIEW, jasmine.createSpy()),
     ],
   })
-  setFixtureInput(fixture, 'contents', CONTENTS)
+  setFixtureInputsAndDetectChanges(fixture, { contents: CONTENTS })
   return [fixture, component] as const
 }

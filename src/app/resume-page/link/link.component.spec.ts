@@ -3,12 +3,12 @@ import { By } from '@angular/platform-browser'
 import { Component, Type } from '@angular/core'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { textContent } from '@/test/helpers/text-content'
-import { setFixtureInput } from '@/test/helpers/set-input'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('LinkComponent', () => {
   it('should create', () => {
     const [fixture, component] = componentTestSetup(LinkComponent)
-    setFixtureInput(fixture, 'href', undefined)
+    setFixtureInputsAndDetectChanges(fixture, { href: undefined })
 
     expect(component).toBeTruthy()
   })
@@ -41,7 +41,7 @@ describe('LinkComponent', () => {
 
     it('should contain the anchor element with given href attribute', () => {
       const [fixture] = componentTestSetup(LinkComponent)
-      setFixtureInput(fixture, 'href', href)
+      setFixtureInputsAndDetectChanges(fixture, { href })
 
       const anchorElement = fixture.debugElement.query(By.css('a'))
 

@@ -2,7 +2,7 @@ import { ToolbarButtonComponent } from './toolbar-button.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MATERIAL_SYMBOLS_SELECTOR } from '@/test/helpers/material-symbols'
 import { textContent } from '@/test/helpers/text-content'
-import { setFixtureInput } from '@/test/helpers/set-input'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ToolbarButtonComponent', () => {
   it('should create', () => {
@@ -25,6 +25,6 @@ describe('ToolbarButtonComponent', () => {
 const DUMMY_ICON = 'icon'
 const makeSut = () => {
   const [fixture, component] = componentTestSetup(ToolbarButtonComponent)
-  setFixtureInput(fixture, 'icon', DUMMY_ICON)
+  setFixtureInputsAndDetectChanges(fixture, { icon: DUMMY_ICON })
   return [fixture, component] as const
 }
