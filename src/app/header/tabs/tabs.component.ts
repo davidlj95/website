@@ -145,8 +145,8 @@ export class TabsComponent implements OnDestroy {
   private _resetIntersectionObserverTargets(): void {
     if (this._intersectionObserver && this._firstTab && this._lastTab) {
       this._intersectionObserver.disconnect()
-      this._intersectionObserver.observe(this._firstTab!.nativeElement)
-      this._intersectionObserver.observe(this._lastTab!.nativeElement)
+      this._intersectionObserver.observe(this._firstTab.nativeElement)
+      this._intersectionObserver.observe(this._lastTab.nativeElement)
     }
   }
 

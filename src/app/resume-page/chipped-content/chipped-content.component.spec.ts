@@ -65,7 +65,7 @@ describe('ChippedContentComponent', () => {
     expect(firstComponentElement).toBeTruthy()
 
     expect(textContent(firstComponentElement)).toEqual(
-      FIRST_CONTENT.inputs!['data'],
+      FIRST_CONTENT.inputs!.data,
     )
     expectIsNotInLayout(contentElement.nativeElement)
     expectIsNotInLayout(firstComponentElement.nativeElement)

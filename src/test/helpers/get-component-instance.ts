@@ -12,5 +12,5 @@ export const getComponentInstance = <T>(
       `Unexpected component instance type. Expected: '${expectedComponentName}'. Actual: '${actualComponentName}'`,
     )
   }
-  return componentInstance as T
+  return componentInstance
 }

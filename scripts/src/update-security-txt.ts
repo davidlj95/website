@@ -27,7 +27,7 @@ async function updateSecurityTxt() {
   Log.info('Writing signed file')
   await writeFile(
     join(getRepositoryRootDir(), 'src', '.well-known', SECURITY_TXT),
-    result['stdout'],
+    result.stdout,
   )
   Log.ok('Done')
 }

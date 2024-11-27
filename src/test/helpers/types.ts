@@ -6,13 +6,12 @@
 export function isClass(klass: new () => unknown) {
   const isCtorClass =
     klass.constructor &&
-    klass.constructor.toString().substring(0, 5) === 'class'
+    klass.constructor.toString().startsWith('class')
   if (klass.prototype === undefined) {
     return isCtorClass
   }
   const isPrototypeCtorClass =
-    klass.prototype.constructor &&
-    klass.prototype.constructor.toString &&
+    klass.prototype.constructor?.toString &&
     klass.prototype.constructor.toString().substring(0, 5) === 'class'
   return isCtorClass || isPrototypeCtorClass
 }

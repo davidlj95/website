@@ -9,6 +9,6 @@ export const IS_MOBILE = new InjectionToken<IsMobileFn>('isMobile', {
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent#mobile_tablet_or_desktop
     return () =>
       Math.min(window.screen.width, window.screen.height) < 768 ||
-      window.navigator.userAgent.indexOf('Mobi') > -1
+      window.navigator.userAgent.includes('Mobi')
   },
 })
