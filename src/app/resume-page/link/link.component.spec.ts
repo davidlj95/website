@@ -62,7 +62,7 @@ function makeHostComponent(
     imports: [LinkComponent],
   })
   class TestHostComponent {
-    public href = href
+    href = href
   }
   return TestHostComponent
 }

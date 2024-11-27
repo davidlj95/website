@@ -40,7 +40,7 @@ import { educationItemToContents } from './education-item-to-contents'
 export class EducationItemComponent {
   // TODO: Skipped for migration because:
   //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ required: true }) public set item(item: EducationItem) {
+  @Input({ required: true }) set item(item: EducationItem) {
     this._item = item
     if (item.institution.name.length > 15 && item.institution.shortName) {
       this._institutionDisplayName = item.institution.shortName

@@ -13,18 +13,18 @@ export class ProfilePictureComponent {
   readonly realName: string
   protected _hasBeenFocused = false
 
-  public static HAS_BEEN_FOCUSED_ATTR = 'data-has-been-focused'
+  static HAS_BEEN_FOCUSED_ATTR = 'data-has-been-focused'
 
   @HostBinding(`attr.${ProfilePictureComponent.HAS_BEEN_FOCUSED_ATTR}`)
-  public get hasBeenFocused() {
+  get hasBeenFocused() {
     return this._hasBeenFocused ? true : undefined
   }
 
-  @HostBinding('attr.tabindex') public get tabIndex() {
+  @HostBinding('attr.tabindex') get tabIndex() {
     return this.hasBeenFocused ? 0 : -1
   }
 
-  @HostBinding('attr.aria-label') public ariaLabel = 'Profile picture'
+  @HostBinding('attr.aria-label') ariaLabel = 'Profile picture'
 
   constructor(@Inject(METADATA) metadata: Metadata) {
     this.realName = metadata.realName

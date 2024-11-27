@@ -99,8 +99,8 @@ const makeHostComponent = (
     imports: [TabsComponent, TabComponent],
   })
   class HostComponent {
-    public tabs = opts.tabs ?? []
-    public selectedIndex = opts.selectedIndex
+    tabs = opts.tabs ?? []
+    selectedIndex = opts.selectedIndex
   }
 
   return HostComponent

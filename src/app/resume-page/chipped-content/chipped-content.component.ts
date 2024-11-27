@@ -41,7 +41,7 @@ import { SCROLL_INTO_VIEW, ScrollIntoView } from '@/common/scroll-into-view'
   ],
 })
 export class ChippedContentComponent {
-  @Input() public contents!: readonly ChippedContent[]
+  @Input() contents!: readonly ChippedContent[]
 
   constructor(
     @Inject(SCROLL_INTO_VIEW) protected _scrollIntoView: ScrollIntoView,

@@ -47,15 +47,14 @@ let nextId = 0
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CollapsibleTreeComponent {
-  @Input({ required: true }) public node!: CollapsibleTreeNode
-  @Input() public depth = 0
-  @Input() public parent?: CollapsibleTreeComponent
-  @Input() public collapsedIcon: string = this.parent?.collapsedIcon ?? '▶'
-  @Input() public expandedIcon: string = this.parent?.expandedIcon ?? '▼'
-  @Input() public isCollapsibleFn?: IsCollapsibleFn =
-    this.parent?.isCollapsibleFn
+  @Input({ required: true }) node!: CollapsibleTreeNode
+  @Input() depth = 0
+  @Input() parent?: CollapsibleTreeComponent
+  @Input() collapsedIcon: string = this.parent?.collapsedIcon ?? '▶'
+  @Input() expandedIcon: string = this.parent?.expandedIcon ?? '▼'
+  @Input() isCollapsibleFn?: IsCollapsibleFn = this.parent?.isCollapsibleFn
   @Input()
-  public isExpanded = false
+  isExpanded = false
 
   @ViewChildren(CollapsibleTreeComponent)
   private children!: QueryList<CollapsibleTreeComponent>
@@ -64,7 +63,7 @@ export class CollapsibleTreeComponent {
 
   constructor(private readonly cdRef: ChangeDetectorRef) {}
 
-  public get isCollapsible(): boolean {
+  get isCollapsible(): boolean {
     if (!(this.node.children.length > 0)) {
       return false
     }
@@ -74,7 +73,7 @@ export class CollapsibleTreeComponent {
     return this.isCollapsibleFn(this)
   }
 
-  public get childListId(): string | undefined {
+  get childListId(): string | undefined {
     if (!this.isCollapsible) {
       return
     }

@@ -178,14 +178,14 @@ describe('ChippedContentComponent', () => {
   template: `{{ data }}`,
 })
 class FooComponent {
-  @Input() public data?: string
+  @Input() data?: string
 }
 @Component({
   selector: 'app-bar',
   template: `{{ data }}`,
 })
 class BarComponent {
-  @Input() public data?: string
+  @Input() data?: string
 }
 
 const FOO_CONTENT = new ChippedContent({

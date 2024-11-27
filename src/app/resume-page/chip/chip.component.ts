@@ -18,20 +18,20 @@ export class ChipComponent {
   readonly selected = input<boolean>()
 
   @Output()
-  public selectedChange = new EventEmitter<boolean>()
+  selectedChange = new EventEmitter<boolean>()
 
   @HostBinding('class.selectable')
-  public get selectable() {
+  get selectable() {
     return this.selectedChange.observed
   }
 
   @HostBinding('attr.role')
-  public get ariaRole(): string | undefined {
+  get ariaRole(): string | undefined {
     return this.selectable ? 'button' : undefined
   }
 
   @HostBinding('attr.tabindex')
-  public get tabIndex(): string | undefined {
+  get tabIndex(): string | undefined {
     return this.selectable ? (0).toString() : undefined
   }
 
