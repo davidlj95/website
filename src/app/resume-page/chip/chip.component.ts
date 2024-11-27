@@ -6,22 +6,22 @@ import { Component, EventEmitter, input, Output } from '@angular/core'
   styleUrls: ['./chip.component.scss'],
   standalone: true,
   host: {
-    '[class.selected]': 'selected()',
-    '[class.selectable]': 'selectedChange.observed',
-    '[attr.role]': "selectedChange.observed ? 'button': undefined",
-    '[attr.tabindex]': 'selectedChange.observed ? 0 : undefined',
+    '[class.selected]': 'isSelected()',
+    '[class.selectable]': 'isSelectedChange.observed',
+    '[attr.role]': "isSelectedChange.observed ? 'button': undefined",
+    '[attr.tabindex]': 'isSelectedChange.observed ? 0 : undefined',
     '(click)': 'emitToggledSelected()',
     '(keydown.enter)': 'emitToggledSelected()',
     '(keydown.space)': 'emitToggledSelected()',
   },
 })
 export class ChipComponent {
-  readonly selected = input<boolean>()
+  readonly isSelected = input<boolean>()
 
   @Output()
-  selectedChange = new EventEmitter<boolean>()
+  isSelectedChange = new EventEmitter<boolean>()
 
   protected emitToggledSelected() {
-    this.selectedChange.emit(!this.selected())
+    this.isSelectedChange.emit(!this.isSelected())
   }
 }
