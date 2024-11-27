@@ -98,7 +98,7 @@ export const createReleaseItConfig = ({
  *
  * @param commits
  */
-const whatBump: Preset['whatBump'] = async (commits) => {
+const whatBump: Preset['whatBump'] = (commits) => {
   const commitsByLevel = commits.reduce(
     (results, commit) => {
       const addToResults = (key: number) => {
@@ -138,11 +138,11 @@ const whatBump: Preset['whatBump'] = async (commits) => {
       : 'These are the commits that triggered a release. The highest release level was chosen\n' +
         commitsByLevel
           .map(
-            (commitHeaders, level) =>
-              ` - ${RELEASE_LEVEL_NAMES[level]}: ${commitHeaders.map((header) => `"${header}"`).join(', ')}`,
+            (commits, level) =>
+              ` - ${RELEASE_LEVEL_NAMES[level]}: ${commits.map((commit) => `"${commit.header}"`).join(', ')}`,
           )
           .join('\n')
-  return { level, reason }
+  return Promise.resolve({ level, reason })
 }
 
 export type ExtraConfig = Partial<{

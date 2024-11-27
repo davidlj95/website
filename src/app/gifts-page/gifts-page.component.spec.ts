@@ -8,7 +8,7 @@ describe('GiftsPageComponent', () => {
   let component: GiftsPageComponent
   let fixture: ComponentFixture<GiftsPageComponent>
 
-  beforeEach(async () => {
+  beforeEach(() => {
     ;[fixture, component] = componentTestSetup(GiftsPageComponent)
     fixture.detectChanges()
   })

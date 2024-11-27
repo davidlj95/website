@@ -11,7 +11,7 @@ describe('App color scheme', () => {
   const LIGHT_MIN_LUMINANCE = 0.75
   const DARK_MAX_LUMINANCE = 0.25
 
-  beforeEach(async () => {
+  beforeEach(() => {
     serviceTestSetup(ColorSchemeService)
     bodyElement = document.body
   })
@@ -20,7 +20,7 @@ describe('App color scheme', () => {
   describe('when light color scheme is set', () => {
     forceColorScheme(Scheme.Light)
 
-    it('body should have a light background color (high luminance), whilst text color should be a dark one (low luminance)', async () => {
+    it('body should have a light background color (high luminance), whilst text color should be a dark one (low luminance)', () => {
       const bodyBackgroundColor = getRgbFromCssRgbColor(
         getComputedStyle(bodyElement).backgroundColor,
       )
@@ -40,7 +40,7 @@ describe('App color scheme', () => {
   describe('when dark color scheme is set', () => {
     forceColorScheme(Scheme.Dark)
 
-    it('body should have a dark background color (low luminance), whilst text color should be a light one (high luminance)', async () => {
+    it('body should have a dark background color (low luminance), whilst text color should be a light one (high luminance)', () => {
       const bodyBackgroundColor = getRgbFromCssRgbColor(
         getComputedStyle(bodyElement).backgroundColor,
       )

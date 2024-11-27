@@ -39,7 +39,7 @@ describe('ProfilePictureComponent', () => {
     expect(profileHuhImgElement.injector.get(NgOptimizedImage).ngSrc).toContain(
       'profile_huh.png',
     )
-    expectIsNotVisible(profileHuhImgElement.nativeElement)
+    expectIsNotVisible(profileHuhImgElement)
   })
 
   describe('accessible easter egg', () => {

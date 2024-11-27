@@ -36,14 +36,12 @@ describe('LightDarkToggleComponent', () => {
 
     it('should not display light mode icon', () => {
       expectIsNotInLayout(
-        findMaterialSymbolByText(fixture.debugElement, LightMode).nativeElement,
+        findMaterialSymbolByText(fixture.debugElement, LightMode),
       )
     })
 
     it('should display dark mode icon', () => {
-      expectIsInLayout(
-        findMaterialSymbolByText(fixture.debugElement, DarkMode).nativeElement,
-      )
+      expectIsInLayout(findMaterialSymbolByText(fixture.debugElement, DarkMode))
     })
   })
 
@@ -58,13 +56,13 @@ describe('LightDarkToggleComponent', () => {
 
     it('should display light mode icon', () => {
       expectIsInLayout(
-        findMaterialSymbolByText(fixture.debugElement, LightMode).nativeElement,
+        findMaterialSymbolByText(fixture.debugElement, LightMode),
       )
     })
 
     it('should not display dark mode icon', () => {
       expectIsNotInLayout(
-        findMaterialSymbolByText(fixture.debugElement, DarkMode).nativeElement,
+        findMaterialSymbolByText(fixture.debugElement, DarkMode),
       )
     })
   })
@@ -80,6 +78,7 @@ describe('LightDarkToggleComponent', () => {
         .query(byComponent(ToolbarButtonComponent))
         .triggerEventHandler('click')
 
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(colorSchemeService.toggleDarkLight).toHaveBeenCalledWith()
     })
   })

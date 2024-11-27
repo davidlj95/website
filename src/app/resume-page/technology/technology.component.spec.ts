@@ -15,6 +15,7 @@ import {
   GetTechnologyDisplayNameFromSlug,
 } from './get-technology-display-name-from-slug'
 import { makeTechnologyItem } from './__tests__/make-technology-item'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('TechnologyComponent', () => {
   let component: TechnologyComponent
@@ -40,9 +41,7 @@ describe('TechnologyComponent', () => {
     component.item = DUMMY_TECHNOLOGY_ITEM
     fixture.detectChanges()
 
-    expect(fixture.debugElement.nativeElement.textContent).toContain(
-      displayName,
-    )
+    expect(textContent(fixture.debugElement)).toContain(displayName)
 
     expect(getTechnologyDisplayNameFromSlug).toHaveBeenCalledOnceWith(
       DUMMY_TECHNOLOGY_ITEM.slug,

@@ -6,6 +6,7 @@ import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { DescriptionLine } from '@/data/metadata'
 import { ATTRIBUTE_ARIA_HIDDEN } from '@/test/helpers/aria'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ProfileDescriptionLineComponent', () => {
   let component: ProfileDescriptionLineComponent
@@ -27,7 +28,7 @@ describe('ProfileDescriptionLineComponent', () => {
     })
 
     it('should be empty', () => {
-      expect(fixture.nativeElement.innerText.trim()).toHaveSize(0)
+      expect(textContent(fixture.debugElement)).toHaveSize(0)
     })
   })
 
@@ -51,7 +52,7 @@ describe('ProfileDescriptionLineComponent', () => {
         MATERIAL_SYMBOLS_SELECTOR,
       )
 
-      expect(materialSymbolSpan.nativeElement.textContent)
+      expect(textContent(materialSymbolSpan))
         .withContext('symbol')
         .toEqual(DUMMY_LINE.data!.symbol)
 
@@ -63,7 +64,7 @@ describe('ProfileDescriptionLineComponent', () => {
     it('should display HTML content', () => {
       const htmlSpan = fixture.debugElement.query(By.css('.content'))
 
-      expect(htmlSpan.nativeElement.innerHTML)
+      expect((htmlSpan.nativeElement as Element).innerHTML)
         .withContext('html')
         .toEqual(DUMMY_LINE.data!.html)
     })

@@ -53,7 +53,9 @@ describe('SimpleIconComponent', () => {
       component.icon = { slug: 'dummy-icon' }
       fixture.detectChanges()
 
-      expect(fixture.debugElement.nativeElement.innerHTML).toEqual(ICON_SVG)
+      expect((fixture.debugElement.nativeElement as Element).innerHTML).toEqual(
+        ICON_SVG,
+      )
     })
   })
 
@@ -66,7 +68,9 @@ describe('SimpleIconComponent', () => {
       component.icon = { slug: 'dummy-icon' }
       fixture.detectChanges()
 
-      expect(fixture.debugElement.nativeElement.innerHTML).toHaveSize(0)
+      expect(
+        (fixture.debugElement.nativeElement as Element).innerHTML,
+      ).toHaveSize(0)
     })
   })
 })

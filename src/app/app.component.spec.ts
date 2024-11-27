@@ -13,7 +13,7 @@ describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>
   let component: AppComponent
 
-  beforeEach(async () => {
+  beforeEach(() => {
     ;[fixture, component] = componentTestSetup(AppComponent, {
       imports: [
         AppComponent,

@@ -174,7 +174,7 @@ describe('CollapsibleTreeComponent', () => {
 
         it('should display list', () => {
           const listElement = fixture.debugElement.query(LIST_PREDICATE)
-          expectIsInLayout(listElement.nativeElement)
+          expectIsInLayout(listElement)
         })
 
         it('should be collapsed', () => {
@@ -211,9 +211,10 @@ describe('CollapsibleTreeComponent', () => {
           let mockParentComponent: jasmine.SpyObj<CollapsibleTreeComponent>
 
           beforeEach(() => {
-            mockParentComponent = jasmine.createSpyObj('node', [
-              'collapseAllChildren' satisfies keyof CollapsibleTreeComponent,
-            ])
+            mockParentComponent =
+              jasmine.createSpyObj<CollapsibleTreeComponent>('node', [
+                'collapseAllChildren',
+              ])
             component.parent = mockParentComponent
             component.isExpanded = testCase.isExpanded
 
@@ -258,6 +259,7 @@ describe('CollapsibleTreeComponent', () => {
               fixture.detectChanges()
 
               expect(
+                // eslint-disable-next-line @typescript-eslint/unbound-method
                 mockParentComponent.collapseAllChildren,
               ).toHaveBeenCalledOnceWith({ except: component })
             })
@@ -284,7 +286,7 @@ describe('CollapsibleTreeComponent', () => {
       // eslint-disable-next-line jasmine/no-spec-dupes
       it('should display list', () => {
         const listElement = fixture.debugElement.query(LIST_PREDICATE)
-        expectIsInLayout(listElement.nativeElement)
+        expectIsInLayout(listElement)
       })
     })
   })

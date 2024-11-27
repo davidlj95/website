@@ -48,7 +48,7 @@ describe('NavigationTabsComponent', () => {
       expect(textContent(tabElement)).toEqual(item.displayName)
 
       expect(tabElement.injector.get(RouterLink).urlTree?.toString()).toBe(
-        '/' + item.routerLink,
+        '/' + (item.routerLink as string),
       )
     })
   })

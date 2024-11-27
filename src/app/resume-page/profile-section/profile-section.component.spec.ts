@@ -11,6 +11,7 @@ import { shouldContainComponents } from '@/test/helpers/component-testers'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { METADATA } from '@/common/injection-tokens'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ProfileSectionComponent', () => {
   let component: ProfileSectionComponent
@@ -44,23 +45,19 @@ describe('ProfileSectionComponent', () => {
   it('should display real name', () => {
     const realNameElement = fixture.debugElement.query(By.css('.real-name'))
 
-    expect(realNameElement.nativeElement.textContent).toContain(
-      fakeMetadata.realName,
-    )
+    expect(textContent(realNameElement)).toContain(fakeMetadata.realName)
   })
 
   it("should display nickname preceded by '@' in primary header", () => {
     const nicknameElement = fixture.debugElement.query(By.css('.nickname'))
 
-    expect(nicknameElement.nativeElement.textContent).toContain(
-      `@${fakeMetadata.nickname}`,
-    )
+    expect(textContent(nicknameElement)).toContain(`@${fakeMetadata.nickname}`)
   })
 
   it('should display title', () => {
     const headline = fixture.debugElement.query(By.css('.headline'))
 
-    expect(headline.nativeElement.textContent).toEqual(fakeMetadata.title)
+    expect(textContent(headline)).toEqual(fakeMetadata.title)
   })
 
   shouldContainComponents(

@@ -9,7 +9,7 @@ describe('LanguageTagComponent', () => {
   let component: LanguageTagComponent
   let fixture: ComponentFixture<LanguageTagComponent>
 
-  beforeEach(async () => {
+  beforeEach(() => {
     ;[fixture, component] = makeSut()
   })
 

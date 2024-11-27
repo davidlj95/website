@@ -135,7 +135,7 @@ export class TabsComponent implements OnDestroy {
         })
       },
       {
-        root: this._elRef.nativeElement,
+        root: this._elRef.nativeElement as Element,
         threshold: [INTERSECTION_THRESHOLD],
       },
     )

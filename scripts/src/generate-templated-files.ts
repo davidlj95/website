@@ -37,7 +37,10 @@ async function generateTemplatedFiles() {
   for (const templateFile of templateFiles) {
     Log.group("Rendering '%s'", templateFile)
 
-    const renderedContents = await engine.renderFile(templateFile, context)
+    const renderedContents = (await engine.renderFile(
+      templateFile,
+      context,
+    )) as string
     Log.ok('Rendered successfully')
 
     const outputFilename = templateFile.substring(
