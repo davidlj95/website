@@ -1,10 +1,10 @@
 import { DebugElement, Type } from '@angular/core'
 
-export const getComponentInstance = <T>(
+export const getComponentInstance = <T extends object>(
   debugElement: DebugElement,
   component: Type<T>,
 ): T => {
-  const componentInstance = debugElement.componentInstance as Type<unknown>
+  const componentInstance = debugElement.componentInstance as T
   if (!(componentInstance instanceof component)) {
     const expectedComponentName = component.name
     const actualComponentName = componentInstance.constructor.name
