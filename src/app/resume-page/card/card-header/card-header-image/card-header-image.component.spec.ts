@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { CardHeaderImageComponent } from './card-header-image.component'
 import { By } from '@angular/platform-browser'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('CardHeaderImageComponent', () => {
   let component: CardHeaderImageComponent
@@ -13,9 +14,7 @@ describe('CardHeaderImageComponent', () => {
     TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(CardHeaderImageComponent)
     component = fixture.componentInstance
-    fixture.componentRef.setInput('src', src)
-    fixture.componentRef.setInput('alt', alt)
-    fixture.detectChanges()
+    setFixtureInputsAndDetectChanges(fixture, { src, alt })
   })
 
   it('should create', () => {
