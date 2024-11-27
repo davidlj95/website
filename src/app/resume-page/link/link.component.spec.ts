@@ -7,6 +7,7 @@ import { textContent } from '@/test/helpers/text-content'
 describe('LinkComponent', () => {
   it('should create', () => {
     const [fixture, component] = componentTestSetup(LinkComponent)
+    fixture.componentRef.setInput('href', undefined)
     fixture.detectChanges()
 
     expect(component).toBeTruthy()

@@ -85,10 +85,14 @@ describe('NavigationTabsComponent', () => {
     ).toBeFalse()
   })
 
-  const makeSut = () =>
-    componentTestSetup(NavigationTabsComponent, {
+  const makeSut = ({ items }: { items?: readonly NavigationItem[] } = {}) => {
+    const [fixture, component] = componentTestSetup(NavigationTabsComponent, {
       providers: [provideRouter(ROUTES)],
     })
+    fixture.componentRef.setInput('items', items ?? [])
+    fixture.detectChanges()
+    return [fixture, component] as const
+  }
 })
 
 function makeNavigationItemFromRoutePath(path: string): NavigationItem {

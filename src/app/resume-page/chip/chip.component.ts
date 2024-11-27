@@ -3,8 +3,8 @@ import {
   EventEmitter,
   HostBinding,
   HostListener,
-  Output,
   input,
+  Output,
 } from '@angular/core'
 
 @Component({
@@ -12,9 +12,9 @@ import {
   template: '<ng-content></ng-content>',
   styleUrls: ['./chip.component.scss'],
   standalone: true,
+  host: { '[class.selected]': 'selected()' },
 })
 export class ChipComponent {
-  @HostBinding('class.selected')
   public readonly selected = input<boolean>()
 
   @Output()

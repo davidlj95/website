@@ -66,7 +66,7 @@ describe('ExperienceItem', () => {
 
       expect(imageElement).toBeTruthy()
       expect(
-        getComponentInstance(imageElement, CardHeaderImageComponent).src(),
+        getComponentInstance(imageElement, CardHeaderImageComponent).src,
       ).toBe(imageUrl)
     })
 
