@@ -9,6 +9,7 @@ import { MockProvider } from 'ng-mocks'
 import { EMPTY, of } from 'rxjs'
 import { SVG } from '@/test/mocks/svg'
 import { AsyncPipe } from '@angular/common'
+import { innerHtml } from '@/test/helpers/inner-html'
 
 describe('SimpleIconComponent', () => {
   let component: SimpleIconComponent
@@ -53,9 +54,7 @@ describe('SimpleIconComponent', () => {
       component.icon = { slug: 'dummy-icon' }
       fixture.detectChanges()
 
-      expect((fixture.debugElement.nativeElement as Element).innerHTML).toEqual(
-        ICON_SVG,
-      )
+      expect(innerHtml(fixture.debugElement)).toEqual(ICON_SVG)
     })
   })
 
@@ -68,9 +67,7 @@ describe('SimpleIconComponent', () => {
       component.icon = { slug: 'dummy-icon' }
       fixture.detectChanges()
 
-      expect(
-        (fixture.debugElement.nativeElement as Element).innerHTML,
-      ).toHaveSize(0)
+      expect(innerHtml(fixture.debugElement)).toHaveSize(0)
     })
   })
 })
