@@ -1,9 +1,9 @@
 import { Type } from '@angular/core'
 
 export class ChippedContent<T = unknown> {
-  public readonly displayName: string
-  public readonly component: Type<T>
-  public readonly inputs?: Partial<T>
+  readonly displayName: string
+  readonly component: Type<T>
+  readonly inputs?: Partial<T>
 
   constructor({
     displayName,

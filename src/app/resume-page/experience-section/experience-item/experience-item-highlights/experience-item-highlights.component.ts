@@ -13,5 +13,5 @@ import { Component, Input } from '@angular/core'
   imports: [],
 })
 export class ExperienceItemHighlightsComponent {
-  @Input({ required: true }) public highlights!: readonly string[]
+  @Input({ required: true }) highlights!: readonly string[]
 }

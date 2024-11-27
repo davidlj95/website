@@ -1,6 +1,6 @@
 export class DateRange {
   constructor(
-    public readonly start: Date,
-    public readonly end?: Date,
+    readonly start: Date,
+    readonly end?: Date,
   ) {}
 }

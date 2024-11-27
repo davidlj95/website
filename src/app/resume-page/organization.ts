@@ -1,8 +1,8 @@
 export class Organization {
-  public readonly name: string
-  public readonly website?: URL
-  public readonly imageSrc: string
-  public readonly shortName?: string
+  readonly name: string
+  readonly website?: URL
+  readonly imageSrc: string
+  readonly shortName?: string
 
   constructor({
     name,

@@ -3,16 +3,16 @@ import { DateRange } from '../../date-range/date-range'
 import { ProjectItem } from '../../projects-section/project-item/project-item'
 
 export class ExperienceItem {
-  public readonly company: Organization
-  public readonly position: string
-  public readonly dateRange: DateRange
-  public readonly summary: string
-  public readonly highlights: readonly string[]
-  public readonly freelance: boolean
-  public readonly internship: boolean
-  public readonly promotions: boolean
-  public readonly morePositions: boolean
-  public readonly projects: readonly ProjectItem[]
+  readonly company: Organization
+  readonly position: string
+  readonly dateRange: DateRange
+  readonly summary: string
+  readonly highlights: readonly string[]
+  readonly freelance: boolean
+  readonly internship: boolean
+  readonly promotions: boolean
+  readonly morePositions: boolean
+  readonly projects: readonly ProjectItem[]
 
   constructor({
     company,

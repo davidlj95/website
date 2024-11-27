@@ -43,7 +43,7 @@ export class TabsComponent implements OnDestroy {
   private _lastTab?: ElementRef<HTMLElement>
   protected _prevButtonDisabled = signal(true)
   protected _nextButtonDisabled = signal(true)
-  public _intersectionObserver!: IntersectionObserver
+  private _intersectionObserver!: IntersectionObserver
 
   // Selected management
   private _currentTabs: readonly TabComponent[] = []

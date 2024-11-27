@@ -11,7 +11,7 @@ import { APP_BASE_URL } from '@/common/app-base-url'
   imports: [MaterialSymbolDirective],
 })
 export class NotFoundPageComponent {
-  public readonly currentUrlInWaybackMachine: URL
+  readonly currentUrlInWaybackMachine: URL
   protected readonly MaterialSymbol = {
     Lightbulb,
   }

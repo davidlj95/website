@@ -2,13 +2,13 @@ import { Organization } from '../../organization'
 import { DateRange } from '../../date-range/date-range'
 
 export class EducationItem {
-  public readonly institution: Organization
-  public readonly area: string
-  public readonly studyType: string
-  public readonly dateRange: DateRange
-  public readonly score: string
-  public readonly courses: readonly string[]
-  public readonly cumLaude: boolean
+  readonly institution: Organization
+  readonly area: string
+  readonly studyType: string
+  readonly dateRange: DateRange
+  readonly score: string
+  readonly courses: readonly string[]
+  readonly cumLaude: boolean
 
   constructor({
     institution,

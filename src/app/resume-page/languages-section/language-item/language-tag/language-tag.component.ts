@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core'
 export class LanguageTagComponent {
   // TODO: Skipped for migration because:
   //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ required: true }) public set tag(tag: string) {
+  @Input({ required: true }) set tag(tag: string) {
     this._tag = tag
     this._url = getUrlForIso6391Tag(tag)
   }

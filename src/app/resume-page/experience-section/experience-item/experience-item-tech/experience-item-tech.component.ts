@@ -16,8 +16,8 @@ import { TechnologyComponent } from '../../../technology/technology.component'
   styleUrl: './experience-item-tech.component.scss',
 })
 export class ExperienceItemTechComponent {
-  @Input({ required: true }) public technologies!: readonly TechnologyItem[]
-  @Input({ required: true }) public set projectNames(names: readonly string[]) {
+  @Input({ required: true }) technologies!: readonly TechnologyItem[]
+  @Input({ required: true }) set projectNames(names: readonly string[]) {
     this._projectCount = names.length
     this._projectNames = new Intl.ListFormat('en').format(names)
   }
