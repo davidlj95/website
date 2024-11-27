@@ -3,7 +3,7 @@ import {
   EventEmitter,
   HostBinding,
   HostListener,
-  Input,
+  input,
   Output,
 } from '@angular/core'
 
@@ -12,11 +12,10 @@ import {
   template: '<ng-content></ng-content>',
   styleUrls: ['./chip.component.scss'],
   standalone: true,
+  host: { '[class.selected]': 'selected()' },
 })
 export class ChipComponent {
-  @HostBinding('class.selected')
-  @Input()
-  public selected?: boolean
+  public readonly selected = input<boolean>()
 
   @Output()
   public selectedChange = new EventEmitter<boolean>()
@@ -49,6 +48,6 @@ export class ChipComponent {
   }
 
   private emitToggledSelected() {
-    this.selectedChange.emit(!this.selected)
+    this.selectedChange.emit(!this.selected())
   }
 }

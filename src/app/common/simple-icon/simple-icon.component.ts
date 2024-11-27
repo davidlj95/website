@@ -24,6 +24,8 @@ export class SimpleIconComponent {
 
   protected _fillColor?: string
 
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input({ required: true }) set icon(icon: SimpleIcon) {
     this.loader(icon.slug)
       .pipe(

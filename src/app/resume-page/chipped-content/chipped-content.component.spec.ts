@@ -43,7 +43,7 @@ describe('ChippedContentComponent', () => {
     chipElements.forEach((chipElement, index) => {
       const content = CONTENTS[index]
 
-      expect(getComponentInstance(chipElement, ChipComponent).selected)
+      expect(getComponentInstance(chipElement, ChipComponent).selected())
         .withContext(`chip ${index} is unselected`)
         .toBeFalse()
 
@@ -102,7 +102,7 @@ describe('ChippedContentComponent', () => {
 
     it('should mark the chip as selected', () => {
       expect(
-        getComponentInstance(firstChipElement, ChipComponent).selected,
+        getComponentInstance(firstChipElement, ChipComponent).selected(),
       ).toBe(true)
     })
 
@@ -128,7 +128,7 @@ describe('ChippedContentComponent', () => {
 
       it('should mark the chip as unselected', () => {
         expect(
-          getComponentInstance(firstChipElement, ChipComponent).selected,
+          getComponentInstance(firstChipElement, ChipComponent).selected(),
         ).toBeFalse()
       })
 
@@ -154,11 +154,11 @@ describe('ChippedContentComponent', () => {
 
       it('should mark the previous chip as unselected and just tapped chip as selected', () => {
         expect(
-          getComponentInstance(firstChipElement, ChipComponent).selected,
+          getComponentInstance(firstChipElement, ChipComponent).selected(),
         ).toBeFalse()
 
         expect(
-          getComponentInstance(secondChipElement, ChipComponent).selected,
+          getComponentInstance(secondChipElement, ChipComponent).selected(),
         ).toBeTrue()
       })
 

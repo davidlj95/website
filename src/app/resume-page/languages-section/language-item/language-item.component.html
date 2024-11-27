@@ -1,18 +1,18 @@
 <app-card>
   <app-card-header>
-    <app-language-tag [tag]="item.tag"></app-language-tag>
+    <app-language-tag [tag]="item().tag"></app-language-tag>
     <app-card-header-texts>
       <app-card-header-title appTestId="name">
-        {{ item.name }}
+        {{ item().name }}
       </app-card-header-title>
       <app-card-header-subtitle appTestId="fluency">
-        {{ item.fluency }}
+        {{ item().fluency }}
       </app-card-header-subtitle>
     </app-card-header-texts>
   </app-card-header>
-  @if (item.comment) {
+  @if (item().comment) {
     <div appTestId="comment">
-      <p>{{ item.comment }}</p>
+      <p>{{ item().comment }}</p>
     </div>
   }
 </app-card>

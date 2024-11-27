@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, input } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 
 @Component({
@@ -10,6 +10,7 @@ import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarButtonComponent {
-  @Input({ required: true }) icon!: string
+  readonly icon = input.required<string>()
+  // https://github.com/angular/components/blob/18.0.5/src/material/button/button-base.ts#L257-L266
   // https://github.com/angular/components/blob/18.0.5/src/material/button/button-base.ts#L257-L266
 }

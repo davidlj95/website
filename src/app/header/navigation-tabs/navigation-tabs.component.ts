@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, input } from '@angular/core'
 import { TabComponent } from '../tab/tab.component'
 import { TabsComponent } from '../tabs/tabs.component'
 import { RouterLink, RouterLinkActive } from '@angular/router'
@@ -11,7 +11,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationTabsComponent {
-  @Input({ required: true }) items!: readonly NavigationItem[]
+  readonly items = input.required<readonly NavigationItem[]>()
   protected _selectedIndex?: number
 
   onActiveRouteChange(index: number) {

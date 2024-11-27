@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, input } from '@angular/core'
 import { DateRange } from './date-range'
 import { DatePipe } from '@angular/common'
 
@@ -8,5 +8,5 @@ import { DatePipe } from '@angular/common'
   imports: [DatePipe],
 })
 export class DateRangeComponent {
-  @Input({ required: true }) public range!: DateRange
+  public readonly range = input.required<DateRange>()
 }

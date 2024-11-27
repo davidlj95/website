@@ -38,6 +38,8 @@ import { projectItemToContents } from './project-item-to-contents'
   ],
 })
 export class ProjectItemComponent {
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input({ required: true }) public set item(item: ProjectItem) {
     this._item = item
     this._contents = projectItemToContents(item)

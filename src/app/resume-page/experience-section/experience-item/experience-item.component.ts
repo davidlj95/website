@@ -38,6 +38,8 @@ import { experienceItemToContents } from './experience-item-to-contents'
   ],
 })
 export class ExperienceItemComponent {
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input({ required: true }) public set item(item: ExperienceItem) {
     this._item = item
     this._contents = experienceItemToContents(item)

@@ -29,7 +29,7 @@ describe('TabComponent', () => {
 
   describe('when selected', () => {
     beforeEach(() => {
-      component.selected = true
+      fixture.componentRef.setInput('selected', true)
       fixture.detectChanges()
     })
 
@@ -46,7 +46,7 @@ describe('TabComponent', () => {
 
   describe('when not selected', () => {
     beforeEach(() => {
-      component.selected = false
+      fixture.componentRef.setInput('selected', false)
       fixture.detectChanges()
     })
 

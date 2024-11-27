@@ -1,8 +1,8 @@
-<span class="start">{{ range.start | date: 'MMM yyyy' }}</span>
+<span class="start">{{ range().start | date: 'MMM yyyy' }}</span>
 <span class="separator"> → </span>
 <span class="end">
-  @if (range.end) {
-    {{ range.end | date: 'MMM yyyy' }}
+  @if (range().end) {
+    {{ range().end | date: 'MMM yyyy' }}
   } @else {
     Present
   }

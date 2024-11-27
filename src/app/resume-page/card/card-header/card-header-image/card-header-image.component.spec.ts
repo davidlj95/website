@@ -13,9 +13,8 @@ describe('CardHeaderImageComponent', () => {
     TestBed.configureTestingModule({})
     fixture = TestBed.createComponent(CardHeaderImageComponent)
     component = fixture.componentInstance
-
-    component.src = src
-    component.alt = alt
+    fixture.componentRef.setInput('src', src)
+    fixture.componentRef.setInput('alt', alt)
     fixture.detectChanges()
   })
 

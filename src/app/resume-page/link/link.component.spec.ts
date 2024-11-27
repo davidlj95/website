@@ -7,6 +7,7 @@ import { textContent } from '@/test/helpers/text-content'
 describe('LinkComponent', () => {
   it('should create', () => {
     const [fixture, component] = componentTestSetup(LinkComponent)
+    fixture.componentRef.setInput('href', undefined)
     fixture.detectChanges()
 
     expect(component).toBeTruthy()
@@ -39,8 +40,8 @@ describe('LinkComponent', () => {
     const href = 'https://example.org'
 
     it('should contain the anchor element with given href attribute', () => {
-      const [fixture, component] = componentTestSetup(LinkComponent)
-      component.href = href
+      const [fixture] = componentTestSetup(LinkComponent)
+      fixture.componentRef.setInput('href', href)
       fixture.detectChanges()
 
       const anchorElement = fixture.debugElement.query(By.css('a'))

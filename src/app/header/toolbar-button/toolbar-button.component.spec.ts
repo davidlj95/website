@@ -24,6 +24,6 @@ describe('ToolbarButtonComponent', () => {
 const DUMMY_ICON = 'icon'
 const makeSut = () => {
   const [fixture, component] = componentTestSetup(ToolbarButtonComponent)
-  component.icon = DUMMY_ICON
+  fixture.componentRef.setInput('icon', DUMMY_ICON)
   return [fixture, component] as const
 }
