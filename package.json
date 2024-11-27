@@ -36,7 +36,7 @@
     "lint:code": "pnpm run lint:code:files .",
     "lint:code:files": "eslint --max-warnings 0",
     "lint:code:files//": "☝️ lint-staged can't/shouldn't use 'ng lint'",
-    "lint:code:files:typed": "TYPED_RULES=true pnpm run lint:code:files",
+    "lint:code:files:typed": "pnpm run lint:code:files --config eslint.config.typed.mjs",
     "lint:code:typed": "pnpm run lint:code:files:typed .",
     "lint:commit-message": "pnpm run commitlint:edit-msg",
     "lint:gh-actions": "actionlint || true",

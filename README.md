@@ -90,14 +90,11 @@ Linting is enabled via [Angular ESLint](https://github.com/angular-eslint/angula
 pnpm run lint:code
 ```
 
-By default, [Typescript typed linting](https://typescript-eslint.io/getting-started/typed-linting/) is disabled for performance reasons. However, you can enable it to check everything's okay with rules that require types via:
+By default, [Typescript typed linting](https://typescript-eslint.io/getting-started/typed-linting/) will not run for performance reasons. Except on CI/CD and when using IntelliJ-based IDEs like WebStorm. You can run the full suite of lint rules including typed ones by using the following command:
 
 ```shell
 pnpm run lint:code:typed
 ```
-
-> [!NOTE]
-> Except for `lint-staged`. Trying out to weigh if the development experience feelings.
 
 ## Release
 
