@@ -33,10 +33,10 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
             new Date(work.startDate),
             !work.endDate ? undefined : new Date(work.endDate),
           ),
-          freelance: work.freelance,
-          internship: work.internship,
-          promotions: work.promotions,
-          morePositions: work.morePositions,
+          isFreelance: work.isFreelance,
+          isInternship: work.isInternship,
+          hasPromotions: work.hasPromotions,
+          hasMorePositions: work.hasMorePositions,
           projects: projects
             .filter((project) => project.entity === work.name)
             .map((project) => adaptProject(project)),

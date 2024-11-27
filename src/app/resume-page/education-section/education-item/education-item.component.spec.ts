@@ -136,7 +136,7 @@ describe('EducationItemComponent', () => {
 
   describe('when cum laude attribute is not set', () => {
     it('should not display its attribute', () => {
-      setEducationItem(fixture, { cumLaude: false })
+      setEducationItem(fixture, { isCumLaude: false })
 
       expect(
         fixture.debugElement.query(byTestId(Attribute.CumLaude)),
@@ -146,7 +146,7 @@ describe('EducationItemComponent', () => {
 
   describe('when cum laude attribute is set', () => {
     it('should display its attribute', () => {
-      setEducationItem(fixture, { cumLaude: true })
+      setEducationItem(fixture, { isCumLaude: true })
 
       expect(
         fixture.debugElement.query(byTestId(Attribute.CumLaude)),

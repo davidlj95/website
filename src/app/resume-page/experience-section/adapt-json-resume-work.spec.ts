@@ -73,24 +73,24 @@ describe('AdaptJsonResumeWork', () => {
 
   // Non JSON Resume standard!
   it('should map the freelance, internship, promotions and more positions fields', () => {
-    const freelance = true
-    const internship = true
-    const promotions = true
-    const morePositions = true
+    const isFreelance = true
+    const isInternship = true
+    const hasPromotions = true
+    const hasMorePositions = true
 
     const item = makeSut()(
       makeJsonResumeWork({
-        freelance,
-        internship,
-        promotions,
-        morePositions,
+        isFreelance,
+        isInternship,
+        hasPromotions,
+        hasMorePositions,
       } as unknown as Partial<JsonResumeWork>),
     )
 
-    expect(item.freelance).toBe(freelance)
-    expect(item.internship).toBe(internship)
-    expect(item.promotions).toBe(promotions)
-    expect(item.morePositions).toBe(morePositions)
+    expect(item.isFreelance).toBe(isFreelance)
+    expect(item.isInternship).toBe(isInternship)
+    expect(item.hasPromotions).toBe(hasPromotions)
+    expect(item.hasMorePositions).toBe(hasMorePositions)
   })
 
   it('should relativize image URL', () => {

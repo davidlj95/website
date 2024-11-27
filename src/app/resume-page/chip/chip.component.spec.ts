@@ -61,14 +61,14 @@ describe('ChipComponent', () => {
     let fixture: ComponentFixture<ChipComponent>
     let component: ChipComponent
     let subscription: Subscription
-    let newSelectedValue: boolean
+    let isSelected: boolean
 
     beforeEach(() => {
       ;[fixture, component] = componentTestSetup(ChipComponent)
       fixture.componentRef.setInput('selected', false)
       subscription = component.selectedChange
         .pipe(first())
-        .subscribe((selected) => (newSelectedValue = selected))
+        .subscribe((isSelectedReceived) => (isSelected = isSelectedReceived))
       fixture.detectChanges()
     })
 
@@ -94,19 +94,19 @@ describe('ChipComponent', () => {
     it('should emit new selected attribute on click', () => {
       fixture.debugElement.triggerEventHandler('click')
 
-      expect(newSelectedValue).toBeTrue()
+      expect(isSelected).toBeTrue()
     })
 
     it('should emit new selected attribute on space key', () => {
       fixture.debugElement.triggerEventHandler('keydown.space')
 
-      expect(newSelectedValue).toBeTrue()
+      expect(isSelected).toBeTrue()
     })
 
     it('should emit new selected attribute on enter key', () => {
       fixture.debugElement.triggerEventHandler('keydown.enter')
 
-      expect(newSelectedValue).toBeTrue()
+      expect(isSelected).toBeTrue()
     })
   })
 })

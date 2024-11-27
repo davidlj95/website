@@ -24,12 +24,12 @@ describe('TabComponent', () => {
   })
 
   it('should not be selected by default', () => {
-    expect(component.selected).toBeFalse()
+    expect(component.isSelected).toBeFalse()
   })
 
   describe('when selected', () => {
     beforeEach(() => {
-      fixture.componentRef.setInput('selected', true)
+      fixture.componentRef.setInput('isSelected', true)
       fixture.detectChanges()
     })
 
@@ -46,7 +46,7 @@ describe('TabComponent', () => {
 
   describe('when not selected', () => {
     beforeEach(() => {
-      fixture.componentRef.setInput('selected', false)
+      fixture.componentRef.setInput('isSelected', false)
       fixture.detectChanges()
     })
 

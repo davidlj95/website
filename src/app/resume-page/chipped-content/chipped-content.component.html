@@ -1,7 +1,7 @@
 <div class="chips">
   @for (content of contents; track content; let i = $index) {
     <app-chip
-      [selected]="_active && _activeIndex === i"
+      [selected]="_isActive && _activeIndex === i"
       (selectedChange)="onSelect(i)"
     >
       {{ content.displayName }}
@@ -10,7 +10,7 @@
 </div>
 <div
   class="content"
-  [@contentDisplayed]="_active"
+  [@contentDisplayed]="_isActive"
   (@contentDisplayed.done)="_scrollIntoView(contentElement)"
   #contentElement
 >

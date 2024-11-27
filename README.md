@@ -96,6 +96,9 @@ By default, [Typescript typed linting](https://typescript-eslint.io/getting-star
 pnpm run lint:code:typed
 ```
 
+> [!NOTE]
+> Except for `lint-staged`. Trying out to weigh if the development experience feelings.
+
 ## Release
 
 [Release It!][release-it] is used to automate the release process. With the [conventional changelog plugin][release-it-cc] in order to automatically decide which kind of bump to perform (major, minor, patch) based on unreleased commits' messages.

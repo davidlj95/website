@@ -23,7 +23,7 @@ export class ColorSchemeService {
     this.listenForMatchMediaPreferenceChanges()
   }
 
-  private get userPrefersDark(): boolean {
+  private get isDarkPreferred(): boolean {
     return !!this.matchMediaQuery && this.matchMediaQuery.matches
   }
 
@@ -39,7 +39,7 @@ export class ColorSchemeService {
       HTML_COLOR_SCHEME_ATTRIBUTE,
     )
     if (!manuallySetScheme) {
-      this.setManual(this.userPrefersDark ? Scheme.Light : Scheme.Dark)
+      this.setManual(this.isDarkPreferred ? Scheme.Light : Scheme.Dark)
       return
     }
 

@@ -33,7 +33,7 @@ export const ADAPT_JSON_RESUME_EDUCATION =
             ),
             score: education.score,
             courses: education.courses,
-            cumLaude: !!education.cumLaude,
+            isCumLaude: !!education.isCumLaude,
           })
       },
     },

@@ -17,46 +17,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const gitignorePath = resolve(__dirname, '.gitignore')
 
-const filterExcludingNodejsGlobals = {
-  filter: {
-    match: false,
-    regex: '__(dirname|filename)',
-  },
-}
-const namingConventionRules = {
-  '@typescript-eslint/naming-convention': [
-    'error',
-    {
-      selector: 'variableLike',
-      format: ['camelCase'],
-      ...filterExcludingNodejsGlobals,
-    },
-    {
-      selector: 'memberLike',
-      modifiers: ['private', 'protected'],
-      format: ['camelCase'],
-      leadingUnderscore: 'require',
-    },
-    {
-      selector: 'variable',
-      types: ['boolean'],
-      format: ['PascalCase'],
-      prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
-    },
-    {
-      selector: 'variable',
-      format: ['camelCase', 'UPPER_CASE'],
-      ...filterExcludingNodejsGlobals,
-    },
-    {
-      selector: 'typeLike',
-      format: ['PascalCase'],
-    },
-  ],
-}
-const typedRules = { ...namingConventionRules }
 const useTypedRules = Boolean(process.env.TYPED_RULES)
-
 export default tsEslint.config(
   includeIgnoreFile(gitignorePath),
   {
@@ -65,12 +26,6 @@ export default tsEslint.config(
       'public/manifest.json',
       'public/release.json',
       'src/environments/environment.pull-request.ts',
-      ...(useTypedRules
-        ? [
-            //👇 To allow PascalCase for symbols
-            'data/material-symbols.ts',
-          ]
-        : []),
     ],
   },
   {
@@ -96,7 +51,45 @@ export default tsEslint.config(
         'error',
         { accessibility: 'no-public' },
       ],
-      ...(useTypedRules ? typedRules : {}),
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          selector: 'variableLike',
+          format: ['camelCase'],
+        },
+        {
+          selector: 'memberLike',
+          modifiers: ['private', 'protected'],
+          format: ['camelCase'],
+          leadingUnderscore: 'require',
+        },
+        {
+          selector: 'variable',
+          format: ['camelCase', 'UPPER_CASE'],
+        },
+        {
+          selector: 'typeLike',
+          format: ['PascalCase'],
+        },
+        ...(useTypedRules
+          ? [
+              {
+                selector: [
+                  'variable',
+                  'classicAccessor',
+                  'autoAccessor',
+                  'classProperty',
+                  'parameter',
+                  'parameterProperty',
+                ],
+                types: ['boolean'],
+                format: ['PascalCase'],
+                prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+                leadingUnderscore: 'allow',
+              },
+            ]
+          : []),
+      ],
     },
   },
   {

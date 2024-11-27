@@ -21,18 +21,18 @@ export class ChipComponent {
   selectedChange = new EventEmitter<boolean>()
 
   @HostBinding('class.selectable')
-  get selectable() {
+  get isSelectable() {
     return this.selectedChange.observed
   }
 
   @HostBinding('attr.role')
   get ariaRole(): string | undefined {
-    return this.selectable ? 'button' : undefined
+    return this.isSelectable ? 'button' : undefined
   }
 
   @HostBinding('attr.tabindex')
   get tabIndex(): string | undefined {
-    return this.selectable ? (0).toString() : undefined
+    return this.isSelectable ? (0).toString() : undefined
   }
 
   @HostListener('click') protected onClick() {

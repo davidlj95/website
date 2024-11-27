@@ -8,10 +8,10 @@ export class ExperienceItem {
   readonly dateRange: DateRange
   readonly summary: string
   readonly highlights: readonly string[]
-  readonly freelance: boolean
-  readonly internship: boolean
-  readonly promotions: boolean
-  readonly morePositions: boolean
+  readonly isFreelance: boolean
+  readonly isInternship: boolean
+  readonly hasPromotions: boolean
+  readonly hasMorePositions: boolean
   readonly projects: readonly ProjectItem[]
 
   constructor({
@@ -20,10 +20,10 @@ export class ExperienceItem {
     dateRange,
     summary,
     highlights,
-    freelance,
-    internship,
-    promotions,
-    morePositions,
+    isFreelance,
+    isInternship,
+    hasPromotions,
+    hasMorePositions,
     projects,
   }: {
     company: Organization
@@ -31,10 +31,10 @@ export class ExperienceItem {
     dateRange: DateRange
     summary: string
     highlights?: readonly string[]
-    freelance?: boolean
-    internship?: boolean
-    promotions?: boolean
-    morePositions?: boolean
+    isFreelance?: boolean
+    isInternship?: boolean
+    hasPromotions?: boolean
+    hasMorePositions?: boolean
     projects?: readonly ProjectItem[]
   }) {
     this.company = company
@@ -42,10 +42,10 @@ export class ExperienceItem {
     this.dateRange = dateRange
     this.summary = summary
     this.highlights = highlights ?? []
-    this.freelance = freelance ?? false
-    this.internship = internship ?? false
-    this.promotions = promotions ?? false
-    this.morePositions = morePositions ?? false
+    this.isFreelance = isFreelance ?? false
+    this.isInternship = isInternship ?? false
+    this.hasPromotions = hasPromotions ?? false
+    this.hasMorePositions = hasMorePositions ?? false
     this.projects = projects ?? []
   }
 }

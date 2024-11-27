@@ -19,7 +19,7 @@ describe('ColorSchemeService', () => {
     // https://www.w3.org/TR/mediaqueries-5/#prefers-color-scheme
     if (query === '(prefers-color-scheme: dark)') {
       return {
-        matches: prefersDark,
+        matches: isDarkPreferred,
         addEventListener: <K extends keyof MediaQueryListEventMap>(
           type: K,
           listener: (ev: MediaQueryListEventMap[K]) => unknown,
@@ -42,12 +42,12 @@ describe('ColorSchemeService', () => {
     }
     throw new Error('Media query not mocked')
   }
-  let prefersDark: boolean
+  let isDarkPreferred: boolean
   let prefersDarkMatchMediaChangesEmitter: EventEmitter<MediaQueryListEvent>
   let prefersDarkMatchMediaSubscriptions: Subscription[]
 
   beforeEach(() => {
-    prefersDark = false
+    isDarkPreferred = false
     prefersDarkMatchMediaChangesEmitter =
       new EventEmitter<MediaQueryListEvent>()
     prefersDarkMatchMediaSubscriptions = []
@@ -143,7 +143,7 @@ describe('ColorSchemeService', () => {
 
       describe('when user does not prefer dark color scheme', () => {
         it('should manually set the scheme to dark', () => {
-          prefersDark = false
+          isDarkPreferred = false
           sut.toggleDarkLight()
 
           const schemeAttributeValue = mockDocumentElement.getAttribute(
@@ -156,7 +156,7 @@ describe('ColorSchemeService', () => {
 
       describe('when user prefers dark color scheme', () => {
         it('should manually set the scheme to light', () => {
-          prefersDark = true
+          isDarkPreferred = true
           sut.toggleDarkLight()
 
           const schemeAttributeValue = mockDocumentElement.getAttribute(

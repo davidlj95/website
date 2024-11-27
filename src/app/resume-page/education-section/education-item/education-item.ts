@@ -8,7 +8,7 @@ export class EducationItem {
   readonly dateRange: DateRange
   readonly score: string
   readonly courses: readonly string[]
-  readonly cumLaude: boolean
+  readonly isCumLaude: boolean
 
   constructor({
     institution,
@@ -17,7 +17,7 @@ export class EducationItem {
     dateRange,
     score,
     courses,
-    cumLaude,
+    isCumLaude,
   }: {
     institution: Organization
     area: string
@@ -25,7 +25,7 @@ export class EducationItem {
     dateRange: DateRange
     score: string
     courses?: readonly string[]
-    cumLaude?: boolean
+    isCumLaude?: boolean
   }) {
     this.institution = institution
     this.area = area
@@ -33,6 +33,6 @@ export class EducationItem {
     this.dateRange = dateRange
     this.score = score
     this.courses = courses ?? []
-    this.cumLaude = cumLaude ?? false
+    this.isCumLaude = isCumLaude ?? false
   }
 }

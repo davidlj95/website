@@ -19,7 +19,7 @@
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      @if (_item.freelance) {
+      @if (_item.isFreelance) {
         <app-attribute
           [symbol]="MaterialSymbol.Work"
           [appTestId]="Attribute.Freelance"
@@ -34,7 +34,7 @@
           Employee
         </app-attribute>
       }
-      @if (_item.internship) {
+      @if (_item.isInternship) {
         <app-attribute
           [symbol]="MaterialSymbol.School"
           [appTestId]="Attribute.Internship"
@@ -42,7 +42,7 @@
           Internship
         </app-attribute>
       }
-      @if (_item.morePositions) {
+      @if (_item.hasMorePositions) {
         <app-attribute
           [symbol]="MaterialSymbol.More"
           [appTestId]="Attribute.MorePositions"
@@ -51,7 +51,7 @@
           See summary for details
         </app-attribute>
       }
-      @if (_item.promotions) {
+      @if (_item.hasPromotions) {
         <app-attribute
           [symbol]="MaterialSymbol.ToolsLadder"
           [appTestId]="Attribute.Promotions"
