@@ -123,7 +123,7 @@ export default tsEslint.config(
   },
   {
     files: ['**/*.cy.ts', 'cypress/**/*.ts'],
-    ...eslintPluginCypress.configs.recommended,
+    extends: [eslintPluginCypress.configs.recommended],
   },
   {
     files: ['**/*.json'],
