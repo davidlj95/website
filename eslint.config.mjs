@@ -13,11 +13,17 @@ import eslintPluginCypress from 'eslint-plugin-cypress/flat'
 import eslintPluginJasmine from 'eslint-plugin-jasmine'
 import eslintPluginJsonFiles from 'eslint-plugin-json-files'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-const gitignorePath = resolve(__dirname, '.gitignore')
+import globals from 'globals'
 
-const useTypedRules = Boolean(process.env.TYPED_RULES)
+const gitignorePath = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  '.gitignore',
+)
+
+const shouldEnableTypedRules = Boolean(process.env.TYPED_RULES)
+
+const jsRules = [eslint.configs.recommended]
+
 export default tsEslint.config(
   includeIgnoreFile(gitignorePath),
   {
@@ -28,17 +34,27 @@ export default tsEslint.config(
       'src/environments/environment.pull-request.ts',
     ],
   },
+  // Configuration files. Right now ESLint and Karma.
+  {
+    files: ['*.mjs', '*.js'],
+    extends: [...jsRules],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
   {
     files: ['**/*.ts'],
     extends: [
-      eslint.configs.recommended,
+      ...jsRules,
       // TODO: enable typed check recommended / stylistic
       ...tsEslint.configs.recommended,
       ...tsEslint.configs.stylistic,
     ],
     languageOptions: {
       parserOptions: {
-        ...(useTypedRules
+        ...(shouldEnableTypedRules
           ? {
               projectService: true,
               tsconfigRootDir: import.meta.dirname,
@@ -75,7 +91,7 @@ export default tsEslint.config(
           selector: 'typeLike',
           format: ['PascalCase'],
         },
-        ...(useTypedRules
+        ...(shouldEnableTypedRules
           ? [
               // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-boolean-variables-are-prefixed-with-an-allowed-verb
               {

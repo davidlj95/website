@@ -113,6 +113,7 @@
     "eslint-plugin-json-files": "4.4.2",
     "execa": "9.5.1",
     "extensionless": "1.9.9",
+    "globals": "15.12.0",
     "husky": "9.1.6",
     "jasmine-core": "5.4.0",
     "karma": "6.4.4",
