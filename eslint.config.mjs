@@ -48,9 +48,14 @@ export default tsEslint.config(
     files: ['**/*.ts'],
     extends: [
       ...jsRules,
-      // TODO: enable typed check recommended / stylistic
       ...tsEslint.configs.recommended,
       ...tsEslint.configs.stylistic,
+      ...(shouldEnableTypedRules
+        ? [
+            ...tsEslint.configs.recommendedTypeCheckedOnly,
+            ...tsEslint.configs.stylisticTypeCheckedOnly,
+          ]
+        : []),
     ],
     languageOptions: {
       parserOptions: {
