@@ -34,6 +34,12 @@ export default tsEslint.config(
       ...tsEslint.configs.recommended,
       ...tsEslint.configs.stylistic,
     ],
+    rules: {
+      '@typescript-eslint/explicit-member-accessibility': [
+        'error',
+        { accessibility: 'no-public' },
+      ],
+    },
   },
   {
     files: ['src/**/*.ts'],
