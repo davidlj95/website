@@ -5,6 +5,7 @@ import { expectIsNotVisible } from '@/test/helpers/visibility'
 
 import { ProfilePictureComponent } from './profile-picture.component'
 import { NgOptimizedImage } from '@angular/common'
+import { ATTRIBUTE_ARIA_LABEL } from '@/test/helpers/aria'
 
 describe('ProfilePictureComponent', () => {
   let component: ProfilePictureComponent
@@ -21,6 +22,12 @@ describe('ProfilePictureComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
+  })
+
+  it('should contain a label', () => {
+    expect(fixture.debugElement.attributes[ATTRIBUTE_ARIA_LABEL]).toContain(
+      'Profile',
+    )
   })
 
   it('should display profile picture', () => {
@@ -44,13 +51,6 @@ describe('ProfilePictureComponent', () => {
 
   describe('accessible easter egg', () => {
     describe('initially', () => {
-      it('component should not have has been focused attribute', () => {
-        expect(
-          fixture.debugElement.attributes[
-            ProfilePictureComponent.HAS_BEEN_FOCUSED_ATTR
-          ],
-        ).toBeUndefined()
-      })
       // We don't receive focus events if including whole component in tab sequence
       it('component as a whole should not be in tab sequence', () => {
         expect(fixture.debugElement.attributes['tabindex']).toBe('-1')
@@ -70,14 +70,6 @@ describe('ProfilePictureComponent', () => {
         profilePicEl = fixture.debugElement.query(PROFILE_PIC_MAIN_SELECTOR)
         profilePicEl.triggerEventHandler('focus')
         fixture.detectChanges()
-      })
-
-      it('component should have has been focused attribute', () => {
-        expect(
-          fixture.debugElement.attributes[
-            ProfilePictureComponent.HAS_BEEN_FOCUSED_ATTR
-          ],
-        ).toBe(true.toString())
       })
 
       it('component should be included in tab sequence', () => {

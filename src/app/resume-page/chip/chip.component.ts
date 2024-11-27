@@ -9,7 +9,7 @@ import { Component, EventEmitter, input, Output } from '@angular/core'
     '[class.selected]': 'selected()',
     '[class.selectable]': 'selectedChange.observed',
     '[attr.role]': "selectedChange.observed ? 'button': undefined",
-    '[attr.tabindex]': "selectedChange.observed ? '0': undefined",
+    '[attr.tabindex]': 'selectedChange.observed ? 0 : undefined',
     '(click)': 'emitToggledSelected()',
     '(keydown.enter)': 'emitToggledSelected()',
     '(keydown.space)': 'emitToggledSelected()',
