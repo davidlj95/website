@@ -8,5 +8,5 @@ import { DatePipe } from '@angular/common'
   imports: [DatePipe],
 })
 export class DateRangeComponent {
-  public readonly range = input.required<DateRange>()
+  readonly range = input.required<DateRange>()
 }

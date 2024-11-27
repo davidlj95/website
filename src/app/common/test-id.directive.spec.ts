@@ -34,7 +34,7 @@ function makeComponentWithChildElementHavingTestIdDirectiveSetTo({
     imports: [TestIdDirective],
   })
   class TestIdComponent {
-    public readonly testId = testId
+    readonly testId = testId
   }
   return TestIdComponent
 }

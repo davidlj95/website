@@ -7,5 +7,5 @@ import { NgTemplateOutlet } from '@angular/common'
   imports: [NgTemplateOutlet],
 })
 export class LinkComponent {
-  public readonly href = input.required<string | undefined>()
+  readonly href = input.required<string | undefined>()
 }

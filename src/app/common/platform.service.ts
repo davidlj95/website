@@ -2,7 +2,7 @@ import { isPlatformBrowser } from '@angular/common'
 import { inject, InjectionToken, PLATFORM_ID } from '@angular/core'
 
 export class PlatformService {
-  constructor(public readonly isBrowser: boolean) {}
+  constructor(readonly isBrowser: boolean) {}
 }
 
 export const PLATFORM_SERVICE = new InjectionToken<PlatformService>(

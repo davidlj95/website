@@ -36,10 +36,10 @@ const YEARS_OF_EXPERIENCE = Math.abs(
 )
 
 export class DescriptionLine {
-  public readonly data?: DescriptionLineData
-  public readonly children: readonly DescriptionLine[]
+  readonly data?: DescriptionLineData
+  readonly children: readonly DescriptionLine[]
 
-  public constructor(
+  constructor(
     data?: DescriptionLineData,
     children?: readonly DescriptionLine[],
   ) {
@@ -47,7 +47,7 @@ export class DescriptionLine {
     this.children = children ?? []
   }
 
-  public static fromData(
+  static fromData(
     dataArg: ConstructorParameters<typeof DescriptionLineData>[0],
     children?: readonly DescriptionLine[],
   ) {
@@ -56,11 +56,11 @@ export class DescriptionLine {
 }
 
 export class DescriptionLineData {
-  public readonly symbol: string
-  public readonly html: string
-  public readonly text: string
+  readonly symbol: string
+  readonly html: string
+  readonly text: string
 
-  public constructor({
+  constructor({
     symbol,
     html,
     text,

@@ -15,7 +15,7 @@ import {
   host: { '[class.selected]': 'selected()' },
 })
 export class ChipComponent {
-  public readonly selected = input<boolean>()
+  readonly selected = input<boolean>()
 
   @Output()
   public selectedChange = new EventEmitter<boolean>()
