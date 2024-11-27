@@ -26,7 +26,6 @@ import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { textContent } from '@/test/helpers/text-content'
-import { Apps, Dns, FullStackedBarChart } from '@/data/material-symbols'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -142,17 +141,7 @@ describe('ProjectItemComponent', () => {
   describe('when stack attribute exists', () => {
     it('should include attribute with its display name and icon', () => {
       const stack = Stack.Front
-      const stackContent = {
-        [Stack.Back]: {
-          displayName: 'Backend',
-          materialSymbol: Dns,
-        },
-        [Stack.Front]: { displayName: 'Frontend', materialSymbol: Apps },
-        [Stack.Full]: {
-          displayName: 'Full stack',
-          materialSymbol: FullStackedBarChart,
-        },
-      }[stack]
+      const stackContent = ProjectItemComponent.StackContent[stack]
 
       setProjectItem(fixture, { stack })
 

@@ -48,7 +48,7 @@ export class ProjectItemComponent {
   protected _item!: ProjectItem
   protected _contents: readonly ChippedContent[] = []
 
-  protected readonly StackContent: Record<
+  static readonly StackContent: Record<
     Stack,
     {
       displayName: string
@@ -66,6 +66,7 @@ export class ProjectItemComponent {
     },
   }
   protected readonly Attribute = Attribute
+  protected _stackContent = ProjectItemComponent.StackContent
 }
 
 export enum Attribute {

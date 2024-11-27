@@ -25,10 +25,10 @@
     <app-card-header-attributes>
       @if (_item.stack) {
         <app-attribute
-          [symbol]="StackContent[_item.stack].materialSymbol"
+          [symbol]="_stackContent[_item.stack].materialSymbol"
           [appTestId]="Attribute.Stack"
         >
-          {{ StackContent[_item.stack].displayName }}
+          {{ _stackContent[_item.stack].displayName }}
         </app-attribute>
       }
     </app-card-header-attributes>
