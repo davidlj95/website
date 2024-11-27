@@ -17,16 +17,19 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const gitignorePath = resolve(__dirname, '.gitignore')
 
+const filterExcludingNodejsGlobals = {
+  filter: {
+    match: false,
+    regex: '__(dirname|filename)',
+  },
+}
 const namingConventionRules = {
   '@typescript-eslint/naming-convention': [
     'error',
     {
       selector: 'variableLike',
       format: ['camelCase'],
-      filter: {
-        match: false,
-        regex: '__(dirname|filename)',
-      },
+      ...filterExcludingNodejsGlobals,
     },
     {
       selector: 'memberLike',
@@ -43,10 +46,7 @@ const namingConventionRules = {
     {
       selector: 'variable',
       format: ['camelCase', 'UPPER_CASE'],
-      filter: {
-        match: false,
-        regex: '__(dirname|filename)',
-      },
+      ...filterExcludingNodejsGlobals,
     },
     {
       selector: 'typeLike',
