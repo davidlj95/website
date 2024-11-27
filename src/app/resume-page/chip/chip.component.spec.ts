@@ -3,6 +3,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { ComponentFixture } from '@angular/core/testing'
 import { first, Subscription } from 'rxjs'
 import { shouldProjectContent } from '@/test/helpers/component-testers'
+import { setFixtureInput } from '@/test/helpers/set-input'
 
 describe('ChipComponent', () => {
   it('should create', () => {
@@ -17,8 +18,7 @@ describe('ChipComponent', () => {
   describe('when selected attribute is false', () => {
     it('should not add the selected class', () => {
       const [fixture] = componentTestSetup(ChipComponent)
-      fixture.componentRef.setInput('isSelected', false)
-      fixture.detectChanges()
+      setFixtureInput(fixture, 'isSelected', false)
 
       expect(fixture.debugElement.classes['selected']).toBeFalsy()
     })
@@ -27,8 +27,7 @@ describe('ChipComponent', () => {
   describe('when selected attribute is true', () => {
     it('should add the selected class', () => {
       const [fixture] = componentTestSetup(ChipComponent)
-      fixture.componentRef.setInput('isSelected', true)
-      fixture.detectChanges()
+      setFixtureInput(fixture, 'isSelected', true)
 
       expect(fixture.debugElement.classes['selected']).toBeTrue()
     })
@@ -65,7 +64,7 @@ describe('ChipComponent', () => {
 
     beforeEach(() => {
       ;[fixture, component] = componentTestSetup(ChipComponent)
-      fixture.componentRef.setInput('isSelected', false)
+      setFixtureInput(fixture, 'isSelected', false, { noChangeDetection: true })
       subscription = component.isSelectedChange
         .pipe(first())
         .subscribe((isSelectedReceived) => (isSelected = isSelectedReceived))

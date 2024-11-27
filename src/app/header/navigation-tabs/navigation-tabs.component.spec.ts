@@ -11,6 +11,7 @@ import { EmptyComponent } from '@/test/helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInput } from '@/test/helpers/set-input'
 
 describe('NavigationTabsComponent', () => {
   const FOO_ROUTE = { path: 'foo', component: EmptyComponent } satisfies Route
@@ -85,8 +86,7 @@ describe('NavigationTabsComponent', () => {
     const [fixture, component] = componentTestSetup(NavigationTabsComponent, {
       providers: [provideRouter(ROUTES)],
     })
-    fixture.componentRef.setInput('items', items ?? [])
-    fixture.detectChanges()
+    setFixtureInput(fixture, 'items', items ?? [])
     return [fixture, component] as const
   }
 })

@@ -15,6 +15,7 @@ import { CardHeaderTextsComponent } from '../../card/card-header/card-header-tex
 import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInput } from '@/test/helpers/set-input'
 
 describe('LanguageItemComponent', () => {
   let component: LanguageItemComponent
@@ -114,6 +115,5 @@ function setLanguageItem(
   fixture: ComponentFixture<LanguageItemComponent>,
   overrides?: Partial<LanguageItem>,
 ) {
-  fixture.componentRef.setInput('item', makeLanguageItem(overrides))
-  fixture.detectChanges()
+  setFixtureInput(fixture, 'item', makeLanguageItem(overrides))
 }

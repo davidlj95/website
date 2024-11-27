@@ -4,6 +4,7 @@ import { DateRangeComponent } from './date-range.component'
 import { By } from '@angular/platform-browser'
 import { DateRange } from './date-range'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInput } from '@/test/helpers/set-input'
 
 describe('DateRangeComponent', () => {
   let component: DateRangeComponent
@@ -20,8 +21,7 @@ describe('DateRangeComponent', () => {
   })
 
   function setRangeAndDetectChanges(range: DateRange) {
-    fixture.componentRef.setInput('range', range)
-    fixture.detectChanges()
+    setFixtureInput(fixture, 'range', range)
   }
 
   it('should display start date formatted as month abbreviation and year', () => {

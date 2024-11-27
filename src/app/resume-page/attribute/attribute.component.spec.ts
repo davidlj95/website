@@ -4,14 +4,14 @@ import { By } from '@angular/platform-browser'
 import { shouldProjectContent } from '@/test/helpers/component-testers'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInput } from '@/test/helpers/set-input'
 
 describe('AttributeComponent', () => {
   const symbol = 'some symbol'
 
   function makeSut() {
     const [fixture, component] = componentTestSetup(AttributeComponent)
-    fixture.componentRef.setInput('symbol', symbol)
-    fixture.detectChanges()
+    setFixtureInput(fixture, 'symbol', symbol)
     return [fixture, component] as const
   }
 
