@@ -17,7 +17,7 @@ describe('ChipComponent', () => {
   describe('when selected attribute is false', () => {
     it('should not add the selected class', () => {
       const [fixture] = componentTestSetup(ChipComponent)
-      fixture.componentRef.setInput('selected', false)
+      fixture.componentRef.setInput('isSelected', false)
       fixture.detectChanges()
 
       expect(fixture.debugElement.classes['selected']).toBeFalsy()
@@ -27,7 +27,7 @@ describe('ChipComponent', () => {
   describe('when selected attribute is true', () => {
     it('should add the selected class', () => {
       const [fixture] = componentTestSetup(ChipComponent)
-      fixture.componentRef.setInput('selected', true)
+      fixture.componentRef.setInput('isSelected', true)
       fixture.detectChanges()
 
       expect(fixture.debugElement.classes['selected']).toBeTrue()
@@ -65,8 +65,8 @@ describe('ChipComponent', () => {
 
     beforeEach(() => {
       ;[fixture, component] = componentTestSetup(ChipComponent)
-      fixture.componentRef.setInput('selected', false)
-      subscription = component.selectedChange
+      fixture.componentRef.setInput('isSelected', false)
+      subscription = component.isSelectedChange
         .pipe(first())
         .subscribe((isSelectedReceived) => (isSelected = isSelectedReceived))
       fixture.detectChanges()

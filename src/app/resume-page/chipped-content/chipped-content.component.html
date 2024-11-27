@@ -1,8 +1,8 @@
 <div class="chips">
   @for (content of contents(); track content) {
     <app-chip
-      [selected]="isActive() && content === activeContent()"
-      (selectedChange)="select(content)"
+      [isSelected]="isActive() && content === activeContent()"
+      (isSelectedChange)="select(content)"
     >
       {{ content.displayName }}
     </app-chip>
