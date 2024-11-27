@@ -58,18 +58,18 @@ describe('App color scheme', () => {
     })
   })
 
-  type rgbaArray = [r: number, g: number, b: number, a?: number]
+  type RgbaArray = [r: number, g: number, b: number, a?: number]
   // https://en.wikipedia.org/wiki/Relative_luminance
   // https://stackoverflow.com/a/52879332/3263250
   // It doesn't take into account alpha channel
-  const getRelativeLuminance = (rgb: rgbaArray) =>
+  const getRelativeLuminance = (rgb: RgbaArray) =>
     (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255
   // https://stackoverflow.com/a/3752026/3263250
-  const getRgbFromCssRgbColor = (cssRgbColor: string): rgbaArray =>
+  const getRgbFromCssRgbColor = (cssRgbColor: string): RgbaArray =>
     cssRgbColor
       .replace(/^(rgb|rgba)\(/, '')
       .replace(/\)$/, '')
       .replace(/\s/g, '')
       .split(',')
-      .map((v) => parseFloat(v)) as rgbaArray
+      .map((v) => parseFloat(v)) as RgbaArray
 })

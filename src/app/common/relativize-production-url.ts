@@ -3,7 +3,7 @@ import { APP_BASE_HREF } from '@angular/common'
 import { METADATA } from '@/data/metadata'
 
 export type RelativizeProductionUrl = (url: URL) => string
-export const _RELATIVIZE_PRODUCTION_URL_FACTORY: (
+const RELATIVIZE_PRODUCTION_URL_FACTORY: (
   baseUrl: URL,
   baseHref: string | null,
 ) => RelativizeProductionUrl = (baseUrl, baseHref) => (url) => {
@@ -38,7 +38,7 @@ export const RELATIVIZE_PRODUCTION_URL =
     isDevMode ? 'RelativizeProductionUrl' : 'RPU',
     {
       factory: () =>
-        _RELATIVIZE_PRODUCTION_URL_FACTORY(
+        RELATIVIZE_PRODUCTION_URL_FACTORY(
           inject(APP_BASE_URL_PRODUCTION),
           inject(APP_BASE_HREF, { optional: true }),
         ),

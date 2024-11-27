@@ -1,6 +1,6 @@
 import {
-  _SCROLL_INTO_VIEW_FACTORY,
   SCROLL_INTO_VIEW,
+  SCROLL_INTO_VIEW_FACTORY,
 } from '@/common/scroll-into-view'
 import { MockProvider } from 'ng-mocks'
 import { PLATFORM_SERVICE, PlatformService } from '@/common/platform.service'
@@ -41,7 +41,7 @@ function makeSut(opts: { platformService: PlatformService }) {
   return serviceTestSetup(SCROLL_INTO_VIEW, {
     providers: [
       MockProvider(PLATFORM_SERVICE, opts.platformService),
-      MockProvider(SCROLL_INTO_VIEW, _SCROLL_INTO_VIEW_FACTORY, 'useFactory'),
+      MockProvider(SCROLL_INTO_VIEW, SCROLL_INTO_VIEW_FACTORY, 'useFactory'),
     ],
   })
 }

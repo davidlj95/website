@@ -1,10 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import {
-  Attribute,
-  ProjectItemComponent,
-  StackContent,
-} from './project-item.component'
+import { Attribute, ProjectItemComponent } from './project-item.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
@@ -145,7 +141,7 @@ describe('ProjectItemComponent', () => {
   describe('when stack attribute exists', () => {
     it('should include attribute with its display name and icon', () => {
       const stack = Stack.Front
-      const stackContent = StackContent[stack]
+      const stackContent = ProjectItemComponent.StackContent[stack]
 
       setProjectItem(fixture, { stack })
 

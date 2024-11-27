@@ -47,15 +47,15 @@ export class ChippedContentComponent {
     @Inject(SCROLL_INTO_VIEW) protected _scrollIntoView: ScrollIntoView,
   ) {}
 
-  protected _active = false
+  protected _isActive = false
   protected _activeIndex = 0
 
   onSelect(index: number) {
     if (this._activeIndex == index) {
-      this._active = !this._active
+      this._isActive = !this._isActive
       return
     }
-    this._active = true
+    this._isActive = true
     this._activeIndex = index
   }
 }

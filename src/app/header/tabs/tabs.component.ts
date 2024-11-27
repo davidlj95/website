@@ -85,7 +85,7 @@ export class TabsComponent implements OnDestroy {
     )
       return
     this._currentTabs.forEach(
-      (tab, index) => (tab.selected = index === this._indexToSelect),
+      (tab, index) => (tab.isSelected = index === this._indexToSelect),
     )
     this._selectedIndex = this._indexToSelect
     this._indexToScrollTo = this._indexToSelect

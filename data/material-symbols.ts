@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export const DarkMode = '\ue51c'
 export const LightMode = '\ue518'
 export const Warning = '\ue002'

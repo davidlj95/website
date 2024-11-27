@@ -17,6 +17,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const gitignorePath = resolve(__dirname, '.gitignore')
 
+const useTypedRules = Boolean(process.env.TYPED_RULES)
 export default tsEslint.config(
   includeIgnoreFile(gitignorePath),
   {
@@ -31,13 +32,68 @@ export default tsEslint.config(
     files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
+      // TODO: enable typed check recommended / stylistic
       ...tsEslint.configs.recommended,
       ...tsEslint.configs.stylistic,
     ],
+    languageOptions: {
+      parserOptions: {
+        ...(useTypedRules
+          ? {
+              projectService: true,
+              tsconfigRootDir: import.meta.dirname,
+            }
+          : {}),
+      },
+    },
     rules: {
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         { accessibility: 'no-public' },
+      ],
+      '@typescript-eslint/naming-convention': [
+        'error',
+        // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-all-variables-functions-and-properties-follow-are-camelcase
+        {
+          selector: 'variableLike',
+          format: ['camelCase'],
+        },
+        // https://google.github.io/styleguide/tsguide.html#naming-rules-by-identifier-type
+        {
+          selector: 'variable',
+          format: ['camelCase', 'UPPER_CASE'],
+        },
+        // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-private-members-are-prefixed-with-an-underscore
+        {
+          selector: 'memberLike',
+          modifiers: ['private', 'protected'],
+          format: ['camelCase'],
+          leadingUnderscore: 'require',
+        },
+        // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-interface-names-do-not-begin-with-an-i
+        {
+          selector: 'typeLike',
+          format: ['PascalCase'],
+        },
+        ...(useTypedRules
+          ? [
+              // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-boolean-variables-are-prefixed-with-an-allowed-verb
+              {
+                selector: [
+                  'variable',
+                  'classicAccessor',
+                  'autoAccessor',
+                  'classProperty',
+                  'parameter',
+                  'parameterProperty',
+                ],
+                types: ['boolean'],
+                format: ['PascalCase'],
+                prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+                leadingUnderscore: 'allow',
+              },
+            ]
+          : []),
       ],
     },
   },

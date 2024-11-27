@@ -142,7 +142,7 @@ describe('ExperienceItem', () => {
 
     describe('when experience is not freelance, therefore it was employee', () => {
       beforeEach(() => {
-        setExperienceItem(fixture, { freelance: false })
+        setExperienceItem(fixture, { isFreelance: false })
       })
 
       testShouldDisplayItsAttribute(() => fixture, Attribute.Employee)
@@ -150,7 +150,7 @@ describe('ExperienceItem', () => {
 
     describe('when experience is freelance', () => {
       beforeEach(() => {
-        setExperienceItem(fixture, { freelance: true })
+        setExperienceItem(fixture, { isFreelance: true })
       })
 
       testShouldDisplayItsAttribute(() => fixture, Attribute.Freelance)
@@ -158,7 +158,7 @@ describe('ExperienceItem', () => {
 
     describe('when experience is not an internship', () => {
       beforeEach(() => {
-        setExperienceItem(fixture, { internship: false })
+        setExperienceItem(fixture, { isInternship: false })
       })
 
       testShouldNotDisplayItsAttribute(() => fixture, Attribute.Internship)
@@ -166,7 +166,7 @@ describe('ExperienceItem', () => {
 
     describe('when experience is an internship', () => {
       beforeEach(() => {
-        setExperienceItem(fixture, { internship: true })
+        setExperienceItem(fixture, { isInternship: true })
       })
 
       testShouldDisplayItsAttribute(() => fixture, Attribute.Internship)
@@ -174,7 +174,7 @@ describe('ExperienceItem', () => {
 
     describe('when experience contained no promotions', () => {
       beforeEach(() => {
-        setExperienceItem(fixture, { promotions: false })
+        setExperienceItem(fixture, { hasPromotions: false })
       })
 
       testShouldNotDisplayItsAttribute(() => fixture, Attribute.Promotions)
@@ -182,7 +182,7 @@ describe('ExperienceItem', () => {
 
     describe('when experience contained promotions', () => {
       beforeEach(() => {
-        setExperienceItem(fixture, { promotions: true })
+        setExperienceItem(fixture, { hasPromotions: true })
       })
 
       testShouldDisplayItsAttribute(() => fixture, Attribute.Promotions)
@@ -190,7 +190,7 @@ describe('ExperienceItem', () => {
 
     describe('when experience contained no more positions', () => {
       beforeEach(() => {
-        setExperienceItem(fixture, { morePositions: false })
+        setExperienceItem(fixture, { hasMorePositions: false })
       })
 
       testShouldNotDisplayItsAttribute(() => fixture, Attribute.MorePositions)
@@ -198,7 +198,7 @@ describe('ExperienceItem', () => {
 
     describe('when experience contained more positions', () => {
       beforeEach(() => {
-        setExperienceItem(fixture, { morePositions: true })
+        setExperienceItem(fixture, { hasMorePositions: true })
       })
 
       testShouldDisplayItsAttribute(() => fixture, Attribute.MorePositions)

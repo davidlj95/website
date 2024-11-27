@@ -64,9 +64,9 @@ describe('AdaptJsonResumeEducation', () => {
 
   // Non standard fields
   it('should map the cum laude field', () => {
-    const item = makeSut()(makeJsonResumeEducation({ cumLaude: true }))
+    const item = makeSut()(makeJsonResumeEducation({ isCumLaude: true }))
 
-    expect(item.cumLaude).toBeTrue()
+    expect(item.isCumLaude).toBeTrue()
   })
 
   it('should relativize image URL', () => {

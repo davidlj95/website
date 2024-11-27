@@ -67,7 +67,7 @@ describe('NavigationTabsComponent', () => {
 
     expect(fooTabElement).not.toBeNull()
     expect(
-      getComponentInstance(fooTabElement!, TabComponent).selected,
+      getComponentInstance(fooTabElement!, TabComponent).isSelected,
     ).toBeTrue()
 
     const barTabElement = fixture.debugElement
@@ -77,7 +77,7 @@ describe('NavigationTabsComponent', () => {
     expect(barTabElement).not.toBeNull()
 
     expect(
-      getComponentInstance(barTabElement!, TabComponent).selected,
+      getComponentInstance(barTabElement!, TabComponent).isSelected,
     ).toBeFalse()
   })
 

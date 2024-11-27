@@ -47,7 +47,7 @@ describe('TabsComponent', () => {
     tabElements.forEach((tabElement, index) => {
       const shouldBeSelected = index === selectedIndex
 
-      expect(getComponentInstance(tabElement, TabComponent).selected)
+      expect(getComponentInstance(tabElement, TabComponent).isSelected)
         .withContext(
           `tab ${index} is ${shouldBeSelected ? 'selected' : 'not selected'}`,
         )
