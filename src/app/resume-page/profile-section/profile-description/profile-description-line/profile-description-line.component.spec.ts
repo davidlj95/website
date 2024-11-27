@@ -7,6 +7,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { DescriptionLine } from '@/data/metadata'
 import { ATTRIBUTE_ARIA_HIDDEN } from '@/test/helpers/aria'
 import { textContent } from '@/test/helpers/text-content'
+import { innerHtml } from '@/test/helpers/inner-html'
 
 describe('ProfileDescriptionLineComponent', () => {
   let component: ProfileDescriptionLineComponent
@@ -64,9 +65,7 @@ describe('ProfileDescriptionLineComponent', () => {
     it('should display HTML content', () => {
       const htmlSpan = fixture.debugElement.query(By.css('.content'))
 
-      expect((htmlSpan.nativeElement as Element).innerHTML)
-        .withContext('html')
-        .toEqual(DUMMY_LINE.data!.html)
+      expect(innerHtml(htmlSpan)).toEqual(DUMMY_LINE.data!.html)
     })
   })
 })

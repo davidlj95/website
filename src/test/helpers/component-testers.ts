@@ -2,6 +2,7 @@ import { Component, DebugElement, Predicate, Type } from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
 import { componentTestSetup } from './component-test-setup'
 import { byComponent, getComponentSelector } from './component-query-predicates'
+import { innerHtml } from '@/test/helpers/inner-html'
 
 /**
  * Tests a component is contained inside the provided fixture
@@ -73,10 +74,6 @@ export function shouldProjectContent(
       ? componentElement
       : componentElement.query(projectionContainerPredicate)
     expect(projectionContainerElement).toBeTruthy()
-    expect(
-      (
-        projectionContainerElement.nativeElement as HTMLElement
-      ).innerHTML.trim(),
-    ).toEqual(contentToProject)
+    expect(innerHtml(projectionContainerElement)).toEqual(contentToProject)
   })
 }
