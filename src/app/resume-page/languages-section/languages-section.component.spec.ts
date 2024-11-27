@@ -11,10 +11,9 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
 
 describe('LanguagesSectionComponent', () => {
   it('should create', () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_fixture, component] = makeSut()
+    const [fixture] = makeSut()
 
-    expect(component).toBeTruthy()
+    expect(fixture.componentInstance).toBeTruthy()
   })
 
   it('should display all languages', () => {

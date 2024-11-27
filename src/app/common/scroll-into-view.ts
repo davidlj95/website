@@ -17,13 +17,13 @@ export type ScrollIntoView = (element: HTMLElement) => void
  * As workaround, creating another provider for it when testing using the same factory.
  * That's why it's exported
  */
-export const _SCROLL_INTO_VIEW_FACTORY: () => ScrollIntoView = () =>
+export const SCROLL_INTO_VIEW_FACTORY: () => ScrollIntoView = () =>
   inject(PLATFORM_SERVICE).isBrowser ? scrollIntoView : noop
 export const SCROLL_INTO_VIEW = new InjectionToken<ScrollIntoView>(
   /* istanbul ignore next */
   isDevMode ? 'ScrollIntoView' : 'SIV',
   {
     providedIn: 'platform',
-    factory: _SCROLL_INTO_VIEW_FACTORY,
+    factory: SCROLL_INTO_VIEW_FACTORY,
   },
 )

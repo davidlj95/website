@@ -15,7 +15,7 @@
 [![Git](https://img.shields.io/badge/VCS-Git-f05032?logo=git&logoColor=f05032&link=https%3A%2F%git-scm.com%2F)](https://git-scm.com/)
 [![GitHub](https://img.shields.io/badge/Repository%20hosting-GitHub-181717?logo=github&logoColor=181717&link=https%3A%2F%github.com%2F)](https://github.com/)
 [![Package manager: pnpm](https://img.shields.io/badge/Package_manager-pnpm-f69220?logo=pnpm&link=https%3A%2F%2Fpnpm.io%2F)](https://pnpm.io/)
-[![Linted with ESLint](https://img.shields.io/badge/Linted_with-ESLint-3A33D1?logo=eslint&logoColor=white&link=https%3A%2F%2Feslint.org)](https://eslint.org)
+[![Linted with ESLint](https://img.shields.io/badge/Linted_with-ESLint-3A33D1?logo=eslint&logoColor=white&link=https%3A%2F%2Feslint.org)][ESLint]
 [![Unit tests with Jasmine](https://img.shields.io/badge/Unit_tests_with-Jasmine-8A4182?logo=Jasmine&logoColor=white&link=https%3A%2F%2Fjasmine.github.io)](https://jasmine.github.io)
 [![Unit tests ran by Karma](https://custom-icon-badges.demolab.com/badge/Unit_tests_ran_by-Karma-42beae.svg?logo=karma-runner&link=https%3A%2F%2Fkarma-runner.github.io)](https://karma-runner.github.io)
 [![Component Testing with Cypress](https://img.shields.io/badge/Component_Testing_with-Cypress-green?logo=cypress&link=https%3A%2F%2Fwww.cypress.io)](https://www.cypress.io)
@@ -25,6 +25,8 @@
 [![Released with Release It!](https://img.shields.io/badge/Released_with-%F0%9F%9A%80_Release_It!-black?link=https%3A%2F%2Fgithub.com%2Frelease-it%2Frelease-it)](https://github.com/release-it/release-it)
 [![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovate&logoColor=white&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
 [![Deployed via Cloudflare Pages](https://img.shields.io/badge/Deployed_via-Cloudflare%20Pages-f38020?logo=cloudflarepages&link=https%3A%2F%pages.cloudflare.com%2F)](https://pages.cloudflare.com/)
+
+[ESLint]: https://eslint.org
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
@@ -79,6 +81,20 @@ pnpm run commitlint:last
 ```
 
 [commitlint]: https://github.com/conventional-changelog/commitlint
+
+## Lint
+
+Linting is enabled via [Angular ESLint](https://github.com/angular-eslint/angular-eslint) which adds some nice [ESLint] default configurations for Angular projects. Some additions are done in top of that to lint more files, `package.json`, Jasmine & Cypress... Run the linter for the whole project via:
+
+```shell
+pnpm run lint:code
+```
+
+By default, [Typescript typed linting](https://typescript-eslint.io/getting-started/typed-linting/) is disabled for performance reasons. However, you can enable it to check everything's okay with rules that require types via:
+
+```shell
+pnpm run lint:code:typed
+```
 
 ## Release
 

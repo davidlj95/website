@@ -61,7 +61,7 @@ describe('ColorSchemeService', () => {
       documentElement: mockDocumentElement,
       // Make Angular testing tools happy :)
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      querySelectorAll: (_selectors: unknown) => {
+      querySelectorAll: (selectors: unknown) => {
         return { length: 0 }
       },
     } as Pick<Document, 'documentElement' | 'querySelectorAll'>

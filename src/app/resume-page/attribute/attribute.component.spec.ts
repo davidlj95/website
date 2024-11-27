@@ -16,10 +16,9 @@ describe('AttributeComponent', () => {
   }
 
   it('should create', () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_, component] = makeSut()
+    const [fixture] = makeSut()
 
-    expect(component).toBeTruthy()
+    expect(fixture.componentInstance).toBeTruthy()
   })
 
   it('should include the given symbol', () => {

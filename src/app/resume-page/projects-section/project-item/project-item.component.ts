@@ -48,27 +48,26 @@ export class ProjectItemComponent {
   protected _item!: ProjectItem
   protected _contents: readonly ChippedContent[] = []
 
-  protected readonly StackContent = StackContent
+  protected readonly StackContent: Record<
+    Stack,
+    {
+      displayName: string
+      materialSymbol: string
+    }
+  > = {
+    [Stack.Back]: {
+      displayName: 'Backend',
+      materialSymbol: Dns,
+    },
+    [Stack.Front]: { displayName: 'Frontend', materialSymbol: Apps },
+    [Stack.Full]: {
+      displayName: 'Full stack',
+      materialSymbol: FullStackedBarChart,
+    },
+  }
   protected readonly Attribute = Attribute
 }
 
 export enum Attribute {
   Stack = 'stack',
-}
-
-export const StackContent: Record<Stack, StackContent> = {
-  [Stack.Back]: {
-    displayName: 'Backend',
-    materialSymbol: Dns,
-  },
-  [Stack.Front]: { displayName: 'Frontend', materialSymbol: Apps },
-  [Stack.Full]: {
-    displayName: 'Full stack',
-    materialSymbol: FullStackedBarChart,
-  },
-}
-
-export interface StackContent {
-  displayName: string
-  materialSymbol: string
 }
