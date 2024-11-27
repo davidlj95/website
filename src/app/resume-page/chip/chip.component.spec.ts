@@ -91,22 +91,17 @@ describe('ChipComponent', () => {
       expect(fixture.debugElement.attributes['role']).toEqual('button')
     })
 
-    it('should emit new selected attribute on click', () => {
-      fixture.debugElement.triggerEventHandler('click')
+    const EVENT_TEST_CASES = ['click', 'keydown.space', 'keydown.enter']
+    EVENT_TEST_CASES.forEach((eventName) => {
+      describe(`when ${eventName} event is triggered`, () => {
+        beforeEach(() => {
+          fixture.debugElement.triggerEventHandler(eventName)
+        })
 
-      expect(isSelected).toBeTrue()
-    })
-
-    it('should emit new selected attribute on space key', () => {
-      fixture.debugElement.triggerEventHandler('keydown.space')
-
-      expect(isSelected).toBeTrue()
-    })
-
-    it('should emit new selected attribute on enter key', () => {
-      fixture.debugElement.triggerEventHandler('keydown.enter')
-
-      expect(isSelected).toBeTrue()
+        it('should emit new selected attribute on click', () => {
+          expect(isSelected).toBeTrue()
+        })
+      })
     })
   })
 })
