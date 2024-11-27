@@ -259,7 +259,6 @@ describe('CollapsibleTreeComponent', () => {
               fixture.detectChanges()
 
               expect(
-                // eslint-disable-next-line @typescript-eslint/unbound-method
                 mockParentComponent.collapseAllChildren,
               ).toHaveBeenCalledOnceWith({ except: component })
             })

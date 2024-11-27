@@ -78,7 +78,6 @@ describe('LightDarkToggleComponent', () => {
         .query(byComponent(ToolbarButtonComponent))
         .triggerEventHandler('click')
 
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(colorSchemeService.toggleDarkLight).toHaveBeenCalledWith()
     })
   })

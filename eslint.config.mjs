@@ -152,7 +152,11 @@ export default tsEslint.config(
   {
     files: ['src/**/*.spec.ts'],
     plugins: { jasmine: eslintPluginJasmine },
-    ...eslintPluginJasmine.configs.recommended,
+    extends: [eslintPluginJasmine.configs.recommended],
+    rules: {
+      // 👇 To refer to spied object methods (i.e.: created with `createSpyObj`)
+      '@typescript-eslint/unbound-method': 'off',
+    },
   },
   {
     files: ['**/*.cy.ts', 'cypress/**/*.ts'],

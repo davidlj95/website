@@ -19,7 +19,6 @@ describe('ScrollIntoView', () => {
 
       sut(dummyElement)
 
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(dummyElement.scrollIntoView).toHaveBeenCalledOnceWith(DEFAULT_ARGS)
     })
   })
@@ -33,7 +32,6 @@ describe('ScrollIntoView', () => {
 
       sut(dummyElement)
 
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(dummyElement.scrollIntoView).not.toHaveBeenCalled()
     })
   })
