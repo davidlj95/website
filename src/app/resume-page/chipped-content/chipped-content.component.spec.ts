@@ -23,8 +23,6 @@ describe('ChippedContentComponent', () => {
 
   beforeEach(() => {
     ;[fixture, component] = makeSut()
-    component.contents = CONTENTS
-    fixture.detectChanges()
   })
 
   it('should create', () => {
@@ -210,6 +208,7 @@ function makeSut() {
       MockProvider(SCROLL_INTO_VIEW, jasmine.createSpy()),
     ],
   })
-  component.contents = CONTENTS
+  fixture.componentRef.setInput('contents', CONTENTS)
+  fixture.detectChanges()
   return [fixture, component] as const
 }
