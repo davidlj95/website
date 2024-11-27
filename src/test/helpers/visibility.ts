@@ -1,15 +1,24 @@
 // TODO: those could be custom matchers
-export function expectIsInLayout(element: Element) {
-  expect(element.checkVisibility()).withContext('is in layout').toBeTrue()
+import { DebugElement } from '@angular/core'
+
+export function expectIsInLayout(debugElement: DebugElement) {
+  expect((debugElement.nativeElement as Element).checkVisibility())
+    .withContext('is in layout')
+    .toBeTrue()
 }
 
-export function expectIsNotInLayout(element: Element) {
-  expect(element.checkVisibility()).withContext('is not in layout').toBeFalse()
+export function expectIsNotInLayout(debugElement: DebugElement) {
+  expect((debugElement.nativeElement as Element).checkVisibility())
+    .withContext('is not in layout')
+    .toBeFalse()
 }
 
-export function expectIsNotVisible(element: Element) {
+export function expectIsNotVisible(debugElement: DebugElement) {
   expect(
-    element.checkVisibility({ checkVisibilityCSS: true, checkOpacity: true }),
+    (debugElement.nativeElement as Element).checkVisibility({
+      checkVisibilityCSS: true,
+      checkOpacity: true,
+    }),
   )
     .withContext('is not visible')
     .toBeFalse()

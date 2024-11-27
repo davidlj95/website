@@ -8,12 +8,12 @@ class TrailingSlashUrlSerializer extends DefaultUrlSerializer {
 
 // Extracted from class to allow builder to rename method to a shorter name
 const withTrailingSlash = (url: string): string => {
-  const splitOn = url.indexOf('?') > -1 ? '?' : '#'
+  const splitOn = url.includes('?') ? '?' : '#'
   const pathArr = url.split(splitOn)
 
   if (!pathArr[0].endsWith('/')) {
     const fileName = url.substring(url.lastIndexOf('/') + 1)
-    if (fileName.indexOf('.') === -1) {
+    if (!fileName.includes('.')) {
       pathArr[0] += '/'
     }
   }

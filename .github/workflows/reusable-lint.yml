@@ -12,8 +12,13 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Setup
         uses: ./.github/actions/setup
+        # 👇 Needed for typed linting
+      - name: Generate data
+        run: |
+          pnpm run --filter scripts build
+          pnpm run --filter scripts generate:simple-icons
       - name: Run linter
-        run: pnpm run lint:code
+        run: pnpm run lint:code:typed
 
   github-actions:
     name: GitHub Actions

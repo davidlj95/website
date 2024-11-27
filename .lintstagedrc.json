@@ -1,7 +1,7 @@
 {
   "!*.{html,ts,json}": ["pnpm run format:files"],
   "**/*.{html,ts,json}": [
-    "pnpm run lint:code:files:typed --fix",
+    "pnpm run lint:code:files --fix",
     "pnpm run format:files"
   ],
   ".github/**/*.y?(a)ml": ["pnpm run lint:gh-actions"]

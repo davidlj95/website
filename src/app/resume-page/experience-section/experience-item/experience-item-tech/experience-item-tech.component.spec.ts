@@ -5,6 +5,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { byComponent } from '@/test/helpers/component-query-predicates'
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { makeTechnologyItem } from '../../../technology/__tests__/make-technology-item'
+import { textContent } from '@/test/helpers/text-content'
 
 describe('ExperienceItemTechComponent', () => {
   let component: ExperienceItemTechComponent
@@ -16,7 +17,7 @@ describe('ExperienceItemTechComponent', () => {
   ]
   const projectNames = ['Project A', 'Project B', 'Project C']
 
-  beforeEach(async () => {
+  beforeEach(() => {
     ;[fixture, component] = makeSut()
 
     component.technologies = technologies
@@ -38,7 +39,7 @@ describe('ExperienceItemTechComponent', () => {
   })
 
   it('should display all project names', () => {
-    expect(fixture.debugElement.nativeElement.textContent).toContain(
+    expect(textContent(fixture.debugElement)).toContain(
       'Project A, Project B, and Project C',
     )
   })

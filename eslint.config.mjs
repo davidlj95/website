@@ -20,9 +20,32 @@ const gitignorePath = resolve(
   '.gitignore',
 )
 
-const shouldEnableTypedRules = Boolean(process.env.TYPED_RULES)
-
 const jsRules = [eslint.configs.recommended]
+
+export const NAMING_CONVENTION_SELECTORS = [
+  // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-all-variables-functions-and-properties-follow-are-camelcase
+  {
+    selector: 'variableLike',
+    format: ['camelCase'],
+  },
+  // https://google.github.io/styleguide/tsguide.html#naming-rules-by-identifier-type
+  {
+    selector: 'variable',
+    format: ['camelCase', 'UPPER_CASE'],
+  },
+  // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-private-members-are-prefixed-with-an-underscore
+  {
+    selector: 'memberLike',
+    modifiers: ['private', 'protected'],
+    format: ['camelCase'],
+    leadingUnderscore: 'require',
+  },
+  // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-interface-names-do-not-begin-with-an-i
+  {
+    selector: 'typeLike',
+    format: ['PascalCase'],
+  },
+]
 
 export default tsEslint.config(
   includeIgnoreFile(gitignorePath),
@@ -48,20 +71,9 @@ export default tsEslint.config(
     files: ['**/*.ts'],
     extends: [
       ...jsRules,
-      // TODO: enable typed check recommended / stylistic
       ...tsEslint.configs.recommended,
       ...tsEslint.configs.stylistic,
     ],
-    languageOptions: {
-      parserOptions: {
-        ...(shouldEnableTypedRules
-          ? {
-              projectService: true,
-              tsconfigRootDir: import.meta.dirname,
-            }
-          : {}),
-      },
-    },
     rules: {
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
@@ -69,47 +81,7 @@ export default tsEslint.config(
       ],
       '@typescript-eslint/naming-convention': [
         'error',
-        // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-all-variables-functions-and-properties-follow-are-camelcase
-        {
-          selector: 'variableLike',
-          format: ['camelCase'],
-        },
-        // https://google.github.io/styleguide/tsguide.html#naming-rules-by-identifier-type
-        {
-          selector: 'variable',
-          format: ['camelCase', 'UPPER_CASE'],
-        },
-        // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-private-members-are-prefixed-with-an-underscore
-        {
-          selector: 'memberLike',
-          modifiers: ['private', 'protected'],
-          format: ['camelCase'],
-          leadingUnderscore: 'require',
-        },
-        // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-interface-names-do-not-begin-with-an-i
-        {
-          selector: 'typeLike',
-          format: ['PascalCase'],
-        },
-        ...(shouldEnableTypedRules
-          ? [
-              // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-boolean-variables-are-prefixed-with-an-allowed-verb
-              {
-                selector: [
-                  'variable',
-                  'classicAccessor',
-                  'autoAccessor',
-                  'classProperty',
-                  'parameter',
-                  'parameterProperty',
-                ],
-                types: ['boolean'],
-                format: ['PascalCase'],
-                prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
-                leadingUnderscore: 'allow',
-              },
-            ]
-          : []),
+        ...NAMING_CONVENTION_SELECTORS,
       ],
     },
   },
@@ -147,11 +119,11 @@ export default tsEslint.config(
   {
     files: ['src/**/*.spec.ts'],
     plugins: { jasmine: eslintPluginJasmine },
-    ...eslintPluginJasmine.configs.recommended,
+    extends: [eslintPluginJasmine.configs.recommended],
   },
   {
     files: ['**/*.cy.ts', 'cypress/**/*.ts'],
-    ...eslintPluginCypress.configs.recommended,
+    extends: [eslintPluginCypress.configs.recommended],
   },
   {
     files: ['**/*.json'],

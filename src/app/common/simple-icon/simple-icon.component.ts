@@ -30,7 +30,7 @@ export class SimpleIconComponent {
     this.loader(icon.slug)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        tap((svg) => (this.elRef.nativeElement.innerHTML = svg)),
+        tap((svg) => ((this.elRef.nativeElement as Element).innerHTML = svg)),
       )
       .subscribe()
     this._fillColor = `#${icon.hex}`

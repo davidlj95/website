@@ -16,15 +16,16 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    // Added for paths to work
-    "baseUrl": "./",
     // Manually added to import JSONs in the app
     "resolveJsonModule": true,
+    // Handy imports that resist refactorings and reduce "../.." around
     "paths": {
       "@/common/*": ["src/app/common/*"],
       "@/data/*": ["data/*"],
       "@/test/*": ["src/test/*"]
-    }
+    },
+    // Added for paths above to work
+    "baseUrl": "./"
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

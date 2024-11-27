@@ -10,7 +10,7 @@ import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-d
 
 async function generateSimpleIcons() {
   Log.info('Generating simple icons exports')
-  const neededIcons = await findNeededIcons(JSON_RESUME.projects)
+  const neededIcons = findNeededIcons(JSON_RESUME.projects)
   await Promise.all(
     [createDisplayNameAndColorsFile, createIconFiles].map((f) =>
       f(neededIcons),
@@ -18,9 +18,9 @@ async function generateSimpleIcons() {
   )
 }
 
-async function findNeededIcons(
+function findNeededIcons(
   projects: typeof JSON_RESUME.projects,
-): Promise<readonly SimpleIcon[]> {
+): readonly SimpleIcon[] {
   if (projects.length > 0) {
     Log.info('Found %d projects', projects.length)
   } else {

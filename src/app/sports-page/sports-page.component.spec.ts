@@ -8,7 +8,7 @@ describe('SportsPageComponent', () => {
   let component: SportsPageComponent
   let fixture: ComponentFixture<SportsPageComponent>
 
-  beforeEach(async () => {
+  beforeEach(() => {
     ;[fixture, component] = componentTestSetup(SportsPageComponent)
     fixture.detectChanges()
   })

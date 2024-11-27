@@ -37,7 +37,7 @@ export class ColorSchemeService {
   toggleDarkLight() {
     const manuallySetScheme = this._htmlElement.getAttribute(
       HTML_COLOR_SCHEME_ATTRIBUTE,
-    )
+    ) as Scheme
     if (!manuallySetScheme) {
       this.setManual(this.isDarkPreferred ? Scheme.Light : Scheme.Dark)
       return

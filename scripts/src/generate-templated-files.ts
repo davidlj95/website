@@ -37,7 +37,10 @@ async function generateTemplatedFiles() {
   for (const templateFile of templateFiles) {
     Log.group("Rendering '%s'", templateFile)
 
-    const renderedContents = await engine.renderFile(templateFile, context)
+    const renderedContents = (await engine.renderFile(
+      templateFile,
+      context,
+    )) as string
     Log.ok('Rendered successfully')
 
     const outputFilename = templateFile.substring(
@@ -63,7 +66,7 @@ function getContext() {
     browserconfigIconSquareSizes: [70, 150, 310],
     prBranchName:
       // Use CI environment variable, or default to branch name to work locally
-      process.env['GITHUB_HEAD_REF'] ??
+      process.env.GITHUB_HEAD_REF ??
       // https://stackoverflow.com/a/35778030/3263250
       execSync('git rev-parse --abbrev-ref HEAD').toString().trim(),
     securityTxtExpiration: sixMonthsFromToday,

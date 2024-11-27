@@ -2,6 +2,8 @@
   "include": [".*.ts"],
   "compilerOptions": {
     "target": "esnext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    // Added for Typescript ESLint `prefer-nullish-coalescing`
+    "strictNullChecks": true
   }
 }

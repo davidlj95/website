@@ -73,8 +73,10 @@ export function shouldProjectContent(
       ? componentElement
       : componentElement.query(projectionContainerPredicate)
     expect(projectionContainerElement).toBeTruthy()
-    expect(projectionContainerElement.nativeElement.innerHTML.trim()).toEqual(
-      contentToProject,
-    )
+    expect(
+      (
+        projectionContainerElement.nativeElement as HTMLElement
+      ).innerHTML.trim(),
+    ).toEqual(contentToProject)
   })
 }

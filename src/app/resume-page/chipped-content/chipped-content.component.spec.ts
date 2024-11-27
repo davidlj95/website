@@ -65,10 +65,10 @@ describe('ChippedContentComponent', () => {
     expect(firstComponentElement).toBeTruthy()
 
     expect(textContent(firstComponentElement)).toEqual(
-      FIRST_CONTENT.inputs!['data'],
+      FIRST_CONTENT.inputs!.data,
     )
-    expectIsNotInLayout(contentElement.nativeElement)
-    expectIsNotInLayout(firstComponentElement.nativeElement)
+    expectIsNotInLayout(contentElement)
+    expectIsNotInLayout(firstComponentElement)
   })
 
   describe('when tapping on a chip', () => {
@@ -96,7 +96,7 @@ describe('ChippedContentComponent', () => {
         byComponent(ChipComponent),
       )
       return chipElements.find((chipElement) =>
-        chipElement.nativeElement.textContent.includes(displayName),
+        textContent(chipElement)?.includes(displayName),
       )
     }
 
@@ -107,7 +107,7 @@ describe('ChippedContentComponent', () => {
     })
 
     it('should layout its content', () => {
-      expectIsInLayout(firstContentElement.nativeElement)
+      expectIsInLayout(firstContentElement)
     })
 
     it('should scroll content into view', () => {
@@ -133,7 +133,7 @@ describe('ChippedContentComponent', () => {
       })
 
       it('should not layout its content', () => {
-        expectIsNotInLayout(firstContentElement.nativeElement)
+        expectIsNotInLayout(firstContentElement)
       })
     })
 
@@ -163,12 +163,12 @@ describe('ChippedContentComponent', () => {
       })
 
       it('should not layout currently active content and layout the new content', () => {
-        expectIsNotInLayout(firstContentElement.nativeElement)
+        expectIsNotInLayout(firstContentElement)
 
         const barContentElement = fixture.debugElement.query(
           byComponent(BarComponent),
         )
-        expectIsInLayout(barContentElement.nativeElement)
+        expectIsInLayout(barContentElement)
       })
     })
   })

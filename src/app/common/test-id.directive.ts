@@ -11,7 +11,10 @@ export class TestIdDirective implements OnChanges {
 
   ngOnChanges(): void {
     if (isDevMode) {
-      this.el.nativeElement.setAttribute(TEST_ID_ATTRIBUTE, this.appTestId())
+      ;(this.el.nativeElement as Element).setAttribute(
+        TEST_ID_ATTRIBUTE,
+        this.appTestId(),
+      )
     }
   }
 }
