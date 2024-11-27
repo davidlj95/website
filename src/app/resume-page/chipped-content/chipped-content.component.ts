@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core'
+import { Component, Inject, input, linkedSignal, signal } from '@angular/core'
 import { ChipComponent } from '../chip/chip.component'
 import { NgComponentOutlet } from '@angular/common'
 import { ChippedContent } from './chipped-content'
@@ -41,21 +41,22 @@ import { SCROLL_INTO_VIEW, ScrollIntoView } from '@/common/scroll-into-view'
   ],
 })
 export class ChippedContentComponent {
-  @Input() contents!: readonly ChippedContent[]
+  readonly contents = input.required<readonly ChippedContent[]>()
+  readonly activeContent = linkedSignal<ChippedContent>(
+    () => this.contents()[0],
+  )
+  readonly isActive = signal<boolean>(false)
 
   constructor(
     @Inject(SCROLL_INTO_VIEW) protected _scrollIntoView: ScrollIntoView,
   ) {}
 
-  protected _isActive = false
-  protected _activeIndex = 0
-
-  onSelect(index: number) {
-    if (this._activeIndex == index) {
-      this._isActive = !this._isActive
+  select(content: ChippedContent) {
+    if (this.activeContent() === content) {
+      this.isActive.update((isActive) => !isActive)
       return
     }
-    this._isActive = true
-    this._activeIndex = index
+    this.isActive.set(true)
+    this.activeContent.set(content)
   }
 }
