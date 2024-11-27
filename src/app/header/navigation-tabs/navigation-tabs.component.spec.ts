@@ -33,9 +33,7 @@ describe('NavigationTabsComponent', () => {
   })
 
   it('should display all items as tabs with their route links', () => {
-    const [fixture] = makeSut()
-    fixture.componentRef.setInput('items', ITEMS)
-    fixture.detectChanges()
+    const [fixture] = makeSut({ items: ITEMS })
 
     const tabsElement = fixture.debugElement.query(byComponent(TabsComponent))
 
@@ -56,9 +54,7 @@ describe('NavigationTabsComponent', () => {
   })
 
   it('should mark only active page tab as selected', async () => {
-    const [fixture] = makeSut()
-    fixture.componentRef.setInput('items', ITEMS)
-    fixture.detectChanges()
+    const [fixture] = makeSut({ items: ITEMS })
 
     await fixture.ngZone?.run(
       async () => await RouterTestingHarness.create(FOO_ROUTE.path),
