@@ -1,6 +1,5 @@
 import {
   Component,
-  computed,
   DestroyRef,
   effect,
   ElementRef,
@@ -20,7 +19,7 @@ import { SimpleIcon } from '@/common/simple-icon/simple-icon'
   imports: [],
   template: '',
   host: {
-    '[style.fill]': '_fillColor()',
+    '[style.fill]': '"#"+icon().hex',
   },
 })
 export class SimpleIconComponent {
@@ -40,5 +39,4 @@ export class SimpleIconComponent {
   }
 
   readonly icon = input.required<SimpleIcon>()
-  protected readonly _fillColor = computed(() => `#${this.icon().hex}`)
 }
