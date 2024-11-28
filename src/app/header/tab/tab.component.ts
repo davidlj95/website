@@ -20,6 +20,6 @@ export class TabComponent {
     //   Same as Angular Material does for tabs pagination
     //   https://github.com/angular/components/blob/18.0.5/src/material/tabs/paginated-tab-header.ts#L515
     //   https://github.com/angular/components/blob/18.0.5/src/material/tabs/tab-label-wrapper.ts#L29
-    public elRef: ElementRef,
+    public elRef: ElementRef<Element>,
   ) {}
 }
