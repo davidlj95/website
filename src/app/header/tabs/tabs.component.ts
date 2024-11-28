@@ -45,11 +45,15 @@ export class TabsComponent implements OnDestroy {
   private _intersectionObserver?: IntersectionObserver
 
   constructor(elRef: ElementRef<Element>) {
+    // 👇 If tabs change, observe new first and last tab elements.
     effect(() => this._resetIntersectionObserverTargets())
+    // 👇 Listen to `selectedIndex` input and update selected tab
     effect(() => this._setSelectedTab())
+    // 👇 Important to be `afterRenderEffect` so scroll is last thing that happens
     afterRenderEffect({
       read: () => this._scrollToSelectedTab(),
     })
+    // 👇 Client-side only. Needs the tab elements to observe.
     afterNextRender({
       read: () => this._setupIntersectionObserver(elRef),
     })
