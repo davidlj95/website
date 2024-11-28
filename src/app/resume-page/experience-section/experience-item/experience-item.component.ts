@@ -49,13 +49,14 @@ export class ExperienceItemComponent {
     ToolsLadder,
     More,
   }
-  protected readonly Attribute = Attribute
+  protected readonly _attribute = ATTRIBUTE
 }
 
-export enum Attribute {
-  Freelance = 'freelance',
-  Employee = 'employee',
-  Internship = 'internship',
-  MorePositions = 'more-positions',
-  Promotions = 'promotions',
-}
+// @visibleForTesting
+export const ATTRIBUTE = {
+  Freelance: 'freelance',
+  Employee: 'employee',
+  Internship: 'internship',
+  MorePositions: 'more-positions',
+  Promotions: 'promotions',
+} as const

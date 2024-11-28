@@ -23,14 +23,14 @@
       @if (item.isFreelance) {
         <app-attribute
           [symbol]="MaterialSymbol.Work"
-          [appTestId]="Attribute.Freelance"
+          [appTestId]="_attribute.Freelance"
         >
           Freelance
         </app-attribute>
       } @else {
         <app-attribute
           [symbol]="MaterialSymbol.Badge"
-          [appTestId]="Attribute.Employee"
+          [appTestId]="_attribute.Employee"
         >
           Employee
         </app-attribute>
@@ -38,7 +38,7 @@
       @if (item.isInternship) {
         <app-attribute
           [symbol]="MaterialSymbol.School"
-          [appTestId]="Attribute.Internship"
+          [appTestId]="_attribute.Internship"
         >
           Internship
         </app-attribute>
@@ -46,7 +46,7 @@
       @if (item.hasMorePositions) {
         <app-attribute
           [symbol]="MaterialSymbol.More"
-          [appTestId]="Attribute.MorePositions"
+          [appTestId]="_attribute.MorePositions"
         >
           More positions during this period<br />
           See summary for details
@@ -55,7 +55,7 @@
       @if (item.hasPromotions) {
         <app-attribute
           [symbol]="MaterialSymbol.ToolsLadder"
-          [appTestId]="Attribute.Promotions"
+          [appTestId]="_attribute.Promotions"
         >
           Promotions during this period<br />See highlights for details
         </app-attribute>
