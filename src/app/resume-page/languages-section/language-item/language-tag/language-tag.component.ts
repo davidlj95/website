@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 
 @Component({
   selector: 'app-language-tag',
@@ -7,14 +7,8 @@ import { Component, Input } from '@angular/core'
   styleUrl: './language-tag.component.scss',
 })
 export class LanguageTagComponent {
-  // TODO: Skipped for migration because:
-  //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ required: true }) set tag(tag: string) {
-    this._tag = tag
-    this._url = getUrlForIso6391Tag(tag)
-  }
-  protected _tag!: string
-  protected _url!: string
+  readonly tag = input.required<string>()
+  protected readonly _url = computed(() => getUrlForIso6391Tag(this.tag()))
 }
 
 const getUrlForIso6391Tag = (tag: string): string => {
