@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing'
-import { Attribute, ExperienceItemComponent } from './experience-item.component'
+import { ATTRIBUTE, ExperienceItemComponent } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { By } from '@angular/platform-browser'
 import { Organization } from '../../organization'
@@ -25,6 +25,7 @@ import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -116,7 +117,7 @@ describe('ExperienceItem', () => {
   describe('attributes', () => {
     function testShouldNotDisplayItsAttribute(
       fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
-      attribute: Attribute,
+      attribute: (typeof ATTRIBUTE)[keyof typeof ATTRIBUTE],
     ) {
       it('should not display its attribute', () => {
         const fixture = fixtureGetter()
@@ -129,7 +130,7 @@ describe('ExperienceItem', () => {
 
     function testShouldDisplayItsAttribute(
       fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
-      attribute: Attribute,
+      attribute: (typeof ATTRIBUTE)[keyof typeof ATTRIBUTE],
     ) {
       it('should display its attribute', () => {
         const fixture = fixtureGetter()
@@ -145,7 +146,7 @@ describe('ExperienceItem', () => {
         setExperienceItem(fixture, { isFreelance: false })
       })
 
-      testShouldDisplayItsAttribute(() => fixture, Attribute.Employee)
+      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Employee)
     })
 
     describe('when experience is freelance', () => {
@@ -153,7 +154,7 @@ describe('ExperienceItem', () => {
         setExperienceItem(fixture, { isFreelance: true })
       })
 
-      testShouldDisplayItsAttribute(() => fixture, Attribute.Freelance)
+      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Freelance)
     })
 
     describe('when experience is not an internship', () => {
@@ -161,7 +162,7 @@ describe('ExperienceItem', () => {
         setExperienceItem(fixture, { isInternship: false })
       })
 
-      testShouldNotDisplayItsAttribute(() => fixture, Attribute.Internship)
+      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.Internship)
     })
 
     describe('when experience is an internship', () => {
@@ -169,7 +170,7 @@ describe('ExperienceItem', () => {
         setExperienceItem(fixture, { isInternship: true })
       })
 
-      testShouldDisplayItsAttribute(() => fixture, Attribute.Internship)
+      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Internship)
     })
 
     describe('when experience contained no promotions', () => {
@@ -177,7 +178,7 @@ describe('ExperienceItem', () => {
         setExperienceItem(fixture, { hasPromotions: false })
       })
 
-      testShouldNotDisplayItsAttribute(() => fixture, Attribute.Promotions)
+      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.Promotions)
     })
 
     describe('when experience contained promotions', () => {
@@ -185,7 +186,7 @@ describe('ExperienceItem', () => {
         setExperienceItem(fixture, { hasPromotions: true })
       })
 
-      testShouldDisplayItsAttribute(() => fixture, Attribute.Promotions)
+      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Promotions)
     })
 
     describe('when experience contained no more positions', () => {
@@ -193,7 +194,7 @@ describe('ExperienceItem', () => {
         setExperienceItem(fixture, { hasMorePositions: false })
       })
 
-      testShouldNotDisplayItsAttribute(() => fixture, Attribute.MorePositions)
+      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.MorePositions)
     })
 
     describe('when experience contained more positions', () => {
@@ -201,7 +202,7 @@ describe('ExperienceItem', () => {
         setExperienceItem(fixture, { hasMorePositions: true })
       })
 
-      testShouldDisplayItsAttribute(() => fixture, Attribute.MorePositions)
+      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.MorePositions)
     })
   })
 
@@ -210,18 +211,17 @@ describe('ExperienceItem', () => {
 function makeSut() {
   return componentTestSetup(ExperienceItemComponent, {
     imports: [
-      ExperienceItemComponent,
       LinkComponent,
       TestIdDirective,
       MockComponents(
         CardComponent,
-        DateRangeComponent,
+        CardHeaderComponent,
         CardHeaderImageComponent,
+        CardHeaderTextsComponent,
         CardHeaderTitleComponent,
         CardHeaderSubtitleComponent,
         CardHeaderDetailComponent,
-        CardHeaderComponent,
-        CardHeaderTextsComponent,
+        DateRangeComponent,
         CardHeaderAttributesComponent,
         AttributeComponent,
         ChippedContentComponent,
@@ -234,6 +234,7 @@ function setExperienceItem(
   fixture: ComponentFixture<ExperienceItemComponent>,
   overrides?: ItemFactoryOverrides<typeof ExperienceItem>,
 ) {
-  fixture.componentInstance.item = makeExperienceItem(overrides)
-  fixture.detectChanges()
+  setFixtureInputsAndDetectChanges(fixture, {
+    item: makeExperienceItem(overrides),
+  })
 }

@@ -1,65 +1,66 @@
 <app-card>
+  @let item = this.item();
   <app-card-header>
-    <app-link [href]="_item.company.website?.toString()" appTestId="image">
+    <app-link [href]="item.company.website?.toString()" appTestId="image">
       <app-card-header-image
-        [src]="_item.company.imageSrc"
-        [alt]="_item.company.name + ' logo'"
+        [src]="item.company.imageSrc"
+        [alt]="item.company.name + ' logo'"
       >
       </app-card-header-image>
     </app-link>
     <app-card-header-texts>
       <app-card-header-title appTestId="company-name">
-        {{ _item.company.name }}
+        {{ item.company.name }}
       </app-card-header-title>
       <app-card-header-subtitle appTestId="position">
-        {{ _item.position }}
+        {{ item.position }}
       </app-card-header-subtitle>
       <app-card-header-detail>
-        <app-date-range [range]="_item.dateRange"></app-date-range>
+        <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      @if (_item.isFreelance) {
+      @if (item.isFreelance) {
         <app-attribute
           [symbol]="MaterialSymbol.Work"
-          [appTestId]="Attribute.Freelance"
+          [appTestId]="_attribute.Freelance"
         >
           Freelance
         </app-attribute>
       } @else {
         <app-attribute
           [symbol]="MaterialSymbol.Badge"
-          [appTestId]="Attribute.Employee"
+          [appTestId]="_attribute.Employee"
         >
           Employee
         </app-attribute>
       }
-      @if (_item.isInternship) {
+      @if (item.isInternship) {
         <app-attribute
           [symbol]="MaterialSymbol.School"
-          [appTestId]="Attribute.Internship"
+          [appTestId]="_attribute.Internship"
         >
           Internship
         </app-attribute>
       }
-      @if (_item.hasMorePositions) {
+      @if (item.hasMorePositions) {
         <app-attribute
           [symbol]="MaterialSymbol.More"
-          [appTestId]="Attribute.MorePositions"
+          [appTestId]="_attribute.MorePositions"
         >
           More positions during this period<br />
           See summary for details
         </app-attribute>
       }
-      @if (_item.hasPromotions) {
+      @if (item.hasPromotions) {
         <app-attribute
           [symbol]="MaterialSymbol.ToolsLadder"
-          [appTestId]="Attribute.Promotions"
+          [appTestId]="_attribute.Promotions"
         >
           Promotions during this period<br />See highlights for details
         </app-attribute>
       }
     </app-card-header-attributes>
   </app-card-header>
-  <app-chipped-content [contents]="_contents"></app-chipped-content>
+  <app-chipped-content [contents]="_contents()"></app-chipped-content>
 </app-card>
