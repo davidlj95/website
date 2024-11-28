@@ -27,7 +27,7 @@
       @if (item.stack) {
         <app-attribute
           [symbol]="_stackContent[item.stack].materialSymbol"
-          [appTestId]="Attribute.Stack"
+          [appTestId]="_attribute.Stack"
         >
           {{ _stackContent[item.stack].displayName }}
         </app-attribute>

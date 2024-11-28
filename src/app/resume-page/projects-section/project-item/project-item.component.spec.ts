@@ -1,6 +1,10 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import { Attribute, ProjectItemComponent } from './project-item.component'
+import {
+  ATTRIBUTE,
+  ProjectItemComponent,
+  STACK_CONTENT,
+} from './project-item.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
@@ -132,7 +136,7 @@ describe('ProjectItemComponent', () => {
       setProjectItem(fixture, { stack })
 
       const stackAttributeElement = fixture.debugElement.query(
-        byTestId(Attribute.Stack),
+        byTestId(ATTRIBUTE.Stack),
       )
 
       expect(stackAttributeElement).toBeFalsy()
@@ -142,12 +146,12 @@ describe('ProjectItemComponent', () => {
   describe('when stack attribute exists', () => {
     it('should include attribute with its display name and icon', () => {
       const stack = Stack.Front
-      const stackContent = ProjectItemComponent.StackContent[stack]
+      const stackContent = STACK_CONTENT[stack]
 
       setProjectItem(fixture, { stack })
 
       const stackAttributeElement = fixture.debugElement.query(
-        byTestId(Attribute.Stack),
+        byTestId(ATTRIBUTE.Stack),
       )
 
       expect(stackAttributeElement).toBeTruthy()

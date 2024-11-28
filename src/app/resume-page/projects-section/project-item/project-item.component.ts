@@ -43,27 +43,24 @@ export class ProjectItemComponent {
     projectItemToContents(this.item()),
   )
 
-  static readonly StackContent: Record<
-    Stack,
-    {
-      displayName: string
-      materialSymbol: string
-    }
-  > = {
-    [Stack.Back]: {
-      displayName: 'Backend',
-      materialSymbol: Dns,
-    },
-    [Stack.Front]: { displayName: 'Frontend', materialSymbol: Apps },
-    [Stack.Full]: {
-      displayName: 'Full stack',
-      materialSymbol: FullStackedBarChart,
-    },
+  protected readonly _stackContent = STACK_CONTENT
+  protected readonly _attribute = ATTRIBUTE
+}
+export const STACK_CONTENT: Record<
+  Stack,
+  {
+    displayName: string
+    materialSymbol: string
   }
-  protected readonly Attribute = Attribute
-  protected _stackContent = ProjectItemComponent.StackContent
+> = {
+  [Stack.Back]: {
+    displayName: 'Backend',
+    materialSymbol: Dns,
+  },
+  [Stack.Front]: { displayName: 'Frontend', materialSymbol: Apps },
+  [Stack.Full]: {
+    displayName: 'Full stack',
+    materialSymbol: FullStackedBarChart,
+  },
 }
-
-export enum Attribute {
-  Stack = 'stack',
-}
+export const ATTRIBUTE = { Stack: 'stack' }
