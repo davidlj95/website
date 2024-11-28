@@ -16,14 +16,12 @@ import {
 } from './get-technology-display-name-from-slug'
 import { makeTechnologyItem } from './__tests__/make-technology-item'
 import { textContent } from '@/test/helpers/text-content'
+import { TechnologyItem } from './technology-item'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('TechnologyComponent', () => {
   let component: TechnologyComponent
   let fixture: ComponentFixture<TechnologyComponent>
-  const DUMMY_TECHNOLOGY_ITEM = makeTechnologyItem()
-  const DUMMY_ICON: SimpleIcon = {
-    slug: DUMMY_TECHNOLOGY_ITEM.slug,
-  }
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
@@ -36,29 +34,14 @@ describe('TechnologyComponent', () => {
     const getTechnologyDisplayNameFromSlug = jasmine
       .createSpy<GetTechnologyDisplayNameFromSlug>()
       .and.returnValue(displayName)
-    ;[fixture, component] = makeSut({ getTechnologyDisplayNameFromSlug })
+    ;[fixture, component] = makeSut({
+      getTechnologyDisplayNameFromSlug,
+      item: DUMMY_ITEM,
+    })
 
-    component.item = DUMMY_TECHNOLOGY_ITEM
-    fixture.detectChanges()
-
-    expect(textContent(fixture.debugElement)).toContain(displayName)
-
+    expect(textContent(fixture.debugElement)).toEqual(displayName)
     expect(getTechnologyDisplayNameFromSlug).toHaveBeenCalledOnceWith(
-      DUMMY_TECHNOLOGY_ITEM.slug,
-    )
-  })
-
-  it('should look for icon using collaborator', () => {
-    const getTechnologyIconFromSlug = jasmine
-      .createSpy<GetTechnologyIconFromSlug>()
-      .and.returnValue(DUMMY_ICON)
-    ;[fixture, component] = makeSut({ getTechnologyIconFromSlug })
-
-    component.item = DUMMY_TECHNOLOGY_ITEM
-    fixture.detectChanges()
-
-    expect(getTechnologyIconFromSlug).toHaveBeenCalledOnceWith(
-      DUMMY_TECHNOLOGY_ITEM.slug,
+      DUMMY_ITEM.slug,
     )
   })
 
@@ -69,8 +52,6 @@ describe('TechnologyComponent', () => {
         .createSpy<GetTechnologyIconFromSlug>()
         .and.returnValue(DUMMY_ICON)
       ;[fixture, component] = makeSut({ getTechnologyIconFromSlug })
-      component.item = DUMMY_TECHNOLOGY_ITEM
-      fixture.detectChanges()
     })
 
     it('should display icon', () => {
@@ -84,8 +65,6 @@ describe('TechnologyComponent', () => {
         .createSpy<GetTechnologyIconFromSlug>()
         .and.returnValue(undefined)
       ;[fixture, component] = makeSut({ getTechnologyIconFromSlug })
-      component.item = DUMMY_TECHNOLOGY_ITEM
-      fixture.detectChanges()
     })
 
     it('should not display icon', () => {
@@ -94,27 +73,36 @@ describe('TechnologyComponent', () => {
   })
 })
 
+const DUMMY_ITEM = makeTechnologyItem()
+const DUMMY_ICON: SimpleIcon = {
+  slug: DUMMY_ITEM.slug,
+}
 function makeSut(
   opts: {
     getTechnologyDisplayNameFromSlug?: GetTechnologyDisplayNameFromSlug
     getTechnologyIconFromSlug?: GetTechnologyIconFromSlug
+    item?: TechnologyItem
   } = {},
 ) {
-  return componentTestSetup(TechnologyComponent, {
-    imports: [TechnologyComponent, MockComponent(SimpleIconComponent)],
+  const [fixture, component] = componentTestSetup(TechnologyComponent, {
+    imports: [MockComponent(SimpleIconComponent)],
     providers: [
-      opts.getTechnologyDisplayNameFromSlug
-        ? MockProvider(
-            GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
-            opts.getTechnologyDisplayNameFromSlug,
-          )
-        : [],
-      opts.getTechnologyIconFromSlug
-        ? MockProvider(
-            GET_TECHNOLOGY_ICON_FROM_SLUG,
-            opts.getTechnologyIconFromSlug,
-          )
-        : [],
+      MockProvider(
+        GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
+        opts.getTechnologyDisplayNameFromSlug ??
+          // eslint-disable-next-line jasmine/no-unsafe-spy
+          jasmine.createSpy('getTechnologyDisplayNameFromSlug'),
+      ),
+      MockProvider(
+        GET_TECHNOLOGY_ICON_FROM_SLUG,
+        opts.getTechnologyIconFromSlug ??
+          // eslint-disable-next-line jasmine/no-unsafe-spy
+          jasmine.createSpy('getTechnologyIconFromSlug'),
+      ),
     ],
   })
+  setFixtureInputsAndDetectChanges(fixture, {
+    item: opts.item ?? DUMMY_ITEM,
+  })
+  return [fixture, component] as const
 }

@@ -1,7 +1,6 @@
-import { Component, Inject, Input } from '@angular/core'
+import { Component, computed, Inject, input } from '@angular/core'
 import { TechnologyItem } from './technology-item'
 import { SimpleIconComponent } from '@/common/simple-icon/simple-icon.component'
-import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 import {
   GET_TECHNOLOGY_ICON_FROM_SLUG,
   GetTechnologyIconFromSlug,
@@ -10,6 +9,7 @@ import {
   GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
   GetTechnologyDisplayNameFromSlug,
 } from './get-technology-display-name-from-slug'
+import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 
 @Component({
   selector: 'app-technology',
@@ -18,20 +18,19 @@ import {
   styleUrl: './technology.component.scss',
 })
 export class TechnologyComponent {
-  // TODO: Skipped for migration because:
-  //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ required: true }) set item(item: TechnologyItem) {
-    this._displayName = this.getTechnologyDisplayNameFromSlug(item.slug)
-    this._icon = this.getTechnologyIconFromSlug(item.slug)
-  }
+  readonly item = input.required<TechnologyItem>()
 
-  protected _displayName!: string
-  protected _icon?: SimpleIcon
+  protected readonly _displayName = computed<string>(() =>
+    this._getTechnologyDisplayNameFromSlug(this.item().slug),
+  )
+  protected readonly _icon = computed<SimpleIcon | undefined>(() =>
+    this._getTechnologyIconFromSlug(this.item().slug),
+  )
 
   constructor(
     @Inject(GET_TECHNOLOGY_ICON_FROM_SLUG)
-    private readonly getTechnologyIconFromSlug: GetTechnologyIconFromSlug,
+    private readonly _getTechnologyIconFromSlug: GetTechnologyIconFromSlug,
     @Inject(GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG)
-    private readonly getTechnologyDisplayNameFromSlug: GetTechnologyDisplayNameFromSlug,
+    private readonly _getTechnologyDisplayNameFromSlug: GetTechnologyDisplayNameFromSlug,
   ) {}
 }
