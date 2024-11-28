@@ -33,15 +33,6 @@ export class TabsComponent implements OnDestroy {
     KeyboardDoubleArrowRight,
   }
 
-  // Pagination
-  private readonly _tabList =
-    viewChild.required<ElementRef<HTMLElement>>('tabList')
-  private _firstTab?: ElementRef<HTMLElement>
-  private _lastTab?: ElementRef<HTMLElement>
-  protected readonly _prevButtonDisabled = signal(true)
-  protected readonly _nextButtonDisabled = signal(true)
-  private _intersectionObserver?: IntersectionObserver
-
   // Selected management
   private readonly _tabs = contentChildren(TabComponent, {
     descendants: false,
@@ -57,19 +48,36 @@ export class TabsComponent implements OnDestroy {
   /// Scroll to selected
   private _indexToScrollTo?: number
 
+  // Pagination
+  private readonly _tabList =
+    viewChild.required<ElementRef<HTMLElement>>('tabList')
+  private _firstTab?: ElementRef<HTMLElement>
+  private _lastTab?: ElementRef<HTMLElement>
+  protected readonly _prevButtonDisabled = signal(true)
+  protected readonly _nextButtonDisabled = signal(true)
+  private _intersectionObserver?: IntersectionObserver
+
   constructor(elRef: ElementRef<Element>, cdRef: ChangeDetectorRef) {
-    afterNextRender({
-      read: () => {
-        this._setupIntersectionObserver(elRef)
-      },
-    })
+    effect(this._onTabsChanged.bind(this))
     afterRender({
       read: () => {
         this._updateSelectedIfNeeded(cdRef)
         this._scrollToTabIfNeeded()
       },
     })
-    effect(this._onTabsChanged.bind(this))
+    afterNextRender({
+      read: () => {
+        this._setupIntersectionObserver(elRef)
+      },
+    })
+  }
+
+  // Selected management
+  private _onTabsChanged() {
+    const tabs = this._tabs()
+    this._currentTabs = tabs
+    ;[this._firstTab, this._lastTab] = [tabs.at(0)?.elRef, tabs.at(-1)?.elRef]
+    this._resetIntersectionObserverTargets()
   }
 
   private _updateSelectedIfNeeded(cdRef: ChangeDetectorRef): void {
@@ -103,17 +111,7 @@ export class TabsComponent implements OnDestroy {
     this._indexToScrollTo = undefined
   }
 
-  ngOnDestroy(): void {
-    this._intersectionObserver?.disconnect()
-  }
-
-  private _onTabsChanged() {
-    const tabs = this._tabs()
-    this._currentTabs = tabs
-    ;[this._firstTab, this._lastTab] = [tabs.at(0)?.elRef, tabs.at(-1)?.elRef]
-    this._resetIntersectionObserverTargets()
-  }
-
+  // Pagination
   private _setupIntersectionObserver(elRef: ElementRef<Element>) {
     this._intersectionObserver = new IntersectionObserver(
       (entries) => {
@@ -146,6 +144,10 @@ export class TabsComponent implements OnDestroy {
       this._intersectionObserver.observe(this._firstTab.nativeElement)
       this._intersectionObserver.observe(this._lastTab.nativeElement)
     }
+  }
+
+  ngOnDestroy(): void {
+    this._intersectionObserver?.disconnect()
   }
 
   protected _scrollABit(scrollDirection: -1 | 1) {
