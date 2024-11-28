@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 import { EducationItem } from './education-item'
 import { SocialLeaderboard } from '@/data/material-symbols'
-import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 
@@ -22,44 +21,38 @@ import { educationItemToContents } from './education-item-to-contents'
   selector: 'app-education-item',
   templateUrl: './education-item.component.html',
   imports: [
-    CardComponent,
-    CardHeaderComponent,
     LinkComponent,
     TestIdDirective,
+    CardComponent,
+    CardHeaderComponent,
     CardHeaderImageComponent,
     CardHeaderTextsComponent,
     CardHeaderTitleComponent,
     CardHeaderSubtitleComponent,
     CardHeaderDetailComponent,
-    DateRangeComponent,
     CardHeaderAttributesComponent,
+    DateRangeComponent,
     AttributeComponent,
     ChippedContentComponent,
   ],
 })
 export class EducationItemComponent {
-  // TODO: Skipped for migration because:
-  //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ required: true }) set item(item: EducationItem) {
-    this._item = item
-    if (item.institution.name.length > 15 && item.institution.shortName) {
-      this._institutionDisplayName = item.institution.shortName
-    } else {
-      this._institutionDisplayName = item.institution.name
-    }
-    this._contents = educationItemToContents(item)
-  }
-
-  protected _item!: EducationItem
-  protected _contents: readonly ChippedContent[] = []
-  protected _institutionDisplayName?: string
+  readonly item = input.required<EducationItem>()
+  protected readonly _contents = computed(() =>
+    educationItemToContents(this.item()),
+  )
+  protected readonly _institutionDisplayName = computed<string>(() => {
+    const { name, shortName } = this.item().institution
+    return name.length > 15 && shortName ? shortName : name
+  })
 
   protected readonly MaterialSymbol = {
     SocialLeaderboard,
   }
-  protected readonly Attribute = Attribute
+  protected readonly _attribute = ATTRIBUTE
 }
 
-export enum Attribute {
-  CumLaude = 'cum-laude',
+// @visibleForTesting
+export const ATTRIBUTE = {
+  CumLaude: 'cum-laude',
 }

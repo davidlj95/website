@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import { Attribute, EducationItemComponent } from './education-item.component'
+import { ATTRIBUTE, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
 import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
@@ -26,6 +26,7 @@ import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('EducationItemComponent', () => {
   let component: EducationItemComponent
@@ -139,7 +140,7 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { isCumLaude: false })
 
       expect(
-        fixture.debugElement.query(byTestId(Attribute.CumLaude)),
+        fixture.debugElement.query(byTestId(ATTRIBUTE.CumLaude)),
       ).toBeFalsy()
     })
   })
@@ -149,7 +150,7 @@ describe('EducationItemComponent', () => {
       setEducationItem(fixture, { isCumLaude: true })
 
       expect(
-        fixture.debugElement.query(byTestId(Attribute.CumLaude)),
+        fixture.debugElement.query(byTestId(ATTRIBUTE.CumLaude)),
       ).toBeTruthy()
     })
   })
@@ -160,12 +161,10 @@ describe('EducationItemComponent', () => {
 function makeSut() {
   return componentTestSetup(EducationItemComponent, {
     imports: [
-      EducationItemComponent,
       TestIdDirective,
       LinkComponent,
       MockComponents(
         CardComponent,
-        DateRangeComponent,
         CardHeaderImageComponent,
         CardHeaderTitleComponent,
         CardHeaderSubtitleComponent,
@@ -173,6 +172,7 @@ function makeSut() {
         CardHeaderComponent,
         CardHeaderTextsComponent,
         CardHeaderAttributesComponent,
+        DateRangeComponent,
         AttributeComponent,
         ChippedContentComponent,
       ),
@@ -184,7 +184,7 @@ function setEducationItem(
   fixture: ComponentFixture<EducationItemComponent>,
   overrides?: ItemFactoryOverrides<typeof EducationItem>,
 ): void {
-  fixture.componentInstance.item = makeEducationItem(overrides)
-
-  fixture.detectChanges()
+  setFixtureInputsAndDetectChanges(fixture, {
+    item: makeEducationItem(overrides),
+  })
 }

@@ -1,36 +1,37 @@
 <app-card>
+  @let item = this.item();
   <app-card-header>
-    <app-link [href]="_item.institution.website?.toString()" appTestId="image">
+    <app-link [href]="item.institution.website?.toString()" appTestId="image">
       <app-card-header-image
-        [src]="_item.institution.imageSrc"
-        [alt]="_item.institution.name + ' logo'"
+        [src]="item.institution.imageSrc"
+        [alt]="item.institution.name + ' logo'"
       >
       </app-card-header-image>
     </app-link>
     <app-card-header-texts>
       <app-card-header-title appTestId="institution-name">
-        {{ _institutionDisplayName }}
+        {{ _institutionDisplayName() }}
       </app-card-header-title>
       <app-card-header-subtitle appTestId="study-type">
-        {{ _item.studyType }}
+        {{ item.studyType }}
       </app-card-header-subtitle>
       <app-card-header-subtitle appTestId="area">
-        {{ _item.area }}
+        {{ item.area }}
       </app-card-header-subtitle>
       <app-card-header-detail>
-        <app-date-range [range]="_item.dateRange"></app-date-range>
+        <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      @if (_item.isCumLaude) {
+      @if (item.isCumLaude) {
         <app-attribute
           [symbol]="MaterialSymbol.SocialLeaderboard"
-          [appTestId]="Attribute.CumLaude"
+          [appTestId]="_attribute.CumLaude"
         >
           Cum laude
         </app-attribute>
       }
     </app-card-header-attributes>
   </app-card-header>
-  <app-chipped-content [contents]="_contents"></app-chipped-content>
+  <app-chipped-content [contents]="_contents()"></app-chipped-content>
 </app-card>
