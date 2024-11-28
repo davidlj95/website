@@ -2,6 +2,7 @@ import { makeEducationItem } from './__tests__/make-education-item'
 import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 import { educationItemToContents } from './education-item-to-contents'
+import { ChippedContent } from '../../chipped-content/chipped-content'
 
 describe('educationItemToContents', () => {
   describe('when score is present', () => {
@@ -16,12 +17,13 @@ describe('educationItemToContents', () => {
       )
 
       expect(scoreContents).toHaveSize(1)
-      const scoreContent = scoreContents[0]
+      const scoreContent =
+        scoreContents[0] as ChippedContent<TextContentComponent>
 
       expect(scoreContent.component).toEqual(TextContentComponent)
       expect(scoreContent.inputs).toEqual({
         text: score,
-      } satisfies Partial<TextContentComponent>)
+      })
     })
   })
 
@@ -37,12 +39,13 @@ describe('educationItemToContents', () => {
       )
 
       expect(coursesContents).toHaveSize(1)
-      const courseContent = coursesContents[0]
+      const courseContent =
+        coursesContents[0] as ChippedContent<EducationItemCoursesComponent>
 
       expect(courseContent.component).toEqual(EducationItemCoursesComponent)
       expect(courseContent.inputs).toEqual({
         courses,
-      } satisfies Partial<EducationItemCoursesComponent>)
+      })
     })
   })
 })

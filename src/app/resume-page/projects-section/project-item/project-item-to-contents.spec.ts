@@ -4,6 +4,7 @@ import { projectItemToContents } from './project-item-to-contents'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 import { TechnologyItem } from '../../technology/technology-item'
 import { makeTechnologyItem } from '../../technology/__tests__/make-technology-item'
+import { ChippedContent } from '../../chipped-content/chipped-content'
 
 describe('projectItemToContents', () => {
   describe('when description is present', () => {
@@ -18,12 +19,13 @@ describe('projectItemToContents', () => {
       )
 
       expect(descriptionContents).toHaveSize(1)
-      const descriptionContent = descriptionContents[0]
+      const descriptionContent =
+        descriptionContents[0] as ChippedContent<TextContentComponent>
 
       expect(descriptionContent.component).toEqual(TextContentComponent)
       expect(descriptionContent.inputs).toEqual({
         text: description,
-      } satisfies Partial<TextContentComponent>)
+      })
     })
   })
 
@@ -42,7 +44,8 @@ describe('projectItemToContents', () => {
       )
 
       expect(technologiesContents).toHaveSize(1)
-      const technologiesContent = technologiesContents[0]
+      const technologiesContent =
+        technologiesContents[0] as ChippedContent<ProjectItemTechnologiesComponent>
 
       expect(technologiesContent.component).toEqual(
         ProjectItemTechnologiesComponent,
@@ -50,7 +53,7 @@ describe('projectItemToContents', () => {
 
       expect(technologiesContent.inputs).toEqual({
         items,
-      } satisfies Partial<ProjectItemTechnologiesComponent>)
+      })
     })
   })
 })

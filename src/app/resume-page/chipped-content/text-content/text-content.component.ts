@@ -1,10 +1,9 @@
-import { Component, Input } from '@angular/core'
+import { Component, input } from '@angular/core'
 
 @Component({
   selector: 'app-text-content',
-  imports: [],
-  template: '{{ text }}',
+  template: '{{ text() }}',
 })
 export class TextContentComponent {
-  @Input() text?: string
+  readonly text = input.required<string>()
 }

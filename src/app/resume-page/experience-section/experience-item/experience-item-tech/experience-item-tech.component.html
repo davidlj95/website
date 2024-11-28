@@ -1,10 +1,11 @@
+@let projectsCount = projectNames().length;
 <p>
-  Extracted from {{ _projectCount }}
-  {{ _projectCount > 1 ? 'projects' : 'project' }}: {{ _projectNames }}
+  Extracted from {{ projectsCount }}
+  {{ projectsCount > 1 ? 'projects' : 'project' }}: {{ _projectNamesList() }}
 </p>
 <br />
 <app-content-chip-list>
-  @for (item of technologies; track item) {
+  @for (item of technologies(); track item) {
     <app-content-chip>
       <app-technology [item]="item"></app-technology>
     </app-content-chip>

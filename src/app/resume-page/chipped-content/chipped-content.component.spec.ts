@@ -1,6 +1,6 @@
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
 import { ChippedContentComponent } from './chipped-content.component'
-import { Component, DebugElement, Input } from '@angular/core'
+import { Component, DebugElement, input } from '@angular/core'
 import { ChippedContent } from './chipped-content'
 import { ChipComponent } from '../chip/chip.component'
 import {
@@ -174,28 +174,28 @@ describe('ChippedContentComponent', () => {
 })
 @Component({
   selector: 'app-foo',
-  template: `{{ data }}`,
+  template: `{{ data() }}`,
 })
 class FooComponent {
-  @Input() data?: string
+  readonly data = input.required<string>()
 }
 @Component({
   selector: 'app-bar',
-  template: `{{ data }}`,
+  template: `{{ data() }}`,
 })
 class BarComponent {
-  @Input() data?: string
+  readonly data = input.required<string>()
 }
 
 const FOO_CONTENT = new ChippedContent({
   displayName: 'Foo',
   component: FooComponent,
-  inputs: { data: 'foo-data' } satisfies Partial<FooComponent>,
+  inputs: { data: 'foo-data' },
 })
 const BAR_CONTENT = new ChippedContent({
   displayName: 'Bar',
   component: BarComponent,
-  inputs: { data: 'bar-data' } satisfies Partial<BarComponent>,
+  inputs: { data: 'bar-data' },
 })
 
 const CONTENTS = [FOO_CONTENT, BAR_CONTENT] as const

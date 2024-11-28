@@ -5,16 +5,16 @@ import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('EducationItemCoursesComponent', () => {
   let component: EducationItemCoursesComponent
   let fixture: ComponentFixture<EducationItemCoursesComponent>
-  const COURSES = ['Course 1', 'Course 2']
+  const DUMMY_COURSES = ['Course 1', 'Course 2']
 
   beforeEach(() => {
     ;[fixture, component] = componentTestSetup(EducationItemCoursesComponent)
-    component.courses = COURSES
-    fixture.detectChanges()
+    setFixtureInputsAndDetectChanges(fixture, { courses: DUMMY_COURSES })
   })
 
   it('should create', () => {
@@ -26,9 +26,9 @@ describe('EducationItemCoursesComponent', () => {
       byComponent(ContentChipComponent),
     )
 
-    expect(courseElements.length).toEqual(COURSES.length)
+    expect(courseElements.length).toEqual(DUMMY_COURSES.length)
     courseElements.forEach((courseElement, index) => {
-      expect(textContent(courseElement)).toEqual(COURSES[index])
+      expect(textContent(courseElement)).toEqual(DUMMY_COURSES[index])
     })
   })
 })

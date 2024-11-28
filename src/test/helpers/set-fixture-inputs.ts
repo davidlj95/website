@@ -1,9 +1,9 @@
-import { Signal } from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
+import { ComponentInputs } from '@/common/component-inputs'
 
-export const setFixtureInputs = <T extends object, K extends StringKeyOf<T>>(
+export const setFixtureInputs = <T extends object>(
   fixture: ComponentFixture<T>,
-  inputs: Record<K, MaybeSignalType<T[K]>>,
+  inputs: ComponentInputs<T>,
 ) => {
   Object.entries(inputs).forEach(([name, value]) =>
     fixture.componentRef.setInput(name, value),
@@ -16,6 +16,3 @@ export const setFixtureInputsAndDetectChanges: typeof setFixtureInputs = (
   setFixtureInputs(fixture, ...args)
   fixture.detectChanges()
 }
-
-type StringKeyOf<T> = Extract<keyof T, string>
-type MaybeSignalType<T> = T extends Signal<infer R> ? R : T
