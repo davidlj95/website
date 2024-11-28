@@ -1,4 +1,12 @@
-import { Component, DestroyRef, ElementRef, Inject, Input } from '@angular/core'
+import {
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  ElementRef,
+  Inject,
+  input,
+} from '@angular/core'
 import {
   SIMPLE_ICON_LOADER,
   SimpleIconLoader,
@@ -10,31 +18,27 @@ import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 @Component({
   selector: 'app-simple-icon',
   imports: [],
-  templateUrl: './simple-icon.component.html',
+  template: '',
   host: {
-    '[style.fill]': '_fillColor',
+    '[style.fill]': '_fillColor()',
   },
 })
 export class SimpleIconComponent {
   constructor(
-    @Inject(SIMPLE_ICON_LOADER) private readonly loader: SimpleIconLoader,
-    private readonly elRef: ElementRef,
-    private readonly destroyRef: DestroyRef,
-  ) {}
-
-  protected _fillColor?: string
-
-  // TODO: Skipped for migration because:
-  //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ required: true }) set icon(icon: SimpleIcon) {
-    this.loader(icon.slug)
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        tap((svg) => ((this.elRef.nativeElement as Element).innerHTML = svg)),
-      )
-      .subscribe()
-    this._fillColor = `#${icon.hex}`
+    @Inject(SIMPLE_ICON_LOADER) loader: SimpleIconLoader,
+    elRef: ElementRef,
+    destroyRef: DestroyRef,
+  ) {
+    effect(() => {
+      loader(this.icon().slug)
+        .pipe(
+          takeUntilDestroyed(destroyRef),
+          tap((svg) => ((elRef.nativeElement as Element).innerHTML = svg)),
+        )
+        .subscribe()
+    })
   }
-}
 
-export const SIMPLE_ICONS_DIR = 'simple-icons'
+  readonly icon = input.required<SimpleIcon>()
+  protected readonly _fillColor = computed(() => `#${this.icon().hex}`)
+}

@@ -1,7 +1,6 @@
 import { inject, InjectionToken } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { catchError, EMPTY, filter, Observable, of, tap } from 'rxjs'
-import { SIMPLE_ICONS_DIR } from '@/common/simple-icon/simple-icon.component'
 import { PLATFORM_SERVICE } from '@/common/platform.service'
 import { SVG_EXTENSION } from '@/common/svg-extension'
 
@@ -31,7 +30,7 @@ export const SIMPLE_ICON_LOADER = new InjectionToken<SimpleIconLoader>(
         return cachedIcon
           ? of(cachedIcon)
           : httpClient
-              .get(`/images/${SIMPLE_ICONS_DIR}/${slug}${SVG_EXTENSION}`, {
+              .get(`${SIMPLE_ICONS_DIR}/${slug}${SVG_EXTENSION}`, {
                 responseType: 'text',
               })
               .pipe(
@@ -43,6 +42,8 @@ export const SIMPLE_ICON_LOADER = new InjectionToken<SimpleIconLoader>(
     },
   },
 )
+
+export const SIMPLE_ICONS_DIR = '/images/simple-icons'
 export type SimpleIconLoaderCache = Map<string, string>
 export const SIMPLE_ICON_LOADER_CACHE =
   new InjectionToken<SimpleIconLoaderCache>(
