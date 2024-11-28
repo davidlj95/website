@@ -62,12 +62,11 @@ export class TabsComponent implements OnDestroy {
 
   // Selected management
   private _setSelectedTab(): void {
-    const selectedIndex = this.selectedIndex()
-    if (selectedIndex === undefined) {
+    if (this.selectedIndex() === undefined) {
       return
     }
     this._tabs().forEach(
-      (tab, index) => (tab.isSelected = index === selectedIndex),
+      (tab, index) => (tab.isSelected = index === this.selectedIndex()),
     )
   }
 
