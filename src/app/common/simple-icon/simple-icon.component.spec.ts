@@ -8,8 +8,9 @@ import {
 import { MockProvider } from 'ng-mocks'
 import { EMPTY, of } from 'rxjs'
 import { SVG } from '@/test/mocks/svg'
-import { AsyncPipe } from '@angular/common'
 import { innerHtml } from '@/test/helpers/inner-html'
+import { SimpleIcon } from '@/common/simple-icon/simple-icon'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('SimpleIconComponent', () => {
   let component: SimpleIconComponent
@@ -22,24 +23,17 @@ describe('SimpleIconComponent', () => {
   })
 
   it('should load the icon using the loader', () => {
-    const slug = 'dummy-icon'
     const simpleIconLoader = jasmine
       .createSpy<SimpleIconLoader>()
       .and.returnValue(EMPTY)
-    ;[fixture, component] = makeSut({ simpleIconLoader })
+    ;[fixture, component] = makeSut({ simpleIconLoader, icon: DUMMY_ICON })
 
-    component.icon = { slug }
-
-    expect(simpleIconLoader).toHaveBeenCalledOnceWith(slug)
+    expect(simpleIconLoader).toHaveBeenCalledOnceWith(DUMMY_ICON.slug)
   })
 
   it('should set the fill color', () => {
     const hex = '001020'
-    ;[fixture, component] = makeSut()
-
-    component.icon = { slug: 'whatever', hex }
-
-    fixture.detectChanges()
+    ;[fixture, component] = makeSut({ icon: { ...DUMMY_ICON, hex } })
 
     expect(fixture.debugElement.styles['fill']).toEqual('rgb(0, 16, 32)')
   })
@@ -47,13 +41,12 @@ describe('SimpleIconComponent', () => {
   describe('when icon can be found', () => {
     const ICON_SVG = SVG
     beforeEach(() => {
-      ;[fixture, component] = makeSut({ simpleIconLoader: () => of(ICON_SVG) })
+      ;[fixture, component] = makeSut({
+        simpleIconLoader: () => of(ICON_SVG),
+      })
     })
 
     it('should inline the SVG', () => {
-      component.icon = { slug: 'dummy-icon' }
-      fixture.detectChanges()
-
       expect(innerHtml(fixture.debugElement)).toEqual(ICON_SVG)
     })
   })
@@ -64,18 +57,20 @@ describe('SimpleIconComponent', () => {
     })
 
     it('should be empty', () => {
-      component.icon = { slug: 'dummy-icon' }
-      fixture.detectChanges()
-
       expect(innerHtml(fixture.debugElement)).toHaveSize(0)
     })
   })
 })
 
-const makeSut = (opts: { simpleIconLoader?: SimpleIconLoader } = {}) =>
-  componentTestSetup(SimpleIconComponent, {
-    imports: [AsyncPipe],
+const DUMMY_ICON: SimpleIcon = { slug: 'dummy', hex: '000000' }
+const makeSut = (
+  opts: { simpleIconLoader?: SimpleIconLoader; icon?: SimpleIcon } = {},
+) => {
+  const [fixture, component] = componentTestSetup(SimpleIconComponent, {
     providers: [
       MockProvider(SIMPLE_ICON_LOADER, opts.simpleIconLoader ?? (() => EMPTY)),
     ],
   })
+  setFixtureInputsAndDetectChanges(fixture, { icon: opts.icon ?? DUMMY_ICON })
+  return [fixture, component] as const
+}
