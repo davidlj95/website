@@ -6,6 +6,7 @@ import { ProjectItem } from '../../projects-section/project-item/project-item'
 import { makeProjectItem } from '../../projects-section/__tests__/make-project-item'
 import { makeTechnologyItem } from '../../technology/__tests__/make-technology-item'
 import { ExperienceItemTechComponent } from './experience-item-tech/experience-item-tech.component'
+import { ChippedContent } from '../../chipped-content/chipped-content'
 
 describe('experienceItemToContents', () => {
   describe('when summary is present', () => {
@@ -20,12 +21,13 @@ describe('experienceItemToContents', () => {
       )
 
       expect(summaryContents).toHaveSize(1)
-      const summaryContent = summaryContents[0]
+      const summaryContent =
+        summaryContents[0] as ChippedContent<TextContentComponent>
 
       expect(summaryContent.component).toEqual(TextContentComponent)
       expect(summaryContent.inputs).toEqual({
         text: summary,
-      } satisfies Partial<TextContentComponent>)
+      })
     })
   })
 
@@ -41,7 +43,8 @@ describe('experienceItemToContents', () => {
       )
 
       expect(highlightsContents).toHaveSize(1)
-      const highlightsContent = highlightsContents[0]
+      const highlightsContent =
+        highlightsContents[0] as ChippedContent<ExperienceItemHighlightsComponent>
 
       expect(highlightsContent.component).toEqual(
         ExperienceItemHighlightsComponent,
@@ -49,7 +52,7 @@ describe('experienceItemToContents', () => {
 
       expect(highlightsContent.inputs).toEqual({
         highlights,
-      } satisfies Partial<ExperienceItemHighlightsComponent>)
+      })
     })
   })
 
@@ -74,13 +77,14 @@ describe('experienceItemToContents', () => {
       )
 
       expect(techContents).toHaveSize(1)
-      const techContent = techContents[0]
+      const techContent =
+        techContents[0] as ChippedContent<ExperienceItemTechComponent>
 
       expect(techContent.component).toEqual(ExperienceItemTechComponent)
       expect(techContent.inputs).toEqual({
         technologies,
         projectNames: projects.map((project) => project.name),
-      } satisfies Partial<ExperienceItemTechComponent>)
+      })
     })
   })
 })

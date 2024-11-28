@@ -6,24 +6,24 @@ import { byComponent } from '@/test/helpers/component-query-predicates'
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { makeTechnologyItem } from '../../../technology/__tests__/make-technology-item'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ExperienceItemTechComponent', () => {
   let component: ExperienceItemTechComponent
   let fixture: ComponentFixture<ExperienceItemTechComponent>
-  const technologies = [
+  const DUMMY_TECHNOLOGIES = [
     makeTechnologyItem(),
     makeTechnologyItem(),
     makeTechnologyItem(),
   ]
-  const projectNames = ['Project A', 'Project B', 'Project C']
+  const DUMMY_PROJECT_NAMES = ['Project A', 'Project B', 'Project C']
 
   beforeEach(() => {
-    ;[fixture, component] = makeSut()
-
-    component.technologies = technologies
-    component.projectNames = projectNames
-
-    fixture.detectChanges()
+    ;[fixture, component] = componentTestSetup(ExperienceItemTechComponent)
+    setFixtureInputsAndDetectChanges(fixture, {
+      technologies: DUMMY_TECHNOLOGIES,
+      projectNames: DUMMY_PROJECT_NAMES,
+    })
   })
 
   it('should create', () => {
@@ -35,7 +35,7 @@ describe('ExperienceItemTechComponent', () => {
       byComponent(TechnologyComponent),
     )
 
-    expect(techElements.length).toEqual(technologies.length)
+    expect(techElements.length).toEqual(DUMMY_TECHNOLOGIES.length)
   })
 
   it('should display all project names', () => {
@@ -44,5 +44,3 @@ describe('ExperienceItemTechComponent', () => {
     )
   })
 })
-
-const makeSut = () => componentTestSetup(ExperienceItemTechComponent)

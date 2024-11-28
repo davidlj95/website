@@ -8,40 +8,38 @@ import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
 import { MockComponents } from 'ng-mocks'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ProjectItemTechnologiesComponent', () => {
   let component: ProjectItemTechnologiesComponent
   let fixture: ComponentFixture<ProjectItemTechnologiesComponent>
+  const DUMMY_ITEMS = [makeTechnologyItem(), makeTechnologyItem()]
+
+  beforeEach(() => {
+    ;[fixture, component] = componentTestSetup(
+      ProjectItemTechnologiesComponent,
+      {
+        imports: [
+          MockComponents(
+            TechnologyComponent,
+            ContentChipListComponent,
+            ContentChipComponent,
+          ),
+        ],
+      },
+    )
+    setFixtureInputsAndDetectChanges(fixture, { items: DUMMY_ITEMS })
+  })
 
   it('should create', () => {
-    ;[fixture, component] = makeSut()
-
     expect(component).toBeTruthy()
   })
 
   it('should display all technologies', () => {
-    const items = [makeTechnologyItem(), makeTechnologyItem()]
-    ;[fixture, component] = makeSut()
-    component.items = items
-    fixture.detectChanges()
-
     const itemElements = fixture.debugElement.queryAll(
       byComponent(TechnologyComponent),
     )
 
-    expect(itemElements.length).toEqual(items.length)
+    expect(itemElements.length).toEqual(DUMMY_ITEMS.length)
   })
 })
-
-function makeSut() {
-  return componentTestSetup(ProjectItemTechnologiesComponent, {
-    imports: [
-      ProjectItemTechnologiesComponent,
-      MockComponents(
-        TechnologyComponent,
-        ContentChipListComponent,
-        ContentChipComponent,
-      ),
-    ],
-  })
-}

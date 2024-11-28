@@ -6,10 +6,9 @@ import { ExperienceItemHighlightsComponent } from './experience-item-highlights/
 import { ExperienceItemTechComponent } from './experience-item-tech/experience-item-tech.component'
 import { TechnologyItem } from '../../technology/technology-item'
 
-type ExperienceItemToContents = (
+export const experienceItemToContents: (
   item: ExperienceItem,
-) => readonly ChippedContent[]
-export const experienceItemToContents: ExperienceItemToContents = (item) => {
+) => readonly ChippedContent[] = (item) => {
   const summaryContent = item.summary
     ? new ChippedContent({
         displayName: 'Summary',
