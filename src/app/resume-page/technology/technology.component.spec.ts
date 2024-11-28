@@ -39,7 +39,7 @@ describe('TechnologyComponent', () => {
       item: DUMMY_ITEM,
     })
 
-    expect(textContent(fixture.debugElement)).toContain(displayName)
+    expect(textContent(fixture.debugElement)).toEqual(displayName)
     expect(getTechnologyDisplayNameFromSlug).toHaveBeenCalledOnceWith(
       DUMMY_ITEM.slug,
     )
