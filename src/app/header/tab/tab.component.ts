@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core'
+import { Component, ElementRef, input } from '@angular/core'
 
 @Component({
   selector: 'app-tab',
@@ -7,18 +7,18 @@ import { Component, ElementRef, Input } from '@angular/core'
   standalone: true,
   host: {
     role: 'tab',
-    '[attr.aria-selected]': 'isSelected',
-    '[attr.tabindex]': 'isSelected ? 0 : -1',
+    '[attr.aria-selected]': 'isSelected()',
+    '[attr.tabindex]': 'isSelected() ? 0 : -1',
   },
 })
 export class TabComponent {
-  @Input() isSelected = false
+  readonly isSelected = input(false)
 
   constructor(
     //👇 Useful for tabs group component to access the HTML native element
     //   Same as Angular Material does for tabs pagination
     //   https://github.com/angular/components/blob/18.0.5/src/material/tabs/paginated-tab-header.ts#L515
     //   https://github.com/angular/components/blob/18.0.5/src/material/tabs/tab-label-wrapper.ts#L29
-    public elRef: ElementRef,
+    readonly elRef: ElementRef,
   ) {}
 }

@@ -9,7 +9,7 @@ describe('TabComponent', () => {
   let fixture: ComponentFixture<TabComponent>
 
   beforeEach(() => {
-    ;[fixture, component] = makeSut()
+    ;[fixture, component] = componentTestSetup(TabComponent)
   })
 
   it('should create', () => {
@@ -60,5 +60,3 @@ describe('TabComponent', () => {
     })
   })
 })
-
-const makeSut = () => componentTestSetup(TabComponent)
