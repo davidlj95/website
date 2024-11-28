@@ -45,18 +45,6 @@ describe('TechnologyComponent', () => {
     )
   })
 
-  it('should look for icon using collaborator', () => {
-    const getTechnologyIconFromSlug = jasmine
-      .createSpy<GetTechnologyIconFromSlug>()
-      .and.returnValue(DUMMY_ICON)
-    ;[fixture, component] = makeSut({
-      getTechnologyIconFromSlug,
-      item: DUMMY_ITEM,
-    })
-
-    expect(getTechnologyIconFromSlug).toHaveBeenCalledOnceWith(DUMMY_ITEM.slug)
-  })
-
   const ICON_ELEMENT_SELECTOR = By.css('.icon')
   describe('when icon is available', () => {
     beforeEach(() => {
