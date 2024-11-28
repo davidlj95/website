@@ -17,7 +17,7 @@ describe('SimpleIconComponent', () => {
   let fixture: ComponentFixture<SimpleIconComponent>
 
   it('should create', () => {
-    ;[fixture, component] = makeSut({ icon: DUMMY_ICON })
+    ;[fixture, component] = makeSut()
 
     expect(component).toBeTruthy()
   })
