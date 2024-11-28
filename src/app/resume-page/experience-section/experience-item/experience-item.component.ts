@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 import { ExperienceItem } from './experience-item'
 import { Badge, More, School, ToolsLadder, Work } from '@/data/material-symbols'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
@@ -15,17 +15,16 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
-import { ChippedContent } from '../../chipped-content/chipped-content'
 import { experienceItemToContents } from './experience-item-to-contents'
 
 @Component({
   selector: 'app-experience-item',
   templateUrl: './experience-item.component.html',
   imports: [
-    CardComponent,
-    CardHeaderComponent,
     LinkComponent,
     TestIdDirective,
+    CardComponent,
+    CardHeaderComponent,
     CardHeaderImageComponent,
     CardHeaderTextsComponent,
     CardHeaderTitleComponent,
@@ -38,15 +37,11 @@ import { experienceItemToContents } from './experience-item-to-contents'
   ],
 })
 export class ExperienceItemComponent {
-  // TODO: Skipped for migration because:
-  //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ required: true }) set item(item: ExperienceItem) {
-    this._item = item
-    this._contents = experienceItemToContents(item)
-  }
+  readonly item = input.required<ExperienceItem>()
+  protected readonly _contents = computed(() =>
+    experienceItemToContents(this.item()),
+  )
 
-  protected _item!: ExperienceItem
-  protected _contents: readonly ChippedContent[] = []
   protected readonly MaterialSymbol = {
     Badge,
     Work,

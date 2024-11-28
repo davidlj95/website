@@ -25,6 +25,7 @@ import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -234,6 +235,7 @@ function setExperienceItem(
   fixture: ComponentFixture<ExperienceItemComponent>,
   overrides?: ItemFactoryOverrides<typeof ExperienceItem>,
 ) {
-  fixture.componentInstance.item = makeExperienceItem(overrides)
-  fixture.detectChanges()
+  setFixtureInputsAndDetectChanges(fixture, {
+    item: makeExperienceItem(overrides),
+  })
 }
