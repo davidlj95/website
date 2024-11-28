@@ -40,7 +40,7 @@ export class TabsComponent implements OnDestroy {
   private _lastTab?: ElementRef<HTMLElement>
   protected readonly _prevButtonDisabled = signal(true)
   protected readonly _nextButtonDisabled = signal(true)
-  private _intersectionObserver!: IntersectionObserver
+  private _intersectionObserver?: IntersectionObserver
 
   // Selected management
   private readonly _tabs = contentChildren(TabComponent, {
@@ -57,25 +57,22 @@ export class TabsComponent implements OnDestroy {
   /// Scroll to selected
   private _indexToScrollTo?: number
 
-  constructor(
-    private _elRef: ElementRef,
-    private _cdRef: ChangeDetectorRef,
-  ) {
+  constructor(elRef: ElementRef<Element>, cdRef: ChangeDetectorRef) {
     afterNextRender({
       read: () => {
-        this._setupIntersectionObserver()
+        this._setupIntersectionObserver(elRef)
       },
     })
     afterRender({
       read: () => {
-        this._updateSelectedIfNeeded()
+        this._updateSelectedIfNeeded(cdRef)
         this._scrollToTabIfNeeded()
       },
     })
     effect(this._onTabsChanged.bind(this))
   }
 
-  private _updateSelectedIfNeeded(): void {
+  private _updateSelectedIfNeeded(cdRef: ChangeDetectorRef): void {
     if (
       this._indexToSelect === undefined ||
       this._currentTabs.length === 0 ||
@@ -89,7 +86,7 @@ export class TabsComponent implements OnDestroy {
     this._selectedIndex = this._indexToSelect
     this._indexToScrollTo = this._indexToSelect
     this._indexToSelect = undefined
-    this._cdRef.markForCheck()
+    cdRef.markForCheck()
   }
 
   private _scrollToTabIfNeeded(): void {
@@ -117,24 +114,26 @@ export class TabsComponent implements OnDestroy {
     this._resetIntersectionObserverTargets()
   }
 
-  private _setupIntersectionObserver() {
+  private _setupIntersectionObserver(elRef: ElementRef<Element>) {
     this._intersectionObserver = new IntersectionObserver(
       (entries) => {
+        const entryByTarget = new Map<Element, IntersectionObserverEntry>(
+          entries.map((entry) => [entry.target, entry] as const),
+        )
         ;(
           [
             [this._firstTab!, this._prevButtonDisabled],
             [this._lastTab!, this._nextButtonDisabled],
           ] as const
         ).forEach(([tabElement, signalToUpdate]) => {
-          const entry = entries.find(
-            (entry) => entry.target === tabElement.nativeElement,
-          )
-          if (!entry) return
-          signalToUpdate.set(entry.isIntersecting)
+          const entry = entryByTarget.get(tabElement.nativeElement)
+          if (entry) {
+            signalToUpdate.set(entry.isIntersecting)
+          }
         })
       },
       {
-        root: this._elRef.nativeElement as Element,
+        root: elRef.nativeElement,
         threshold: [0.8],
       },
     )
