@@ -20,14 +20,14 @@ export class ColorSchemeService {
     @Inject(WINDOW) private _window: Window,
   ) {
     this._htmlElement = document.documentElement
-    this.listenForMatchMediaPreferenceChanges()
+    this._listenForMatchMediaPreferenceChanges()
   }
 
-  private get isDarkPreferred(): boolean {
-    return !!this.matchMediaQuery && this.matchMediaQuery.matches
+  private get _isDarkPreferred(): boolean {
+    return !!this._matchMediaQuery && this._matchMediaQuery.matches
   }
 
-  private get matchMediaQuery() {
+  private get _matchMediaQuery() {
     if (!this._window.matchMedia) {
       return null
     }
@@ -39,7 +39,7 @@ export class ColorSchemeService {
       HTML_COLOR_SCHEME_ATTRIBUTE,
     ) as Scheme
     if (!manuallySetScheme) {
-      this.setManual(this.isDarkPreferred ? Scheme.Light : Scheme.Dark)
+      this.setManual(this._isDarkPreferred ? Scheme.Light : Scheme.Dark)
       return
     }
 
@@ -56,8 +56,8 @@ export class ColorSchemeService {
     this._htmlElement.removeAttribute(HTML_COLOR_SCHEME_ATTRIBUTE)
   }
 
-  private listenForMatchMediaPreferenceChanges() {
-    this.matchMediaQuery?.addEventListener('change', () => {
+  private _listenForMatchMediaPreferenceChanges() {
+    this._matchMediaQuery?.addEventListener('change', () => {
       this.setSystem()
     })
   }

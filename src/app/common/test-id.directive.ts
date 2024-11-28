@@ -4,13 +4,10 @@ import { Directive, effect, ElementRef, input } from '@angular/core'
 export class TestIdDirective {
   readonly appTestId = input.required<string>()
 
-  constructor(private el: ElementRef) {
+  constructor(elRef: ElementRef<Element>) {
     effect(() => {
       if (isDevMode) {
-        ;(this.el.nativeElement as Element).setAttribute(
-          TEST_ID_ATTRIBUTE,
-          this.appTestId(),
-        )
+        elRef.nativeElement.setAttribute(TEST_ID_ATTRIBUTE, this.appTestId())
       }
     })
   }

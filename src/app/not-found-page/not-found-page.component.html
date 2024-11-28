@@ -15,14 +15,14 @@
 </main>
 <aside class="tip">
   <header>
-    <span appMaterialSymbol>{{ MaterialSymbol.Lightbulb }}</span
+    <span appMaterialSymbol>{{ _materialSymbol.Lightbulb }}</span
     ><b>TIP: What if this page existed before?</b>
   </header>
   <p>
     You can use
     <a href="https://web.archive.org/">Internet Archive's Wayback Machine</a>
     to see if a page existed in the past. <br />Maybe
-    <a [href]="currentUrlInWaybackMachine"
+    <a [href]="_currentUrlInWaybackMachine"
       >this page existed at some other point in time</a
     >
   </p>

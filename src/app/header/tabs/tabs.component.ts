@@ -27,7 +27,7 @@ import { TabComponent } from '../tab/tab.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsComponent implements OnDestroy {
-  protected readonly MaterialSymbol = {
+  protected readonly _materialSymbol = {
     KeyboardDoubleArrowLeft,
     KeyboardDoubleArrowRight,
   }

@@ -4,10 +4,8 @@ import { Directive, ElementRef } from '@angular/core'
   selector: '[appMaterialSymbol]',
 })
 export class MaterialSymbolDirective {
-  constructor(private el: ElementRef) {
-    ;(this.el.nativeElement as HTMLElement).classList.add(
-      MATERIAL_SYMBOLS_CLASS,
-    )
+  constructor(elRef: ElementRef<Element>) {
+    elRef.nativeElement.classList.add(MATERIAL_SYMBOLS_CLASS)
   }
 }
 

@@ -36,7 +36,13 @@ export const NAMING_CONVENTION_SELECTORS = [
   // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-private-members-are-prefixed-with-an-underscore
   {
     selector: 'memberLike',
-    modifiers: ['private', 'protected'],
+    modifiers: ['private'],
+    format: ['camelCase'],
+    leadingUnderscore: 'require',
+  },
+  {
+    selector: 'memberLike',
+    modifiers: ['protected'],
     format: ['camelCase'],
     leadingUnderscore: 'require',
   },

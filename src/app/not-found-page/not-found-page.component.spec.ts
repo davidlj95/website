@@ -33,7 +33,7 @@ describe('NotFoundPageComponent', () => {
 
   describe('#currentUrlInWaybackMachine', () => {
     it('should be the Wayback Machine URL prefix plus the current URL', () => {
-      expect(component.currentUrlInWaybackMachine).toEqual(
+      expect(component._currentUrlInWaybackMachine).toEqual(
         new URL(
           WAYBACK_MACHINE_URL_PREFIX.toString() +
             dummyAppUrlNoTrailingSlash +

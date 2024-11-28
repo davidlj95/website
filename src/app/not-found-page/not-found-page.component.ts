@@ -11,15 +11,14 @@ import { APP_BASE_URL } from '@/common/app-base-url'
   imports: [MaterialSymbolDirective],
 })
 export class NotFoundPageComponent {
-  readonly currentUrlInWaybackMachine: URL
-  protected readonly MaterialSymbol = {
+  protected readonly _currentUrlInWaybackMachine: URL
+  protected readonly _materialSymbol = {
     Lightbulb,
   }
 
   constructor(@Inject(APP_BASE_URL) appBaseUrl: URL, router: Router) {
-    const currentUrl = new URL(router.url, appBaseUrl)
-    this.currentUrlInWaybackMachine = new URL(
-      `${WAYBACK_MACHINE_URL_PREFIX}${currentUrl}`,
+    this._currentUrlInWaybackMachine = new URL(
+      `${WAYBACK_MACHINE_URL_PREFIX}${new URL(router.url, appBaseUrl)}`,
     )
   }
 }

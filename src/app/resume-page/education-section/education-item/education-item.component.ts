@@ -46,7 +46,7 @@ export class EducationItemComponent {
     return name.length > 15 && shortName ? shortName : name
   })
 
-  protected readonly MaterialSymbol = {
+  protected readonly _materialSymbol = {
     SocialLeaderboard,
   }
   protected readonly _attribute = ATTRIBUTE
