@@ -33,19 +33,19 @@ export class TabsComponent implements OnDestroy {
     KeyboardDoubleArrowRight,
   }
 
-  private _tabs = contentChildren(TabComponent, {
-    descendants: false,
-  })
-
   // Pagination
-  private _tabList = viewChild.required<ElementRef<HTMLElement>>('tabList')
+  private readonly _tabList =
+    viewChild.required<ElementRef<HTMLElement>>('tabList')
   private _firstTab?: ElementRef<HTMLElement>
   private _lastTab?: ElementRef<HTMLElement>
-  protected _prevButtonDisabled = signal(true)
-  protected _nextButtonDisabled = signal(true)
+  protected readonly _prevButtonDisabled = signal(true)
+  protected readonly _nextButtonDisabled = signal(true)
   private _intersectionObserver!: IntersectionObserver
 
   // Selected management
+  private readonly _tabs = contentChildren(TabComponent, {
+    descendants: false,
+  })
   private _currentTabs: readonly TabComponent[] = []
   private _indexToSelect?: number
   private _selectedIndex?: number
