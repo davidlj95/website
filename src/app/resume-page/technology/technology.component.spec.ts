@@ -87,18 +87,18 @@ function makeSut(
   const [fixture, component] = componentTestSetup(TechnologyComponent, {
     imports: [MockComponent(SimpleIconComponent)],
     providers: [
-      opts.getTechnologyDisplayNameFromSlug
-        ? MockProvider(
-            GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
-            opts.getTechnologyDisplayNameFromSlug,
-          )
-        : [],
-      opts.getTechnologyIconFromSlug
-        ? MockProvider(
-            GET_TECHNOLOGY_ICON_FROM_SLUG,
-            opts.getTechnologyIconFromSlug,
-          )
-        : [],
+      MockProvider(
+        GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
+        opts.getTechnologyDisplayNameFromSlug ??
+          // eslint-disable-next-line jasmine/no-unsafe-spy
+          jasmine.createSpy('getTechnologyDisplayNameFromSlug'),
+      ),
+      MockProvider(
+        GET_TECHNOLOGY_ICON_FROM_SLUG,
+        opts.getTechnologyIconFromSlug ??
+          // eslint-disable-next-line jasmine/no-unsafe-spy
+          jasmine.createSpy('getTechnologyIconFromSlug'),
+      ),
     ],
   })
   setFixtureInputsAndDetectChanges(fixture, {
