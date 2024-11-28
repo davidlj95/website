@@ -34,18 +34,14 @@ export const NAMING_CONVENTION_SELECTORS = [
     format: ['camelCase', 'UPPER_CASE'],
   },
   // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-private-members-are-prefixed-with-an-underscore
-  {
+  // 👇 `modifiers` matches code with ALL modifiers specified
+  //    To specify the same for several modifiers, repeating the rule for each one
+  ...['private', 'protected'].map((modifier) => ({
     selector: 'memberLike',
-    modifiers: ['private'],
+    modifiers: [modifier],
     format: ['camelCase'],
     leadingUnderscore: 'require',
-  },
-  {
-    selector: 'memberLike',
-    modifiers: ['protected'],
-    format: ['camelCase'],
-    leadingUnderscore: 'require',
-  },
+  })),
   // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-interface-names-do-not-begin-with-an-i
   {
     selector: 'typeLike',
