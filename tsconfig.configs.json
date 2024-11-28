@@ -1,5 +1,5 @@
 {
-  "include": [".*.ts"],
+  "include": [".*.ts", "data/release-it.ts"],
   "compilerOptions": {
     "target": "esnext",
     "moduleResolution": "bundler",
