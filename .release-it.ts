@@ -179,4 +179,5 @@ const [RELEASE_LEVEL_MAJOR, RELEASE_LEVEL_MINOR, RELEASE_LEVEL_PATCH] = [
   ...RELEASE_LEVEL_NAMES.keys(),
 ]
 
+// noinspection JSUnusedGlobalSymbols
 export default createReleaseItConfig()
