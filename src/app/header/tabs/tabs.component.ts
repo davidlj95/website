@@ -106,11 +106,9 @@ export class TabsComponent implements OnDestroy {
 
   private _resetIntersectionObserverTargets(): void {
     const [firstTab, lastTab] = firstTabAndLastTabElements(this._tabs())
-    if (this._intersectionObserver && firstTab && lastTab) {
-      this._intersectionObserver.disconnect()
-      this._intersectionObserver.observe(firstTab)
-      this._intersectionObserver.observe(lastTab)
-    }
+    this._intersectionObserver?.disconnect()
+    if (firstTab) this._intersectionObserver?.observe(firstTab)
+    if (lastTab) this._intersectionObserver?.observe(lastTab)
   }
 
   ngOnDestroy(): void {
