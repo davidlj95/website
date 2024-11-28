@@ -16,14 +16,12 @@ import {
 } from './get-technology-display-name-from-slug'
 import { makeTechnologyItem } from './__tests__/make-technology-item'
 import { textContent } from '@/test/helpers/text-content'
+import { TechnologyItem } from './technology-item'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('TechnologyComponent', () => {
   let component: TechnologyComponent
   let fixture: ComponentFixture<TechnologyComponent>
-  const DUMMY_TECHNOLOGY_ITEM = makeTechnologyItem()
-  const DUMMY_ICON: SimpleIcon = {
-    slug: DUMMY_TECHNOLOGY_ITEM.slug,
-  }
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
@@ -36,15 +34,14 @@ describe('TechnologyComponent', () => {
     const getTechnologyDisplayNameFromSlug = jasmine
       .createSpy<GetTechnologyDisplayNameFromSlug>()
       .and.returnValue(displayName)
-    ;[fixture, component] = makeSut({ getTechnologyDisplayNameFromSlug })
-
-    component.item = DUMMY_TECHNOLOGY_ITEM
-    fixture.detectChanges()
+    ;[fixture, component] = makeSut({
+      getTechnologyDisplayNameFromSlug,
+      item: DUMMY_ITEM,
+    })
 
     expect(textContent(fixture.debugElement)).toContain(displayName)
-
     expect(getTechnologyDisplayNameFromSlug).toHaveBeenCalledOnceWith(
-      DUMMY_TECHNOLOGY_ITEM.slug,
+      DUMMY_ITEM.slug,
     )
   })
 
@@ -52,14 +49,12 @@ describe('TechnologyComponent', () => {
     const getTechnologyIconFromSlug = jasmine
       .createSpy<GetTechnologyIconFromSlug>()
       .and.returnValue(DUMMY_ICON)
-    ;[fixture, component] = makeSut({ getTechnologyIconFromSlug })
+    ;[fixture, component] = makeSut({
+      getTechnologyIconFromSlug,
+      item: DUMMY_ITEM,
+    })
 
-    component.item = DUMMY_TECHNOLOGY_ITEM
-    fixture.detectChanges()
-
-    expect(getTechnologyIconFromSlug).toHaveBeenCalledOnceWith(
-      DUMMY_TECHNOLOGY_ITEM.slug,
-    )
+    expect(getTechnologyIconFromSlug).toHaveBeenCalledOnceWith(DUMMY_ITEM.slug)
   })
 
   const ICON_ELEMENT_SELECTOR = By.css('.icon')
@@ -69,8 +64,6 @@ describe('TechnologyComponent', () => {
         .createSpy<GetTechnologyIconFromSlug>()
         .and.returnValue(DUMMY_ICON)
       ;[fixture, component] = makeSut({ getTechnologyIconFromSlug })
-      component.item = DUMMY_TECHNOLOGY_ITEM
-      fixture.detectChanges()
     })
 
     it('should display icon', () => {
@@ -84,8 +77,6 @@ describe('TechnologyComponent', () => {
         .createSpy<GetTechnologyIconFromSlug>()
         .and.returnValue(undefined)
       ;[fixture, component] = makeSut({ getTechnologyIconFromSlug })
-      component.item = DUMMY_TECHNOLOGY_ITEM
-      fixture.detectChanges()
     })
 
     it('should not display icon', () => {
@@ -94,14 +85,19 @@ describe('TechnologyComponent', () => {
   })
 })
 
+const DUMMY_ITEM = makeTechnologyItem()
+const DUMMY_ICON: SimpleIcon = {
+  slug: DUMMY_ITEM.slug,
+}
 function makeSut(
   opts: {
     getTechnologyDisplayNameFromSlug?: GetTechnologyDisplayNameFromSlug
     getTechnologyIconFromSlug?: GetTechnologyIconFromSlug
+    item?: TechnologyItem
   } = {},
 ) {
-  return componentTestSetup(TechnologyComponent, {
-    imports: [TechnologyComponent, MockComponent(SimpleIconComponent)],
+  const [fixture, component] = componentTestSetup(TechnologyComponent, {
+    imports: [MockComponent(SimpleIconComponent)],
     providers: [
       opts.getTechnologyDisplayNameFromSlug
         ? MockProvider(
@@ -117,4 +113,8 @@ function makeSut(
         : [],
     ],
   })
+  setFixtureInputsAndDetectChanges(fixture, {
+    item: opts.item ?? DUMMY_ITEM,
+  })
+  return [fixture, component] as const
 }
