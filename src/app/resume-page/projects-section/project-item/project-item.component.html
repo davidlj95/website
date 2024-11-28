@@ -1,37 +1,38 @@
 <app-card>
   <app-card-header>
-    @if (_item.imageSrc) {
-      <app-link [href]="_item.website?.toString()" appTestId="image">
+    @let item = this.item();
+    @if (item.imageSrc) {
+      <app-link [href]="item.website?.toString()" appTestId="image">
         <app-card-header-image
-          [src]="_item.imageSrc"
-          [alt]="_item.name + ' logo'"
+          [src]="item.imageSrc"
+          [alt]="item.name + ' logo'"
         ></app-card-header-image>
       </app-link>
     }
     <app-card-header-texts>
       <app-card-header-title appTestId="name">
-        {{ _item.name }}
+        {{ item.name }}
       </app-card-header-title>
-      @if (_item.roles.length) {
+      @if (item.roles.length) {
         <app-card-header-subtitle appTestId="role">
           <!-- TODO: display all roles, for current case just 1 is enough -->
-          {{ _item.roles[0] }}
+          {{ item.roles[0] }}
         </app-card-header-subtitle>
       }
       <app-card-header-detail>
-        <app-date-range [range]="_item.dateRange"></app-date-range>
+        <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      @if (_item.stack) {
+      @if (item.stack) {
         <app-attribute
-          [symbol]="_stackContent[_item.stack].materialSymbol"
-          [appTestId]="Attribute.Stack"
+          [symbol]="_stackContent[item.stack].materialSymbol"
+          [appTestId]="_attribute.Stack"
         >
-          {{ _stackContent[_item.stack].displayName }}
+          {{ _stackContent[item.stack].displayName }}
         </app-attribute>
       }
     </app-card-header-attributes>
   </app-card-header>
-  <app-chipped-content [contents]="_contents"></app-chipped-content>
+  <app-chipped-content [contents]="_contents()"></app-chipped-content>
 </app-card>

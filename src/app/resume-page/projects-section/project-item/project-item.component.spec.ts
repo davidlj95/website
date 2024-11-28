@@ -1,6 +1,10 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import { Attribute, ProjectItemComponent } from './project-item.component'
+import {
+  ATTRIBUTE,
+  ProjectItemComponent,
+  STACK_CONTENT,
+} from './project-item.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
@@ -26,6 +30,7 @@ import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -131,7 +136,7 @@ describe('ProjectItemComponent', () => {
       setProjectItem(fixture, { stack })
 
       const stackAttributeElement = fixture.debugElement.query(
-        byTestId(Attribute.Stack),
+        byTestId(ATTRIBUTE.Stack),
       )
 
       expect(stackAttributeElement).toBeFalsy()
@@ -141,12 +146,12 @@ describe('ProjectItemComponent', () => {
   describe('when stack attribute exists', () => {
     it('should include attribute with its display name and icon', () => {
       const stack = Stack.Front
-      const stackContent = ProjectItemComponent.StackContent[stack]
+      const stackContent = STACK_CONTENT[stack]
 
       setProjectItem(fixture, { stack })
 
       const stackAttributeElement = fixture.debugElement.query(
-        byTestId(Attribute.Stack),
+        byTestId(ATTRIBUTE.Stack),
       )
 
       expect(stackAttributeElement).toBeTruthy()
@@ -166,7 +171,6 @@ describe('ProjectItemComponent', () => {
 function makeSut() {
   return componentTestSetup(ProjectItemComponent, {
     imports: [
-      ProjectItemComponent,
       TestIdDirective,
       LinkComponent,
       MockComponents(
@@ -190,6 +194,7 @@ function setProjectItem(
   fixture: ComponentFixture<ProjectItemComponent>,
   overrides?: ItemFactoryOverrides<typeof ProjectItem>,
 ) {
-  fixture.componentInstance.item = makeProjectItem(overrides)
-  fixture.detectChanges()
+  setFixtureInputsAndDetectChanges(fixture, {
+    item: makeProjectItem(overrides),
+  })
 }
