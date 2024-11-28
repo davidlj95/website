@@ -10,6 +10,7 @@ import {
   OnDestroy,
   signal,
   viewChild,
+  WritableSignal,
 } from '@angular/core'
 import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
 import {
@@ -84,21 +85,16 @@ export class TabsComponent implements OnDestroy {
   private _setupIntersectionObserver(elRef: ElementRef<Element>) {
     this._intersectionObserver = new IntersectionObserver(
       (entries) => {
-        const [firstTab, lastTab] = firstTabAndLastTab(this._tabs())
-        const entryByTarget = new Map<
+        const [firstTab, lastTab] = firstTabAndLastTabElements(this._tabs())
+        const signalToUpdateByElement = new Map<
           Element | undefined,
-          IntersectionObserverEntry
-        >(entries.map((entry) => [entry.target, entry] as const))
-        ;(
-          [
-            [firstTab, this._prevButtonDisabled],
-            [lastTab, this._nextButtonDisabled],
-          ] as const
-        ).forEach(([tabElement, signalToUpdate]) => {
-          const entry = entryByTarget.get(tabElement?.elRef.nativeElement)
-          if (entry) {
-            signalToUpdate.set(entry.isIntersecting)
-          }
+          WritableSignal<boolean>
+        >([
+          [firstTab, this._prevButtonDisabled],
+          [lastTab, this._nextButtonDisabled],
+        ])
+        entries.forEach((entry) => {
+          signalToUpdateByElement.get(entry.target)?.set(entry.isIntersecting)
         })
       },
       {
@@ -110,11 +106,11 @@ export class TabsComponent implements OnDestroy {
   }
 
   private _resetIntersectionObserverTargets(): void {
-    const [firstTab, lastTab] = firstTabAndLastTab(this._tabs())
+    const [firstTab, lastTab] = firstTabAndLastTabElements(this._tabs())
     if (this._intersectionObserver && firstTab && lastTab) {
       this._intersectionObserver.disconnect()
-      this._intersectionObserver.observe(firstTab.elRef.nativeElement)
-      this._intersectionObserver.observe(lastTab.elRef.nativeElement)
+      this._intersectionObserver.observe(firstTab)
+      this._intersectionObserver.observe(lastTab)
     }
   }
 
@@ -139,7 +135,5 @@ export class TabsComponent implements OnDestroy {
   }
 }
 
-const firstTabAndLastTab = (tabs: readonly TabComponent[]) => [
-  tabs.at(0),
-  tabs.at(-1),
-]
+const firstTabAndLastTabElements = (tabs: readonly TabComponent[]) =>
+  [tabs.at(0)?.elRef.nativeElement, tabs.at(-1)?.elRef.nativeElement] as const
