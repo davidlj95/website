@@ -38,7 +38,7 @@ export class TabsComponent implements OnDestroy {
   })
 
   // Pagination
-  private _tabList = viewChild<ElementRef<HTMLElement>>('tabList')
+  private _tabList = viewChild.required<ElementRef<HTMLElement>>('tabList')
   private _firstTab?: ElementRef<HTMLElement>
   private _lastTab?: ElementRef<HTMLElement>
   protected _prevButtonDisabled = signal(true)
@@ -78,12 +78,11 @@ export class TabsComponent implements OnDestroy {
   private _updateSelectedIfNeeded(): void {
     if (
       this._indexToSelect === undefined ||
-      isNaN(this._indexToSelect) ||
       this._currentTabs.length === 0 ||
-      (this._selectedIndex !== undefined &&
-        this._selectedIndex === this._indexToSelect)
-    )
+      this._selectedIndex === this._indexToSelect
+    ) {
       return
+    }
     this._currentTabs.forEach(
       (tab, index) => (tab.isSelected = index === this._indexToSelect),
     )
@@ -136,7 +135,7 @@ export class TabsComponent implements OnDestroy {
       },
       {
         root: this._elRef.nativeElement as Element,
-        threshold: [INTERSECTION_THRESHOLD],
+        threshold: [0.8],
       },
     )
     this._resetIntersectionObserverTargets()
@@ -150,17 +149,8 @@ export class TabsComponent implements OnDestroy {
     }
   }
 
-  protected _scrollABit(scrollDirection: ScrollDirection) {
-    const tabListContainer = this._tabList()?.nativeElement
-    /* istanbul ignore next */
-    if (!tabListContainer) {
-      if (isDevMode) {
-        console.log(
-          'TabsComponent: Not scrolling. Reason: tab list container element is missing',
-        )
-      }
-      return
-    }
+  protected _scrollABit(scrollDirection: -1 | 1) {
+    const tabListContainer = this._tabList().nativeElement
     //👇 Amount to scroll extracted from MatTab
     //   https://github.com/angular/components/blob/18.0.5/src/material/tabs/paginated-tab-header.ts#L473-L488
     const tabListContainerLength = tabListContainer.offsetWidth
@@ -175,7 +165,3 @@ export class TabsComponent implements OnDestroy {
     })
   }
 }
-
-const INTERSECTION_THRESHOLD = 0.8
-
-type ScrollDirection = -1 | 1
