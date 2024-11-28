@@ -33,19 +33,10 @@ export class TabsComponent implements OnDestroy {
     KeyboardDoubleArrowRight,
   }
 
-  private _tabs = contentChildren(TabComponent, {
+  // Selected management
+  private readonly _tabs = contentChildren(TabComponent, {
     descendants: false,
   })
-
-  // Pagination
-  private _tabList = viewChild.required<ElementRef<HTMLElement>>('tabList')
-  private _firstTab?: ElementRef<HTMLElement>
-  private _lastTab?: ElementRef<HTMLElement>
-  protected _prevButtonDisabled = signal(true)
-  protected _nextButtonDisabled = signal(true)
-  private _intersectionObserver!: IntersectionObserver
-
-  // Selected management
   private _currentTabs: readonly TabComponent[] = []
   private _indexToSelect?: number
   private _selectedIndex?: number
@@ -57,25 +48,39 @@ export class TabsComponent implements OnDestroy {
   /// Scroll to selected
   private _indexToScrollTo?: number
 
-  constructor(
-    private _elRef: ElementRef,
-    private _cdRef: ChangeDetectorRef,
-  ) {
-    afterNextRender({
-      read: () => {
-        this._setupIntersectionObserver()
-      },
-    })
+  // Pagination
+  private readonly _tabList =
+    viewChild.required<ElementRef<HTMLElement>>('tabList')
+  private _firstTab?: ElementRef<HTMLElement>
+  private _lastTab?: ElementRef<HTMLElement>
+  protected readonly _prevButtonDisabled = signal(true)
+  protected readonly _nextButtonDisabled = signal(true)
+  private _intersectionObserver?: IntersectionObserver
+
+  constructor(elRef: ElementRef<Element>, cdRef: ChangeDetectorRef) {
+    effect(this._onTabsChanged.bind(this))
     afterRender({
       read: () => {
-        this._updateSelectedIfNeeded()
+        this._updateSelectedIfNeeded(cdRef)
         this._scrollToTabIfNeeded()
       },
     })
-    effect(this._onTabsChanged.bind(this))
+    afterNextRender({
+      read: () => {
+        this._setupIntersectionObserver(elRef)
+      },
+    })
   }
 
-  private _updateSelectedIfNeeded(): void {
+  // Selected management
+  private _onTabsChanged() {
+    const tabs = this._tabs()
+    this._currentTabs = tabs
+    ;[this._firstTab, this._lastTab] = [tabs.at(0)?.elRef, tabs.at(-1)?.elRef]
+    this._resetIntersectionObserverTargets()
+  }
+
+  private _updateSelectedIfNeeded(cdRef: ChangeDetectorRef): void {
     if (
       this._indexToSelect === undefined ||
       this._currentTabs.length === 0 ||
@@ -89,7 +94,7 @@ export class TabsComponent implements OnDestroy {
     this._selectedIndex = this._indexToSelect
     this._indexToScrollTo = this._indexToSelect
     this._indexToSelect = undefined
-    this._cdRef.markForCheck()
+    cdRef.markForCheck()
   }
 
   private _scrollToTabIfNeeded(): void {
@@ -106,35 +111,27 @@ export class TabsComponent implements OnDestroy {
     this._indexToScrollTo = undefined
   }
 
-  ngOnDestroy(): void {
-    this._intersectionObserver?.disconnect()
-  }
-
-  private _onTabsChanged() {
-    const tabs = this._tabs()
-    this._currentTabs = tabs
-    ;[this._firstTab, this._lastTab] = [tabs.at(0)?.elRef, tabs.at(-1)?.elRef]
-    this._resetIntersectionObserverTargets()
-  }
-
-  private _setupIntersectionObserver() {
+  // Pagination
+  private _setupIntersectionObserver(elRef: ElementRef<Element>) {
     this._intersectionObserver = new IntersectionObserver(
       (entries) => {
+        const entryByTarget = new Map<Element, IntersectionObserverEntry>(
+          entries.map((entry) => [entry.target, entry] as const),
+        )
         ;(
           [
             [this._firstTab!, this._prevButtonDisabled],
             [this._lastTab!, this._nextButtonDisabled],
           ] as const
         ).forEach(([tabElement, signalToUpdate]) => {
-          const entry = entries.find(
-            (entry) => entry.target === tabElement.nativeElement,
-          )
-          if (!entry) return
-          signalToUpdate.set(entry.isIntersecting)
+          const entry = entryByTarget.get(tabElement.nativeElement)
+          if (entry) {
+            signalToUpdate.set(entry.isIntersecting)
+          }
         })
       },
       {
-        root: this._elRef.nativeElement as Element,
+        root: elRef.nativeElement,
         threshold: [0.8],
       },
     )
@@ -147,6 +144,10 @@ export class TabsComponent implements OnDestroy {
       this._intersectionObserver.observe(this._firstTab.nativeElement)
       this._intersectionObserver.observe(this._lastTab.nativeElement)
     }
+  }
+
+  ngOnDestroy(): void {
+    this._intersectionObserver?.disconnect()
   }
 
   protected _scrollABit(scrollDirection: -1 | 1) {

@@ -12,6 +12,7 @@ import { Component, ElementRef, Input } from '@angular/core'
   },
 })
 export class TabComponent {
+  // Can't be migrated yet: https://github.com/davidlj95/website/pull/886
   @Input() isSelected = false
 
   constructor(
