@@ -23,12 +23,19 @@ export default tsEslint.config(
         // https://github.com/typescript-eslint/typescript-eslint/blob/v8.16.0/packages/eslint-plugin/docs/rules/naming-convention.mdx#enforce-that-boolean-variables-are-prefixed-with-an-allowed-verb
         {
           selector: [
-            'variable',
+            // `member-like` without:
+            //  - `property`: will be specified later, with exceptions
+            //  - `enumMember`: no types allowed
+            //  - `method`: no types allowed
             'classicAccessor',
             'autoAccessor',
-            'classProperty',
-            'parameter',
             'parameterProperty',
+            // All `property` but `objectLiteralProperty`
+            'classProperty',
+            'typeProperty',
+            // The rest
+            'parameter',
+            'variable',
           ],
           types: ['boolean'],
           format: ['PascalCase'],

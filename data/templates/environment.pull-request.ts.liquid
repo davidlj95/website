@@ -9,6 +9,6 @@ const CLOUDFLARE_PAGES_PREVIEW_BRANCH_ALIAS_URL = new URL(
   `https://${PR_BRANCH_NAME}.${CLOUDFLARE_PAGES_DOMAIN}`,
 )
 export const environment: Environment = {
-  production: false,
+  isProduction: false,
   appBaseUrl: CLOUDFLARE_PAGES_PREVIEW_BRANCH_ALIAS_URL,
 }
