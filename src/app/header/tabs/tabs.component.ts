@@ -1,17 +1,16 @@
 import {
   afterNextRender,
-  afterRender,
+  afterRenderEffect,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   contentChildren,
   effect,
   ElementRef,
-  Input,
-  numberAttribute,
+  input,
   OnDestroy,
   signal,
   viewChild,
+  WritableSignal,
 } from '@angular/core'
 import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
 import {
@@ -34,100 +33,67 @@ export class TabsComponent implements OnDestroy {
   }
 
   // Selected management
+  readonly selectedIndex = input<number>()
   private readonly _tabs = contentChildren(TabComponent, {
     descendants: false,
   })
-  private _currentTabs: readonly TabComponent[] = []
-  private _indexToSelect?: number
-  private _selectedIndex?: number
-  // TODO: Skipped for migration because:
-  //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ transform: numberAttribute }) set selectedIndex(index: number) {
-    this._indexToSelect = index
-  }
-  /// Scroll to selected
-  private _indexToScrollTo?: number
 
   // Pagination
   private readonly _tabList =
     viewChild.required<ElementRef<HTMLElement>>('tabList')
-  private _firstTab?: ElementRef<HTMLElement>
-  private _lastTab?: ElementRef<HTMLElement>
   protected readonly _prevButtonDisabled = signal(true)
   protected readonly _nextButtonDisabled = signal(true)
   private _intersectionObserver?: IntersectionObserver
 
-  constructor(elRef: ElementRef<Element>, cdRef: ChangeDetectorRef) {
-    effect(this._onTabsChanged.bind(this))
-    afterRender({
-      read: () => {
-        this._updateSelectedIfNeeded(cdRef)
-        this._scrollToTabIfNeeded()
-      },
+  constructor(elRef: ElementRef<Element>) {
+    // 👇 If tabs change, observe new first and last tab elements.
+    effect(() => this._resetIntersectionObserverTargets())
+    // 👇 Listen to `selectedIndex` input and update selected tab
+    effect(() => this._setSelectedTab())
+    // 👇 Important to be `afterRenderEffect` so scroll is last thing that happens
+    afterRenderEffect({
+      read: () => this._scrollToSelectedTab(),
     })
+    // 👇 Client-side only. Needs the tab elements to observe.
     afterNextRender({
-      read: () => {
-        this._setupIntersectionObserver(elRef)
-      },
+      read: () => this._setupIntersectionObserver(elRef),
     })
   }
 
   // Selected management
-  private _onTabsChanged() {
-    const tabs = this._tabs()
-    this._currentTabs = tabs
-    ;[this._firstTab, this._lastTab] = [tabs.at(0)?.elRef, tabs.at(-1)?.elRef]
-    this._resetIntersectionObserverTargets()
-  }
-
-  private _updateSelectedIfNeeded(cdRef: ChangeDetectorRef): void {
-    if (
-      this._indexToSelect === undefined ||
-      this._currentTabs.length === 0 ||
-      this._selectedIndex === this._indexToSelect
-    ) {
+  private _setSelectedTab(): void {
+    if (this.selectedIndex() === undefined) {
       return
     }
-    this._currentTabs.forEach(
-      (tab, index) => (tab.isSelected = index === this._indexToSelect),
+    this._tabs().forEach(
+      (tab, index) => (tab.isSelected = index === this.selectedIndex()),
     )
-    this._selectedIndex = this._indexToSelect
-    this._indexToScrollTo = this._indexToSelect
-    this._indexToSelect = undefined
-    cdRef.markForCheck()
   }
 
-  private _scrollToTabIfNeeded(): void {
-    if (
-      this._indexToScrollTo === undefined ||
-      this._indexToScrollTo < 0 ||
-      this._indexToScrollTo >= this._currentTabs.length
-    )
+  private _scrollToSelectedTab(): void {
+    const selectedIndex = this.selectedIndex()
+    if (selectedIndex === undefined) {
       return
-    ;(
-      this._currentTabs.at(this._indexToScrollTo)?.elRef
-        .nativeElement as HTMLElement
-    ).scrollIntoView({ behavior: 'smooth' })
-    this._indexToScrollTo = undefined
+    }
+    this._tabs()
+      .at(selectedIndex)
+      ?.elRef.nativeElement.scrollIntoView({ behavior: 'smooth' })
   }
 
   // Pagination
   private _setupIntersectionObserver(elRef: ElementRef<Element>) {
     this._intersectionObserver = new IntersectionObserver(
       (entries) => {
-        const entryByTarget = new Map<Element, IntersectionObserverEntry>(
-          entries.map((entry) => [entry.target, entry] as const),
-        )
-        ;(
-          [
-            [this._firstTab!, this._prevButtonDisabled],
-            [this._lastTab!, this._nextButtonDisabled],
-          ] as const
-        ).forEach(([tabElement, signalToUpdate]) => {
-          const entry = entryByTarget.get(tabElement.nativeElement)
-          if (entry) {
-            signalToUpdate.set(entry.isIntersecting)
-          }
+        const [firstTab, lastTab] = firstTabAndLastTabElements(this._tabs())
+        const signalToUpdateByElement = new Map<
+          Element | undefined,
+          WritableSignal<boolean>
+        >([
+          [firstTab, this._prevButtonDisabled],
+          [lastTab, this._nextButtonDisabled],
+        ])
+        entries.forEach((entry) => {
+          signalToUpdateByElement.get(entry.target)?.set(entry.isIntersecting)
         })
       },
       {
@@ -139,11 +105,10 @@ export class TabsComponent implements OnDestroy {
   }
 
   private _resetIntersectionObserverTargets(): void {
-    if (this._intersectionObserver && this._firstTab && this._lastTab) {
-      this._intersectionObserver.disconnect()
-      this._intersectionObserver.observe(this._firstTab.nativeElement)
-      this._intersectionObserver.observe(this._lastTab.nativeElement)
-    }
+    const [firstTab, lastTab] = firstTabAndLastTabElements(this._tabs())
+    this._intersectionObserver?.disconnect()
+    if (firstTab) this._intersectionObserver?.observe(firstTab)
+    if (lastTab) this._intersectionObserver?.observe(lastTab)
   }
 
   ngOnDestroy(): void {
@@ -166,3 +131,6 @@ export class TabsComponent implements OnDestroy {
     })
   }
 }
+
+const firstTabAndLastTabElements = (tabs: readonly TabComponent[]) =>
+  [tabs.at(0)?.elRef.nativeElement, tabs.at(-1)?.elRef.nativeElement] as const
