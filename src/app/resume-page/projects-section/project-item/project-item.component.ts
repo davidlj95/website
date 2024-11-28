@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 import { ProjectItem, Stack } from './project-item'
 import { Apps, Dns, FullStackedBarChart } from '@/data/material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
@@ -22,10 +22,10 @@ import { projectItemToContents } from './project-item-to-contents'
   selector: 'app-project-item',
   templateUrl: './project-item.component.html',
   imports: [
-    CardComponent,
-    CardHeaderComponent,
     LinkComponent,
     TestIdDirective,
+    CardComponent,
+    CardHeaderComponent,
     CardHeaderImageComponent,
     CardHeaderTextsComponent,
     CardHeaderTitleComponent,
@@ -38,15 +38,10 @@ import { projectItemToContents } from './project-item-to-contents'
   ],
 })
 export class ProjectItemComponent {
-  // TODO: Skipped for migration because:
-  //  Accessor inputs cannot be migrated as they are too complex.
-  @Input({ required: true }) set item(item: ProjectItem) {
-    this._item = item
-    this._contents = projectItemToContents(item)
-  }
-
-  protected _item!: ProjectItem
-  protected _contents: readonly ChippedContent[] = []
+  readonly item = input.required<ProjectItem>()
+  protected readonly _contents = computed<readonly ChippedContent[]>(() =>
+    projectItemToContents(this.item()),
+  )
 
   static readonly StackContent: Record<
     Stack,

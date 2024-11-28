@@ -26,6 +26,7 @@ import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { textContent } from '@/test/helpers/text-content'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ProjectItemComponent', () => {
   let component: ProjectItemComponent
@@ -166,7 +167,6 @@ describe('ProjectItemComponent', () => {
 function makeSut() {
   return componentTestSetup(ProjectItemComponent, {
     imports: [
-      ProjectItemComponent,
       TestIdDirective,
       LinkComponent,
       MockComponents(
@@ -190,6 +190,7 @@ function setProjectItem(
   fixture: ComponentFixture<ProjectItemComponent>,
   overrides?: ItemFactoryOverrides<typeof ProjectItem>,
 ) {
-  fixture.componentInstance.item = makeProjectItem(overrides)
-  fixture.detectChanges()
+  setFixtureInputsAndDetectChanges(fixture, {
+    item: makeProjectItem(overrides),
+  })
 }
