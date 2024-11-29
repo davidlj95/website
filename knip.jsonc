@@ -58,6 +58,8 @@
     },
     "scripts": {
       "entry": ["src/*.ts"],
+      // 👇 Needed as default is that all files are production:
+      //    Which is almost same but with `!` suffix
       "project": ["**/*.ts"],
     },
   },
