@@ -8,7 +8,7 @@
       (click)="isExpanded ? this.collapse() : this.expand()"
     >
       <span class="caret" aria-hidden="true">
-        {{ isExpanded ? expandedIcon : collapsedIcon }}
+        {{ isExpanded ? '▼' : '▶' }}
       </span>
       <ng-container [ngTemplateOutlet]="data"></ng-container>
     </button>
