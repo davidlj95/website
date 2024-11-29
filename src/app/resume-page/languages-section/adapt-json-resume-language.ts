@@ -2,9 +2,12 @@ import { LanguageItem } from './language-item/language-item'
 import resume from '@/data/resume.json'
 import { InjectionToken } from '@angular/core'
 
+/** @visibleForTesting */
 export type AdaptJsonResumeLanguage = (
   language: JsonResumeLanguage,
 ) => LanguageItem
+/** @visibleForTesting */
+export type JsonResumeLanguage = (typeof resume.languages)[number]
 export const ADAPT_JSON_RESUME_LANGUAGE =
   new InjectionToken<AdaptJsonResumeLanguage>(
     /* istanbul ignore next */
@@ -20,4 +23,3 @@ export const ADAPT_JSON_RESUME_LANGUAGE =
       }),
     },
   )
-export type JsonResumeLanguage = (typeof resume.languages)[number]

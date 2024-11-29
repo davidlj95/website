@@ -46,7 +46,7 @@ export class ProjectItemComponent {
   protected readonly _stackContent = STACK_CONTENT
   protected readonly _attribute = ATTRIBUTE
 }
-// @visibleForTesting
+/** @visibleForTesting */
 export const STACK_CONTENT: Record<
   Stack,
   {
@@ -64,5 +64,5 @@ export const STACK_CONTENT: Record<
     materialSymbol: FullStackedBarChart,
   },
 }
-// @visibleForTesting
+/** @visibleForTesting */
 export const ATTRIBUTE = { Stack: 'stack' }

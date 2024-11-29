@@ -7,7 +7,10 @@ import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JSON_RESUME_PROJECTS } from '../projects-section/json-resume-projects'
 import { ADAPT_JSON_RESUME_PROJECT } from '../projects-section/adapt-json-resume-project'
 
+/** @visibleForTesting */
 export type AdaptJsonResumeWork = (work: JsonResumeWork) => ExperienceItem
+/** @visibleForTesting */
+export type JsonResumeWork = (typeof resume.work)[number]
 export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
   /* istanbul ignore next */
   isDevMode ? 'AdaptJsonResumeWork' : 'AJRW',
@@ -44,5 +47,3 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
     },
   },
 )
-
-export type JsonResumeWork = (typeof resume.work)[number]

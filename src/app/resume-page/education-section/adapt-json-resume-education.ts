@@ -5,9 +5,12 @@ import { Organization } from '../organization'
 import { DateRange } from '../date-range/date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 
+/** @visibleForTesting */
 export type AdaptJsonResumeEducation = (
   education: JsonResumeEducation,
 ) => EducationItem
+/** @visibleForTesting */
+export type JsonResumeEducation = (typeof resume.education)[number]
 export const ADAPT_JSON_RESUME_EDUCATION =
   new InjectionToken<AdaptJsonResumeEducation>(
     /* istanbul ignore next */
@@ -38,5 +41,3 @@ export const ADAPT_JSON_RESUME_EDUCATION =
       },
     },
   )
-
-export type JsonResumeEducation = (typeof resume.education)[number]

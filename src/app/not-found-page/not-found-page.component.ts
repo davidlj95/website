@@ -24,6 +24,7 @@ export class NotFoundPageComponent {
   }
 }
 
+/** @visibleForTesting */
 export const WAYBACK_MACHINE_URL_PREFIX = new URL(
   'https://web.archive.org/web/*/',
 )

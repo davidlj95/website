@@ -4,6 +4,7 @@ import { DateRange } from '../date-range/date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JsonResumeProject } from './json-resume-projects'
 
+/** @visibleForTesting */
 export type AdaptJsonResumeProject = (project: JsonResumeProject) => ProjectItem
 export const ADAPT_JSON_RESUME_PROJECT =
   new InjectionToken<AdaptJsonResumeProject>(
@@ -38,6 +39,7 @@ const mapStack = (stack: string): Stack => {
   throw new InvalidStackValueError(stack)
 }
 
+/** @visibleForTesting */
 export class InvalidStackValueError extends Error {
   constructor(value: string) {
     super(`Invalid stack value: '${value}'`)

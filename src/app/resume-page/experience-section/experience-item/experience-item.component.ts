@@ -52,7 +52,7 @@ export class ExperienceItemComponent {
   protected readonly _attribute = ATTRIBUTE
 }
 
-// @visibleForTesting
+/** @visibleForTesting */
 export const ATTRIBUTE = {
   Freelance: 'freelance',
   Employee: 'employee',

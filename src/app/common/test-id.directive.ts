@@ -15,4 +15,5 @@ export class TestIdDirective {
 
 // As per Testing Library
 // https://testing-library.com/docs/queries/bytestid/
+/** @visibleForTesting */
 export const TEST_ID_ATTRIBUTE = 'data-testid'

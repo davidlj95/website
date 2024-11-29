@@ -10,4 +10,5 @@ export class MaterialSymbolDirective {
 }
 
 // Keep in sync with Material Symbols sass
+/** @visibleForTesting */
 export const MATERIAL_SYMBOLS_CLASS = 'material-symbols-outlined'

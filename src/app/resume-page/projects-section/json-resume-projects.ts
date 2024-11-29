@@ -8,5 +8,6 @@ export const JSON_RESUME_PROJECTS = new InjectionToken<JsonResumeProjects>(
     factory: () => resume.projects,
   },
 )
+/** @visibleForTesting */
 export type JsonResumeProjects = typeof resume.projects
 export type JsonResumeProject = (typeof resume.projects)[number]

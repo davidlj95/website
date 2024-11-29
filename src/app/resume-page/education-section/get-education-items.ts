@@ -16,6 +16,7 @@ export const GET_EDUCATION_ITEMS = new InjectionToken<GetEducationItems>(
   },
 )
 
+/** @visibleForTesting */
 export const JSON_RESUME_EDUCATIONS = new InjectionToken<JsonResumeEducations>(
   /* istanbul ignore next */
   isDevMode ? 'JSON Resume educations' : 'JREs',
@@ -23,4 +24,5 @@ export const JSON_RESUME_EDUCATIONS = new InjectionToken<JsonResumeEducations>(
     factory: () => resume.education,
   },
 )
+/** @visibleForTesting */
 export type JsonResumeEducations = typeof resume.education

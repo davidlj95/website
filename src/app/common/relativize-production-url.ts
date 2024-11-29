@@ -2,6 +2,7 @@ import { inject, InjectionToken } from '@angular/core'
 import { APP_BASE_HREF } from '@angular/common'
 import { METADATA } from '@/data/metadata'
 
+/** @visibleForTesting */
 export type RelativizeProductionUrl = (url: URL) => string
 const RELATIVIZE_PRODUCTION_URL_FACTORY: (
   baseUrl: URL,
@@ -45,6 +46,7 @@ export const RELATIVIZE_PRODUCTION_URL =
     },
   )
 
+/** @visibleForTesting */
 export const APP_BASE_URL_PRODUCTION = new InjectionToken<URL>(
   /* istanbul ignore next */
   isDevMode ? 'App base URL for production' : 'ABUfP',
