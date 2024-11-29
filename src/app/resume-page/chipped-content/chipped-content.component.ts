@@ -1,4 +1,4 @@
-import { Component, Inject, input, linkedSignal, signal } from '@angular/core'
+import { Component, input, linkedSignal, signal } from '@angular/core'
 import { ChipComponent } from '../chip/chip.component'
 import { NgComponentOutlet } from '@angular/common'
 import { ChippedContent } from './chipped-content'
@@ -11,7 +11,6 @@ import {
   transition,
   trigger,
 } from '@angular/animations'
-import { SCROLL_INTO_VIEW, ScrollIntoView } from '@/common/scroll-into-view'
 
 @Component({
   selector: 'app-chipped-content',
@@ -46,10 +45,6 @@ export class ChippedContentComponent {
     () => this.contents()[0],
   )
   readonly isActive = signal<boolean>(false)
-
-  constructor(
-    @Inject(SCROLL_INTO_VIEW) protected _scrollIntoView: ScrollIntoView,
-  ) {}
 
   select(content: ChippedContent) {
     if (this.activeContent() === content) {
