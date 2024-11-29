@@ -1,5 +1,5 @@
 import { METADATA } from '@/data/metadata'
-import { Environment } from './environment-interface'
+import { Environment } from '.'
 
 export const environment: Environment = {
   production: true,

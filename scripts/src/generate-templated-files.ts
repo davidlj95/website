@@ -1,5 +1,5 @@
 import { Liquid } from 'liquidjs'
-import { METADATA } from '@/data/metadata'
+import { METADATA } from 'data/metadata'
 import { join } from 'path'
 import { mkdir, readdir, writeFile } from 'fs/promises'
 import { execSync } from 'child_process'

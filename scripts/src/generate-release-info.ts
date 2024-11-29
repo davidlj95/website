@@ -1,6 +1,6 @@
 // @ts-expect-error No default export
 import release, { Config } from 'release-it'
-import { createReleaseItConfig, ExtraConfig } from '@/data/release-it'
+import { createReleaseItConfig, ExtraConfig } from 'data/release-it'
 import { execSync } from 'child_process'
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'

@@ -1,5 +1,5 @@
 import { defineConfig } from 'cypress'
-import { COVERAGE_WEBPACK_CONFIG } from './cypress/coverage-webpack-config'
+import COVERAGE_WEBPACK_CONFIG from './cypress/coverage-webpack-config'
 import registerCodeCoverageTasks from '@cypress/code-coverage/task'
 
 export default defineConfig({

@@ -1,5 +1,5 @@
 import subsetFont from 'subset-font'
-import * as MaterialSymbols from '@/data/material-symbols'
+import * as MaterialSymbols from 'data/material-symbols'
 import { readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { mkdir } from 'fs/promises'

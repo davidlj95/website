@@ -1,4 +1,4 @@
-export const COVERAGE_WEBPACK_CONFIG = {
+export default {
   module: {
     rules: [
       {

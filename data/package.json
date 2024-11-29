@@ -1,5 +1,5 @@
 {
-  "name": "@/data",
+  "name": "data",
   "version": "0.0.0-PLACEHOLDER",
   "description": "Data files needed by both app and scripts",
   "type": "module",
