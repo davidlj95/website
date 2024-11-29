@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
+import { ComponentFixture, fakeAsync } from '@angular/core/testing'
 import { ChippedContentComponent } from './chipped-content.component'
 import { Component, DebugElement, input } from '@angular/core'
 import { ChippedContent } from './chipped-content'
@@ -11,8 +11,6 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { By } from '@angular/platform-browser'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { tickToFinishAnimation } from '@/test/helpers/tick-to-finish-animation'
-import { MockProvider } from 'ng-mocks'
-import { SCROLL_INTO_VIEW } from '@/common/scroll-into-view'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
@@ -72,6 +70,7 @@ describe('ChippedContentComponent', () => {
   describe('when tapping on a chip', () => {
     let firstChipElement: DebugElement
     let firstContentElement: DebugElement
+    let scrollIntoViewSpy: jasmine.Spy<typeof Element.prototype.scrollIntoView>
 
     beforeEach(fakeAsync(() => {
       firstChipElement = findChipByDisplayName(FIRST_CONTENT.displayName)!
@@ -83,6 +82,13 @@ describe('ChippedContentComponent', () => {
       expect(firstChipElement).toBeTruthy()
       // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
       expect(firstContentElement).toBeTruthy()
+
+      // To check that scrollIntoView is called
+      const contentElement = fixture.debugElement.query(CONTENT_PREDICATE)
+      scrollIntoViewSpy = spyOn(
+        contentElement.nativeElement as Element,
+        'scrollIntoView',
+      )
 
       firstChipElement.triggerEventHandler('click')
       fixture.detectChanges()
@@ -109,12 +115,7 @@ describe('ChippedContentComponent', () => {
     })
 
     it('should scroll content into view', () => {
-      const contentElement = fixture.debugElement.query(CONTENT_PREDICATE)
-      const scrollIntoViewSpy = TestBed.inject(SCROLL_INTO_VIEW) as jasmine.Spy
-
-      expect(scrollIntoViewSpy).toHaveBeenCalledOnceWith(
-        contentElement.nativeElement,
-      )
+      expect(scrollIntoViewSpy).toHaveBeenCalledOnceWith({ block: 'nearest' })
     })
 
     describe('when tapping same chip again', () => {
@@ -202,11 +203,7 @@ const FIRST_CONTENT = CONTENTS[0]
 const SECOND_CONTENT = CONTENTS[1]
 function makeSut() {
   const [fixture, component] = componentTestSetup(ChippedContentComponent, {
-    providers: [
-      provideNoopAnimations(),
-      // eslint-disable-next-line jasmine/no-unsafe-spy
-      MockProvider(SCROLL_INTO_VIEW, jasmine.createSpy()),
-    ],
+    providers: [provideNoopAnimations()],
   })
   setFixtureInputsAndDetectChanges(fixture, { contents: CONTENTS })
   return [fixture, component] as const
