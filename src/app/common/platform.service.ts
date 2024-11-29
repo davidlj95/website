@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common'
 import { inject, InjectionToken, PLATFORM_ID } from '@angular/core'
 
+/** @visibleForTesting */
 export class PlatformService {
   constructor(readonly isBrowser: boolean) {}
 }

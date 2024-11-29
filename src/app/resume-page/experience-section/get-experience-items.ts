@@ -16,6 +16,7 @@ export const GET_EXPERIENCE_ITEMS = new InjectionToken<GetExperienceItems>(
   },
 )
 
+/** @visibleForTesting */
 export const JSON_RESUME_WORKS = new InjectionToken<JsonResumeWorks>(
   /* istanbul ignore next */
   isDevMode ? 'JSON Resume works' : 'JRWs',
@@ -24,4 +25,5 @@ export const JSON_RESUME_WORKS = new InjectionToken<JsonResumeWorks>(
   },
 )
 
+/** @visibleForTesting */
 export type JsonResumeWorks = typeof resume.work

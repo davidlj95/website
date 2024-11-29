@@ -16,11 +16,16 @@
         //  - `application` / `browser` builder's `configurations.*.fileReplacements` (environment files)
         //  - `karma` builder's `polyfills` (or any other polyfill) (esbuild defines file)
         // https://github.com/webpro-nl/knip/blob/5.38.2/packages/knip/src/plugins/angular/index.ts#L19-L52
-        "src/main.server.ts",
-        "src/server.ts",
-        "src/app/console-easter-egg/console-easter-egg.ts",
-        "src/environments/environment*.ts",
+        "src/main.server.ts!",
+        "src/server.ts!",
+        "src/app/console-easter-egg/console-easter-egg.ts!",
+        "src/environments/environment*.ts!",
         "src/test/esbuild-defines.ts",
+      ],
+      "project": [
+        "**/*.ts!",
+        "!src/test/**/*.ts!",
+        "!src/**/__tests__/**/*.ts!",
       ],
       "eslint": {
         "config": ["eslint.config.mjs", "eslint.config.typed.mjs"],
@@ -52,7 +57,10 @@
       "ignoreMembers": ["STANDARD_DURATION_MS"],
     },
     "scripts": {
-      "entry": ["**/*.ts"],
+      "entry": ["src/*.ts"],
+      // 👇 Needed as default is that all files are production:
+      //    Which is almost same but with `!` suffix
+      "project": ["**/*.ts"],
     },
   },
 }

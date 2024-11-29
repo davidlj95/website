@@ -52,7 +52,7 @@ export class EducationItemComponent {
   protected readonly _attribute = ATTRIBUTE
 }
 
-// @visibleForTesting
+/** @visibleForTesting */
 export const ATTRIBUTE = {
   CumLaude: 'cum-laude',
 }

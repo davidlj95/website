@@ -4,6 +4,7 @@ import { WINDOW } from '@/common/injection-tokens'
 
 // Ensure in SCSS styles that these values alter the color scheme
 // Partially enforced by color scheme tests in color-scheme.spec.ts
+/** @visibleForTesting */
 export enum Scheme {
   Light = 'light',
   Dark = 'dark',
@@ -65,4 +66,5 @@ export class ColorSchemeService {
 
 // Ensure in SCSS styles that this attribute in <html> changes color schemes accordingly
 // Partially enforced by color scheme tests in color-scheme.spec.ts
+/** @visibleForTesting */
 export const HTML_COLOR_SCHEME_ATTRIBUTE = 'data-color-scheme'

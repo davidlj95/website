@@ -15,7 +15,7 @@
     "update-security.txt": "pnpm run script dist/src/update-security-txt.js",
     "watch": "tsc --watch"
   },
-  "dependencies": {
+  "devDependencies": {
     "data": "workspace:*"
   }
 }

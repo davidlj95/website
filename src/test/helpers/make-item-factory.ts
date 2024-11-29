@@ -1,8 +1,6 @@
-import { Item } from '@/common/item'
-
 export const makeItemFactory =
   <T, NewObjArg extends object>(
-    klass: Item<T, NewObjArg>,
+    klass: new (obj: NewObjArg) => T,
     baseArgs: NewObjArg,
   ) =>
   (overrides?: Partial<NewObjArg>) =>
