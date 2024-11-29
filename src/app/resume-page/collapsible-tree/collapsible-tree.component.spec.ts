@@ -208,14 +208,7 @@ describe('CollapsibleTreeComponent', () => {
       ] as const satisfies readonly ExpandedTestCase[]
       for (const testCase of EXPANDED_TEST_CASES) {
         describe(`when ${testCase.name}`, () => {
-          let mockParentComponent: jasmine.SpyObj<CollapsibleTreeComponent>
-
           beforeEach(() => {
-            mockParentComponent =
-              jasmine.createSpyObj<CollapsibleTreeComponent>('node', [
-                'collapseAllChildren',
-              ])
-            component.parent = mockParentComponent
             component.isExpanded = testCase.isExpanded
 
             fixture.detectChanges()
@@ -250,21 +243,30 @@ describe('CollapsibleTreeComponent', () => {
               'true',
             )
           })
-
-          if (testCase.name === 'collapsed') {
-            it('should collapse rest of siblings', () => {
-              const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
-              buttonElement.triggerEventHandler('click')
-
-              fixture.detectChanges()
-
-              expect(
-                mockParentComponent.collapseAllChildren,
-              ).toHaveBeenCalledOnceWith({ except: component })
-            })
-          }
         })
       }
+
+      it('should collapse rest of siblings when expanding a collapsed node', () => {
+        fixture.detectChanges()
+
+        const childrenComponents = fixture.debugElement
+          .queryAll(byComponent(CollapsibleTreeComponent))
+          .map((c) => c.componentInstance as CollapsibleTreeComponent)
+
+        expect(childrenComponents.length).toEqual(DUMMY_CHILDREN.length)
+
+        childrenComponents.forEach(
+          (child) => (child.collapse = jasmine.createSpy()),
+        )
+        const [firstChild, ...restChildrenComponents] = childrenComponents
+
+        firstChild.expand()
+
+        expect(firstChild.collapse).not.toHaveBeenCalled()
+        restChildrenComponents.forEach((child) => {
+          expect(child.collapse).toHaveBeenCalledOnceWith()
+        })
+      })
     })
 
     describe('when non collapsible', () => {
