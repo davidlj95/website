@@ -12,8 +12,8 @@ import {
   expectIsNotInLayout,
 } from '@/test/helpers/visibility'
 import { findMaterialSymbolByText } from '@/test/helpers/material-symbols'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
+import { By } from '@angular/platform-browser'
 
 describe('LightDarkToggleComponent', () => {
   let component: LightDarkToggleComponent
@@ -75,7 +75,7 @@ describe('LightDarkToggleComponent', () => {
       ;[fixture, component] = makeSut({ colorSchemeService })
 
       fixture.debugElement
-        .query(byComponent(ToolbarButtonComponent))
+        .query(By.directive(ToolbarButtonComponent))
         .triggerEventHandler('click')
 
       expect(colorSchemeService.toggleDarkLight).toHaveBeenCalledWith()

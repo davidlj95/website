@@ -1,5 +1,4 @@
 import { LanguagesSectionComponent } from './languages-section.component'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
@@ -8,6 +7,7 @@ import { makeLanguageItem } from './language-item/__tests__/make-language-item'
 import { GET_LANGUAGE_ITEMS, GetLanguageItems } from './get-language-items'
 import { LanguageItemComponent } from './language-item/language-item.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
+import { By } from '@angular/platform-browser'
 
 describe('LanguagesSectionComponent', () => {
   it('should create', () => {
@@ -26,7 +26,7 @@ describe('LanguagesSectionComponent', () => {
     fixture.detectChanges()
 
     const itemElements = fixture.debugElement.queryAll(
-      byComponent(LanguageItemComponent),
+      By.directive(LanguageItemComponent),
     )
 
     expect(itemElements.length).toBe(languageItems.length)

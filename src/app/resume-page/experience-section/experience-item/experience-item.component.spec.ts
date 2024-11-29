@@ -17,7 +17,6 @@ import { CardHeaderTextsComponent } from '../../card/card-header/card-header-tex
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeExperienceItem } from './__tests__/make-experience-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
@@ -62,7 +61,7 @@ describe('ExperienceItem', () => {
       expect(anchorElement.attributes['href']).toEqual(website)
 
       const imageElement = anchorElement.query(
-        byComponent(CardHeaderImageComponent),
+        By.directive(CardHeaderImageComponent),
       )
 
       expect(imageElement).toBeTruthy()
@@ -107,7 +106,7 @@ describe('ExperienceItem', () => {
       setExperienceItem(fixture)
 
       const dateRangeElement = fixture.debugElement.query(
-        byComponent(DateRangeComponent),
+        By.directive(DateRangeComponent),
       )
 
       expect(dateRangeElement).toBeTruthy()

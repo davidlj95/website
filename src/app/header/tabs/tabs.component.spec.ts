@@ -2,7 +2,6 @@ import { TabsComponent } from './tabs.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { Component, DebugElement } from '@angular/core'
 import { TabComponent } from '../tab/tab.component'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
 import {
   KeyboardDoubleArrowLeft,
@@ -43,7 +42,9 @@ describe('TabsComponent', () => {
     fixture.detectChanges()
     await fixture.whenStable()
 
-    const tabElements = fixture.debugElement.queryAll(byComponent(TabComponent))
+    const tabElements = fixture.debugElement.queryAll(
+      By.directive(TabComponent),
+    )
     tabElements.forEach((tabElement, index) => {
       const shouldBeSelected = index === selectedIndex
 
@@ -56,7 +57,7 @@ describe('TabsComponent', () => {
   })
 
   const findToolbarIcons = (debugElement: DebugElement) =>
-    debugElement.queryAll(byComponent(ToolbarButtonComponent))
+    debugElement.queryAll(By.directive(ToolbarButtonComponent))
 
   it('should display left and right arrows', () => {
     const [fixture] = makeSut()

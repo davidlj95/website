@@ -1,8 +1,8 @@
 import { Component, DebugElement, Predicate, Type } from '@angular/core'
-import { ComponentFixture } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { componentTestSetup } from './component-test-setup'
-import { byComponent, getComponentSelector } from './component-query-predicates'
 import { innerHtml } from '@/test/helpers/inner-html'
+import { By } from '@angular/platform-browser'
 
 /**
  * Tests a component is contained inside the provided fixture
@@ -20,7 +20,7 @@ export function shouldContainComponent<T, U>(
       .toLowerCase()
   it(`should contain ${name}`, () => {
     const debugElement = fixtureGetter().debugElement.query(
-      byComponent(component),
+      By.directive(component),
     )
     expect(debugElement).toBeTruthy()
   })
@@ -56,17 +56,20 @@ export function shouldProjectContent(
   it(`should project its content`, () => {
     // TODO: this could be random to ensure component doesn't include that HTML by mistake
     const contentToProject = '<b>Foo</b><i>bar</i>42'
-    const componentSelector = getComponentSelector(component)
+    const componentSelector = 'component-under-test'
     @Component({
       template: `<${componentSelector}>${contentToProject}</${componentSelector}>`,
       imports: [component],
     })
     class HostComponent {}
+    TestBed.overrideComponent(component, {
+      set: { selector: componentSelector },
+    })
     const [fixture] = componentTestSetup(HostComponent)
     // No change detection triggered given nothing may have changed
 
     // Ensure component is there
-    const componentElement = fixture.debugElement.query(byComponent(component))
+    const componentElement = fixture.debugElement.query(By.directive(component))
     expect(componentElement).toBeTruthy()
 
     // Ensure projected content is there

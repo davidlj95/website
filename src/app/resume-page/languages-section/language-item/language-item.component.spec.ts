@@ -9,13 +9,13 @@ import { CardHeaderComponent } from '../../card/card-header/card-header.componen
 import { makeLanguageItem } from './__tests__/make-language-item'
 import { LanguageItem } from './language-item'
 import { byTestId } from '@/test/helpers/test-id'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { LanguageTagComponent } from './language-tag/language-tag.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
+import { By } from '@angular/platform-browser'
 
 describe('LanguageItemComponent', () => {
   let component: LanguageItemComponent
@@ -87,7 +87,7 @@ describe('LanguageItemComponent', () => {
 
   it('should display tag', () => {
     const tagElement = fixture.debugElement.query(
-      byComponent(LanguageTagComponent),
+      By.directive(LanguageTagComponent),
     )
 
     expect(tagElement).not.toBeNull()

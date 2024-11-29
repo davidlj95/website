@@ -2,11 +2,11 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { ExperienceItemTechComponent } from './experience-item-tech.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { makeTechnologyItem } from '../../../technology/__tests__/make-technology-item'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
+import { By } from '@angular/platform-browser'
 
 describe('ExperienceItemTechComponent', () => {
   let component: ExperienceItemTechComponent
@@ -32,7 +32,7 @@ describe('ExperienceItemTechComponent', () => {
 
   it('should display all techs', () => {
     const techElements = fixture.debugElement.queryAll(
-      byComponent(TechnologyComponent),
+      By.directive(TechnologyComponent),
     )
 
     expect(techElements.length).toEqual(DUMMY_TECHNOLOGIES.length)

@@ -9,7 +9,6 @@ import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ProjectItem, Stack } from './project-item'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
@@ -72,7 +71,7 @@ describe('ProjectItemComponent', () => {
       expect(anchorElement.attributes['href']).toEqual(website.toString())
 
       const imageElement = anchorElement.query(
-        byComponent(CardHeaderImageComponent),
+        By.directive(CardHeaderImageComponent),
       )
 
       expect(imageElement).toBeTruthy()
@@ -123,7 +122,7 @@ describe('ProjectItemComponent', () => {
     setProjectItem(fixture, { dateRange: new DateRange(startDate) })
 
     const dateRangeElement = fixture.debugElement.query(
-      byComponent(DateRangeComponent),
+      By.directive(DateRangeComponent),
     )
 
     expect(dateRangeElement).toBeTruthy()

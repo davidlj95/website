@@ -3,7 +3,6 @@ import { ComponentFixture } from '@angular/core/testing'
 import { CollapsibleTreeComponent } from './collapsible-tree.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { By } from '@angular/platform-browser'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import {
   ATTRIBUTE_ARIA_CONTROLS,
   ATTRIBUTE_ARIA_EXPANDED,
@@ -74,7 +73,7 @@ describe('CollapsibleTreeComponent', () => {
 
       expect(dataElement).not.toBeNull()
 
-      const nodeDataElement = dataElement.query(byComponent(DummyComponent))
+      const nodeDataElement = dataElement.query(By.directive(DummyComponent))
 
       expect(nodeDataElement).not.toBeNull()
 
@@ -119,7 +118,7 @@ describe('CollapsibleTreeComponent', () => {
 
       for (const listItemElement of listItemElements) {
         const itemElement = listItemElement.query(
-          byComponent(CollapsibleTreeComponent),
+          By.directive(CollapsibleTreeComponent),
         )
 
         expect(itemElement).not.toBeNull()
@@ -215,7 +214,7 @@ describe('CollapsibleTreeComponent', () => {
       fixture.detectChanges()
 
       const childrenComponents = fixture.debugElement
-        .queryAll(byComponent(CollapsibleTreeComponent))
+        .queryAll(By.directive(CollapsibleTreeComponent))
         .map((c) => c.componentInstance as CollapsibleTreeComponent)
 
       // eslint-disable-next-line jasmine/no-expect-in-setup-teardown

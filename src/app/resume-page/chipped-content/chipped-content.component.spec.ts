@@ -7,7 +7,6 @@ import {
   expectIsInLayout,
   expectIsNotInLayout,
 } from '@/test/helpers/visibility'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { By } from '@angular/platform-browser'
 import { provideNoopAnimations } from '@angular/platform-browser/animations'
@@ -34,7 +33,7 @@ describe('ChippedContentComponent', () => {
 
   it('should render selection chips unselected with their display names', () => {
     const chipElements = fixture.debugElement.queryAll(
-      byComponent(ChipComponent),
+      By.directive(ChipComponent),
     )
 
     expect(chipElements.length).toEqual(CONTENTS.length)
@@ -58,7 +57,7 @@ describe('ChippedContentComponent', () => {
     expect(contentElement).toBeDefined()
 
     const firstComponentElement = contentElement.query(
-      byComponent(FIRST_CONTENT.component),
+      By.directive(FIRST_CONTENT.component),
     )
 
     expect(firstComponentElement).toBeTruthy()
@@ -77,7 +76,7 @@ describe('ChippedContentComponent', () => {
     beforeEach(fakeAsync(() => {
       firstChipElement = findChipByDisplayName(FIRST_CONTENT.displayName)!
       firstContentElement = fixture.debugElement.query(
-        byComponent(FIRST_CONTENT.component),
+        By.directive(FIRST_CONTENT.component),
       )
 
       // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
@@ -92,7 +91,7 @@ describe('ChippedContentComponent', () => {
 
     function findChipByDisplayName(displayName: string) {
       const chipElements = fixture.debugElement.queryAll(
-        byComponent(ChipComponent),
+        By.directive(ChipComponent),
       )
       return chipElements.find((chipElement) =>
         textContent(chipElement)?.includes(displayName),
@@ -165,7 +164,7 @@ describe('ChippedContentComponent', () => {
         expectIsNotInLayout(firstContentElement)
 
         const barContentElement = fixture.debugElement.query(
-          byComponent(BarComponent),
+          By.directive(BarComponent),
         )
         expectIsInLayout(barContentElement)
       })
