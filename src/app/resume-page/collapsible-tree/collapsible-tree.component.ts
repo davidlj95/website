@@ -50,8 +50,6 @@ export class CollapsibleTreeComponent {
   @Input({ required: true }) node!: CollapsibleTreeNode
   @Input() depth = 0
   @Input() parent?: CollapsibleTreeComponent
-  @Input() collapsedIcon: string = this.parent?.collapsedIcon ?? '▶'
-  @Input() expandedIcon: string = this.parent?.expandedIcon ?? '▼'
   @Input() isCollapsibleFn?: IsCollapsibleFn = this.parent?.isCollapsibleFn
   @Input()
   isExpanded = false

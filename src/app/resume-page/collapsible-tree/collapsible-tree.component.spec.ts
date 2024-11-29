@@ -1,9 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import {
-  CollapsibleTreeComponent,
-  IsCollapsibleFn,
-} from './collapsible-tree.component'
+import { CollapsibleTreeComponent } from './collapsible-tree.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { By } from '@angular/platform-browser'
 import { byComponent } from '@/test/helpers/component-query-predicates'
@@ -18,29 +15,29 @@ import {
   CollapsibleTreeNode,
   CollapsibleTreeNodeData,
 } from './collapsible-tree-node'
-import { Component, Input } from '@angular/core'
+import { Component, input } from '@angular/core'
 import { EmptyComponent } from '@/test/helpers/empty-component'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { textContent } from '@/test/helpers/text-content'
+import { ComponentInputs } from '@/common/component-inputs'
 
 describe('CollapsibleTreeComponent', () => {
   let component: CollapsibleTreeComponent
   let fixture: ComponentFixture<CollapsibleTreeComponent>
-
-  const DUMMY_NODE_DATA = new CollapsibleTreeNodeData(EmptyComponent)
 
   const DATA_PREDICATE = By.css('.data')
   const LIST_PREDICATE = By.css('ul')
   const CARET_PREDICATE = By.css('.caret')
 
   beforeEach(() => {
-    ;[fixture, component] = makeSut()
+    ;[fixture, component] = componentTestSetup(CollapsibleTreeComponent, {
+      providers: [provideNoopAnimations()],
+    })
   })
 
   describe('when node has no data', () => {
     beforeEach(() => {
       component.node = new CollapsibleTreeNode()
-
       fixture.detectChanges()
     })
 
@@ -54,24 +51,21 @@ describe('CollapsibleTreeComponent', () => {
   describe('when node has data', () => {
     const DUMMY_COMPONENT_CONTENTS = 'dummy contents'
     @Component({
-      standalone: true,
-      template: '{{ contents }}',
       selector: 'app-dummy-component',
+      template: '{{ contents() }}',
     })
     class DummyComponent {
-      @Input({ required: true }) contents!: string
+      contents = input.required<string>()
     }
 
     beforeEach(() => {
       component.node = new CollapsibleTreeNode(
         new CollapsibleTreeNodeData(DummyComponent, {
-          inputs: { contents: DUMMY_COMPONENT_CONTENTS } satisfies Record<
-            keyof DummyComponent,
-            unknown
-          >,
+          inputs: {
+            contents: DUMMY_COMPONENT_CONTENTS,
+          } satisfies ComponentInputs<DummyComponent>,
         }),
       )
-
       fixture.detectChanges()
     })
 
@@ -88,10 +82,9 @@ describe('CollapsibleTreeComponent', () => {
     })
   })
 
-  describe('when data has no children', () => {
+  describe('when node has no children', () => {
     beforeEach(() => {
       component.node = new CollapsibleTreeNode()
-
       fixture.detectChanges()
     })
 
@@ -102,23 +95,23 @@ describe('CollapsibleTreeComponent', () => {
     })
   })
 
-  describe('when data has children', () => {
-    const DUMMY_CHILDREN = [
-      new CollapsibleTreeNode(),
-      new CollapsibleTreeNode(),
-    ]
-    const DUMMY_NODE = new CollapsibleTreeNode(DUMMY_NODE_DATA, DUMMY_CHILDREN)
-    const DUMMY_DEPTH = 42
-    const BUTTON_PREDICATE = By.css('button')
+  const DUMMY_CHILDREN = [new CollapsibleTreeNode(), new CollapsibleTreeNode()]
+  const DUMMY_NODE_DATA = new CollapsibleTreeNodeData(EmptyComponent)
+  const DUMMY_NODE_WITH_CHILDREN = new CollapsibleTreeNode(
+    DUMMY_NODE_DATA,
+    DUMMY_CHILDREN,
+  )
+  const DUMMY_DEPTH = 42
+  const BUTTON_PREDICATE = By.css('button')
 
+  describe('when node has children', () => {
     beforeEach(() => {
-      component.node = DUMMY_NODE
+      component.node = DUMMY_NODE_WITH_CHILDREN
       component.depth = DUMMY_DEPTH
+      fixture.detectChanges()
     })
 
     it('should render the list of children (with assigned id and increased depth)', () => {
-      fixture.detectChanges()
-
       const listElement = fixture.debugElement.query(LIST_PREDICATE)
       const listItemElements = listElement.queryAll(By.css('li'))
 
@@ -136,164 +129,134 @@ describe('CollapsibleTreeComponent', () => {
         ).toBe(DUMMY_DEPTH + 1)
       }
     })
+  })
 
-    describe('when collapsible', () => {
-      const ALWAYS_COLLAPSIBLE: IsCollapsibleFn = () => true
-
-      beforeEach(() => {
-        component.isCollapsibleFn = ALWAYS_COLLAPSIBLE
-      })
-
-      describe('by default', () => {
-        beforeEach(() => {
-          fixture.detectChanges()
-        })
-
-        it('should include button to toggle', () => {
-          fixture.detectChanges()
-
-          const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
-
-          expect(buttonElement).not.toBeNull()
-        })
-
-        it('should indicate which element the button controls', () => {
-          fixture.detectChanges()
-
-          const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
-
-          expect(buttonElement.attributes[ATTRIBUTE_ARIA_CONTROLS]).toEqual(
-            component.childListId!,
-          )
-
-          const listElement = fixture.debugElement.query(LIST_PREDICATE)
-
-          expect(listElement).not.toBeNull()
-          expect(listElement.attributes['id']).toEqual(component.childListId!)
-        })
-
-        it('should display list', () => {
-          const listElement = fixture.debugElement.query(LIST_PREDICATE)
-          expectIsInLayout(listElement)
-        })
-
-        it('should be collapsed', () => {
-          expect(component.isExpanded).toBeFalse()
-        })
-      })
-
-      interface ExpandedTestCase {
-        readonly name: string
-        readonly opposite: string
-        readonly isExpanded: boolean
-        readonly iconProperty: Extract<
-          keyof CollapsibleTreeComponent,
-          'expandedIcon' | 'collapsedIcon'
-        >
-      }
-
-      const EXPANDED_TEST_CASES = [
-        {
-          name: 'expanded',
-          opposite: 'collapsed',
-          isExpanded: true,
-          iconProperty: 'expandedIcon',
-        },
-        {
-          name: 'collapsed',
-          opposite: 'expanded',
-          isExpanded: false,
-          iconProperty: 'collapsedIcon',
-        },
-      ] as const satisfies readonly ExpandedTestCase[]
-      for (const testCase of EXPANDED_TEST_CASES) {
-        describe(`when ${testCase.name}`, () => {
-          beforeEach(() => {
-            component.isExpanded = testCase.isExpanded
-
-            fixture.detectChanges()
-          })
-
-          it('should indicate it via ARIA', () => {
-            const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
-
-            expect(buttonElement.attributes[ATTRIBUTE_ARIA_EXPANDED]).toEqual(
-              testCase.isExpanded.toString(),
-            )
-          })
-
-          it(`should change to ${testCase.opposite} when tapping on it`, () => {
-            const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
-            buttonElement.triggerEventHandler('click')
-
-            fixture.detectChanges()
-
-            expect(component.isExpanded).toEqual(!testCase.isExpanded)
-          })
-
-          it('should render caret with proper icon and hidden from screen readers', () => {
-            const caretElement = fixture.debugElement.query(CARET_PREDICATE)
-
-            expect(caretElement).not.toBeNull()
-            expect(textContent(caretElement)).toEqual(
-              component[testCase.iconProperty],
-            )
-
-            expect(caretElement.attributes[ATTRIBUTE_ARIA_HIDDEN]).toEqual(
-              'true',
-            )
-          })
-        })
-      }
-
-      it('should collapse rest of siblings when expanding a collapsed node', () => {
-        fixture.detectChanges()
-
-        const childrenComponents = fixture.debugElement
-          .queryAll(byComponent(CollapsibleTreeComponent))
-          .map((c) => c.componentInstance as CollapsibleTreeComponent)
-
-        expect(childrenComponents.length).toEqual(DUMMY_CHILDREN.length)
-
-        childrenComponents.forEach(
-          (child) => (child.collapse = jasmine.createSpy()),
-        )
-        const [firstChild, ...restChildrenComponents] = childrenComponents
-
-        firstChild.expand()
-
-        expect(firstChild.collapse).not.toHaveBeenCalled()
-        restChildrenComponents.forEach((child) => {
-          expect(child.collapse).toHaveBeenCalledOnceWith()
-        })
-      })
+  describe("when node has children and it's collapsible", () => {
+    beforeEach(() => {
+      component.node = DUMMY_NODE_WITH_CHILDREN
+      component.isCollapsibleFn = () => true
+      fixture.detectChanges()
     })
 
-    describe('when non collapsible', () => {
-      const NEVER_COLLAPSIBLE: IsCollapsibleFn = () => false
+    it('should include button to toggle', () => {
+      const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
 
+      expect(buttonElement).not.toBeNull()
+    })
+
+    it('should indicate which element the button controls', () => {
+      const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
+
+      expect(buttonElement.attributes[ATTRIBUTE_ARIA_CONTROLS]).toEqual(
+        component.childListId!,
+      )
+
+      const listElement = fixture.debugElement.query(LIST_PREDICATE)
+
+      expect(listElement).not.toBeNull()
+      expect(listElement.attributes['id']).toEqual(component.childListId!)
+    })
+
+    shouldDisplayChildrenList()
+
+    it('should be collapsed by default', () => {
+      expect(component.isExpanded).toBeFalse()
+    })
+  })
+
+  const EXPANDED_TEST_CASES = [
+    { isExpanded: true, icon: '▼' },
+    { isExpanded: false, icon: '▶' },
+  ] as const
+  for (const testCase of EXPANDED_TEST_CASES) {
+    describe(`when node has children, it's collapsible and it's ${testCase.isExpanded ? 'expanded' : 'collapsed'}`, () => {
       beforeEach(() => {
-        component.isCollapsibleFn = NEVER_COLLAPSIBLE
-
+        component.node = DUMMY_NODE_WITH_CHILDREN
+        component.isCollapsibleFn = () => true
+        component.isExpanded = testCase.isExpanded
         fixture.detectChanges()
       })
 
-      it('should not include button to toggle', () => {
+      it('should indicate it via ARIA', () => {
         const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
 
-        expect(buttonElement).toBeNull()
+        expect(buttonElement.attributes[ATTRIBUTE_ARIA_EXPANDED]).toEqual(
+          testCase.isExpanded.toString(),
+        )
       })
 
-      // eslint-disable-next-line jasmine/no-spec-dupes
-      it('should display list', () => {
-        const listElement = fixture.debugElement.query(LIST_PREDICATE)
-        expectIsInLayout(listElement)
+      it(`should change to ${testCase.isExpanded ? 'collapsed' : 'expanded'} when tapping on it`, () => {
+        const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
+        buttonElement.triggerEventHandler('click')
+        fixture.detectChanges()
+
+        expect(component.isExpanded).toEqual(!testCase.isExpanded)
+      })
+
+      it(`should display caret with ${testCase.icon} icon and hidden from screen readers`, () => {
+        const caretElement = fixture.debugElement.query(CARET_PREDICATE)
+
+        expect(caretElement).not.toBeNull()
+        expect(textContent(caretElement)).toEqual(testCase.icon)
+
+        expect(caretElement.attributes[ATTRIBUTE_ARIA_HIDDEN]).toEqual('true')
+      })
+    })
+  }
+
+  describe('when expanding a collapsed node with siblings', () => {
+    let expandedChildComponent: CollapsibleTreeComponent
+    let restChildrenComponents: CollapsibleTreeComponent[]
+
+    beforeEach(() => {
+      component.node = DUMMY_NODE_WITH_CHILDREN
+      component.isCollapsibleFn = () => true
+      component.isExpanded = false
+      fixture.detectChanges()
+
+      const childrenComponents = fixture.debugElement
+        .queryAll(byComponent(CollapsibleTreeComponent))
+        .map((c) => c.componentInstance as CollapsibleTreeComponent)
+
+      // eslint-disable-next-line jasmine/no-expect-in-setup-teardown
+      expect(childrenComponents.length).toEqual(DUMMY_CHILDREN.length)
+
+      childrenComponents.forEach(
+        (child) => (child.collapse = jasmine.createSpy()),
+      )
+      ;[expandedChildComponent, ...restChildrenComponents] = childrenComponents
+
+      expandedChildComponent.expand()
+    })
+
+    it('should collapse rest of siblings', () => {
+      expect(expandedChildComponent.collapse).not.toHaveBeenCalled()
+      restChildrenComponents.forEach((child) => {
+        expect(child.collapse).toHaveBeenCalledOnceWith()
       })
     })
   })
-})
 
-const makeSut = () =>
-  componentTestSetup(CollapsibleTreeComponent, {
-    providers: [provideNoopAnimations()],
+  describe("when node has children and it's not collapsible", () => {
+    beforeEach(() => {
+      component.node = DUMMY_NODE_WITH_CHILDREN
+      component.isCollapsibleFn = () => false
+      fixture.detectChanges()
+    })
+
+    it('should not include button to toggle', () => {
+      const buttonElement = fixture.debugElement.query(BUTTON_PREDICATE)
+
+      expect(buttonElement).toBeNull()
+    })
+
+    shouldDisplayChildrenList()
   })
+
+  function shouldDisplayChildrenList() {
+    it('should display children list', () => {
+      const listElement = fixture.debugElement.query(LIST_PREDICATE)
+      expectIsInLayout(listElement)
+    })
+  }
+})
