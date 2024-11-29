@@ -1,9 +1,6 @@
 import { Directive, effect, ElementRef, input } from '@angular/core'
 
-@Directive({
-  selector: '[appTestId]',
-  standalone: true,
-})
+@Directive({ selector: '[appTestId]' })
 export class TestIdDirective {
   readonly appTestId = input.required<string>()
 

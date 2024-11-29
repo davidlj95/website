@@ -4,7 +4,6 @@ import { Component, ElementRef, Input } from '@angular/core'
   selector: 'app-tab',
   template: '<ng-content></ng-content>',
   styleUrls: ['./tab.component.scss'],
-  standalone: true,
   host: {
     role: 'tab',
     '[attr.aria-selected]': 'isSelected',
