@@ -22,6 +22,7 @@
 [![Formatted with Prettier](https://img.shields.io/badge/Formatted_with-prettier-1A2C34?logo=prettier&logoColor=F7BA3E&link=https%3A%2F%2Fprettier.io)](https://prettier.io)
 [![Commits follow Conventional Commits convention](https://img.shields.io/badge/Commits_convention-Conventional_Commits-%23FE5196?logo=conventionalcommits&logoColor=white&link=https%3A%2F%2Fconventionalcommits.org)](https://conventionalcommits.org)
 [![Git hooks with Husky](https://img.shields.io/badge/Git_hooks_with-Husky%F0%9F%90%B6-1a1a1e?link=https%3A%2F%2Ftypicode.github.io%2Fhusky%2F)](https://typicode.github.io/husky/)
+[![Decluttered with Knip](https://img.shields.io/badge/Decluttered_with-Knip-f56e0f?logo=knip&logoColor=f56e0f&link=https%3A%2F%2Fknip.dev)](https://knip.dev)
 [![Released with Release It!](https://img.shields.io/badge/Released_with-%F0%9F%9A%80_Release_It!-black?link=https%3A%2F%2Fgithub.com%2Frelease-it%2Frelease-it)](https://github.com/release-it/release-it)
 [![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovate&logoColor=white&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
 [![Deployed via Cloudflare Pages](https://img.shields.io/badge/Deployed_via-Cloudflare%20Pages-f38020?logo=cloudflarepages&link=https%3A%2F%pages.cloudflare.com%2F)](https://pages.cloudflare.com/)

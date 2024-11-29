@@ -1,8 +1,7 @@
 import { inject, InjectionToken } from '@angular/core'
 import { WINDOW } from '@/common/injection-tokens'
 
-export type IsMobileFn = () => boolean
-export const IS_MOBILE = new InjectionToken<IsMobileFn>('isMobile', {
+export const IS_MOBILE = new InjectionToken<() => boolean>('isMobile', {
   factory: () => {
     const window = inject(WINDOW)
     // https://medium.com/@rchr/detecting-mobile-browsers-with-one-line-of-javascript-109713d5869c

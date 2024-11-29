@@ -43,13 +43,12 @@ export const SIMPLE_ICON_LOADER = new InjectionToken<SimpleIconLoader>(
   },
 )
 
-export const SIMPLE_ICONS_DIR = '/images/simple-icons'
-export type SimpleIconLoaderCache = Map<string, string>
-export const SIMPLE_ICON_LOADER_CACHE =
-  new InjectionToken<SimpleIconLoaderCache>(
-    /* istanbul ignore next */
-    isDevMode ? 'SimpleIconLoaderCache' : 'SILC',
-    {
-      factory: () => new Map(),
-    },
-  )
+const SIMPLE_ICONS_DIR = '/images/simple-icons'
+type SimpleIconLoaderCache = Map<string, string>
+const SIMPLE_ICON_LOADER_CACHE = new InjectionToken<SimpleIconLoaderCache>(
+  /* istanbul ignore next */
+  isDevMode ? 'SimpleIconLoaderCache' : 'SILC',
+  {
+    factory: () => new Map(),
+  },
+)

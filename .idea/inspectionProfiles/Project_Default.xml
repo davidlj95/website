@@ -6,6 +6,7 @@
       <scope name="Angular index.html" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
     </inspection_tool>
     <inspection_tool class="JsonStandardCompliance" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="JSONC" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
       <scope name="VSCode settings" level="INFORMATION" enabled="true" editorAttributes="WARNING_ATTRIBUTES" />
     </inspection_tool>
     <inspection_tool class="SpellCheckingInspection" enabled="true" level="TYPO" enabled_by_default="true">

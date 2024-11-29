@@ -1,0 +1,58 @@
+{
+  "$schema": "node_modules/knip/schema.json",
+  "workspaces": {
+    ".": {
+      "entry": [
+        // 👇 No Karma plugin yet
+        "karma.conf.js",
+        "src/**/*.spec.ts",
+        // 👇 Missed by Cypress plugin
+        // https://github.com/webpro-nl/knip/blob/5.38.2/packages/knip/src/plugins/cypress/index.ts#L19-L23
+        "cypress/support/component.ts",
+        // 👇 Missed by Angular plugin. Seems it doesn't take into account:
+        //  - `application` builder's `server`
+        //  - `server.ts` (declared in `tsconfig.app.json` though)
+        //  - `application` / `browser` builder's `scripts` (console easter egg)
+        //  - `application` / `browser` builder's `configurations.*.fileReplacements` (environment files)
+        //  - `karma` builder's `polyfills` (or any other polyfill) (esbuild defines file)
+        // https://github.com/webpro-nl/knip/blob/5.38.2/packages/knip/src/plugins/angular/index.ts#L19-L52
+        "src/main.server.ts",
+        "src/server.ts",
+        "src/app/console-easter-egg/console-easter-egg.ts",
+        "src/environments/environment*.ts",
+        "src/test/esbuild-defines.ts",
+      ],
+      "eslint": {
+        "config": ["eslint.config.mjs", "eslint.config.typed.mjs"],
+      },
+      "webpack": {
+        "config": ["cypress/coverage-webpack-config.ts"],
+      },
+      "ignore": [
+        // 👇 Maybe used at some point though
+        "src/app/resume-page/technology/custom-icons.ts",
+      ],
+      "ignoreBinaries": ["actionlint", "zip"],
+      "ignoreDependencies": [
+        "@angular/platform-browser-dynamic",
+        // 👇 Not ready to use angular-eslint yet
+        "@angular-eslint/builder",
+        // 👇 Unlisted, but hoisted via pnpm config
+        "@eslint/js",
+        // 👇 In SCSS files, which are not parsed yet
+        "@fontsource/roboto",
+        "@fontsource/roboto-mono",
+        // 👇 Used by script, but not imported directly
+        "@fontsource-variable/material-symbols-outlined",
+        // 👇 Unlisted, but hoisted via pnpm config
+        "conventional-recommended-bump",
+        // 👇 In SCSS files, which are not parsed yet
+        "gardevoir",
+      ],
+      "ignoreMembers": ["STANDARD_DURATION_MS"],
+    },
+    "scripts": {
+      "entry": ["**/*.ts"],
+    },
+  },
+}
