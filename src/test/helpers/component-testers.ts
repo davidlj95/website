@@ -1,14 +1,7 @@
-import {
-  Component,
-  DebugElement,
-  Predicate,
-  reflectComponentType,
-  Type,
-} from '@angular/core'
-import { ComponentFixture } from '@angular/core/testing'
+import { Component, DebugElement, Predicate, Type } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { componentTestSetup } from './component-test-setup'
 import { innerHtml } from '@/test/helpers/inner-html'
-import { isClass } from '@/test/helpers/types'
 import { By } from '@angular/platform-browser'
 
 /**
@@ -63,12 +56,15 @@ export function shouldProjectContent(
   it(`should project its content`, () => {
     // TODO: this could be random to ensure component doesn't include that HTML by mistake
     const contentToProject = '<b>Foo</b><i>bar</i>42'
-    const componentSelector = getComponentSelector(component)
+    const componentSelector = 'component-under-test'
     @Component({
       template: `<${componentSelector}>${contentToProject}</${componentSelector}>`,
       imports: [component],
     })
     class HostComponent {}
+    TestBed.overrideComponent(component, {
+      set: { selector: componentSelector },
+    })
     const [fixture] = componentTestSetup(HostComponent)
     // No change detection triggered given nothing may have changed
 
@@ -83,17 +79,4 @@ export function shouldProjectContent(
     expect(projectionContainerElement).toBeTruthy()
     expect(innerHtml(projectionContainerElement)).toEqual(contentToProject)
   })
-}
-
-function getComponentSelector<C>(component: Type<C>) {
-  if (!isClass(component)) {
-    throw new Error('Component argument is not a class')
-  }
-  const selector = reflectComponentType(component)?.selector
-  if (!selector) {
-    throw new Error(
-      `Selector not found for alleged component: ${component.constructor.name}`,
-    )
-  }
-  return selector
 }
