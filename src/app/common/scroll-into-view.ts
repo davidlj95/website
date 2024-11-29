@@ -2,8 +2,10 @@ import { inject, InjectionToken } from '@angular/core'
 import { PLATFORM_SERVICE } from '@/common/platform.service'
 import { noop } from 'rxjs'
 
-const scrollIntoView: (element: HTMLElement) => void = (element: HTMLElement) =>
+const scrollIntoView: ScrollIntoView = (element: HTMLElement) =>
   element.scrollIntoView && element.scrollIntoView({ block: 'nearest' })
+export type ScrollIntoView = (element: HTMLElement) => void
+
 /**
  * @visibleForTesting
  *
@@ -15,12 +17,9 @@ const scrollIntoView: (element: HTMLElement) => void = (element: HTMLElement) =>
  * As workaround, creating another provider for it when testing using the same factory.
  * That's why it's exported
  */
-export const SCROLL_INTO_VIEW_FACTORY: () => (
-  element: HTMLElement,
-) => void = () => (inject(PLATFORM_SERVICE).isBrowser ? scrollIntoView : noop)
-export const SCROLL_INTO_VIEW = new InjectionToken<
-  (element: HTMLElement) => void
->(
+export const SCROLL_INTO_VIEW_FACTORY: () => ScrollIntoView = () =>
+  inject(PLATFORM_SERVICE).isBrowser ? scrollIntoView : noop
+export const SCROLL_INTO_VIEW = new InjectionToken<ScrollIntoView>(
   /* istanbul ignore next */
   isDevMode ? 'ScrollIntoView' : 'SIV',
   {
