@@ -245,17 +245,17 @@ class MockHTMLElementWithAttributes
   implements
     Pick<HTMLElement, 'getAttribute' | 'setAttribute' | 'removeAttribute'>
 {
-  private attributes = new Map<string, string>()
+  private readonly _attributes = new Map<string, string>()
 
   getAttribute(qualifiedName: string) {
-    return this.attributes.get(qualifiedName) ?? null
+    return this._attributes.get(qualifiedName) ?? null
   }
 
   setAttribute(qualifiedName: string, value: string) {
-    return this.attributes.set(qualifiedName, value)
+    return this._attributes.set(qualifiedName, value)
   }
 
   removeAttribute(qualifiedName: string): void {
-    this.attributes.delete(qualifiedName)
+    this._attributes.delete(qualifiedName)
   }
 }

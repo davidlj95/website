@@ -9,9 +9,9 @@ import { Component, EventEmitter, input, Output } from '@angular/core'
     '[class.selectable]': 'isSelectedChange.observed',
     '[attr.role]': "isSelectedChange.observed ? 'button': undefined",
     '[attr.tabindex]': 'isSelectedChange.observed ? 0 : undefined',
-    '(click)': 'emitToggledSelected()',
-    '(keydown.enter)': 'emitToggledSelected()',
-    '(keydown.space)': 'emitToggledSelected()',
+    '(click)': '_emitToggledSelected()',
+    '(keydown.enter)': '_emitToggledSelected()',
+    '(keydown.space)': '_emitToggledSelected()',
   },
 })
 export class ChipComponent {
@@ -20,7 +20,7 @@ export class ChipComponent {
   @Output()
   isSelectedChange = new EventEmitter<boolean>()
 
-  protected emitToggledSelected() {
+  protected _emitToggledSelected() {
     this.isSelectedChange.emit(!this.isSelected())
   }
 }

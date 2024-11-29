@@ -12,9 +12,9 @@ import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
   imports: [SectionTitleComponent, CardGridComponent, ProjectItemComponent],
 })
 export class ProjectsSectionComponent {
-  protected readonly items: readonly ProjectItem[]
+  protected readonly _items: readonly ProjectItem[]
 
   constructor(@Inject(GET_PROJECT_ITEMS) getProjectItems: GetProjectItems) {
-    this.items = getProjectItems()
+    this._items = getProjectItems()
   }
 }

@@ -2,7 +2,7 @@
   ><h2 id="experience">Professional experience</h2></app-section-title
 >
 <app-card-grid>
-  @for (item of items; track item) {
+  @for (item of _items; track item) {
     <app-experience-item [item]="item"></app-experience-item>
   }
 </app-card-grid>

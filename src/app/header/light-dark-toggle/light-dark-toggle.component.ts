@@ -10,10 +10,10 @@ import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.compone
   styleUrl: './light-dark-toggle.component.scss',
 })
 export class LightDarkToggleComponent {
-  protected readonly MaterialSymbol = {
+  protected readonly _materialSymbol = {
     DarkMode,
     LightMode,
   }
 
-  constructor(protected readonly colorSchemeService: ColorSchemeService) {}
+  constructor(protected readonly _colorSchemeService: ColorSchemeService) {}
 }

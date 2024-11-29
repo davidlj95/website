@@ -22,14 +22,14 @@
     <app-card-header-attributes>
       @if (item.isFreelance) {
         <app-attribute
-          [symbol]="MaterialSymbol.Work"
+          [symbol]="_materialSymbol.Work"
           [appTestId]="_attribute.Freelance"
         >
           Freelance
         </app-attribute>
       } @else {
         <app-attribute
-          [symbol]="MaterialSymbol.Badge"
+          [symbol]="_materialSymbol.Badge"
           [appTestId]="_attribute.Employee"
         >
           Employee
@@ -37,7 +37,7 @@
       }
       @if (item.isInternship) {
         <app-attribute
-          [symbol]="MaterialSymbol.School"
+          [symbol]="_materialSymbol.School"
           [appTestId]="_attribute.Internship"
         >
           Internship
@@ -45,7 +45,7 @@
       }
       @if (item.hasMorePositions) {
         <app-attribute
-          [symbol]="MaterialSymbol.More"
+          [symbol]="_materialSymbol.More"
           [appTestId]="_attribute.MorePositions"
         >
           More positions during this period<br />
@@ -54,7 +54,7 @@
       }
       @if (item.hasPromotions) {
         <app-attribute
-          [symbol]="MaterialSymbol.ToolsLadder"
+          [symbol]="_materialSymbol.ToolsLadder"
           [appTestId]="_attribute.Promotions"
         >
           Promotions during this period<br />See highlights for details

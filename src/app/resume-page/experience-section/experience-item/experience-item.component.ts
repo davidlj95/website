@@ -42,7 +42,7 @@ export class ExperienceItemComponent {
     experienceItemToContents(this.item()),
   )
 
-  protected readonly MaterialSymbol = {
+  protected readonly _materialSymbol = {
     Badge,
     Work,
     School,

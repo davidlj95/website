@@ -10,7 +10,7 @@ import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
   host: { ngSkipHydration: 'true' },
 })
 export class NoScriptComponent {
-  protected readonly MaterialSymbol = {
+  protected readonly _materialSymbol = {
     Warning,
   }
 }

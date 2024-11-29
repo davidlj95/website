@@ -12,11 +12,11 @@ import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
   imports: [SectionTitleComponent, CardGridComponent, EducationItemComponent],
 })
 export class EducationSectionComponent {
-  protected readonly items: readonly EducationItem[]
+  protected readonly _items: readonly EducationItem[]
 
   constructor(
     @Inject(GET_EDUCATION_ITEMS) getEducationItems: GetEducationItems,
   ) {
-    this.items = getEducationItems()
+    this._items = getEducationItems()
   }
 }

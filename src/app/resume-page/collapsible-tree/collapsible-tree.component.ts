@@ -55,11 +55,11 @@ export class CollapsibleTreeComponent {
   isExpanded = false
 
   @ViewChildren(CollapsibleTreeComponent)
-  private children!: QueryList<CollapsibleTreeComponent>
+  private readonly _children!: QueryList<CollapsibleTreeComponent>
 
   private readonly _id = nextId++
 
-  constructor(private readonly cdRef: ChangeDetectorRef) {}
+  constructor(private readonly _cdRef: ChangeDetectorRef) {}
 
   get isCollapsible(): boolean {
     if (!(this.node.children.length > 0)) {
@@ -81,7 +81,7 @@ export class CollapsibleTreeComponent {
   collapse() {
     if (this.isExpanded) {
       this.isExpanded = false
-      this.cdRef.markForCheck()
+      this._cdRef.markForCheck()
     }
   }
 
@@ -93,7 +93,9 @@ export class CollapsibleTreeComponent {
   }
 
   collapseAllChildren({ except }: { except?: CollapsibleTreeComponent } = {}) {
-    const childrenToCollapse = this.children.filter((child) => child !== except)
+    const childrenToCollapse = this._children.filter(
+      (child) => child !== except,
+    )
     for (const child of childrenToCollapse) {
       child.collapse()
     }

@@ -15,11 +15,11 @@ import {
   imports: [SectionTitleComponent, CardGridComponent, ExperienceItemComponent],
 })
 export class ExperienceSectionComponent {
-  protected readonly items: readonly ExperienceItem[]
+  protected readonly _items: readonly ExperienceItem[]
 
   constructor(
     @Inject(GET_EXPERIENCE_ITEMS) getExperienceItems: GetExperienceItems,
   ) {
-    this.items = getExperienceItems()
+    this._items = getExperienceItems()
   }
 }
