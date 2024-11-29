@@ -4,6 +4,5 @@ import { Component } from '@angular/core'
   selector: 'app-card-header-attributes',
   template: '<ng-content></ng-content>',
   styleUrls: ['./card-header-attributes.component.scss'],
-  standalone: true,
 })
 export class CardHeaderAttributesComponent {}

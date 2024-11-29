@@ -5,13 +5,11 @@ import { getComponentInstance } from '@/test/helpers/get-component-instance'
 @Component({
   selector: 'app-test-component',
   template: '',
-  standalone: true,
 })
 export class TestComponent {}
 @Component({
   selector: 'app-another-test-component',
   template: '',
-  standalone: true,
 })
 export class AnotherTestComponent {}
 

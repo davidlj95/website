@@ -4,7 +4,6 @@ import { Component, EventEmitter, input, Output } from '@angular/core'
   selector: 'app-chip',
   template: '<ng-content></ng-content>',
   styleUrls: ['./chip.component.scss'],
-  standalone: true,
   host: {
     '[class.selected]': 'isSelected()',
     '[class.selectable]': 'isSelectedChange.observed',

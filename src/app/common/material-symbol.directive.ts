@@ -2,7 +2,6 @@ import { Directive, ElementRef } from '@angular/core'
 
 @Directive({
   selector: '[appMaterialSymbol]',
-  standalone: true,
 })
 export class MaterialSymbolDirective {
   constructor(private el: ElementRef) {
