@@ -40,6 +40,7 @@
     "lint:code:typed": "pnpm run lint:code:files:typed .",
     "lint:commit-message": "pnpm run commitlint:edit-msg",
     "lint:gh-actions": "actionlint || true",
+    "lint:unused": "knip",
     "release": "release-it",
     "release:dry-run": "release-it --dry-run --no-git.requireBranch",
     "release:dry-run:local": "pnpm run release:dry-run --no-git.requireCleanWorkingDir --no-git.requireUpstream",
