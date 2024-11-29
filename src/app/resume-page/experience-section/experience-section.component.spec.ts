@@ -3,7 +3,6 @@ import { ExperienceSectionComponent } from './experience-section.component'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { shouldContainComponent } from '@/test/helpers/component-testers'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import {
@@ -12,6 +11,7 @@ import {
 } from './get-experience-items'
 import { makeExperienceItem } from './experience-item/__tests__/make-experience-item'
 import { CardGridComponent } from '../card-grid/card-grid.component'
+import { By } from '@angular/platform-browser'
 
 describe('ExperienceSectionComponent', () => {
   let component: ExperienceSectionComponent
@@ -33,7 +33,7 @@ describe('ExperienceSectionComponent', () => {
     fixture.detectChanges()
 
     const itemElements = fixture.debugElement.queryAll(
-      byComponent(ExperienceItemComponent),
+      By.directive(ExperienceItemComponent),
     )
 
     expect(itemElements.length).toBe(experienceItems.length)

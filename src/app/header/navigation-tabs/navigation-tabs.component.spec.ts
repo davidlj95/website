@@ -3,7 +3,6 @@ import {
   NavigationTabsComponent,
 } from './navigation-tabs.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { TabsComponent } from '../tabs/tabs.component'
 import { TabComponent } from '../tab/tab.component'
 import { provideRouter, Route, RouterLink, Routes } from '@angular/router'
@@ -12,6 +11,7 @@ import { RouterTestingHarness } from '@angular/router/testing'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
+import { By } from '@angular/platform-browser'
 
 describe('NavigationTabsComponent', () => {
   const FOO_ROUTE = { path: 'foo', component: EmptyComponent } satisfies Route
@@ -36,11 +36,11 @@ describe('NavigationTabsComponent', () => {
   it('should display all items as tabs with their route links', () => {
     const [fixture] = makeSut({ items: ITEMS })
 
-    const tabsElement = fixture.debugElement.query(byComponent(TabsComponent))
+    const tabsElement = fixture.debugElement.query(By.directive(TabsComponent))
 
     expect(tabsElement).not.toBeNull()
 
-    const tabElements = tabsElement.queryAll(byComponent(TabComponent))
+    const tabElements = tabsElement.queryAll(By.directive(TabComponent))
 
     expect(tabElements.length).toEqual(ITEMS.length)
     tabElements.forEach((tabElement, i) => {
@@ -63,7 +63,7 @@ describe('NavigationTabsComponent', () => {
     fixture.detectChanges()
 
     const fooTabElement = fixture.debugElement
-      .queryAll(byComponent(TabComponent))
+      .queryAll(By.directive(TabComponent))
       .find((element) => textContent(element) === FOO_ITEM.displayName)
 
     expect(fooTabElement).not.toBeNull()
@@ -72,7 +72,7 @@ describe('NavigationTabsComponent', () => {
     ).toBeTrue()
 
     const barTabElement = fixture.debugElement
-      .queryAll(byComponent(TabComponent))
+      .queryAll(By.directive(TabComponent))
       .find((element) => textContent(element) === BAR_ITEM.displayName)
 
     expect(barTabElement).not.toBeNull()

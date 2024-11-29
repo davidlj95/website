@@ -1,8 +1,15 @@
-import { Component, DebugElement, Predicate, Type } from '@angular/core'
+import {
+  Component,
+  DebugElement,
+  Predicate,
+  reflectComponentType,
+  Type,
+} from '@angular/core'
 import { ComponentFixture } from '@angular/core/testing'
 import { componentTestSetup } from './component-test-setup'
-import { byComponent, getComponentSelector } from './component-query-predicates'
 import { innerHtml } from '@/test/helpers/inner-html'
+import { isClass } from '@/test/helpers/types'
+import { By } from '@angular/platform-browser'
 
 /**
  * Tests a component is contained inside the provided fixture
@@ -20,7 +27,7 @@ export function shouldContainComponent<T, U>(
       .toLowerCase()
   it(`should contain ${name}`, () => {
     const debugElement = fixtureGetter().debugElement.query(
-      byComponent(component),
+      By.directive(component),
     )
     expect(debugElement).toBeTruthy()
   })
@@ -66,7 +73,7 @@ export function shouldProjectContent(
     // No change detection triggered given nothing may have changed
 
     // Ensure component is there
-    const componentElement = fixture.debugElement.query(byComponent(component))
+    const componentElement = fixture.debugElement.query(By.directive(component))
     expect(componentElement).toBeTruthy()
 
     // Ensure projected content is there
@@ -76,4 +83,17 @@ export function shouldProjectContent(
     expect(projectionContainerElement).toBeTruthy()
     expect(innerHtml(projectionContainerElement)).toEqual(contentToProject)
   })
+}
+
+function getComponentSelector<C>(component: Type<C>) {
+  if (!isClass(component)) {
+    throw new Error('Component argument is not a class')
+  }
+  const selector = reflectComponentType(component)?.selector
+  if (!selector) {
+    throw new Error(
+      `Selector not found for alleged component: ${component.constructor.name}`,
+    )
+  }
+  return selector
 }

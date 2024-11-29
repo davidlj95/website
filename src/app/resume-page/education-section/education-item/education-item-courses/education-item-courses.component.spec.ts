@@ -1,11 +1,11 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { EducationItemCoursesComponent } from './education-item-courses.component'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
+import { By } from '@angular/platform-browser'
 
 describe('EducationItemCoursesComponent', () => {
   let component: EducationItemCoursesComponent
@@ -23,7 +23,7 @@ describe('EducationItemCoursesComponent', () => {
 
   it('should render all courses', () => {
     const courseElements = fixture.debugElement.queryAll(
-      byComponent(ContentChipComponent),
+      By.directive(ContentChipComponent),
     )
 
     expect(courseElements.length).toEqual(DUMMY_COURSES.length)

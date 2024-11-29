@@ -16,7 +16,6 @@ import { CardHeaderComponent } from '../../card/card-header/card-header.componen
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
-import { byComponent } from '@/test/helpers/component-query-predicates'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeEducationItem } from './__tests__/make-education-item'
@@ -61,7 +60,7 @@ describe('EducationItemComponent', () => {
     expect(anchorElement.attributes['href']).toEqual(website)
 
     const imageElement = anchorElement.query(
-      byComponent(CardHeaderImageComponent),
+      By.directive(CardHeaderImageComponent),
     )
 
     expect(imageElement).toBeTruthy()
@@ -131,7 +130,7 @@ describe('EducationItemComponent', () => {
     setEducationItem(fixture)
 
     expect(
-      fixture.debugElement.query(byComponent(DateRangeComponent)),
+      fixture.debugElement.query(By.directive(DateRangeComponent)),
     ).toBeTruthy()
   })
 
