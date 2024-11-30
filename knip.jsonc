@@ -39,6 +39,8 @@
       ],
       "ignoreBinaries": ["actionlint", "zip"],
       "ignoreDependencies": [
+        // 👇 Needed for unit testing.
+        // Specifically `/testing` entrypoint when running Karma's unit tests.
         "@angular/platform-browser-dynamic",
         // 👇 Not ready to use angular-eslint yet
         "@angular-eslint/builder",
