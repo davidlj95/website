@@ -42,7 +42,7 @@
         // 👇 Needed for unit testing.
         // Specifically `/testing` entrypoint when running Karma's unit tests.
         "@angular/platform-browser-dynamic",
-        // 👇 Not ready to use angular-eslint yet
+        // 👇 It is there, because of `angular-eslint`.
         "@angular-eslint/builder",
         // 👇 Unlisted, but hoisted via pnpm config
         "@eslint/js",
