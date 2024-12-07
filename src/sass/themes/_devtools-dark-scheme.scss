@@ -10,28 +10,27 @@ $scheme: (
     sys-color-cdt-base-container: var(--sys-color-base-container),
     sys-color-base-container: var(--ref-palette-neutral15),
     sys-color-divider: var(--ref-palette-neutral40),
-    sys-color-surface1:
-      color-mix(
+    sys-color-surface1: color-mix(
         in sRGB,
         var(--ref-palette-primary80) 5%,
         var(--ref-palette-neutral10)
       ),
-    sys-color-surface2:
-      color-mix(
+    sys-color-surface2: color-mix(
         in sRGB,
         var(--ref-palette-primary80) 8%,
         var(--ref-palette-neutral10)
       ),
-    sys-color-surface3:
-      color-mix(
+    sys-color-surface3: color-mix(
         in sRGB,
         var(--ref-palette-primary80) 11%,
         var(--ref-palette-neutral10)
       ),
-    sys-color-surface4:
-      color-mix(in sRGB, #d1e1ff 12%, var(--ref-palette-neutral10)),
-    sys-color-surface5:
-      color-mix(
+    sys-color-surface4: color-mix(
+        in sRGB,
+        #d1e1ff 12%,
+        var(--ref-palette-neutral10)
+      ),
+    sys-color-surface5: color-mix(
         in sRGB,
         var(--ref-palette-primary80) 14%,
         var(--ref-palette-neutral10)
@@ -43,8 +42,11 @@ $scheme: (
     sys-color-tonal-outline: var(--ref-palette-secondary50),
     sys-color-on-primary: var(--ref-palette-primary20),
     sys-color-on-base-divider: var(--ref-palette-neutral40),
-    sys-color-state-hover-on-prominent:
-      color-mix(in sRGB, var(--ref-palette-neutral99) 10%, transparent),
+    sys-color-state-hover-on-prominent: color-mix(
+        in sRGB,
+        var(--ref-palette-neutral99) 10%,
+        transparent
+      ),
     sys-color-primary-bright: var(--ref-palette-primary70),
     adorner-border-color: var(--sys-color-tonal-outline),
     img-filter: grayscale(0.5),
