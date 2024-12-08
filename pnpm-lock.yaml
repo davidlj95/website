@@ -118,8 +118,8 @@ importers:
         specifier: 22.10.1
         version: 22.10.1
       '@types/subset-font':
-        specifier: 2.2.0
-        version: 2.2.0
+        specifier: 2.3.0
+        version: 2.3.0
       angular-eslint:
         specifier: 18.4.2
         version: 18.4.2(@angular-devkit/core@19.0.1(chokidar@4.0.1))(@angular-devkit/schematics@19.0.1(chokidar@4.0.1))(@typescript-eslint/types@8.14.0)(@typescript-eslint/utils@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.1))(typescript-eslint@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(typescript@5.6.3)
@@ -202,8 +202,8 @@ importers:
         specifier: 17.10.0
         version: 17.10.0(typescript@5.6.3)
       subset-font:
-        specifier: 2.3.0
-        version: 2.3.0
+        specifier: 2.4.0
+        version: 2.4.0
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -2446,8 +2446,8 @@ packages:
   '@types/sockjs@0.3.36':
     resolution: {integrity: sha512-MK9V6NzAS1+Ud7JV9lJLFqW85VbC9dq3LmwZCuBe4wBDgKC0Kj/jd8Xl+nSviU+Qc3+m7umHHyHg//2KSa0a0Q==}
 
-  '@types/subset-font@2.2.0':
-    resolution: {integrity: sha512-+cSuThGbeKp0GlNmyjZRUl3YrrUxe6Xg/nclrUK2uSIb2k9hM3qfYc8J5NId6/xcyX0qZQ609wfBiSaZFEir4A==}
+  '@types/subset-font@2.3.0':
+    resolution: {integrity: sha512-+u2CzLEE7ZReuBP0Mfz0tBydVZvWESmZpBbL7sc+J+qB9ImNp1QmOptMe28uXj2aRPDoQhQF3dubXMgwo56gIg==}
 
   '@types/ws@8.5.10':
     resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
@@ -4230,8 +4230,8 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
-  harfbuzzjs@0.3.5:
-    resolution: {integrity: sha512-SbNxmVAyhlUJTHdaxgK5S6Uqy4mXIu80Vl6KDn8d+ctPAF6W3DY2yehB4BwIC24I/Tk5HGLjaQkyny5gY0r41Q==}
+  harfbuzzjs@0.4.3:
+    resolution: {integrity: sha512-g7yRM1C7/le3PN9GPNufA3T1PEugOVOrG1WbDZKR0Olx0rft+1VKr0dx9nDcdBOT9vDXtXCH2/5fjc16OvRg5Q==}
 
   has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
@@ -6544,8 +6544,8 @@ packages:
   stubborn-fs@1.2.5:
     resolution: {integrity: sha512-H2N9c26eXjzL/S/K+i/RHHcFanE74dptvvjM8iwzwbVcWY/zjBbgRqF3K0DY4+OD+uTTASTBvDoxPDaPN02D7g==}
 
-  subset-font@2.3.0:
-    resolution: {integrity: sha512-RcB2cu/14zYxGceTnnptlc8uTuxMkVYdyu3Kj+CA1nye6bI1s1cSSp+ApzpkMzl8iAmEUt+zAE0VHvhVpTO/Ig==}
+  subset-font@2.4.0:
+    resolution: {integrity: sha512-DA/45nIj4NiseVdfHxVdVGL7hvNo3Ol6HjEm3KSYtPyDcsr6jh8Q37vSgz+A722wMfUd6nL8kgsi7uGv9DExXQ==}
 
   summary@2.1.0:
     resolution: {integrity: sha512-nMIjMrd5Z2nuB2RZCKJfFMjgS3fygbeyGk9PxPPaJR1RIcyN9yn4A63Isovzm3ZtQuEkLBVgMdPup8UeLH7aQw==}
@@ -10305,7 +10305,7 @@ snapshots:
     dependencies:
       '@types/node': 22.10.1
 
-  '@types/subset-font@2.2.0':
+  '@types/subset-font@2.3.0':
     dependencies:
       '@types/node': 22.10.1
 
@@ -12476,7 +12476,7 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.17.4
 
-  harfbuzzjs@0.3.5: {}
+  harfbuzzjs@0.4.3: {}
 
   has-flag@3.0.0: {}
 
@@ -15054,10 +15054,10 @@ snapshots:
 
   stubborn-fs@1.2.5: {}
 
-  subset-font@2.3.0:
+  subset-font@2.4.0:
     dependencies:
       fontverter: 2.0.0
-      harfbuzzjs: 0.3.5
+      harfbuzzjs: 0.4.3
       lodash: 4.17.21
       p-limit: 3.1.0
 
