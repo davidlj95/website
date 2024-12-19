@@ -119,7 +119,7 @@
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "knip": "5.38.2",
+    "knip": "5.41.1",
     "lint-staged": "15.2.11",
     "liquidjs": "10.19.0",
     "ng-mocks": "14.13.1",
