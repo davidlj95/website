@@ -6,20 +6,13 @@
         // 👇 No Karma plugin yet
         "karma.conf.js",
         "src/**/*.spec.ts",
-        // 👇 Missed by Cypress plugin
-        // https://github.com/webpro-nl/knip/blob/5.38.2/packages/knip/src/plugins/cypress/index.ts#L19-L23
-        "cypress/support/component.ts",
+        // 👇 As SSR is not actually enabled
+        "src/server.ts!",
         // 👇 Missed by Angular plugin. Seems it doesn't take into account:
-        //  - `application` builder's `server`
-        //  - `server.ts` (declared in `tsconfig.app.json` though)
         //  - `application` / `browser` builder's `scripts` (console easter egg)
-        //  - `application` / `browser` builder's `configurations.*.fileReplacements` (environment files)
         //  - `karma` builder's `polyfills` (or any other polyfill) (esbuild defines file)
         // https://github.com/webpro-nl/knip/blob/5.38.2/packages/knip/src/plugins/angular/index.ts#L19-L52
-        "src/main.server.ts!",
-        "src/server.ts!",
         "src/app/console-easter-egg/console-easter-egg.ts!",
-        "src/environments/environment*.ts!",
         "src/test/esbuild-defines.ts",
       ],
       "project": [
