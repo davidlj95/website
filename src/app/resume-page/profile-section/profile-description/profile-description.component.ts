@@ -10,6 +10,7 @@ import {
   CollapsibleTreeNodeData,
 } from '../../collapsible-tree/collapsible-tree-node'
 import { ProfileDescriptionLineComponent } from './profile-description-line/profile-description-line.component'
+import { ComponentInputs } from '@/common/component-inputs'
 
 @Component({
   selector: 'app-profile-description',
@@ -40,8 +41,13 @@ const descriptionLineToCollapsibleTreeNode = (
   line: DescriptionLine,
 ): CollapsibleTreeNode =>
   new CollapsibleTreeNode(
-    new CollapsibleTreeNodeData(ProfileDescriptionLineComponent, {
-      inputs: { line } satisfies Partial<ProfileDescriptionLineComponent>,
-    }),
+    /* istanbul ignore next */
+    line.data
+      ? new CollapsibleTreeNodeData(ProfileDescriptionLineComponent, {
+          inputs: {
+            data: line.data,
+          } satisfies ComponentInputs<ProfileDescriptionLineComponent>,
+        })
+      : undefined,
     line.children.map(descriptionLineToCollapsibleTreeNode),
   )
