@@ -26,7 +26,7 @@ export class ProfileDescriptionComponent {
   protected readonly _rootNode: CollapsibleTreeNode
   protected readonly _isCollapsibleFn: IsCollapsibleFn = (
     node: CollapsibleTreeComponent,
-  ) => node.depth > 1
+  ) => node.depth() > 1
 
   constructor(@Inject(METADATA) metadata: Metadata) {
     this._rootNode = new CollapsibleTreeNode(
