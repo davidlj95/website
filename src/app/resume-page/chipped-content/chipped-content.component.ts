@@ -11,6 +11,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations'
+import { scrollIntoView } from '@/common/scroll-into-view'
 
 @Component({
   selector: 'app-chipped-content',
@@ -53,5 +54,9 @@ export class ChippedContentComponent {
     }
     this.isActive.set(true)
     this.activeContent.set(content)
+  }
+
+  onAnimationDone(contentElement: Element) {
+    scrollIntoView(contentElement, { block: 'nearest' })
   }
 }
