@@ -11,7 +11,7 @@
 <div
   class="content"
   [@contentDisplayed]="isActive()"
-  (@contentDisplayed.done)="contentElement.scrollIntoView({ block: 'nearest' })"
+  (@contentDisplayed.done)="onAnimationDone(contentElement)"
   #contentElement
 >
   <ng-container
