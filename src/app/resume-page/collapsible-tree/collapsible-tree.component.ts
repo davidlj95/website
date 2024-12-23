@@ -2,9 +2,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Input,
-  QueryList,
-  ViewChildren,
+  input,
+  model,
+  viewChildren,
 } from '@angular/core'
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
 import {
@@ -47,28 +47,24 @@ let nextId = 0
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CollapsibleTreeComponent {
-  @Input({ required: true }) node!: CollapsibleTreeNode
-  @Input() depth = 0
-  @Input() parent?: CollapsibleTreeComponent
-  @Input() isCollapsibleFn?: IsCollapsibleFn = this.parent?.isCollapsibleFn
-  @Input()
-  isExpanded = false
+  readonly node = input.required<CollapsibleTreeNode>()
+  readonly depth = input(0)
+  readonly parent = input<CollapsibleTreeComponent>()
+  readonly isCollapsibleFn = input<IsCollapsibleFn>()
+  readonly isExpanded = model(false)
 
-  @ViewChildren(CollapsibleTreeComponent)
-  private readonly _children!: QueryList<CollapsibleTreeComponent>
+  readonly _children = viewChildren(CollapsibleTreeComponent)
 
   private readonly _id = nextId++
 
   constructor(private readonly _cdRef: ChangeDetectorRef) {}
 
   get isCollapsible(): boolean {
-    if (!(this.node.children.length > 0)) {
-      return false
-    }
-    if (!this.isCollapsibleFn) {
-      return false
-    }
-    return this.isCollapsibleFn(this)
+    const isCollapsibleFn =
+      this.isCollapsibleFn() ?? this.parent()?.isCollapsibleFn()
+    return this.node().children.length === 0 || !isCollapsibleFn
+      ? false
+      : isCollapsibleFn(this)
   }
 
   get childListId(): string | undefined {
@@ -79,21 +75,21 @@ export class CollapsibleTreeComponent {
   }
 
   collapse() {
-    if (this.isExpanded) {
-      this.isExpanded = false
+    if (this.isExpanded()) {
+      this.isExpanded.set(false)
       this._cdRef.markForCheck()
     }
   }
 
   expand() {
-    if (!this.isExpanded) {
-      this.isExpanded = true
-      this.parent?.collapseAllChildren({ except: this })
+    if (!this.isExpanded()) {
+      this.isExpanded.set(true)
+      this.parent()?.collapseAllChildren({ except: this })
     }
   }
 
   collapseAllChildren({ except }: { except?: CollapsibleTreeComponent } = {}) {
-    const childrenToCollapse = this._children.filter(
+    const childrenToCollapse = this._children().filter(
       (child) => child !== except,
     )
     for (const child of childrenToCollapse) {

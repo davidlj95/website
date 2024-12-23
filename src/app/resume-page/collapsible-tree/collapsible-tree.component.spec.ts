@@ -19,6 +19,7 @@ import { EmptyComponent } from '@/test/helpers/empty-component'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { textContent } from '@/test/helpers/text-content'
 import { ComponentInputs } from '@/common/component-inputs'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('CollapsibleTreeComponent', () => {
   let component: CollapsibleTreeComponent
@@ -36,8 +37,9 @@ describe('CollapsibleTreeComponent', () => {
 
   describe('when node has no data', () => {
     beforeEach(() => {
-      component.node = new CollapsibleTreeNode()
-      fixture.detectChanges()
+      setFixtureInputsAndDetectChanges(fixture, {
+        node: new CollapsibleTreeNode(),
+      })
     })
 
     it('should not render data element', () => {
@@ -58,14 +60,15 @@ describe('CollapsibleTreeComponent', () => {
     }
 
     beforeEach(() => {
-      component.node = new CollapsibleTreeNode(
-        new CollapsibleTreeNodeData(DummyComponent, {
-          inputs: {
-            contents: DUMMY_COMPONENT_CONTENTS,
-          } satisfies ComponentInputs<DummyComponent>,
-        }),
-      )
-      fixture.detectChanges()
+      setFixtureInputsAndDetectChanges(fixture, {
+        node: new CollapsibleTreeNode(
+          new CollapsibleTreeNodeData(DummyComponent, {
+            inputs: {
+              contents: DUMMY_COMPONENT_CONTENTS,
+            } satisfies ComponentInputs<DummyComponent>,
+          }),
+        ),
+      })
     })
 
     it('should render data element and project node data component binding its inputs', () => {
@@ -83,8 +86,9 @@ describe('CollapsibleTreeComponent', () => {
 
   describe('when node has no children', () => {
     beforeEach(() => {
-      component.node = new CollapsibleTreeNode()
-      fixture.detectChanges()
+      setFixtureInputsAndDetectChanges(fixture, {
+        node: new CollapsibleTreeNode(),
+      })
     })
 
     it('should not render the list of children', () => {
@@ -105,9 +109,10 @@ describe('CollapsibleTreeComponent', () => {
 
   describe('when node has children', () => {
     beforeEach(() => {
-      component.node = DUMMY_NODE_WITH_CHILDREN
-      component.depth = DUMMY_DEPTH
-      fixture.detectChanges()
+      setFixtureInputsAndDetectChanges(fixture, {
+        node: DUMMY_NODE_WITH_CHILDREN,
+        depth: DUMMY_DEPTH,
+      })
     })
 
     it('should render the list of children (with assigned id and increased depth)', () => {
@@ -124,7 +129,7 @@ describe('CollapsibleTreeComponent', () => {
         expect(itemElement).not.toBeNull()
 
         expect(
-          getComponentInstance(itemElement, CollapsibleTreeComponent).depth,
+          getComponentInstance(itemElement, CollapsibleTreeComponent).depth(),
         ).toBe(DUMMY_DEPTH + 1)
       }
     })
@@ -132,9 +137,10 @@ describe('CollapsibleTreeComponent', () => {
 
   describe("when node has children and it's collapsible", () => {
     beforeEach(() => {
-      component.node = DUMMY_NODE_WITH_CHILDREN
-      component.isCollapsibleFn = () => true
-      fixture.detectChanges()
+      setFixtureInputsAndDetectChanges(fixture, {
+        node: DUMMY_NODE_WITH_CHILDREN,
+        isCollapsibleFn: () => true,
+      })
     })
 
     it('should include button to toggle', () => {
@@ -159,7 +165,7 @@ describe('CollapsibleTreeComponent', () => {
     shouldDisplayChildrenList()
 
     it('should be collapsed by default', () => {
-      expect(component.isExpanded).toBeFalse()
+      expect(component.isExpanded()).toBeFalse()
     })
   })
 
@@ -170,10 +176,11 @@ describe('CollapsibleTreeComponent', () => {
   for (const testCase of EXPANDED_TEST_CASES) {
     describe(`when node has children, it's collapsible and it's ${testCase.isExpanded ? 'expanded' : 'collapsed'}`, () => {
       beforeEach(() => {
-        component.node = DUMMY_NODE_WITH_CHILDREN
-        component.isCollapsibleFn = () => true
-        component.isExpanded = testCase.isExpanded
-        fixture.detectChanges()
+        setFixtureInputsAndDetectChanges(fixture, {
+          node: DUMMY_NODE_WITH_CHILDREN,
+          isCollapsibleFn: () => true,
+          isExpanded: testCase.isExpanded,
+        })
       })
 
       it('should indicate it via ARIA', () => {
@@ -189,7 +196,7 @@ describe('CollapsibleTreeComponent', () => {
         buttonElement.triggerEventHandler('click')
         fixture.detectChanges()
 
-        expect(component.isExpanded).toEqual(!testCase.isExpanded)
+        expect(component.isExpanded()).toEqual(!testCase.isExpanded)
       })
 
       it(`should display caret with ${testCase.icon} icon and hidden from screen readers`, () => {
@@ -208,10 +215,11 @@ describe('CollapsibleTreeComponent', () => {
     let restChildrenComponents: CollapsibleTreeComponent[]
 
     beforeEach(() => {
-      component.node = DUMMY_NODE_WITH_CHILDREN
-      component.isCollapsibleFn = () => true
-      component.isExpanded = false
-      fixture.detectChanges()
+      setFixtureInputsAndDetectChanges(fixture, {
+        node: DUMMY_NODE_WITH_CHILDREN,
+        isCollapsibleFn: () => true,
+        isExpanded: false,
+      })
 
       const childrenComponents = fixture.debugElement
         .queryAll(By.directive(CollapsibleTreeComponent))
@@ -238,9 +246,10 @@ describe('CollapsibleTreeComponent', () => {
 
   describe("when node has children and it's not collapsible", () => {
     beforeEach(() => {
-      component.node = DUMMY_NODE_WITH_CHILDREN
-      component.isCollapsibleFn = () => false
-      fixture.detectChanges()
+      setFixtureInputsAndDetectChanges(fixture, {
+        node: DUMMY_NODE_WITH_CHILDREN,
+        isCollapsibleFn: () => false,
+      })
     })
 
     it('should not include button to toggle', () => {
