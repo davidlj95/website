@@ -4,72 +4,57 @@ import { ProfileDescriptionLineComponent } from './profile-description-line.comp
 import { MATERIAL_SYMBOLS_SELECTOR } from '@/test/helpers/material-symbols'
 import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { DescriptionLine } from '@/data/metadata'
+import { DescriptionLineData } from '@/data/metadata'
 import { ATTRIBUTE_ARIA_HIDDEN } from '@/test/helpers/aria'
 import { textContent } from '@/test/helpers/text-content'
 import { innerHtml } from '@/test/helpers/inner-html'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('ProfileDescriptionLineComponent', () => {
   let component: ProfileDescriptionLineComponent
   let fixture: ComponentFixture<ProfileDescriptionLineComponent>
 
-  it('should create', () => {
-    ;[fixture, component] = makeSut()
+  beforeEach(() => {
+    ;[fixture, component] = makeSut({ data: DUMMY_LINE_DATA })
+    fixture.detectChanges()
+  })
 
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 
-  describe('when line has no data', () => {
-    const DUMMY_LINE_NO_DATA = new DescriptionLine()
-
-    beforeEach(() => {
-      ;[fixture, component] = makeSut()
-      component.line = DUMMY_LINE_NO_DATA
-      fixture.detectChanges()
-    })
-
-    it('should be empty', () => {
-      expect(textContent(fixture.debugElement)).toHaveSize(0)
-    })
-  })
-
-  describe('when line has data', () => {
-    const DUMMY_LINE = DescriptionLine.fromData(
-      {
-        symbol: 'symbol',
-        html: '<span>Content</span>',
-      },
-      [new DescriptionLine()],
+  it('should display symbol', () => {
+    const materialSymbolSpan = fixture.debugElement.query(
+      MATERIAL_SYMBOLS_SELECTOR,
     )
 
-    beforeEach(() => {
-      ;[fixture, component] = makeSut()
-      component.line = DUMMY_LINE
-      fixture.detectChanges()
-    })
+    expect(textContent(materialSymbolSpan))
+      .withContext('symbol')
+      .toEqual(DUMMY_LINE_DATA.symbol)
 
-    it('should display symbol', () => {
-      const materialSymbolSpan = fixture.debugElement.query(
-        MATERIAL_SYMBOLS_SELECTOR,
-      )
+    expect(materialSymbolSpan.attributes[ATTRIBUTE_ARIA_HIDDEN])
+      .withContext('symbol is hidden from screen readers')
+      .toBe(true.toString())
+  })
 
-      expect(textContent(materialSymbolSpan))
-        .withContext('symbol')
-        .toEqual(DUMMY_LINE.data!.symbol)
+  it('should display HTML content', () => {
+    const htmlSpan = fixture.debugElement.query(By.css('.content'))
 
-      expect(materialSymbolSpan.attributes[ATTRIBUTE_ARIA_HIDDEN])
-        .withContext('symbol is hidden from screen readers')
-        .toBe(true.toString())
-    })
-
-    it('should display HTML content', () => {
-      const htmlSpan = fixture.debugElement.query(By.css('.content'))
-
-      expect(innerHtml(htmlSpan)).toEqual(DUMMY_LINE.data!.html)
-    })
+    expect(innerHtml(htmlSpan)).toEqual(DUMMY_LINE_DATA.html)
   })
 })
 
-function makeSut() {
-  return componentTestSetup(ProfileDescriptionLineComponent)
+function makeSut(opts: { data?: DescriptionLineData } = {}) {
+  const [fixture, component] = componentTestSetup(
+    ProfileDescriptionLineComponent,
+  )
+  setFixtureInputsAndDetectChanges(fixture, {
+    data: opts.data ?? DUMMY_LINE_DATA,
+  })
+  return [fixture, component] as const
 }
+
+const DUMMY_LINE_DATA = new DescriptionLineData({
+  symbol: 'symbol',
+  html: '<span>Content</span>',
+})
