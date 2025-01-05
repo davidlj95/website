@@ -28,7 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Run GitHub Actions linter
-        uses: docker://rhysd/actionlint:latest@sha256:d1b3d067b912ea4cbf697750cee80f59114414365b916167b4c7b4cf9504ca9a
+        uses: docker://rhysd/actionlint:latest@sha256:e3856d413f923accc4120884ff79f6bdba3dd53fd42884d325f21af61cc15ce0
         with:
           args: -color
 
