@@ -3,9 +3,6 @@
   "workspaces": {
     ".": {
       "entry": [
-        // 👇 No Karma plugin yet
-        "karma.conf.js",
-        "src/**/*.spec.ts",
         // 👇 As SSR is not actually enabled
         "src/server.ts!",
         // 👇 Missed by Angular plugin. Seems it doesn't take into account:
@@ -30,7 +27,7 @@
         // 👇 Maybe used at some point though
         "src/app/resume-page/technology/custom-icons.ts",
       ],
-      "ignoreBinaries": ["actionlint", "zip"],
+      "ignoreBinaries": ["actionlint"],
       "ignoreDependencies": [
         // 👇 Needed for unit testing.
         // Specifically `/testing` entrypoint when running Karma's unit tests.
