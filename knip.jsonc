@@ -27,7 +27,14 @@
         // 👇 Maybe used at some point though
         "src/app/resume-page/technology/custom-icons.ts",
       ],
-      "ignoreBinaries": ["actionlint"],
+      "ignoreBinaries": [
+        // 👇 Unlisted
+        "actionlint",
+        // 👇 Unlisted, appeared in 5.42.0
+        "commitlint",
+        "cypress",
+        "lint-staged",
+      ],
       "ignoreDependencies": [
         // 👇 Needed for unit testing.
         // Specifically `/testing` entrypoint when running Karma's unit tests.
