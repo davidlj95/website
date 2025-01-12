@@ -89,7 +89,7 @@
     "@commitlint/cli": "19.6.1",
     "@commitlint/config-conventional": "19.6.0",
     "@commitlint/types": "19.5.0",
-    "@cypress/code-coverage": "3.13.9",
+    "@cypress/code-coverage": "3.13.10",
     "@eslint/compat": "1.2.5",
     "@fontsource-variable/material-symbols-outlined": "5.1.4",
     "@lhci/cli": "0.14.0",
