@@ -93,7 +93,7 @@
     "@eslint/compat": "1.2.6",
     "@fontsource-variable/material-symbols-outlined": "5.1.4",
     "@lhci/cli": "0.14.0",
-    "@release-it/conventional-changelog": "9.0.4",
+    "@release-it/conventional-changelog": "10.0.0",
     "@types/compression": "1.7.5",
     "@types/express": "5.0.0",
     "@types/jasmine": "5.1.5",
