@@ -9,7 +9,7 @@
     "generate": "pnpm run '/^generate:.*/'",
     "generate:font-subsets": "pnpm run script dist/src/generate-font-subsets.js",
     "generate:release-info": "pnpm run script dist/src/generate-release-info.js",
-    "generate:simple-icons": "pnpm run script dist/src/generate-simple-icons.js",
+    "generate:techs": "pnpm run script dist/src/generate-techs.js",
     "generate:templated-files": "pnpm run script dist/src/generate-templated-files.js",
     "script": "node --import=extensionless/register",
     "update-security.txt": "pnpm run script dist/src/update-security-txt.js",
