@@ -18,4 +18,6 @@ export const CUSTOM_DISPLAY_NAME_ENTRIES: readonly [string, string][] = [
   ['java', 'Java'],
   ['html', 'HTML'],
   ['css', 'CSS'],
+  // 👇 https://github.com/simple-icons/simple-icons/issues/11236
+  ['visualstudiocode', 'Visual Studio Code'],
 ]
