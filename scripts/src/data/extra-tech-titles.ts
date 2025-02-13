@@ -12,12 +12,10 @@ export const EXTRA_TECH_TITLES: readonly [string, string][] = [
   ['blockcerts', 'Blockcerts'],
   ['gitlabcicd', 'GitLab CI/CD'],
   ['gitlabpages', 'GitLab Pages'],
-  ['webcomponents', 'Web Components'],
   ['python-unittest', "Python's `unittest`"],
   ['pyqt', 'PyQt'],
   ['java', 'Java'],
   ['html', 'HTML'],
-  ['css', 'CSS'],
   // 👇 https://github.com/simple-icons/simple-icons/issues/11236
   ['visualstudiocode', 'Visual Studio Code'],
 ]

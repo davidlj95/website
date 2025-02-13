@@ -503,7 +503,7 @@
         { "slug": "angular", "version": "^8" },
         { "slug": "typescript" },
         { "slug": "pwa" },
-        { "slug": "webcomponents" },
+        { "slug": "webcomponentsdotorg" },
         { "slug": "redux" },
         { "slug": "karmarunner" },
         { "slug": "jasmine" },
