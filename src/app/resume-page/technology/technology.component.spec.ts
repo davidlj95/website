@@ -5,19 +5,15 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { By } from '@angular/platform-browser'
 import { MockComponent, MockProvider } from 'ng-mocks'
 import { SimpleIconComponent } from '@/common/simple-icon/simple-icon.component'
-import {
-  GET_TECHNOLOGY_ICON_FROM_SLUG,
-  GetTechnologyIconFromSlug,
-} from './get-technology-icon-from-slug'
-import { SimpleIcon } from '@/common/simple-icon/simple-icon'
-import {
-  GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
-  GetTechnologyDisplayNameFromSlug,
-} from './get-technology-display-name-from-slug'
 import { makeTechnologyItem } from './__tests__/make-technology-item'
 import { textContent } from '@/test/helpers/text-content'
 import { TechnologyItem } from './technology-item'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
+import {
+  GET_TECHNOLOGY_FROM_SLUG,
+  GetTechnologyFromSlug,
+} from './get-technology-from-slug'
+import { makeTechnology } from './__tests__/make-technology'
 
 describe('TechnologyComponent', () => {
   let component: TechnologyComponent
@@ -29,29 +25,29 @@ describe('TechnologyComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should lookup and render display name', () => {
-    const displayName = 'dummy display name'
-    const getTechnologyDisplayNameFromSlug = jasmine
-      .createSpy<GetTechnologyDisplayNameFromSlug>()
-      .and.returnValue(displayName)
+  it('should lookup and render title', () => {
+    const title = 'dummy title'
+    const getTechnologyFromSlug = jasmine
+      .createSpy<GetTechnologyFromSlug>()
+      .and.returnValue(makeTechnology({ title }))
     ;[fixture, component] = makeSut({
-      getTechnologyDisplayNameFromSlug,
+      getTechnologyFromSlug,
       item: DUMMY_ITEM,
     })
 
-    expect(textContent(fixture.debugElement)).toEqual(displayName)
-    expect(getTechnologyDisplayNameFromSlug).toHaveBeenCalledOnceWith(
-      DUMMY_ITEM.slug,
-    )
+    expect(textContent(fixture.debugElement)).toEqual(title)
+    expect(getTechnologyFromSlug).toHaveBeenCalledOnceWith(DUMMY_ITEM.slug)
   })
 
   const ICON_ELEMENT_SELECTOR = By.css('.icon')
   describe('when icon is available', () => {
     beforeEach(() => {
-      const getTechnologyIconFromSlug = jasmine
-        .createSpy<GetTechnologyIconFromSlug>()
-        .and.returnValue(DUMMY_ICON)
-      ;[fixture, component] = makeSut({ getTechnologyIconFromSlug })
+      const getTechnologyFromSlug = jasmine
+        .createSpy<GetTechnologyFromSlug>()
+        .and.returnValue(makeTechnology({ hasIcon: true }))
+      ;[fixture, component] = makeSut({
+        getTechnologyFromSlug,
+      })
     })
 
     it('should display icon', () => {
@@ -62,9 +58,11 @@ describe('TechnologyComponent', () => {
   describe('when icon is not available', () => {
     beforeEach(() => {
       const getTechnologyIconFromSlug = jasmine
-        .createSpy<GetTechnologyIconFromSlug>()
-        .and.returnValue(undefined)
-      ;[fixture, component] = makeSut({ getTechnologyIconFromSlug })
+        .createSpy<GetTechnologyFromSlug>()
+        .and.returnValue(makeTechnology({ hasIcon: false }))
+      ;[fixture, component] = makeSut({
+        getTechnologyFromSlug: getTechnologyIconFromSlug,
+      })
     })
 
     it('should not display icon', () => {
@@ -74,13 +72,9 @@ describe('TechnologyComponent', () => {
 })
 
 const DUMMY_ITEM = makeTechnologyItem()
-const DUMMY_ICON: SimpleIcon = {
-  slug: DUMMY_ITEM.slug,
-}
 function makeSut(
   opts: {
-    getTechnologyDisplayNameFromSlug?: GetTechnologyDisplayNameFromSlug
-    getTechnologyIconFromSlug?: GetTechnologyIconFromSlug
+    getTechnologyFromSlug?: GetTechnologyFromSlug
     item?: TechnologyItem
   } = {},
 ) {
@@ -88,16 +82,12 @@ function makeSut(
     imports: [MockComponent(SimpleIconComponent)],
     providers: [
       MockProvider(
-        GET_TECHNOLOGY_DISPLAY_NAME_FROM_SLUG,
-        opts.getTechnologyDisplayNameFromSlug ??
+        GET_TECHNOLOGY_FROM_SLUG,
+        opts.getTechnologyFromSlug ??
           // eslint-disable-next-line jasmine/no-unsafe-spy
-          jasmine.createSpy('getTechnologyDisplayNameFromSlug'),
-      ),
-      MockProvider(
-        GET_TECHNOLOGY_ICON_FROM_SLUG,
-        opts.getTechnologyIconFromSlug ??
-          // eslint-disable-next-line jasmine/no-unsafe-spy
-          jasmine.createSpy('getTechnologyIconFromSlug'),
+          jasmine
+            .createSpy('getTechnologyFromSlug')
+            .and.returnValue(makeTechnology()),
       ),
     ],
   })
