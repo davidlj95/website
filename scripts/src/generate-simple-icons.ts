@@ -7,7 +7,7 @@ import { objectToJson } from './utils/object-to-json'
 import { isMain } from './utils/is-main'
 import { Log } from './utils/log'
 import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
-import { EXTRA_TECHS } from './data/extra-techs'
+import { EXTRA_TECH_TITLES } from './data/extra-tech-titles'
 import { SimpleIconsIndex } from 'data/simple-icons'
 
 async function generateSimpleIcons() {
@@ -52,7 +52,7 @@ function findNeededIcons(
   )
   Log.info('Loaded %d simple icons', iconsBySlug.size)
 
-  const extraTechs = new Map<string, string>(EXTRA_TECHS)
+  const extraTechs = new Map<string, string>(EXTRA_TECH_TITLES)
   Log.info('Loaded %d extra techs definitions', extraTechs.size)
 
   return technologySlugs.map<Icon>((slug) => {
@@ -60,14 +60,14 @@ function findNeededIcons(
     if (icon) {
       return icon
     }
-    const displayName = extraTechs.get(slug)
-    if (displayName) {
+    const title = extraTechs.get(slug)
+    if (title) {
       return {
         slug,
-        title: displayName,
+        title,
       }
     }
-    Log.error(`'${slug}' tech has no icon neither display name`)
+    Log.error(`'${slug}' tech has no icon neither title`)
     process.exit(1)
   })
 }

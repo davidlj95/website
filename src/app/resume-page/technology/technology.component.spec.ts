@@ -25,7 +25,7 @@ describe('TechnologyComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should lookup and render display name', () => {
+  it('should lookup and render title', () => {
     const title = 'dummy title'
     const getTechnologyFromSlug = jasmine
       .createSpy<GetTechnologyFromSlug>()

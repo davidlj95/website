@@ -1,4 +1,4 @@
-export const EXTRA_TECHS: readonly [string, string][] = [
+export const EXTRA_TECH_TITLES: readonly [string, string][] = [
   ['microsoftword', 'Microsoft Word'],
   ['rspec', 'RSpec'],
   ['zenqms', 'ZenQMS'],
