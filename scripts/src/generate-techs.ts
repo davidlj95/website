@@ -8,7 +8,7 @@ import { isMain } from './utils/is-main'
 import { Log } from './utils/log'
 import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
 import { EXTRA_TECH_TITLES } from './data/extra-tech-titles'
-import { TechsIndex } from 'data/techs'
+import { Tech, TechsIndex } from 'data/techs'
 
 async function generateTechs() {
   Log.info('Generating techs exports')
@@ -16,11 +16,8 @@ async function generateTechs() {
   await Promise.all([createIndex, createIcons].map((f) => f(usedTechnologies)))
 }
 
-interface TechWithIcon {
-  slug: string
-  title: string
+type TechWithIcon = Omit<Tech, 'hasIcon'> & {
   svg: string | undefined
-  hex: string | undefined
 }
 
 function findUsedTechs(
