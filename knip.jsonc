@@ -25,7 +25,7 @@
       },
       "ignore": [
         // 👇 Maybe used at some point though
-        "src/app/resume-page/technology/custom-icons.ts",
+        "scripts/src/data/extra-tech-icons.ts",
       ],
       "ignoreBinaries": [
         // 👇 Unlisted
