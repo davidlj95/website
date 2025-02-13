@@ -13,7 +13,7 @@ import {
   GET_TECHNOLOGY_FROM_SLUG,
   GetTechnologyFromSlug,
 } from './get-technology-from-slug'
-import { makeTechnology } from './__tests__/make-technology'
+import { makeTech } from './__tests__/make-tech'
 
 describe('TechnologyComponent', () => {
   let component: TechnologyComponent
@@ -29,7 +29,7 @@ describe('TechnologyComponent', () => {
     const title = 'dummy title'
     const getTechnologyFromSlug = jasmine
       .createSpy<GetTechnologyFromSlug>()
-      .and.returnValue(makeTechnology({ title }))
+      .and.returnValue(makeTech({ title }))
     ;[fixture, component] = makeSut({
       getTechnologyFromSlug,
       item: DUMMY_ITEM,
@@ -44,7 +44,7 @@ describe('TechnologyComponent', () => {
     beforeEach(() => {
       const getTechnologyFromSlug = jasmine
         .createSpy<GetTechnologyFromSlug>()
-        .and.returnValue(makeTechnology({ hasIcon: true }))
+        .and.returnValue(makeTech({ hasIcon: true }))
       ;[fixture, component] = makeSut({
         getTechnologyFromSlug,
       })
@@ -59,7 +59,7 @@ describe('TechnologyComponent', () => {
     beforeEach(() => {
       const getTechnologyIconFromSlug = jasmine
         .createSpy<GetTechnologyFromSlug>()
-        .and.returnValue(makeTechnology({ hasIcon: false }))
+        .and.returnValue(makeTech({ hasIcon: false }))
       ;[fixture, component] = makeSut({
         getTechnologyFromSlug: getTechnologyIconFromSlug,
       })
@@ -87,7 +87,7 @@ function makeSut(
           // eslint-disable-next-line jasmine/no-unsafe-spy
           jasmine
             .createSpy('getTechnologyFromSlug')
-            .and.returnValue(makeTechnology()),
+            .and.returnValue(makeTech()),
       ),
     ],
   })

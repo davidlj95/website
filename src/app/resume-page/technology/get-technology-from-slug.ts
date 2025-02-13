@@ -1,9 +1,8 @@
 import { InjectionToken } from '@angular/core'
-import SIMPLE_ICONS_JSON from '@/data/generated/simple-icons.json'
-import { Technology } from './technology'
-import { SimpleIconsIndex } from '@/data/simple-icons'
+import TECHS_JSON from '@/data/generated/techs.json'
+import { Tech, TechsIndex } from '@/data/techs'
 
-export type GetTechnologyFromSlug = (slug: string) => Technology
+export type GetTechnologyFromSlug = (slug: string) => Tech
 export const GET_TECHNOLOGY_FROM_SLUG =
   new InjectionToken<GetTechnologyFromSlug>(
     /* istanbul ignore next */
@@ -11,8 +10,8 @@ export const GET_TECHNOLOGY_FROM_SLUG =
     { factory: () => (slug) => TECH_BY_SLUG.get(slug)! },
   )
 
-const TECH_BY_SLUG = new Map<string, Technology>(
-  (SIMPLE_ICONS_JSON as unknown as SimpleIconsIndex).map(
+const TECH_BY_SLUG = new Map<string, Tech>(
+  (TECHS_JSON as unknown as TechsIndex).map(
     ([slug, title, hasIcon, hex]) =>
       [
         slug,

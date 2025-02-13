@@ -16,7 +16,7 @@ jobs:
       - name: Generate data
         run: |
           pnpm run --filter scripts build
-          pnpm run --filter scripts generate:simple-icons
+          pnpm run --filter scripts generate:techs
       - name: Run linter
         run: pnpm run lint:code:typed
 

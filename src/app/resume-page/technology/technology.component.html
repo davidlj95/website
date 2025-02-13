@@ -2,7 +2,7 @@
   @let tech = _tech();
   @if (tech.hasIcon) {
     <span class="icon">
-      <app-simple-icon [icon]="tech"></app-simple-icon>
+      <app-simple-icon [slug]="tech.slug" [hex]="tech.hex"></app-simple-icon>
     </span>
   }
   <span>{{ tech.title }}</span>
