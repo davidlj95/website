@@ -1,9 +1,9 @@
 <div class="wrap">
-  @let icon = _icon();
-  @if (icon) {
+  @let tech = _tech();
+  @if (tech.hasIcon) {
     <span class="icon">
-      <app-simple-icon [icon]="icon"></app-simple-icon>
+      <app-simple-icon [icon]="tech"></app-simple-icon>
     </span>
   }
-  <span>{{ _displayName() }}</span>
+  <span>{{ tech.title }}</span>
 </div>

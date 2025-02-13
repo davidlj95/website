@@ -7,20 +7,23 @@ import { objectToJson } from './utils/object-to-json'
 import { isMain } from './utils/is-main'
 import { Log } from './utils/log'
 import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
+import { EXTRA_TECHS } from './data/extra-techs'
+import { SimpleIconsIndex } from 'data/simple-icons'
 
 async function generateSimpleIcons() {
   Log.info('Generating simple icons exports')
   const neededIcons = findNeededIcons(JSON_RESUME.projects)
   await Promise.all(
-    [createDisplayNameAndColorsFile, createIconFiles].map((f) =>
-      f(neededIcons),
-    ),
+    [createIndexFile, createIconFiles].map((f) => f(neededIcons)),
   )
 }
 
+type Icon = Pick<SimpleIcon, 'slug' | 'title'> &
+  Partial<Pick<SimpleIcon, 'hex' | 'svg'>>
+
 function findNeededIcons(
   projects: typeof JSON_RESUME.projects,
-): readonly SimpleIcon[] {
+): readonly Icon[] {
   if (projects.length > 0) {
     Log.info('Found %d projects', projects.length)
   } else {
@@ -41,34 +44,51 @@ function findNeededIcons(
   ]
   Log.item('Where %d are unique technology slugs', technologySlugs.length)
 
-  const allIcons = Object.values(icons) as readonly SimpleIcon[]
-  Log.info('Loaded %d simple icons', allIcons.length)
-
-  const neededIcons = allIcons.filter((icon) =>
-    technologySlugs.includes(icon.slug),
+  const iconsBySlug = new Map<string, SimpleIcon>(
+    (Object.values(icons) as readonly SimpleIcon[]).map((icon) => [
+      icon.slug,
+      icon,
+    ]),
   )
-  Log.info('%d icons match technology slugs', neededIcons.length)
-  return neededIcons
+  Log.info('Loaded %d simple icons', iconsBySlug.size)
+
+  const extraTechs = new Map<string, string>(EXTRA_TECHS)
+  Log.info('Loaded %d extra techs definitions', extraTechs.size)
+
+  return technologySlugs.map<Icon>((slug) => {
+    const icon = iconsBySlug.get(slug)
+    if (icon) {
+      return icon
+    }
+    const displayName = extraTechs.get(slug)
+    if (displayName) {
+      return {
+        slug,
+        title: displayName,
+      }
+    }
+    Log.error(`'${slug}' tech has no icon neither display name`)
+    process.exit(1)
+  })
 }
 
-async function createDisplayNameAndColorsFile(
-  neededIcons: readonly SimpleIcon[],
-) {
+async function createIndexFile(icons: readonly Icon[]) {
   const filepath = resolve(
     await getAndCreateGeneratedDataDir(),
     'simple-icons.json',
   )
-  Log.info('Writing display name and colors file')
+  Log.info('Writing index file')
   Log.item(filepath)
-  const displayNameAndColorsJson = neededIcons.map(({ slug, title, hex }) => [
+  const indexJson = icons.map(({ slug, title, hex, svg }) => [
     slug,
     title,
-    hex,
-  ])
-  return writeFile(filepath, objectToJson(displayNameAndColorsJson))
+    svg !== undefined,
+    hex ?? null,
+  ]) satisfies SimpleIconsIndex
+  return writeFile(filepath, objectToJson(indexJson))
 }
 
-async function createIconFiles(neededIcons: readonly SimpleIcon[]) {
+async function createIconFiles(icons: readonly Icon[]) {
   Log.info('Writing icon files')
   const SIMPLE_ICONS_DIR = join(
     await getAndCreateGeneratedDataDir(),
@@ -77,9 +97,11 @@ async function createIconFiles(neededIcons: readonly SimpleIcon[]) {
   Log.item(SIMPLE_ICONS_DIR)
   await mkdir(SIMPLE_ICONS_DIR, { recursive: true })
   await Promise.all(
-    neededIcons.map((icon) =>
-      writeFile(join(SIMPLE_ICONS_DIR, `${icon.slug}.svg`), icon.svg),
-    ),
+    icons.map((icon) => {
+      if (icon.svg) {
+        return writeFile(join(SIMPLE_ICONS_DIR, `${icon.slug}.svg`), icon.svg)
+      }
+    }),
   )
 }
 

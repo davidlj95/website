@@ -1,4 +1,4 @@
-export const CUSTOM_DISPLAY_NAME_ENTRIES: readonly [string, string][] = [
+export const EXTRA_TECHS: readonly [string, string][] = [
   ['microsoftword', 'Microsoft Word'],
   ['rspec', 'RSpec'],
   ['zenqms', 'ZenQMS'],
