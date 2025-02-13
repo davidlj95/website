@@ -17,7 +17,6 @@ export const EXTRA_TECH_TITLES: readonly [string, string][] = [
   ['pyqt', 'PyQt'],
   ['java', 'Java'],
   ['html', 'HTML'],
-  ['css', 'CSS'],
   // 👇 https://github.com/simple-icons/simple-icons/issues/11236
   ['visualstudiocode', 'Visual Studio Code'],
 ]

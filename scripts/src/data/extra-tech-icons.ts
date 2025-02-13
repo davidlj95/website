@@ -9,7 +9,7 @@
 // noinspection JSUnusedGlobalSymbols
 import { SimpleIcon } from 'simple-icons'
 
-export const EXTRA_ICONS: readonly Partial<SimpleIcon>[] = [
+export const EXTRA_TECH_ICONS: readonly Partial<SimpleIcon>[] = [
   // From https://github.com/rspec/rspec.github.io/blob/source/logo.svg
   // Creator doesn't want it to be modified:
   // it can't be made monochrome to be included in simple icons
