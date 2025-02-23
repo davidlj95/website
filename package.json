@@ -128,7 +128,7 @@
     "release-it": "18.1.2",
     "subset-font": "2.4.0",
     "typescript": "5.6.3",
-    "typescript-eslint": "8.24.0"
+    "typescript-eslint": "8.24.1"
   },
   "packageManager": "pnpm@10.4.0",
   "publishConfig": {
