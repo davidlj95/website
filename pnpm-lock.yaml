@@ -91,8 +91,8 @@ importers:
         specifier: 19.5.0
         version: 19.5.0
       '@cypress/code-coverage':
-        specifier: 3.13.11
-        version: 3.13.11(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.0.3)(webpack@5.96.1(esbuild@0.24.0))
+        specifier: 3.13.12
+        version: 3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.0.3)(webpack@5.96.1(esbuild@0.24.0))
       '@eslint/compat':
         specifier: 1.2.7
         version: 1.2.7(eslint@9.20.1(jiti@2.4.2))
@@ -1186,8 +1186,8 @@ packages:
       conventional-commits-parser:
         optional: true
 
-  '@cypress/code-coverage@3.13.11':
-    resolution: {integrity: sha512-mX5MLnfIGwtd4pAEzTBMfwnQYAT/z8sINq4DA10DNhj8ZkF4/foSxosToFbtNkchTtZiKGrhWS+6LZL2qsi+bw==}
+  '@cypress/code-coverage@3.13.12':
+    resolution: {integrity: sha512-JPNlzk9xgCXRIcFCGoSy0qx3FFcaJOGjGkRAPYewYWLukZbcFSjxfNuoK6IMkaJb+miWdzLV0tsAko9eQDNBiA==}
     peerDependencies:
       '@babel/core': ^7.0.1
       '@babel/preset-env': ^7.0.0
@@ -9242,7 +9242,7 @@ snapshots:
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.0.0
 
-  '@cypress/code-coverage@3.13.11(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.0.3)(webpack@5.96.1(esbuild@0.24.0))':
+  '@cypress/code-coverage@3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.0.3)(webpack@5.96.1(esbuild@0.24.0))':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/preset-env': 7.26.0(@babel/core@7.24.5)
