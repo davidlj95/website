@@ -68,7 +68,7 @@
     "@angular/platform-browser-dynamic": "19.0.0",
     "@angular/platform-server": "19.0.0",
     "@angular/router": "19.0.0",
-    "@angular/ssr": "19.0.1",
+    "@angular/ssr": "19.2.0",
     "@davidlj95/ngx-meta": "1.0.0-beta.36",
     "@fontsource/roboto": "5.1.1",
     "@fontsource/roboto-mono": "5.1.1",
@@ -83,8 +83,8 @@
     "zone.js": "0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "19.0.1",
-    "@angular/cli": "19.0.1",
+    "@angular-devkit/build-angular": "19.2.0",
+    "@angular/cli": "19.2.0",
     "@angular/compiler-cli": "19.0.0",
     "@commitlint/cli": "19.7.1",
     "@commitlint/config-conventional": "19.7.1",
