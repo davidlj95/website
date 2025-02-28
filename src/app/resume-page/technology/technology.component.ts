@@ -5,7 +5,7 @@ import {
   GET_TECHNOLOGY_FROM_SLUG,
   GetTechnologyFromSlug,
 } from './get-technology-from-slug'
-import { Technology } from './technology'
+import { Tech } from '@/data/techs'
 
 @Component({
   selector: 'app-technology',
@@ -15,7 +15,7 @@ import { Technology } from './technology'
 })
 export class TechnologyComponent {
   readonly item = input.required<TechnologyItem>()
-  protected readonly _tech = computed<Technology>(() =>
+  protected readonly _tech = computed<Tech>(() =>
     this._getTechFromSlug(this.item().slug),
   )
 

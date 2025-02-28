@@ -9,7 +9,6 @@ import { MockProvider } from 'ng-mocks'
 import { EMPTY, of } from 'rxjs'
 import { SVG } from '@/test/mocks/svg'
 import { innerHtml } from '@/test/helpers/inner-html'
-import { SimpleIcon } from '@/common/simple-icon/simple-icon'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
 describe('SimpleIconComponent', () => {
@@ -23,17 +22,18 @@ describe('SimpleIconComponent', () => {
   })
 
   it('should load the icon using the loader', () => {
+    const slug = 'slug'
     const simpleIconLoader = jasmine
       .createSpy<SimpleIconLoader>()
       .and.returnValue(EMPTY)
-    ;[fixture, component] = makeSut({ simpleIconLoader, icon: DUMMY_ICON })
+    ;[fixture, component] = makeSut({ simpleIconLoader, slug })
 
-    expect(simpleIconLoader).toHaveBeenCalledOnceWith(DUMMY_ICON.slug)
+    expect(simpleIconLoader).toHaveBeenCalledOnceWith(slug)
   })
 
   it('should set the fill color', () => {
     const hex = '001020'
-    ;[fixture, component] = makeSut({ icon: { ...DUMMY_ICON, hex } })
+    ;[fixture, component] = makeSut({ hex })
 
     expect(fixture.debugElement.styles['fill']).toEqual('rgb(0, 16, 32)')
   })
@@ -62,15 +62,21 @@ describe('SimpleIconComponent', () => {
   })
 })
 
-const DUMMY_ICON: SimpleIcon = { slug: 'dummy', hex: '000000' }
 const makeSut = (
-  opts: { simpleIconLoader?: SimpleIconLoader; icon?: SimpleIcon } = {},
+  opts: {
+    simpleIconLoader?: SimpleIconLoader
+    slug?: string
+    hex?: string | undefined
+  } = {},
 ) => {
   const [fixture, component] = componentTestSetup(SimpleIconComponent, {
     providers: [
       MockProvider(SIMPLE_ICON_LOADER, opts.simpleIconLoader ?? (() => EMPTY)),
     ],
   })
-  setFixtureInputsAndDetectChanges(fixture, { icon: opts.icon ?? DUMMY_ICON })
+  setFixtureInputsAndDetectChanges(fixture, {
+    slug: opts.slug ?? 'dummy slug',
+    hex: opts.hex,
+  })
   return [fixture, component] as const
 }
