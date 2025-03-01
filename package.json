@@ -130,7 +130,7 @@
     "typescript": "5.6.3",
     "typescript-eslint": "8.24.1"
   },
-  "packageManager": "pnpm@10.4.0",
+  "packageManager": "pnpm@10.5.2",
   "publishConfig": {
     "access": "public"
   }
