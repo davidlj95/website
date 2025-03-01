@@ -89,7 +89,7 @@ importers:
         version: 19.5.0
       '@cypress/code-coverage':
         specifier: 3.13.12
-        version: 3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.0.3)(webpack@5.96.1(esbuild@0.24.0))
+        version: 3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.1.0)(webpack@5.96.1(esbuild@0.24.0))
       '@eslint/compat':
         specifier: 1.2.7
         version: 1.2.7(eslint@9.20.1(jiti@2.4.2))
@@ -133,8 +133,8 @@ importers:
         specifier: 0.4.0
         version: 0.4.0
       cypress:
-        specifier: 14.0.3
-        version: 14.0.3
+        specifier: 14.1.0
+        version: 14.1.0
       eslint:
         specifier: 9.20.1
         version: 9.20.1(jiti@2.4.2)
@@ -3517,8 +3517,8 @@ packages:
   custom-event@1.0.1:
     resolution: {integrity: sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==}
 
-  cypress@14.0.3:
-    resolution: {integrity: sha512-yIdvobANw3kS+KF/t5vwjjPNufBA8ux7iQHaWxPTkUw2yCKI72m9mKM24eOwE84Wk4ALPsSvEcGbDrwgmhr4RA==}
+  cypress@14.1.0:
+    resolution: {integrity: sha512-pPPj8Uu9NwjaaiXAEcjYZZmgsq6v9Zs1Nw6a+zRF+ANgYSNhH4S32SjFRsvMcuOHR/8dp4GBJhBPqIPSs+TxaA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
 
@@ -9242,14 +9242,14 @@ snapshots:
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.0.0
 
-  '@cypress/code-coverage@3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.0.3)(webpack@5.96.1(esbuild@0.24.0))':
+  '@cypress/code-coverage@3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.1.0)(webpack@5.96.1(esbuild@0.24.0))':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/preset-env': 7.26.0(@babel/core@7.24.5)
       '@cypress/webpack-preprocessor': 6.0.2(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(webpack@5.96.1(esbuild@0.24.0))
       babel-loader: 9.2.1(@babel/core@7.24.5)(webpack@5.96.1)
       chalk: 4.1.2
-      cypress: 14.0.3
+      cypress: 14.1.0
       dayjs: 1.11.13
       debug: 4.4.0(supports-color@8.1.1)
       execa: 4.1.0
@@ -11773,7 +11773,7 @@ snapshots:
 
   custom-event@1.0.1: {}
 
-  cypress@14.0.3:
+  cypress@14.1.0:
     dependencies:
       '@cypress/request': 3.0.7
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
