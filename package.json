@@ -99,7 +99,7 @@
     "@types/node": "22.13.5",
     "@types/subset-font": "2.3.0",
     "angular-eslint": "19.0.2",
-    "babel-loader": "9.2.1",
+    "babel-loader": "10.0.0",
     "babel-plugin-istanbul": "7.0.0",
     "browser-sync": "3.0.3",
     "bundlewatch": "0.4.0",

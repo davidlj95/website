@@ -89,7 +89,7 @@ importers:
         version: 19.5.0
       '@cypress/code-coverage':
         specifier: 3.13.12
-        version: 3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.1.0)(webpack@5.96.1(esbuild@0.24.0))
+        version: 3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@10.0.0(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.1.0)(webpack@5.96.1(esbuild@0.24.0))
       '@eslint/compat':
         specifier: 1.2.7
         version: 1.2.7(eslint@9.21.0(jiti@2.4.2))
@@ -121,8 +121,8 @@ importers:
         specifier: 19.0.2
         version: 19.0.2(chokidar@4.0.1)(eslint@9.21.0(jiti@2.4.2))(typescript-eslint@8.25.0(eslint@9.21.0(jiti@2.4.2))(typescript@5.6.3))(typescript@5.6.3)
       babel-loader:
-        specifier: 9.2.1
-        version: 9.2.1(@babel/core@7.24.5)(webpack@5.96.1)
+        specifier: 10.0.0
+        version: 10.0.0(@babel/core@7.24.5)(webpack@5.96.1)
       babel-plugin-istanbul:
         specifier: 7.0.0
         version: 7.0.0
@@ -2904,6 +2904,13 @@ packages:
 
   b4a@1.6.6:
     resolution: {integrity: sha512-5Tk1HLk6b6ctmjIkAcU/Ujv/1WqiDl0F0JdRCR80VsOcUlHcu7pWeWRlOqQLHfDEsVx9YH/aif5AG4ehoCtTmg==}
+
+  babel-loader@10.0.0:
+    resolution: {integrity: sha512-z8jt+EdS61AMw22nSfoNJAZ0vrtmhPRVi6ghL3rCeRZI8cdNYFiV5xeV3HbE7rlZZNmGH8BVccwWt8/ED0QOHA==}
+    engines: {node: ^18.20.0 || ^20.10.0 || >=22.0.0}
+    peerDependencies:
+      '@babel/core': ^7.12.0
+      webpack: '>=5.61.0'
 
   babel-loader@9.2.1:
     resolution: {integrity: sha512-fqe8naHt46e0yIdkjUZYqddSXfej3AHajX+CSO5X7oy0EmPc6o5Xh+RClNoHjnieWz9AW4kZxW9yyFMhVB1QLA==}
@@ -9238,12 +9245,12 @@ snapshots:
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.0.0
 
-  '@cypress/code-coverage@3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.1.0)(webpack@5.96.1(esbuild@0.24.0))':
+  '@cypress/code-coverage@3.13.12(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@10.0.0(@babel/core@7.24.5)(webpack@5.96.1))(cypress@14.1.0)(webpack@5.96.1(esbuild@0.24.0))':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/preset-env': 7.26.0(@babel/core@7.24.5)
-      '@cypress/webpack-preprocessor': 6.0.2(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(webpack@5.96.1(esbuild@0.24.0))
-      babel-loader: 9.2.1(@babel/core@7.24.5)(webpack@5.96.1)
+      '@cypress/webpack-preprocessor': 6.0.2(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@10.0.0(@babel/core@7.24.5)(webpack@5.96.1))(webpack@5.96.1(esbuild@0.24.0))
+      babel-loader: 10.0.0(@babel/core@7.24.5)(webpack@5.96.1)
       chalk: 4.1.2
       cypress: 14.1.0
       dayjs: 1.11.13
@@ -9278,11 +9285,11 @@ snapshots:
       tunnel-agent: 0.6.0
       uuid: 8.3.2
 
-  '@cypress/webpack-preprocessor@6.0.2(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1))(webpack@5.96.1(esbuild@0.24.0))':
+  '@cypress/webpack-preprocessor@6.0.2(@babel/core@7.24.5)(@babel/preset-env@7.26.0(@babel/core@7.24.5))(babel-loader@10.0.0(@babel/core@7.24.5)(webpack@5.96.1))(webpack@5.96.1(esbuild@0.24.0))':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/preset-env': 7.26.0(@babel/core@7.24.5)
-      babel-loader: 9.2.1(@babel/core@7.24.5)(webpack@5.96.1)
+      babel-loader: 10.0.0(@babel/core@7.24.5)(webpack@5.96.1)
       bluebird: 3.7.1
       debug: 4.4.0(supports-color@8.1.1)
       lodash: 4.17.21
@@ -10974,11 +10981,10 @@ snapshots:
 
   b4a@1.6.6: {}
 
-  babel-loader@9.2.1(@babel/core@7.24.5)(webpack@5.96.1):
+  babel-loader@10.0.0(@babel/core@7.24.5)(webpack@5.96.1):
     dependencies:
       '@babel/core': 7.24.5
-      find-cache-dir: 4.0.0
-      schema-utils: 4.2.0
+      find-up: 5.0.0
       webpack: 5.96.1(esbuild@0.24.0)
 
   babel-loader@9.2.1(@babel/core@7.26.0)(webpack@5.96.1(esbuild@0.24.0)):
