@@ -6,7 +6,7 @@ export const maybeLoadConsoleEasterEgg = () => {
   const document = inject(DOCUMENT)
   const isMobile = inject(IS_MOBILE)
   afterNextRender({
-    read: () => {
+    write: () => {
       if (isMobile()) {
         return
       }
