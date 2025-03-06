@@ -3,7 +3,6 @@ import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
 import { METADATA } from '@/data/metadata'
 import { SPORTS_PATH } from './sports-page.routes'
-import { environment } from '../../environments'
 import { SportsPageComponent } from './sports-page.component'
 
 export const routes: Routes = [
@@ -14,7 +13,7 @@ export const routes: Routes = [
       meta: {
         title: `👟 Sports | ${METADATA.nickname}`,
         description: "Let's play some padel! Or go running together 🏃",
-        canonicalUrl: new URL(SPORTS_PATH + '/', environment.appBaseUrl),
+        canonicalUrl: SPORTS_PATH,
       },
     } satisfies NgxMetaRouteData<GlobalMetadata>,
   },

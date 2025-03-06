@@ -12,7 +12,7 @@ export const resumePageRoutes: Routes = [
     data: {
       meta: {
         title: `Resume | ${METADATA.nickname}`,
-        canonicalUrl: new URL(RESUME_PATH, environment.appBaseUrl),
+        canonicalUrl: RESUME_PATH,
         description: METADATA.description,
         image: {
           url: new URL('images/misc/og.jpg', environment.appBaseUrl),
