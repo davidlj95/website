@@ -14,6 +14,7 @@ import { EnvironmentProviders, Provider } from '@angular/core'
 import { environment } from '../environments'
 import { METADATA } from '@/data/metadata'
 
+/** @visibleForTesting **/
 export const titleFormatter: TitleFormatter = (title) =>
   `${title} | ${METADATA.nickname}`
 export const APP_METADATA_PROVIDERS: readonly (
