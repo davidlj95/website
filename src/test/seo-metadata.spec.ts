@@ -4,7 +4,10 @@ import { TestBed } from '@angular/core/testing'
 import { EmptyComponent } from './helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { provideRouter } from '@angular/router'
-import { APP_METADATA_PROVIDERS } from '../app/app.metadata-imports'
+import {
+  APP_METADATA_PROVIDERS,
+  titleFormatter,
+} from '../app/app.metadata-imports'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata, MetadataValues } from '@davidlj95/ngx-meta/core'
 import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
@@ -30,7 +33,6 @@ describe('App SEO metadata', () => {
     })
 
     describe('Standard metas', () => {
-      shouldSetTitle(METADATA_DEFAULTS.title)
       shouldSetHtmlLangAttribute(METADATA_DEFAULTS.locale)
       shouldIncludeMetaWithName(
         'application-name',
@@ -110,7 +112,15 @@ describe('App SEO metadata', () => {
 
     // eslint-disable-next-line jasmine/no-suite-dupes
     describe('Standard metas', () => {
-      shouldSetTitle(routeMetadata.title)
+      it('should set title', () => {
+        const titleElement = headElement.querySelector('title')
+
+        expect(titleElement).not.toBeNull()
+        expect(titleElement?.innerText).toEqual(
+          titleFormatter(routeMetadata.title),
+        )
+      })
+
       shouldIncludeMetaWithName('description', routeMetadata.description)
       shouldIncludeMetaWithName(
         'keywords',
@@ -135,7 +145,10 @@ describe('App SEO metadata', () => {
 
     // eslint-disable-next-line jasmine/no-suite-dupes
     describe('Open Graph', () => {
-      shouldIncludeMetaWithProperty('og:title', routeMetadata.title)
+      shouldIncludeMetaWithProperty(
+        'og:title',
+        titleFormatter(routeMetadata.title),
+      )
       shouldIncludeMetaWithProperty(
         'og:url',
         routeMetadata.canonicalUrl.toString(),
@@ -162,7 +175,10 @@ describe('App SEO metadata', () => {
     })
 
     describe('Twitter', () => {
-      shouldIncludeMetaWithName('twitter:title', routeMetadata.title)
+      shouldIncludeMetaWithName(
+        'twitter:title',
+        titleFormatter(routeMetadata.title),
+      )
       shouldIncludeMetaWithName(
         'twitter:description',
         routeMetadata.description,
@@ -193,15 +209,6 @@ describe('App SEO metadata', () => {
   //   )
   //   ensureMetaTagPresentWithName('facebook-domain-verification')
   // })
-
-  function shouldSetTitle(expectedTitle: string) {
-    it('should set title', () => {
-      const titleElement = headElement.querySelector('title')
-
-      expect(titleElement).not.toBeNull()
-      expect(titleElement?.innerText).toEqual(expectedTitle)
-    })
-  }
 
   function shouldSetHtmlLangAttribute(expectedLocale: string) {
     it("should set HTML element's lang attribute", () => {

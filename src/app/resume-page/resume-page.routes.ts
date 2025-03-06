@@ -11,7 +11,7 @@ export const resumePageRoutes: Routes = [
     component: ResumePageComponent,
     data: {
       meta: {
-        title: `Resume | ${METADATA.nickname}`,
+        title: `Resume`,
         canonicalUrl: RESUME_PATH,
         description: METADATA.description,
         image: {
