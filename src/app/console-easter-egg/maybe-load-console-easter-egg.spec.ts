@@ -50,5 +50,6 @@ const makeSut = ({ isMobile }: { isMobile: boolean }) => {
       maybeLoadConsoleEasterEgg()
     }
   }
-  TestBed.createComponent(ExampleComponent)
+  const fixture = TestBed.createComponent(ExampleComponent)
+  fixture.detectChanges()
 }
