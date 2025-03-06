@@ -4,7 +4,6 @@ import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
 import { METADATA } from '@/data/metadata'
 import { CALENDAR_PATH } from './calendar-page.routes'
-import { environment } from '../../environments'
 
 export const routes: Routes = [
   {
@@ -14,7 +13,7 @@ export const routes: Routes = [
       meta: {
         title: `📅 Calendar | ${METADATA.nickname}`,
         description: "Book an appointment with me here. Let's hang out!",
-        canonicalUrl: new URL(CALENDAR_PATH + '/', environment.appBaseUrl),
+        canonicalUrl: CALENDAR_PATH,
       },
     } satisfies NgxMetaRouteData<GlobalMetadata>,
   },
