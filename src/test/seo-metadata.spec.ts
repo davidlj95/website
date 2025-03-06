@@ -5,9 +5,10 @@ import { EmptyComponent } from './helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { provideRouter } from '@angular/router'
 import {
-  APP_METADATA_PROVIDERS,
+  METADATA_DEFAULTS,
+  METADATA_PROVIDERS,
   titleFormatter,
-} from '../app/app.metadata-imports'
+} from '../app/app.metadata'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { GlobalMetadata, MetadataValues } from '@davidlj95/ngx-meta/core'
 import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
@@ -19,7 +20,6 @@ import {
   TWITTER_CARD_TYPE_SUMMARY,
   TwitterCardMetadata,
 } from '@davidlj95/ngx-meta/twitter-card'
-import { METADATA_DEFAULTS } from '../app/app.metadata-defaults'
 
 describe('App SEO metadata', () => {
   let headElement: HTMLHeadElement
@@ -260,7 +260,7 @@ describe('App SEO metadata', () => {
 async function makeSut(opts: { routeMetadata?: MetadataValues } = {}) {
   TestBed.configureTestingModule({
     providers: [
-      APP_METADATA_PROVIDERS,
+      METADATA_PROVIDERS,
       provideRouter([
         {
           path: '',

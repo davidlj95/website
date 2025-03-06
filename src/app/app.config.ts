@@ -1,6 +1,6 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core'
 import { provideRouter } from '@angular/router'
-import { APP_METADATA_PROVIDERS } from './app.metadata-imports'
+import { METADATA_PROVIDERS } from './app.metadata'
 import { routes } from './app.routes'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import {
@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideHttpClient(),
     provideAnimationsAsync(),
-    ...APP_METADATA_PROVIDERS,
+    ...METADATA_PROVIDERS,
     provideTrailingSlashUrlSerializer(),
   ],
 }
