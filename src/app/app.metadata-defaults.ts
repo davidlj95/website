@@ -11,7 +11,6 @@ import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
 import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
 
 export const METADATA_DEFAULTS = {
-  title: METADATA.siteName,
   locale: 'en',
   applicationName: METADATA.siteName,
   standard: {
