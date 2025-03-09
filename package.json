@@ -98,7 +98,7 @@
     "@types/jasmine": "5.1.7",
     "@types/node": "22.13.9",
     "@types/subset-font": "2.3.0",
-    "angular-eslint": "19.2.0",
+    "angular-eslint": "19.2.1",
     "babel-loader": "10.0.0",
     "babel-plugin-istanbul": "7.0.0",
     "browser-sync": "3.0.3",
