@@ -121,7 +121,7 @@
     "knip": "5.45.0",
     "lint-staged": "15.4.3",
     "liquidjs": "10.21.0",
-    "ng-mocks": "14.13.2",
+    "ng-mocks": "14.13.3",
     "nyc": "17.1.0",
     "prettier": "3.5.3",
     "release-it": "18.1.2",
