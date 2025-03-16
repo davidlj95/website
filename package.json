@@ -90,7 +90,7 @@
     "@commitlint/types": "19.8.0",
     "@cypress/code-coverage": "3.13.12",
     "@eslint/compat": "1.2.7",
-    "@fontsource-variable/material-symbols-outlined": "5.2.6",
+    "@fontsource-variable/material-symbols-outlined": "5.2.7",
     "@lhci/cli": "0.14.0",
     "@release-it/conventional-changelog": "10.0.0",
     "@types/compression": "1.7.5",

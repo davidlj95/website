@@ -94,8 +94,8 @@ importers:
         specifier: 1.2.7
         version: 1.2.7(eslint@9.22.0(jiti@2.4.2))
       '@fontsource-variable/material-symbols-outlined':
-        specifier: 5.2.6
-        version: 5.2.6
+        specifier: 5.2.7
+        version: 5.2.7
       '@lhci/cli':
         specifier: 0.14.0
         version: 0.14.0(encoding@0.1.13)
@@ -1454,8 +1454,8 @@ packages:
     resolution: {integrity: sha512-JubJ5B2pJ4k4yGxaNLdbjrnk9d/iDz6/q8wOilpIowd6PJPgaxCuHBnBszq7Ce2TyMrywm5r4PnKm6V3iiZF+g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/material-symbols-outlined@5.2.6':
-    resolution: {integrity: sha512-l+tHdMGFN5qU9tSFEkAbcuIZr8AxXuP5q+zpksBtI5RyTYy0dW+1tvulO2W35oK4eDSwLEXevjLnXj7vmVrhWQ==}
+  '@fontsource-variable/material-symbols-outlined@5.2.7':
+    resolution: {integrity: sha512-jRCvePWMw92EsI2Oa+hjRAbdMmYjN/My3Su/r1YQRTHhi/sn0RnGWPdKoyVMd1L7ABQVQKqJvW/Go6+J46fpsw==}
 
   '@fontsource/roboto-mono@5.2.5':
     resolution: {integrity: sha512-P1wrUBMFWfr+tuUIY10MzdRTBcl9f011CbZV1fXqcCk40Xmtn91l1V1daVuQ+JPctYEVYazabvaK+sUEThgnyw==}
@@ -7350,7 +7350,7 @@ snapshots:
       '@vitejs/plugin-basic-ssl': 1.2.0(vite@6.2.0(@types/node@22.13.10)(jiti@2.4.2)(less@4.2.2)(sass@1.85.0)(terser@5.39.0)(yaml@2.7.0))
       ansi-colors: 4.1.3
       autoprefixer: 10.4.20(postcss@8.5.2)
-      babel-loader: 9.2.1(@babel/core@7.26.9)(webpack@5.98.0(esbuild@0.25.0))
+      babel-loader: 9.2.1(@babel/core@7.26.9)(webpack@5.98.0)
       browserslist: 4.24.2
       copy-webpack-plugin: 12.0.2(webpack@5.98.0(esbuild@0.25.0))
       css-loader: 7.1.2(webpack@5.98.0(esbuild@0.25.0))
@@ -9434,7 +9434,7 @@ snapshots:
       '@eslint/core': 0.12.0
       levn: 0.4.1
 
-  '@fontsource-variable/material-symbols-outlined@5.2.6': {}
+  '@fontsource-variable/material-symbols-outlined@5.2.7': {}
 
   '@fontsource/roboto-mono@5.2.5': {}
 
@@ -10925,7 +10925,7 @@ snapshots:
       find-up: 5.0.0
       webpack: 5.98.0(esbuild@0.25.0)
 
-  babel-loader@9.2.1(@babel/core@7.26.9)(webpack@5.98.0(esbuild@0.25.0)):
+  babel-loader@9.2.1(@babel/core@7.26.9)(webpack@5.98.0):
     dependencies:
       '@babel/core': 7.26.9
       find-cache-dir: 4.0.0
