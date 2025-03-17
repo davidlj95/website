@@ -199,8 +199,8 @@ importers:
         specifier: 18.1.2
         version: 18.1.2(@types/node@22.13.10)(typescript@5.8.2)
       simple-icons:
-        specifier: 14.10.0
-        version: 14.10.0
+        specifier: 14.11.0
+        version: 14.11.0
       subset-font:
         specifier: 2.4.0
         version: 2.4.0
@@ -6361,8 +6361,8 @@ packages:
     resolution: {integrity: sha512-PHMifhh3EN4loMcHCz6l3v/luzgT3za+9f8subGgeMNjbJjzH4Ij/YoX3Gvu+kaouJRIlVdTHHCREADYf+ZteA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  simple-icons@14.10.0:
-    resolution: {integrity: sha512-B5Uip8C0jQ0Mux9kDDmaveexwYS+ATVMaRZmaOaJJqbi+QpRBOHRCjGAeJ4RG7DYeoAkPvEOWRcHssUQ87db7g==}
+  simple-icons@14.11.0:
+    resolution: {integrity: sha512-wZmG7JXVhFrobLIUum20blb9mvW3TfUcSLP9bOQ42Ul37GYc/59armh2wKySHzhN1/NaTan5VUQmr/9wYseRXA==}
     engines: {node: '>=0.12.18'}
 
   slash@3.0.0:
@@ -14985,7 +14985,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  simple-icons@14.10.0: {}
+  simple-icons@14.11.0: {}
 
   slash@3.0.0: {}
 
