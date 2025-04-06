@@ -127,7 +127,7 @@
     "release-it": "18.1.2",
     "simple-icons": "14.12.0",
     "subset-font": "2.4.0",
-    "typescript": "5.8.2",
+    "typescript": "5.8.3",
     "typescript-eslint": "8.28.0"
   },
   "packageManager": "pnpm@10.7.1",
