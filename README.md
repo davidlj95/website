@@ -1,6 +1,6 @@
 # @davidlj95/website
 
-[![Main CI/CD workflow](https://github.com/davidlj95/ngx/actions/workflows/main.yml/badge.svg)](https://github.com/davidlj95/ngx/actions/workflows/main.yml)
+[![CI/CD workflow](https://github.com/davidlj95/ngx/actions/workflows/cicd.yml/badge.svg)](https://github.com/davidlj95/ngx/actions/workflows/cicd.yml)
 [![Codecov](https://codecov.io/gh/davidlj95/website/graph/badge.svg)](https://codecov.io/gh/davidlj95/website)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/davidlj95/website/main?logo=github&label=Last%20commit&link=https%3A%2F%2Fgithub.com%2Fdavidlj95%2Fwebsite%2Fcommits%2Fmain%2F)](https://github.com/davidlj95/website/commits/main/)
 [![License](https://img.shields.io/github/license/davidlj95/website?label=License&link=https%3A%2F%2Fgithub.com%2Fdavidlj95%2Fwebsite%2Fblob%2Fmain%2FLICENSE)](https://github.com/davidlj95/website/blob/main/LICENSE)
