@@ -1,10 +1,10 @@
-name: Push to main
+name: CI/CD
 
 on:
   push:
-    branches: ['main']
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - main
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -33,6 +33,7 @@ jobs:
       BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
   deploy-gh-pages:
     name: Deploy to GitHub Pages (latest)
+    if: github.event_name == 'push' && github.ref_name == 'refs/heads/main'
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-github-pages.yml
     permissions:
@@ -40,8 +41,16 @@ jobs:
       pages: write
       id-token: write
   deploy-cloudflare-pages:
-    name: Deploy to Cloudflare Pages (pro)
-    if: fromJSON(vars.DEPLOY_TO_PRO_ON_MAIN)
+    name: Deploy to Cloudflare Pages
+    if: |
+      (
+        github.event_name == 'push' &&
+        github.ref == 'refs/heads/main' &&
+        fromJSON(vars.DEPLOY_TO_PRO_ON_MAIN)
+      ) || (
+        github.event_name == 'pull_request' &&
+        !github.event.pull_request.head.repo.fork
+      )
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-cloudflare-pages.yml
     secrets:
@@ -52,6 +61,7 @@ jobs:
       deployments: write
   release:
     name: Release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-release.yml
     permissions:
