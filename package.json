@@ -106,7 +106,7 @@
     "cypress": "14.2.1",
     "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.2",
-    "eslint-plugin-cypress": "4.2.0",
+    "eslint-plugin-cypress": "4.3.0",
     "eslint-plugin-jasmine": "4.2.2",
     "eslint-plugin-json-files": "4.4.2",
     "extensionless": "1.9.9",
