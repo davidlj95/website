@@ -101,7 +101,6 @@
     "angular-eslint": "19.2.1",
     "babel-loader": "10.0.0",
     "babel-plugin-istanbul": "7.0.0",
-    "browser-sync": "3.0.4",
     "bundlewatch": "0.4.0",
     "cypress": "14.3.2",
     "eslint": "9.23.0",
