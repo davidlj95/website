@@ -4,7 +4,8 @@
 @use 'animations';
 
 header {
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: z-index.$header;
   width: 100%;
 

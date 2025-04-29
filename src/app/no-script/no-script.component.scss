@@ -1,28 +1,21 @@
 @use 'borders';
 @use 'margins';
-@use 'header';
 @use 'paddings';
-@use 'z-index';
 @use 'material-symbols';
 
-:host {
-  position: fixed;
-  top: header.$height;
-  width: 100%;
-  z-index: z-index.$no-script;
-}
-
-.contents {
+noscript {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   padding: paddings.$m;
-  gap: margins.$xs;
+  gap: margins.$s;
+
   text-align: center;
-  height: var(--no-script-height);
   background: var(--app-color-toolbar-background);
   @include borders.panel(bottom);
 }
+
 p:first-child {
   display: flex;
   justify-content: center;
