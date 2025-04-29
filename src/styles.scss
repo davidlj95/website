@@ -21,6 +21,9 @@ html {
 }
 
 body {
+  background: var(--sys-color-cdt-base-container);
+  color: var(--sys-color-on-surface);
+
   @include typographies.body-font();
   // Do not allow scroll "bounce" effect
   overscroll-behavior: none;
