@@ -8,6 +8,7 @@ import { NoScriptComponent } from './no-script/no-script.component'
 import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { RouterOutlet } from '@angular/router'
+import { BackgroundComponent } from './background/background.component'
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>
@@ -17,7 +18,12 @@ describe('AppComponent', () => {
     ;[fixture, component] = componentTestSetup(AppComponent, {
       imports: [
         AppComponent,
-        MockComponents(NoScriptComponent, HeaderComponent, ResumePageComponent),
+        MockComponents(
+          BackgroundComponent,
+          NoScriptComponent,
+          HeaderComponent,
+          ResumePageComponent,
+        ),
         RouterOutlet,
       ],
     })
