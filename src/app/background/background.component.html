@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern
+      id="bg"
+      patternUnits="userSpaceOnUse"
+      [attr.width]="t.clientWidth || 720"
+      [attr.height]="t.clientHeight || 290"
+    >
+      <text fill="white" #t>
+        @for (line of _genesisBlock.split('\n'); track line) {
+          <tspan x="0" dy="1em">{{ line }}</tspan>
+        }
+      </text>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)" />
+</svg>

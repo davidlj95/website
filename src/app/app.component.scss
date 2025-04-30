@@ -1,6 +1,17 @@
-:host {
-  display: block;
-  min-height: 100vh;
+@use 'borders';
+
+.site-wrapper {
+  display: flex;
+  justify-content: center;
+
+  > div {
+    flex-grow: 1;
+    background: var(--sys-color-cdt-base-container);
+
+    max-width: 960px;
+    min-height: 100vh;
+    @include borders.panel(left, right);
+  }
 }
 
 router-outlet {

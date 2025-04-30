@@ -1,0 +1,23 @@
+@use 'z-index';
+@use 'typographies';
+
+:host {
+  position: fixed;
+  z-index: z-index.$background;
+  white-space: pre-line;
+  opacity: 0.05;
+}
+
+:host,
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+svg {
+  font-size: 16px;
+
+  text {
+    @include typographies.monospace-font;
+  }
+}

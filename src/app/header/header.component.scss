@@ -2,6 +2,7 @@
 @use 'header';
 @use 'z-index';
 @use 'animations';
+@use 'quirks';
 
 header {
   position: sticky;
@@ -14,6 +15,8 @@ header {
   align-items: center;
   @include borders.panel(bottom);
   background-color: var(--app-color-toolbar-background);
+
+  @include quirks.leftBorderDisappearance;
 
   @include animations.when-motion {
     @include animations.multiple-transitions(
