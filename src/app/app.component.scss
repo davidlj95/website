@@ -1,17 +1,12 @@
 @use 'borders';
 
 .site-wrapper {
-  display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  background: var(--sys-color-cdt-base-container);
 
-  > div {
-    flex-grow: 1;
-    background: var(--sys-color-cdt-base-container);
-
-    max-width: 960px;
-    min-height: 100vh;
-    @include borders.panel(left, right);
-  }
+  max-width: 960px;
+  min-height: 100vh;
+  @include borders.panel(left, right);
 }
 
 router-outlet {
