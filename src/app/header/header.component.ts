@@ -6,7 +6,9 @@ import { NAVIGATION_ITEMS } from './navigation-items'
 import { ToolbarDividerComponent } from './toolbar-divider/toolbar-divider.component'
 
 @Component({
-  selector: 'app-header',
+  //👇 Semantic HTML ftw, sorry Angular guidelines
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   imports: [
