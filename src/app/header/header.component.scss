@@ -4,7 +4,7 @@
 @use 'animations';
 @use 'quirks';
 
-header {
+:host {
   position: sticky;
   top: 0;
   z-index: z-index.$header;
