@@ -46,7 +46,9 @@ $scheme: (
         transparent
       ),
     sys-color-primary-bright: var(--ref-palette-primary50),
+    //👇 App specific
     adorner-border-color: var(--sys-color-neutral-outline),
     img-filter: none,
+    background-fg-color: var(--ref-palette-neutral95),
   ),
 );

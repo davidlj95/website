@@ -18,6 +18,21 @@
 
 html {
   scroll-behavior: smooth;
+
+  //👇 Remove scrollbar. https://stackoverflow.com/a/38994837/3263250
+  //   Prevents centered layout position to vary when scrollbar is shown or hidden
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+
+// Do not allow scroll "bounce" effect
+// In Chrome, it's the `body`, in Firefox, it's the `html`
+html,
+body {
+  overscroll-behavior: none;
 }
 
 body {
@@ -25,8 +40,6 @@ body {
   color: var(--sys-color-on-surface);
 
   @include typographies.body-font();
-  // Do not allow scroll "bounce" effect
-  overscroll-behavior: none;
 
   @include animations.when-motion($hostContext: false) {
     @include animations.multiple-transitions(

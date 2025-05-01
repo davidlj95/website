@@ -1,0 +1,27 @@
+@use 'z-index';
+@use 'typographies';
+@use 'animations';
+
+:host {
+  position: fixed;
+  z-index: z-index.$background;
+}
+
+:host,
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+svg {
+  font-size: 16px;
+
+  text {
+    white-space: pre;
+    fill: var(--background-fg-color);
+    @include typographies.monospace-font;
+    @include animations.when-motion {
+      @include animations.single-transition(fill, animations.$emphasized-style);
+    }
+  }
+}

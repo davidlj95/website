@@ -3,6 +3,7 @@
 @use 'paddings';
 @use 'z-index';
 @use 'animations';
+@use 'quirks';
 
 :host {
   display: block;
@@ -10,7 +11,7 @@
   top: header.$height;
   transform: translateY(-#{borders.$panel-width});
   z-index: z-index.$headers;
-  width: 100%;
+  @include quirks.leftBorderDisappearance;
   padding: paddings.$s paddings.$l;
   @include borders.panel(bottom, top);
   background-color: var(--app-color-toolbar-background);
