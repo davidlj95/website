@@ -6,6 +6,8 @@ import { By } from '@angular/platform-browser'
 describe('BackgroundComponent', () => {
   let component: BackgroundComponent
   let fixture: ComponentFixture<BackgroundComponent>
+  // 👇 SVG text size offset so that there's not empty space between repetitions
+  const HEIGHT_OFFSET = -3
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -31,6 +33,10 @@ describe('BackgroundComponent', () => {
 
     expect(svgPattern.attributes['height'])
       .withContext('height')
-      .toEqual((svgText.nativeElement as Element).clientHeight.toString())
+      .toEqual(
+        (
+          (svgText.nativeElement as Element).clientHeight + HEIGHT_OFFSET
+        ).toString(),
+      )
   })
 })

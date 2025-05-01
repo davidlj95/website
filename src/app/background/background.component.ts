@@ -12,7 +12,7 @@ export class BackgroundComponent {
   //👇 Could be calculated on the client side.
   //   However, this component is part of the largest contentful paint (LCP)
   //   So calculating it in advance. This way, there are no changes when hydrating
-  protected readonly _textSize = { width: 720, height: 293 }
+  protected readonly _textSize = { width: 720, height: 290 }
 }
 
 // https://gist.github.com/igorgatis/d294fe714a4f523ac3a3
