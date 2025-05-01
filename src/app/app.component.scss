@@ -1,12 +1,19 @@
 @use 'borders';
+@use 'animations';
 
 .site-wrapper {
   margin: 0 auto;
-  background: var(--sys-color-cdt-base-container);
+  background-color: var(--sys-color-cdt-base-container);
 
   max-width: 960px;
   min-height: 100vh;
   @include borders.panel(left, right);
+  @include animations.when-motion {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
 }
 
 router-outlet {

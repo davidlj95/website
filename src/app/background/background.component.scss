@@ -20,5 +20,8 @@ svg {
   text {
     fill: var(--background-fg-color);
     @include typographies.monospace-font;
+    @include animations.when-motion {
+      @include animations.single-transition(fill, animations.$emphasized-style);
+    }
   }
 }
