@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { NoScriptComponent } from './no-script.component'
+import { NoJsMessageComponent } from './no-js-message.component'
 
-describe('NoScriptComponent', () => {
-  let component: NoScriptComponent
-  let fixture: ComponentFixture<NoScriptComponent>
+describe('NoJsMessageComponent', () => {
+  let component: NoJsMessageComponent
+  let fixture: ComponentFixture<NoJsMessageComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({})
-    fixture = TestBed.createComponent(NoScriptComponent)
+    fixture = TestBed.createComponent(NoJsMessageComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

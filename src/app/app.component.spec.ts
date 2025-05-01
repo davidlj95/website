@@ -4,7 +4,7 @@ import { shouldContainComponents } from '@/test/helpers/component-testers'
 import { ResumePageComponent } from './resume-page/resume-page.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
-import { NoScriptComponent } from './no-script/no-script.component'
+import { NoJsMessageComponent } from './no-js/no-js-message.component'
 import { By } from '@angular/platform-browser'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { RouterOutlet } from '@angular/router'
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
         AppComponent,
         MockComponents(
           BackgroundComponent,
-          NoScriptComponent,
+          NoJsMessageComponent,
           HeaderComponent,
           ResumePageComponent,
         ),
@@ -38,5 +38,5 @@ describe('AppComponent', () => {
     expect(fixture.debugElement.query(By.css('router-outlet'))).toBeTruthy()
   })
 
-  shouldContainComponents(() => fixture, NoScriptComponent, HeaderComponent)
+  shouldContainComponents(() => fixture, HeaderComponent, NoJsMessageComponent)
 })
