@@ -3,8 +3,8 @@
     <pattern
       id="bg"
       patternUnits="userSpaceOnUse"
-      [attr.width]="t.clientWidth || 720"
-      [attr.height]="t.clientHeight || 290"
+      [attr.width]="_textSize.width"
+      [attr.height]="_textSize.height"
     >
       <text fill="white" #t>
         @for (line of _genesisBlock.split('\n'); track line) {
