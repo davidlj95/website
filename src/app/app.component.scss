@@ -16,6 +16,18 @@
   }
 }
 
+// 👇 To let `main` take as much height of wrapper as possible
+main,
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+main,
+::ng-deep main > * {
+  flex-grow: 1;
+}
+
 router-outlet {
   display: none;
 }
