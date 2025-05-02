@@ -1,7 +1,7 @@
 // Just in Google Chrome. Maybe an optimization issue.
 // Happens when:
 //  - Main wrapper `div` has a left/right border
-//  - Position of a child element is sticky. Like `app-section-title`.
+//  - Position of a child element is sticky. Like `[appSectionTitle]`.
 //  - Main wrapper `div` is centered.
 // More mysteriously, the border appears when opening DevTools.
 // Can't be reproduced on Mozilla Firefox.

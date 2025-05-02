@@ -16,15 +16,12 @@
   @include borders.panel(bottom, top);
   background-color: var(--app-color-toolbar-background);
   color: var(--ui-text);
+  font-size: 1.25rem;
 
   @include animations.when-motion {
     @include animations.multiple-transitions(
       (color, background-color, border-color),
       animations.$emphasized-style
     );
-  }
-
-  ::ng-deep h2 {
-    font-size: 1.25rem;
   }
 }

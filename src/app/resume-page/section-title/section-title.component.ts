@@ -1,7 +1,8 @@
 import { Component } from '@angular/core'
 
 @Component({
-  selector: 'app-section-title',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: '[appSectionTitle]',
   template: '<ng-content></ng-content>',
   styleUrls: ['./section-title.component.scss'],
 })
