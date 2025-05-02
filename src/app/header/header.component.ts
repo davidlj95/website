@@ -8,7 +8,7 @@ import { ToolbarDividerComponent } from './toolbar-divider/toolbar-divider.compo
 @Component({
   //👇 Semantic HTML ftw, sorry Angular guidelines
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'header',
+  selector: 'header[appHeader]',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   imports: [
