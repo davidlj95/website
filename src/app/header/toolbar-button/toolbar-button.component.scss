@@ -26,8 +26,6 @@
     @include animations.single-transition(color, animations.$emphasized-style);
   }
 
-  @include material-symbols.class {
-    @include material-symbols.font-size(header.$icons-height);
-    @include material-symbols.variation-settings($fill: false, $weight: 200);
-  }
+  @include material-symbols.font-size(header.$icons-height);
+  @include material-symbols.variation-settings($fill: false, $weight: 200);
 }

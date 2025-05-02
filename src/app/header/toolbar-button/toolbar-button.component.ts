@@ -4,10 +4,11 @@ import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-toolbar-button]',
-  imports: [MaterialSymbolDirective],
+  imports: [],
   templateUrl: './toolbar-button.component.html',
   styleUrl: './toolbar-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  hostDirectives: [MaterialSymbolDirective],
 })
 export class ToolbarButtonComponent {
   readonly icon = input.required<string>()
