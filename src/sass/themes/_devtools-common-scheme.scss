@@ -3,32 +3,33 @@
 $scheme: (
   kind: constants.$common-color-scheme-kind,
   vars: (
-    // https://github.com/ChromeDevTools/devtools-frontend/blob/7500d2916c463c136fc5ce2547ceb469c61454b4/front_end/ui/legacy/tokens.css
-    // Or locally by `devtools://theme/colors.css?sets=ui,chrome` (may change depending on current theme)
-    ref-palette-primary20: rgb(6 46 111 / 100%),
-    ref-palette-primary40: rgb(11 87 208 / 100%),
-    ref-palette-primary50: rgb(27 110 243 / 100%),
-    ref-palette-primary70: rgb(124 172 248 / 100%),
-    ref-palette-primary80: rgb(168 199 250 / 100%),
-    ref-palette-primary90: rgb(211 227 253 / 100%),
-    ref-palette-primary100: rgb(255 255 255 / 100%),
-    ref-palette-secondary50: rgb(4 125 183 / 100%),
-    ref-palette-neutral10: rgb(31 31 31 / 100%),
-    ref-palette-neutral15: rgb(40 40 40 / 100%),
-    ref-palette-neutral25: rgb(60 60 60 / 100%),
-    ref-palette-neutral30: rgb(71 71 71 / 100%),
-    ref-palette-neutral40: rgb(94 94 94 / 100%),
-    ref-palette-neutral50: rgb(117 117 117 / 100%),
-    ref-palette-neutral60: rgb(143 143 143 / 100%),
-    ref-palette-neutral80: rgb(199 199 199 / 100%),
-    ref-palette-neutral90: rgb(227 227 227 / 100%),
-    ref-palette-neutral95: rgb(242 242 242 / 100%),
-    ref-palette-neutral99: rgb(253 252 251 / 100%),
-    ref-palette-neutral100: rgb(255 255 255 / 100%),
+    // Locally by `devtools://theme/colors.css?sets=ui,chrome` (may change depending on current theme)
+    ref-palette-primary20: #062e6fff,
+    ref-palette-primary40: #0b57d0ff,
+    ref-palette-primary50: #1b6ef3ff,
+    ref-palette-primary70: #7cacf8ff,
+    ref-palette-primary80: #a8c7faff,
+    ref-palette-primary90: #d3e3fdff,
+    ref-palette-primary100: #ffffffff,
+    ref-palette-secondary50: #047db7ff,
+    ref-palette-neutral10: #1f1f1fff,
+    ref-palette-neutral15: #282828ff,
+    ref-palette-neutral25: #3c3c3cff,
+    ref-palette-neutral30: #474747ff,
+    ref-palette-neutral40: #5e5e5eff,
+    ref-palette-neutral50: #757575ff,
+    ref-palette-neutral80: #c7c7c7ff,
+    ref-palette-neutral90: #e3e3e3ff,
+    ref-palette-neutral95: #f2f2f2ff,
+    ref-palette-neutral99: #fdfcfbff,
+    ref-palette-neutral100: #ffffffff,
     // Common for both themes
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/application_tokens.css#L19-L20
     icon-default: var(--sys-color-on-surface-subtle),
     icon-default-hover: var(--sys-color-on-surface),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/application_tokens.css#L52
     ui-text: var(--sys-color-on-surface-subtle),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/application_tokens.css#L54
     text-primary: var(--sys-color-on-surface),
   ),
 );
