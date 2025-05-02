@@ -15,7 +15,7 @@ describe('TabsComponent', () => {
   describe('when all tabs fit the screen', () => {
     //👇 Explicit component declaration for Cypress to support v19
     @Component({
-      template: '<app-tabs><app-tab>Hello World</app-tab></app-tabs>',
+      template: '<app-tabs><a appTab>Hello World</a></app-tabs>',
       imports: [TabsComponent, TabComponent],
     })
     class HostComponent {}
@@ -43,9 +43,7 @@ describe('TabsComponent', () => {
         [selectedIndex]="selectedIndex()"
       >
         @for (tab of ${JSON.stringify(TABS)}; track $index) {
-          <app-tab>
-            <span style="white-space: nowrap">Tab {{ tab }}</span>
-          </app-tab>
+          <a appTab style="white-space: nowrap"> Tab {{ tab }} </a>
         }
       </app-tabs>`,
       imports: [TabsComponent, TabComponent],
@@ -97,7 +95,7 @@ describe('TabsComponent', () => {
     })
 
     const MIDDLE_TAB_INDEX = Math.ceil(TABS.length / 2)
-    const MIDDLE_TAB_SELECTOR = `app-tab:nth-child(${MIDDLE_TAB_INDEX})`
+    const MIDDLE_TAB_SELECTOR = `[appTab]:nth-child(${MIDDLE_TAB_INDEX})`
     describe('when scrolled in the middle', () => {
       beforeEach(() => {
         cy.get(MIDDLE_TAB_SELECTOR).scrollIntoView()
@@ -118,7 +116,7 @@ describe('TabsComponent', () => {
       }
 
       beforeEach(() => {
-        cy.get('app-tab:last-child').scrollIntoView()
+        cy.get('[appTab]:last-child').scrollIntoView()
       })
 
       beforeEach(() => {

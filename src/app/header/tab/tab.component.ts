@@ -1,7 +1,8 @@
 import { Component, ElementRef, Input } from '@angular/core'
 
 @Component({
-  selector: 'app-tab',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'a[appTab]',
   template: '<ng-content></ng-content>',
   styleUrls: ['./tab.component.scss'],
   host: {
