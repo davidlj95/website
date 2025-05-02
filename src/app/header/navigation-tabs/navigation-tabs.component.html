@@ -1,13 +1,11 @@
-<nav>
-  <app-tabs [selectedIndex]="_selectedIndex">
-    @for (item of items(); track item.displayName) {
-      <app-tab
-        [routerLink]="item.routerLink"
-        (isActiveChange)="$event ? onActiveRouteChange($index) : undefined"
-        routerLinkActive
-      >
-        {{ item.displayName }}
-      </app-tab>
-    }
-  </app-tabs>
-</nav>
+<app-tabs [selectedIndex]="_selectedIndex">
+  @for (item of items(); track item.displayName) {
+    <app-tab
+      [routerLink]="item.routerLink"
+      (isActiveChange)="$event ? onActiveRouteChange($index) : undefined"
+      routerLinkActive
+    >
+      {{ item.displayName }}
+    </app-tab>
+  }
+</app-tabs>
