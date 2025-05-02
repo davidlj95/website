@@ -3,50 +3,62 @@
 $scheme: (
   kind: constants.$light-color-scheme-kind,
   vars: (
-    app-color-toolbar-background: var(--sys-color-surface4),
+    // 👇 Design system
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L18-L19
     sys-color-on-surface: var(--ref-palette-neutral10),
     sys-color-on-surface-subtle: var(--ref-palette-neutral30),
-    sys-color-cdt-base-container: var(--sys-color-base),
-    sys-color-base: var(--ref-palette-neutral100),
-    sys-color-divider: var(--ref-palette-primary90),
-    sys-color-surface1: color-mix(
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L36
+    sys-color-neutral-container: var(--ref-palette-neutral95),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L41-L42
+    sys-color-primary: var(--ref-palette-primary40),
+    sys-color-on-primary: var(--ref-palette-primary100),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L59
+    sys-color-on-base-divider: var(--ref-palette-primary90),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L70
+    sys-color-neutral-outline: var(--ref-palette-neutral80),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L79
+    sys-color-state-hover-on-prominent: color-mix(
         in sRGB,
-        var(--ref-palette-primary40) 5%,
-        var(--ref-palette-neutral99)
+        var(--ref-palette-neutral99) 10%,
+        transparent
       ),
-    sys-color-surface2: color-mix(
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L81
+    sys-color-state-hover-dim-blend-protection: rgb(6 46 111/18%),
+    // 👇 Baseline grayscale
+    //    https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L202-L207
+    sys-color-divider: var(--ref-palette-neutral90),
+    sys-color-surface5: color-mix(
         in sRGB,
-        var(--ref-palette-primary40) 8%,
-        var(--ref-palette-neutral99)
-      ),
-    sys-color-surface3: color-mix(
-        in sRGB,
-        var(--ref-palette-primary40) 11%,
-        var(--ref-palette-neutral99)
+        var(--ref-palette-neutral40) 14%,
+        var(--ref-palette-neutral100)
       ),
     sys-color-surface4: color-mix(
         in sRGB,
-        #6991d6 12%,
+        var(--ref-palette-neutral40) 12%,
         var(--ref-palette-neutral100)
       ),
-    sys-color-surface5: color-mix(
+    sys-color-surface3: color-mix(
         in sRGB,
-        var(--ref-palette-primary40) 14%,
-        var(--ref-palette-neutral99)
+        var(--ref-palette-neutral40) 11%,
+        var(--ref-palette-neutral100)
       ),
-    sys-color-primary: var(--ref-palette-primary40),
-    sys-color-neutral-outline: var(--ref-palette-neutral80),
-    sys-color-neutral-container: var(--ref-palette-neutral95),
-    sys-color-state-hover-dim-blend-protection: rgb(6 46 111/18%),
-    sys-color-on-primary: var(--ref-palette-primary100),
-    sys-color-on-base-divider: var(--ref-palette-primary90),
-    sys-color-state-hover-on-prominent: color-mix(
+    sys-color-surface2: color-mix(
         in sRGB,
-        var(--ref-palette-neutral10) 6%,
-        transparent
+        var(--ref-palette-neutral40) 8%,
+        var(--ref-palette-neutral100)
       ),
-    sys-color-primary-bright: var(--ref-palette-primary50),
-    //👇 App specific
+    sys-color-surface1: color-mix(
+        in sRGB,
+        var(--ref-palette-neutral40) 5%,
+        var(--ref-palette-neutral100)
+      ),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L212-L214
+    sys-color-base: var(--ref-palette-neutral100),
+    sys-color-cdt-base-container: var(--ref-palette-neutral100),
+    // 👇 App tokens
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/application_tokens.css#L186
+    app-color-toolbar-background: var(--sys-color-surface4),
+    // 👇 Specific to this app
     adorner-border-color: var(--sys-color-neutral-outline),
     img-filter: none,
     background-fg-color: var(--ref-palette-neutral95),
