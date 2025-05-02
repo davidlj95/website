@@ -1,11 +1,13 @@
 <app-tabs [selectedIndex]="_selectedIndex">
   @for (item of items(); track item.displayName) {
-    <app-tab
+    <a
+      appTab
       [routerLink]="item.routerLink"
       (isActiveChange)="$event ? onActiveRouteChange($index) : undefined"
       routerLinkActive
+      target="_self"
     >
       {{ item.displayName }}
-    </app-tab>
+    </a>
   }
 </app-tabs>

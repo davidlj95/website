@@ -8,14 +8,15 @@
 
   padding: paddings.$xs paddings.$m;
 
-  cursor: pointer;
-
   border-bottom-width: 2px;
   border-bottom-color: transparent;
   border-bottom-style: solid;
   font-weight: 300;
 
   color: var(--ui-text);
+
+  // Revert link style
+  text-decoration-line: none;
 
   &[aria-selected='true'] {
     color: var(--sys-color-primary);
