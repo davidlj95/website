@@ -89,7 +89,7 @@
     "@commitlint/config-conventional": "19.8.0",
     "@commitlint/types": "19.8.0",
     "@cypress/code-coverage": "3.14.0",
-    "@eslint/compat": "1.2.8",
+    "@eslint/compat": "1.2.9",
     "@fontsource-variable/material-symbols-outlined": "5.2.10",
     "@lhci/cli": "0.14.0",
     "@release-it/conventional-changelog": "10.0.0",
@@ -103,7 +103,7 @@
     "babel-plugin-istanbul": "7.0.0",
     "bundlewatch": "0.4.0",
     "cypress": "14.3.2",
-    "eslint": "9.23.0",
+    "eslint": "9.26.0",
     "eslint-config-prettier": "10.1.2",
     "eslint-plugin-cypress": "4.3.0",
     "eslint-plugin-jasmine": "4.2.2",
@@ -117,7 +117,7 @@
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "knip": "5.46.5",
+    "knip": "5.53.0",
     "lint-staged": "15.5.1",
     "liquidjs": "10.21.0",
     "ng-mocks": "14.13.4",
@@ -127,7 +127,7 @@
     "simple-icons": "14.12.3",
     "subset-font": "2.4.0",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.31.0"
+    "typescript-eslint": "8.31.1"
   },
   "packageManager": "pnpm@10.9.0",
   "publishConfig": {
