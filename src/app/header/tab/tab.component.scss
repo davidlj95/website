@@ -2,6 +2,8 @@
 @use 'animations';
 @use 'touch-or-pointer';
 
+// 👇 Using `a` to add more specificity and override default `a` styles
+a:host,
 :host {
   display: inline flex;
   align-items: center;
@@ -13,9 +15,8 @@
   border-bottom-style: solid;
   font-weight: 300;
 
-  color: var(--ui-text);
-
   // Revert link style
+  color: var(--ui-text);
   text-decoration-line: none;
 
   &[aria-selected='true'] {
