@@ -1,0 +1,5 @@
+# Disable automatic Cloudflare Pages early hints due to a bug
+# https://developers.cloudflare.com/pages/configuration/early-hints/#disable-automatic-link-header-generation-automatic-link-header
+# https://github.com/davidlj95/cf-pages-hints-href
+/*
+  ! Link
