@@ -16,7 +16,7 @@ svg {
 svg {
   font-size: 16px;
 
-  text {
+  pattern {
     white-space: pre;
     fill: var(--background-fg-color);
     @include typographies.monospace-font;

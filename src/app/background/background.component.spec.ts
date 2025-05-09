@@ -26,28 +26,21 @@ describe('BackgroundComponent', () => {
   it("should apply the SVG's text size to the SVG's pattern size", () => {
     const svgPattern = fixture.debugElement.query(By.css('svg pattern'))
 
-    const flooredString = (x: number) => Math.floor(x).toString()
+    const svgText = svgPattern.query(By.css('text')).nativeElement as Element
+    const textWidth = svgText.clientWidth
 
-    // 👇 After applying `white-space: pre`, the `text` takes larger width than all of `tspan`
-    //    Not sure why
-    const svgTspan = svgPattern.query(By.css('tspan'))
-    const tSpanWidth = (
-      svgTspan.nativeElement as Element
-    ).getBoundingClientRect().width
-
-    expect(tSpanWidth).withContext('tspan width heuristic').toBeGreaterThan(100)
+    expect(textWidth).withContext('text width heuristic').toBeGreaterThan(100)
 
     expect(svgPattern.attributes['width'])
       .withContext('width')
-      .toEqual(flooredString(tSpanWidth))
+      .toEqual(textWidth.toString())
 
-    const svgText = svgPattern.query(By.css('text'))
-    const textHeight = (svgText.nativeElement as Element).clientHeight
+    const textHeight = svgText.clientHeight
 
     expect(textHeight).withContext('text height heuristic').toBeGreaterThan(100)
 
     expect(svgPattern.attributes['height'])
       .withContext('height')
-      .toEqual(flooredString(textHeight + HEIGHT_OFFSET))
+      .toEqual((textHeight + HEIGHT_OFFSET).toString())
   })
 })
