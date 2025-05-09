@@ -9,11 +9,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
   preserveWhitespaces: true,
 })
 export class BackgroundComponent {
-  protected readonly _genesisBlock = hexdump(atob(GENESIS_BLOCK_BASE_64))
+  protected readonly _genesisBlockLines = hexdump(
+    atob(GENESIS_BLOCK_BASE_64),
+  ).split('\n')
   //👇 Could be calculated on the client side.
   //   However, this component is part of the largest contentful paint (LCP)
   //   So calculating it in advance. This way, there are no changes when hydrating
-  protected readonly _textSize = { width: 777, height: 288 }
+  protected readonly _textSize = { width: 730, height: 288 }
 }
 
 /**
