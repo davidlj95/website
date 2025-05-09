@@ -60,7 +60,7 @@ jobs:
         # https://docs.github.com/en/actions/learn-github-actions/contexts#context-availability
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.cloudflare-api-token }}
-        if: env.CLOUDFLARE_API_TOKEN != '' && (steps.ref-exists.outputs.result || github.event_name != 'pull_request')
+        if: github.event_name != 'pull_request' || (env.CLOUDFLARE_API_TOKEN != '' && steps.ref-exists.outputs.result == 'true')
         uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # 1
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
