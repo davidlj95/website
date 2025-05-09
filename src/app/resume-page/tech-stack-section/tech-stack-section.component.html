@@ -1,0 +1,9 @@
+<h2 appSectionTitle id="tech-stack">Tech stack</h2>
+<div class="container">
+  <app-filtered-techs [tag]="_frontendTag"></app-filtered-techs>
+  <app-filtered-techs
+    [tag]="_backendTag"
+    [excludeTags]="[_infraTag.char]"
+  ></app-filtered-techs>
+  <app-filtered-techs [tag]="_infraTag"></app-filtered-techs>
+</div>

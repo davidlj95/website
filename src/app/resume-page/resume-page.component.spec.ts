@@ -9,6 +9,7 @@ import { EducationSectionComponent } from './education-section/education-section
 import { ProjectsSectionComponent } from './projects-section/projects-section.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { LanguagesSectionComponent } from './languages-section/languages-section.component'
+import { TechStackSectionComponent } from './tech-stack-section/tech-stack-section.component'
 
 describe('ResumePageComponent', () => {
   let component: ResumePageComponent
@@ -24,6 +25,7 @@ describe('ResumePageComponent', () => {
           EducationSectionComponent,
           ProjectsSectionComponent,
           LanguagesSectionComponent,
+          TechStackSectionComponent,
         ),
       ],
     })
@@ -40,5 +42,6 @@ describe('ResumePageComponent', () => {
     ExperienceSectionComponent,
     EducationSectionComponent,
     ProjectsSectionComponent,
+    TechStackSectionComponent,
   )
 })
