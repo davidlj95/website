@@ -1,28 +1,46 @@
+@use 'animations';
+@use 'sass:map';
 @use 'page';
 @use 'paddings';
 
 :host {
-  padding-top: page.$padding;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.pre {
+// For background linear gradient animation
+// https://stackoverflow.com/a/63848864
+@property --sys-color-cdt-base-container {
+  syntax: '<color>';
+  initial-value: black;
+  inherits: true;
+}
+@property --iframe-bg {
+  syntax: '<color>';
+  initial-value: white;
+  inherits: false;
+}
+
+header {
+  padding: page.$padding page.$padding 0;
+}
+
+.fader {
   margin-top: paddings.$m;
-  width: 100%;
   height: paddings.$s;
+
   background: linear-gradient(
     180deg,
     var(--sys-color-cdt-base-container) 0%,
-    white 100%
+    var(--iframe-bg) 100%
+  );
+  @include animations.multiple-transitions(
+    (--sys-color-cdt-base-container, --iframe-bg)
   );
 }
 
 iframe {
   // Appointments page does not support dark mode
-  background: white;
-  width: 100%;
+  background-color: var(--iframe-bg);
   flex-grow: 1;
 }
