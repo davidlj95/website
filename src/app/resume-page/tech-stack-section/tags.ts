@@ -18,7 +18,35 @@ export const INFRA_TAG: TechTag = {
   char: 'i',
   name: 'Infrastructure',
 }
-const TAG_CHARS = ['b', 'f', 'i'] as const
+export const MAIN_TAGS: readonly TechTag[] = [
+  BACKEND_TAG,
+  FRONTEND_TAG,
+  INFRA_TAG,
+]
+export const LANGUAGE_TAG: TechTag = {
+  char: 'l',
+  name: 'Language',
+}
+export const TEST_TAG: TechTag = {
+  char: 't',
+  name: 'Testing',
+}
+export const EDITOR_TAG: TechTag = {
+  char: 'e',
+  name: 'Editor',
+}
+export const OTHERS_TAG: TechTag = {
+  char: '',
+  name: 'Others',
+}
+export const REST_TAGS: readonly TechTag[] = [
+  LANGUAGE_TAG,
+  TEST_TAG,
+  EDITOR_TAG,
+  OTHERS_TAG,
+]
+
+const TAG_CHARS = ['b', 'f', 'i', 'l', 't', 'e', ''] as const
 export type TagChar = (typeof TAG_CHARS)[number]
 /** @visibleForTesting **/
 export const TECHS_TAGS: Record<string, string> = {
@@ -43,8 +71,8 @@ export const TECHS_TAGS: Record<string, string> = {
   bitcoin: 'b',
   blockcerts: 'b',
   bluetooth: 'f',
-  css: 'f',
-  cypress: 'f',
+  css: 'fl',
+  cypress: 'ft',
   datadog: 'i',
   docker: 'i',
   ethereum: 'b',
@@ -62,23 +90,23 @@ export const TECHS_TAGS: Record<string, string> = {
   graphite: '',
   helm: 'i',
   heroku: 'i',
-  html: 'f',
+  html: 'fl',
   http: '',
   httprest: '',
   ios: 'f',
-  jasmine: 'f',
-  java: 'b',
-  javascript: 'f',
-  jest: '',
+  jasmine: 'ft',
+  java: 'bl',
+  javascript: 'fl',
+  jest: 't',
   jhipster: 'b',
   jira: '',
   jquery: 'f',
   json: '',
   jsonld: '',
   jsonwebtokens: '',
-  junit: 'b',
-  karmarunner: 'f',
-  kotlin: 'bf',
+  junit: 'bt',
+  karmarunner: 'ft',
+  kotlin: 'bfl',
   kubernetes: 'i',
   linux: 'i',
   liquibase: 'b',
@@ -92,20 +120,20 @@ export const TECHS_TAGS: Record<string, string> = {
   npm: '',
   oauth2: '',
   openapiinitiative: 'b',
-  php: 'bf',
+  php: 'bfl',
   postgresql: 'b',
   pwa: 'f',
   pypi: '',
   pyqt: 'f',
-  python: 'bf',
-  'python-unittest': '',
+  python: 'bfl',
+  'python-unittest': 't',
   readthedocs: '',
   redash: '',
   redis: 'b',
   redsys: 'b',
   redux: 'f',
   rollupdotjs: 'f',
-  rspec: '',
+  rspec: 't',
   rubymine: '',
   rubyonrails: 'b',
   sentry: 'i',
@@ -116,7 +144,7 @@ export const TECHS_TAGS: Record<string, string> = {
   sqlalchemy: 'b',
   terraform: 'i',
   travisci: 'i',
-  typescript: 'bf',
+  typescript: 'bfl',
   visualstudiocode: '',
   webcomponents: 'f',
   webstorm: '',

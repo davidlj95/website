@@ -1,0 +1,11 @@
+@for (tag of available(); track tag) {
+  @let selected = isSelected(tag);
+  <label>
+    <input
+      type="checkbox"
+      [checked]="selected"
+      (change)="selected ? unselectTag(tag) : selectTag(tag)"
+    />
+    {{ tag.name }}
+  </label>
+}
