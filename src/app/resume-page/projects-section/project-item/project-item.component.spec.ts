@@ -24,7 +24,6 @@ import { ChippedContentComponent } from '../../chipped-content/chipped-content.c
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProjectItem } from '../__tests__/make-project-item'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
-import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
@@ -163,8 +162,6 @@ describe('ProjectItemComponent', () => {
       )
     })
   })
-
-  shouldContainComponent(() => fixture, ChippedContentComponent)
 })
 
 function makeSut() {

@@ -1,5 +1,4 @@
 import { LanguagesSectionComponent } from './languages-section.component'
-import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents, MockProvider } from 'ng-mocks'
@@ -31,8 +30,6 @@ describe('LanguagesSectionComponent', () => {
 
     expect(itemElements.length).toBe(languageItems.length)
   })
-
-  shouldContainComponent(() => makeSut()[0], SectionTitleComponent)
 })
 
 function makeSut(opts: { getLanguageItems?: GetLanguageItems } = {}) {

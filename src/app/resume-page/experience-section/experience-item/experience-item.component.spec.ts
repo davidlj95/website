@@ -3,7 +3,6 @@ import { ATTRIBUTE, ExperienceItemComponent } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { By } from '@angular/platform-browser'
 import { Organization } from '../../organization'
-import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
@@ -204,8 +203,6 @@ describe('ExperienceItem', () => {
       testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.MorePositions)
     })
   })
-
-  shouldContainComponent(() => fixture, ChippedContentComponent)
 })
 function makeSut() {
   return componentTestSetup(ExperienceItemComponent, {

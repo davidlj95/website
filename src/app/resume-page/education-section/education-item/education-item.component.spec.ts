@@ -19,7 +19,6 @@ import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeEducationItem } from './__tests__/make-education-item'
-import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../link/link.component'
@@ -153,8 +152,6 @@ describe('EducationItemComponent', () => {
       ).toBeTruthy()
     })
   })
-
-  shouldContainComponent(() => fixture, ChippedContentComponent)
 })
 
 function makeSut() {

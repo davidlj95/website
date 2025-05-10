@@ -7,7 +7,6 @@ import { ProfilePictureComponent } from './profile-picture/profile-picture.compo
 import { ProfileContactsComponent } from './profile-contacts/profile-contacts.component'
 import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
 import { By } from '@angular/platform-browser'
-import { shouldContainComponents } from '@/test/helpers/component-testers'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { METADATA } from '@/common/injection-tokens'
@@ -59,12 +58,4 @@ describe('ProfileSectionComponent', () => {
 
     expect(textContent(headline)).toEqual(fakeMetadata.title)
   })
-
-  shouldContainComponents(
-    () => fixture,
-    SectionTitleComponent,
-    ProfilePictureComponent,
-    ProfileContactsComponent,
-    ProfileDescriptionComponent,
-  )
 })

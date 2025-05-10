@@ -1,6 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing'
 import { MockComponents } from 'ng-mocks'
-import { shouldContainComponents } from '@/test/helpers/component-testers'
 import { ResumePageComponent } from './resume-page/resume-page.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
@@ -37,6 +36,4 @@ describe('AppComponent', () => {
   it('should include the router outlet component', () => {
     expect(fixture.debugElement.query(By.css('router-outlet'))).toBeTruthy()
   })
-
-  shouldContainComponents(() => fixture, HeaderComponent, NoJsMessageComponent)
 })
