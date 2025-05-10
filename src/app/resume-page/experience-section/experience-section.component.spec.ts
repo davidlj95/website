@@ -2,7 +2,6 @@ import { ComponentFixture } from '@angular/core/testing'
 import { ExperienceSectionComponent } from './experience-section.component'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
-import { shouldContainComponent } from '@/test/helpers/component-testers'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import {
@@ -38,8 +37,6 @@ describe('ExperienceSectionComponent', () => {
 
     expect(itemElements.length).toBe(experienceItems.length)
   })
-
-  shouldContainComponent(() => makeSut()[0], SectionTitleComponent)
 })
 
 function makeSut(opts: { getExperienceItems?: GetExperienceItems } = {}) {

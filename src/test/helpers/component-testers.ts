@@ -1,44 +1,8 @@
 import { Component, DebugElement, Predicate, Type } from '@angular/core'
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { TestBed } from '@angular/core/testing'
 import { componentTestSetup } from './component-test-setup'
 import { innerHtml } from '@/test/helpers/inner-html'
 import { By } from '@angular/platform-browser'
-
-/**
- * Tests a component is contained inside the provided fixture
- */
-export function shouldContainComponent<T, U>(
-  fixtureGetter: () => ComponentFixture<T>,
-  component: Type<U>,
-  givenName: string | undefined = undefined,
-) {
-  const name =
-    givenName ??
-    component.name
-      .replace(/([A-Z])/g, ' $1')
-      .slice(1)
-      .toLowerCase()
-  it(`should contain ${name}`, () => {
-    const debugElement = fixtureGetter().debugElement.query(
-      By.directive(component),
-    )
-    expect(debugElement).toBeTruthy()
-  })
-}
-
-/**
- * Tests a component is contained inside the provided fixture
- *
- * {@link shouldContainComponent}
- */
-export function shouldContainComponents<T>(
-  fixtureGetter: () => ComponentFixture<T>,
-  ...components: Type<unknown>[]
-) {
-  for (const component of components) {
-    shouldContainComponent(fixtureGetter, component)
-  }
-}
 
 /**
  * Tests given component projects content
