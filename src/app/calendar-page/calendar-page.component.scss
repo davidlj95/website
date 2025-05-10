@@ -8,6 +8,8 @@
   flex-direction: column;
 }
 
+// For background linear gradient animation
+// https://stackoverflow.com/a/63848864
 @property --sys-color-cdt-base-container {
   syntax: '<color>';
   initial-value: black;
