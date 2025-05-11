@@ -14,8 +14,6 @@ export const TEST_TAG = 'testing'
 /** @knipIgnore **/
 export const EDITOR_TAG = 'editor'
 /** @knipIgnore **/
-export const OTHERS_TAG = 'others'
-/** @knipIgnore **/
 export const CLOUD_TAG = 'cloud'
 /** @knipIgnore **/
 export const PLATFORM_TAG = 'platform'
@@ -59,7 +57,6 @@ export const TECH_TAGS = [
   LANGUAGE_TAG,
   TEST_TAG,
   EDITOR_TAG,
-  OTHERS_TAG,
   CLOUD_TAG,
   PLATFORM_TAG,
   FRAMEWORK_TAG,
@@ -89,7 +86,6 @@ const TECH_TAG_NAMES: Record<TechTag, string> = {
   [LANGUAGE_TAG]: 'Languages',
   [TEST_TAG]: 'Testing',
   [EDITOR_TAG]: 'Editors',
-  [OTHERS_TAG]: 'Others',
   [CLOUD_TAG]: 'Cloud',
   [PLATFORM_TAG]: 'Platforms',
   [FRAMEWORK_TAG]: 'Frameworks',
@@ -123,7 +119,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   amazoniam: [INFRA_TAG, CLOUD_TAG, SECURITY_TAG],
   amazonrds: [BACKEND_TAG, CLOUD_TAG],
   amazons3: [INFRA_TAG, CLOUD_TAG, BACKEND_TAG],
-  anaconda: [OTHERS_TAG],
+  anaconda: [BUILD_TAG],
   android: [FRONTEND_TAG, PLATFORM_TAG, MOBILE_TAG],
   androidstudio: [FRONTEND_TAG, EDITOR_TAG, MOBILE_TAG],
   angular: [FRONTEND_TAG, FRAMEWORK_TAG],
@@ -151,7 +147,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   gitlabpages: [INFRA_TAG, FRONTEND_TAG, CLOUD_TAG],
   googleworkspace: [PRODUCTIVITY_TAG],
   gradle: [BUILD_TAG],
-  graphite: [OTHERS_TAG],
+  graphite: [],
   helm: [INFRA_TAG],
   heroku: [INFRA_TAG, CLOUD_TAG],
   html: [FRONTEND_TAG, LANGUAGE_TAG],
