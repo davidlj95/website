@@ -41,7 +41,7 @@
     "lint:commit-message": "pnpm run commitlint:edit-msg",
     "lint:gh-actions": "actionlint || true",
     "lint:unused": "pnpm run '/^lint:unused:.*$/'",
-    "lint:unused:development": "knip",
+    "lint:unused:development": "knip --tags=-knipIgnore",
     "lint:unused:production": "knip --production --tags=-visibleForTesting,-knipIgnore",
     "release": "release-it",
     "release:dry-run": "release-it --dry-run --no-git.requireBranch",
