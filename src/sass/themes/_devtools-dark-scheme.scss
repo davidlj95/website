@@ -77,5 +77,10 @@ $scheme: (
     adorner-border-color: var(--sys-color-tonal-outline),
     img-filter: grayscale(0.5),
     background-fg-color: var(--ref-palette-neutral25),
+    //👇 It's not the same in rendered HTML than in Chromium's UI. Same for DevTools.
+    //   Found it by using color picker #343434 and choosing a similar one.
+    unchecked-checkbox-accent: var(--ref-palette-neutral22),
+    //👇 It's actually #7a7a7a. But quite close.
+    unchecked-checkbox-border: var(--ref-palette-neutral50),
   ),
 );

@@ -1,6 +1,7 @@
 @use 'margins';
 @use 'paddings';
 @use 'touch-or-pointer';
+@use 'animations';
 
 :host {
   display: flex;
@@ -25,19 +26,20 @@ input[type='checkbox'] {
   align-items: center;
   justify-content: center;
 
-  background-color: var(--sys-color-cdt-base-container);
   accent-color: var(--sys-color-primary-bright);
-  color: var(--sys-color-on-primary);
 
-  // TODO: find out Chromium's dark mode unchecked colour
+  @include animations.single-transition(accent-color);
+
   &:not(:checked)::before {
-    //content: '';
-    //background-color: antiquewhite;
+    content: '';
+    background-color: var(--unchecked-checkbox-accent);
     position: absolute;
     width: $size;
     height: $size;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--unchecked-checkbox-border);
     border-radius: 3px;
-    padding: 1px;
   }
 
   @include touch-or-pointer.primaryInputCanHover {
@@ -56,5 +58,10 @@ input[type='checkbox'] {
   }
   &:not(:disabled):active::before {
     background-color: var(--sys-color-state-ripple-neutral-on-subtle);
+  }
+
+  &::before,
+  &::after {
+    @include animations.multiple-transitions((background-color, border-color));
   }
 }

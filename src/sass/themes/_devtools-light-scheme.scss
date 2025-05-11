@@ -75,5 +75,9 @@ $scheme: (
     adorner-border-color: var(--sys-color-neutral-outline),
     img-filter: none,
     background-fg-color: var(--ref-palette-neutral95),
+    // See dark to see how this colour was found. In this case, colour is exact same.
+    unchecked-checkbox-accent: var(--ref-palette-neutral100),
+    //👇 It's actually #6b6b6b. But quite close.
+    unchecked-checkbox-border: var(--ref-palette-neutral50),
   ),
 );
