@@ -6,6 +6,6 @@
       [checked]="selected"
       (change)="selected ? unselectTag(tag) : selectTag(tag)"
     />
-    {{ tag.name }}
+    {{ _getTagName(tag) }}
   </label>
 }

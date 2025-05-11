@@ -4,7 +4,7 @@ import {
   input,
   output,
 } from '@angular/core'
-import { TechTag } from '../tags' // Assuming '@/data/tags' is the correct path
+import { getTechTagName, TechTag } from '../tags' // Assuming '@/data/tags' is the correct path
 
 @Component({
   selector: 'app-tech-tags-selector',
@@ -17,13 +17,15 @@ export class TechTagsSelectorComponent {
   selected = input<readonly TechTag[]>([])
   selectedChange = output<readonly TechTag[]>()
 
+  protected _getTagName = getTechTagName
+
   selectTag(tag: TechTag): void {
     if (this.isSelected(tag)) return
     this.selectedChange.emit([...this.selected(), tag])
   }
 
   unselectTag(tag: TechTag): void {
-    const index = this.selected().findIndex((t) => t.char === tag.char)
+    const index = this.selected().findIndex((t) => t === tag)
     if (index === -1) return
     const selected = [...this.selected()]
     selected.splice(index, 1)
@@ -31,6 +33,6 @@ export class TechTagsSelectorComponent {
   }
 
   isSelected(tag: TechTag): boolean {
-    return this.selected().some((t) => t.char === tag.char)
+    return this.selected().some((t) => t === tag)
   }
 }

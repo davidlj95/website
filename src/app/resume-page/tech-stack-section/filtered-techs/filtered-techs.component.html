@@ -1,4 +1,4 @@
-<p>{{ tag().name }}</p>
+<p>{{ _getTechTagName(tag()) }}</p>
 <app-content-chip-list>
   @for (tech of _topTechs(); track tech) {
     <app-content-chip

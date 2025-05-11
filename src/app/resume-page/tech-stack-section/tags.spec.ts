@@ -34,20 +34,19 @@ describe('Tags', () => {
     })
 
     it('should return all techs with the given tag', () => {
-      const actualTechs = sut(aTag.char)
+      const actualTechs = sut(aTag)
       const expectedTechs = Object.entries(TECHS_TAGS)
-        .filter((entry) => entry[1].includes(aTag.char))
+        .filter((entry) => entry[1].includes(aTag))
         .map((entry) => entry[0])
 
       expect(sort(actualTechs)).toEqual(sort(expectedTechs))
     })
 
     it('should only include techs with given tags if given', () => {
-      const actualTechs = sut(aTag.char, { includes: [anotherTag.char] })
+      const actualTechs = sut(aTag, { includes: [anotherTag] })
       const expectedTechs = Object.entries(TECHS_TAGS)
         .filter(
-          (entry) =>
-            entry[1].includes(aTag.char) && entry[1].includes(anotherTag.char),
+          (entry) => entry[1].includes(aTag) && entry[1].includes(anotherTag),
         )
         .map((entry) => entry[0])
 
@@ -55,11 +54,10 @@ describe('Tags', () => {
     })
 
     it('should exclude techs with given tags', () => {
-      const actualTechs = sut(aTag.char, { excludes: [anotherTag.char] })
+      const actualTechs = sut(aTag, { excludes: [anotherTag] })
       const expectedTechs = Object.entries(TECHS_TAGS)
         .filter(
-          (entry) =>
-            entry[1].includes(aTag.char) && !entry[1].includes(anotherTag.char),
+          (entry) => entry[1].includes(aTag) && !entry[1].includes(anotherTag),
         )
         .map((entry) => entry[0])
 

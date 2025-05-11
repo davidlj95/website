@@ -3,6 +3,7 @@
 
 :host {
   display: flex;
+  flex-wrap: wrap;
   gap: margins.$m;
   padding: paddings.$s paddings.$l;
 }
