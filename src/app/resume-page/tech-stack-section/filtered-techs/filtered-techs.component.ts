@@ -37,8 +37,8 @@ export class FilteredTechsComponent {
   protected readonly _topTechs = computed(() =>
     this._techsForTag().slice(0, TECH_LIMIT),
   )
-  protected readonly _restOfTechsCount = computed(
-    () => this._techsForTag().length - TECH_LIMIT,
+  protected readonly _restOfTechsCount = computed(() =>
+    Math.max(this._techsForTag().length - TECH_LIMIT, 0),
   )
 }
 
