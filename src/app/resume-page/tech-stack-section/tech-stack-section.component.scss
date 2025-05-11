@@ -1,11 +1,19 @@
 @use 'borders';
 @use 'breakpoints';
+@use 'animations';
+
+app-tech-tags-selector {
+  @include borders.panel(bottom);
+  @include animations.single-transition(border-color);
+}
 
 .container {
   display: flex;
   flex-wrap: wrap;
   > * {
     flex: 1;
+
+    @include animations.single-transition(border-color);
 
     &:not(:last-child) {
       @include borders.panel(right);

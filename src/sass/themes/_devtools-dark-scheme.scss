@@ -49,7 +49,12 @@ $scheme: (
     // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L286-L287
     sys-color-tonal-outline: var(--ref-palette-secondary50),
     sys-color-neutral-outline: var(--ref-palette-neutral50),
-    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L296
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L297-L298
+    sys-color-state-hover-on-subtle: color-mix(
+        in srgb,
+        var(--ref-palette-neutral99) 10%,
+        transparent
+      ),
     sys-color-state-hover-on-prominent: color-mix(
         in sRGB,
         var(--ref-palette-neutral10) 6%,
@@ -57,6 +62,14 @@ $scheme: (
       ),
     // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L298
     sys-color-state-hover-dim-blend-protection: rgb(31 31 31/10%),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L301
+    sys-color-state-ripple-neutral-on-subtle: color-mix(
+        in srgb,
+        var(--ref-palette-neutral99) 16%,
+        transparent
+      ),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L328
+    sys-color-primary-bright: var(--ref-palette-primary70),
     //👇 App tokens
     // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/application_tokens.css#L371
     app-color-toolbar-background: var(--sys-color-base),
@@ -64,5 +77,10 @@ $scheme: (
     adorner-border-color: var(--sys-color-tonal-outline),
     img-filter: grayscale(0.5),
     background-fg-color: var(--ref-palette-neutral25),
+    //👇 It's not the same in rendered HTML than in Chromium's UI. Same for DevTools.
+    //   Found it by using color picker #343434 and choosing a similar one.
+    unchecked-checkbox-accent: var(--ref-palette-neutral22),
+    //👇 It's actually #7a7a7a. But quite close.
+    unchecked-checkbox-border: var(--ref-palette-neutral50),
   ),
 );

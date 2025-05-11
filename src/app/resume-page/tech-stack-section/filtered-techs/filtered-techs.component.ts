@@ -8,7 +8,7 @@ import {
 import { ContentChipListComponent } from '../../content-chip-list/content-chip-list.component'
 import { ContentChipComponent } from '../../content-chip/content-chip.component'
 import { TechnologyComponent } from '../../technology/technology.component'
-import { FIND_TECHS_BY_TAG, TagChar, TechTag } from '../tags'
+import { FIND_TECHS_BY_TAG, getTechTagName, TechTag } from '../tags'
 
 @Component({
   selector: 'app-filtered-techs',
@@ -23,11 +23,16 @@ import { FIND_TECHS_BY_TAG, TagChar, TechTag } from '../tags'
 })
 export class FilteredTechsComponent {
   private readonly _findTechsByTag = inject(FIND_TECHS_BY_TAG)
+  protected readonly _getTechTagName = getTechTagName
 
   readonly tag = input.required<TechTag>()
-  readonly excludeTags = input<readonly TagChar[]>([])
+  readonly includeTags = input<readonly TechTag[]>([])
+  readonly excludeTags = input<readonly TechTag[]>([])
   protected readonly _techsForTag = computed<readonly string[]>(() =>
-    this._findTechsByTag(this.tag().char, { excludes: this.excludeTags() }),
+    this._findTechsByTag(this.tag(), {
+      includes: this.includeTags(),
+      excludes: this.excludeTags(),
+    }),
   )
   protected readonly _topTechs = computed(() =>
     this._techsForTag().slice(0, TECH_LIMIT),

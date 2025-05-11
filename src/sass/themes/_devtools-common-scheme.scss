@@ -14,6 +14,7 @@ $scheme: (
     ref-palette-secondary50: #047db7ff,
     ref-palette-neutral10: #1f1f1fff,
     ref-palette-neutral15: #282828ff,
+    ref-palette-neutral22: #343535ff,
     ref-palette-neutral25: #3c3c3cff,
     ref-palette-neutral30: #474747ff,
     ref-palette-neutral40: #5e5e5eff,
@@ -31,5 +32,7 @@ $scheme: (
     ui-text: var(--sys-color-on-surface-subtle),
     // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/application_tokens.css#L54
     text-primary: var(--sys-color-on-surface),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L568C1-L569C1
+    sys-shape-corner-full: 9999px,
   ),
 );
