@@ -22,6 +22,8 @@ import {
   QUEUING_TAG,
   RUNTIME_TAG,
   TECH_TAGS,
+  TECHS_BY_TAG,
+  TECHS_TAGS,
   TechTag,
 } from './tags'
 import { TechTagsSelectorComponent } from './tech-tags-selector/tech-tags-selector.component'
@@ -38,7 +40,15 @@ import { TechTagsSelectorComponent } from './tech-tags-selector/tech-tags-select
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TechStackSectionComponent {
-  protected readonly _selectableTags = sort([...REST_TAGS])
+  protected readonly _selectableTags = sort([
+    ...REST_TAGS.filter((tag) =>
+      // 👇 Techs using that tag have to be at least frontend, backend or infra.
+      //    Otherwise, they won't ever appear anyway
+      TECHS_BY_TAG[tag].some((tech) =>
+        TECHS_TAGS[tech].some((techTag) => MAIN_TAGS.includes(techTag)),
+      ),
+    ),
+  ])
   protected _selectedTags = signal<readonly TechTag[]>(DEFAULT_SELECTED_TAGS)
   protected readonly _techSelections = computed<readonly TechSelection[]>(() =>
     MAIN_TAGS.map((main) => ({

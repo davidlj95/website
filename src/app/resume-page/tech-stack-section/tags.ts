@@ -213,7 +213,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   zoom: [PRODUCTIVITY_TAG],
 }
 
-const TECHS_BY_TAG = Object.fromEntries(
+export const TECHS_BY_TAG = Object.fromEntries(
   TECH_TAGS.map(
     (tag) =>
       [
