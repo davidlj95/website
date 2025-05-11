@@ -32,7 +32,7 @@ jobs:
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
       BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
   deploy-gh-pages:
-    name: Deploy to GitHub Pages (latest)
+    name: Deploy to GitHub Pages
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: [build, lint, test, performance]
     uses: ./.github/workflows/reusable-deploy-github-pages.yml
