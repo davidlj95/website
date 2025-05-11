@@ -73,8 +73,6 @@ $scheme: (
     //👇 App tokens
     // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/application_tokens.css#L371
     app-color-toolbar-background: var(--sys-color-base),
-    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/ui/legacy/inspectorCommon.css#L222
-    override-input-placeholder-color: rgb(230 230 230 / 54%),
     //👇 App specific
     adorner-border-color: var(--sys-color-tonal-outline),
     img-filter: grayscale(0.5),
