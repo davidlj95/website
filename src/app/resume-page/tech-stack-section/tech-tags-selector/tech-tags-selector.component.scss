@@ -30,6 +30,8 @@ input[type='checkbox'] {
 
   @include animations.single-transition(accent-color);
 
+  // Unchecked accent color in dark mode is different for Chromium's internal
+  // UI and Chromium's rendered HTML checkboxes. Mimicking Chromium's UI here.
   &:not(:checked)::before {
     content: '';
     background-color: var(--unchecked-checkbox-accent);
