@@ -49,6 +49,8 @@ export const PAYMENTS_TAG = 'payments'
 export const MONITORING_TAG = 'monitoring'
 /** @knipIgnore **/
 export const QUEUING_TAG = 'queuing'
+/** @knipIgnore **/
+export const DATA_TAG = 'data'
 
 export const TECH_TAGS = [
   BACKEND_TAG,
@@ -75,6 +77,7 @@ export const TECH_TAGS = [
   PAYMENTS_TAG,
   MONITORING_TAG,
   QUEUING_TAG,
+  DATA_TAG,
 ] as const
 
 export type TechTag = (typeof TECH_TAGS)[number]
@@ -104,6 +107,7 @@ const TECH_TAG_NAMES: Record<TechTag, string> = {
   [PAYMENTS_TAG]: 'Payments',
   [MONITORING_TAG]: 'Monitoring',
   [QUEUING_TAG]: 'Queuing',
+  [DATA_TAG]: 'Data',
 }
 
 export const getTechTagName = (tag: TechTag): string => TECH_TAG_NAMES[tag]
@@ -119,7 +123,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   amazoniam: [INFRA_TAG, CLOUD_TAG, SECURITY_TAG],
   amazonrds: [BACKEND_TAG, CLOUD_TAG],
   amazons3: [INFRA_TAG, CLOUD_TAG, BACKEND_TAG],
-  anaconda: [BUILD_TAG],
+  anaconda: [BUILD_TAG, DATA_TAG],
   android: [FRONTEND_TAG, PLATFORM_TAG, MOBILE_TAG],
   androidstudio: [FRONTEND_TAG, EDITOR_TAG, MOBILE_TAG],
   angular: [FRONTEND_TAG, FRAMEWORK_TAG],
@@ -185,10 +189,10 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   pwa: [FRONTEND_TAG, FRAMEWORK_TAG, MOBILE_TAG],
   pypi: [BUILD_TAG],
   pyqt: [FRONTEND_TAG, FRAMEWORK_TAG],
-  python: [BACKEND_TAG, FRONTEND_TAG, LANGUAGE_TAG],
+  python: [BACKEND_TAG, FRONTEND_TAG, DATA_TAG, LANGUAGE_TAG],
   'python-unittest': [BACKEND_TAG, FRONTEND_TAG, TEST_TAG],
   readthedocs: [DOCS_TAG],
-  redash: [BACKEND_TAG, DATABASE_TAG],
+  redash: [DATABASE_TAG, DATA_TAG],
   redis: [BACKEND_TAG, DATABASE_TAG],
   redsys: [BACKEND_TAG, SECURITY_TAG],
   redux: [FRONTEND_TAG, FRAMEWORK_TAG],
