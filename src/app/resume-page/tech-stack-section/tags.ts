@@ -19,7 +19,6 @@ export const MOBILE_TAG = 'mobile'
 export const CICD_TAG = 'cicd'
 export const PRODUCTIVITY_TAG = 'productivity'
 export const BUILD_TAG = 'build'
-export const LIBRARY_TAG = 'library'
 export const DATA_FORMAT_TAG = 'data-format'
 export const DATABASE_TAG = 'database'
 export const RUNTIME_TAG = 'runtime'
@@ -47,7 +46,6 @@ export const TECH_TAGS = [
   CICD_TAG,
   PRODUCTIVITY_TAG,
   BUILD_TAG,
-  LIBRARY_TAG,
   DATA_FORMAT_TAG,
   DATABASE_TAG,
   RUNTIME_TAG,
@@ -78,7 +76,6 @@ export const TECH_TAG_NAMES: Record<TechTag, string> = {
   [CICD_TAG]: 'CI/CD',
   [PRODUCTIVITY_TAG]: 'Productivity',
   [BUILD_TAG]: 'Build system',
-  [LIBRARY_TAG]: 'Library',
   [DATA_FORMAT_TAG]: 'Data format',
   [DATABASE_TAG]: 'Database',
   [RUNTIME_TAG]: 'Runtime',
