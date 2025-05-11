@@ -4,7 +4,7 @@
   [(selected)]="_selectedTags"
 ></app-tech-tags-selector>
 <div class="container">
-  @for (selection of _techSelections(); track selection) {
+  @for (selection of _techSelections(); track selection.main) {
     <app-filtered-techs
       [tag]="selection.main"
       [includeTags]="selection.include"
