@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { TechTagsSelectorComponent } from './tech-tags-selector.component'
-import { LANGUAGE_TAG, TechTag, TEST_TAG } from '../tags'
+import { getTechTagName, LANGUAGE_TAG, TechTag, TEST_TAG } from '../tags'
 import { By } from '@angular/platform-browser'
 import { textContent } from '@/test/helpers/text-content'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
@@ -30,11 +30,11 @@ describe('TechTagsSelectorComponent', () => {
     AVAILABLE_TAGS.forEach((tag, index) => {
       const label = labels.at(index)!
 
-      expect(label).withContext(`Label for ${tag.name} not found`).toBeTruthy()
-      expect(textContent(label)).toEqual(tag.name)
+      expect(label).withContext(`Label for ${tag} not found`).toBeTruthy()
+      expect(textContent(label)).toEqual(getTechTagName(tag))
 
       expect(checkboxes.at(index))
-        .withContext(`Checkbox for ${tag.name} not found`)
+        .withContext(`Checkbox for ${tag} not found`)
         .toBeTruthy()
     })
   })
@@ -50,7 +50,7 @@ describe('TechTagsSelectorComponent', () => {
     )
     labels.forEach((label, index) => {
       const shouldBeSelected = selected
-        .map((tag) => tag.name)
+        .map((tag) => getTechTagName(tag))
         .includes(textContent(label)!)
       const checkbox = checkboxes.at(index)
 
@@ -67,7 +67,7 @@ describe('TechTagsSelectorComponent', () => {
 
     const labels = fixture.debugElement.queryAll(By.css('label'))
     const unselectedLabel = labels.find(
-      (label) => textContent(label) === unselectedTag.name,
+      (label) => textContent(label) === getTechTagName(unselectedTag),
     )
     const unselectedCheckbox = unselectedLabel!.query(
       By.css('input[type="checkbox"]'),
@@ -90,7 +90,7 @@ describe('TechTagsSelectorComponent', () => {
 
     const labels = fixture.debugElement.queryAll(By.css('label'))
     const selectedLabel = labels.find(
-      (label) => textContent(label) === selectedTag.name,
+      (label) => textContent(label) === getTechTagName(selectedTag),
     )
     const selectedCheckbox = selectedLabel!.query(
       By.css('input[type="checkbox"]'),
@@ -107,8 +107,8 @@ describe('TechTagsSelectorComponent', () => {
   })
 })
 
-const [A_TAG, ANOTHER_TAG] = [LANGUAGE_TAG, TEST_TAG]
-const AVAILABLE_TAGS = [A_TAG, ANOTHER_TAG]
+const [A_TAG, ANOTHER_TAG] = [LANGUAGE_TAG, TEST_TAG] as const
+const AVAILABLE_TAGS: readonly TechTag[] = [A_TAG, ANOTHER_TAG]
 
 const makeSut = (opts: { selected?: readonly TechTag[] } = {}) => {
   @Component({
