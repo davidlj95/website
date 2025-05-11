@@ -34,8 +34,6 @@ export const CICD_TAG = 'cicd'
 /** @knipIgnore **/
 export const PRODUCTIVITY_TAG = 'productivity'
 /** @knipIgnore **/
-export const BUILD_TAG = 'build'
-/** @knipIgnore **/
 export const DATA_FORMAT_TAG = 'data-format'
 /** @knipIgnore **/
 export const DATABASE_TAG = 'database'
@@ -51,6 +49,10 @@ export const MONITORING_TAG = 'monitoring'
 export const QUEUING_TAG = 'queuing'
 /** @knipIgnore **/
 export const DATA_TAG = 'data'
+/** @knipIgnore **/
+export const PACKAGING_TAG = 'packaging'
+/** @knipIgnore **/
+export const PACKAGE_MANAGEMENT = 'package-mgmt'
 
 export const TECH_TAGS = [
   BACKEND_TAG,
@@ -69,7 +71,6 @@ export const TECH_TAGS = [
   MOBILE_TAG,
   CICD_TAG,
   PRODUCTIVITY_TAG,
-  BUILD_TAG,
   DATA_FORMAT_TAG,
   DATABASE_TAG,
   RUNTIME_TAG,
@@ -78,6 +79,8 @@ export const TECH_TAGS = [
   MONITORING_TAG,
   QUEUING_TAG,
   DATA_TAG,
+  PACKAGING_TAG,
+  PACKAGE_MANAGEMENT,
 ] as const
 
 export type TechTag = (typeof TECH_TAGS)[number]
@@ -99,7 +102,6 @@ const TECH_TAG_NAMES: Record<TechTag, string> = {
   [MOBILE_TAG]: 'Mobile',
   [CICD_TAG]: 'CI/CD',
   [PRODUCTIVITY_TAG]: 'Productivity',
-  [BUILD_TAG]: 'Build system',
   [DATA_FORMAT_TAG]: 'Data format',
   [DATABASE_TAG]: 'Database',
   [RUNTIME_TAG]: 'Runtime',
@@ -108,6 +110,8 @@ const TECH_TAG_NAMES: Record<TechTag, string> = {
   [MONITORING_TAG]: 'Monitoring',
   [QUEUING_TAG]: 'Queuing',
   [DATA_TAG]: 'Data',
+  [PACKAGING_TAG]: 'Packaging',
+  [PACKAGE_MANAGEMENT]: 'Package management',
 }
 
 export const getTechTagName = (tag: TechTag): string => TECH_TAG_NAMES[tag]
@@ -123,7 +127,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   amazoniam: [INFRA_TAG, CLOUD_TAG, SECURITY_TAG],
   amazonrds: [BACKEND_TAG, CLOUD_TAG],
   amazons3: [INFRA_TAG, CLOUD_TAG, BACKEND_TAG],
-  anaconda: [BUILD_TAG, DATA_TAG],
+  anaconda: [PACKAGE_MANAGEMENT, DATA_TAG],
   android: [FRONTEND_TAG, PLATFORM_TAG, MOBILE_TAG],
   androidstudio: [FRONTEND_TAG, EDITOR_TAG, MOBILE_TAG],
   angular: [FRONTEND_TAG, FRAMEWORK_TAG],
@@ -138,7 +142,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   css: [FRONTEND_TAG, LANGUAGE_TAG],
   cypress: [FRONTEND_TAG, TEST_TAG],
   datadog: [BACKEND_TAG, INFRA_TAG, CLOUD_TAG, MONITORING_TAG],
-  docker: [INFRA_TAG, BUILD_TAG],
+  docker: [INFRA_TAG, PACKAGING_TAG],
   ethereum: [BACKEND_TAG, FRONTEND_TAG, CRYPTO_TAG],
   express: [BACKEND_TAG, FRAMEWORK_TAG],
   flask: [BACKEND_TAG, FRAMEWORK_TAG],
@@ -150,7 +154,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   gitlabcicd: [INFRA_TAG, CICD_TAG],
   gitlabpages: [INFRA_TAG, FRONTEND_TAG, CLOUD_TAG],
   googleworkspace: [PRODUCTIVITY_TAG],
-  gradle: [BUILD_TAG],
+  gradle: [PACKAGE_MANAGEMENT, PACKAGING_TAG],
   graphite: [],
   helm: [INFRA_TAG],
   heroku: [INFRA_TAG, CLOUD_TAG],
@@ -181,13 +185,13 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   newrelic: [BACKEND_TAG, INFRA_TAG, CLOUD_TAG, MONITORING_TAG],
   nodedotjs: [BACKEND_TAG, FRONTEND_TAG, RUNTIME_TAG],
   notion: [PRODUCTIVITY_TAG],
-  npm: [BUILD_TAG, FRONTEND_TAG, BACKEND_TAG],
+  npm: [PACKAGE_MANAGEMENT, FRONTEND_TAG, BACKEND_TAG, PACKAGING_TAG],
   oauth2: [SECURITY_TAG, COMMS_TAG],
   openapiinitiative: [BACKEND_TAG, FRONTEND_TAG, COMMS_TAG],
   php: [BACKEND_TAG, FRONTEND_TAG, LANGUAGE_TAG],
   postgresql: [BACKEND_TAG, DATABASE_TAG],
   pwa: [FRONTEND_TAG, FRAMEWORK_TAG, MOBILE_TAG],
-  pypi: [BUILD_TAG],
+  pypi: [PACKAGE_MANAGEMENT],
   pyqt: [FRONTEND_TAG, FRAMEWORK_TAG],
   python: [BACKEND_TAG, FRONTEND_TAG, DATA_TAG, LANGUAGE_TAG],
   'python-unittest': [BACKEND_TAG, FRONTEND_TAG, TEST_TAG],
@@ -196,7 +200,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   redis: [BACKEND_TAG, DATABASE_TAG],
   redsys: [BACKEND_TAG, SECURITY_TAG],
   redux: [FRONTEND_TAG, FRAMEWORK_TAG],
-  rollupdotjs: [FRONTEND_TAG, BUILD_TAG],
+  rollupdotjs: [FRONTEND_TAG, PACKAGING_TAG],
   rspec: [BACKEND_TAG, TEST_TAG],
   ruby: [BACKEND_TAG, LANGUAGE_TAG],
   rubymine: [BACKEND_TAG, EDITOR_TAG],

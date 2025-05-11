@@ -8,7 +8,6 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
 import { FilteredTechsComponent } from './filtered-techs/filtered-techs.component'
 import {
   BACKEND_TAG,
-  BUILD_TAG,
   CICD_TAG,
   CLOUD_TAG,
   DATABASE_TAG,
@@ -17,6 +16,7 @@ import {
   INFRA_TAG,
   LANGUAGE_TAG,
   MONITORING_TAG,
+  PACKAGING_TAG,
   PAYMENTS_TAG,
   PLATFORM_TAG,
   QUEUING_TAG,
@@ -75,11 +75,11 @@ const DEFAULT_SELECTED_TAGS: readonly TechTag[] = [
   FRAMEWORK_TAG,
   CLOUD_TAG,
   CICD_TAG,
-  BUILD_TAG,
   MONITORING_TAG,
   QUEUING_TAG,
   PAYMENTS_TAG,
   RUNTIME_TAG,
   DATABASE_TAG,
   PLATFORM_TAG,
+  PACKAGING_TAG,
 ]
