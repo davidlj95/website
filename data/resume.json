@@ -352,6 +352,10 @@
       "stack": "back",
       "technologies": [
         {
+          "slug": "ruby",
+          "version": "~2.7.0"
+        },
+        {
           "slug": "rubyonrails",
           "version": "^6"
         },
