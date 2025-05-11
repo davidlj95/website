@@ -20,12 +20,14 @@ export class TechTagsSelectorComponent {
   protected _getTagName = getTechTagName
 
   selectTag(tag: TechTag): void {
+    /* istanbul ignore next - Shouldn't happen */
     if (this.isSelected(tag)) return
     this.selectedChange.emit([...this.selected(), tag])
   }
 
   unselectTag(tag: TechTag): void {
     const index = this.selected().findIndex((t) => t === tag)
+    /* istanbul ignore next - Shouldn't happen */
     if (index === -1) return
     const selected = [...this.selected()]
     selected.splice(index, 1)
