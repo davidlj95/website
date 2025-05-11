@@ -4,7 +4,7 @@ import {
   input,
   output,
 } from '@angular/core'
-import { REST_TAGS, TechTag } from '../tags' // Assuming '@/data/tags' is the correct path
+import { TechTag } from '../tags' // Assuming '@/data/tags' is the correct path
 
 @Component({
   selector: 'app-tech-tags-selector',
@@ -13,7 +13,7 @@ import { REST_TAGS, TechTag } from '../tags' // Assuming '@/data/tags' is the co
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TechTagsSelectorComponent {
-  available = input<readonly TechTag[]>(REST_TAGS)
+  available = input.required<readonly TechTag[]>()
   selected = input<readonly TechTag[]>([])
   selectedChange = output<readonly TechTag[]>()
 

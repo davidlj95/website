@@ -1,10 +1,14 @@
 <h2 appSectionTitle id="tech-stack">Tech stack</h2>
-<app-tech-tags-selector></app-tech-tags-selector>
+<app-tech-tags-selector
+  [available]="_selectableTags"
+  [(selected)]="_selectedTags"
+></app-tech-tags-selector>
 <div class="container">
-  <app-filtered-techs [tag]="_frontendTag"></app-filtered-techs>
-  <app-filtered-techs
-    [tag]="_backendTag"
-    [excludeTags]="[_infraTag.char]"
-  ></app-filtered-techs>
-  <app-filtered-techs [tag]="_infraTag"></app-filtered-techs>
+  @for (selection of _techSelections(); track selection) {
+    <app-filtered-techs
+      [tag]="selection.main"
+      [includeTags]="selection.include"
+      [excludeTags]="selection.exclude"
+    ></app-filtered-techs>
+  }
 </div>

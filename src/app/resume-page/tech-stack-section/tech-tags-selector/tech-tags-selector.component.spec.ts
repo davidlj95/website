@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { TechTagsSelectorComponent } from './tech-tags-selector.component'
-import { REST_TAGS, TechTag } from '../tags'
+import { LANGUAGE_TAG, TechTag, TEST_TAG } from '../tags'
 import { By } from '@angular/platform-browser'
 import { textContent } from '@/test/helpers/text-content'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
@@ -107,7 +107,7 @@ describe('TechTagsSelectorComponent', () => {
   })
 })
 
-const [A_TAG, ANOTHER_TAG] = [...REST_TAGS]
+const [A_TAG, ANOTHER_TAG] = [LANGUAGE_TAG, TEST_TAG]
 const AVAILABLE_TAGS = [A_TAG, ANOTHER_TAG]
 
 const makeSut = (opts: { selected?: readonly TechTag[] } = {}) => {

@@ -25,9 +25,13 @@ export class FilteredTechsComponent {
   private readonly _findTechsByTag = inject(FIND_TECHS_BY_TAG)
 
   readonly tag = input.required<TechTag>()
+  readonly includeTags = input<readonly TagChar[]>([])
   readonly excludeTags = input<readonly TagChar[]>([])
   protected readonly _techsForTag = computed<readonly string[]>(() =>
-    this._findTechsByTag(this.tag().char, { excludes: this.excludeTags() }),
+    this._findTechsByTag(this.tag().char, {
+      includes: this.includeTags(),
+      excludes: this.excludeTags(),
+    }),
   )
   protected readonly _topTechs = computed(() =>
     this._techsForTag().slice(0, TECH_LIMIT),

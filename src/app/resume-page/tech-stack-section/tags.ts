@@ -18,11 +18,6 @@ export const INFRA_TAG: TechTag = {
   char: 'i',
   name: 'Infrastructure',
 }
-export const MAIN_TAGS: readonly TechTag[] = [
-  BACKEND_TAG,
-  FRONTEND_TAG,
-  INFRA_TAG,
-]
 export const LANGUAGE_TAG: TechTag = {
   char: 'l',
   name: 'Language',
@@ -35,15 +30,13 @@ export const EDITOR_TAG: TechTag = {
   char: 'e',
   name: 'Editor',
 }
-export const OTHERS_TAG: TechTag = {
-  char: '',
-  name: 'Others',
-}
-export const REST_TAGS: readonly TechTag[] = [
+export const TAGS = [
+  BACKEND_TAG,
+  FRONTEND_TAG,
+  INFRA_TAG,
   LANGUAGE_TAG,
   TEST_TAG,
   EDITOR_TAG,
-  OTHERS_TAG,
 ]
 
 const TAG_CHARS = ['b', 'f', 'i', 'l', 't', 'e', ''] as const
@@ -174,16 +167,21 @@ export const FIND_TECHS_BY_TAG = new InjectionToken<FindTechsByTag>(
 export type FindTechsByTag = typeof findTechsByTag
 const findTechsByTag = (
   tagChar: TagChar,
-  opts: { excludes?: readonly TagChar[] } = {},
+  opts: { excludes?: readonly TagChar[]; includes?: readonly TagChar[] } = {},
 ) => {
   const techsWithTag = TECHS_BY_TAG_CHAR[tagChar]
-  const { excludes } = opts
-  const filteredTechsWithTag = excludes?.length
+  const { includes, excludes } = opts
+  const withIncludes = includes?.length
     ? techsWithTag.filter((tech) =>
-        excludes.every((tag) => !TECHS_TAGS[tech].includes(tag)),
+        includes.some((tag) => TECHS_TAGS[tech].includes(tag)),
       )
     : techsWithTag
-  return [...filteredTechsWithTag].sort(
+  const withoutExcludes = excludes?.length
+    ? withIncludes.filter((tech) =>
+        excludes.every((tag) => !TECHS_TAGS[tech].includes(tag)),
+      )
+    : withIncludes
+  return [...withoutExcludes].sort(
     (a, b) => TECHS_RELEVANCE_SCORE[b] - TECHS_RELEVANCE_SCORE[a],
   )
 }
