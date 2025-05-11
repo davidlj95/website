@@ -1,30 +1,55 @@
 import { InjectionToken } from '@angular/core'
 import RESUME_JSON from '@/data/resume.json'
 
+/** @knipIgnore **/
 export const BACKEND_TAG = 'backend'
+/** @knipIgnore **/
 export const FRONTEND_TAG = 'frontend'
+/** @knipIgnore **/
 export const INFRA_TAG = 'infra'
+/** @knipIgnore **/
 export const LANGUAGE_TAG = 'language'
+/** @knipIgnore **/
 export const TEST_TAG = 'testing'
+/** @knipIgnore **/
 export const EDITOR_TAG = 'editor'
+/** @knipIgnore **/
 export const OTHERS_TAG = 'others'
+/** @knipIgnore **/
 export const CLOUD_TAG = 'cloud'
+/** @knipIgnore **/
 export const PLATFORM_TAG = 'platform'
+/** @knipIgnore **/
 export const FRAMEWORK_TAG = 'framework'
+/** @knipIgnore **/
 export const VCS_TAG = 'vcs'
+/** @knipIgnore **/
 export const CRYPTO_TAG = 'crypto'
+/** @knipIgnore **/
 export const COMMS_TAG = 'comms'
+/** @knipIgnore **/
 export const SECURITY_TAG = 'security'
+/** @knipIgnore **/
 export const MOBILE_TAG = 'mobile'
+/** @knipIgnore **/
 export const CICD_TAG = 'cicd'
+/** @knipIgnore **/
 export const PRODUCTIVITY_TAG = 'productivity'
+/** @knipIgnore **/
 export const BUILD_TAG = 'build'
+/** @knipIgnore **/
 export const DATA_FORMAT_TAG = 'data-format'
+/** @knipIgnore **/
 export const DATABASE_TAG = 'database'
+/** @knipIgnore **/
 export const RUNTIME_TAG = 'runtime'
+/** @knipIgnore **/
 export const DOCS_TAG = 'docs'
+/** @knipIgnore **/
 export const PAYMENTS_TAG = 'payments'
+/** @knipIgnore **/
 export const MONITORING_TAG = 'monitoring'
+/** @knipIgnore **/
 export const QUEUING_TAG = 'queuing'
 
 export const TECH_TAGS = [
@@ -57,7 +82,7 @@ export const TECH_TAGS = [
 
 export type TechTag = (typeof TECH_TAGS)[number]
 
-export const TECH_TAG_NAMES: Record<TechTag, string> = {
+const TECH_TAG_NAMES: Record<TechTag, string> = {
   [BACKEND_TAG]: 'Backend',
   [FRONTEND_TAG]: 'Frontend',
   [INFRA_TAG]: 'Infrastructure',
