@@ -1,5 +1,6 @@
 @use 'margins';
 @use 'paddings';
+@use 'touch-or-pointer';
 
 :host {
   display: flex;
@@ -15,38 +16,39 @@ label {
 }
 
 input[type='checkbox'] {
-  height: 12px;
-  width: 12px;
+  $size: 12px;
+  height: $size;
+  width: $size;
   position: relative;
   outline: none;
   display: flex;
   align-items: center;
   justify-content: center;
+
   background-color: var(--sys-color-cdt-base-container);
   accent-color: var(--sys-color-primary-bright);
   color: var(--sys-color-on-primary);
 
-  &::placeholder {
-    color: var(--override-input-placeholder-color);
-  }
-
+  // TODO: find out Chromium's dark mode unchecked colour
   &:not(:checked)::before {
-    //background-color: antiquewhite;
     //content: '';
-    //position: absolute;
-    //width: 12px;
-    //height: 12px;
-    //border-radius: 3px;
-    //padding: 1px;
+    //background-color: antiquewhite;
+    position: absolute;
+    width: $size;
+    height: $size;
+    border-radius: 3px;
+    padding: 1px;
   }
 
-  &:hover::after,
-  &:active::before {
-    content: '';
-    height: 24px;
-    width: 24px;
-    border-radius: var(--sys-shape-corner-full);
-    position: absolute;
+  @include touch-or-pointer.primaryInputCanHover {
+    &:hover::after,
+    &:active::before {
+      content: '';
+      height: 2 * $size;
+      width: 2 * $size;
+      border-radius: var(--sys-shape-corner-full);
+      position: absolute;
+    }
   }
 
   &:not(:disabled):hover::after {
