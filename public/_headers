@@ -11,3 +11,6 @@ https://:domain.com/*
 https://:project.pages.dev/*
   Access-Control-Allow-Origin: https://:project.pages.dev/
   X-Robots-Tag: noindex
+https://:ref.:project.pages.dev/*
+  Access-Control-Allow-Origin: https://:ref.:project.pages.dev/
+  X-Robots-Tag: noindex
