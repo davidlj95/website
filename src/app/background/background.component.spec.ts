@@ -34,7 +34,7 @@ describe('BackgroundComponent', () => {
 
     expect(parseInt(svgPattern.attributes['width']!))
       .withContext('width')
-      .toBeCloseTo(Math.floor(lineWidth), 1)
+      .toBeCloseTo(Math.floor(lineWidth), 1.5)
 
     const height = y + lineHeight + HEIGHT_OFFSET
 
@@ -42,6 +42,6 @@ describe('BackgroundComponent', () => {
 
     expect(parseInt(svgPattern.attributes['height']!))
       .withContext('height')
-      .toBeCloseTo(Math.floor(height), 1)
+      .toBeCloseTo(Math.floor(height), 1.5)
   })
 })
