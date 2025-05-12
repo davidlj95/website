@@ -29,20 +29,19 @@ describe('BackgroundComponent', () => {
     const lastSvgTspan = svgPattern.query(By.css('tspan:last-child'))
       .nativeElement as SVGTSpanElement
     const { width: lineWidth, height: lineHeight, y } = lastSvgTspan.getBBox()
-    const flooredString = (x: number) => Math.floor(x).toString()
 
     expect(lineWidth).withContext('text width heuristic').toBeGreaterThan(100)
 
-    expect(svgPattern.attributes['width'])
+    expect(parseInt(svgPattern.attributes['width']!))
       .withContext('width')
-      .toEqual(flooredString(lineWidth))
+      .toBeCloseTo(Math.floor(lineWidth), 1)
 
     const height = y + lineHeight + HEIGHT_OFFSET
 
     expect(height).withContext('text height heuristic').toBeGreaterThan(100)
 
-    expect(svgPattern.attributes['height'])
+    expect(parseInt(svgPattern.attributes['height']!))
       .withContext('height')
-      .toEqual(flooredString(height).toString())
+      .toBeCloseTo(Math.floor(height), 1)
   })
 })
