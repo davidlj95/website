@@ -15,7 +15,7 @@ export class BackgroundComponent {
   //👇 Could be calculated on the client side.
   //   However, this component is part of the largest contentful paint (LCP)
   //   So calculating it in advance. This way, there are no changes when hydrating
-  protected readonly _textSize = { width: 730, height: 288 }
+  protected readonly _textSize = { width: 768, height: 288 }
 }
 
 /**
@@ -54,7 +54,7 @@ const hexdump = (buffer: string) => {
         /[\x00-\x1F\x20\x7F-\x9F]/g,
         '.',
       ) + SPACE.repeat(blockSize - block.length)
-    lines.push(addr + ' ' + codes + '  |' + chars + '|' + '  ')
+    lines.push(addr + codes + '  |' + chars + '|' + '  ')
   }
   return lines.join('\n')
 }

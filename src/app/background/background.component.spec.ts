@@ -26,21 +26,23 @@ describe('BackgroundComponent', () => {
   it("should apply the SVG's text size to the SVG's pattern size", () => {
     const svgPattern = fixture.debugElement.query(By.css('svg pattern'))
 
-    const svgText = svgPattern.query(By.css('text')).nativeElement as Element
-    const textWidth = svgText.clientWidth
+    const lastSvgTspan = svgPattern.query(By.css('tspan:last-child'))
+      .nativeElement as SVGTSpanElement
+    const { width: lineWidth, height: lineHeight, y } = lastSvgTspan.getBBox()
+    const flooredString = (x: number) => Math.floor(x).toString()
 
-    expect(textWidth).withContext('text width heuristic').toBeGreaterThan(100)
+    expect(lineWidth).withContext('text width heuristic').toBeGreaterThan(100)
 
     expect(svgPattern.attributes['width'])
       .withContext('width')
-      .toEqual(textWidth.toString())
+      .toEqual(flooredString(lineWidth))
 
-    const textHeight = svgText.clientHeight
+    const height = y + lineHeight + HEIGHT_OFFSET
 
-    expect(textHeight).withContext('text height heuristic').toBeGreaterThan(100)
+    expect(height).withContext('text height heuristic').toBeGreaterThan(100)
 
     expect(svgPattern.attributes['height'])
       .withContext('height')
-      .toEqual((textHeight + HEIGHT_OFFSET).toString())
+      .toEqual(flooredString(height).toString())
   })
 })
