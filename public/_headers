@@ -2,4 +2,15 @@
 # https://developers.cloudflare.com/pages/configuration/early-hints/#disable-automatic-link-header-generation-automatic-link-header
 # https://github.com/davidlj95/cf-pages-hints-href
 /*
+  Content-Security-Policy: default-src 'self'; script-src-attr 'unsafe-inline'; script-src-elem 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline'; media-src 'none'; object-src 'none'; frame-src https://calendar.google.com https://www.strava.com; frame-ancestors 'none'; sandbox allow-same-origin allow-scripts allow-popups allow-forms
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), xr-spatial-tracking=(), clipboard-read=(), clipboard-write=(), idle-detection=(), serial=(), window-management=(), window-placement=()
+  Vary: Origin
   ! Link
+https://:domain.com/*
+  Access-Control-Allow-Origin: https://:domain.com
+https://:project.pages.dev/*
+  Access-Control-Allow-Origin: https://:project.pages.dev/
+  X-Robots-Tag: noindex
+https://:ref.:project.pages.dev/*
+  Access-Control-Allow-Origin: https://:ref.:project.pages.dev/
+  X-Robots-Tag: noindex
