@@ -7,7 +7,8 @@ import { GET_LANGUAGE_ITEMS, GetLanguageItems } from './get-language-items'
 import { LanguageItemComponent } from './language-item/language-item.component'
 
 @Component({
-  selector: 'app-languages-section',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'section[appLanguages]',
   imports: [CardGridComponent, SectionTitleComponent, LanguageItemComponent],
   templateUrl: './languages-section.component.html',
 })

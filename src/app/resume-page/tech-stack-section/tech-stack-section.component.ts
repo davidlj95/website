@@ -29,7 +29,8 @@ import {
 import { TechTagsSelectorComponent } from './tech-tags-selector/tech-tags-selector.component'
 
 @Component({
-  selector: 'app-tech-stack-section',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'section[appTechStack]',
   imports: [
     SectionTitleComponent,
     FilteredTechsComponent,

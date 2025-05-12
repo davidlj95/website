@@ -7,7 +7,8 @@ import { ProfileContactsComponent } from './profile-contacts/profile-contacts.co
 import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
 
 @Component({
-  selector: 'app-profile-section',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'section[appProfile]',
   templateUrl: './profile-section.component.html',
   styleUrls: ['./profile-section.component.scss'],
   imports: [
