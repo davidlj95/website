@@ -7,7 +7,8 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
 import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
 
 @Component({
-  selector: 'app-education-section',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'section[appEducation]',
   templateUrl: './education-section.component.html',
   imports: [SectionTitleComponent, CardGridComponent, EducationItemComponent],
 })

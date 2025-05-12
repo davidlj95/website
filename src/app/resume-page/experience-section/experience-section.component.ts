@@ -10,7 +10,8 @@ import {
 } from './get-experience-items'
 
 @Component({
-  selector: 'app-experience-section',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'section[appExperience]',
   templateUrl: './experience-section.component.html',
   imports: [SectionTitleComponent, CardGridComponent, ExperienceItemComponent],
 })

@@ -7,7 +7,8 @@ import { CardGridComponent } from '../card-grid/card-grid.component'
 import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
 
 @Component({
-  selector: 'app-projects-section',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'section[appProjects]',
   templateUrl: './projects-section.component.html',
   imports: [SectionTitleComponent, CardGridComponent, ProjectItemComponent],
 })
