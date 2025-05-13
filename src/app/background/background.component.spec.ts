@@ -28,11 +28,8 @@ describe('BackgroundComponent', () => {
 
     const lastSvgTspan = svgPattern.query(By.css('tspan:last-child'))
       .nativeElement as SVGTSpanElement
-    const {
-      width: expectedWidth,
-      height: lineHeight,
-      y,
-    } = lastSvgTspan.getBBox()
+    const lastSvgTspanBbox = lastSvgTspan.getBBox()
+    const expectedWidth = Math.floor(lastSvgTspanBbox.width)
 
     expect(expectedWidth)
       .withContext('text width heuristic')
@@ -47,7 +44,8 @@ describe('BackgroundComponent', () => {
       )
       .toBeTrue()
 
-    const expectedHeight = y + lineHeight + HEIGHT_OFFSET
+    const expectedHeight =
+      lastSvgTspanBbox.y + lastSvgTspanBbox.height + HEIGHT_OFFSET
 
     expect(expectedHeight)
       .withContext('text height heuristic')
