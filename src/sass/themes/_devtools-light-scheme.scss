@@ -35,6 +35,8 @@ $scheme: (
         var(--ref-palette-neutral10) 8%,
         transparent
       ),
+    // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L86
+    sys-color-state-focus-ring: var(--ref-palette-primary40),
     // https://github.com/ChromeDevTools/devtools-frontend/blob/0f87a613d3894a26da7d14ae48e3c3804eeb3293/front_end/design_system_tokens.css#L112
     sys-color-primary-bright: var(--ref-palette-primary50),
     // 👇 Baseline grayscale

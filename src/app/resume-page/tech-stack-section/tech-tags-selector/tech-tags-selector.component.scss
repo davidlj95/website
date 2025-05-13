@@ -62,6 +62,15 @@ input[type='checkbox'] {
     background-color: var(--sys-color-state-ripple-neutral-on-subtle);
   }
 
+  &:not(:disabled):focus-visible::before {
+    content: '';
+    height: 15px;
+    width: 15px;
+    border-radius: 5px;
+    position: absolute;
+    border: 2px solid var(--sys-color-state-focus-ring);
+  }
+
   &::before,
   &::after {
     @include animations.multiple-transitions((background-color, border-color));
