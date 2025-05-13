@@ -8,8 +8,6 @@ import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
-import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
-import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
 import { byTestId } from '@/test/helpers/test-id'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
@@ -105,24 +103,17 @@ describe('EducationItemComponent', () => {
     })
   })
 
-  it('should display area', () => {
-    const area = 'some study area'
-    setEducationItem(fixture, { area })
-
-    const areaElement = fixture.debugElement.query(byTestId('area'))
-
-    expect(areaElement).toBeTruthy()
-    expect(textContent(areaElement)).toEqual(area)
-  })
-
-  it('should display study type', () => {
+  it('should display study type and area', () => {
     const studyType = 'Some study type'
-    setEducationItem(fixture, { studyType })
+    const area = 'some study area'
+    setEducationItem(fixture, { studyType, area })
 
-    const studyTypeElement = fixture.debugElement.query(byTestId('study-type'))
+    const studyTypeAndAreaElement = fixture.debugElement.query(By.css('h4'))
 
-    expect(studyTypeElement).toBeTruthy()
-    expect(textContent(studyTypeElement)).toEqual(studyType)
+    expect(studyTypeAndAreaElement).toBeTruthy()
+    expect(textContent(studyTypeAndAreaElement)).toEqual(
+      `${studyType} - ${area}`,
+    )
   })
 
   it('should display date range component', () => {
@@ -162,8 +153,6 @@ function makeSut() {
       MockComponents(
         CardComponent,
         CardHeaderImageComponent,
-        CardHeaderTitleComponent,
-        CardHeaderSubtitleComponent,
         CardHeaderDetailComponent,
         CardHeaderComponent,
         CardHeaderTextsComponent,

@@ -1,5 +1,5 @@
-<app-card>
-  <app-card-header>
+<article appCard>
+  <header appCardHeader>
     @let item = this.item();
     @if (item.imageSrc) {
       <app-link [href]="item.website?.toString()" appTestId="image">
@@ -10,14 +10,14 @@
       </app-link>
     }
     <app-card-header-texts>
-      <app-card-header-title appTestId="name">
+      <h3 appTestId="name">
         {{ item.name }}
-      </app-card-header-title>
+      </h3>
       @if (item.roles.length) {
-        <app-card-header-subtitle appTestId="role">
+        <h4 appTestId="role">
           <!-- TODO: display all roles, for current case just 1 is enough -->
           {{ item.roles[0] }}
-        </app-card-header-subtitle>
+        </h4>
       }
       <app-card-header-detail>
         <app-date-range [range]="item.dateRange"></app-date-range>
@@ -33,6 +33,6 @@
         </app-attribute>
       }
     </app-card-header-attributes>
-  </app-card-header>
+  </header>
   <app-chipped-content [contents]="_contents()"></app-chipped-content>
-</app-card>
+</article>

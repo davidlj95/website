@@ -4,14 +4,12 @@ import { LanguageItemComponent } from './language-item.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
-import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { makeLanguageItem } from './__tests__/make-language-item'
 import { LanguageItem } from './language-item'
 import { byTestId } from '@/test/helpers/test-id'
 import { LanguageTagComponent } from './language-tag/language-tag.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
-import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
@@ -102,9 +100,7 @@ function makeSut() {
       MockComponents(
         CardComponent,
         CardHeaderComponent,
-        CardHeaderTitleComponent,
         CardHeaderTextsComponent,
-        CardHeaderSubtitleComponent,
         LanguageTagComponent,
       ),
     ],
