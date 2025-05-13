@@ -12,7 +12,8 @@
     @include animations.single-transition(color);
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     [role='tooltip'] {
       visibility: unset;
       right: 100%;

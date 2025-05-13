@@ -48,13 +48,10 @@ describe('AttributeComponent', () => {
     expect(iconElement.attributes['aria-describedby']).toEqual(tooltipId)
   })
 
-  it('should be ARIA accessible: icon is included in tab sequence', () => {
+  it('should be ARIA accessible: it is included in tab sequence', () => {
     const [fixture] = makeSut()
 
-    const iconElement = fixture.debugElement.query(MATERIAL_SYMBOLS_SELECTOR)
-
-    expect(iconElement).toBeTruthy()
-    expect(iconElement.attributes['tabindex']).toEqual('0')
+    expect(fixture.debugElement.attributes['tabindex']).toEqual('0')
   })
 
   shouldProjectContent(AttributeComponent, By.css("[role='tooltip']"))
