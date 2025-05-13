@@ -26,21 +26,33 @@ describe('BackgroundComponent', () => {
   it("should apply the SVG's text size to the SVG's pattern size", () => {
     const svgPattern = fixture.debugElement.query(By.css('svg pattern'))
 
-    const svgText = svgPattern.query(By.css('text')).nativeElement as Element
-    const textWidth = svgText.clientWidth
+    const lastSvgTspan = svgPattern.query(By.css('tspan:last-child'))
+      .nativeElement as SVGTSpanElement
+    const lastSvgTspanBbox = lastSvgTspan.getBBox()
+    const expectedWidth = Math.floor(lastSvgTspanBbox.width)
 
-    expect(textWidth).withContext('text width heuristic').toBeGreaterThan(100)
+    expect(expectedWidth)
+      .withContext('text width heuristic')
+      .toBeGreaterThan(100)
 
-    expect(svgPattern.attributes['width'])
-      .withContext('width')
-      .toEqual(textWidth.toString())
+    //👇 A 1 px variation can exist depending if running on CI/CD or locally
+    const actualWidth = parseInt(svgPattern.attributes['width']!)
 
-    const textHeight = svgText.clientHeight
+    expect(expectedWidth - 1 <= actualWidth && actualWidth <= expectedWidth + 1)
+      .withContext(
+        `actual width ${actualWidth} not into +-1px range of expected width ${expectedWidth}`,
+      )
+      .toBeTrue()
 
-    expect(textHeight).withContext('text height heuristic').toBeGreaterThan(100)
+    const expectedHeight =
+      lastSvgTspanBbox.y + lastSvgTspanBbox.height + HEIGHT_OFFSET
 
-    expect(svgPattern.attributes['height'])
+    expect(expectedHeight)
+      .withContext('text height heuristic')
+      .toBeGreaterThan(100)
+
+    expect(parseInt(svgPattern.attributes['height']!))
       .withContext('height')
-      .toEqual((textHeight + HEIGHT_OFFSET).toString())
+      .toBe(expectedHeight)
   })
 })
