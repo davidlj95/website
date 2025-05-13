@@ -14,6 +14,9 @@ let nextId = 0
   templateUrl: './attribute.component.html',
   styleUrls: ['./attribute.component.scss'],
   imports: [MaterialSymbolDirective],
+  host: {
+    tabindex: '0',
+  },
 })
 export class AttributeComponent {
   readonly symbol = input.required<string>()
