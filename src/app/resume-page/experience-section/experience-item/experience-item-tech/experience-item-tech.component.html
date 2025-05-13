@@ -6,8 +6,8 @@
 <br />
 <ul appContentChipList>
   @for (item of technologies(); track item) {
-    <app-content-chip>
+    <li appContentChip>
       <app-technology [item]="item"></app-technology>
-    </app-content-chip>
+    </li>
   }
 </ul>
