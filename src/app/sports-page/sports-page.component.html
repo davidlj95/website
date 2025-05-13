@@ -31,7 +31,7 @@
   </p>
   <ng-template #playtomicCard let-sport="sport">
     <div class="card-wrapper">
-      <app-card>
+      <article appCard>
         <app-card-header>
           <a [href]="_playtomicProfileUrl">
             <app-card-header-image
@@ -49,7 +49,7 @@
         <form [action]="_playtomicProfileUrl" method="GET">
           <button app-button>Let's play a match!</button>
         </form>
-      </app-card>
+      </article>
     </div>
   </ng-template>
   <ng-container

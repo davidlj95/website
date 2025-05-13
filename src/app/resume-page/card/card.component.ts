@@ -1,7 +1,8 @@
 import { Component } from '@angular/core'
 
 @Component({
-  selector: 'app-card',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'article[appCard]',
   template: '<ng-content></ng-content>',
   styleUrls: ['./card.component.scss'],
 })
