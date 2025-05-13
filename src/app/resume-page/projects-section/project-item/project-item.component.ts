@@ -7,8 +7,6 @@ import { AttributeComponent } from '../../attribute/attribute.component'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
-import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
-import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { TestIdDirective } from '@/common/test-id.directive'
@@ -28,8 +26,6 @@ import { projectItemToContents } from './project-item-to-contents'
     CardHeaderComponent,
     CardHeaderImageComponent,
     CardHeaderTextsComponent,
-    CardHeaderTitleComponent,
-    CardHeaderSubtitleComponent,
     CardHeaderDetailComponent,
     DateRangeComponent,
     CardHeaderAttributesComponent,

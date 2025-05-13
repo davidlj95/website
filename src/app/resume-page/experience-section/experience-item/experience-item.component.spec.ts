@@ -7,8 +7,6 @@ import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
-import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
-import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
 import { byTestId } from '@/test/helpers/test-id'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
@@ -214,8 +212,6 @@ function makeSut() {
         CardHeaderComponent,
         CardHeaderImageComponent,
         CardHeaderTextsComponent,
-        CardHeaderTitleComponent,
-        CardHeaderSubtitleComponent,
         CardHeaderDetailComponent,
         DateRangeComponent,
         CardHeaderAttributesComponent,

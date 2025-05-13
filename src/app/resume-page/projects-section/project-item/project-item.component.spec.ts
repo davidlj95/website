@@ -11,8 +11,6 @@ import { CardHeaderImageComponent } from '../../card/card-header/card-header-ima
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { ProjectItem, Stack } from './project-item'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
-import { CardHeaderTitleComponent } from '../../card/card-header/card-header-title/card-header-title.component'
-import { CardHeaderSubtitleComponent } from '../../card/card-header/card-header-subtitle/card-header-subtitle.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { byTestId } from '@/test/helpers/test-id'
@@ -174,8 +172,6 @@ function makeSut() {
         CardHeaderComponent,
         CardHeaderImageComponent,
         CardHeaderTextsComponent,
-        CardHeaderTitleComponent,
-        CardHeaderSubtitleComponent,
         CardHeaderDetailComponent,
         DateRangeComponent,
         CardHeaderAttributesComponent,

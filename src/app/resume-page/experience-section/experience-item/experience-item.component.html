@@ -9,12 +9,8 @@
       </app-card-header-image>
     </app-link>
     <app-card-header-texts>
-      <app-card-header-title appTestId="company-name">
-        {{ item.company.name }}
-      </app-card-header-title>
-      <app-card-header-subtitle appTestId="position">
-        {{ item.position }}
-      </app-card-header-subtitle>
+      <h3 appTestId="company-name">{{ item.company.name }}</h3>
+      <h4 appTestId="position">{{ item.position }}</h4>
       <app-card-header-detail>
         <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>

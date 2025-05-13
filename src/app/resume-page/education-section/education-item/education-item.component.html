@@ -9,15 +9,10 @@
       </app-card-header-image>
     </app-link>
     <app-card-header-texts>
-      <app-card-header-title appTestId="institution-name">
+      <h3 appTestId="institution-name">
         {{ _institutionDisplayName() }}
-      </app-card-header-title>
-      <app-card-header-subtitle appTestId="study-type">
-        {{ item.studyType }}
-      </app-card-header-subtitle>
-      <app-card-header-subtitle appTestId="area">
-        {{ item.area }}
-      </app-card-header-subtitle>
+      </h3>
+      <h4>{{ item.studyType }} - {{ item.area }}</h4>
       <app-card-header-detail>
         <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>

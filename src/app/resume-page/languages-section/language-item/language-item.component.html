@@ -2,12 +2,12 @@
   <header appCardHeader>
     <app-language-tag [tag]="item().tag"></app-language-tag>
     <app-card-header-texts>
-      <app-card-header-title appTestId="name">
+      <h3 appTestId="name">
         {{ item().name }}
-      </app-card-header-title>
-      <app-card-header-subtitle appTestId="fluency">
+      </h3>
+      <h4 appTestId="fluency">
         {{ item().fluency }}
-      </app-card-header-subtitle>
+      </h4>
     </app-card-header-texts>
   </header>
   @if (item().comment) {
