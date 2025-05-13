@@ -28,20 +28,33 @@ describe('BackgroundComponent', () => {
 
     const lastSvgTspan = svgPattern.query(By.css('tspan:last-child'))
       .nativeElement as SVGTSpanElement
-    const { width: lineWidth, height: lineHeight, y } = lastSvgTspan.getBBox()
+    const {
+      width: expectedWidth,
+      height: lineHeight,
+      y,
+    } = lastSvgTspan.getBBox()
 
-    expect(lineWidth).withContext('text width heuristic').toBeGreaterThan(100)
+    expect(expectedWidth)
+      .withContext('text width heuristic')
+      .toBeGreaterThan(100)
 
     expect(parseInt(svgPattern.attributes['width']!))
       .withContext('width')
-      .toBeCloseTo(Math.floor(lineWidth), 1.5)
+      .toBe(Math.floor(expectedWidth))
 
-    const height = y + lineHeight + HEIGHT_OFFSET
+    const expectedHeight = y + lineHeight + HEIGHT_OFFSET
 
-    expect(height).withContext('text height heuristic').toBeGreaterThan(100)
+    expect(expectedHeight)
+      .withContext('text height heuristic')
+      .toBeGreaterThan(100)
 
-    expect(parseInt(svgPattern.attributes['height']!))
+    const actualHeight = parseInt(svgPattern.attributes['height']!)
+
+    //👇 A 1 px variation can exist depending if running on CI/CD or locally
+    expect(
+      actualHeight - 1 <= expectedHeight && actualHeight <= expectedHeight + 1,
+    )
       .withContext('height')
-      .toBeCloseTo(Math.floor(height), 1.5)
+      .toBeTrue()
   })
 })
