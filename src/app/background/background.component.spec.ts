@@ -38,9 +38,12 @@ describe('BackgroundComponent', () => {
       .withContext('text width heuristic')
       .toBeGreaterThan(100)
 
-    expect(parseInt(svgPattern.attributes['width']!))
+    //👇 A 1 px variation can exist depending if running on CI/CD or locally
+    const actualWidth = parseInt(svgPattern.attributes['width']!)
+
+    expect(actualWidth - 1 <= expectedWidth && expectedWidth <= actualWidth + 1)
       .withContext('width')
-      .toBe(Math.floor(expectedWidth))
+      .toBeTrue()
 
     const expectedHeight = y + lineHeight + HEIGHT_OFFSET
 
@@ -48,13 +51,8 @@ describe('BackgroundComponent', () => {
       .withContext('text height heuristic')
       .toBeGreaterThan(100)
 
-    const actualHeight = parseInt(svgPattern.attributes['height']!)
-
-    //👇 A 1 px variation can exist depending if running on CI/CD or locally
-    expect(
-      actualHeight - 1 <= expectedHeight && actualHeight <= expectedHeight + 1,
-    )
+    expect(parseInt(svgPattern.attributes['height']!))
       .withContext('height')
-      .toBeTrue()
+      .toBe(expectedHeight)
   })
 })
