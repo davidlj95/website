@@ -1,9 +1,18 @@
-<span class="start">{{ range().start | date: 'MMM yyyy' }}</span>
-<span class="separator"> → </span>
-<span class="end">
-  @if (range().end) {
-    {{ range().end | date: 'MMM yyyy' }}
-  } @else {
-    Present
-  }
-</span>
+<ng-container
+  *ngTemplateOutlet="time; context: { $implicit: range().start }"
+></ng-container>
+→
+@if (range().end) {
+  <ng-container
+    *ngTemplateOutlet="time; context: { $implicit: range().end }"
+  ></ng-container>
+} @else {
+  <ng-container
+    *ngTemplateOutlet="time; context: { $implicit: _now, text: 'Present' }"
+  ></ng-container>
+}
+<ng-template #time let-time let-text="text">
+  <time [dateTime]="time | date: 'yyyy-MM'">{{
+    text ? text : (time | date: 'MMM yyyy')
+  }}</time>
+</ng-template>
