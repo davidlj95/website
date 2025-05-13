@@ -10,7 +10,6 @@ import { ButtonComponent } from '../resume-page/button/button.component'
 import { ContentPageComponent } from '../content-page/content-page.component'
 
 @Component({
-  selector: 'app-sports-page',
   imports: [
     NgOptimizedImage,
     CardComponent,

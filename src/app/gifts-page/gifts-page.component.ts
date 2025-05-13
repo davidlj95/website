@@ -3,7 +3,6 @@ import { NgOptimizedImage } from '@angular/common'
 import { ContentPageComponent } from '../content-page/content-page.component'
 
 @Component({
-  selector: 'app-gifts-page',
   imports: [NgOptimizedImage, ContentPageComponent],
   templateUrl: './gifts-page.component.html',
 })

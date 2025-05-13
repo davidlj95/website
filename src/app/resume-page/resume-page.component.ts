@@ -7,7 +7,6 @@ import { LanguagesSectionComponent } from './languages-section/languages-section
 import { TechStackSectionComponent } from './tech-stack-section/tech-stack-section.component'
 
 @Component({
-  selector: 'app-resume-page',
   templateUrl: './resume-page.component.html',
   imports: [
     ProfileSectionComponent,
