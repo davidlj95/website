@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 
 @Component({
-  selector: 'app-content-chip-list',
-  imports: [],
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'ul[appContentChipList]',
   template: '<ng-content></ng-content>',
   styleUrl: './content-chip-list.component.scss',
 })

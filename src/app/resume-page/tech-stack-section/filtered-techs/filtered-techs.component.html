@@ -1,11 +1,11 @@
 <p>{{ _getTechTagName(tag()) }}</p>
-<app-content-chip-list>
+<ul appContentChipList>
   @for (tech of _topTechs(); track tech) {
-    <app-content-chip
-      ><app-technology [item]="{ slug: tech }"></app-technology
-    ></app-content-chip>
+    <li appContentChip>
+      <app-technology [item]="{ slug: tech }"></app-technology>
+    </li>
   }
   @if (_restOfTechsCount()) {
-    <span>... (+ {{ _restOfTechsCount() }} more)</span>
+    <li>... (+ {{ _restOfTechsCount() }} more)</li>
   }
-</app-content-chip-list>
+</ul>
