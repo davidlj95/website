@@ -4,10 +4,10 @@
   {{ projectsCount > 1 ? 'projects' : 'project' }}: {{ _projectNamesList() }}
 </p>
 <br />
-<app-content-chip-list>
+<ul appContentChipList>
   @for (item of technologies(); track item) {
     <app-content-chip>
       <app-technology [item]="item"></app-technology>
     </app-content-chip>
   }
-</app-content-chip-list>
+</ul>
