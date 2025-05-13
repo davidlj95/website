@@ -1,15 +1,11 @@
 @use 'margins';
 
 :host {
-  display: inline-block;
-}
-.wrap {
   display: flex;
   gap: margins.$s;
 }
 
-.icon {
-  position: relative;
+app-simple-icon {
   height: 1em;
   width: 1em;
 }

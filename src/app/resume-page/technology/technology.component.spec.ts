@@ -39,7 +39,7 @@ describe('TechnologyComponent', () => {
     expect(getTechnologyFromSlug).toHaveBeenCalledOnceWith(DUMMY_ITEM.slug)
   })
 
-  const ICON_ELEMENT_SELECTOR = By.css('.icon')
+  const ICON_ELEMENT_SELECTOR = By.css('app-simple-icon')
   describe('when icon is available', () => {
     beforeEach(() => {
       const getTechnologyFromSlug = jasmine
