@@ -32,7 +32,7 @@
   <ng-template #playtomicCard let-sport="sport">
     <div class="card-wrapper">
       <article appCard>
-        <app-card-header>
+        <header appCardHeader>
           <a [href]="_playtomicProfileUrl">
             <app-card-header-image
               src="/images/misc/playtomic.svg"
@@ -45,7 +45,7 @@
             </app-card-header-title>
             <app-card-header-subtitle> Via Playtomic </app-card-header-subtitle>
           </app-card-header-texts>
-        </app-card-header>
+        </header>
         <form [action]="_playtomicProfileUrl" method="GET">
           <button app-button>Let's play a match!</button>
         </form>

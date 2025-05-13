@@ -1,5 +1,5 @@
 <article appCard>
-  <app-card-header>
+  <header appCardHeader>
     <app-language-tag [tag]="item().tag"></app-language-tag>
     <app-card-header-texts>
       <app-card-header-title appTestId="name">
@@ -9,7 +9,7 @@
         {{ item().fluency }}
       </app-card-header-subtitle>
     </app-card-header-texts>
-  </app-card-header>
+  </header>
   @if (item().comment) {
     <div appTestId="comment">
       <p>{{ item().comment }}</p>

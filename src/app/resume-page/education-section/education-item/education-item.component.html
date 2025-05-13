@@ -1,6 +1,6 @@
 <article appCard>
   @let item = this.item();
-  <app-card-header>
+  <header appCardHeader>
     <app-link [href]="item.institution.website?.toString()" appTestId="image">
       <app-card-header-image
         [src]="item.institution.imageSrc"
@@ -32,6 +32,6 @@
         </app-attribute>
       }
     </app-card-header-attributes>
-  </app-card-header>
+  </header>
   <app-chipped-content [contents]="_contents()"></app-chipped-content>
 </article>
