@@ -41,8 +41,10 @@ describe('BackgroundComponent', () => {
     //👇 A 1 px variation can exist depending if running on CI/CD or locally
     const actualWidth = parseInt(svgPattern.attributes['width']!)
 
-    expect(actualWidth - 1 <= expectedWidth && expectedWidth <= actualWidth + 1)
-      .withContext('width')
+    expect(expectedWidth - 1 <= actualWidth && actualWidth <= expectedWidth + 1)
+      .withContext(
+        `actual width ${actualWidth} not into +-1px range of expected width ${expectedWidth}`,
+      )
       .toBeTrue()
 
     const expectedHeight = y + lineHeight + HEIGHT_OFFSET
