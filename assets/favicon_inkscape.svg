@@ -2,147 +2,157 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <!--suppress ALL -->
+
 <svg
-  height="512"
-  id="svg1"
-  inkscape:version="1.3 (0e150ed, 2023-07-21)"
-  sodipodi:docname="favicon_inkscape.svg"
-  version="1.1"
-  viewBox="0 5 7.111 7.111"
-  width="512"
-  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:cc="http://creativecommons.org/ns#"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+   height="512"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   sodipodi:docname="favicon_inkscape.svg"
+   version="1.1"
+   viewBox="0 0 512 512"
+   width="512"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#">
   <sodipodi:namedview
-    bordercolor="#ffffff"
-    borderopacity="1"
-    id="namedview1"
-    inkscape:current-layer="svg1"
-    inkscape:cx="120.36419"
-    inkscape:cy="163.63561"
-    inkscape:deskcolor="#505050"
-    inkscape:document-units="px"
-    inkscape:lockguides="false"
-    inkscape:pagecheckerboard="1"
-    inkscape:pageopacity="0"
-    inkscape:showpageshadow="0"
-    inkscape:window-height="916"
-    inkscape:window-maximized="0"
-    inkscape:window-width="1392"
-    inkscape:window-x="1752"
-    inkscape:window-y="25"
-    inkscape:zoom="1.0052824"
-    pagecolor="#505050"
-    showgrid="true">
+     bordercolor="#ffffff"
+     borderopacity="1"
+     id="namedview1"
+     inkscape:current-layer="svg1"
+     inkscape:cx="218.14244"
+     inkscape:cy="266.57926"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:lockguides="false"
+     inkscape:pagecheckerboard="1"
+     inkscape:pageopacity="0"
+     inkscape:showpageshadow="0"
+     inkscape:window-height="937"
+     inkscape:window-maximized="1"
+     inkscape:window-width="1920"
+     inkscape:window-x="1512"
+     inkscape:window-y="25"
+     inkscape:zoom="1.4142136"
+     pagecolor="#505050"
+     showgrid="true">
     <inkscape:grid
-      color="#0099e5"
-      dotted="false"
-      empcolor="#0099e5"
-      empopacity="0.30196078"
-      empspacing="8"
-      gridanglex="30"
-      gridanglez="30"
-      id="grid7"
-      opacity="0.14901961"
-      originx="0"
-      originy="0"
-      spacingx="0.013888672"
-      spacingy="0.013888672"
-      units="px"
-      visible="true"/>
+       color="#0099e5"
+       dotted="false"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       empspacing="8"
+       gridanglex="30"
+       gridanglez="30"
+       id="grid7"
+       opacity="0.14901961"
+       originx="0"
+       originy="0"
+       spacingx="0.013888672"
+       spacingy="0.013888672"
+       units="px"
+       visible="true" />
   </sodipodi:namedview>
   <defs
-    id="defs1"/>
+     id="defs1" />
   <g
-    id="layer1"
-    inkscape:label="Text"
-    style="display:none">
+     id="layer1"
+     inkscape:label="Text"
+     style="display:none"
+     transform="translate(73.611156,327.17122)">
     <text
-      id="text5"
-      inkscape:label="D"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.94159px;font-family:Tahoma;-inkscape-font-specification:Tahoma;fill:#7a7a85;fill-opacity:1;stroke-width:0.0138887"
-      x="-0.36434573"
-      xml:space="preserve"
-      y="10.351893"><tspan
-         id="tspan5"
-         sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.94159px;font-family:Tahoma;-inkscape-font-specification:Tahoma;stroke-width:0.0138887"
-         x="-0.36434573"
-         y="10.351893">D</tspan></text>
-    <text
-      id="text6"
-      inkscape:label="L"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.94159px;font-family:Tahoma;-inkscape-font-specification:Tahoma;fill:#7a7a85;fill-opacity:1;stroke-width:0.0138887"
-      x="2.7182312"
-      xml:space="preserve"
-      y="10.351893"><tspan
-         id="tspan6"
-         sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.94159px;font-family:Tahoma;-inkscape-font-specification:Tahoma;stroke-width:0.0138887"
-         x="2.7182312"
-         y="10.351893">L</tspan></text>
-    <text
-      xml:space="preserve"
-      id="text1"
-      inkscape:label="J"
-      style="font-size:4.94159px;font-family:Tahoma;-inkscape-font-specification:Tahoma;fill:#7a7a85;stroke-width:0.0138887"
-      x="5.3930254"
-      y="10.326558"><tspan
+       xml:space="preserve"
+       id="text1"
+       inkscape:label="J"
+       style="font-size:300px;font-family:Tahoma;-inkscape-font-specification:Tahoma;display:inline;fill:#757575;fill-opacity:1;stroke-width:0.0138887"
+       x="241.09198"
+       y="34.004562"><tspan
          sodipodi:role="line"
          id="tspan1"
-         style="stroke-width:0.0138887"
-         x="5.3930254"
-         y="10.326558">J</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:300px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';fill:#757575;fill-opacity:1;stroke-width:0.0138887"
+         x="241.09198"
+         y="34.004562">J</tspan></text>
+    <text
+       id="text6"
+       inkscape:label="L"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:300px;font-family:Tahoma;-inkscape-font-specification:Tahoma;display:inline;fill:#757575;fill-opacity:1;stroke-width:0.0138887"
+       x="91.061707"
+       xml:space="preserve"
+       y="35.469406"><tspan
+         id="tspan6"
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:300px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';fill:#757575;fill-opacity:1;stroke-width:0.0138887"
+         x="91.061707"
+         y="35.469406">L</tspan></text>
+    <text
+       id="text5"
+       inkscape:label="D"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:300px;font-family:Tahoma;-inkscape-font-specification:Tahoma;display:inline;fill:#757575;fill-opacity:1;stroke-width:0.0138887"
+       x="-50.730293"
+       xml:space="preserve"
+       y="35.469406"><tspan
+         id="tspan5"
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:300px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';fill:#757575;fill-opacity:1;stroke-width:0.0138887"
+         x="-50.730293"
+         y="35.469406">D</tspan></text>
   </g>
   <metadata
-    id="metadata4">
+     id="metadata4">
     <rdf:RDF>
       <cc:Work
-        rdf:about="">
+         rdf:about="">
         <cc:license
-          rdf:resource="http://creativecommons.org/licenses/by-nc-sa/4.0/"/>
+           rdf:resource="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
       </cc:Work>
       <cc:License
-        rdf:about="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+         rdf:about="http://creativecommons.org/licenses/by-nc-sa/4.0/">
         <cc:permits
-          rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
         <cc:permits
-          rdf:resource="http://creativecommons.org/ns#Distribution"/>
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
         <cc:requires
-          rdf:resource="http://creativecommons.org/ns#Notice"/>
+           rdf:resource="http://creativecommons.org/ns#Notice" />
         <cc:requires
-          rdf:resource="http://creativecommons.org/ns#Attribution"/>
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
         <cc:prohibits
-          rdf:resource="http://creativecommons.org/ns#CommercialUse"/>
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
         <cc:permits
-          rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
         <cc:requires
-          rdf:resource="http://creativecommons.org/ns#ShareAlike"/>
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
       </cc:License>
     </rdf:RDF>
   </metadata>
   <g
-    id="g4"
-    inkscape:label="Paths">
+     id="g4"
+     inkscape:label="Paths">
     <path
-      aria-label="D"
-      d="m 2.8327278,8.5591194 q 0,0.4922287 -0.2002695,0.8879419 -0.1978567,0.3957133 -0.5332478,0.6176987 -0.272656,0.171315 -0.5549637,0.229224 -0.2798947,0.05791 -0.71662701,0.05791 H 0 V 6.7591067 h 0.81796824 q 0.50670596,0 0.79383936,0.077212 0.2895463,0.0748 0.4922287,0.2075082 0.3474555,0.2292241 0.5380735,0.6104601 0.190618,0.378823 0.190618,0.9048321 z m -0.4970545,-0.00724 q 0,-0.4150163 -0.1375345,-0.7069755 Q 2.0606044,7.5505332 1.7903612,7.3864569 1.5997432,7.2706384 1.3825835,7.2199678 1.1654238,7.1692972 0.8420971,7.1692972 H 0.47775137 V 9.9417029 H 0.8420971 q 0.3185009,0 0.5573766,-0.050671 0.2388757,-0.050671 0.4367323,-0.1882051 0.2485272,-0.168902 0.3739973,-0.4487968 0.12547,-0.2823076 0.12547,-0.7021497 z"
-      id="text2"
-      inkscape:label="D"
-      style="font-size:4.94159px;font-family:Tahoma;-inkscape-font-specification:Tahoma;fill:#7a7a85;stroke-width:0.0138887"/>
+       style="font-size:300px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';fill:#757575;stroke-width:0.0138887"
+       d="M 440.24023,147.89453 V 296.2832 q -0.29296,9.08203 -3.22265,17.28516 -2.78321,8.05664 -8.05664,14.20898 -5.41992,6.15235 -13.03711,9.81446 -7.61719,3.51562 -17.28516,3.51562 -9.375,0 -16.99219,-3.07617 -7.4707,-3.07617 -12.89062,-8.78906 -5.41992,-5.56641 -8.64258,-13.1836 -3.07617,-7.61718 -3.51562,-16.55273 h -27.53907 q 1.31836,14.79492 6.73828,26.80664 5.41993,11.86523 14.50196,20.21484 8.93554,8.4961 21.09375,13.03711 12.30469,4.54102 27.24609,4.54102 14.79492,0 27.2461,-4.98047 12.59765,-5.12695 21.82617,-14.20898 9.22851,-8.93555 14.50195,-21.38672 5.41992,-12.45118 5.71289,-27.2461 V 147.89453 Z"
+       id="j"
+       inkscape:label="J"
+       aria-label="J" />
     <path
-      aria-label="L"
-      d="M 5.1648973,10.351893 H 3.0825769 V 6.7591067 h 0.4777514 v 3.1681188 h 1.604569 z"
-      id="text3"
-      inkscape:label="L"
-      style="font-size:4.94159px;font-family:Tahoma;-inkscape-font-specification:Tahoma;fill:#7a7a85;stroke-width:0.0138887"/>
+       style="font-size:300px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';fill:#757575;stroke-width:0.0138887"
+       d="M 220.77638,339.64258 V 149.35937 h -27.09961 v 213.28125 h 131.39649 v -22.99804 z"
+       id="l"
+       inkscape:label="L"
+       aria-label="L" />
     <path
-      aria-label="J"
-      d="m 7.111,9.3927714 q 0,0.4729256 -0.2895463,0.7286916 -0.2871334,0.255766 -0.7721234,0.255766 -0.1158185,0 -0.3112623,-0.02172 -0.1930308,-0.0193 -0.3233266,-0.04826 V 9.8512196 h 0.026542 q 0.098928,0.03378 0.2437015,0.074799 0.147186,0.041019 0.2991978,0.041019 0.2219855,0 0.3522813,-0.050671 Q 6.4691724,9.865697 6.5319074,9.7715944 6.5970553,9.675079 6.6139455,9.5351316 6.6332486,9.3951842 6.6332486,9.2118049 V 7.1150073 H 5.8731896 V 6.7337714 H 7.111 Z"
-      id="text4"
-      inkscape:label="J"
-      style="font-size:4.94159px;font-family:Tahoma;-inkscape-font-specification:Tahoma;fill:#7a7a85;stroke-width:0.0138887"/>
+       style="font-size:300px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';fill:#757575;stroke-width:0.0138887"
+       d="m 45.585941,362.64062 h 49.365235 q 15.380864,-0.14648 28.564454,-3.6621 13.33008,-3.51563 23.87695,-10.10743 9.96094,-6.29882 18.01758,-15.23437 8.05664,-8.93555 13.33008,-19.92188 5.12695,-10.54687 7.76367,-23.14453 2.7832,-12.59765 2.7832,-26.66015 v -15.67383 q -0.14648,-14.64844 -3.07617,-27.53906 -2.7832,-12.89063 -8.20312,-23.73047 -6.00586,-12.74414 -16.11328,-22.41211 -9.96094,-9.81446 -22.99805,-15.82032 -9.375,-4.39453 -20.50781,-6.73828 -10.98633,-2.49023 -23.437504,-2.63672 H 45.585941 Z M 73.125004,171.625 h 21.826172 q 10.107424,0.14648 18.603514,2.34375 8.4961,2.05078 15.38086,5.85937 9.66797,5.12696 16.25977,13.47657 6.73828,8.20312 10.69336,18.45703 3.07617,7.91015 4.54101,17.13867 1.61133,9.08203 1.75781,19.04297 v 15.9668 q -0.14648,9.81445 -1.61132,18.89648 -1.46485,8.93555 -4.39454,16.69922 -3.36914,9.52148 -9.22851,17.28516 -5.71289,7.61718 -13.62305,12.89062 -7.4707,5.12695 -17.13867,7.91016 -9.52148,2.7832 -21.240234,2.92968 H 73.125004 Z"
+       id="d"
+       inkscape:label="D"
+       aria-label="D" />
   </g>
+  <circle
+     style="display:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:32;stroke-dasharray:none;stroke-opacity:1"
+     id="circle-mask"
+     cx="256"
+     cy="256"
+     inkscape:label="circle-mask"
+     r="256" />
 </svg>
