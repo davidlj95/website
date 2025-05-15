@@ -203,8 +203,8 @@ export const METADATA = {
   ),
   domainName: DOMAIN_NAME,
   authorUrl: new URL(`https://${DOMAIN_NAME}`),
-  // Chosen dark theme background color z0 level (theming.scss)
-  themeColor: '#202023',
+  // Chosen neutral15
+  themeColor: '#282828',
 }
 
 export type Metadata = typeof METADATA
