@@ -46,7 +46,6 @@
     "release": "release-it",
     "release:dry-run": "release-it --dry-run --no-git.requireBranch",
     "release:dry-run:local": "pnpm run release:dry-run --no-git.requireCleanWorkingDir --no-git.requireUpstream",
-    "serve:ssr:@davidlj95/website": "node dist/@davidlj95/website/server/server.mjs",
     "start": "pnpm dlx http-server dist/@davidlj95/website/browser -a localhost",
     "start:dev": "ng serve",
     "start:dev:public": "pnpm run start:dev --host 0.0.0.0 --disable-host-check",
