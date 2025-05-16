@@ -1,7 +1,6 @@
 import { Component, input } from '@angular/core'
 
 import { TechnologyComponent } from '../../../technology/technology.component'
-import { TechnologyItem } from '../../../technology/technology-item'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 
@@ -15,5 +14,5 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
   templateUrl: './project-item-technologies.component.html',
 })
 export class ProjectItemTechnologiesComponent {
-  readonly items = input.required<readonly TechnologyItem[]>()
+  readonly technologies = input.required<readonly string[]>()
 }

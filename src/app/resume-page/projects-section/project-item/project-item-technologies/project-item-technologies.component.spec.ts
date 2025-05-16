@@ -3,7 +3,6 @@ import { ComponentFixture } from '@angular/core/testing'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { TechnologyComponent } from '../../../technology/technology.component'
-import { makeTechnologyItem } from '../../../technology/__tests__/make-technology-item'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
 import { MockComponents } from 'ng-mocks'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
@@ -13,7 +12,7 @@ import { By } from '@angular/platform-browser'
 describe('ProjectItemTechnologiesComponent', () => {
   let component: ProjectItemTechnologiesComponent
   let fixture: ComponentFixture<ProjectItemTechnologiesComponent>
-  const DUMMY_ITEMS = [makeTechnologyItem(), makeTechnologyItem()]
+  const technologies = ['foo-tech', 'bar-tech']
 
   beforeEach(() => {
     ;[fixture, component] = componentTestSetup(
@@ -28,7 +27,7 @@ describe('ProjectItemTechnologiesComponent', () => {
         ],
       },
     )
-    setFixtureInputsAndDetectChanges(fixture, { items: DUMMY_ITEMS })
+    setFixtureInputsAndDetectChanges(fixture, { technologies })
   })
 
   it('should create', () => {
@@ -40,6 +39,6 @@ describe('ProjectItemTechnologiesComponent', () => {
       By.directive(TechnologyComponent),
     )
 
-    expect(itemElements.length).toEqual(DUMMY_ITEMS.length)
+    expect(itemElements.length).toEqual(technologies.length)
   })
 })

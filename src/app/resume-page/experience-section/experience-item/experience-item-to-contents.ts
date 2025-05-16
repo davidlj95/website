@@ -4,7 +4,6 @@ import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { ExperienceItemTechComponent } from './experience-item-tech/experience-item-tech.component'
-import { TechnologyItem } from '../../technology/technology-item'
 
 export const experienceItemToContents: (
   item: ExperienceItem,
@@ -37,9 +36,7 @@ export const experienceItemToContents: (
           displayName: 'Tech',
           component: ExperienceItemTechComponent,
           inputs: {
-            technologies: Array.from(
-              new Set(projectsTechnologies.map<string>(({ slug }) => slug)),
-            ).map<TechnologyItem>((slug) => ({ slug })),
+            technologies: Array.from(new Set(projectsTechnologies)),
             projectNames: item.projects
               .filter((project) => project.technologies.length > 0)
               .map((project) => project.name),

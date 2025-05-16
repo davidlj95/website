@@ -11,7 +11,6 @@ import {
   RelativizeProductionUrl,
 } from '@/common/relativize-production-url'
 import { makeJsonResumeProject } from './__tests__/make-json-resume-project'
-import { JsonResumeProject } from './json-resume-projects'
 
 describe('AdaptJsonResumeProject', () => {
   it('should be created', () => {
@@ -139,13 +138,7 @@ describe('AdaptJsonResumeProject', () => {
   })
 
   it('should map technologies', () => {
-    const jsonResumeTechnology: JsonResumeProject['technologies'][number] = {
-      slug: 'slug',
-      version: 'version',
-    }
-    const technologies: JsonResumeProject['technologies'] = [
-      jsonResumeTechnology,
-    ]
+    const technologies = ['foo-tech']
     const item = makeSut()(makeJsonResumeProject({ technologies }))
 
     expect(item.technologies).toEqual(technologies)

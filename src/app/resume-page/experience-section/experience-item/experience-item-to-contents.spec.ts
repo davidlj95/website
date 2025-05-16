@@ -4,7 +4,6 @@ import { makeExperienceItem } from './__tests__/make-experience-item'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { ProjectItem } from '../../projects-section/project-item/project-item'
 import { makeProjectItem } from '../../projects-section/__tests__/make-project-item'
-import { makeTechnologyItem } from '../../technology/__tests__/make-technology-item'
 import { ExperienceItemTechComponent } from './experience-item-tech/experience-item-tech.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 
@@ -57,8 +56,8 @@ describe('experienceItemToContents', () => {
   })
 
   describe('when projects technologies are not empty', () => {
-    const aTechnology = makeTechnologyItem({ slug: 'tech-a' })
-    const anotherTechnology = makeTechnologyItem({ slug: 'tech-b' })
+    const aTechnology = 'foo-tech'
+    const anotherTechnology = 'bar-tech'
     const technologies = [aTechnology, anotherTechnology]
     const projects: readonly ProjectItem[] = [
       makeProjectItem({ technologies: [aTechnology], name: 'project A' }),
