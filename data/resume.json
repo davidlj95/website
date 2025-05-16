@@ -69,7 +69,7 @@
         "Created [my personal website](https://davidlj95.com) on the internet"
       ],
       "image": "https://davidlj95.com/images/companies/davidlj95.png",
-      "isFreelance": true
+      "tags": ["freelance"]
     },
     {
       "name": "Vesto",
@@ -86,7 +86,7 @@
         "Implemented New Relic as observability tool"
       ],
       "image": "https://davidlj95.com/images/companies/vesto.png",
-      "isFreelance": true
+      "tags": ["freelance"]
     },
     {
       "name": "Koa Health",
@@ -104,7 +104,7 @@
         "Assisted company spin off by programmatically setting up new email signatures for all employees"
       ],
       "image": "https://davidlj95.com/images/companies/koa-health.png",
-      "hasPromotions": true
+      "tags": ["promotions"]
     },
     {
       "name": "Telefónica Alpha",
@@ -129,7 +129,7 @@
         "Facilitated software project management"
       ],
       "image": "https://davidlj95.com/images/companies/btc-assessors.png",
-      "hasMorePositions": true
+      "tags": ["more-positions"]
     },
     {
       "name": "SEAT",
@@ -139,8 +139,7 @@
       "endDate": "2017-06-19",
       "summary": "Organized integration of IBC Biomechanics software within SEAT IT systems. In order to be used for its internal biomechanical laboratory in the CARS center inside Martorell headquarters",
       "image": "https://davidlj95.com/images/companies/seat.png",
-      "isFreelance": true,
-      "isInternship": true
+      "tags": ["freelance", "internship"]
     },
     {
       "name": "Meditrauma",
@@ -157,7 +156,7 @@
         "Maintained labor risk prevention and medical equipment hardware and services. Like audiometers, X-Ray machines and ECGs"
       ],
       "image": "https://davidlj95.com/images/companies/meditrauma.png",
-      "isFreelance": true
+      "tags": ["freelance"]
     },
     {
       "name": "IBC Biomechanics",
@@ -172,8 +171,7 @@
         "Managed and maintained company's IT infrastructure: workstations, office software, endpoint protection and backups"
       ],
       "image": "https://davidlj95.com/images/companies/ibc-biomechanics.png",
-      "isFreelance": true,
-      "hasMorePositions": true
+      "tags": ["freelance", "more-positions"]
     }
   ],
   "education": [

@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing'
-import { ATTRIBUTE, ExperienceItemComponent } from './experience-item.component'
+import { ExperienceItemComponent } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { By } from '@angular/platform-browser'
 import { Organization } from '../../organization'
@@ -22,6 +22,7 @@ import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
+import { TAG_TO_ATTRIBUTE } from '../tags'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -110,96 +111,37 @@ describe('ExperienceItem', () => {
     })
   })
 
-  describe('attributes', () => {
-    function testShouldNotDisplayItsAttribute(
-      fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
-      attribute: (typeof ATTRIBUTE)[keyof typeof ATTRIBUTE],
-    ) {
-      it('should not display its attribute', () => {
-        const fixture = fixtureGetter()
+  it('should map tags to attributes', () => {
+    const tags = ['freelance', 'internship', 'more-positions', 'promotions']
+    setExperienceItem(fixture, { tags })
 
-        const attributeElement = fixture.debugElement.query(byTestId(attribute))
+    const attributeElements = fixture.debugElement.queryAll(
+      By.directive(AttributeComponent),
+    )
 
-        expect(attributeElement).toBeFalsy()
-      })
-    }
+    expect(attributeElements.length)
+      .withContext('same attributes count as tags')
+      .toEqual(tags.length)
 
-    function testShouldDisplayItsAttribute(
-      fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
-      attribute: (typeof ATTRIBUTE)[keyof typeof ATTRIBUTE],
-    ) {
-      it('should display its attribute', () => {
-        const fixture = fixtureGetter()
+    attributeElements.forEach((attributeElement, index) => {
+      const tag = tags[index]
 
-        const attributeElement = fixture.debugElement.query(byTestId(attribute))
+      expect(
+        getComponentInstance(attributeElement, AttributeComponent).symbol,
+      ).toEqual(TAG_TO_ATTRIBUTE[tag].symbol)
 
-        expect(attributeElement).toBeTruthy()
-      })
-    }
-
-    describe('when experience is not freelance, therefore it was employee', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { isFreelance: false })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Employee)
+      expect(textContent(attributeElement)).toEqual(TAG_TO_ATTRIBUTE[tag].text)
     })
+  })
 
-    describe('when experience is freelance', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { isFreelance: true })
-      })
+  it('should not display unknown tags', () => {
+    const tags = ['unknown-42']
 
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Freelance)
-    })
+    setExperienceItem(fixture, { tags })
 
-    describe('when experience is not an internship', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { isInternship: false })
-      })
-
-      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.Internship)
-    })
-
-    describe('when experience is an internship', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { isInternship: true })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Internship)
-    })
-
-    describe('when experience contained no promotions', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { hasPromotions: false })
-      })
-
-      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.Promotions)
-    })
-
-    describe('when experience contained promotions', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { hasPromotions: true })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Promotions)
-    })
-
-    describe('when experience contained no more positions', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { hasMorePositions: false })
-      })
-
-      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.MorePositions)
-    })
-
-    describe('when experience contained more positions', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { hasMorePositions: true })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.MorePositions)
-    })
+    expect(
+      fixture.debugElement.queryAll(By.directive(AttributeComponent)).length,
+    ).toBe(0)
   })
 })
 function makeSut() {

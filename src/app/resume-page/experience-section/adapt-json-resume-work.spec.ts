@@ -72,25 +72,28 @@ describe('AdaptJsonResumeWork', () => {
   })
 
   // Non JSON Resume standard!
-  it('should map the freelance, internship, promotions and more positions fields', () => {
-    const isFreelance = true
-    const isInternship = true
-    const hasPromotions = true
-    const hasMorePositions = true
+  it('should map tags', () => {
+    const tags = ['freelance', 'promotions']
 
     const item = makeSut()(
       makeJsonResumeWork({
-        isFreelance,
-        isInternship,
-        hasPromotions,
-        hasMorePositions,
+        tags,
       } as unknown as Partial<JsonResumeWork>),
     )
 
-    expect(item.isFreelance).toBe(isFreelance)
-    expect(item.isInternship).toBe(isInternship)
-    expect(item.hasPromotions).toBe(hasPromotions)
-    expect(item.hasMorePositions).toBe(hasMorePositions)
+    expect(item.tags).toEqual(tags)
+  })
+
+  it('should add employee tag if no freelance tag is found', () => {
+    const tags = ['foo']
+
+    const item = makeSut()(
+      makeJsonResumeWork({
+        tags,
+      } as unknown as Partial<JsonResumeWork>),
+    )
+
+    expect(item.tags).toEqual([...tags, 'employee'])
   })
 
   it('should relativize image URL', () => {
