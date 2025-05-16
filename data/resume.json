@@ -57,6 +57,21 @@
   ],
   "work": [
     {
+      "name": "Open sourcing & freelancing",
+      "position": "Software Engineer",
+      "url": "https://davidlj95.com",
+      "startDate": "2023-05-15",
+      "summary": "Taking a break from corporate. Focused on technical learning on topics I had noted as interesting but didn't have the time until now. For instance: semantic release, understanding Angular in-depth, JavaScript/Typescript bundling optimizations and maintaining (npm) open source libraries. On the soft skills side, read several books about team culture and management",
+      "highlights": [
+        "Created an open source library from scratch for Angular to set meta tags: [@davidlj95/ngx-meta](https://www.npmjs.com/package/@davidlj95/ngx-meta)",
+        "[Fashion stylist portfolio](https://christianlazaro.es) featuring optimized responsive images served through several images CDNs",
+        "Many open source contributions: several [pull requests](https://github.com/pulls?q=author%3A%40me+-user%3A%40me+created%3A%3E2023-05-15) and [issues](https://github.com/search?q=is%3Aissue+author%3Adavidlj95+-user%3Adavidlj95&type=issues&s=created&o=desc). Plus other kinds of [public contributions](https://www.notion.so/davidlj95/9f766c2fe57e4a9ebf0bc571b62ec446?v=9db04a3147ec4323883403873a13c05d&pvs=4)",
+        "Created [my personal website](https://davidlj95.com) on the internet"
+      ],
+      "image": "https://davidlj95.com/images/companies/davidlj95.png",
+      "isFreelance": true
+    },
+    {
       "name": "Vesto",
       "position": "Senior Backend Engineer",
       "url": "https://www.vestoapp.com",
@@ -68,7 +83,7 @@
         "Built direct batch buy feature to buy multiple stocks at once",
         "Produced continuous proposals to improve company's processes. Backend team side and company wide. For instance pushing for technical refinements, differentiating between bugs and complaints or tracking estimations accuracy",
         "Introduced 'learning fridays' to enable knowledge sharing amongst engineering team",
-        "Installed New Relic as observability tool"
+        "Implemented New Relic as observability tool"
       ],
       "image": "https://davidlj95.com/images/companies/vesto.png",
       "isFreelance": true
