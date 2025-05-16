@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing'
-import { ATTRIBUTE, ExperienceItemComponent } from './experience-item.component'
+import { ExperienceItemComponent } from './experience-item.component'
 import { ExperienceItem } from './experience-item'
 import { By } from '@angular/platform-browser'
 import { Organization } from '../../organization'
@@ -136,14 +136,11 @@ describe('ExperienceItem', () => {
         getComponentInstance(attributeElement, AttributeComponent).symbol,
       ).toEqual(TAG_TO_ATTRIBUTE[tag].symbol)
 
-      expect(textContent(attributeElement)).toEqual(
-        TAG_TO_ATTRIBUTE[tag].text.replace('\n', ' '),
-      )
+      expect(textContent(attributeElement)).toEqual(TAG_TO_ATTRIBUTE[tag].text)
     })
   })
 
-  // eslint-disable-next-line jasmine/no-disabled-tests
-  xit('should not display unknown tags', () => {
+  it('should not display unknown tags', () => {
     const tags = ['unknown-42']
 
     setExperienceItem(fixture, { tags })
@@ -151,98 +148,6 @@ describe('ExperienceItem', () => {
     expect(
       fixture.debugElement.queryAll(By.directive(AttributeComponent)).length,
     ).toBe(0)
-  })
-
-  describe('attributes', () => {
-    function testShouldNotDisplayItsAttribute(
-      fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
-      attribute: (typeof ATTRIBUTE)[keyof typeof ATTRIBUTE],
-    ) {
-      it('should not display its attribute', () => {
-        const fixture = fixtureGetter()
-
-        const attributeElement = fixture.debugElement.query(byTestId(attribute))
-
-        expect(attributeElement).toBeFalsy()
-      })
-    }
-
-    function testShouldDisplayItsAttribute(
-      fixtureGetter: () => ComponentFixture<ExperienceItemComponent>,
-      attribute: (typeof ATTRIBUTE)[keyof typeof ATTRIBUTE],
-    ) {
-      it('should display its attribute', () => {
-        const fixture = fixtureGetter()
-
-        const attributeElement = fixture.debugElement.query(byTestId(attribute))
-
-        expect(attributeElement).toBeTruthy()
-      })
-    }
-
-    describe('when experience is not freelance, therefore it was employee', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { isFreelance: false })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Employee)
-    })
-
-    describe('when experience is freelance', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { isFreelance: true })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Freelance)
-    })
-
-    describe('when experience is not an internship', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { isInternship: false })
-      })
-
-      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.Internship)
-    })
-
-    describe('when experience is an internship', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { isInternship: true })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Internship)
-    })
-
-    describe('when experience contained no promotions', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { hasPromotions: false })
-      })
-
-      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.Promotions)
-    })
-
-    describe('when experience contained promotions', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { hasPromotions: true })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.Promotions)
-    })
-
-    describe('when experience contained no more positions', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { hasMorePositions: false })
-      })
-
-      testShouldNotDisplayItsAttribute(() => fixture, ATTRIBUTE.MorePositions)
-    })
-
-    describe('when experience contained more positions', () => {
-      beforeEach(() => {
-        setExperienceItem(fixture, { hasMorePositions: true })
-      })
-
-      testShouldDisplayItsAttribute(() => fixture, ATTRIBUTE.MorePositions)
-    })
   })
 })
 function makeSut() {

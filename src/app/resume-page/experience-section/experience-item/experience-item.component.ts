@@ -14,6 +14,7 @@ import { LinkComponent } from '../../link/link.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
 import { experienceItemToContents } from './experience-item-to-contents'
+import { TAG_TO_ATTRIBUTE } from '../tags'
 
 @Component({
   selector: 'app-experience-item',
@@ -46,6 +47,7 @@ export class ExperienceItemComponent {
     More,
   }
   protected readonly _attribute = ATTRIBUTE
+  protected readonly _tagToAttribute = TAG_TO_ATTRIBUTE
 }
 
 /** @visibleForTesting */
