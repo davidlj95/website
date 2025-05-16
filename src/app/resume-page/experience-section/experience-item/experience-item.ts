@@ -8,6 +8,7 @@ export class ExperienceItem {
   readonly dateRange: DateRange
   readonly summary: string
   readonly highlights: readonly string[]
+  readonly tags: readonly string[]
   readonly isFreelance: boolean
   readonly isInternship: boolean
   readonly hasPromotions: boolean
@@ -20,6 +21,7 @@ export class ExperienceItem {
     dateRange,
     summary,
     highlights,
+    tags,
     isFreelance,
     isInternship,
     hasPromotions,
@@ -31,6 +33,7 @@ export class ExperienceItem {
     dateRange: DateRange
     summary: string
     highlights?: readonly string[]
+    tags?: readonly string[]
     isFreelance?: boolean
     isInternship?: boolean
     hasPromotions?: boolean
@@ -42,6 +45,7 @@ export class ExperienceItem {
     this.dateRange = dateRange
     this.summary = summary
     this.highlights = highlights ?? []
+    this.tags = tags ?? []
     this.isFreelance = isFreelance ?? false
     this.isInternship = isInternship ?? false
     this.hasPromotions = hasPromotions ?? false

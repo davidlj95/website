@@ -22,6 +22,7 @@ import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
+import { TAG_TO_ATTRIBUTE } from '../tags'
 
 describe('ExperienceItem', () => {
   let component: ExperienceItemComponent
@@ -108,6 +109,48 @@ describe('ExperienceItem', () => {
 
       expect(dateRangeElement).toBeTruthy()
     })
+  })
+
+  it('should map tags to attributes', () => {
+    const tags = ['freelance', 'internship', 'more-positions', 'promotions']
+    setExperienceItem(fixture, {
+      tags,
+      isFreelance: true,
+      isInternship: true,
+      hasMorePositions: true,
+      hasPromotions: true,
+    })
+
+    const attributeElements = fixture.debugElement.queryAll(
+      By.directive(AttributeComponent),
+    )
+
+    expect(attributeElements.length)
+      .withContext('same attributes count as tags')
+      .toEqual(tags.length)
+
+    attributeElements.forEach((attributeElement, index) => {
+      const tag = tags[index]
+
+      expect(
+        getComponentInstance(attributeElement, AttributeComponent).symbol,
+      ).toEqual(TAG_TO_ATTRIBUTE[tag].symbol)
+
+      expect(textContent(attributeElement)).toEqual(
+        TAG_TO_ATTRIBUTE[tag].text.replace('\n', ' '),
+      )
+    })
+  })
+
+  // eslint-disable-next-line jasmine/no-disabled-tests
+  xit('should not display unknown tags', () => {
+    const tags = ['unknown-42']
+
+    setExperienceItem(fixture, { tags })
+
+    expect(
+      fixture.debugElement.queryAll(By.directive(AttributeComponent)).length,
+    ).toBe(0)
   })
 
   describe('attributes', () => {

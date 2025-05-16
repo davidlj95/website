@@ -6,6 +6,7 @@ import { DateRange } from '../date-range/date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JSON_RESUME_PROJECTS } from '../projects-section/json-resume-projects'
 import { ADAPT_JSON_RESUME_PROJECT } from '../projects-section/adapt-json-resume-project'
+import { EMPLOYEE_TAG, FREELANCE_TAG } from './tags'
 
 /** @visibleForTesting */
 export type AdaptJsonResumeWork = (work: JsonResumeWork) => ExperienceItem
@@ -32,6 +33,7 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
           position: work.position,
           summary: work.summary,
           highlights: work.highlights,
+          tags: mapTags(work.tags),
           dateRange: new DateRange(
             new Date(work.startDate),
             !work.endDate ? undefined : new Date(work.endDate),
@@ -47,3 +49,10 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
     },
   },
 )
+
+const mapTags = (jsonTags: readonly string[] | undefined) => {
+  const tags = jsonTags ?? []
+  return !tags.includes(FREELANCE_TAG) && !tags.includes(EMPLOYEE_TAG)
+    ? [...tags, EMPLOYEE_TAG]
+    : tags
+}

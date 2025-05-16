@@ -72,6 +72,30 @@ describe('AdaptJsonResumeWork', () => {
   })
 
   // Non JSON Resume standard!
+  it('should map tags', () => {
+    const tags = ['freelance', 'promotions']
+
+    const item = makeSut()(
+      makeJsonResumeWork({
+        tags,
+      } as unknown as Partial<JsonResumeWork>),
+    )
+
+    expect(item.tags).toEqual(tags)
+  })
+
+  it('should add employee tag if no freelance tag is found', () => {
+    const tags = ['foo']
+
+    const item = makeSut()(
+      makeJsonResumeWork({
+        tags,
+      } as unknown as Partial<JsonResumeWork>),
+    )
+
+    expect(item.tags).toEqual([...tags, 'employee'])
+  })
+
   it('should map the freelance, internship, promotions and more positions fields', () => {
     const isFreelance = true
     const isInternship = true
