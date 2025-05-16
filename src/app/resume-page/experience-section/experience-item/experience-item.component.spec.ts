@@ -113,13 +113,7 @@ describe('ExperienceItem', () => {
 
   it('should map tags to attributes', () => {
     const tags = ['freelance', 'internship', 'more-positions', 'promotions']
-    setExperienceItem(fixture, {
-      tags,
-      isFreelance: true,
-      isInternship: true,
-      hasMorePositions: true,
-      hasPromotions: true,
-    })
+    setExperienceItem(fixture, { tags })
 
     const attributeElements = fixture.debugElement.queryAll(
       By.directive(AttributeComponent),

@@ -96,27 +96,6 @@ describe('AdaptJsonResumeWork', () => {
     expect(item.tags).toEqual([...tags, 'employee'])
   })
 
-  it('should map the freelance, internship, promotions and more positions fields', () => {
-    const isFreelance = true
-    const isInternship = true
-    const hasPromotions = true
-    const hasMorePositions = true
-
-    const item = makeSut()(
-      makeJsonResumeWork({
-        isFreelance,
-        isInternship,
-        hasPromotions,
-        hasMorePositions,
-      } as unknown as Partial<JsonResumeWork>),
-    )
-
-    expect(item.isFreelance).toBe(isFreelance)
-    expect(item.isInternship).toBe(isInternship)
-    expect(item.hasPromotions).toBe(hasPromotions)
-    expect(item.hasMorePositions).toBe(hasMorePositions)
-  })
-
   it('should relativize image URL', () => {
     const dummyImagePath = '/images/companies/foo.png'
     const image = `https://example.com${dummyImagePath}`

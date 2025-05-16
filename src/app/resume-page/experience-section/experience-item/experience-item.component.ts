@@ -1,6 +1,5 @@
 import { Component, computed, input } from '@angular/core'
 import { ExperienceItem } from './experience-item'
-import { Badge, More, School, ToolsLadder, Work } from '@/data/material-symbols'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 
@@ -39,22 +38,5 @@ export class ExperienceItemComponent {
     experienceItemToContents(this.item()),
   )
 
-  protected readonly _materialSymbol = {
-    Badge,
-    Work,
-    School,
-    ToolsLadder,
-    More,
-  }
-  protected readonly _attribute = ATTRIBUTE
   protected readonly _tagToAttribute = TAG_TO_ATTRIBUTE
 }
-
-/** @visibleForTesting */
-export const ATTRIBUTE = {
-  Freelance: 'freelance',
-  Employee: 'employee',
-  Internship: 'internship',
-  MorePositions: 'more-positions',
-  Promotions: 'promotions',
-} as const
