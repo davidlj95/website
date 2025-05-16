@@ -27,8 +27,8 @@ export const experienceItemToContents: (
           },
         })
       : undefined
-  const projectsTechnologies = item.projects.flatMap(
-    (project) => project.technologies,
+  const projectsTechnologies = Array.from(
+    new Set(item.projects.flatMap((project) => project.technologies)),
   )
   const techContent =
     projectsTechnologies.length > 0
@@ -36,7 +36,7 @@ export const experienceItemToContents: (
           displayName: 'Tech',
           component: ExperienceItemTechComponent,
           inputs: {
-            technologies: Array.from(new Set(projectsTechnologies)),
+            technologies: projectsTechnologies,
             projectNames: item.projects
               .filter((project) => project.technologies.length > 0)
               .map((project) => project.name),
