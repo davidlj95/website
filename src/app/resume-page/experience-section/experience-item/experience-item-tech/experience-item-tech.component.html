@@ -5,9 +5,9 @@
 </p>
 <br />
 <ul appContentChipList>
-  @for (item of technologies(); track item) {
+  @for (tech of technologies(); track tech) {
     <li appContentChip>
-      <app-technology [tech]="item"></app-technology>
+      <app-technology [tech]="tech"></app-technology>
     </li>
   }
 </ul>
