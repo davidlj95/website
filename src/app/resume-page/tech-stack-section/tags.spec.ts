@@ -10,11 +10,7 @@ import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 
 describe('Tags', () => {
   const ALL_TECHS = [
-    ...new Set(
-      RESUME_JSON.projects
-        .flatMap((project) => project.technologies)
-        .map((tech) => tech.slug),
-    ),
+    ...new Set(RESUME_JSON.projects.flatMap((project) => project.technologies)),
   ].sort()
   it('should contain tags for all techs, defined in alphabetical order', () => {
     const techsInTechTags = Object.entries(TECHS_TAGS).map(

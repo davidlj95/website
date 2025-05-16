@@ -2,8 +2,6 @@ import { TextContentComponent } from '../../chipped-content/text-content/text-co
 import { makeProjectItem } from '../__tests__/make-project-item'
 import { projectItemToContents } from './project-item-to-contents'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
-import { TechnologyItem } from '../../technology/technology-item'
-import { makeTechnologyItem } from '../../technology/__tests__/make-technology-item'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 
 describe('projectItemToContents', () => {
@@ -30,15 +28,12 @@ describe('projectItemToContents', () => {
   })
 
   describe('when technologies are not empty', () => {
-    const items = [
-      makeTechnologyItem({ slug: 'super-cool-tech' }),
-      makeTechnologyItem({ slug: 'another-super-cool-tech' }),
-    ] satisfies readonly TechnologyItem[]
+    const technologies = ['super-cool-tech', 'another-super-cool-tech']
 
     it('should include technologies content', () => {
       const sut = makeSut()
 
-      const contents = sut(makeProjectItem({ technologies: items }))
+      const contents = sut(makeProjectItem({ technologies }))
       const technologiesContents = contents.filter(
         (content) => content.displayName === 'Tech',
       )
@@ -52,7 +47,7 @@ describe('projectItemToContents', () => {
       )
 
       expect(technologiesContent.inputs).toEqual({
-        items,
+        technologies,
       })
     })
   })

@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ExperienceItemTechComponent } from './experience-item-tech.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { TechnologyComponent } from '../../../technology/technology.component'
-import { makeTechnologyItem } from '../../../technology/__tests__/make-technology-item'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 import { By } from '@angular/platform-browser'
@@ -14,11 +13,7 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
 describe('ExperienceItemTechComponent', () => {
   let component: ExperienceItemTechComponent
   let fixture: ComponentFixture<ExperienceItemTechComponent>
-  const DUMMY_TECHNOLOGIES = [
-    makeTechnologyItem(),
-    makeTechnologyItem(),
-    makeTechnologyItem(),
-  ]
+  const DUMMY_TECHNOLOGIES = ['tech-a', 'tech-b', 'tech-c']
   const DUMMY_PROJECT_NAMES = ['Project A', 'Project B', 'Project C']
 
   beforeEach(() => {

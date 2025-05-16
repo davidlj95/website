@@ -2,7 +2,7 @@
 <ul appContentChipList>
   @for (tech of _topTechs(); track tech) {
     <li appContentChip>
-      <app-technology [item]="{ slug: tech }"></app-technology>
+      <app-technology [tech]="tech"></app-technology>
     </li>
   }
   @if (_restOfTechsCount()) {

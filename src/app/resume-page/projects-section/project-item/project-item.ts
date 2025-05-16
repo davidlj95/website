@@ -1,5 +1,4 @@
 import { DateRange } from '../../date-range/date-range'
-import { TechnologyItem } from '../../technology/technology-item'
 
 export class ProjectItem {
   readonly name: string
@@ -9,7 +8,7 @@ export class ProjectItem {
   readonly roles: readonly string[]
   readonly imageSrc?: string
   readonly stack?: Stack
-  readonly technologies: readonly TechnologyItem[]
+  readonly technologies: readonly string[]
 
   constructor({
     name,
@@ -28,7 +27,7 @@ export class ProjectItem {
     roles?: readonly string[]
     imageSrc?: string
     stack?: Stack
-    technologies?: readonly TechnologyItem[]
+    technologies?: readonly string[]
   }) {
     this.name = name
     this.description = description

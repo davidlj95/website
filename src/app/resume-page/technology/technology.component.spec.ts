@@ -5,9 +5,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { By } from '@angular/platform-browser'
 import { MockComponent, MockProvider } from 'ng-mocks'
 import { SimpleIconComponent } from '@/common/simple-icon/simple-icon.component'
-import { makeTechnologyItem } from './__tests__/make-technology-item'
 import { textContent } from '@/test/helpers/text-content'
-import { TechnologyItem } from './technology-item'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 import {
   GET_TECHNOLOGY_FROM_SLUG,
@@ -27,16 +25,17 @@ describe('TechnologyComponent', () => {
 
   it('should lookup and render title', () => {
     const title = 'dummy title'
+    const tech = 'tech'
     const getTechnologyFromSlug = jasmine
       .createSpy<GetTechnologyFromSlug>()
       .and.returnValue(makeTech({ title }))
     ;[fixture, component] = makeSut({
       getTechnologyFromSlug,
-      item: DUMMY_ITEM,
+      tech,
     })
 
     expect(textContent(fixture.debugElement)).toEqual(title)
-    expect(getTechnologyFromSlug).toHaveBeenCalledOnceWith(DUMMY_ITEM.slug)
+    expect(getTechnologyFromSlug).toHaveBeenCalledOnceWith(tech)
   })
 
   const ICON_ELEMENT_SELECTOR = By.css('app-simple-icon')
@@ -71,11 +70,10 @@ describe('TechnologyComponent', () => {
   })
 })
 
-const DUMMY_ITEM = makeTechnologyItem()
 function makeSut(
   opts: {
     getTechnologyFromSlug?: GetTechnologyFromSlug
-    item?: TechnologyItem
+    tech?: string
   } = {},
 ) {
   const [fixture, component] = componentTestSetup(TechnologyComponent, {
@@ -92,7 +90,7 @@ function makeSut(
     ],
   })
   setFixtureInputsAndDetectChanges(fixture, {
-    item: opts.item ?? DUMMY_ITEM,
+    tech: opts.tech ?? 'tech',
   })
   return [fixture, component] as const
 }

@@ -22,7 +22,7 @@ export const projectItemToContents: (
           displayName: 'Tech',
           component: ProjectItemTechnologiesComponent,
           inputs: {
-            items: item.technologies,
+            technologies: item.technologies,
           },
         })
       : undefined,

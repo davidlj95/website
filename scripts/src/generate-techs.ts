@@ -30,16 +30,15 @@ function findUsedTechs(
     process.exit()
   }
 
-  const techItems = projects.flatMap((project) => project.technologies ?? [])
-  if (techItems.length > 0) {
-    Log.info('Found %d tech items specified', techItems.length)
+  const techs = [
+    ...new Set(projects.flatMap((project) => project.technologies ?? [])),
+  ]
+  if (techs.length > 0) {
+    Log.info('Found %d unique techs  specified', techs.length)
   } else {
-    Log.info('No tech items specified')
+    Log.info('No techs specified')
     process.exit()
   }
-
-  const techSlugs = [...new Set(techItems.map((tech) => tech.slug))]
-  Log.item('Where %d are unique tech slugs', techSlugs.length)
 
   const simpleIconBySlug = new Map<string, SimpleIcon>(
     (Object.values(icons) as readonly SimpleIcon[]).map((icon) => [
@@ -52,11 +51,11 @@ function findUsedTechs(
   const extraTechTitles = new Map<string, string>(EXTRA_TECH_TITLES)
   Log.info('Loaded %d extra tech titles', extraTechTitles.size)
 
-  return techSlugs.map<TechWithIcon>((slug) => {
+  return techs.map<TechWithIcon>((slug) => {
     const simpleIcon = simpleIconBySlug.get(slug)
     const title = simpleIcon?.title ?? extraTechTitles.get(slug)
     if (!title) {
-      Log.error(`'${slug}' tech has no icon neither title`)
+      Log.error("'%s' tech has no icon neither title", slug)
       process.exit(1)
     }
     return {

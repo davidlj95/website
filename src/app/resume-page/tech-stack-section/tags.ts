@@ -271,7 +271,7 @@ const TECHS_RELEVANCE_SCORE: Record<string, number> = (() => {
   }>((project) => ({
     start: new Date(project.startDate).getTime(),
     end: new Date(project.endDate).getTime(),
-    techs: project.technologies.map((tech) => tech.slug),
+    techs: project.technologies,
   }))
   const techsAndTimes = projects.flatMap<readonly [string, number, number]>(
     ({ techs, start, end }) => techs.map((tech) => [tech, start, end]),
