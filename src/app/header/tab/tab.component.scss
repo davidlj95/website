@@ -16,7 +16,7 @@ a:host,
   font-weight: 300;
 
   // Revert link style
-  color: var(--ui-text);
+  color: inherit;
   text-decoration-line: none;
 
   &[aria-selected='true'] {

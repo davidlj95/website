@@ -1,4 +1,4 @@
-@use 'header';
+@use 'toolbar';
 @use 'touch-or-pointer';
 @use 'material-symbols';
 @use 'animations';
@@ -26,6 +26,6 @@
     @include animations.single-transition(color, animations.$emphasized-style);
   }
 
-  @include material-symbols.font-size(header.$icons-height);
+  @include material-symbols.font-size(toolbar.$icons-height);
   @include material-symbols.variation-settings($fill: false, $weight: 200);
 }

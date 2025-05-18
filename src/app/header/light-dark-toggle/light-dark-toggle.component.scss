@@ -1,4 +1,9 @@
 @use 'theming';
+@use 'toolbar';
+
+:host {
+  block-size: toolbar.$icons-height;
+}
 
 .light-only {
   @include theming.when-dark-mode {

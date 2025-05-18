@@ -8,19 +8,15 @@
   position: sticky;
   top: 0;
   z-index: z-index.$header;
-  width: 100%;
 
   height: header.$height;
-  display: flex;
-  align-items: center;
   @include borders.panel(bottom);
-  background-color: var(--app-color-toolbar-background);
 
   @include quirks.leftBorderDisappearance;
 
   @include animations.when-motion {
-    @include animations.multiple-transitions(
-      (background-color, border-color),
+    @include animations.single-transition(
+      (border-color),
       animations.$emphasized-style
     );
   }
@@ -30,6 +26,12 @@
   }
 }
 
+app-toolbar {
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
 nav {
+  height: 100%;
   flex-grow: 1;
 }

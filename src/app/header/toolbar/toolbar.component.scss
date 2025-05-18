@@ -1,5 +1,18 @@
-@use 'header';
+@use 'animations';
+@use 'margins';
 
 :host {
-  padding: header.$vertical-padding;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  background-color: var(--app-color-toolbar-background);
+  color: var(--ui-text);
+
+  @include animations.when-motion {
+    @include animations.single-transition(
+      (background-color),
+      animations.$emphasized-style
+    );
+  }
 }
