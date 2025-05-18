@@ -7,6 +7,7 @@ export const makeProjectItem = makeItemFactory<
   ConstructorParameters<typeof ProjectItem>[0]
 >(ProjectItem, {
   name: 'Sample project item',
+  entity: 'Project entity',
   description: 'Project item',
   dateRange: new DateRange(new Date('2022-01-01'), new Date('2022-12-31')),
 })

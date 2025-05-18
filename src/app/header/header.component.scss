@@ -24,6 +24,10 @@
       animations.$emphasized-style
     );
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 nav {

@@ -23,6 +23,7 @@ export const ADAPT_JSON_RESUME_PROJECT =
             ),
             website: project.url ? new URL(project.url) : undefined,
             roles: project.roles,
+            entity: project.entity,
             imageSrc: project.image
               ? relativizeUrl(new URL(project.image))
               : undefined,

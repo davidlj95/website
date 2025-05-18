@@ -7,7 +7,9 @@
 
   max-width: 960px;
   min-height: 100vh;
-  @include borders.panel(left, right);
+  @media not print {
+    @include borders.panel(left, right);
+  }
   @include animations.when-motion {
     @include animations.multiple-transitions(
       (background-color, border-color),

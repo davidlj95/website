@@ -76,4 +76,8 @@ a {
   &:active {
     color: var(--sys-color-primary);
   }
+
+  @media print {
+    color: inherit;
+  }
 }

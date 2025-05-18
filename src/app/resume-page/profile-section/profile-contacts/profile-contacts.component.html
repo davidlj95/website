@@ -3,7 +3,7 @@
     <li>
       <a
         [href]="contact.href"
-        [attr.aria-label]="contact.name"
+        [attr.aria-label]="contact.label"
         appMaterialSymbol
         >{{ contact.icon }}</a
       >
@@ -13,7 +13,7 @@
 <ul class="social">
   @for (contact of _social; track contact) {
     <li>
-      <a [href]="contact.href" [attr.aria-label]="contact.name">
+      <a [href]="contact.href" [attr.aria-label]="contact.label">
         <ng-icon [svg]="contact.icon"></ng-icon>
       </a>
     </li>
