@@ -3,7 +3,9 @@
 
 :host {
   display: block;
-  padding: page.$padding;
+  @media not print {
+    padding: page.$padding;
+  }
 
   ::ng-deep {
     h1 {

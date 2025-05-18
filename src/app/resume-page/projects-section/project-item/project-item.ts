@@ -6,6 +6,7 @@ export class ProjectItem {
   readonly dateRange: DateRange
   readonly website?: URL
   readonly roles: readonly string[]
+  readonly entity?: string
   readonly imageSrc?: string
   readonly stack?: Stack
   readonly technologies: readonly string[]
@@ -16,6 +17,7 @@ export class ProjectItem {
     dateRange,
     website,
     roles,
+    entity,
     imageSrc,
     stack,
     technologies,
@@ -25,6 +27,7 @@ export class ProjectItem {
     dateRange: DateRange
     website?: URL
     roles?: readonly string[]
+    entity: string
     imageSrc?: string
     stack?: Stack
     technologies?: readonly string[]
@@ -34,6 +37,7 @@ export class ProjectItem {
     this.dateRange = dateRange
     this.website = website
     this.roles = roles ?? []
+    this.entity = entity
     this.imageSrc = imageSrc
     this.stack = stack
     this.technologies = technologies ?? []

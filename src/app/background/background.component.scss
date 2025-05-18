@@ -5,6 +5,10 @@
 :host {
   position: fixed;
   z-index: z-index.$background;
+
+  @media print {
+    display: none;
+  }
 }
 
 :host,

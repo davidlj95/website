@@ -42,27 +42,31 @@ export class ProfileContactsComponent {
 }
 
 interface ContactItem {
-  readonly name: string
+  readonly label: string
+  readonly text: string
   readonly icon: string
   readonly href: string
 }
 
-const jsonResumeBasicsToTraditionalContacts = (
+export const jsonResumeBasicsToTraditionalContacts = (
   jsonResumeBasics: JsonResumeBasics,
 ): readonly ContactItem[] => [
   {
-    name: 'Email',
+    label: 'Email',
     icon: Email,
+    text: jsonResumeBasics.email,
     href: new URL(`mailto:${jsonResumeBasics.email}`).toString(),
   },
   {
-    name: 'Phone',
+    label: 'Phone',
     icon: Call,
+    text: jsonResumeBasics.phone,
     href: new URL(`tel:${jsonResumeBasics.phone}`).toString(),
   },
   {
-    name: 'Location',
+    label: 'Location',
     icon: MyLocation,
+    text: `${jsonResumeBasics.location.city}, ${jsonResumeBasics.location.countryCode}`,
     href: getMapsSearchUrl(jsonResumeBasics.location.city).toString(),
   },
 ]
@@ -74,7 +78,7 @@ const getMapsSearchUrl = (location: string): URL => {
   return mapsSearchUrl
 }
 
-const jsonResumeBasicsToSocialContacts = (
+export const jsonResumeBasicsToSocialContacts = (
   jsonResumeBasics: JsonResumeBasics,
 ): readonly ContactItem[] =>
   jsonResumeBasics.profiles
@@ -89,7 +93,8 @@ const jsonResumeBasicsToSocialContacts = (
         return undefined
       }
       return {
-        name: `${profile.username} at ${profile.network}`,
+        label: `${profile.username} at ${profile.network}`,
+        text: profile.username,
         href: profile.url,
         icon: maybeIcon,
       } satisfies ContactItem

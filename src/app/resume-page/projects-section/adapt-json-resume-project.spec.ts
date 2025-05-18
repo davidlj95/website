@@ -81,6 +81,13 @@ describe('AdaptJsonResumeProject', () => {
     expect(item.roles).toEqual(roles)
   })
 
+  it('should map entity', () => {
+    const entity = 'entity'
+    const item = makeSut()(makeJsonResumeProject({ entity }))
+
+    expect(item.entity).toEqual(entity)
+  })
+
   describe('when image exists', () => {
     it('should relativize image URL', () => {
       const dummyImagePath = '/images/projects/foo.png'
