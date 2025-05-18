@@ -5,7 +5,7 @@ import { Routes } from '@angular/router'
 import { PlainResumeComponent } from './plain-resume/plain-resume.component'
 
 export const RESUME_PATH = 'resume'
-export const RESUME_PLAIN_PATH = 'plain'
+const RESUME_PLAIN_PATH = 'plain'
 const data = {
   meta: {
     title: `📄 Resume`,
