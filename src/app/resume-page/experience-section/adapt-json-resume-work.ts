@@ -28,7 +28,7 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
           company: new Organization({
             name: work.name,
             imageSrc: relativizeUrl(new URL(work.image)),
-            website: new URL(work.url),
+            website: work.url ? new URL(work.url) : undefined,
           }),
           position: work.position,
           summary: work.summary,
