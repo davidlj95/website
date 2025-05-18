@@ -12,11 +12,7 @@
   transform: translateY(-#{borders.$panel-width});
   z-index: z-index.$headers;
   @include quirks.leftBorderDisappearance;
-  padding: paddings.$s paddings.$l;
   @include borders.panel(bottom, top);
-  background-color: var(--app-color-toolbar-background);
-  color: var(--ui-text);
-  font-size: 1.25rem;
 
   @include animations.when-motion {
     @include animations.multiple-transitions(
@@ -24,4 +20,9 @@
       animations.$emphasized-style
     );
   }
+}
+
+app-toolbar {
+  padding: paddings.$s paddings.$l;
+  font-size: 1.25rem;
 }

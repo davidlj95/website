@@ -1,9 +1,8 @@
 @use 'paddings';
 @use 'borders';
+@use 'toolbar';
 
-$vertical-padding: paddings.$xs;
-$icons-height: 2rem;
-$vertical-padding-height: calc(2 * $vertical-padding);
+$padding-height: calc(2 * #{toolbar.$vertical-padding});
 $border-height: borders.$panel-width;
 
-$height: calc($icons-height + $vertical-padding-height + $border-height);
+$height: calc(#{toolbar.$icons-height} + $padding-height + $border-height);
