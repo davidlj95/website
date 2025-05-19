@@ -1,14 +1,13 @@
 @use 'z-index';
 @use 'typographies';
 @use 'animations';
+@use 'print';
 
 :host {
   position: fixed;
   z-index: z-index.$background;
 
-  @media print {
-    display: none;
-  }
+  @include print.hidden;
 }
 
 :host,

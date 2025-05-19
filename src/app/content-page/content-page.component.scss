@@ -1,9 +1,11 @@
 @use 'margins';
 @use 'page';
+@use 'print';
 
 :host {
   display: block;
-  @media not print {
+
+  @include print.except {
     padding: page.$padding;
   }
 

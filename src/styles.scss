@@ -2,6 +2,7 @@
 @use 'material-symbols';
 @use 'animations';
 @use 'a11y';
+@use 'print';
 
 // Font imports
 // Browser should reach them as early as possible to start loading them
@@ -77,7 +78,7 @@ a {
     color: var(--sys-color-primary);
   }
 
-  @media print {
+  @include print.only {
     color: inherit;
   }
 }
