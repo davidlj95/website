@@ -4,10 +4,12 @@ import { SelectorComponent, SelectorOption } from './selector.component'
 import { setFixtureInputs } from '@/test/helpers/set-fixture-inputs'
 import { By } from '@angular/platform-browser'
 import { textContent } from '@/test/helpers/text-content'
+import { ATTRIBUTE_ARIA_LABEL } from '@/test/helpers/aria'
 
 describe('SelectorComponent', () => {
   let component: SelectorComponent
   let fixture: ComponentFixture<SelectorComponent>
+  const label = 'Select something'
   const options: readonly SelectorOption[] = [
     { name: 'Option 0', value: 'option-0' },
     { name: 'Option 1', value: 'option-1' },
@@ -19,7 +21,7 @@ describe('SelectorComponent', () => {
     }).compileComponents()
 
     fixture = TestBed.createComponent(SelectorComponent)
-    setFixtureInputs(fixture, { options })
+    setFixtureInputs(fixture, { label, options })
     component = fixture.componentInstance
     fixture.detectChanges()
   })
@@ -78,5 +80,13 @@ describe('SelectorComponent', () => {
     } as Partial<Event>)
 
     expect(selectedEmitted).toEqual(options[selectedIndex].value)
+  })
+
+  it('should set ARIA label', () => {
+    expect(
+      fixture.debugElement.query(By.css('select')).attributes[
+        ATTRIBUTE_ARIA_LABEL
+      ],
+    ).toEqual(label)
   })
 })
