@@ -95,6 +95,12 @@ dl.langs {
 
   margin-block-start: margins.$s;
 
+  > div {
+    display: flex;
+    align-items: baseline;
+    gap: margins.$s;
+  }
+
   dt {
     font-weight: bold;
   }
