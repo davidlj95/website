@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core'
-import { EducationItem } from './education-item'
+import { Education } from '../../data/education'
 import { SocialLeaderboard } from '@/data/material-symbols'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
@@ -33,7 +33,7 @@ import { educationItemToContents } from './education-item-to-contents'
   ],
 })
 export class EducationItemComponent {
-  readonly item = input.required<EducationItem>()
+  readonly item = input.required<Education>()
   protected readonly _contents = computed(() =>
     educationItemToContents(this.item()),
   )

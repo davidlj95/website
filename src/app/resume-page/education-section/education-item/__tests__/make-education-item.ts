@@ -1,11 +1,11 @@
 import { DateRange } from '../../../data/date-range'
-import { EducationItem } from '../education-item'
+import { Education } from '../../../data/education'
 import { makeItemFactory } from '@/test/helpers/make-item-factory'
 
 export const makeEducationItem = makeItemFactory<
-  EducationItem,
-  ConstructorParameters<typeof EducationItem>[0]
->(EducationItem, {
+  Education,
+  ConstructorParameters<typeof Education>[0]
+>(Education, {
   institution: {
     name: 'Institution name',
     imageSrc: 'https://example.org/logo.png',

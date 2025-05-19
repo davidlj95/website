@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { EducationItem } from './education-item/education-item'
+import { Education } from '../data/education'
 import { EducationItemComponent } from './education-item/education-item.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
@@ -13,7 +13,7 @@ import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
   imports: [SectionTitleComponent, CardGridComponent, EducationItemComponent],
 })
 export class EducationSectionComponent {
-  protected readonly _items: readonly EducationItem[]
+  protected readonly _items: readonly Education[]
 
   constructor(
     @Inject(GET_EDUCATION_ITEMS) getEducationItems: GetEducationItems,

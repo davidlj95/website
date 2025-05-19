@@ -4,7 +4,7 @@ import {
   JsonResumeEducations,
 } from './get-education-items'
 import { MockProvider } from 'ng-mocks'
-import { EducationItem } from './education-item/education-item'
+import { Education } from '../data/education'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   ADAPT_JSON_RESUME_EDUCATION,
@@ -23,7 +23,7 @@ describe('GetEducationItems', () => {
       'item-2' as unknown as JsonResumeEducation,
     ]
     const expectedEducationItems =
-      jsonResumeEducations as unknown as readonly EducationItem[]
+      jsonResumeEducations as unknown as readonly Education[]
     const adaptJsonResumeEducation = jasmine
       .createSpy<AdaptJsonResumeEducation>()
       .and.returnValues(...expectedEducationItems)

@@ -1,9 +1,9 @@
 import { inject, InjectionToken } from '@angular/core'
 import resume from '@/data/resume.json'
-import { EducationItem } from './education-item/education-item'
+import { Education } from '../data/education'
 import { ADAPT_JSON_RESUME_EDUCATION } from './adapt-json-resume-education'
 
-export type GetEducationItems = () => readonly EducationItem[]
+export type GetEducationItems = () => readonly Education[]
 export const GET_EDUCATION_ITEMS = new InjectionToken<GetEducationItems>(
   /* istanbul ignore next */
   isDevMode ? 'GetEducationItems' : 'GEI',

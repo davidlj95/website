@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { ATTRIBUTE, EducationItemComponent } from './education-item.component'
-import { EducationItem } from './education-item'
+import { Education } from '../../data/education'
 import { By } from '@angular/platform-browser'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
@@ -166,7 +166,7 @@ function makeSut() {
 
 function setEducationItem(
   fixture: ComponentFixture<EducationItemComponent>,
-  overrides?: ItemFactoryOverrides<typeof EducationItem>,
+  overrides?: ItemFactoryOverrides<typeof Education>,
 ): void {
   setFixtureInputsAndDetectChanges(fixture, {
     item: makeEducationItem(overrides),
