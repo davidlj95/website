@@ -15,8 +15,7 @@ import { CardHeaderAttributesComponent } from '../../card/card-header/card-heade
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { makeEducationItem } from './__tests__/make-education-item'
-import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
+import { makeEducation } from '../../data/__tests__/make-education'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
@@ -32,7 +31,7 @@ describe('EducationItemComponent', () => {
   })
 
   it('should create', () => {
-    setEducationItem(fixture)
+    setEducation(fixture)
 
     expect(component).toBeTruthy()
   })
@@ -45,7 +44,7 @@ describe('EducationItemComponent', () => {
       imageSrc: imageUrl,
       website: new URL(website),
     }
-    setEducationItem(fixture, { institution })
+    setEducation(fixture, { institution })
 
     // noinspection DuplicatedCode
     const anchorElement = fixture.debugElement
@@ -73,7 +72,7 @@ describe('EducationItemComponent', () => {
       imageSrc: 'https://example.org/logo.png',
       website: new URL(website),
     }
-    setEducationItem(fixture, { institution })
+    setEducation(fixture, { institution })
 
     const titleElement = fixture.debugElement.query(
       byTestId('institution-name'),
@@ -86,7 +85,7 @@ describe('EducationItemComponent', () => {
     it('should display short name instead', () => {
       const name = 'Very very very very very very very very long name'
       const shortName = 'VLN'
-      setEducationItem(fixture, {
+      setEducation(fixture, {
         institution: {
           name,
           imageSrc: 'https://example.org',
@@ -105,7 +104,7 @@ describe('EducationItemComponent', () => {
   it('should display study type and area', () => {
     const studyType = 'Some study type'
     const area = 'some study area'
-    setEducationItem(fixture, { studyType, area })
+    setEducation(fixture, { studyType, area })
 
     const studyTypeAndAreaElement = fixture.debugElement.query(By.css('h4'))
 
@@ -116,7 +115,7 @@ describe('EducationItemComponent', () => {
   })
 
   it('should display date range component', () => {
-    setEducationItem(fixture)
+    setEducation(fixture)
 
     expect(
       fixture.debugElement.query(By.directive(DateRangeComponent)),
@@ -125,7 +124,7 @@ describe('EducationItemComponent', () => {
 
   describe('when cum laude attribute is not set', () => {
     it('should not display its attribute', () => {
-      setEducationItem(fixture, { isCumLaude: false })
+      setEducation(fixture, { isCumLaude: false })
 
       expect(
         fixture.debugElement.query(byTestId(ATTRIBUTE.CumLaude)),
@@ -135,7 +134,7 @@ describe('EducationItemComponent', () => {
 
   describe('when cum laude attribute is set', () => {
     it('should display its attribute', () => {
-      setEducationItem(fixture, { isCumLaude: true })
+      setEducation(fixture, { isCumLaude: true })
 
       expect(
         fixture.debugElement.query(byTestId(ATTRIBUTE.CumLaude)),
@@ -164,11 +163,11 @@ function makeSut() {
   })
 }
 
-function setEducationItem(
+function setEducation(
   fixture: ComponentFixture<EducationItemComponent>,
-  overrides?: ItemFactoryOverrides<typeof Education>,
+  overrides?: Partial<Education>,
 ): void {
   setFixtureInputsAndDetectChanges(fixture, {
-    item: makeEducationItem(overrides),
+    item: makeEducation(overrides),
   })
 }

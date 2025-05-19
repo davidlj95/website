@@ -2,11 +2,14 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { EducationSectionComponent } from './education-section.component'
 import { EducationItemComponent } from './education-item/education-item.component'
-import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
+import {
+  GET_EDUCATION_ITEMS,
+  GetEducationItems,
+} from '../data/get-education-items'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { makeEducationItem } from './education-item/__tests__/make-education-item'
+import { makeEducation } from '../data/__tests__/make-education'
 import { CardGridComponent } from '../card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 
@@ -21,7 +24,7 @@ describe('EducationSectionComponent', () => {
   })
 
   it('should display all educations', () => {
-    const educationItems = [makeEducationItem(), makeEducationItem()]
+    const educationItems = [makeEducation(), makeEducation()]
     const getEducationItems = jasmine
       .createSpy<GetEducationItems>()
       .and.returnValue(educationItems)

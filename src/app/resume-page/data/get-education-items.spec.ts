@@ -4,13 +4,13 @@ import {
   JsonResumeEducations,
 } from './get-education-items'
 import { MockProvider } from 'ng-mocks'
-import { Education } from '../data/education'
+import { Education } from './education'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   ADAPT_JSON_RESUME_EDUCATION,
   AdaptJsonResumeEducation,
   JsonResumeEducation,
-} from '../data/adapt-json-resume-education'
+} from './adapt-json-resume-education'
 
 describe('GetEducationItems', () => {
   it('should be created', () => {

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { LinkComponent } from '../link/link.component'
 import { DateRangeComponent } from '../date-range/date-range.component'
-import { GET_EDUCATION_ITEMS } from '../education-section/get-education-items'
+import { GET_EDUCATION_ITEMS } from '../data/get-education-items'
 import { GET_PROJECT_ITEMS } from '../projects-section/get-project-items'
 import { ContentPageComponent } from '../../content-page/content-page.component'
 import { MdLinksPipe } from '../md-links.pipe'

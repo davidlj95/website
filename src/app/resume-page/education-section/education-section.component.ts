@@ -4,7 +4,10 @@ import { EducationItemComponent } from './education-item/education-item.componen
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
-import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
+import {
+  GET_EDUCATION_ITEMS,
+  GetEducationItems,
+} from '../data/get-education-items'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

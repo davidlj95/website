@@ -1,4 +1,4 @@
-import { makeEducationItem } from './__tests__/make-education-item'
+import { makeEducation } from '../../data/__tests__/make-education'
 import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 import { educationItemToContents } from './education-item-to-contents'
@@ -11,7 +11,7 @@ describe('educationItemToContents', () => {
     it('should include score content', () => {
       const sut = makeSut()
 
-      const contents = sut(makeEducationItem({ score }))
+      const contents = sut(makeEducation({ score }))
       const scoreContents = contents.filter(
         (content) => content.displayName === 'Score',
       )
@@ -33,7 +33,7 @@ describe('educationItemToContents', () => {
     it('should include courses content', () => {
       const sut = makeSut()
 
-      const contents = sut(makeEducationItem({ courses }))
+      const contents = sut(makeEducation({ courses }))
       const coursesContents = contents.filter(
         (content) => content.displayName === 'Courses',
       )
