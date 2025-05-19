@@ -83,10 +83,10 @@
         <article>
           <header>
             <h3>
-              {{ item.name }} &#64;
-              <app-link [href]="item.website?.toString()"
-                >{{ item.entity }}
-              </app-link>
+              <app-link [href]="item.website?.toString()">{{
+                item.name
+              }}</app-link>
+              &#64; {{ item.entity }}
             </h3>
             <app-date-range [range]="item.dateRange"></app-date-range>
           </header>
