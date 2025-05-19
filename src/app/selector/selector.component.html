@@ -1,4 +1,4 @@
-<select (change)="onChange($event)">
+<select (change)="onChange($event)" [attr.aria-label]="label()">
   @for (option of options(); track option.value) {
     <option [value]="option.value" [selected]="option.value === selected()">
       {{ option.name }}
