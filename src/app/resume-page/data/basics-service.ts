@@ -1,9 +1,6 @@
 import { map, Observable } from 'rxjs'
 import { inject, InjectionToken } from '@angular/core'
-import {
-  JsonResumeBasics,
-  JsonResumeService,
-} from '../json-resume/json-resume.service'
+import { JsonResumeService } from '../json-resume/json-resume.service'
 import { Call, Email, MyLocation } from '@/data/material-symbols'
 import { isNotUndefined } from '@/common/is-not-undefined'
 import { provideIcons } from '@ng-icons/core'
@@ -13,6 +10,7 @@ import {
   faBrandStackOverflow,
   faBrandXTwitter,
 } from '@ng-icons/font-awesome/brands'
+import { JsonResumeBasics } from '../json-resume/types'
 
 interface BasicsService {
   getProfile(): Observable<Profile>

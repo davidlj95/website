@@ -4,13 +4,10 @@ import {
 } from './adapt-json-resume-work'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { MockProvider } from 'ng-mocks'
-import {
-  JsonResumeService,
-  JsonResumeWork,
-  JsonResumeWorkItem,
-} from '../json-resume/json-resume.service'
+import { JsonResumeService } from '../json-resume/json-resume.service'
 import { firstValueFrom, of } from 'rxjs'
 import { Experience, EXPERIENCE_SERVICE } from './experience-service'
+import { JsonResumeWork, JsonResumeWorkItem } from '../json-resume/types'
 
 describe('ExperienceService', () => {
   it('should be created', () => {
