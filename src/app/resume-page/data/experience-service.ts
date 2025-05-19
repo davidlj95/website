@@ -22,6 +22,7 @@ export interface Experience {
 }
 
 export const EXPERIENCE_SERVICE = new InjectionToken<ExperienceService>(
+  /* istanbul ignore next */
   isDevMode ? 'ExperienceService' : 'rXS',
   {
     factory: () => {
