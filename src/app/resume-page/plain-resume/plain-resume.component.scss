@@ -9,14 +9,14 @@
     margin-block-start: margins.$m;
     margin-block-end: 0;
   }
-}
 
-::ng-deep a {
-  color: var(--ref-palette-primary40);
-  &:hover,
-  &:active,
-  &:visited {
+  ::ng-deep a {
     color: var(--ref-palette-primary40);
+    &:hover,
+    &:active,
+    &:visited {
+      color: var(--ref-palette-primary40);
+    }
   }
 }
 
