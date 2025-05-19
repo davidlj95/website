@@ -19,8 +19,8 @@ import { LinkComponent } from '../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
-import { Experience } from '../../data/experience-service'
 import { TAG_TO_ATTRIBUTE } from './tags'
+import { Experience } from '../../data/experience'
 
 describe('ExperienceComponent', () => {
   let component: ExperienceComponent

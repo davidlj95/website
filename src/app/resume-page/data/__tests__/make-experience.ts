@@ -1,5 +1,5 @@
 import { DateRange } from '../date-range'
-import { Experience } from '../experience-service'
+import { Experience } from '../experience'
 
 export const makeExperience = (
   overrides: Partial<Experience> = {},
