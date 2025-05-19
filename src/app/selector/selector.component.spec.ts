@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { SelectorComponent, SelectorOption } from './selector.component'
-import { setFixtureInputs } from '@/test/helpers/set-fixture-inputs'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 import { By } from '@angular/platform-browser'
 import { textContent } from '@/test/helpers/text-content'
 import { ATTRIBUTE_ARIA_LABEL } from '@/test/helpers/aria'
@@ -21,9 +21,8 @@ describe('SelectorComponent', () => {
     }).compileComponents()
 
     fixture = TestBed.createComponent(SelectorComponent)
-    setFixtureInputs(fixture, { label, options })
     component = fixture.componentInstance
-    fixture.detectChanges()
+    setFixtureInputsAndDetectChanges(fixture, { label, options })
   })
 
   it('should create', () => {
@@ -51,8 +50,9 @@ describe('SelectorComponent', () => {
   it('should display the selected option', () => {
     const selectedIndex = 1
     const selectedOption = options[selectedIndex]
-    setFixtureInputs(fixture, { selected: selectedOption.value })
-    fixture.detectChanges()
+    setFixtureInputsAndDetectChanges(fixture, {
+      selected: selectedOption.value,
+    })
 
     const selectedOptionEls = fixture.debugElement
       .queryAll(By.css('option'))
