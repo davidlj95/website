@@ -1,111 +1,16 @@
-import { Component, Inject } from '@angular/core'
-import { Call, Email, MyLocation } from '@/data/material-symbols'
+import { Component, input } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
-
-import { JSON_RESUME_BASICS, JsonResumeBasics } from '../json-resume-basics'
-import {
-  faBrandGithub,
-  faBrandLinkedinIn,
-  faBrandStackOverflow,
-  faBrandXTwitter,
-} from '@ng-icons/font-awesome/brands'
 import { NgIcon, provideIcons } from '@ng-icons/core'
-import { isNotUndefined } from '@/common/is-not-undefined'
-
-type NgIcons = Parameters<typeof provideIcons>[0]
-const ngIconsByName = new Map<string, NgIcons>([
-  ['github', { faBrandGithub }],
-  ['linkedin', { faBrandLinkedinIn }],
-  ['stackoverflow', { faBrandStackOverflow }],
-  ['x', { faBrandXTwitter }],
-])
-const ngIcons: NgIcons = [...ngIconsByName.values()].reduce<NgIcons>(
-  (acc, curr) => ({ ...acc, ...curr }),
-  {},
-)
+import { Contact, Social, socialNgIcons } from '../../data/basics-service'
 
 @Component({
   selector: 'app-profile-contacts',
   templateUrl: './profile-contacts.component.html',
   styleUrls: ['./profile-contacts.component.scss'],
   imports: [MaterialSymbolDirective, NgIcon],
-  providers: [provideIcons(ngIcons)],
+  providers: [provideIcons(socialNgIcons)],
 })
 export class ProfileContactsComponent {
-  protected readonly _traditional: readonly ContactItem[]
-  protected readonly _social: readonly ContactItem[]
-
-  constructor(@Inject(JSON_RESUME_BASICS) jsonResumeBasics: JsonResumeBasics) {
-    this._traditional = jsonResumeBasicsToTraditionalContacts(jsonResumeBasics)
-    this._social = jsonResumeBasicsToSocialContacts(jsonResumeBasics)
-  }
-}
-
-interface ContactItem {
-  readonly label: string
-  readonly text: string
-  readonly icon: string
-  readonly href: string
-}
-
-export const jsonResumeBasicsToTraditionalContacts = (
-  jsonResumeBasics: JsonResumeBasics,
-): readonly ContactItem[] => [
-  {
-    label: 'Email',
-    icon: Email,
-    text: jsonResumeBasics.email,
-    href: new URL(`mailto:${jsonResumeBasics.email}`).toString(),
-  },
-  {
-    label: 'Phone',
-    icon: Call,
-    text: jsonResumeBasics.phone,
-    href: new URL(`tel:${jsonResumeBasics.phone}`).toString(),
-  },
-  {
-    label: 'Location',
-    icon: MyLocation,
-    text: `${jsonResumeBasics.location.city}, ${jsonResumeBasics.location.countryCode}`,
-    href: getMapsSearchUrl(jsonResumeBasics.location.city).toString(),
-  },
-]
-
-const getMapsSearchUrl = (location: string): URL => {
-  // https://developers.google.com/maps/documentation/urls/get-started#search-action
-  const mapsSearchUrl = new URL('https://www.google.com/maps/search/?api=1')
-  mapsSearchUrl.searchParams.set('query', location)
-  return mapsSearchUrl
-}
-
-export const jsonResumeBasicsToSocialContacts = (
-  jsonResumeBasics: JsonResumeBasics,
-): readonly ContactItem[] =>
-  jsonResumeBasics.profiles
-    .map((profile) => {
-      const maybeIcon = getIconFromNetwork(profile.network)
-      if (!maybeIcon) {
-        if (isDevMode) {
-          console.error(
-            `ProfileContacts: Icon not found for network '${profile.network}'`,
-          )
-        }
-        return undefined
-      }
-      return {
-        label: `${profile.username} at ${profile.network}`,
-        text: profile.username,
-        href: profile.url,
-        icon: maybeIcon,
-      } satisfies ContactItem
-    })
-    .filter(isNotUndefined)
-
-const getIconFromNetwork = (network: string): string | undefined => {
-  const normalizedNetwork = network.toLowerCase()
-  const icons = ngIconsByName.get(normalizedNetwork)
-  if (!icons) {
-    return
-  }
-  return Object.values(icons)[0]
+  readonly contacts = input.required<readonly Contact[]>()
+  readonly socials = input.required<readonly Social[]>()
 }

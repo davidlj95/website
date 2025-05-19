@@ -4,26 +4,34 @@
     Let's be environmentally friendly: please avoid printing this document
   </div>
   <header>
-    <h1>{{ _basics.name }}</h1>
-    <span class="label">{{ _basics.label }}</span>
-    <p>{{ _basics.summary }}</p>
-    <ul>
-      @for (item of _traditionalContacts; track item) {
-        <li>
-          <a [href]="item.href" [attr.aria-label]="item.label"
-            ><span appMaterialSymbol>{{ item.icon }}</span> {{ item.text }}</a
-          >
-        </li>
-      }
-      @for (item of _socialContacts; track item) {
-        <li>
-          <a [href]="item.href" [attr.aria-label]="item.label">
-            <ng-icon [svg]="item.icon"></ng-icon>
-            {{ item.text }}</a
-          >
-        </li>
-      }
-    </ul>
+    @let profile = _profile();
+    @if (profile) {
+      <h1>{{ profile.name }}</h1>
+      <span class="label">{{ profile.label }}</span>
+      <p>{{ profile.summary }}</p>
+    }
+    @let contacts = _contacts() ?? [];
+    @let socials = _socials() ?? [];
+    @if (contacts.length || socials.length) {
+      <ul>
+        @for (contact of contacts; track contact) {
+          <li>
+            <a [href]="contact.url.toString()" [attr.aria-label]="contact.label"
+              ><span appMaterialSymbol>{{ contact.icon }}</span>
+              {{ contact.text }}</a
+            >
+          </li>
+        }
+        @for (social of socials; track social) {
+          <li>
+            <a [href]="social.url.toString()" [attr.aria-label]="social.label">
+              <ng-icon [svg]="social.icon"></ng-icon>
+              {{ social.text }}</a
+            >
+          </li>
+        }
+      </ul>
+    }
     <hr />
   </header>
   <main>

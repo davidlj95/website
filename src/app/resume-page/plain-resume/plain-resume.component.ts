@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
-import { JSON_RESUME_BASICS } from '../profile-section/json-resume-basics'
 import { LinkComponent } from '../link/link.component'
 import { DateRangeComponent } from '../date-range/date-range.component'
 import { GET_EXPERIENCE_ITEMS } from '../experience-section/get-experience-items'
@@ -7,14 +6,12 @@ import { GET_EDUCATION_ITEMS } from '../education-section/get-education-items'
 import { GET_PROJECT_ITEMS } from '../projects-section/get-project-items'
 import { ContentPageComponent } from '../../content-page/content-page.component'
 import { MdLinksPipe } from '../md-links.pipe'
-import {
-  jsonResumeBasicsToSocialContacts,
-  jsonResumeBasicsToTraditionalContacts,
-} from '../profile-section/profile-contacts/profile-contacts.component'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgIcon } from '@ng-icons/core'
 import { GET_LANGUAGE_ITEMS } from '../languages-section/get-language-items'
 import { EnergySavingsLeaf } from '@/data/material-symbols'
+import { BASICS_SERVICE } from '../data/basics-service'
+import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({
   selector: 'app-plain-resume',
@@ -31,12 +28,11 @@ import { EnergySavingsLeaf } from '@/data/material-symbols'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlainResumeComponent {
-  protected readonly _basics = inject(JSON_RESUME_BASICS)
-  protected readonly _traditionalContacts =
-    jsonResumeBasicsToTraditionalContacts(this._basics)
-  protected readonly _socialContacts = jsonResumeBasicsToSocialContacts(
-    this._basics,
-  )
+  private readonly _basicsService = inject(BASICS_SERVICE)
+  protected readonly _profile = toSignal(this._basicsService.getProfile())
+  protected readonly _contacts = toSignal(this._basicsService.getContacts())
+  protected readonly _socials = toSignal(this._basicsService.getSocials())
+
   protected readonly _work = inject(GET_EXPERIENCE_ITEMS)()
   protected readonly _education = inject(GET_EDUCATION_ITEMS)()
   protected readonly _projects = inject(GET_PROJECT_ITEMS)()

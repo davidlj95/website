@@ -8,7 +8,10 @@
         <code class="nickname">&#64;{{ nickname }}</code>
       </div>
       <span class="headline">{{ title }}</span>
-      <app-profile-contacts></app-profile-contacts>
+      <app-profile-contacts
+        [contacts]="_contacts() ?? []"
+        [socials]="_socials() ?? []"
+      ></app-profile-contacts>
     </div>
     <app-profile-description></app-profile-description>
   </div>
