@@ -10,5 +10,6 @@ export class JsonResumeService {
 }
 
 export type JsonResumeBasics = typeof RESUME.basics
+/** @visibleForTesting */
 export type JsonResumeWork = typeof RESUME.work
 export type JsonResumeWorkItem = (typeof RESUME.work)[number]

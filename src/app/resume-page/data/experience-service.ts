@@ -6,6 +6,7 @@ import { DateRange } from './date-range'
 import { ProjectItem } from '../projects-section/project-item/project-item'
 import { ADAPT_JSON_RESUME_WORK } from './adapt-json-resume-work'
 
+/** @visibleForTesting */
 export interface ExperienceService {
   getAll(): Observable<readonly Experience[]>
 }
