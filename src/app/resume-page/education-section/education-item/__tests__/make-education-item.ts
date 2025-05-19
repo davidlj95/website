@@ -1,5 +1,4 @@
-import { Organization } from '../../../organization'
-import { DateRange } from '../../../date-range/date-range'
+import { DateRange } from '../../../data/date-range'
 import { EducationItem } from '../education-item'
 import { makeItemFactory } from '@/test/helpers/make-item-factory'
 
@@ -7,11 +6,11 @@ export const makeEducationItem = makeItemFactory<
   EducationItem,
   ConstructorParameters<typeof EducationItem>[0]
 >(EducationItem, {
-  institution: new Organization({
+  institution: {
     name: 'Institution name',
     imageSrc: 'https://example.org/logo.png',
     website: new URL('https://example.org'),
-  }),
+  },
   area: 'Area',
   studyType: 'Study type',
   score: 'Score',

@@ -1,10 +1,6 @@
 import resume from '@/data/resume.json'
 
-import {
-  ADAPT_JSON_RESUME_WORK,
-  AdaptJsonResumeWork,
-  JsonResumeWork,
-} from './adapt-json-resume-work'
+import { ADAPT_JSON_RESUME_WORK } from './adapt-json-resume-work'
 import {
   RELATIVIZE_PRODUCTION_URL,
   RelativizeProductionUrl,
@@ -21,6 +17,7 @@ import {
   JSON_RESUME_PROJECTS,
   JsonResumeProjects,
 } from '../projects-section/json-resume-projects'
+import { JsonResumeWorkItem } from '../json-resume/json-resume.service'
 
 describe('AdaptJsonResumeWork', () => {
   it('should be created', () => {
@@ -31,7 +28,7 @@ describe('AdaptJsonResumeWork', () => {
     const name = 'Cool company name'
     const url = 'https://example.org/'
 
-    const item = makeSut()(makeJsonResumeWork({ name, url }))
+    const item = makeSut()(makeJsonResumeWorkItem({ name, url }))
 
     expect(item.company.name).toEqual(name)
     expect(item.company.website).toEqual(new URL(url))
@@ -43,7 +40,7 @@ describe('AdaptJsonResumeWork', () => {
     const summary = 'Summary'
 
     const item = makeSut()(
-      makeJsonResumeWork({ highlights, position, summary }),
+      makeJsonResumeWorkItem({ highlights, position, summary }),
     )
 
     expect(item.position).toEqual(position)
@@ -55,7 +52,7 @@ describe('AdaptJsonResumeWork', () => {
     const startDate = '2022-12-31'
     const endDate = '2024-01-01'
 
-    const item = makeSut()(makeJsonResumeWork({ startDate, endDate }))
+    const item = makeSut()(makeJsonResumeWorkItem({ startDate, endDate }))
 
     expect(item.dateRange.start).toEqual(new Date(startDate))
     expect(item.dateRange.end).toEqual(new Date(endDate))
@@ -65,7 +62,7 @@ describe('AdaptJsonResumeWork', () => {
     it('should map no end date exists too', () => {
       const endDate = undefined
 
-      const item = makeSut()(makeJsonResumeWork({ endDate }))
+      const item = makeSut()(makeJsonResumeWorkItem({ endDate }))
 
       expect(item.dateRange.end).toBeUndefined()
     })
@@ -76,9 +73,9 @@ describe('AdaptJsonResumeWork', () => {
     const tags = ['freelance', 'promotions']
 
     const item = makeSut()(
-      makeJsonResumeWork({
+      makeJsonResumeWorkItem({
         tags,
-      } as unknown as Partial<JsonResumeWork>),
+      } as unknown as Partial<JsonResumeWorkItem>),
     )
 
     expect(item.tags).toEqual(tags)
@@ -88,9 +85,9 @@ describe('AdaptJsonResumeWork', () => {
     const tags = ['foo']
 
     const item = makeSut()(
-      makeJsonResumeWork({
+      makeJsonResumeWorkItem({
         tags,
-      } as unknown as Partial<JsonResumeWork>),
+      } as unknown as Partial<JsonResumeWorkItem>),
     )
 
     expect(item.tags).toEqual([...tags, 'employee'])
@@ -104,7 +101,7 @@ describe('AdaptJsonResumeWork', () => {
       .and.returnValue(dummyImagePath)
     const sut = makeSut({ relativizeProductionUrl })
 
-    const item = sut(makeJsonResumeWork({ image }))
+    const item = sut(makeJsonResumeWorkItem({ image }))
 
     expect(relativizeProductionUrl).toHaveBeenCalledOnceWith(new URL(image))
     expect(item.company.imageSrc).toEqual(dummyImagePath)
@@ -120,7 +117,7 @@ describe('AdaptJsonResumeWork', () => {
     const jsonResumeProjects = [project]
     const sut = makeSut({ adaptJsonResumeProject, jsonResumeProjects })
 
-    const item = sut(makeJsonResumeWork({ name: companyName }))
+    const item = sut(makeJsonResumeWorkItem({ name: companyName }))
 
     expect(item.projects).toEqual([projectItem])
     expect(adaptJsonResumeProject).toHaveBeenCalledOnceWith(project)
@@ -133,7 +130,7 @@ const makeSut = (
     adaptJsonResumeProject?: AdaptJsonResumeProject
     jsonResumeProjects?: JsonResumeProjects
   } = {},
-): AdaptJsonResumeWork =>
+) =>
   serviceTestSetup(ADAPT_JSON_RESUME_WORK, {
     providers: [
       MockProvider(
@@ -150,13 +147,13 @@ const makeSut = (
     ],
   })
 
-const sampleJsonResumeWork = resume.work[0]
+const sampleJsonResumeWorkItem = resume.work[0]
 
-function makeJsonResumeWork(
-  overrides?: Partial<JsonResumeWork>,
-): JsonResumeWork {
+function makeJsonResumeWorkItem(
+  overrides?: Partial<JsonResumeWorkItem>,
+): JsonResumeWorkItem {
   return {
-    ...sampleJsonResumeWork,
+    ...sampleJsonResumeWorkItem,
     ...overrides,
-  } as JsonResumeWork
+  } as JsonResumeWorkItem
 }

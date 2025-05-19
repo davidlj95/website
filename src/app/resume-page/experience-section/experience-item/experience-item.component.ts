@@ -1,5 +1,4 @@
 import { Component, computed, input } from '@angular/core'
-import { ExperienceItem } from './experience-item'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 
@@ -12,11 +11,12 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
-import { experienceItemToContents } from './experience-item-to-contents'
-import { TAG_TO_ATTRIBUTE } from '../tags'
+import { experienceToContents } from './experience-to-contents'
+import { TAG_TO_ATTRIBUTE } from './tags'
+import { Experience } from '../../data/experience-service'
 
 @Component({
-  selector: 'app-experience-item',
+  selector: 'app-experience',
   templateUrl: './experience-item.component.html',
   imports: [
     LinkComponent,
@@ -33,9 +33,9 @@ import { TAG_TO_ATTRIBUTE } from '../tags'
   ],
 })
 export class ExperienceItemComponent {
-  readonly item = input.required<ExperienceItem>()
+  readonly experience = input.required<Experience>()
   protected readonly _contents = computed(() =>
-    experienceItemToContents(this.item()),
+    experienceToContents(this.experience()),
   )
 
   protected readonly _tagToAttribute = TAG_TO_ATTRIBUTE

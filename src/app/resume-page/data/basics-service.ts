@@ -37,7 +37,8 @@ export interface Contact {
 export type Social = Contact
 
 export const BASICS_SERVICE = new InjectionToken<BasicsService>(
-  'BasicsService',
+  /* istanbul ignore next */
+  isDevMode ? 'BasicsService' : 'rBS',
   {
     factory: () => {
       const jsonResume = inject(JsonResumeService)

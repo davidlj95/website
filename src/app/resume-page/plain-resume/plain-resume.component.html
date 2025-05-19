@@ -37,23 +37,23 @@
   <main>
     <section>
       <h2>Experience</h2>
-      @for (item of _work; track item) {
+      @for (experience of _experiences(); track experience) {
         <article>
           <header>
-            @let name = item.company.shortName || item.company.name;
+            @let name = experience.company.shortName || experience.company.name;
             <h3>
-              {{ item.position }} &#64;
-              <app-link [href]="item.company.website?.toString()"
+              {{ experience.position }} &#64;
+              <app-link [href]="experience.company.website?.toString()"
                 >{{ name }}
               </app-link>
             </h3>
-            <app-date-range [range]="item.dateRange"></app-date-range>
+            <app-date-range [range]="experience.dateRange"></app-date-range>
           </header>
           <main>
-            <p>{{ item.summary }}</p>
-            @if (item.highlights.length) {
+            <p>{{ experience.summary }}</p>
+            @if (experience.highlights.length) {
               <ul>
-                @for (highlight of item.highlights; track highlight) {
+                @for (highlight of experience.highlights; track highlight) {
                   <li [innerHTML]="highlight | mdLinks"></li>
                 }
               </ul>

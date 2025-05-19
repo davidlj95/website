@@ -1,13 +1,9 @@
-import { Component, Inject } from '@angular/core'
-import { ExperienceItem } from './experience-item/experience-item'
+import { Component, inject } from '@angular/core'
 import { ExperienceItemComponent } from './experience-item/experience-item.component'
-
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
-import {
-  GET_EXPERIENCE_ITEMS,
-  GetExperienceItems,
-} from './get-experience-items'
+import { EXPERIENCE_SERVICE } from '../data/experience-service'
+import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -16,11 +12,7 @@ import {
   imports: [SectionTitleComponent, CardGridComponent, ExperienceItemComponent],
 })
 export class ExperienceSectionComponent {
-  protected readonly _items: readonly ExperienceItem[]
-
-  constructor(
-    @Inject(GET_EXPERIENCE_ITEMS) getExperienceItems: GetExperienceItems,
-  ) {
-    this._items = getExperienceItems()
-  }
+  protected readonly _experiences = toSignal(
+    inject(EXPERIENCE_SERVICE).getAll(),
+  )
 }
