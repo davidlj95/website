@@ -6,7 +6,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { ATTRIBUTE_ARIA_LABEL } from '@/test/helpers/aria'
 import { NgIcon, NgIconComponent } from '@ng-icons/core'
 import { textContent } from '@/test/helpers/text-content'
-import { setFixtureInputs } from '@/test/helpers/set-fixture-inputs'
+import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 import { makeContact } from '../../data/__tests__/make-contact'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { makeSocial } from '../../data/__tests__/make-social'
@@ -19,8 +19,7 @@ describe('ProfileContactsComponent', () => {
 
   it('should create', () => {
     ;[fixture, component] = makeSut()
-    setFixtureInputs(fixture, { contacts: [], socials: [] })
-    fixture.detectChanges()
+    setFixtureInputsAndDetectChanges(fixture, { contacts: [], socials: [] })
 
     expect(component).toBeTruthy()
   })
@@ -31,9 +30,7 @@ describe('ProfileContactsComponent', () => {
     const contacts = [aContact, anotherContact]
 
     ;[fixture, component] = makeSut()
-    setFixtureInputs(fixture, { contacts, socials: [] })
-
-    fixture.detectChanges()
+    setFixtureInputsAndDetectChanges(fixture, { contacts, socials: [] })
 
     const anchorElements = fixture.debugElement.queryAll(By.css('a'))
 
@@ -66,9 +63,7 @@ describe('ProfileContactsComponent', () => {
     const socials = [aSocial, anotherSocial]
 
     ;[fixture, component] = makeSut()
-    setFixtureInputs(fixture, { contacts: [], socials })
-
-    fixture.detectChanges()
+    setFixtureInputsAndDetectChanges(fixture, { contacts: [], socials })
 
     const anchorElements = fixture.debugElement.queryAll(By.css('a'))
 
