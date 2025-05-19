@@ -3,36 +3,15 @@ import { inject, InjectionToken } from '@angular/core'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 import { Call, Email, MyLocation } from '@/data/material-symbols'
 import { isNotUndefined } from '@/common/is-not-undefined'
-import { provideIcons } from '@ng-icons/core'
-import {
-  faBrandGithub,
-  faBrandLinkedinIn,
-  faBrandStackOverflow,
-  faBrandXTwitter,
-} from '@ng-icons/font-awesome/brands'
 import { JsonResumeBasics } from '../json-resume/types'
+import { Contact, Profile, Social } from './basics'
+import { socialNgIconsByName } from './social-ng-icons'
 
 interface BasicsService {
   getProfile(): Observable<Profile>
   getContacts(): Observable<readonly Contact[]>
   getSocials(): Observable<readonly Social[]>
 }
-
-interface Profile {
-  readonly name: string
-  readonly label: string
-  readonly image: string
-  readonly summary: string
-}
-
-export interface Contact {
-  readonly label: string
-  readonly icon: string
-  readonly text: string
-  readonly url: URL
-}
-
-export type Social = Contact
 
 export const BASICS_SERVICE = new InjectionToken<BasicsService>(
   /* istanbul ignore next */
@@ -112,21 +91,9 @@ const basicsToSocials = (basics: JsonResumeBasics): readonly Social[] =>
 
 const getIconFromNetwork = (network: string): string | undefined => {
   const normalizedNetwork = network.toLowerCase()
-  const icons = ngIconsByName.get(normalizedNetwork)
+  const icons = socialNgIconsByName.get(normalizedNetwork)
   if (!icons) {
     return
   }
   return Object.values(icons)[0]
 }
-
-type NgIcons = Parameters<typeof provideIcons>[0]
-const ngIconsByName = new Map<string, NgIcons>([
-  ['github', { faBrandGithub }],
-  ['linkedin', { faBrandLinkedinIn }],
-  ['stackoverflow', { faBrandStackOverflow }],
-  ['x', { faBrandXTwitter }],
-])
-
-export const socialNgIcons: NgIcons = [
-  ...ngIconsByName.values(),
-].reduce<NgIcons>((acc, curr) => ({ ...acc, ...curr }), {})

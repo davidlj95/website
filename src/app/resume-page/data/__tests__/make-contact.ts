@@ -1,4 +1,4 @@
-import { Contact } from '../basics-service'
+import { Contact } from '../basics'
 
 export const makeContact = (overrides: Partial<Contact> = {}): Contact => ({
   label: 'contact',
