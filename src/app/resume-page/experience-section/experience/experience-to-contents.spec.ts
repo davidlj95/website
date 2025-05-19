@@ -1,10 +1,10 @@
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 import { experienceToContents } from './experience-to-contents'
 import { makeExperience } from '../../data/__tests__/make-experience'
-import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
+import { ExperienceHighlightsComponent } from './experience-highlights/experience-highlights.component'
 import { ProjectItem } from '../../projects-section/project-item/project-item'
 import { makeProjectItem } from '../../projects-section/__tests__/make-project-item'
-import { ExperienceItemTechComponent } from './experience-item-tech/experience-item-tech.component'
+import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 
 describe('experienceToContents', () => {
@@ -43,11 +43,9 @@ describe('experienceToContents', () => {
 
       expect(highlightsContents).toHaveSize(1)
       const highlightsContent =
-        highlightsContents[0] as ChippedContent<ExperienceItemHighlightsComponent>
+        highlightsContents[0] as ChippedContent<ExperienceHighlightsComponent>
 
-      expect(highlightsContent.component).toEqual(
-        ExperienceItemHighlightsComponent,
-      )
+      expect(highlightsContent.component).toEqual(ExperienceHighlightsComponent)
 
       expect(highlightsContent.inputs).toEqual({
         highlights,
@@ -77,9 +75,9 @@ describe('experienceToContents', () => {
 
       expect(techContents).toHaveSize(1)
       const techContent =
-        techContents[0] as ChippedContent<ExperienceItemTechComponent>
+        techContents[0] as ChippedContent<ExperienceTechComponent>
 
-      expect(techContent.component).toEqual(ExperienceItemTechComponent)
+      expect(techContent.component).toEqual(ExperienceTechComponent)
       expect(techContent.inputs).toEqual({
         technologies,
         projectNames: projects.map((project) => project.name),

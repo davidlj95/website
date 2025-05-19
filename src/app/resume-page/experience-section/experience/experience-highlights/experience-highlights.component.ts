@@ -2,15 +2,15 @@ import { Component, input } from '@angular/core'
 import { MdLinksPipe } from '../../../md-links.pipe'
 
 @Component({
-  selector: 'app-experience-item-highlights',
+  selector: 'app-experience-highlights',
   template: `<ul>
     @for (highlight of highlights(); track highlight) {
       <li [innerHTML]="highlight | mdLinks"></li>
     }
   </ul>`,
-  styleUrls: ['./experience-item-highlights.component.scss'],
+  styleUrls: ['./experience-highlights.component.scss'],
   imports: [MdLinksPipe],
 })
-export class ExperienceItemHighlightsComponent {
+export class ExperienceHighlightsComponent {
   readonly highlights = input.required<readonly string[]>()
 }

@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing'
-import { ExperienceItemComponent } from './experience-item.component'
+import { ExperienceComponent } from './experience.component'
 import { By } from '@angular/platform-browser'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
@@ -22,9 +22,9 @@ import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inp
 import { Experience } from '../../data/experience-service'
 import { TAG_TO_ATTRIBUTE } from './tags'
 
-describe('ExperienceItem', () => {
-  let component: ExperienceItemComponent
-  let fixture: ComponentFixture<ExperienceItemComponent>
+describe('ExperienceComponent', () => {
+  let component: ExperienceComponent
+  let fixture: ComponentFixture<ExperienceComponent>
 
   beforeEach(() => {
     ;[fixture, component] = makeSut()
@@ -143,7 +143,7 @@ describe('ExperienceItem', () => {
   })
 })
 function makeSut() {
-  return componentTestSetup(ExperienceItemComponent, {
+  return componentTestSetup(ExperienceComponent, {
     imports: [
       LinkComponent,
       TestIdDirective,
@@ -163,7 +163,7 @@ function makeSut() {
 }
 
 function setExperience(
-  fixture: ComponentFixture<ExperienceItemComponent>,
+  fixture: ComponentFixture<ExperienceComponent>,
   overrides?: Partial<Experience>,
 ) {
   setFixtureInputsAndDetectChanges(fixture, {

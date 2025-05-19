@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 import { ExperienceSectionComponent } from './experience-section.component'
-import { ExperienceItemComponent } from './experience-item/experience-item.component'
+import { ExperienceComponent } from './experience/experience.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents, MockProvider } from 'ng-mocks'
@@ -33,7 +33,7 @@ describe('ExperienceSectionComponent', () => {
     fixture.detectChanges()
 
     const experienceElements = fixture.debugElement.queryAll(
-      By.directive(ExperienceItemComponent),
+      By.directive(ExperienceComponent),
     )
 
     expect(experienceElements.length).toBe(experiences.length)
@@ -48,7 +48,7 @@ function makeSut({
       ExperienceSectionComponent,
       MockComponents(
         SectionTitleComponent,
-        ExperienceItemComponent,
+        ExperienceComponent,
         CardGridComponent,
       ),
     ],

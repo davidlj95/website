@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ExperienceItemTechComponent } from './experience-item-tech.component'
+import { ExperienceTechComponent } from './experience-tech.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { textContent } from '@/test/helpers/text-content'
@@ -10,14 +10,14 @@ import { MockComponents } from 'ng-mocks'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 
-describe('ExperienceItemTechComponent', () => {
-  let component: ExperienceItemTechComponent
-  let fixture: ComponentFixture<ExperienceItemTechComponent>
+describe('ExperienceTechComponent', () => {
+  let component: ExperienceTechComponent
+  let fixture: ComponentFixture<ExperienceTechComponent>
   const DUMMY_TECHNOLOGIES = ['tech-a', 'tech-b', 'tech-c']
   const DUMMY_PROJECT_NAMES = ['Project A', 'Project B', 'Project C']
 
   beforeEach(() => {
-    TestBed.overrideComponent(ExperienceItemTechComponent, {
+    TestBed.overrideComponent(ExperienceTechComponent, {
       set: {
         imports: [
           MockComponents(TechnologyComponent),
@@ -26,7 +26,7 @@ describe('ExperienceItemTechComponent', () => {
         ],
       },
     })
-    ;[fixture, component] = componentTestSetup(ExperienceItemTechComponent)
+    ;[fixture, component] = componentTestSetup(ExperienceTechComponent)
     setFixtureInputsAndDetectChanges(fixture, {
       technologies: DUMMY_TECHNOLOGIES,
       projectNames: DUMMY_PROJECT_NAMES,
