@@ -1,4 +1,4 @@
-import { Social } from '../basics-service'
+import { Social } from '../basics'
 
 export const makeSocial = (overrides: Partial<Social> = {}): Social => ({
   label: 'social',
