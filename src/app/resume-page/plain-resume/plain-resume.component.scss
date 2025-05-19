@@ -1,4 +1,5 @@
 @use 'margins';
+@use 'paddings';
 @use 'material-symbols';
 
 :host {
@@ -110,5 +111,23 @@ dl.langs {
 
   dt {
     font-weight: bold;
+  }
+}
+
+[role='note'] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: margins.$s;
+
+  border-style: solid none;
+  border-width: 1px;
+  border-color: black;
+
+  padding: paddings.$xs;
+  margin-bottom: margins.$m;
+
+  @media not print {
+    display: none;
   }
 }
