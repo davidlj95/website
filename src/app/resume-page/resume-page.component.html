@@ -5,9 +5,14 @@
     [selected]="_displayMode()"
     (selectedChange)="onDisplayModeChange($event)"
   ></app-selector>
+  @if (_isPlainDisplayMode()) {
+    <button appToolbarButton [icon]="_materialSymbols.Print" onclick="print()">
+      Print
+    </button>
+  }
 </app-toolbar>
 @if (_isPlainDisplayMode()) {
-  <app-plain-resume> </app-plain-resume>
+  <app-plain-resume></app-plain-resume>
 } @else {
   <app-web-resume></app-web-resume>
 }

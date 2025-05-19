@@ -9,6 +9,8 @@ import {
   SelectorComponent,
   SelectorOption,
 } from '../selector/selector.component'
+import { ToolbarButtonComponent } from '../header/toolbar-button/toolbar-button.component'
+import { Print } from '@/data/material-symbols'
 
 @Component({
   templateUrl: './resume-page.component.html',
@@ -18,6 +20,7 @@ import {
     WebResumeComponent,
     PlainResumeComponent,
     SelectorComponent,
+    ToolbarButtonComponent,
   ],
 })
 export class ResumePageComponent {
@@ -46,6 +49,8 @@ export class ResumePageComponent {
       queryParams,
     })
   }
+
+  protected readonly _materialSymbols = { Print }
 }
 
 /** @visibleForTesting */
