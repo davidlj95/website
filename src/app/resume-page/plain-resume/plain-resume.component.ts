@@ -14,6 +14,7 @@ import {
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgIcon } from '@ng-icons/core'
 import { GET_LANGUAGE_ITEMS } from '../languages-section/get-language-items'
+import { EnergySavingsLeaf } from '@/data/material-symbols'
 
 @Component({
   selector: 'app-plain-resume',
@@ -40,4 +41,5 @@ export class PlainResumeComponent {
   protected readonly _education = inject(GET_EDUCATION_ITEMS)()
   protected readonly _projects = inject(GET_PROJECT_ITEMS)()
   protected readonly _languages = inject(GET_LANGUAGE_ITEMS)()
+  protected readonly _materialSymbols = { EnergySavingsLeaf }
 }
