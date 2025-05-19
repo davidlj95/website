@@ -2,7 +2,6 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { ATTRIBUTE, EducationItemComponent } from './education-item.component'
 import { EducationItem } from './education-item'
-import { Organization } from '../../organization'
 import { By } from '@angular/platform-browser'
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
@@ -41,11 +40,11 @@ describe('EducationItemComponent', () => {
   it('should display institution image with link to its website', () => {
     const imageUrl = 'https://example.org/logo.png'
     const website = 'https://example.org/'
-    const institution = new Organization({
+    const institution = {
       name: 'Some cool name',
       imageSrc: imageUrl,
       website: new URL(website),
-    })
+    }
     setEducationItem(fixture, { institution })
 
     // noinspection DuplicatedCode
@@ -69,11 +68,11 @@ describe('EducationItemComponent', () => {
   it("should display institution name with link to company's website", () => {
     const name = 'Some cool name'
     const website = 'https://example.org/'
-    const institution = new Organization({
+    const institution = {
       name,
       imageSrc: 'https://example.org/logo.png',
       website: new URL(website),
-    })
+    }
     setEducationItem(fixture, { institution })
 
     const titleElement = fixture.debugElement.query(
@@ -88,11 +87,11 @@ describe('EducationItemComponent', () => {
       const name = 'Very very very very very very very very long name'
       const shortName = 'VLN'
       setEducationItem(fixture, {
-        institution: new Organization({
+        institution: {
           name,
           imageSrc: 'https://example.org',
           shortName,
-        }),
+        },
       })
 
       const institutionNameElement = fixture.debugElement.query(

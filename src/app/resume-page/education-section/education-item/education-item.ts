@@ -1,5 +1,5 @@
-import { Organization } from '../../organization'
-import { DateRange } from '../../date-range/date-range'
+import { Organization } from '../../data/organization'
+import { DateRange } from '../../data/date-range'
 
 export class EducationItem {
   readonly institution: Organization

@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core'
-import { DateRange } from './date-range'
+import { DateRange } from '../data/date-range'
 import { DatePipe, NgTemplateOutlet } from '@angular/common'
 
 @Component({

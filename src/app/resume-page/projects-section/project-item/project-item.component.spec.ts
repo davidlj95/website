@@ -15,7 +15,7 @@ import { CardHeaderDetailComponent } from '../../card/card-header/card-header-de
 import { DateRangeComponent } from '../../date-range/date-range.component'
 import { byTestId } from '@/test/helpers/test-id'
 import { By } from '@angular/platform-browser'
-import { DateRange } from '../../date-range/date-range'
+import { DateRange } from '../../data/date-range'
 import { CardHeaderAttributesComponent } from '../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'

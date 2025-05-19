@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { DateRangeComponent } from './date-range.component'
 import { By } from '@angular/platform-browser'
-import { DateRange } from './date-range'
+import { DateRange } from '../data/date-range'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 

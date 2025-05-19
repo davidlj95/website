@@ -1,20 +1,20 @@
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
-import { experienceItemToContents } from './experience-item-to-contents'
-import { makeExperienceItem } from './__tests__/make-experience-item'
+import { experienceToContents } from './experience-to-contents'
+import { makeExperience } from '../../data/__tests__/make-experience'
 import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
 import { ProjectItem } from '../../projects-section/project-item/project-item'
 import { makeProjectItem } from '../../projects-section/__tests__/make-project-item'
 import { ExperienceItemTechComponent } from './experience-item-tech/experience-item-tech.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 
-describe('experienceItemToContents', () => {
+describe('experienceToContents', () => {
   describe('when summary is present', () => {
     const summary = 'Did amazing things and rocked 100% of time'
 
     it('should include summary content', () => {
       const sut = makeSut()
 
-      const contents = sut(makeExperienceItem({ summary }))
+      const contents = sut(makeExperience({ summary }))
       const summaryContents = contents.filter(
         (content) => content.displayName === 'Summary',
       )
@@ -36,7 +36,7 @@ describe('experienceItemToContents', () => {
     it('should include highlights content', () => {
       const sut = makeSut()
 
-      const contents = sut(makeExperienceItem({ highlights }))
+      const contents = sut(makeExperience({ highlights }))
       const highlightsContents = contents.filter(
         (content) => content.displayName === 'Highlights',
       )
@@ -70,7 +70,7 @@ describe('experienceItemToContents', () => {
     it('should include technologies content with the set of technologies of all projects', () => {
       const sut = makeSut()
 
-      const contents = sut(makeExperienceItem({ projects }))
+      const contents = sut(makeExperience({ projects }))
       const techContents = contents.filter(
         (content) => content.displayName === 'Tech',
       )
@@ -88,4 +88,4 @@ describe('experienceItemToContents', () => {
   })
 })
 
-const makeSut = () => experienceItemToContents
+const makeSut = () => experienceToContents

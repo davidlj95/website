@@ -1,7 +1,5 @@
 import { Badge, More, School, ToolsLadder, Work } from '@/data/material-symbols'
-
-export const FREELANCE_TAG = 'freelance'
-export const EMPLOYEE_TAG = 'employee'
+import { EMPLOYEE_TAG, FREELANCE_TAG } from '../../data/adapt-json-resume-work'
 
 export const TAG_TO_ATTRIBUTE: Record<string, Attribute> = {
   [FREELANCE_TAG]: {
