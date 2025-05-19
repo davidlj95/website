@@ -1,7 +1,4 @@
-import {
-  JsonResumeBasics,
-  JsonResumeService,
-} from '../json-resume/json-resume.service'
+import { JsonResumeService } from '../json-resume/json-resume.service'
 import RESUME from '@/data/resume.json'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { BASICS_SERVICE } from './basics-service'
@@ -9,6 +6,7 @@ import { MockProvider } from 'ng-mocks'
 import { firstValueFrom, of } from 'rxjs'
 import { Call, Email, MyLocation } from '@/data/material-symbols'
 import { faBrandGithub } from '@ng-icons/font-awesome/brands'
+import { JsonResumeBasics } from '../json-resume/types'
 
 describe('BasicsService', () => {
   it('should map email, phone and location as contacts', async () => {

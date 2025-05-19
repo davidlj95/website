@@ -17,7 +17,7 @@ import {
   JSON_RESUME_PROJECTS,
   JsonResumeProjects,
 } from '../projects-section/json-resume-projects'
-import { JsonResumeWorkItem } from '../json-resume/json-resume.service'
+import { JsonResumeWorkItem } from '../json-resume/types'
 
 describe('AdaptJsonResumeWork', () => {
   it('should be created', () => {
