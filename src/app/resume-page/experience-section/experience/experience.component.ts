@@ -17,7 +17,7 @@ import { Experience } from '../../data/experience-service'
 
 @Component({
   selector: 'app-experience',
-  templateUrl: './experience-item.component.html',
+  templateUrl: './experience.component.html',
   imports: [
     LinkComponent,
     TestIdDirective,
@@ -32,7 +32,7 @@ import { Experience } from '../../data/experience-service'
     ChippedContentComponent,
   ],
 })
-export class ExperienceItemComponent {
+export class ExperienceComponent {
   readonly experience = input.required<Experience>()
   protected readonly _contents = computed(() =>
     experienceToContents(this.experience()),

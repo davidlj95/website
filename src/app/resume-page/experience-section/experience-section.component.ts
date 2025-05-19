@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core'
-import { ExperienceItemComponent } from './experience-item/experience-item.component'
+import { ExperienceComponent } from './experience/experience.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
 import { EXPERIENCE_SERVICE } from '../data/experience-service'
@@ -9,7 +9,7 @@ import { toSignal } from '@angular/core/rxjs-interop'
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'section[appExperience]',
   templateUrl: './experience-section.component.html',
-  imports: [SectionTitleComponent, CardGridComponent, ExperienceItemComponent],
+  imports: [SectionTitleComponent, CardGridComponent, ExperienceComponent],
 })
 export class ExperienceSectionComponent {
   protected readonly _experiences = toSignal(

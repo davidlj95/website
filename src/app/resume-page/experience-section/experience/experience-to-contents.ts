@@ -1,8 +1,8 @@
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
-import { ExperienceItemHighlightsComponent } from './experience-item-highlights/experience-item-highlights.component'
-import { ExperienceItemTechComponent } from './experience-item-tech/experience-item-tech.component'
+import { ExperienceHighlightsComponent } from './experience-highlights/experience-highlights.component'
+import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
 import { Experience } from '../../data/experience-service'
 
 export const experienceToContents: (
@@ -21,7 +21,7 @@ export const experienceToContents: (
     experience.highlights.length > 0
       ? new ChippedContent({
           displayName: 'Highlights',
-          component: ExperienceItemHighlightsComponent,
+          component: ExperienceHighlightsComponent,
           inputs: {
             highlights: experience.highlights,
           },
@@ -34,7 +34,7 @@ export const experienceToContents: (
     projectsTechnologies.length > 0
       ? new ChippedContent({
           displayName: 'Tech',
-          component: ExperienceItemTechComponent,
+          component: ExperienceTechComponent,
           inputs: {
             technologies: projectsTechnologies,
             projectNames: experience.projects
