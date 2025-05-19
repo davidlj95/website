@@ -1,0 +1,9 @@
+@use 'paddings';
+
+app-toolbar {
+  padding: 0 paddings.$l;
+}
+
+app-plain-resume {
+  display: block;
+}

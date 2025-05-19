@@ -1,6 +1,12 @@
-<section appProfile></section>
-<section appTechStack></section>
-<section appExperience></section>
-<section appEducation></section>
-<section appProjects></section>
-<section appLanguages></section>
+<app-toolbar>
+  <app-selector
+    [options]="_displayModeOptions"
+    [selected]="_displayMode()"
+    (selectedChange)="onDisplayModeChange($event)"
+  ></app-selector>
+</app-toolbar>
+@if (_isPlainDisplayMode()) {
+  <app-plain-resume> </app-plain-resume>
+} @else {
+  <app-web-resume></app-web-resume>
+}

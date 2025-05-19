@@ -1,5 +1,6 @@
 @use 'animations';
 @use 'margins';
+@use 'toolbar';
 
 :host {
   display: flex;
@@ -8,6 +9,8 @@
 
   background-color: var(--app-color-toolbar-background);
   color: var(--ui-text);
+
+  min-height: toolbar.$icons-height;
 
   @include animations.when-motion {
     @include animations.single-transition(
