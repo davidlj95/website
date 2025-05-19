@@ -10,7 +10,7 @@ import {
   ADAPT_JSON_RESUME_EDUCATION,
   AdaptJsonResumeEducation,
   JsonResumeEducation,
-} from './adapt-json-resume-education'
+} from '../data/adapt-json-resume-education'
 
 describe('GetEducationItems', () => {
   it('should be created', () => {

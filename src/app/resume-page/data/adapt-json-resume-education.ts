@@ -1,7 +1,7 @@
 import { inject, InjectionToken } from '@angular/core'
 import resume from '@/data/resume.json'
-import { Education } from '../data/education'
-import { DateRange } from '../data/date-range'
+import { Education } from './education'
+import { DateRange } from './date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 
 /** @visibleForTesting */
