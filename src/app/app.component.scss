@@ -1,5 +1,6 @@
 @use 'borders';
 @use 'animations';
+@use 'print';
 
 .site-wrapper {
   margin: 0 auto;
@@ -9,7 +10,7 @@
   max-width: $large-screen-width;
   min-height: 100vh;
 
-  @media not print {
+  @include print.except {
     @media (min-width: $large-screen-width) {
       @include borders.panel(left, right);
     }

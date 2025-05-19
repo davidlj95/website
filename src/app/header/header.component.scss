@@ -3,6 +3,7 @@
 @use 'z-index';
 @use 'animations';
 @use 'quirks';
+@use 'print';
 
 :host {
   position: sticky;
@@ -21,9 +22,7 @@
     );
   }
 
-  @media print {
-    display: none;
-  }
+  @include print.hidden;
 }
 
 app-toolbar {

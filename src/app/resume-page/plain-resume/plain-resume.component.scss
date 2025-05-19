@@ -1,6 +1,7 @@
 @use 'margins';
 @use 'paddings';
 @use 'material-symbols';
+@use 'print';
 
 :host {
   background: white;
@@ -18,7 +19,7 @@
     color: var(--ref-palette-primary40);
   }
 
-  @media print {
+  @include print.only {
     ::ng-deep a,
     ::ng-deep a:active,
     ::ng-deep a:visited {
@@ -127,7 +128,5 @@ dl.langs {
   padding: paddings.$xs;
   margin-bottom: margins.$m;
 
-  @media not print {
-    display: none;
-  }
+  @include print.visible-only;
 }

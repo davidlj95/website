@@ -1,0 +1,23 @@
+@mixin except {
+  @media not print {
+    @content;
+  }
+}
+
+@mixin only {
+  @media print {
+    @content;
+  }
+}
+
+@mixin hidden {
+  @include only {
+    display: none;
+  }
+}
+
+@mixin visible-only {
+  @include except {
+    display: none;
+  }
+}
