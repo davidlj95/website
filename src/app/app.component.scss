@@ -5,11 +5,16 @@
   margin: 0 auto;
   background-color: var(--sys-color-cdt-base-container);
 
-  max-width: 960px;
+  $large-screen-width: 960px;
+  max-width: $large-screen-width;
   min-height: 100vh;
+
   @media not print {
-    @include borders.panel(left, right);
+    @media (min-width: $large-screen-width) {
+      @include borders.panel(left, right);
+    }
   }
+
   @include animations.when-motion {
     @include animations.multiple-transitions(
       (background-color, border-color),
