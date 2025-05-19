@@ -48,7 +48,10 @@ export class ResumePageComponent {
   }
 }
 
+/** @visibleForTesting */
 export const WEB = 'web'
-export const PLAIN = 'plain'
+const PLAIN = 'plain'
 type DisplayMode = typeof WEB | typeof PLAIN
-export const PLAIN_QUERY_PARAM = PLAIN
+const PLAIN_QUERY_PARAM = PLAIN
+/** @visibleForTesting */
+export { PLAIN, PLAIN_QUERY_PARAM }
