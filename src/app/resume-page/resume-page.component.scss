@@ -2,6 +2,9 @@
 
 app-toolbar {
   padding: 0 paddings.$l;
+  @media print {
+    display: none;
+  }
 }
 
 app-plain-resume {
