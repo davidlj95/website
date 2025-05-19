@@ -1,24 +1,12 @@
 import { map, Observable } from 'rxjs'
 import { inject, InjectionToken } from '@angular/core'
 import { JsonResumeService } from '../json-resume/json-resume.service'
-import { Organization } from './organization'
-import { DateRange } from './date-range'
-import { ProjectItem } from '../projects-section/project-item/project-item'
 import { ADAPT_JSON_RESUME_WORK } from './adapt-json-resume-work'
+import { Experience } from './experience'
 
 /** @visibleForTesting */
 export interface ExperienceService {
   getAll(): Observable<readonly Experience[]>
-}
-
-export interface Experience {
-  readonly company: Organization
-  readonly position: string
-  readonly dateRange: DateRange
-  readonly summary: string
-  readonly highlights: readonly string[]
-  readonly tags: readonly string[]
-  readonly projects: readonly ProjectItem[]
 }
 
 export const EXPERIENCE_SERVICE = new InjectionToken<ExperienceService>(

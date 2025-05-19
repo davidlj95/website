@@ -13,7 +13,7 @@ import { CardHeaderComponent } from '../../card/card-header/card-header.componen
 import { CardComponent } from '../../card/card.component'
 import { experienceToContents } from './experience-to-contents'
 import { TAG_TO_ATTRIBUTE } from './tags'
-import { Experience } from '../../data/experience-service'
+import { Experience } from '../../data/experience'
 
 @Component({
   selector: 'app-experience',

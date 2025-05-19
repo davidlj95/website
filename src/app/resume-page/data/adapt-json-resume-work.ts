@@ -3,8 +3,8 @@ import { DateRange } from './date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JSON_RESUME_PROJECTS } from '../projects-section/json-resume-projects'
 import { ADAPT_JSON_RESUME_PROJECT } from '../projects-section/adapt-json-resume-project'
-import { Experience } from './experience-service'
 import { JsonResumeWorkItem } from '../json-resume/types'
+import { Experience } from './experience'
 
 /** @visibleForTesting */
 export type AdaptJsonResumeWork = (work: JsonResumeWorkItem) => Experience

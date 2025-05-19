@@ -3,7 +3,7 @@ import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 import { ExperienceHighlightsComponent } from './experience-highlights/experience-highlights.component'
 import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
-import { Experience } from '../../data/experience-service'
+import { Experience } from '../../data/experience'
 
 export const experienceToContents: (
   experience: Experience,
