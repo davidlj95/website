@@ -1,21 +1,25 @@
-<ul>
-  @for (contact of _traditional; track contact) {
-    <li>
-      <a
-        [href]="contact.href"
-        [attr.aria-label]="contact.label"
-        appMaterialSymbol
-        >{{ contact.icon }}</a
-      >
-    </li>
-  }
-</ul>
-<ul class="social">
-  @for (contact of _social; track contact) {
-    <li>
-      <a [href]="contact.href" [attr.aria-label]="contact.label">
-        <ng-icon [svg]="contact.icon"></ng-icon>
-      </a>
-    </li>
-  }
-</ul>
+@if (contacts().length) {
+  <ul>
+    @for (contact of contacts(); track contact) {
+      <li>
+        <a
+          [href]="contact.url.toString()"
+          [attr.aria-label]="contact.label"
+          appMaterialSymbol
+          >{{ contact.icon }}</a
+        >
+      </li>
+    }
+  </ul>
+}
+@if (socials().length) {
+  <ul>
+    @for (social of socials(); track social) {
+      <li>
+        <a [href]="social.url.toString()" [attr.aria-label]="social.label">
+          <ng-icon [svg]="social.icon"></ng-icon>
+        </a>
+      </li>
+    }
+  </ul>
+}
