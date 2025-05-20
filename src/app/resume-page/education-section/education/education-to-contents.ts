@@ -5,24 +5,24 @@ import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 
 export const educationToContents: (
-  item: Education,
-) => readonly ChippedContent[] = (item) =>
+  education: Education,
+) => readonly ChippedContent[] = (education) =>
   [
-    item.score
+    education.score
       ? new ChippedContent({
           displayName: 'Score',
           component: TextContentComponent,
           inputs: {
-            text: item.score,
+            text: education.score,
           },
         })
       : undefined,
-    item.courses.length > 0
+    education.courses.length > 0
       ? new ChippedContent({
           displayName: 'Courses',
           component: EducationCoursesComponent,
           inputs: {
-            courses: item.courses,
+            courses: education.courses,
           },
         })
       : undefined,
