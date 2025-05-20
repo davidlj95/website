@@ -20,8 +20,7 @@ import { CardHeaderAttributesComponent } from '../../card/card-header/card-heade
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { makeProjectItem } from '../__tests__/make-project-item'
-import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
+import { makeProject } from '../__tests__/make-project'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
@@ -184,9 +183,9 @@ function makeSut() {
 
 function setProjectItem(
   fixture: ComponentFixture<ProjectItemComponent>,
-  overrides?: ItemFactoryOverrides<typeof Project>,
+  overrides?: Partial<Project>,
 ) {
   setFixtureInputsAndDetectChanges(fixture, {
-    item: makeProjectItem(overrides),
+    item: makeProject(overrides),
   })
 }

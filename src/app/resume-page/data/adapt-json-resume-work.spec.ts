@@ -12,7 +12,7 @@ import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
 } from '../projects-section/adapt-json-resume-project'
-import { makeProjectItem } from '../projects-section/__tests__/make-project-item'
+import { makeProject } from '../projects-section/__tests__/make-project'
 import {
   JSON_RESUME_PROJECTS,
   JsonResumeProjects,
@@ -110,7 +110,7 @@ describe('AdaptJsonResumeWork', () => {
   it('should add projects whose entity matches company name', () => {
     const companyName = 'ACME Intl.'
     const project = makeJsonResumeProject({ entity: companyName })
-    const projectItem = makeProjectItem({ name: project.name })
+    const projectItem = makeProject({ name: project.name })
     const adaptJsonResumeProject = jasmine
       .createSpy<AdaptJsonResumeProject>()
       .and.returnValue(projectItem)

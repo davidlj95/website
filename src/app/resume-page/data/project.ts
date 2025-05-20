@@ -1,6 +1,6 @@
 import { DateRange } from './date-range'
 
-export class Project {
+export interface Project {
   readonly name: string
   readonly description: string
   readonly dateRange: DateRange
@@ -10,38 +10,6 @@ export class Project {
   readonly imageSrc?: string
   readonly stack?: Stack
   readonly technologies: readonly string[]
-
-  constructor({
-    name,
-    description,
-    dateRange,
-    website,
-    roles,
-    entity,
-    imageSrc,
-    stack,
-    technologies,
-  }: {
-    name: string
-    description: string
-    dateRange: DateRange
-    website?: URL
-    roles?: readonly string[]
-    entity: string
-    imageSrc?: string
-    stack?: Stack
-    technologies?: readonly string[]
-  }) {
-    this.name = name
-    this.description = description
-    this.dateRange = dateRange
-    this.website = website
-    this.roles = roles ?? []
-    this.entity = entity
-    this.imageSrc = imageSrc
-    this.stack = stack
-    this.technologies = technologies ?? []
-  }
 }
 
 export enum Stack {

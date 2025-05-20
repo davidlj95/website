@@ -13,23 +13,22 @@ export const ADAPT_JSON_RESUME_PROJECT =
     {
       factory: () => {
         const relativizeUrl = inject(RELATIVIZE_PRODUCTION_URL)
-        return (project) =>
-          new Project({
-            name: project.name,
-            description: project.description,
-            dateRange: new DateRange(
-              new Date(project.startDate),
-              project.endDate ? new Date(project.endDate) : undefined,
-            ),
-            website: project.url ? new URL(project.url) : undefined,
-            roles: project.roles,
-            entity: project.entity,
-            imageSrc: project.image
-              ? relativizeUrl(new URL(project.image))
-              : undefined,
-            stack: project.stack ? mapStack(project.stack) : undefined,
-            technologies: project.technologies,
-          })
+        return (project) => ({
+          name: project.name,
+          description: project.description,
+          dateRange: new DateRange(
+            new Date(project.startDate),
+            project.endDate ? new Date(project.endDate) : undefined,
+          ),
+          website: project.url ? new URL(project.url) : undefined,
+          roles: project.roles,
+          entity: project.entity,
+          imageSrc: project.image
+            ? relativizeUrl(new URL(project.image))
+            : undefined,
+          stack: project.stack ? mapStack(project.stack) : undefined,
+          technologies: project.technologies,
+        })
       },
     },
   )
