@@ -1,11 +1,11 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import { ATTRIBUTE, ProjectComponent, STACK_CONTENT } from './project.component'
+import { ProjectComponent } from './project.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '@/common/card/card.component'
 import { CardHeaderImageComponent } from '@/common/card/card-header/card-header-image/card-header-image.component'
 import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
-import { Project, Stack } from '../../../data/project'
+import { Project } from '../../../data/project'
 import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderDetailComponent } from '@/common/card/card-header/card-header-detail/card-header-detail.component'
 import { DateRangeComponent } from '../../../date-range/date-range.component'
@@ -22,6 +22,7 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../../link/link.component'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
+import { FULLSTACK_ATTRIBUTE } from '../../../data/attribute'
 
 describe('ProjectComponent', () => {
   let component: ProjectComponent
@@ -120,40 +121,17 @@ describe('ProjectComponent', () => {
     expect(dateRangeElement).toBeTruthy()
   })
 
-  describe('when no stack attribute exists', () => {
-    it('should not include attribute', () => {
-      const stack = undefined
+  it('should display attributes', () => {
+    const attributes = [FULLSTACK_ATTRIBUTE]
+    setProject(fixture, { attributes })
 
-      setProject(fixture, { stack })
+    const attributesElement = fixture.debugElement.query(
+      By.directive(AttributesComponent),
+    )
 
-      const stackAttributeElement = fixture.debugElement.query(
-        byTestId(ATTRIBUTE.Stack),
-      )
-
-      expect(stackAttributeElement).toBeFalsy()
-    })
-  })
-
-  describe('when stack attribute exists', () => {
-    it('should include attribute with its display name and icon', () => {
-      const stack = Stack.Front
-      const stackContent = STACK_CONTENT[stack]
-
-      setProject(fixture, { stack })
-
-      const stackAttributeElement = fixture.debugElement.query(
-        byTestId(ATTRIBUTE.Stack),
-      )
-
-      expect(stackAttributeElement).toBeTruthy()
-      expect(
-        getComponentInstance(stackAttributeElement, AttributeComponent).symbol,
-      ).toBe(stackContent.materialSymbol)
-
-      expect(textContent(stackAttributeElement)).toEqual(
-        stackContent.displayName,
-      )
-    })
+    expect(
+      getComponentInstance(attributesElement, AttributesComponent).attributes,
+    ).toEqual(attributes)
   })
 })
 

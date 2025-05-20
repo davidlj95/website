@@ -1,4 +1,5 @@
 import { DateRange } from './date-range'
+import { Attribute } from './attribute'
 
 export interface Project {
   readonly name: string
@@ -8,12 +9,6 @@ export interface Project {
   readonly roles: readonly string[]
   readonly entity?: string
   readonly imageSrc?: string
-  readonly stack?: Stack
+  readonly attributes: readonly Attribute[]
   readonly technologies: readonly string[]
-}
-
-export enum Stack {
-  Back = 'back',
-  Front = 'front',
-  Full = 'full',
 }

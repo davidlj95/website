@@ -1,5 +1,8 @@
 import {
+  Apps,
   Badge,
+  Dns,
+  FullStackedBarChart,
   More,
   School,
   SocialLeaderboard,
@@ -7,6 +10,11 @@ import {
   Work,
 } from '@/data/material-symbols'
 import { EMPLOYEE_TAG, FREELANCE_TAG } from './adapt-json-resume-work'
+import {
+  STACK_BACKEND_TAG,
+  STACK_FRONTEND_TAG,
+  STACK_FULLSTACK_TAG,
+} from './adapt-json-resume-project'
 
 export interface Attribute {
   readonly text: string
@@ -28,6 +36,11 @@ export const CUM_LAUDE_ATTRIBUTE = {
   text: 'Cum laude',
   symbol: SocialLeaderboard,
 }
+/** @visibleForTesting */
+export const FULLSTACK_ATTRIBUTE = {
+  text: 'Full stack',
+  symbol: FullStackedBarChart,
+}
 export const TAG_TO_ATTRIBUTE: Record<string, Attribute> = {
   [FREELANCE_TAG]: FREELANCE_ATTRIBUTE,
   [EMPLOYEE_TAG]: EMPLOYEE_ATTRIBUTE,
@@ -44,4 +57,13 @@ export const TAG_TO_ATTRIBUTE: Record<string, Attribute> = {
     symbol: ToolsLadder,
   },
   'cum-laude': CUM_LAUDE_ATTRIBUTE,
+  [STACK_FRONTEND_TAG]: {
+    text: 'Frontend',
+    symbol: Apps,
+  },
+  [STACK_BACKEND_TAG]: {
+    text: 'Backend',
+    symbol: Dns,
+  },
+  [STACK_FULLSTACK_TAG]: FULLSTACK_ATTRIBUTE,
 }
