@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core'
-import { LanguageItem } from './language-item'
+import { Language } from '../../data/language'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
@@ -7,7 +7,7 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { LanguageTagComponent } from './language-tag/language-tag.component'
 
 @Component({
-  selector: 'app-language-item',
+  selector: 'app-language',
   imports: [
     CardComponent,
     CardHeaderComponent,
@@ -15,8 +15,8 @@ import { LanguageTagComponent } from './language-tag/language-tag.component'
     TestIdDirective,
     LanguageTagComponent,
   ],
-  templateUrl: './language-item.component.html',
+  templateUrl: './language.component.html',
 })
-export class LanguageItemComponent {
-  readonly item = input.required<LanguageItem>()
+export class LanguageComponent {
+  readonly language = input.required<Language>()
 }
