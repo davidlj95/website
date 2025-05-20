@@ -2,7 +2,7 @@ import { Component, computed, input } from '@angular/core'
 import { Education } from '../../../data/education'
 import { SocialLeaderboard } from '@/data/material-symbols'
 import { ChippedContentComponent } from '../../../chipped-content/chipped-content.component'
-import { AttributeComponent } from '../../../attribute/attribute.component'
+import { AttributeComponent } from '../../attribute/attribute.component'
 
 import { CardHeaderAttributesComponent } from '../../../card/card-header/card-header-attributes/card-header-attributes.component'
 import { DateRangeComponent } from '../../../date-range/date-range.component'

@@ -1,7 +1,7 @@
-@use 'borders';
-@use 'margins';
-@use 'paddings';
-@use 'animations';
+@use '../../../../sass/borders';
+@use '../../../../sass/margins';
+@use '../../../../sass/paddings';
+@use '../../../../sass/animations';
 
 :host {
   position: relative;
