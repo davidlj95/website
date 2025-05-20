@@ -26,7 +26,9 @@ describe('ExperienceSectionComponent', () => {
   it('should display all experiences', () => {
     const experiences = [makeExperience(), makeExperience()]
     const experienceService: ExperienceService = {
-      getAll: jasmine.createSpy().and.returnValue(of(experiences)),
+      getAll: jasmine
+        .createSpy<ExperienceService['getAll']>()
+        .and.returnValue(of(experiences)),
     }
 
     ;[fixture, component] = makeSut({ experienceService })

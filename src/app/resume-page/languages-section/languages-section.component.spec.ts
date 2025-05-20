@@ -18,9 +18,11 @@ describe('LanguagesSectionComponent', () => {
 
   it('should display all languages', () => {
     const languages = [makeLanguage(), makeLanguage()]
-    const languageService = jasmine
-      .createSpy<LanguageService>()
-      .and.returnValue(of(languages))
+    const languageService = {
+      getAll: jasmine
+        .createSpy<LanguageService['getAll']>()
+        .and.returnValue(of(languages)),
+    } satisfies LanguageService
 
     const [fixture] = makeSut({ languageService })
     fixture.detectChanges()
