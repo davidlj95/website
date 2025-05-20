@@ -36,7 +36,7 @@ export class PlainResumeComponent {
   protected readonly _experiences = toSignal(
     inject(EXPERIENCE_SERVICE).getAll(),
   )
-  protected readonly _education = inject(GET_EDUCATION_ITEMS)()
+  protected readonly _educations = toSignal(inject(GET_EDUCATION_ITEMS)())
   protected readonly _projects = inject(GET_PROJECT_ITEMS)()
   protected readonly _languages = inject(GET_LANGUAGE_ITEMS)()
   protected readonly _materialSymbols = { EnergySavingsLeaf }

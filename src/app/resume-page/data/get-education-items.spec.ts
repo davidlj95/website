@@ -1,62 +1,60 @@
-import {
-  GET_EDUCATION_ITEMS,
-  JSON_RESUME_EDUCATIONS,
-  JsonResumeEducations,
-} from './get-education-items'
+import { GET_EDUCATION_ITEMS } from './get-education-items'
 import { MockProvider } from 'ng-mocks'
 import { Education } from './education'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   ADAPT_JSON_RESUME_EDUCATION,
   AdaptJsonResumeEducation,
-  JsonResumeEducation,
 } from './adapt-json-resume-education'
+import { JsonResumeService } from '../json-resume/json-resume.service'
+import { firstValueFrom, of } from 'rxjs'
+import {
+  JsonResumeEducation,
+  JsonResumeEducationItem,
+} from '../json-resume/types'
 
 describe('GetEducationItems', () => {
   it('should be created', () => {
     expect(makeSut()).toBeTruthy()
   })
 
-  it('should return adapted items from JSON Resume', () => {
-    const jsonResumeEducations = [
-      'item-1' as unknown as JsonResumeEducation,
-      'item-2' as unknown as JsonResumeEducation,
+  it('should return adapted items from JSON Resume', async () => {
+    const education = [
+      'item-1' as unknown as JsonResumeEducationItem,
+      'item-2' as unknown as JsonResumeEducationItem,
     ]
-    const expectedEducationItems =
-      jsonResumeEducations as unknown as readonly Education[]
+    const expectedEducations = education as unknown as readonly Education[]
+
     const adaptJsonResumeEducation = jasmine
       .createSpy<AdaptJsonResumeEducation>()
-      .and.returnValues(...expectedEducationItems)
+      .and.returnValues(...expectedEducations)
+
     const sut = makeSut({
-      jsonResumeEducations,
+      education,
       adaptJsonResumeEducation,
     })
 
-    const items = sut()
+    const educations = await firstValueFrom(sut())
 
-    expect(items).toEqual(expectedEducationItems)
-    expect(adaptJsonResumeEducation).toHaveBeenCalledTimes(
-      jsonResumeEducations.length,
-    )
+    expect(educations).toEqual(expectedEducations)
+    expect(adaptJsonResumeEducation).toHaveBeenCalledTimes(education.length)
   })
 })
 
-const makeSut = (
-  opts: {
-    jsonResumeEducations?: JsonResumeEducations
-    adaptJsonResumeEducation?: AdaptJsonResumeEducation
-  } = {},
-) =>
+const makeSut = ({
+  education,
+  adaptJsonResumeEducation,
+}: {
+  education?: JsonResumeEducation
+  adaptJsonResumeEducation?: AdaptJsonResumeEducation
+} = {}) =>
   serviceTestSetup(GET_EDUCATION_ITEMS, {
     providers: [
-      opts.jsonResumeEducations
-        ? MockProvider(JSON_RESUME_EDUCATIONS, opts.jsonResumeEducations)
+      education
+        ? MockProvider(JsonResumeService, { getEducation: () => of(education) })
         : [],
-      opts.adaptJsonResumeEducation
-        ? MockProvider(
-            ADAPT_JSON_RESUME_EDUCATION,
-            opts.adaptJsonResumeEducation,
-          )
+      adaptJsonResumeEducation
+        ? MockProvider(ADAPT_JSON_RESUME_EDUCATION, adaptJsonResumeEducation)
         : [],
     ],
   })

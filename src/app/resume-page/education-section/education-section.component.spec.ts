@@ -12,6 +12,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeEducation } from '../data/__tests__/make-education'
 import { CardGridComponent } from '../card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
+import { of } from 'rxjs'
 
 describe('EducationSectionComponent', () => {
   let component: EducationSectionComponent
@@ -27,7 +28,7 @@ describe('EducationSectionComponent', () => {
     const educationItems = [makeEducation(), makeEducation()]
     const getEducationItems = jasmine
       .createSpy<GetEducationItems>()
-      .and.returnValue(educationItems)
+      .and.returnValue(of(educationItems))
 
     ;[fixture, component] = makeSut({ getEducationItems })
     fixture.detectChanges()

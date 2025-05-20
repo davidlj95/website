@@ -1,28 +1,21 @@
 import { inject, InjectionToken } from '@angular/core'
-import resume from '@/data/resume.json'
 import { Education } from './education'
 import { ADAPT_JSON_RESUME_EDUCATION } from './adapt-json-resume-education'
+import { JsonResumeService } from '../json-resume/json-resume.service'
+import { map, Observable } from 'rxjs'
 
-export type GetEducationItems = () => readonly Education[]
+type GetEducationItems = () => Observable<readonly Education[]>
 export const GET_EDUCATION_ITEMS = new InjectionToken<GetEducationItems>(
   /* istanbul ignore next */
   isDevMode ? 'GetEducationItems' : 'GEI',
   {
     factory: () => {
-      const educations = inject(JSON_RESUME_EDUCATIONS)
+      const jsonResumeService = inject(JsonResumeService)
       const adapter = inject(ADAPT_JSON_RESUME_EDUCATION)
-      return () => educations.map((education) => adapter(education))
+      return () =>
+        jsonResumeService
+          .getEducation()
+          .pipe(map((education) => education.map(adapter)))
     },
   },
 )
-
-/** @visibleForTesting */
-export const JSON_RESUME_EDUCATIONS = new InjectionToken<JsonResumeEducations>(
-  /* istanbul ignore next */
-  isDevMode ? 'JSON Resume educations' : 'JREs',
-  {
-    factory: () => resume.education,
-  },
-)
-/** @visibleForTesting */
-export type JsonResumeEducations = typeof resume.education

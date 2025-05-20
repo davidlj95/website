@@ -64,23 +64,24 @@
     </section>
     <section>
       <h2>Education</h2>
-      @for (item of _education; track item) {
+      @for (education of _educations(); track education) {
         <article>
           <header>
-            @let name = item.institution.shortName || item.institution.name;
+            @let name =
+              education.institution.shortName || education.institution.name;
             <h3>
-              {{ item.studyType }} - {{ item.area }} &#64;
-              <app-link [href]="item.institution.website?.toString()"
+              {{ education.studyType }} - {{ education.area }} &#64;
+              <app-link [href]="education.institution.website?.toString()"
                 >{{ name }}
               </app-link>
             </h3>
-            <app-date-range [range]="item.dateRange"></app-date-range>
+            <app-date-range [range]="education.dateRange"></app-date-range>
           </header>
           <main>
-            <p>{{ item.score }}</p>
-            @if (item.courses.length) {
+            <p>{{ education.score }}</p>
+            @if (education.courses.length) {
               <ul class="two-col">
-                @for (course of item.courses; track course) {
+                @for (course of education.courses; track course) {
                   <li>{{ course }}</li>
                 }
               </ul>
