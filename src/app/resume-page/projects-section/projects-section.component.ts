@@ -3,7 +3,7 @@ import { ProjectItemComponent } from './project-item/project-item.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
-import { GET_PROJECT_ITEMS } from '../data/get-project-items'
+import { PROJECT_SERVICE } from '../data/project-service'
 import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({
@@ -13,5 +13,5 @@ import { toSignal } from '@angular/core/rxjs-interop'
   imports: [SectionTitleComponent, CardGridComponent, ProjectItemComponent],
 })
 export class ProjectsSectionComponent {
-  protected readonly _projects = toSignal(inject(GET_PROJECT_ITEMS)())
+  protected readonly _projects = toSignal(inject(PROJECT_SERVICE)())
 }

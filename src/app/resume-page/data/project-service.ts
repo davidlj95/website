@@ -4,11 +4,11 @@ import { ADAPT_JSON_RESUME_PROJECT } from './adapt-json-resume-project'
 import { map, Observable } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 
-export type GetProjectItems = () => Observable<readonly Project[]>
+export type ProjectService = () => Observable<readonly Project[]>
 
-export const GET_PROJECT_ITEMS = new InjectionToken<GetProjectItems>(
+export const PROJECT_SERVICE = new InjectionToken<ProjectService>(
   /* istanbul ignore next */
-  isDevMode ? 'GetProjectItems' : 'GPI',
+  isDevMode ? 'ProjectService' : 'rPS',
   {
     factory: () => {
       const jsonResumeService = inject(JsonResumeService)

@@ -3,7 +3,7 @@ import { ComponentFixture } from '@angular/core/testing'
 import { ProjectsSectionComponent } from './projects-section.component'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
-import { GET_PROJECT_ITEMS, GetProjectItems } from '../data/get-project-items'
+import { PROJECT_SERVICE, ProjectService } from '../data/project-service'
 import { ProjectItemComponent } from './project-item/project-item.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProject } from '../data/__tests__/make-project'
@@ -23,11 +23,11 @@ describe('ProjectsSectionComponent', () => {
 
   it('should display all projects', () => {
     const projects = [makeProject(), makeProject()]
-    const getProjectItems = jasmine
-      .createSpy<GetProjectItems>()
+    const projectService = jasmine
+      .createSpy<ProjectService>()
       .and.returnValues(of(projects))
 
-    ;[fixture, component] = makeSut({ getProjectItems })
+    ;[fixture, component] = makeSut({ projectService })
     fixture.detectChanges()
 
     const projectItemElements = fixture.debugElement.queryAll(
@@ -38,7 +38,9 @@ describe('ProjectsSectionComponent', () => {
   })
 })
 
-const makeSut = (opts: { getProjectItems?: GetProjectItems } = {}) =>
+const makeSut = ({
+  projectService,
+}: { projectService?: ProjectService } = {}) =>
   componentTestSetup(ProjectsSectionComponent, {
     imports: [
       ProjectsSectionComponent,
@@ -46,8 +48,6 @@ const makeSut = (opts: { getProjectItems?: GetProjectItems } = {}) =>
       MockComponents(SectionTitleComponent, ProjectItemComponent),
     ],
     providers: [
-      opts.getProjectItems
-        ? MockProvider(GET_PROJECT_ITEMS, opts.getProjectItems)
-        : [],
+      projectService ? MockProvider(PROJECT_SERVICE, projectService) : [],
     ],
   })

@@ -1,4 +1,4 @@
-import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
+import { PROJECT_SERVICE, ProjectService } from './project-service'
 import { MockProvider } from 'ng-mocks'
 import {
   ADAPT_JSON_RESUME_PROJECT,
@@ -10,7 +10,7 @@ import { JsonResumeProject, JsonResumeProjects } from '../json-resume/types'
 import { lastValueFrom, of } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 
-describe('GetProjectItems', () => {
+describe('ProjectService', () => {
   it('should be created', () => {
     expect(makeSut()).toBeTruthy()
   })
@@ -39,8 +39,8 @@ const makeSut = ({
 }: {
   projects?: JsonResumeProjects
   adaptJsonResumeProject?: AdaptJsonResumeProject
-} = {}): GetProjectItems =>
-  serviceTestSetup(GET_PROJECT_ITEMS, {
+} = {}): ProjectService =>
+  serviceTestSetup(PROJECT_SERVICE, {
     providers: [
       projects
         ? MockProvider(JsonResumeService, { getProjects: () => of(projects) })
