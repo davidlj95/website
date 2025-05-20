@@ -1,6 +1,6 @@
-@use 'margins';
-@use 'page';
-@use 'print';
+@use '../../../sass/margins';
+@use '../../../sass/page';
+@use '../../../sass/print';
 
 :host {
   display: block;

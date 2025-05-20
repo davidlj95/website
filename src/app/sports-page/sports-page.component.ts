@@ -5,7 +5,7 @@ import { CardHeaderImageComponent } from '@/common/card/card-header/card-header-
 import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-texts/card-header-texts.component'
 import { ButtonComponent } from '@/common/button/button.component'
-import { ContentPageComponent } from '../content-page/content-page.component'
+import { ContentPageComponent } from '@/common/content-page/content-page.component'
 
 @Component({
   imports: [

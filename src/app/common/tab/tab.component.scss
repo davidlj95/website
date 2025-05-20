@@ -1,6 +1,6 @@
-@use 'paddings';
-@use 'animations';
-@use 'touch-or-pointer';
+@use '../../../sass/paddings';
+@use '../../../sass/animations';
+@use '../../../sass/touch-or-pointer';
 
 // 👇 Using `a` to add more specificity and override default `a` styles
 a:host,

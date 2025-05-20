@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core'
-import { ToolbarComponent } from '../header/toolbar/toolbar.component'
+import { ToolbarComponent } from '@/common/toolbar/toolbar.component'
 import { ActivatedRoute, Router } from '@angular/router'
 import { WebResumeComponent } from './web-resume/web-resume.component'
 import { toSignal } from '@angular/core/rxjs-interop'
@@ -8,8 +8,8 @@ import { PlainResumeComponent } from './plain-resume/plain-resume.component'
 import {
   SelectorComponent,
   SelectorOption,
-} from '../selector/selector.component'
-import { ToolbarButtonComponent } from '../header/toolbar-button/toolbar-button.component'
+} from '@/common/selector/selector.component'
+import { ToolbarButtonComponent } from '@/common/toolbar-button/toolbar-button.component'
 import { Print } from '@/data/material-symbols'
 
 @Component({

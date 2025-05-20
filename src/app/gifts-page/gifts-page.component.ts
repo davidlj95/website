@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { NgOptimizedImage } from '@angular/common'
-import { ContentPageComponent } from '../content-page/content-page.component'
+import { ContentPageComponent } from '@/common/content-page/content-page.component'
 
 @Component({
   imports: [NgOptimizedImage, ContentPageComponent],

@@ -12,7 +12,7 @@ import {
   expectIsNotInLayout,
 } from '@/test/helpers/visibility'
 import { findMaterialSymbolByText } from '@/test/helpers/material-symbols'
-import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
+import { ToolbarButtonComponent } from '@/common/toolbar-button/toolbar-button.component'
 import { By } from '@angular/platform-browser'
 
 describe('LightDarkToggleComponent', () => {

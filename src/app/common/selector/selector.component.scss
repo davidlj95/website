@@ -1,6 +1,6 @@
-@use 'margins';
-@use 'paddings';
-@use 'touch-or-pointer';
+@use '../../../sass/margins';
+@use '../../../sass/paddings';
+@use '../../../sass/touch-or-pointer';
 
 :host {
   display: flex;

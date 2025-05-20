@@ -1,6 +1,6 @@
-@use 'animations';
-@use 'margins';
-@use 'toolbar';
+@use '../../../sass/animations';
+@use '../../../sass/margins';
+@use '../../../sass/toolbar';
 
 :host {
   display: flex;

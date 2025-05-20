@@ -2,7 +2,7 @@ import { TabsComponent } from './tabs.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { Component, DebugElement } from '@angular/core'
 import { TabComponent } from '../tab/tab.component'
-import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
+import { ToolbarButtonComponent } from '@/common/toolbar-button/toolbar-button.component'
 import {
   KeyboardDoubleArrowLeft,
   KeyboardDoubleArrowRight,
