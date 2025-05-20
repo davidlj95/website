@@ -1,9 +1,9 @@
 import { inject, InjectionToken } from '@angular/core'
 import { Education } from './education'
-import { DateRange } from './date-range'
+import { DateRange } from '../date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JsonResumeEducationItem } from '../json-resume/types'
-import { TAG_TO_ATTRIBUTE } from './attribute'
+import { TAG_TO_ATTRIBUTE } from '../attribute'
 import { isNotUndefined } from '@/common/is-not-undefined'
 
 /** @visibleForTesting */

@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core'
-import { Project } from '../../../data/project'
+import { Project } from '../../../data/projects/project'
 import { ChippedContent } from '@/common/chipped-content/chipped-content'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
 import { AttributesComponent } from '../../attributes/attributes.component'

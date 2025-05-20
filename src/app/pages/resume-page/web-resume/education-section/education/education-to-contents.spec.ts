@@ -1,4 +1,4 @@
-import { makeEducation } from '../../../data/__tests__/make-education'
+import { makeEducation } from '../../../data/education/__tests__/make-education'
 import { EducationCoursesComponent } from './education-courses/education-courses.component'
 import { TextContentComponent } from '@/common/chipped-content/text-content/text-content.component'
 import { educationToContents } from './education-to-contents'

@@ -4,13 +4,13 @@ import { ExperienceComponent } from './experience/experience.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents, MockProvider } from 'ng-mocks'
-import { makeExperience } from '../../data/__tests__/make-experience'
+import { makeExperience } from '../../data/experience/__tests__/make-experience'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 import {
   EXPERIENCE_SERVICE,
   ExperienceService,
-} from '../../data/experience-service'
+} from '../../data/experience/experience-service'
 import { of } from 'rxjs'
 
 describe('ExperienceSectionComponent', () => {

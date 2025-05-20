@@ -3,7 +3,7 @@ import { ProjectComponent } from './project/project.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
-import { PROJECT_SERVICE } from '../../data/project-service'
+import { PROJECT_SERVICE } from '../../data/projects/project-service'
 import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({

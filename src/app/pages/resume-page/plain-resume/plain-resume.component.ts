@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { LinkComponent } from '../link/link.component'
 import { DateRangeComponent } from '../date-range/date-range.component'
-import { EDUCATION_SERVICE } from '../data/education-service'
-import { PROJECT_SERVICE } from '../data/project-service'
+import { EDUCATION_SERVICE } from '../data/education/education-service'
+import { PROJECT_SERVICE } from '../data/projects/project-service'
 import { ContentPageComponent } from '@/common/content-page/content-page.component'
 import { MdLinksPipe } from '../md-links.pipe'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgIcon } from '@ng-icons/core'
-import { LANGUAGE_SERVICE } from '../data/language-service'
+import { LANGUAGE_SERVICE } from '../data/languages/language-service'
 import { EnergySavingsLeaf } from '@/data/material-symbols'
-import { BASICS_SERVICE } from '../data/basics-service'
+import { BASICS_SERVICE } from '../data/basics/basics-service'
 import { toSignal } from '@angular/core/rxjs-interop'
-import { EXPERIENCE_SERVICE } from '../data/experience-service'
+import { EXPERIENCE_SERVICE } from '../data/experience/experience-service'
 
 @Component({
   selector: 'app-plain-resume',

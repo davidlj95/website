@@ -1,8 +1,8 @@
 import { Component, input } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgIcon, provideIcons } from '@ng-icons/core'
-import { socialNgIcons } from '../../../data/social-ng-icons'
-import { Contact, Social } from '../../../data/basics'
+import { socialNgIcons } from '../../../data/basics/social-ng-icons'
+import { Contact, Social } from '../../../data/basics/basics'
 
 @Component({
   selector: 'app-profile-contacts',

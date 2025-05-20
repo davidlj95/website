@@ -11,7 +11,7 @@ import { LinkComponent } from '../../../link/link.component'
 import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
 import { CardComponent } from '@/common/card/card.component'
 import { EXPERIENCE_TO_CONTENTS } from './experience-to-contents'
-import { Experience } from '../../../data/experience'
+import { Experience } from '../../../data/experience/experience'
 import { toObservable, toSignal } from '@angular/core/rxjs-interop'
 import { switchMap } from 'rxjs'
 

@@ -8,7 +8,7 @@ import {
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { MockProvider } from 'ng-mocks'
 import { JsonResumeWorkItem } from '../json-resume/types'
-import { TAG_TO_ATTRIBUTE } from './attribute'
+import { TAG_TO_ATTRIBUTE } from '../attribute'
 
 describe('AdaptJsonResumeWork', () => {
   it('should be created', () => {

@@ -1,13 +1,16 @@
 import { TextContentComponent } from '@/common/chipped-content/text-content/text-content.component'
 import { EXPERIENCE_TO_CONTENTS } from './experience-to-contents'
-import { makeExperience } from '../../../data/__tests__/make-experience'
+import { makeExperience } from '../../../data/experience/__tests__/make-experience'
 import { ExperienceHighlightsComponent } from './experience-highlights/experience-highlights.component'
-import { Project } from '../../../data/project'
-import { makeProject } from '../../../data/__tests__/make-project'
+import { Project } from '../../../data/projects/project'
+import { makeProject } from '../../../data/projects/__tests__/make-project'
 import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
 import { ChippedContent } from '@/common/chipped-content/chipped-content'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import { PROJECT_SERVICE, ProjectService } from '../../../data/project-service'
+import {
+  PROJECT_SERVICE,
+  ProjectService,
+} from '../../../data/projects/project-service'
 import { MockProvider } from 'ng-mocks'
 import { lastValueFrom, of } from 'rxjs'
 

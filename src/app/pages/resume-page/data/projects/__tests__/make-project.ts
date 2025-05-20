@@ -1,5 +1,5 @@
 import { Project } from '../project'
-import { DateRange } from '../date-range'
+import { DateRange } from '../../date-range'
 
 export const makeProject = (overrides: Partial<Project> = {}): Project => ({
   name: 'Sample project',

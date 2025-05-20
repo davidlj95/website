@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core'
 import { ExperienceComponent } from './experience/experience.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
-import { EXPERIENCE_SERVICE } from '../../data/experience-service'
+import { EXPERIENCE_SERVICE } from '../../data/experience/experience-service'
 import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({

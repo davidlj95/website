@@ -10,7 +10,7 @@ import {
 } from '@/common/relativize-production-url'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { JsonResumeEducationItem } from '../json-resume/types'
-import { TAG_TO_ATTRIBUTE } from './attribute'
+import { TAG_TO_ATTRIBUTE } from '../attribute'
 
 describe('AdaptJsonResumeEducation', () => {
   it('should be created', () => {

@@ -3,9 +3,9 @@ import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '@/common/chipped-content/text-content/text-content.component'
 import { ExperienceHighlightsComponent } from './experience-highlights/experience-highlights.component'
 import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
-import { Experience } from '../../../data/experience'
+import { Experience } from '../../../data/experience/experience'
 import { inject, InjectionToken } from '@angular/core'
-import { PROJECT_SERVICE } from '../../../data/project-service'
+import { PROJECT_SERVICE } from '../../../data/projects/project-service'
 import { map, Observable } from 'rxjs'
 
 type ExperienceToContents = (

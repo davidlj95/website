@@ -12,13 +12,13 @@ import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-
 import { AttributesComponent } from '../../attributes/attributes.component'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { makeExperience } from '../../../data/__tests__/make-experience'
+import { makeExperience } from '../../../data/experience/__tests__/make-experience'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
-import { Experience } from '../../../data/experience'
+import { Experience } from '../../../data/experience/experience'
 import {
   EMPLOYEE_ATTRIBUTE,
   FREELANCE_ATTRIBUTE,

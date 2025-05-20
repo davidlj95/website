@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core'
-import { Language } from '../../../data/language'
+import { Language } from '../../../data/languages/language'
 import { CardComponent } from '@/common/card/card.component'
 import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-texts/card-header-texts.component'

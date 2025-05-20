@@ -1,9 +1,9 @@
 import { inject, InjectionToken } from '@angular/core'
-import { DateRange } from './date-range'
+import { DateRange } from '../date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JsonResumeWorkItem } from '../json-resume/types'
 import { Experience } from './experience'
-import { Attribute, TAG_TO_ATTRIBUTE } from './attribute'
+import { Attribute, TAG_TO_ATTRIBUTE } from '../attribute'
 import { isNotUndefined } from '@/common/is-not-undefined'
 
 /** @visibleForTesting */

@@ -1,6 +1,6 @@
-import { Organization } from './organization'
-import { DateRange } from './date-range'
-import { Attribute } from './attribute'
+import { Organization } from '../organization'
+import { DateRange } from '../date-range'
+import { Attribute } from '../attribute'
 
 export interface Experience {
   readonly company: Organization
