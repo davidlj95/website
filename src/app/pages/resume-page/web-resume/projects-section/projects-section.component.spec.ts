@@ -27,7 +27,7 @@ describe('ProjectsSectionComponent', () => {
       getAll: jasmine
         .createSpy<ProjectService['getAll']>()
         .and.returnValues(of(projects)),
-    } satisfies ProjectService
+    } satisfies Partial<ProjectService>
 
     ;[fixture, component] = makeSut({ projectService })
     fixture.detectChanges()
@@ -42,7 +42,7 @@ describe('ProjectsSectionComponent', () => {
 
 const makeSut = ({
   projectService,
-}: { projectService?: ProjectService } = {}) =>
+}: { projectService?: Partial<ProjectService> } = {}) =>
   componentTestSetup(ProjectsSectionComponent, {
     imports: [
       ProjectsSectionComponent,

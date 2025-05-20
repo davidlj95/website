@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core'
+import { Component, inject, input } from '@angular/core'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
 import { AttributeComponent } from '../../attribute/attribute.component'
 
@@ -11,9 +11,11 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../../link/link.component'
 import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
 import { CardComponent } from '@/common/card/card.component'
-import { experienceToContents } from './experience-to-contents'
+import { EXPERIENCE_TO_CONTENTS } from './experience-to-contents'
 import { TAG_TO_ATTRIBUTE } from './tags'
 import { Experience } from '../../../data/experience'
+import { toObservable, toSignal } from '@angular/core/rxjs-interop'
+import { switchMap } from 'rxjs'
 
 @Component({
   selector: 'app-experience',
@@ -34,8 +36,12 @@ import { Experience } from '../../../data/experience'
 })
 export class ExperienceComponent {
   readonly experience = input.required<Experience>()
-  protected readonly _contents = computed(() =>
-    experienceToContents(this.experience()),
+  private readonly _experienceToContents = inject(EXPERIENCE_TO_CONTENTS)
+
+  protected readonly _contents = toSignal(
+    toObservable(this.experience).pipe(
+      switchMap((experience) => this._experienceToContents(experience)),
+    ),
   )
 
   protected readonly _tagToAttribute = TAG_TO_ATTRIBUTE
