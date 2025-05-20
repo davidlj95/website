@@ -12,6 +12,7 @@ type ExperienceToContents = (
   experience: Experience,
 ) => Observable<readonly ChippedContent[]>
 export const EXPERIENCE_TO_CONTENTS = new InjectionToken<ExperienceToContents>(
+  /* istanbul ignore next */
   isDevMode ? 'ExperienceToContents' : 'E2C',
   {
     factory: () => {
