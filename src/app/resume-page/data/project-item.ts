@@ -1,4 +1,4 @@
-import { DateRange } from '../../data/date-range'
+import { DateRange } from './date-range'
 
 export class ProjectItem {
   readonly name: string

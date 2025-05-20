@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core'
-import { ProjectItem } from './project-item/project-item'
+import { ProjectItem } from '../data/project-item'
 import { ADAPT_JSON_RESUME_PROJECT } from './adapt-json-resume-project'
 import { JSON_RESUME_PROJECTS } from './json-resume-projects'
 

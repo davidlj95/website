@@ -1,4 +1,4 @@
-import { ProjectItem } from '../project-item/project-item'
+import { ProjectItem } from '../../data/project-item'
 import { DateRange } from '../../data/date-range'
 import { makeItemFactory } from '@/test/helpers/make-item-factory'
 

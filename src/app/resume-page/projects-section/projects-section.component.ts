@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { ProjectItem } from './project-item/project-item'
+import { ProjectItem } from '../data/project-item'
 import { ProjectItemComponent } from './project-item/project-item.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'

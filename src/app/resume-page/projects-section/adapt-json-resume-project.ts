@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core'
-import { ProjectItem, Stack } from './project-item/project-item'
+import { ProjectItem, Stack } from '../data/project-item'
 import { DateRange } from '../data/date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JsonResumeProject } from './json-resume-projects'

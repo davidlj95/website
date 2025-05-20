@@ -4,7 +4,7 @@ import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
 } from './adapt-json-resume-project'
-import { ProjectItem } from './project-item/project-item'
+import { ProjectItem } from '../data/project-item'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   JSON_RESUME_PROJECTS,

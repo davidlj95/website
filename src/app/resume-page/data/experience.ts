@@ -1,6 +1,6 @@
 import { Organization } from './organization'
 import { DateRange } from './date-range'
-import { ProjectItem } from '../projects-section/project-item/project-item'
+import { ProjectItem } from './project-item'
 
 export interface Experience {
   readonly company: Organization

@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core'
-import { ProjectItem, Stack } from './project-item'
+import { ProjectItem, Stack } from '../../data/project-item'
 import { Apps, Dns, FullStackedBarChart } from '@/data/material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
