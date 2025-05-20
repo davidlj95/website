@@ -1,11 +1,11 @@
-import { EducationItem } from './education-item'
+import { Education } from '../../data/education'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
 import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 
 export const educationItemToContents: (
-  item: EducationItem,
+  item: Education,
 ) => readonly ChippedContent[] = (item) =>
   [
     item.score

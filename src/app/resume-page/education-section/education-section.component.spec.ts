@@ -2,13 +2,14 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { EducationSectionComponent } from './education-section.component'
 import { EducationItemComponent } from './education-item/education-item.component'
-import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
+import { EDUCATION_SERVICE, EducationService } from '../data/education-service'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { makeEducationItem } from './education-item/__tests__/make-education-item'
+import { makeEducation } from '../data/__tests__/make-education'
 import { CardGridComponent } from '../card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
+import { of } from 'rxjs'
 
 describe('EducationSectionComponent', () => {
   let component: EducationSectionComponent
@@ -21,23 +22,27 @@ describe('EducationSectionComponent', () => {
   })
 
   it('should display all educations', () => {
-    const educationItems = [makeEducationItem(), makeEducationItem()]
-    const getEducationItems = jasmine
-      .createSpy<GetEducationItems>()
-      .and.returnValue(educationItems)
+    const educations = [makeEducation(), makeEducation()]
+    const educationService = {
+      getAll: jasmine
+        .createSpy<EducationService['getAll']>()
+        .and.returnValue(of(educations)),
+    }
 
-    ;[fixture, component] = makeSut({ getEducationItems })
+    ;[fixture, component] = makeSut({ educationService })
     fixture.detectChanges()
 
-    const itemElements = fixture.debugElement.queryAll(
+    const educationElements = fixture.debugElement.queryAll(
       By.directive(EducationItemComponent),
     )
 
-    expect(itemElements.length).toBe(educationItems.length)
+    expect(educationElements.length).toBe(educations.length)
   })
 })
 
-function makeSut(opts: { getEducationItems?: GetEducationItems } = {}) {
+function makeSut({
+  educationService,
+}: { educationService?: EducationService } = {}) {
   return componentTestSetup(EducationSectionComponent, {
     imports: [
       EducationSectionComponent,
@@ -48,9 +53,7 @@ function makeSut(opts: { getEducationItems?: GetEducationItems } = {}) {
       ),
     ],
     providers: [
-      opts.getEducationItems
-        ? MockProvider(GET_EDUCATION_ITEMS, opts.getEducationItems)
-        : [],
+      educationService ? MockProvider(EDUCATION_SERVICE, educationService) : [],
     ],
   })
 }

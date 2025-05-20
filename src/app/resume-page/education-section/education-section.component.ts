@@ -1,10 +1,11 @@
-import { Component, Inject } from '@angular/core'
-import { EducationItem } from './education-item/education-item'
+import { Component, inject } from '@angular/core'
 import { EducationItemComponent } from './education-item/education-item.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
-import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
+import { EDUCATION_SERVICE } from '../data/education-service'
+
+import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -13,11 +14,5 @@ import { GET_EDUCATION_ITEMS, GetEducationItems } from './get-education-items'
   imports: [SectionTitleComponent, CardGridComponent, EducationItemComponent],
 })
 export class EducationSectionComponent {
-  protected readonly _items: readonly EducationItem[]
-
-  constructor(
-    @Inject(GET_EDUCATION_ITEMS) getEducationItems: GetEducationItems,
-  ) {
-    this._items = getEducationItems()
-  }
+  protected readonly _educations = toSignal(inject(EDUCATION_SERVICE).getAll())
 }
