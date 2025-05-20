@@ -1,5 +1,5 @@
-import { DateRange } from './date-range'
-import { Attribute } from './attribute'
+import { DateRange } from '../date-range'
+import { Attribute } from '../attribute'
 
 export interface Project {
   readonly name: string

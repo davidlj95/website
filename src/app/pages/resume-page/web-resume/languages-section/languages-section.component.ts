@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
-import { LANGUAGE_SERVICE } from '../../data/language-service'
+import { LANGUAGE_SERVICE } from '../../data/languages/language-service'
 import { LanguageComponent } from './language/language.component'
 import { toSignal } from '@angular/core/rxjs-interop'
 

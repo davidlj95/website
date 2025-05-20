@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { EducationComponent } from './education.component'
-import { Education } from '../../../data/education'
+import { Education } from '../../../data/education/education'
 import { By } from '@angular/platform-browser'
 import { DateRangeComponent } from '../../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
@@ -14,7 +14,7 @@ import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-
 import { AttributesComponent } from '../../attributes/attributes.component'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { makeEducation } from '../../../data/__tests__/make-education'
+import { makeEducation } from '../../../data/education/__tests__/make-education'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { LinkComponent } from '../../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'

@@ -1,4 +1,4 @@
-import { DateRange } from '../date-range'
+import { DateRange } from '../../date-range'
 import { Education } from '../education'
 
 export const makeEducation = (

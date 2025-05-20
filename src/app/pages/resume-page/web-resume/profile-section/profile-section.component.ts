@@ -5,7 +5,7 @@ import { ProfilePictureComponent } from './profile-picture/profile-picture.compo
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { ProfileContactsComponent } from './profile-contacts/profile-contacts.component'
 import { ProfileDescriptionComponent } from './profile-description/profile-description.component'
-import { BASICS_SERVICE } from '../../data/basics-service'
+import { BASICS_SERVICE } from '../../data/basics/basics-service'
 import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({

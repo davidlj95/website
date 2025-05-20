@@ -1,4 +1,4 @@
-import { DateRange } from '../date-range'
+import { DateRange } from '../../date-range'
 import { Experience } from '../experience'
 
 export const makeExperience = (

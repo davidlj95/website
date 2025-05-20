@@ -1,4 +1,4 @@
-import { Education } from '../../../data/education'
+import { Education } from '../../../data/education/education'
 import { ChippedContent } from '@/common/chipped-content/chipped-content'
 import { EducationCoursesComponent } from './education-courses/education-courses.component'
 import { isNotUndefined } from '@/common/is-not-undefined'

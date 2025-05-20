@@ -9,12 +9,15 @@ import {
   ToolsLadder,
   Work,
 } from '@/data/material-symbols'
-import { EMPLOYEE_TAG, FREELANCE_TAG } from './adapt-json-resume-work'
 import {
   STACK_BACKEND_TAG,
   STACK_FRONTEND_TAG,
   STACK_FULLSTACK_TAG,
-} from './adapt-json-resume-project'
+} from './projects/adapt-json-resume-project'
+import {
+  EMPLOYEE_TAG,
+  FREELANCE_TAG,
+} from './experience/adapt-json-resume-work'
 
 export interface Attribute {
   readonly text: string

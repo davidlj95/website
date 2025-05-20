@@ -9,8 +9,9 @@ import {
   RELATIVIZE_PRODUCTION_URL,
   RelativizeProductionUrl,
 } from '@/common/relativize-production-url'
-import { makeJsonResumeProject } from './__tests__/make-json-resume-project'
-import { TAG_TO_ATTRIBUTE } from './attribute'
+import { TAG_TO_ATTRIBUTE } from '../attribute'
+import resume from '@/data/resume.json'
+import { JsonResumeProject } from '../json-resume/types'
 
 describe('AdaptJsonResumeProject', () => {
   it('should be created', () => {
@@ -145,3 +146,14 @@ const makeSut = (
       ),
     ],
   })
+
+const sampleJsonResumeProject = resume.projects[0]
+
+export function makeJsonResumeProject(
+  overrides: Partial<JsonResumeProject> = {},
+): JsonResumeProject {
+  return {
+    ...sampleJsonResumeProject,
+    ...overrides,
+  } as JsonResumeProject
+}
