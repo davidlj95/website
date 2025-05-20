@@ -3,6 +3,8 @@ import { DateRange } from './date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JsonResumeWorkItem } from '../json-resume/types'
 import { Experience } from './experience'
+import { Attribute, TAG_TO_ATTRIBUTE } from './attribute'
+import { isNotUndefined } from '@/common/is-not-undefined'
 
 /** @visibleForTesting */
 export type AdaptJsonResumeWork = (work: JsonResumeWorkItem) => Experience
@@ -34,7 +36,7 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
         position: position,
         summary: summary,
         highlights: highlights ?? [],
-        tags: mapTags(tags),
+        attributes: tagsToAttributes(tags),
         dateRange: new DateRange(
           new Date(startDate),
           !endDate ? undefined : new Date(endDate),
@@ -44,11 +46,15 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
   },
 )
 
-const mapTags = (jsonTags: readonly string[] | undefined) => {
+const tagsToAttributes = (
+  jsonTags: readonly string[] | undefined,
+): readonly Attribute[] => {
   const tags = jsonTags ?? []
-  return !tags.includes(FREELANCE_TAG) && !tags.includes(EMPLOYEE_TAG)
-    ? [...tags, EMPLOYEE_TAG]
-    : tags
+  const autoTags =
+    !tags.includes(FREELANCE_TAG) && !tags.includes(EMPLOYEE_TAG)
+      ? [...tags, EMPLOYEE_TAG]
+      : tags
+  return autoTags.map((tag) => TAG_TO_ATTRIBUTE[tag]).filter(isNotUndefined)
 }
 
 export const FREELANCE_TAG = 'freelance'

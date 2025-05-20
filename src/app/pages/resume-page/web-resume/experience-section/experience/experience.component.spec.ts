@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing'
-import { ExperienceComponent, TAG_TO_ATTRIBUTE } from './experience.component'
+import { ExperienceComponent } from './experience.component'
 import { By } from '@angular/platform-browser'
 import { DateRangeComponent } from '../../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
@@ -9,8 +9,7 @@ import { CardHeaderDetailComponent } from '@/common/card/card-header/card-header
 import { byTestId } from '@/test/helpers/test-id'
 import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
 import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-texts/card-header-texts.component'
-import { CardHeaderAttributesComponent } from '@/common/card/card-header/card-header-attributes/card-header-attributes.component'
-import { AttributeComponent } from '../../attribute/attribute.component'
+import { AttributesComponent } from '../../attributes/attributes.component'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeExperience } from '../../../data/__tests__/make-experience'
@@ -20,6 +19,10 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 import { Experience } from '../../../data/experience'
+import {
+  EMPLOYEE_ATTRIBUTE,
+  FREELANCE_ATTRIBUTE,
+} from '../../../data/attribute'
 
 describe('ExperienceComponent', () => {
   let component: ExperienceComponent
@@ -108,37 +111,17 @@ describe('ExperienceComponent', () => {
     })
   })
 
-  it('should map tags to attributes', () => {
-    const tags = ['freelance', 'internship', 'more-positions', 'promotions']
-    setExperience(fixture, { tags })
+  it('should display attributes', () => {
+    const attributes = [FREELANCE_ATTRIBUTE, EMPLOYEE_ATTRIBUTE]
+    setExperience(fixture, { attributes })
 
-    const attributeElements = fixture.debugElement.queryAll(
-      By.directive(AttributeComponent),
+    const attributesElement = fixture.debugElement.query(
+      By.directive(AttributesComponent),
     )
 
-    expect(attributeElements.length)
-      .withContext('same attributes count as tags')
-      .toEqual(tags.length)
-
-    attributeElements.forEach((attributeElement, index) => {
-      const tag = tags[index]
-
-      expect(
-        getComponentInstance(attributeElement, AttributeComponent).symbol,
-      ).toEqual(TAG_TO_ATTRIBUTE[tag].symbol)
-
-      expect(textContent(attributeElement)).toEqual(TAG_TO_ATTRIBUTE[tag].text)
-    })
-  })
-
-  it('should not display unknown tags', () => {
-    const tags = ['unknown-42']
-
-    setExperience(fixture, { tags })
-
     expect(
-      fixture.debugElement.queryAll(By.directive(AttributeComponent)).length,
-    ).toBe(0)
+      getComponentInstance(attributesElement, AttributesComponent).attributes,
+    ).toEqual(attributes)
   })
 })
 function makeSut() {
@@ -153,8 +136,7 @@ function makeSut() {
         CardHeaderTextsComponent,
         CardHeaderDetailComponent,
         DateRangeComponent,
-        CardHeaderAttributesComponent,
-        AttributeComponent,
+        AttributesComponent,
         ChippedContentComponent,
       ),
     ],

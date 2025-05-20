@@ -12,8 +12,8 @@ import { DateRangeComponent } from '../../../date-range/date-range.component'
 import { byTestId } from '@/test/helpers/test-id'
 import { By } from '@angular/platform-browser'
 import { DateRange } from '../../../data/date-range'
-import { CardHeaderAttributesComponent } from '@/common/card/card-header/card-header-attributes/card-header-attributes.component'
-import { AttributeComponent } from '../../attribute/attribute.component'
+import { AttributesComponent } from '../../attributes/attributes.component'
+import { AttributeComponent } from '../../attributes/attribute/attribute.component'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProject } from '../../../data/__tests__/make-project'
@@ -169,7 +169,7 @@ function makeSut() {
         CardHeaderTextsComponent,
         CardHeaderDetailComponent,
         DateRangeComponent,
-        CardHeaderAttributesComponent,
+        AttributesComponent,
         AttributeComponent,
         ChippedContentComponent,
       ),

@@ -9,7 +9,7 @@ export const makeExperience = (
     imageSrc: 'https://fakeCompany.example.com/logo.jpg',
   },
   highlights: [],
-  tags: [],
+  attributes: [],
   summary: 'Dummy summary',
   position: 'Dummy position',
   dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),

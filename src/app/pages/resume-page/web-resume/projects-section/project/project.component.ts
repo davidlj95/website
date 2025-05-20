@@ -3,8 +3,8 @@ import { Project, Stack } from '../../../data/project'
 import { Apps, Dns, FullStackedBarChart } from '@/data/material-symbols'
 import { ChippedContent } from '@/common/chipped-content/chipped-content'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
-import { AttributeComponent } from '../../attribute/attribute.component'
-import { CardHeaderAttributesComponent } from '@/common/card/card-header/card-header-attributes/card-header-attributes.component'
+import { AttributeComponent } from '../../attributes/attribute/attribute.component'
+import { AttributesComponent } from '../../attributes/attributes.component'
 import { DateRangeComponent } from '../../../date-range/date-range.component'
 import { CardHeaderDetailComponent } from '@/common/card/card-header/card-header-detail/card-header-detail.component'
 import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-texts/card-header-texts.component'
@@ -28,7 +28,7 @@ import { projectToContents } from './project-to-contents'
     CardHeaderTextsComponent,
     CardHeaderDetailComponent,
     DateRangeComponent,
-    CardHeaderAttributesComponent,
+    AttributesComponent,
     AttributeComponent,
     ChippedContentComponent,
   ],

@@ -1,5 +1,6 @@
 import { Organization } from './organization'
 import { DateRange } from './date-range'
+import { Attribute } from './attribute'
 
 export interface Experience {
   readonly company: Organization
@@ -7,5 +8,5 @@ export interface Experience {
   readonly dateRange: DateRange
   readonly summary: string
   readonly highlights: readonly string[]
-  readonly tags: readonly string[]
+  readonly attributes: readonly Attribute[]
 }
