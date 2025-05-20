@@ -12,10 +12,14 @@ import { LinkComponent } from '../../../link/link.component'
 import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
 import { CardComponent } from '@/common/card/card.component'
 import { EXPERIENCE_TO_CONTENTS } from './experience-to-contents'
-import { TAG_TO_ATTRIBUTE } from './tags'
 import { Experience } from '../../../data/experience'
 import { toObservable, toSignal } from '@angular/core/rxjs-interop'
 import { switchMap } from 'rxjs'
+import {
+  EMPLOYEE_TAG,
+  FREELANCE_TAG,
+} from '../../../data/adapt-json-resume-work'
+import { Badge, More, School, ToolsLadder, Work } from '@/data/material-symbols'
 
 @Component({
   selector: 'app-experience',
@@ -45,4 +49,31 @@ export class ExperienceComponent {
   )
 
   protected readonly _tagToAttribute = TAG_TO_ATTRIBUTE
+}
+
+/** @visibleForTesting **/
+export const TAG_TO_ATTRIBUTE: Record<
+  string,
+  { readonly text: string; readonly symbol: string }
+> = {
+  [FREELANCE_TAG]: {
+    text: 'Freelance',
+    symbol: Work,
+  },
+  [EMPLOYEE_TAG]: {
+    text: 'Employee',
+    symbol: Badge,
+  },
+  internship: {
+    text: 'Internship',
+    symbol: School,
+  },
+  'more-positions': {
+    text: 'More positions during this period\nSee summary for details',
+    symbol: More,
+  },
+  promotions: {
+    text: 'Promotions during this period\nSee highlights for details',
+    symbol: ToolsLadder,
+  },
 }

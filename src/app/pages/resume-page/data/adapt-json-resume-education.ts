@@ -29,7 +29,7 @@ export const ADAPT_JSON_RESUME_EDUCATION =
           endDate,
           score,
           courses,
-          isCumLaude,
+          tags,
         }) => ({
           institution: {
             name: institution,
@@ -45,7 +45,7 @@ export const ADAPT_JSON_RESUME_EDUCATION =
           ),
           score,
           courses,
-          isCumLaude: !!isCumLaude,
+          tags: tags ?? [],
         })
       },
     },

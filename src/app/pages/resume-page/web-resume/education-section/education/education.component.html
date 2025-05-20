@@ -21,13 +21,13 @@
       </app-card-header-detail>
     </app-card-header-texts>
     <app-card-header-attributes>
-      @if (education.isCumLaude) {
-        <app-attribute
-          [symbol]="_materialSymbol.SocialLeaderboard"
-          [appTestId]="_attribute.CumLaude"
-        >
-          Cum laude
-        </app-attribute>
+      @for (tag of education.tags; track tag) {
+        @let attribute = _tagToAttribute[tag];
+        @if (attribute) {
+          <app-attribute [symbol]="attribute.symbol">
+            {{ attribute.text }}
+          </app-attribute>
+        }
       }
     </app-card-header-attributes>
   </header>
