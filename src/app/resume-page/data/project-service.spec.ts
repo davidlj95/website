@@ -26,7 +26,7 @@ describe('ProjectService', () => {
       .and.returnValues(...expectedProjects)
     const sut = makeSut({ projects, adaptJsonResumeProject })
 
-    const actual = await lastValueFrom(sut())
+    const actual = await lastValueFrom(sut.getAll())
 
     expect(actual).toEqual(expectedProjects)
     expect(adaptJsonResumeProject).toHaveBeenCalledTimes(projects.length)

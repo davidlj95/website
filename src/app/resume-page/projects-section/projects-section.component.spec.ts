@@ -23,9 +23,11 @@ describe('ProjectsSectionComponent', () => {
 
   it('should display all projects', () => {
     const projects = [makeProject(), makeProject()]
-    const projectService = jasmine
-      .createSpy<ProjectService>()
-      .and.returnValues(of(projects))
+    const projectService = {
+      getAll: jasmine
+        .createSpy<ProjectService['getAll']>()
+        .and.returnValues(of(projects)),
+    } satisfies ProjectService
 
     ;[fixture, component] = makeSut({ projectService })
     fixture.detectChanges()
