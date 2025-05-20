@@ -62,11 +62,7 @@ describe('AdaptJsonResumeWork', () => {
   it('should map tags', () => {
     const tags = ['freelance', 'promotions']
 
-    const item = makeSut()(
-      makeJsonResumeWorkItem({
-        tags,
-      } as unknown as Partial<JsonResumeWorkItem>),
-    )
+    const item = makeSut()(makeJsonResumeWorkItem({ tags }))
 
     expect(item.tags).toEqual(tags)
   })

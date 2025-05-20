@@ -221,7 +221,7 @@
       ],
       "shortName": "UAB",
       "image": "https://davidlj95.com/images/education/uab.png",
-      "isCumLaude": true
+      "tags": ["cum-laude"]
     },
     {
       "institution": "Institut de Mollet del Vallès",
@@ -244,7 +244,7 @@
       ],
       "shortName": "IES Mollet",
       "image": "https://davidlj95.com/images/education/ies-mollet.png",
-      "isCumLaude": true,
+      "tags": ["cum-laude"],
       "printHidden": true
     }
   ],

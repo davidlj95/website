@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing'
-import { ExperienceComponent } from './experience.component'
+import { ExperienceComponent, TAG_TO_ATTRIBUTE } from './experience.component'
 import { By } from '@angular/platform-browser'
 import { DateRangeComponent } from '../../../date-range/date-range.component'
 import { MockComponents } from 'ng-mocks'
@@ -19,7 +19,6 @@ import { LinkComponent } from '../../../link/link.component'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
-import { TAG_TO_ATTRIBUTE } from './tags'
 import { Experience } from '../../../data/experience'
 
 describe('ExperienceComponent', () => {

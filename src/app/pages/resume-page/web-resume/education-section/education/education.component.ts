@@ -42,13 +42,16 @@ export class EducationComponent {
     return name.length > 15 && shortName ? shortName : name
   })
 
-  protected readonly _materialSymbol = {
-    SocialLeaderboard,
-  }
-  protected readonly _attribute = ATTRIBUTE
+  protected readonly _tagToAttribute = TAG_TO_ATTRIBUTE
 }
 
-/** @visibleForTesting */
-export const ATTRIBUTE = {
-  CumLaude: 'cum-laude',
+/** @visibleForTesting **/
+export const TAG_TO_ATTRIBUTE: Record<
+  string,
+  { readonly text: string; readonly symbol: string }
+> = {
+  'cum-laude': {
+    text: 'Cum laude',
+    symbol: SocialLeaderboard,
+  },
 }

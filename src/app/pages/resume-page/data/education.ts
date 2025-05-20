@@ -8,5 +8,5 @@ export interface Education {
   readonly dateRange: DateRange
   readonly score: string
   readonly courses: readonly string[]
-  readonly isCumLaude: boolean
+  readonly tags: readonly string[]
 }

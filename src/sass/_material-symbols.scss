@@ -50,7 +50,9 @@
 }
 
 @mixin font-size($size) {
-  font-size: max($size, 20px);
+  & {
+    font-size: max($size, 20px);
+  }
 }
 
 @mixin variation-settings($fill: false, $weight: 400, $grade: 0, $size: 24) {
@@ -61,9 +63,11 @@
     @error "Size cannot have units other than 'px' (#{$size})";
   }
 
-  font-variation-settings:
-    'FILL' if($fill, 1, 0),
-    'wght' $weight,
-    'GRAD' $grade,
-    'opsz' $size;
+  & {
+    font-variation-settings:
+      'FILL' if($fill, 1, 0),
+      'wght' $weight,
+      'GRAD' $grade,
+      'opsz' $size;
+  }
 }

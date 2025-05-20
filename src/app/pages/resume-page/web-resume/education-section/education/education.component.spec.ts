@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import { ATTRIBUTE, EducationComponent } from './education.component'
+import { EducationComponent, TAG_TO_ATTRIBUTE } from './education.component'
 import { Education } from '../../../data/education'
 import { By } from '@angular/platform-browser'
 import { DateRangeComponent } from '../../../date-range/date-range.component'
@@ -122,24 +122,38 @@ describe('EducationComponent', () => {
     ).toBeTruthy()
   })
 
-  describe('when cum laude attribute is not set', () => {
-    it('should not display its attribute', () => {
-      setEducation(fixture, { isCumLaude: false })
+  it('should map tags to attributes', () => {
+    const tags = ['cum-laude']
+    setEducation(fixture, { tags })
+
+    // noinspection DuplicatedCode
+    const attributeElements = fixture.debugElement.queryAll(
+      By.directive(AttributeComponent),
+    )
+
+    expect(attributeElements.length)
+      .withContext('same attributes count as tags')
+      .toEqual(tags.length)
+
+    attributeElements.forEach((attributeElement, index) => {
+      const tag = tags[index]
 
       expect(
-        fixture.debugElement.query(byTestId(ATTRIBUTE.CumLaude)),
-      ).toBeFalsy()
+        getComponentInstance(attributeElement, AttributeComponent).symbol,
+      ).toEqual(TAG_TO_ATTRIBUTE[tag].symbol)
+
+      expect(textContent(attributeElement)).toEqual(TAG_TO_ATTRIBUTE[tag].text)
     })
   })
 
-  describe('when cum laude attribute is set', () => {
-    it('should display its attribute', () => {
-      setEducation(fixture, { isCumLaude: true })
+  it('should not display unknown tags', () => {
+    const tags = ['unknown-42']
 
-      expect(
-        fixture.debugElement.query(byTestId(ATTRIBUTE.CumLaude)),
-      ).toBeTruthy()
-    })
+    setEducation(fixture, { tags })
+
+    expect(
+      fixture.debugElement.queryAll(By.directive(AttributeComponent)).length,
+    ).toBe(0)
   })
 })
 
