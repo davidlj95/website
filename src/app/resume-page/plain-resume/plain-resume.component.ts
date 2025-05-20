@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { LinkComponent } from '../link/link.component'
 import { DateRangeComponent } from '../date-range/date-range.component'
-import { GET_EDUCATION_ITEMS } from '../data/get-education-items'
+import { EDUCATION_SERVICE } from '../data/education-service'
 import { GET_PROJECT_ITEMS } from '../projects-section/get-project-items'
 import { ContentPageComponent } from '../../content-page/content-page.component'
 import { MdLinksPipe } from '../md-links.pipe'
@@ -36,7 +36,7 @@ export class PlainResumeComponent {
   protected readonly _experiences = toSignal(
     inject(EXPERIENCE_SERVICE).getAll(),
   )
-  protected readonly _educations = toSignal(inject(GET_EDUCATION_ITEMS)())
+  protected readonly _educations = toSignal(inject(EDUCATION_SERVICE)())
   protected readonly _projects = inject(GET_PROJECT_ITEMS)()
   protected readonly _languages = inject(GET_LANGUAGE_ITEMS)()
   protected readonly _materialSymbols = { EnergySavingsLeaf }

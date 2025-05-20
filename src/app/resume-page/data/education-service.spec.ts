@@ -1,4 +1,4 @@
-import { GET_EDUCATION_ITEMS } from './get-education-items'
+import { EDUCATION_SERVICE } from './education-service'
 import { MockProvider } from 'ng-mocks'
 import { Education } from './education'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
@@ -13,7 +13,7 @@ import {
   JsonResumeEducationItem,
 } from '../json-resume/types'
 
-describe('GetEducationItems', () => {
+describe('EducationService', () => {
   it('should be created', () => {
     expect(makeSut()).toBeTruthy()
   })
@@ -48,7 +48,7 @@ const makeSut = ({
   education?: JsonResumeEducation
   adaptJsonResumeEducation?: AdaptJsonResumeEducation
 } = {}) =>
-  serviceTestSetup(GET_EDUCATION_ITEMS, {
+  serviceTestSetup(EDUCATION_SERVICE, {
     providers: [
       education
         ? MockProvider(JsonResumeService, { getEducation: () => of(education) })

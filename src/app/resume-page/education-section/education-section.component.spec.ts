@@ -2,10 +2,7 @@ import { ComponentFixture } from '@angular/core/testing'
 
 import { EducationSectionComponent } from './education-section.component'
 import { EducationItemComponent } from './education-item/education-item.component'
-import {
-  GET_EDUCATION_ITEMS,
-  GetEducationItems,
-} from '../data/get-education-items'
+import { EDUCATION_SERVICE, EducationService } from '../data/education-service'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
@@ -25,23 +22,25 @@ describe('EducationSectionComponent', () => {
   })
 
   it('should display all educations', () => {
-    const educationItems = [makeEducation(), makeEducation()]
-    const getEducationItems = jasmine
-      .createSpy<GetEducationItems>()
-      .and.returnValue(of(educationItems))
+    const educations = [makeEducation(), makeEducation()]
+    const educationService = jasmine
+      .createSpy<EducationService>()
+      .and.returnValue(of(educations))
 
-    ;[fixture, component] = makeSut({ getEducationItems })
+    ;[fixture, component] = makeSut({ educationService })
     fixture.detectChanges()
 
-    const itemElements = fixture.debugElement.queryAll(
+    const educationElements = fixture.debugElement.queryAll(
       By.directive(EducationItemComponent),
     )
 
-    expect(itemElements.length).toBe(educationItems.length)
+    expect(educationElements.length).toBe(educations.length)
   })
 })
 
-function makeSut(opts: { getEducationItems?: GetEducationItems } = {}) {
+function makeSut({
+  educationService,
+}: { educationService?: EducationService } = {}) {
   return componentTestSetup(EducationSectionComponent, {
     imports: [
       EducationSectionComponent,
@@ -52,9 +51,7 @@ function makeSut(opts: { getEducationItems?: GetEducationItems } = {}) {
       ),
     ],
     providers: [
-      opts.getEducationItems
-        ? MockProvider(GET_EDUCATION_ITEMS, opts.getEducationItems)
-        : [],
+      educationService ? MockProvider(EDUCATION_SERVICE, educationService) : [],
     ],
   })
 }

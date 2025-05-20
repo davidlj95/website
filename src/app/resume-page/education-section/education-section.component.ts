@@ -3,7 +3,7 @@ import { EducationItemComponent } from './education-item/education-item.componen
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
-import { GET_EDUCATION_ITEMS } from '../data/get-education-items'
+import { EDUCATION_SERVICE } from '../data/education-service'
 
 import { toSignal } from '@angular/core/rxjs-interop'
 
@@ -14,5 +14,5 @@ import { toSignal } from '@angular/core/rxjs-interop'
   imports: [SectionTitleComponent, CardGridComponent, EducationItemComponent],
 })
 export class EducationSectionComponent {
-  protected readonly _educations = toSignal(inject(GET_EDUCATION_ITEMS)())
+  protected readonly _educations = toSignal(inject(EDUCATION_SERVICE)())
 }
