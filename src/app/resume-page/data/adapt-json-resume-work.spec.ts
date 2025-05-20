@@ -11,7 +11,7 @@ import { makeJsonResumeProject } from '../projects-section/__tests__/make-json-r
 import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
-} from '../projects-section/adapt-json-resume-project'
+} from './adapt-json-resume-project'
 import { makeProject } from '../projects-section/__tests__/make-project'
 import {
   JSON_RESUME_PROJECTS,

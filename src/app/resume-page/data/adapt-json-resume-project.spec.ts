@@ -4,13 +4,14 @@ import {
   InvalidStackValueError,
 } from './adapt-json-resume-project'
 import { MockProvider } from 'ng-mocks'
-import { Stack } from '../data/project'
+import { Stack } from './project'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   RELATIVIZE_PRODUCTION_URL,
   RelativizeProductionUrl,
 } from '@/common/relativize-production-url'
-import { makeJsonResumeProject } from './__tests__/make-json-resume-project'
+import resume from '@/data/resume.json'
+import { JsonResumeProject } from '../projects-section/json-resume-projects'
 
 describe('AdaptJsonResumeProject', () => {
   it('should be created', () => {
@@ -163,3 +164,14 @@ const makeSut = (
       ),
     ],
   })
+
+const sampleJsonResumeProject = resume.projects[0]
+
+export function makeJsonResumeProject(
+  overrides: Partial<JsonResumeProject> = {},
+): JsonResumeProject {
+  return {
+    ...sampleJsonResumeProject,
+    ...overrides,
+  } as JsonResumeProject
+}

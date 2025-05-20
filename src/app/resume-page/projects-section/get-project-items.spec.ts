@@ -3,7 +3,7 @@ import { MockProvider } from 'ng-mocks'
 import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
-} from './adapt-json-resume-project'
+} from '../data/adapt-json-resume-project'
 import { Project } from '../data/project'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {

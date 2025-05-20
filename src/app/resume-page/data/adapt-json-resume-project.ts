@@ -1,8 +1,8 @@
 import { inject, InjectionToken } from '@angular/core'
-import { Project, Stack } from '../data/project'
-import { DateRange } from '../data/date-range'
+import { Project, Stack } from './project'
+import { DateRange } from './date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
-import { JsonResumeProject } from './json-resume-projects'
+import { JsonResumeProject } from '../projects-section/json-resume-projects'
 
 /** @visibleForTesting */
 export type AdaptJsonResumeProject = (project: JsonResumeProject) => Project
