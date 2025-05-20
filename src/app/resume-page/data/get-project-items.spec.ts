@@ -6,48 +6,47 @@ import {
 } from './adapt-json-resume-project'
 import { Project } from './project'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import { JSON_RESUME_PROJECTS } from '../projects-section/json-resume-projects'
 import { JsonResumeProject, JsonResumeProjects } from '../json-resume/types'
+import { lastValueFrom, of } from 'rxjs'
+import { JsonResumeService } from '../json-resume/json-resume.service'
 
 describe('GetProjectItems', () => {
   it('should be created', () => {
     expect(makeSut()).toBeTruthy()
   })
 
-  it('should return adapted items from JSON Resume', () => {
-    const jsonResumeProjects = [
+  it('should return adapted projects from JSON Resume', async () => {
+    const projects = [
       'item-1' as unknown as JsonResumeProject,
       'item-2' as unknown as JsonResumeProject,
     ]
-    const expectedProjectItems =
-      jsonResumeProjects as unknown as readonly Project[]
+    const expectedProjects = projects as unknown as readonly Project[]
     const adaptJsonResumeProject = jasmine
       .createSpy<AdaptJsonResumeProject>()
-      .and.returnValues(...expectedProjectItems)
-    const sut = makeSut({ jsonResumeProjects, adaptJsonResumeProject })
+      .and.returnValues(...expectedProjects)
+    const sut = makeSut({ projects, adaptJsonResumeProject })
 
-    const items = sut()
+    const actual = await lastValueFrom(sut())
 
-    expect(items).toEqual(expectedProjectItems)
-    expect(adaptJsonResumeProject).toHaveBeenCalledTimes(
-      jsonResumeProjects.length,
-    )
+    expect(actual).toEqual(expectedProjects)
+    expect(adaptJsonResumeProject).toHaveBeenCalledTimes(projects.length)
   })
 })
 
-const makeSut = (
-  opts: {
-    jsonResumeProjects?: JsonResumeProjects
-    adaptJsonResumeProject?: AdaptJsonResumeProject
-  } = {},
-): GetProjectItems =>
+const makeSut = ({
+  projects,
+  adaptJsonResumeProject,
+}: {
+  projects?: JsonResumeProjects
+  adaptJsonResumeProject?: AdaptJsonResumeProject
+} = {}): GetProjectItems =>
   serviceTestSetup(GET_PROJECT_ITEMS, {
     providers: [
-      opts.jsonResumeProjects
-        ? MockProvider(JSON_RESUME_PROJECTS, opts.jsonResumeProjects)
+      projects
+        ? MockProvider(JsonResumeService, { getProjects: () => of(projects) })
         : [],
-      opts.adaptJsonResumeProject
-        ? MockProvider(ADAPT_JSON_RESUME_PROJECT, opts.adaptJsonResumeProject)
+      adaptJsonResumeProject
+        ? MockProvider(ADAPT_JSON_RESUME_PROJECT, adaptJsonResumeProject)
         : [],
     ],
   })

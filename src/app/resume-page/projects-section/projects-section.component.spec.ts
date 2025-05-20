@@ -9,6 +9,7 @@ import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProject } from '../data/__tests__/make-project'
 import { CardGridComponent } from '../card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
+import { of } from 'rxjs'
 
 describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent
@@ -21,10 +22,10 @@ describe('ProjectsSectionComponent', () => {
   })
 
   it('should display all projects', () => {
-    const projectItems = [makeProject(), makeProject()]
+    const projects = [makeProject(), makeProject()]
     const getProjectItems = jasmine
       .createSpy<GetProjectItems>()
-      .and.returnValues(projectItems)
+      .and.returnValues(of(projects))
 
     ;[fixture, component] = makeSut({ getProjectItems })
     fixture.detectChanges()
@@ -33,7 +34,7 @@ describe('ProjectsSectionComponent', () => {
       By.directive(ProjectItemComponent),
     )
 
-    expect(projectItemElements.length).toEqual(projectItems.length)
+    expect(projectItemElements.length).toEqual(projects.length)
   })
 })
 

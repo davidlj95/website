@@ -18,7 +18,7 @@ describe('EducationService', () => {
     expect(makeSut()).toBeTruthy()
   })
 
-  it('should return adapted items from JSON Resume', async () => {
+  it('should return adapted educations from JSON Resume', async () => {
     const education = [
       'item-1' as unknown as JsonResumeEducationItem,
       'item-2' as unknown as JsonResumeEducationItem,
