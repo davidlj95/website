@@ -1,8 +1,8 @@
-import { TextContentComponent } from '../../../chipped-content/text-content/text-content.component'
+import { TextContentComponent } from '@/common/chipped-content/text-content/text-content.component'
 import { makeProject } from '../../../data/__tests__/make-project'
 import { projectToContents } from './project-to-contents'
 import { ProjectTechnologiesComponent } from './project-technologies/project-technologies.component'
-import { ChippedContent } from '../../../chipped-content/chipped-content'
+import { ChippedContent } from '@/common/chipped-content/chipped-content'
 
 describe('projectToContents', () => {
   describe('when description is present', () => {

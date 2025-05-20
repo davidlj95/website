@@ -4,8 +4,8 @@ import { FilteredTechsComponent } from './filtered-techs.component'
 import { BACKEND_TAG } from '../tags'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents } from 'ng-mocks'
-import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
-import { ContentChipComponent } from '../../../content-chip/content-chip.component'
+import { ContentChipListComponent } from '@/common/content-chip-list/content-chip-list.component'
+import { ContentChipComponent } from '@/common/content-chip/content-chip.component'
 import { TechnologyComponent } from '../../../technology/technology.component'
 
 describe('FilteredTechsComponent', () => {

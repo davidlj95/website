@@ -1,5 +1,5 @@
-@use 'margins';
-@use 'paddings';
+@use '../../../sass/margins';
+@use '../../../sass/paddings';
 
 :host {
   padding: paddings.$l;

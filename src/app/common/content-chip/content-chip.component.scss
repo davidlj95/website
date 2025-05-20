@@ -1,6 +1,6 @@
-@use 'borders';
-@use 'paddings';
-@use 'animations';
+@use '../../../sass/borders';
+@use '../../../sass/paddings';
+@use '../../../sass/animations';
 
 :host {
   @include borders.panel;

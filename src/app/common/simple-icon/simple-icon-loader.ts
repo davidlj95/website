@@ -2,14 +2,13 @@ import { inject, InjectionToken } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { catchError, EMPTY, filter, Observable, of, tap } from 'rxjs'
 import { PLATFORM_SERVICE } from '@/common/platform.service'
-import { SVG_EXTENSION } from '@/common/svg-extension'
 
 export type SimpleIconLoader = (slug: string) => Observable<string>
 
 /**
- * Loads a simple icon SVG file contents given the icon slug
+ * Loads simple icon SVG file contents given the icon slug
  *
- * Icon files are generated at build time by a script, inspecting the resume's technologies
+ * Icon files are generated at build time by a script, inspecting the resume technologies
  *
  * ⚠️ Not compatible with SSR yet.
  * Would require a bit of logic to import instead of HTTP request in the server
@@ -43,6 +42,7 @@ export const SIMPLE_ICON_LOADER = new InjectionToken<SimpleIconLoader>(
   },
 )
 
+const SVG_EXTENSION = '.svg'
 const SIMPLE_ICONS_DIR = '/images/simple-icons'
 type SimpleIconLoaderCache = Map<string, string>
 const SIMPLE_ICON_LOADER_CACHE = new InjectionToken<SimpleIconLoaderCache>(

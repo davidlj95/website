@@ -5,8 +5,8 @@ import {
   inject,
   input,
 } from '@angular/core'
-import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
-import { ContentChipComponent } from '../../../content-chip/content-chip.component'
+import { ContentChipListComponent } from '@/common/content-chip-list/content-chip-list.component'
+import { ContentChipComponent } from '@/common/content-chip/content-chip.component'
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { FIND_TECHS_BY_TAG, getTechTagName, TechTag } from '../tags'
 

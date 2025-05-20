@@ -1,7 +1,7 @@
-@use 'margins';
-@use 'paddings';
-@use 'borders';
-@use 'animations';
+@use '../../../sass/margins';
+@use '../../../sass/paddings';
+@use '../../../sass/borders';
+@use '../../../sass/animations';
 
 :host {
   display: flex;

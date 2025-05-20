@@ -1,8 +1,8 @@
 import { Component, input } from '@angular/core'
 
 import { TechnologyComponent } from '../../../../technology/technology.component'
-import { ContentChipListComponent } from '../../../../content-chip-list/content-chip-list.component'
-import { ContentChipComponent } from '../../../../content-chip/content-chip.component'
+import { ContentChipListComponent } from '@/common/content-chip-list/content-chip-list.component'
+import { ContentChipComponent } from '@/common/content-chip/content-chip.component'
 
 @Component({
   selector: 'app-project-technologies',

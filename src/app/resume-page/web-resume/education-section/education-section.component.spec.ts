@@ -10,7 +10,7 @@ import { MockComponents, MockProvider } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeEducation } from '../../data/__tests__/make-education'
-import { CardGridComponent } from '../../card-grid/card-grid.component'
+import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 import { of } from 'rxjs'
 

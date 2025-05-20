@@ -1,11 +1,11 @@
-import { TextContentComponent } from '../../../chipped-content/text-content/text-content.component'
+import { TextContentComponent } from '@/common/chipped-content/text-content/text-content.component'
 import { experienceToContents } from './experience-to-contents'
 import { makeExperience } from '../../../data/__tests__/make-experience'
 import { ExperienceHighlightsComponent } from './experience-highlights/experience-highlights.component'
 import { Project } from '../../../data/project'
 import { makeProject } from '../../../data/__tests__/make-project'
 import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
-import { ChippedContent } from '../../../chipped-content/chipped-content'
+import { ChippedContent } from '@/common/chipped-content/chipped-content'
 
 describe('experienceToContents', () => {
   describe('when summary is present', () => {
