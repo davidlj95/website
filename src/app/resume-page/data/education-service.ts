@@ -4,6 +4,7 @@ import { ADAPT_JSON_RESUME_EDUCATION } from './adapt-json-resume-education'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 import { map, Observable } from 'rxjs'
 
+/** @visibleForTesting */
 export interface EducationService {
   getAll: () => Observable<readonly Education[]>
 }
