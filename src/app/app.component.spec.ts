@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 import { MockComponents } from 'ng-mocks'
-import { ResumePageComponent } from './resume-page/resume-page.component'
+import { ResumePageComponent } from './pages/resume-page/resume-page.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
 import { NoJsMessageComponent } from './no-js/no-js-message.component'

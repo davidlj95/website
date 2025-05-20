@@ -1,0 +1,142 @@
+@use '../../../../../../sass/touch-or-pointer';
+@use '../../../../../../sass/margins';
+@use '../../../../../../sass/paddings';
+@use '../../../../../../sass/animations';
+
+$picture-size: 128px;
+
+:host {
+  position: relative;
+  width: $picture-size;
+  border-radius: $picture-size;
+
+  &:hover,
+  &[data-has-been-focused]:focus {
+    .comment {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    // On small screens, element is fully hidden to avoid layout issues, given it is positioned below
+    @media screen and (max-width: 279.98px) {
+      .comment {
+        display: block;
+      }
+    }
+
+    .main {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .huh {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+img {
+  border-radius: $picture-size;
+  border-style: solid;
+  border-width: 1px;
+  background-color: var(--sys-color-surface1);
+  border-color: var(--sys-color-divider);
+  filter: var(--img-filter);
+
+  @include animations.when-motion {
+    transition:
+      animations.transition(opacity), animations.transition(visibility),
+      animations.transition(filter, animations.$emphasized-style),
+      animations.transition(background-color, animations.$emphasized-style),
+      animations.transition(border-color, animations.$emphasized-style);
+  }
+}
+
+.huh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.comment {
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--sys-color-surface5);
+
+  position: absolute;
+
+  top: 49px;
+  left: 82px;
+
+  width: max-content;
+
+  padding: paddings.$s;
+  border-radius: paddings.$s;
+
+  @include animations.when-motion {
+    @include animations.multiple-transitions((opacity, visibility));
+  }
+
+  // Speech bubble by
+  // https://freefrontend.com/css-speech-bubbles/
+  &:before {
+    position: absolute;
+    content: '';
+    border: 8px solid transparent;
+    border-right-color: var(--sys-color-surface5) !important;
+
+    border-left: 0;
+    left: -8px;
+    top: 50%;
+    margin-top: -8px;
+
+    // Bubble speech is at top on super small screens
+    @media screen and (max-width: 279.98px) {
+      border-right-color: transparent !important;
+      border-bottom-color: var(--sys-color-surface5) !important;
+    }
+  }
+
+  .touch {
+    display: none;
+  }
+
+  @include touch-or-pointer.primaryInputCannotHover {
+    .touch {
+      display: inline-block;
+    }
+    .hover {
+      display: none;
+    }
+  }
+}
+
+// Reduce comment on small screens, doesn't fit width
+@media screen and (max-width: 350px) {
+  .comment {
+    width: 128px;
+  }
+}
+
+// Place it below picture in super small screens
+@media screen and (max-width: 279.98px) {
+  .comment {
+    margin-top: margins.$s;
+    position: static;
+    display: none;
+
+    &:before {
+      position: absolute;
+      border-left: 8px solid transparent;
+      border-top: 0;
+      top: calc($picture-size + 12px);
+      left: 50%;
+      margin-left: -8px;
+    }
+  }
+}

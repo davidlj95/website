@@ -1,7 +1,7 @@
-import { RESUME_PATH } from '../resume-page/resume-page.routes'
-import { CALENDAR_PATH } from '../calendar-page/calendar-page.routes'
-import { SPORTS_PATH } from '../sports-page/sports-page.routes'
-import { GIFTS_PATH } from '../gifts-page/gifts-page.routes'
+import { RESUME_PATH } from '../pages/resume-page/resume-page.routes'
+import { CALENDAR_PATH } from '../pages/calendar-page/calendar-page.routes'
+import { SPORTS_PATH } from '../pages/sports-page/sports-page.routes'
+import { GIFTS_PATH } from '../pages/gifts-page/gifts-page.routes'
 import { NavigationItem } from './navigation-tabs/navigation-tabs.component'
 
 export const NAVIGATION_ITEMS: readonly NavigationItem[] = [
