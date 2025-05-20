@@ -1,5 +1,5 @@
 import resume from '@/data/resume.json'
-import { JsonResumeProject } from '../../projects-section/json-resume-projects'
+import { JsonResumeProject } from '../../json-resume/types'
 
 const sampleJsonResumeProject = resume.projects[0]
 

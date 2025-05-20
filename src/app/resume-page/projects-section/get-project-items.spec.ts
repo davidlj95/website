@@ -6,11 +6,8 @@ import {
 } from '../data/adapt-json-resume-project'
 import { Project } from '../data/project'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import {
-  JSON_RESUME_PROJECTS,
-  JsonResumeProject,
-  JsonResumeProjects,
-} from './json-resume-projects'
+import { JSON_RESUME_PROJECTS } from './json-resume-projects'
+import { JsonResumeProject, JsonResumeProjects } from '../json-resume/types'
 
 describe('GetProjectItems', () => {
   it('should be created', () => {

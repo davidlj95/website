@@ -1,5 +1,6 @@
 import { InjectionToken } from '@angular/core'
 import resume from '@/data/resume.json'
+import { JsonResumeProjects } from '../json-resume/types'
 
 export const JSON_RESUME_PROJECTS = new InjectionToken<JsonResumeProjects>(
   /* istanbul ignore next */
@@ -8,6 +9,3 @@ export const JSON_RESUME_PROJECTS = new InjectionToken<JsonResumeProjects>(
     factory: () => resume.projects,
   },
 )
-/** @visibleForTesting */
-export type JsonResumeProjects = typeof resume.projects
-export type JsonResumeProject = (typeof resume.projects)[number]

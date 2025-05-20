@@ -90,7 +90,7 @@ describe('ProjectItemComponent', () => {
 
   describe('when no roles exist', () => {
     it('should not contain role', () => {
-      const roles = undefined
+      const roles: Project['roles'] = []
       setProjectItem(fixture, { roles })
 
       const roleElement = fixture.debugElement.query(byTestId('role'))

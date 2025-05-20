@@ -13,11 +13,8 @@ import {
   AdaptJsonResumeProject,
 } from './adapt-json-resume-project'
 import { makeProject } from './__tests__/make-project'
-import {
-  JSON_RESUME_PROJECTS,
-  JsonResumeProjects,
-} from '../projects-section/json-resume-projects'
-import { JsonResumeWorkItem } from '../json-resume/types'
+import { JSON_RESUME_PROJECTS } from '../projects-section/json-resume-projects'
+import { JsonResumeProjects, JsonResumeWorkItem } from '../json-resume/types'
 
 describe('AdaptJsonResumeWork', () => {
   it('should be created', () => {
