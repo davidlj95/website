@@ -4,10 +4,10 @@ import { ContentChipListComponent } from '../../../content-chip-list/content-chi
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 
 @Component({
-  selector: 'app-education-item-courses',
-  templateUrl: './education-item-courses.component.html',
+  selector: 'app-education-courses',
+  templateUrl: './education-courses.component.html',
   imports: [ContentChipListComponent, ContentChipComponent],
 })
-export class EducationItemCoursesComponent {
+export class EducationCoursesComponent {
   readonly courses = input.required<readonly string[]>()
 }

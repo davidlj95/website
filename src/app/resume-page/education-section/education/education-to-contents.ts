@@ -1,10 +1,10 @@
 import { Education } from '../../data/education'
 import { ChippedContent } from '../../chipped-content/chipped-content'
-import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
+import { EducationCoursesComponent } from './education-courses/education-courses.component'
 import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 
-export const educationItemToContents: (
+export const educationToContents: (
   item: Education,
 ) => readonly ChippedContent[] = (item) =>
   [
@@ -20,7 +20,7 @@ export const educationItemToContents: (
     item.courses.length > 0
       ? new ChippedContent({
           displayName: 'Courses',
-          component: EducationItemCoursesComponent,
+          component: EducationCoursesComponent,
           inputs: {
             courses: item.courses,
           },

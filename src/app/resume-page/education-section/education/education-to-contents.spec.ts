@@ -1,10 +1,10 @@
 import { makeEducation } from '../../data/__tests__/make-education'
-import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
+import { EducationCoursesComponent } from './education-courses/education-courses.component'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
-import { educationItemToContents } from './education-item-to-contents'
+import { educationToContents } from './education-to-contents'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 
-describe('educationItemToContents', () => {
+describe('educationToContents', () => {
   describe('when score is present', () => {
     const score = 'Very good++'
 
@@ -40,9 +40,9 @@ describe('educationItemToContents', () => {
 
       expect(coursesContents).toHaveSize(1)
       const courseContent =
-        coursesContents[0] as ChippedContent<EducationItemCoursesComponent>
+        coursesContents[0] as ChippedContent<EducationCoursesComponent>
 
-      expect(courseContent.component).toEqual(EducationItemCoursesComponent)
+      expect(courseContent.component).toEqual(EducationCoursesComponent)
       expect(courseContent.inputs).toEqual({
         courses,
       })
@@ -50,4 +50,4 @@ describe('educationItemToContents', () => {
   })
 })
 
-const makeSut = () => educationItemToContents
+const makeSut = () => educationToContents

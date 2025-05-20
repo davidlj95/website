@@ -1,6 +1,6 @@
 <h2 appSectionTitle id="education">Education</h2>
 <app-card-grid>
   @for (education of _educations(); track education) {
-    <app-education-item [item]="education"></app-education-item>
+    <app-education [education]="education"></app-education>
   }
 </app-card-grid>

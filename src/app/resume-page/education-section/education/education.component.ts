@@ -13,11 +13,11 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
-import { educationItemToContents } from './education-item-to-contents'
+import { educationToContents } from './education-to-contents'
 
 @Component({
-  selector: 'app-education-item',
-  templateUrl: './education-item.component.html',
+  selector: 'app-education',
+  templateUrl: './education.component.html',
   imports: [
     LinkComponent,
     TestIdDirective,
@@ -32,13 +32,13 @@ import { educationItemToContents } from './education-item-to-contents'
     ChippedContentComponent,
   ],
 })
-export class EducationItemComponent {
-  readonly item = input.required<Education>()
+export class EducationComponent {
+  readonly education = input.required<Education>()
   protected readonly _contents = computed(() =>
-    educationItemToContents(this.item()),
+    educationToContents(this.education()),
   )
   protected readonly _institutionDisplayName = computed<string>(() => {
-    const { name, shortName } = this.item().institution
+    const { name, shortName } = this.education().institution
     return name.length > 15 && shortName ? shortName : name
   })
 
