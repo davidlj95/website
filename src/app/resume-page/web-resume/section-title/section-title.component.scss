@@ -1,0 +1,28 @@
+@use '../../../../sass/borders';
+@use '../../../../sass/header';
+@use '../../../../sass/paddings';
+@use '../../../../sass/z-index';
+@use '../../../../sass/animations';
+@use '../../../../sass/quirks';
+
+:host {
+  display: block;
+  position: sticky;
+  top: header.$height;
+  transform: translateY(-#{borders.$panel-width});
+  z-index: z-index.$headers;
+  @include quirks.leftBorderDisappearance;
+  @include borders.panel(bottom, top);
+
+  @include animations.when-motion {
+    @include animations.multiple-transitions(
+      (color, background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
+}
+
+app-toolbar {
+  padding: paddings.$s paddings.$l;
+  font-size: 1.25rem;
+}
