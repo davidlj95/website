@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { EducationSectionComponent } from './education-section.component'
-import { EducationItemComponent } from './education-item/education-item.component'
+import { EducationComponent } from './education/education.component'
 import { EDUCATION_SERVICE, EducationService } from '../data/education-service'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
@@ -33,7 +33,7 @@ describe('EducationSectionComponent', () => {
     fixture.detectChanges()
 
     const educationElements = fixture.debugElement.queryAll(
-      By.directive(EducationItemComponent),
+      By.directive(EducationComponent),
     )
 
     expect(educationElements.length).toBe(educations.length)
@@ -48,7 +48,7 @@ function makeSut({
       EducationSectionComponent,
       MockComponents(
         SectionTitleComponent,
-        EducationItemComponent,
+        EducationComponent,
         CardGridComponent,
       ),
     ],

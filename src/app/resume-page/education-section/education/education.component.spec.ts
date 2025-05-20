@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import { ATTRIBUTE, EducationItemComponent } from './education-item.component'
+import { ATTRIBUTE, EducationComponent } from './education.component'
 import { Education } from '../../data/education'
 import { By } from '@angular/platform-browser'
 import { DateRangeComponent } from '../../date-range/date-range.component'
@@ -22,9 +22,9 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
-describe('EducationItemComponent', () => {
-  let component: EducationItemComponent
-  let fixture: ComponentFixture<EducationItemComponent>
+describe('EducationComponent', () => {
+  let component: EducationComponent
+  let fixture: ComponentFixture<EducationComponent>
 
   beforeEach(() => {
     ;[fixture, component] = makeSut()
@@ -144,7 +144,7 @@ describe('EducationItemComponent', () => {
 })
 
 function makeSut() {
-  return componentTestSetup(EducationItemComponent, {
+  return componentTestSetup(EducationComponent, {
     imports: [
       TestIdDirective,
       LinkComponent,
@@ -164,10 +164,10 @@ function makeSut() {
 }
 
 function setEducation(
-  fixture: ComponentFixture<EducationItemComponent>,
+  fixture: ComponentFixture<EducationComponent>,
   overrides?: Partial<Education>,
 ): void {
   setFixtureInputsAndDetectChanges(fixture, {
-    item: makeEducation(overrides),
+    education: makeEducation(overrides),
   })
 }

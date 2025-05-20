@@ -1,28 +1,28 @@
 import { Education } from '../../data/education'
 import { ChippedContent } from '../../chipped-content/chipped-content'
-import { EducationItemCoursesComponent } from './education-item-courses/education-item-courses.component'
+import { EducationCoursesComponent } from './education-courses/education-courses.component'
 import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 
-export const educationItemToContents: (
-  item: Education,
-) => readonly ChippedContent[] = (item) =>
+export const educationToContents: (
+  education: Education,
+) => readonly ChippedContent[] = (education) =>
   [
-    item.score
+    education.score
       ? new ChippedContent({
           displayName: 'Score',
           component: TextContentComponent,
           inputs: {
-            text: item.score,
+            text: education.score,
           },
         })
       : undefined,
-    item.courses.length > 0
+    education.courses.length > 0
       ? new ChippedContent({
           displayName: 'Courses',
-          component: EducationItemCoursesComponent,
+          component: EducationCoursesComponent,
           inputs: {
-            courses: item.courses,
+            courses: education.courses,
           },
         })
       : undefined,
