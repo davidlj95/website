@@ -1,0 +1,37 @@
+@use '../../../sass/margins';
+
+.data {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: margins.$s;
+  font-size: 1.25em;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+.caret {
+  font-size: 0.5em;
+  width: 0.75em;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: margins.$m;
+  overflow: hidden;
+
+  ul {
+    margin-left: margins.$l;
+
+    > li:first-child {
+      margin-top: margins.$m;
+    }
+  }
+}

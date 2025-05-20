@@ -1,0 +1,13 @@
+@use '../../../sass/margins';
+@use '../../../sass/paddings';
+
+:host {
+  padding: paddings.$l;
+  display: grid;
+  gap: margins.$m;
+  grid-template-columns: repeat(auto-fill, minmax(40ch, 1fr));
+
+  @media (max-width: 50ch) {
+    grid-template-columns: 1fr;
+  }
+}

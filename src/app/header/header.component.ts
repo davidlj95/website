@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
 import { NavigationTabsComponent } from './navigation-tabs/navigation-tabs.component'
-import { ToolbarComponent } from './toolbar/toolbar.component'
+import { ToolbarComponent } from '@/common/toolbar/toolbar.component'
 import { LightDarkToggleComponent } from './light-dark-toggle/light-dark-toggle.component'
 import { NAVIGATION_ITEMS } from './navigation-items'
-import { ToolbarDividerComponent } from './toolbar-divider/toolbar-divider.component'
+import { ToolbarDividerComponent } from '@/common/toolbar-divider/toolbar-divider.component'
 
 @Component({
   //👇 Semantic HTML ftw, sorry Angular guidelines

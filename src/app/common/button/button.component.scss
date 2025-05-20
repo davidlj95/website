@@ -1,0 +1,25 @@
+@use '../../../sass/animations';
+
+:host {
+  background-color: var(--sys-color-primary);
+  border: none;
+  color: var(--sys-color-on-primary);
+  border-radius: 1em;
+  font-size: 1em;
+  height: 2em;
+  padding: 0 1em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color-mix(
+      in sRGB,
+      var(--sys-color-primary),
+      var(--sys-color-state-hover-on-prominent) 6%
+    );
+    color: var(--sys-color-on-primary);
+  }
+
+  @include animations.when-motion {
+    @include animations.multiple-transitions((background-color, color));
+  }
+}

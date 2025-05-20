@@ -5,7 +5,7 @@ import { MockComponents, MockProvider } from 'ng-mocks'
 import { makeLanguage } from '../../data/__tests__/make-language'
 import { LANGUAGE_SERVICE, LanguageService } from '../../data/language-service'
 import { LanguageComponent } from './language/language.component'
-import { CardGridComponent } from '../../card-grid/card-grid.component'
+import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 import { of } from 'rxjs'
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core'
-import { TabComponent } from '../tab/tab.component'
-import { TabsComponent } from '../tabs/tabs.component'
+import { TabComponent } from '@/common/tab/tab.component'
+import { TabsComponent } from '@/common/tabs/tabs.component'
 import { RouterLink, RouterLinkActive } from '@angular/router'
 
 @Component({

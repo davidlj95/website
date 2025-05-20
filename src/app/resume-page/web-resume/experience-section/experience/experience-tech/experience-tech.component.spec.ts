@@ -7,8 +7,8 @@ import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 import { By } from '@angular/platform-browser'
 import { MockComponents } from 'ng-mocks'
-import { ContentChipListComponent } from '../../../../content-chip-list/content-chip-list.component'
-import { ContentChipComponent } from '../../../../content-chip/content-chip.component'
+import { ContentChipListComponent } from '@/common/content-chip-list/content-chip-list.component'
+import { ContentChipComponent } from '@/common/content-chip/content-chip.component'
 
 describe('ExperienceTechComponent', () => {
   let component: ExperienceTechComponent

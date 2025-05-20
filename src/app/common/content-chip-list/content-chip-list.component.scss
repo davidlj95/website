@@ -1,0 +1,7 @@
+@use '../../../sass/margins';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: margins.$s;
+}

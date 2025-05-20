@@ -1,11 +1,11 @@
 import { Component } from '@angular/core'
 import { NgOptimizedImage, NgTemplateOutlet } from '@angular/common'
-import { CardComponent } from '../resume-page/card/card.component'
-import { CardHeaderImageComponent } from '../resume-page/card/card-header/card-header-image/card-header-image.component'
-import { CardHeaderComponent } from '../resume-page/card/card-header/card-header.component'
-import { CardHeaderTextsComponent } from '../resume-page/card/card-header/card-header-texts/card-header-texts.component'
-import { ButtonComponent } from '../resume-page/button/button.component'
-import { ContentPageComponent } from '../content-page/content-page.component'
+import { CardComponent } from '@/common/card/card.component'
+import { CardHeaderImageComponent } from '@/common/card/card-header/card-header-image/card-header-image.component'
+import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
+import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-texts/card-header-texts.component'
+import { ButtonComponent } from '@/common/button/button.component'
+import { ContentPageComponent } from '@/common/content-page/content-page.component'
 
 @Component({
   imports: [

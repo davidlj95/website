@@ -5,7 +5,7 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { makeExperience } from '../../data/__tests__/make-experience'
-import { CardGridComponent } from '../../card-grid/card-grid.component'
+import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 import {
   EXPERIENCE_SERVICE,

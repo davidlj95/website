@@ -1,0 +1,21 @@
+@use '../../../sass/margins';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: margins.$m;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: margins.$s;
+}
+
+.content {
+  > ::ng-deep * {
+    display: block;
+  }
+
+  overflow: hidden;
+}

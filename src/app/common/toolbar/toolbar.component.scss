@@ -1,0 +1,21 @@
+@use '../../../sass/animations';
+@use '../../../sass/margins';
+@use '../../../sass/toolbar';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  background-color: var(--app-color-toolbar-background);
+  color: var(--ui-text);
+
+  min-height: toolbar.$icons-height;
+
+  @include animations.when-motion {
+    @include animations.single-transition(
+      (background-color),
+      animations.$emphasized-style
+    );
+  }
+}

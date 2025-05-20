@@ -1,0 +1,31 @@
+@use '../../../sass/toolbar';
+@use '../../../sass/touch-or-pointer';
+@use '../../../sass/material-symbols';
+@use '../../../sass/animations';
+
+:host {
+  display: inline flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: var(--icon-default);
+  border-style: none;
+  background: transparent;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  @include touch-or-pointer.primaryInputCanHover {
+    &:enabled:hover {
+      color: var(--icon-default-hover);
+    }
+  }
+
+  @include animations.when-motion {
+    @include animations.single-transition(color, animations.$emphasized-style);
+  }
+
+  @include material-symbols.font-size(toolbar.$icons-height);
+  @include material-symbols.variation-settings($fill: false, $weight: 200);
+}

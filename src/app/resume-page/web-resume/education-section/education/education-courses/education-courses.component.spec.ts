@@ -1,7 +1,7 @@
 import { ComponentFixture } from '@angular/core/testing'
 
 import { EducationCoursesComponent } from './education-courses.component'
-import { ContentChipComponent } from '../../../../content-chip/content-chip.component'
+import { ContentChipComponent } from '@/common/content-chip/content-chip.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'

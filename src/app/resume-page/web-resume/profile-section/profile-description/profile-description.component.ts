@@ -4,11 +4,11 @@ import { DescriptionLine, Metadata } from '@/data/metadata'
 import {
   CollapsibleTreeComponent,
   IsCollapsibleFn,
-} from '../../../collapsible-tree/collapsible-tree.component'
+} from '@/common/collapsible-tree/collapsible-tree.component'
 import {
   CollapsibleTreeNode,
   CollapsibleTreeNodeData,
-} from '../../../collapsible-tree/collapsible-tree-node'
+} from '@/common/collapsible-tree/collapsible-tree-node'
 import { ProfileDescriptionLineComponent } from './profile-description-line/profile-description-line.component'
 import { ComponentInputs } from '@/common/component-inputs'
 

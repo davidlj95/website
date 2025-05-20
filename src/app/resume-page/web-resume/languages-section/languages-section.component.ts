@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core'
-import { CardGridComponent } from '../../card-grid/card-grid.component'
+import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { LANGUAGE_SERVICE } from '../../data/language-service'

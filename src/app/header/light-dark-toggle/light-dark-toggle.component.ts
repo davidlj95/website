@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { DarkMode, LightMode } from '@/data/material-symbols'
 import { ColorSchemeService } from './color-scheme.service'
-import { ToolbarButtonComponent } from '../toolbar-button/toolbar-button.component'
+import { ToolbarButtonComponent } from '@/common/toolbar-button/toolbar-button.component'
 
 @Component({
   selector: 'app-light-dark-toggle',

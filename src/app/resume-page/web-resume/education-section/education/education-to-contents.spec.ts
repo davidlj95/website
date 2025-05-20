@@ -1,8 +1,8 @@
 import { makeEducation } from '../../../data/__tests__/make-education'
 import { EducationCoursesComponent } from './education-courses/education-courses.component'
-import { TextContentComponent } from '../../../chipped-content/text-content/text-content.component'
+import { TextContentComponent } from '@/common/chipped-content/text-content/text-content.component'
 import { educationToContents } from './education-to-contents'
-import { ChippedContent } from '../../../chipped-content/chipped-content'
+import { ChippedContent } from '@/common/chipped-content/chipped-content'
 
 describe('educationToContents', () => {
   describe('when score is present', () => {

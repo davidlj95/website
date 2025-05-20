@@ -7,7 +7,7 @@ import { PROJECT_SERVICE, ProjectService } from '../../data/project-service'
 import { ProjectComponent } from './project/project.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProject } from '../../data/__tests__/make-project'
-import { CardGridComponent } from '../../card-grid/card-grid.component'
+import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 import { of } from 'rxjs'
 

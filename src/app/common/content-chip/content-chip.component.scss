@@ -1,0 +1,16 @@
+@use '../../../sass/borders';
+@use '../../../sass/paddings';
+@use '../../../sass/animations';
+
+:host {
+  @include borders.panel;
+  padding: paddings.$s;
+  background-color: var(--sys-color-surface3);
+
+  @include animations.when-motion {
+    @include animations.multiple-transitions(
+      (background-color, border-color),
+      animations.$emphasized-style
+    );
+  }
+}

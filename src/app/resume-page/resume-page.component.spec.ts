@@ -11,10 +11,10 @@ import { WebResumeComponent } from './web-resume/web-resume.component'
 import { ActivatedRoute, provideRouter } from '@angular/router'
 import { PlainResumeComponent } from './plain-resume/plain-resume.component'
 import { MockComponents } from 'ng-mocks'
-import { ToolbarButtonComponent } from '../header/toolbar-button/toolbar-button.component'
-import { ToolbarComponent } from '../header/toolbar/toolbar.component'
+import { ToolbarButtonComponent } from '@/common/toolbar-button/toolbar-button.component'
+import { ToolbarComponent } from '@/common/toolbar/toolbar.component'
 import { TestBed } from '@angular/core/testing'
-import { SelectorComponent } from '../selector/selector.component'
+import { SelectorComponent } from '@/common/selector/selector.component'
 import { tick } from '@/test/helpers/tick'
 
 describe('ResumePageComponent', () => {

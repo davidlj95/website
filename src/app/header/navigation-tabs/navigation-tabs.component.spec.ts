@@ -3,8 +3,8 @@ import {
   NavigationTabsComponent,
 } from './navigation-tabs.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { TabsComponent } from '../tabs/tabs.component'
-import { TabComponent } from '../tab/tab.component'
+import { TabsComponent } from '@/common/tabs/tabs.component'
+import { TabComponent } from '@/common/tab/tab.component'
 import { provideRouter, Route, RouterLink, Routes } from '@angular/router'
 import { EmptyComponent } from '@/test/helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'

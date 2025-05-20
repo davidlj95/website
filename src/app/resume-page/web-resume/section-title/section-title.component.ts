@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { ToolbarComponent } from '../../../header/toolbar/toolbar.component'
+import { ToolbarComponent } from '@/common/toolbar/toolbar.component'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
