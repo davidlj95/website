@@ -1,6 +1,6 @@
 import resume from '@/data/resume.json'
 
-import { ADAPT_JSON_RESUME_WORK, EMPLOYEE_TAG } from './adapt-json-resume-work'
+import { ADAPT_JSON_RESUME_WORK } from './adapt-json-resume-work'
 import {
   RELATIVIZE_PRODUCTION_URL,
   RelativizeProductionUrl,
@@ -8,7 +8,6 @@ import {
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { MockProvider } from 'ng-mocks'
 import { JsonResumeWorkItem } from '../json-resume/types'
-import { TAG_TO_ATTRIBUTE } from '../attribute'
 
 describe('AdaptJsonResumeWork', () => {
   it('should be created', () => {
@@ -60,29 +59,6 @@ describe('AdaptJsonResumeWork', () => {
   })
 
   // Non JSON Resume standard!
-  it('should map tags to attributes', () => {
-    const tags = ['freelance', 'promotions']
-
-    const item = makeSut()(makeJsonResumeWorkItem({ tags }))
-
-    expect(item.attributes).toEqual([
-      TAG_TO_ATTRIBUTE[tags[0]],
-      TAG_TO_ATTRIBUTE[tags[1]],
-    ])
-  })
-
-  it('should add employee attribute if no freelance tag is found', () => {
-    const tags = ['foo']
-
-    const item = makeSut()(
-      makeJsonResumeWorkItem({
-        tags,
-      } as unknown as Partial<JsonResumeWorkItem>),
-    )
-
-    expect(item.attributes).toEqual([TAG_TO_ATTRIBUTE[EMPLOYEE_TAG]])
-  })
-
   it('should relativize image URL', () => {
     const dummyImagePath = '/images/companies/foo.png'
     const image = `https://example.com${dummyImagePath}`

@@ -22,7 +22,10 @@ export const BASICS_SERVICE = new InjectionToken<BasicsService>(
       return {
         getProfile: () => jsonResume.getBasics().pipe(map(basicsToProfile)),
         getContacts: () => jsonResume.getBasics().pipe(map(basicsToContacts)),
-        getSocials: () => jsonResume.getBasics().pipe(map(basicsToSocials)),
+        getSocials: () =>
+          jsonResume
+            .getBasics()
+            .pipe(map((basics) => profilesToSocials(basics.profiles))),
       }
     },
   },
@@ -40,24 +43,28 @@ const basicsToProfile = ({
   summary,
 })
 
-const basicsToContacts = (basics: JsonResumeBasics): readonly Contact[] => [
+const basicsToContacts = ({
+  email,
+  phone,
+  location,
+}: JsonResumeBasics): readonly Contact[] => [
   {
     label: 'Email',
     icon: Email,
-    text: basics.email,
-    url: new URL(`mailto:${basics.email}`),
+    text: email,
+    url: new URL(`mailto:${email}`),
   },
   {
     label: 'Phone',
     icon: Call,
-    text: basics.phone,
-    url: new URL(`tel:${basics.phone}`),
+    text: phone,
+    url: new URL(`tel:${phone}`),
   },
   {
     label: 'Location',
     icon: MyLocation,
-    text: `${basics.location.city}, ${basics.location.countryCode}`,
-    url: getMapsSearchUrl(basics.location.city),
+    text: `${location.city}, ${location.countryCode}`,
+    url: getMapsSearchUrl(location.city),
   },
 ]
 
@@ -68,8 +75,10 @@ const getMapsSearchUrl = (location: string): URL => {
   return mapsSearchUrl
 }
 
-const basicsToSocials = (basics: JsonResumeBasics): readonly Social[] =>
-  basics.profiles
+const profilesToSocials = (
+  profiles: JsonResumeBasics['profiles'],
+): readonly Social[] =>
+  profiles
     .map((profile) => {
       const maybeIcon = getIconFromNetwork(profile.network)
       if (!maybeIcon) {

@@ -103,7 +103,7 @@
         "Assisted company spin off by programmatically setting up new email signatures for all employees"
       ],
       "image": "https://davidlj95.com/images/companies/koa-health.png",
-      "tags": ["promotions"]
+      "tags": ["employee", "promotions"]
     },
     {
       "name": "Telefónica Alpha",
@@ -112,7 +112,8 @@
       "startDate": "2020-03-01",
       "endDate": "2020-10-01",
       "summary": "Part of the health moonshot unit. Which would later spin off to become its own company: Koa Health. Check that position for more information about both periods",
-      "image": "https://davidlj95.com/images/companies/telefonica-alpha.png"
+      "image": "https://davidlj95.com/images/companies/telefonica-alpha.png",
+      "tags": ["employee"]
     },
     {
       "name": "BTC Assessors",
@@ -128,7 +129,7 @@
         "Facilitated software project management"
       ],
       "image": "https://davidlj95.com/images/companies/btc-assessors.png",
-      "tags": ["more-positions"]
+      "tags": ["employee", "more-positions"]
     },
     {
       "name": "SEAT",
