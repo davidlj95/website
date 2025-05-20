@@ -1,0 +1,19 @@
+@use '../../../sass/theming';
+@use '../../../sass/animations';
+
+img.sports-equation {
+  @include theming.when-dark-mode {
+    filter: invert(1);
+  }
+  @include animations.when-motion {
+    @include animations.single-transition(filter, animations.$emphasized-style);
+  }
+}
+
+.card-wrapper {
+  display: flex;
+}
+
+form {
+  text-align: center;
+}

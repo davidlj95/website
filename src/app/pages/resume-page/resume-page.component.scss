@@ -1,0 +1,12 @@
+@use '../../../sass/paddings';
+@use '../../../sass/print';
+
+app-toolbar {
+  padding: 0 paddings.$l;
+
+  @include print.hidden;
+}
+
+app-plain-resume {
+  display: block;
+}

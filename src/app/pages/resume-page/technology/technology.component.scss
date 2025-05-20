@@ -1,0 +1,11 @@
+@use '../../../../sass/margins';
+
+:host {
+  display: flex;
+  gap: margins.$s;
+}
+
+app-simple-icon {
+  height: 1em;
+  width: 1em;
+}

@@ -1,0 +1,22 @@
+@use '../../../../../../../sass/margins';
+@use '../../../../../../../sass/material-symbols';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  word-break: break-word;
+  font-size: 1.25rem;
+  gap: margins.$s;
+  text-align: left;
+}
+
+@include material-symbols.class {
+  @include material-symbols.font-size(1em);
+  @include material-symbols.variation-settings(
+    $fill: true,
+    $weight: 700,
+    $grade: 200,
+    $size: 24
+  );
+}
