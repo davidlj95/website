@@ -4,9 +4,11 @@ import { ADAPT_JSON_RESUME_LANGUAGE } from './adapt-json-resume-language'
 import { map, Observable } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 
+/** @visibleForTesting */
 export interface LanguageService {
   getAll: () => Observable<readonly Language[]>
 }
+
 export const LANGUAGE_SERVICE = new InjectionToken<LanguageService>(
   /* istanbul ignore next */
   isDevMode ? 'LanguageService' : 'rLS',
