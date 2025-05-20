@@ -5,9 +5,9 @@ import { ExperienceHighlightsComponent } from './experience-highlights/experienc
 import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
 import { Experience } from '../../data/experience'
 
-export const experienceToContents: (
+export const experienceToContents = (
   experience: Experience,
-) => readonly ChippedContent[] = (experience) => {
+): readonly ChippedContent[] => {
   const summaryContent = experience.summary
     ? new ChippedContent({
         displayName: 'Summary',

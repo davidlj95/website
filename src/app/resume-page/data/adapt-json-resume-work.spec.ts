@@ -106,18 +106,19 @@ describe('AdaptJsonResumeWork', () => {
 
   it('should add projects whose entity matches company name', () => {
     const companyName = 'ACME Intl.'
-    const project = makeJsonResumeProject({ entity: companyName })
-    const projectItem = makeProject({ name: project.name })
+    const jsonResumeProject = makeJsonResumeProject({ entity: companyName })
+
+    const project = makeProject({ name: jsonResumeProject.name })
     const adaptJsonResumeProject = jasmine
       .createSpy<AdaptJsonResumeProject>()
-      .and.returnValue(projectItem)
-    const jsonResumeProjects = [project]
+      .and.returnValue(project)
+    const jsonResumeProjects = [jsonResumeProject]
     const sut = makeSut({ adaptJsonResumeProject, jsonResumeProjects })
 
     const item = sut(makeJsonResumeWorkItem({ name: companyName }))
 
-    expect(item.projects).toEqual([projectItem])
-    expect(adaptJsonResumeProject).toHaveBeenCalledOnceWith(project)
+    expect(item.projects).toEqual([project])
+    expect(adaptJsonResumeProject).toHaveBeenCalledOnceWith(jsonResumeProject)
   })
 })
 

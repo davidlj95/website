@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import { ProjectItemTechnologiesComponent } from './project-item-technologies.component'
+import { ProjectTechnologiesComponent } from './project-technologies.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { TechnologyComponent } from '../../../technology/technology.component'
 import { ContentChipListComponent } from '../../../content-chip-list/content-chip-list.component'
@@ -9,24 +9,21 @@ import { ContentChipComponent } from '../../../content-chip/content-chip.compone
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 import { By } from '@angular/platform-browser'
 
-describe('ProjectItemTechnologiesComponent', () => {
-  let component: ProjectItemTechnologiesComponent
-  let fixture: ComponentFixture<ProjectItemTechnologiesComponent>
+describe('ProjectTechnologiesComponent', () => {
+  let component: ProjectTechnologiesComponent
+  let fixture: ComponentFixture<ProjectTechnologiesComponent>
   const technologies = ['foo-tech', 'bar-tech']
 
   beforeEach(() => {
-    ;[fixture, component] = componentTestSetup(
-      ProjectItemTechnologiesComponent,
-      {
-        imports: [
-          MockComponents(
-            TechnologyComponent,
-            ContentChipListComponent,
-            ContentChipComponent,
-          ),
-        ],
-      },
-    )
+    ;[fixture, component] = componentTestSetup(ProjectTechnologiesComponent, {
+      imports: [
+        MockComponents(
+          TechnologyComponent,
+          ContentChipListComponent,
+          ContentChipComponent,
+        ),
+      ],
+    })
     setFixtureInputsAndDetectChanges(fixture, { technologies })
   })
 

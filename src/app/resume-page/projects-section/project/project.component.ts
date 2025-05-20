@@ -14,11 +14,11 @@ import { LinkComponent } from '../../link/link.component'
 
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
 import { CardComponent } from '../../card/card.component'
-import { projectItemToContents } from './project-item-to-contents'
+import { projectToContents } from './project-to-contents'
 
 @Component({
-  selector: 'app-project-item',
-  templateUrl: './project-item.component.html',
+  selector: 'app-project',
+  templateUrl: './project.component.html',
   imports: [
     LinkComponent,
     TestIdDirective,
@@ -33,10 +33,10 @@ import { projectItemToContents } from './project-item-to-contents'
     ChippedContentComponent,
   ],
 })
-export class ProjectItemComponent {
-  readonly item = input.required<Project>()
+export class ProjectComponent {
+  readonly project = input.required<Project>()
   protected readonly _contents = computed<readonly ChippedContent[]>(() =>
-    projectItemToContents(this.item()),
+    projectToContents(this.project()),
   )
 
   protected readonly _stackContent = STACK_CONTENT

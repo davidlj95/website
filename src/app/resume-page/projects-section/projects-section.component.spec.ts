@@ -4,7 +4,7 @@ import { ProjectsSectionComponent } from './projects-section.component'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { PROJECT_SERVICE, ProjectService } from '../data/project-service'
-import { ProjectItemComponent } from './project-item/project-item.component'
+import { ProjectComponent } from './project/project.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { makeProject } from '../data/__tests__/make-project'
 import { CardGridComponent } from '../card-grid/card-grid.component'
@@ -32,11 +32,11 @@ describe('ProjectsSectionComponent', () => {
     ;[fixture, component] = makeSut({ projectService })
     fixture.detectChanges()
 
-    const projectItemElements = fixture.debugElement.queryAll(
-      By.directive(ProjectItemComponent),
+    const projectElements = fixture.debugElement.queryAll(
+      By.directive(ProjectComponent),
     )
 
-    expect(projectItemElements.length).toEqual(projects.length)
+    expect(projectElements.length).toEqual(projects.length)
   })
 })
 
@@ -47,7 +47,7 @@ const makeSut = ({
     imports: [
       ProjectsSectionComponent,
       CardGridComponent,
-      MockComponents(SectionTitleComponent, ProjectItemComponent),
+      MockComponents(SectionTitleComponent, ProjectComponent),
     ],
     providers: [
       projectService ? MockProvider(PROJECT_SERVICE, projectService) : [],
