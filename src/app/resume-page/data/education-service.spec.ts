@@ -34,7 +34,7 @@ describe('EducationService', () => {
       adaptJsonResumeEducation,
     })
 
-    const educations = await firstValueFrom(sut())
+    const educations = await firstValueFrom(sut.getAll())
 
     expect(educations).toEqual(expectedEducations)
     expect(adaptJsonResumeEducation).toHaveBeenCalledTimes(education.length)

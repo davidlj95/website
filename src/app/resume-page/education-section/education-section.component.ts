@@ -14,5 +14,5 @@ import { toSignal } from '@angular/core/rxjs-interop'
   imports: [SectionTitleComponent, CardGridComponent, EducationItemComponent],
 })
 export class EducationSectionComponent {
-  protected readonly _educations = toSignal(inject(EDUCATION_SERVICE)())
+  protected readonly _educations = toSignal(inject(EDUCATION_SERVICE).getAll())
 }

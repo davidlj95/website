@@ -23,9 +23,11 @@ describe('EducationSectionComponent', () => {
 
   it('should display all educations', () => {
     const educations = [makeEducation(), makeEducation()]
-    const educationService = jasmine
-      .createSpy<EducationService>()
-      .and.returnValue(of(educations))
+    const educationService = {
+      getAll: jasmine
+        .createSpy<EducationService['getAll']>()
+        .and.returnValue(of(educations)),
+    }
 
     ;[fixture, component] = makeSut({ educationService })
     fixture.detectChanges()
