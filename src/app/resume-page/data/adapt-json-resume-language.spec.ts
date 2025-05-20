@@ -1,9 +1,7 @@
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import {
-  ADAPT_JSON_RESUME_LANGUAGE,
-  JsonResumeLanguage,
-} from './adapt-json-resume-language'
+import { ADAPT_JSON_RESUME_LANGUAGE } from './adapt-json-resume-language'
 import resume from '@/data/resume.json'
+import { JsonResumeLanguage } from '../json-resume/types'
 
 describe('AdaptJsonResumeLanguage', () => {
   it('should be created', () => {

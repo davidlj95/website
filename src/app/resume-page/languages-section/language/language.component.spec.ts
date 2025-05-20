@@ -1,12 +1,12 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import { LanguageItemComponent } from './language-item.component'
+import { LanguageComponent } from './language.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
-import { makeLanguageItem } from './__tests__/make-language-item'
-import { LanguageItem } from './language-item'
+import { makeLanguage } from '../../data/__tests__/make-language'
+import { Language } from '../../data/language'
 import { byTestId } from '@/test/helpers/test-id'
 import { LanguageTagComponent } from './language-tag/language-tag.component'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
@@ -15,16 +15,16 @@ import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 import { By } from '@angular/platform-browser'
 
-describe('LanguageItemComponent', () => {
-  let component: LanguageItemComponent
-  let fixture: ComponentFixture<LanguageItemComponent>
+describe('LanguageComponent', () => {
+  let component: LanguageComponent
+  let fixture: ComponentFixture<LanguageComponent>
 
   beforeEach(() => {
     ;[fixture, component] = makeSut()
   })
 
   it('should create', () => {
-    setLanguageItem(fixture)
+    setLanguage(fixture)
 
     expect(component).toBeTruthy()
   })
@@ -32,7 +32,7 @@ describe('LanguageItemComponent', () => {
   it('should display language name', () => {
     const name = 'Sealandic'
 
-    setLanguageItem(fixture, { name })
+    setLanguage(fixture, { name })
 
     const nameElement = fixture.debugElement.query(byTestId('name'))
 
@@ -42,7 +42,7 @@ describe('LanguageItemComponent', () => {
   it('should display fluency', () => {
     const fluency = 'Awesomely speaken'
 
-    setLanguageItem(fixture, { fluency })
+    setLanguage(fixture, { fluency })
 
     const fluencyElement = fixture.debugElement.query(byTestId('fluency'))
 
@@ -55,7 +55,7 @@ describe('LanguageItemComponent', () => {
     const comment = 'Lived in Sealand for 2 years'
 
     beforeEach(() => {
-      setLanguageItem(fixture, { comment })
+      setLanguage(fixture, { comment })
     })
 
     it('should display comment', () => {
@@ -71,7 +71,7 @@ describe('LanguageItemComponent', () => {
     const comment = undefined
 
     beforeEach(() => {
-      setLanguageItem(fixture, { comment })
+      setLanguage(fixture, { comment })
     })
 
     it('should not display comment element', () => {
@@ -93,9 +93,9 @@ describe('LanguageItemComponent', () => {
 })
 
 function makeSut() {
-  return componentTestSetup(LanguageItemComponent, {
+  return componentTestSetup(LanguageComponent, {
     imports: [
-      LanguageItemComponent,
+      LanguageComponent,
       TestIdDirective,
       MockComponents(
         CardComponent,
@@ -107,11 +107,11 @@ function makeSut() {
   })
 }
 
-function setLanguageItem(
-  fixture: ComponentFixture<LanguageItemComponent>,
-  overrides?: Partial<LanguageItem>,
+function setLanguage(
+  fixture: ComponentFixture<LanguageComponent>,
+  overrides?: Partial<Language>,
 ) {
   setFixtureInputsAndDetectChanges(fixture, {
-    item: makeLanguageItem(overrides),
+    language: makeLanguage(overrides),
   })
 }

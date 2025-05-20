@@ -4,6 +4,7 @@ import RESUME from '@/data/resume.json'
 import {
   JsonResumeBasics,
   JsonResumeEducation,
+  JsonResumeLanguages,
   JsonResumeProjects,
   JsonResumeWork,
 } from './types'
@@ -16,4 +17,6 @@ export class JsonResumeService {
     of(RESUME.education)
   readonly getProjects = (): Observable<JsonResumeProjects> =>
     of(RESUME.projects)
+  readonly getLanguages = (): Observable<JsonResumeLanguages> =>
+    of(RESUME.languages)
 }

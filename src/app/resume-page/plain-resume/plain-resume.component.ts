@@ -7,7 +7,7 @@ import { ContentPageComponent } from '../../content-page/content-page.component'
 import { MdLinksPipe } from '../md-links.pipe'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgIcon } from '@ng-icons/core'
-import { GET_LANGUAGE_ITEMS } from '../languages-section/get-language-items'
+import { LANGUAGE_SERVICE } from '../data/language-service'
 import { EnergySavingsLeaf } from '@/data/material-symbols'
 import { BASICS_SERVICE } from '../data/basics-service'
 import { toSignal } from '@angular/core/rxjs-interop'
@@ -38,6 +38,6 @@ export class PlainResumeComponent {
   )
   protected readonly _educations = toSignal(inject(EDUCATION_SERVICE).getAll())
   protected readonly _projects = toSignal(inject(PROJECT_SERVICE).getAll())
-  protected readonly _languages = inject(GET_LANGUAGE_ITEMS)()
+  protected readonly _languages = toSignal(inject(LANGUAGE_SERVICE).getAll())
   protected readonly _materialSymbols = { EnergySavingsLeaf }
 }

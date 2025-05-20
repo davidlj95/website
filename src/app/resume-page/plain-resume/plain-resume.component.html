@@ -112,12 +112,12 @@
     <section>
       <h2>Languages</h2>
       <dl class="langs">
-        @for (item of _languages; track item) {
+        @for (language of _languages(); track language) {
           <div>
             <dt>
-              <code>({{ item.tag }})</code> {{ item.name }}
+              <code>({{ language.tag }})</code> {{ language.name }}
             </dt>
-            <dd>{{ item.fluency }}</dd>
+            <dd>{{ language.fluency }}</dd>
           </div>
         }
       </dl>
