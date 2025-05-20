@@ -3,10 +3,10 @@ import { MockProvider } from 'ng-mocks'
 import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
-} from '../data/adapt-json-resume-project'
-import { Project } from '../data/project'
+} from './adapt-json-resume-project'
+import { Project } from './project'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import { JSON_RESUME_PROJECTS } from './json-resume-projects'
+import { JSON_RESUME_PROJECTS } from '../projects-section/json-resume-projects'
 import { JsonResumeProject, JsonResumeProjects } from '../json-resume/types'
 
 describe('GetProjectItems', () => {

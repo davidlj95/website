@@ -4,7 +4,7 @@ import { ProjectItemComponent } from './project-item/project-item.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
-import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
+import { GET_PROJECT_ITEMS, GetProjectItems } from '../data/get-project-items'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
