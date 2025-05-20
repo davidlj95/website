@@ -1,16 +1,16 @@
 import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
-  InvalidStackValueError,
+  STACK_BACKEND_TAG,
 } from './adapt-json-resume-project'
 import { MockProvider } from 'ng-mocks'
-import { Stack } from './project'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   RELATIVIZE_PRODUCTION_URL,
   RelativizeProductionUrl,
 } from '@/common/relativize-production-url'
 import { makeJsonResumeProject } from './__tests__/make-json-resume-project'
+import { TAG_TO_ATTRIBUTE } from './attribute'
 
 describe('AdaptJsonResumeProject', () => {
   it('should be created', () => {
@@ -118,30 +118,12 @@ describe('AdaptJsonResumeProject', () => {
     })
   })
 
-  describe('when stack exists', () => {
-    it('should map stack', () => {
-      const stack = Stack.Full
-      const item = makeSut()(makeJsonResumeProject({ stack }))
+  it('should map tags to attributes', () => {
+    const tags = [STACK_BACKEND_TAG]
 
-      expect(item.stack).toEqual(stack)
-    })
+    const item = makeSut()(makeJsonResumeProject({ tags }))
 
-    it('should raise error if invalid', () => {
-      const stack = 'kata-croquet'
-
-      expect(() => makeSut()(makeJsonResumeProject({ stack }))).toThrowError(
-        InvalidStackValueError,
-      )
-    })
-  })
-
-  describe('when stack does not exist', () => {
-    it('should map no stack', () => {
-      const stack = undefined
-      const item = makeSut()(makeJsonResumeProject({ stack }))
-
-      expect(item.stack).toBeUndefined()
-    })
+    expect(item.attributes).toEqual([TAG_TO_ATTRIBUTE[tags[0]]])
   })
 
   it('should map technologies', () => {

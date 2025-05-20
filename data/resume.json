@@ -361,7 +361,7 @@
       "roles": ["Senior Backend Engineer"],
       "entity": "Vesto",
       "image": "https://davidlj95.com/images/projects/vesto.png",
-      "stack": "back",
+      "tags": ["stack-back"],
       "technologies": [
         "ruby",
         "rubyonrails",
@@ -404,7 +404,7 @@
       "roles": ["Senior Software Engineer"],
       "entity": "Koa Health",
       "image": "https://davidlj95.com/images/projects/mindset.png",
-      "stack": "full",
+      "tags": ["stack-full"],
       "technologies": [
         "typescript",
         "nodedotjs",
@@ -460,7 +460,7 @@
       "roles": ["Lead Software Engineer"],
       "entity": "BTC Assessors",
       "image": "https://davidlj95.com/images/projects/cowstamp.png",
-      "stack": "full",
+      "tags": ["stack-full"],
       "technologies": [
         "angular",
         "html",
@@ -498,7 +498,7 @@
       "url": "https://kowbucha.org",
       "roles": ["Lead Software Engineer"],
       "entity": "BTC Assessors",
-      "stack": "front",
+      "tags": ["stack-front"],
       "technologies": [
         "angular",
         "html",
@@ -532,7 +532,7 @@
       "roles": ["Software Engineer"],
       "entity": "BTC Assessors",
       "image": "https://davidlj95.com/images/projects/nodecenter.png",
-      "stack": "full",
+      "tags": ["stack-full"],
       "technologies": [
         "docker",
         "http",
@@ -559,7 +559,7 @@
       "roles": ["Lead Software Engineer"],
       "entity": "BTC Assessors & UAB",
       "image": "https://davidlj95.com/images/projects/bitcoin-framework.png",
-      "stack": "back",
+      "tags": ["stack-back"],
       "technologies": [
         "bitcoin",
         "python",
@@ -581,7 +581,7 @@
       "roles": ["Lead Software Engineer"],
       "entity": "IBC Biomechanics",
       "image": "https://davidlj95.com/images/projects/ibc-report-generator.png",
-      "stack": "full",
+      "tags": ["stack-full"],
       "technologies": [
         "anaconda",
         "python",
@@ -605,7 +605,7 @@
       "roles": ["Lead Software Engineer"],
       "entity": "Institut de Seguretat Pública de Catalunya (ISPC)",
       "image": "https://davidlj95.com/images/projects/police-translator.png",
-      "stack": "full",
+      "tags": ["stack-full"],
       "technologies": [
         "linux",
         "php",

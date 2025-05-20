@@ -13,7 +13,7 @@ export const makeEducation = (
   studyType: 'Study type',
   score: 'Score',
   courses: [],
-  tags: [],
+  attributes: [],
   dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-12-31')),
   ...overrides,
 })

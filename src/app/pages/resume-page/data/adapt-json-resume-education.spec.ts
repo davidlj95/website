@@ -10,6 +10,7 @@ import {
 } from '@/common/relativize-production-url'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { JsonResumeEducationItem } from '../json-resume/types'
+import { TAG_TO_ATTRIBUTE } from './attribute'
 
 describe('AdaptJsonResumeEducation', () => {
   it('should be created', () => {
@@ -65,12 +66,12 @@ describe('AdaptJsonResumeEducation', () => {
   })
 
   // Non standard fields
-  it('should map tags', () => {
+  it('should map tags to attributes', () => {
     const tags = ['cum-laude']
 
     const item = makeSut()(makeJsonResumeEducationItem({ tags }))
 
-    expect(item.tags).toEqual(tags)
+    expect(item.attributes).toEqual([TAG_TO_ATTRIBUTE[tags[0]]])
   })
 
   it('should relativize image URL', () => {

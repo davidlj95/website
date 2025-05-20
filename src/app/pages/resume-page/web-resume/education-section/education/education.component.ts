@@ -1,10 +1,8 @@
 import { Component, computed, input } from '@angular/core'
 import { Education } from '../../../data/education'
-import { SocialLeaderboard } from '@/data/material-symbols'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
-import { AttributeComponent } from '../../attribute/attribute.component'
 
-import { CardHeaderAttributesComponent } from '@/common/card/card-header/card-header-attributes/card-header-attributes.component'
+import { AttributesComponent } from '../../attributes/attributes.component'
 import { DateRangeComponent } from '../../../date-range/date-range.component'
 import { CardHeaderDetailComponent } from '@/common/card/card-header/card-header-detail/card-header-detail.component'
 import { CardHeaderTextsComponent } from '@/common/card/card-header/card-header-texts/card-header-texts.component'
@@ -26,9 +24,8 @@ import { educationToContents } from './education-to-contents'
     CardHeaderImageComponent,
     CardHeaderTextsComponent,
     CardHeaderDetailComponent,
-    CardHeaderAttributesComponent,
+    AttributesComponent,
     DateRangeComponent,
-    AttributeComponent,
     ChippedContentComponent,
   ],
 })
@@ -41,17 +38,4 @@ export class EducationComponent {
     const { name, shortName } = this.education().institution
     return name.length > 15 && shortName ? shortName : name
   })
-
-  protected readonly _tagToAttribute = TAG_TO_ATTRIBUTE
-}
-
-/** @visibleForTesting **/
-export const TAG_TO_ATTRIBUTE: Record<
-  string,
-  { readonly text: string; readonly symbol: string }
-> = {
-  'cum-laude': {
-    text: 'Cum laude',
-    symbol: SocialLeaderboard,
-  },
 }

@@ -23,16 +23,7 @@
         <app-date-range [range]="item.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
-    <app-card-header-attributes>
-      @if (item.stack) {
-        <app-attribute
-          [symbol]="_stackContent[item.stack].materialSymbol"
-          [appTestId]="_attribute.Stack"
-        >
-          {{ _stackContent[item.stack].displayName }}
-        </app-attribute>
-      }
-    </app-card-header-attributes>
+    <app-attributes [attributes]="item.attributes"> </app-attributes>
   </header>
   <app-chipped-content [contents]="_contents()"></app-chipped-content>
 </article>

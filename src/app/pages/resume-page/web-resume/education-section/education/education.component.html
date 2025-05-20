@@ -20,16 +20,7 @@
         <app-date-range [range]="education.dateRange"></app-date-range>
       </app-card-header-detail>
     </app-card-header-texts>
-    <app-card-header-attributes>
-      @for (tag of education.tags; track tag) {
-        @let attribute = _tagToAttribute[tag];
-        @if (attribute) {
-          <app-attribute [symbol]="attribute.symbol">
-            {{ attribute.text }}
-          </app-attribute>
-        }
-      }
-    </app-card-header-attributes>
+    <app-attributes [attributes]="education.attributes"></app-attributes>
   </header>
   <app-chipped-content [contents]="_contents()"></app-chipped-content>
 </article>
