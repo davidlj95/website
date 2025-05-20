@@ -4,6 +4,7 @@ import { ADAPT_JSON_RESUME_PROJECT } from './adapt-json-resume-project'
 import { map, Observable } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 
+/** @visibleForTesting */
 export interface ProjectService {
   getAll: () => Observable<readonly Project[]>
 }
