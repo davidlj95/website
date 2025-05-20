@@ -1,5 +1,5 @@
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
-import { makeProject } from '../__tests__/make-project'
+import { makeProject } from '../../data/__tests__/make-project'
 import { projectItemToContents } from './project-item-to-contents'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'

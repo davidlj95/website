@@ -7,12 +7,12 @@ import {
 } from '@/common/relativize-production-url'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { MockProvider } from 'ng-mocks'
-import { makeJsonResumeProject } from '../projects-section/__tests__/make-json-resume-project'
+import { makeJsonResumeProject } from './__tests__/make-json-resume-project'
 import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
 } from './adapt-json-resume-project'
-import { makeProject } from '../projects-section/__tests__/make-project'
+import { makeProject } from './__tests__/make-project'
 import {
   JSON_RESUME_PROJECTS,
   JsonResumeProjects,
