@@ -1,28 +1,28 @@
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { Project } from '../../data/project'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
-import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
+import { ProjectTechnologiesComponent } from './project-technologies/project-technologies.component'
 import { isNotUndefined } from '@/common/is-not-undefined'
 
-export const projectItemToContents: (
-  item: Project,
-) => readonly ChippedContent[] = (item) =>
+export const projectToContents = (
+  project: Project,
+): readonly ChippedContent[] =>
   [
-    item.description
+    project.description
       ? new ChippedContent({
           displayName: 'Description',
           component: TextContentComponent,
           inputs: {
-            text: item.description,
+            text: project.description,
           },
         })
       : undefined,
-    item.technologies.length > 0
+    project.technologies.length > 0
       ? new ChippedContent({
           displayName: 'Tech',
-          component: ProjectItemTechnologiesComponent,
+          component: ProjectTechnologiesComponent,
           inputs: {
-            technologies: item.technologies,
+            technologies: project.technologies,
           },
         })
       : undefined,

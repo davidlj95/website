@@ -1,6 +1,6 @@
 <article appCard>
   <header appCardHeader>
-    @let item = this.item();
+    @let item = this.project();
     @if (item.imageSrc) {
       <app-link [href]="item.website?.toString()" appTestId="image">
         <app-card-header-image

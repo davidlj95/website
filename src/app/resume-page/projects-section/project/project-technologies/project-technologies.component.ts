@@ -5,14 +5,14 @@ import { ContentChipListComponent } from '../../../content-chip-list/content-chi
 import { ContentChipComponent } from '../../../content-chip/content-chip.component'
 
 @Component({
-  selector: 'app-project-item-technologies',
+  selector: 'app-project-technologies',
   imports: [
     TechnologyComponent,
     ContentChipListComponent,
     ContentChipComponent,
   ],
-  templateUrl: './project-item-technologies.component.html',
+  templateUrl: './project-technologies.component.html',
 })
-export class ProjectItemTechnologiesComponent {
+export class ProjectTechnologiesComponent {
   readonly technologies = input.required<readonly string[]>()
 }

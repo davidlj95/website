@@ -1,10 +1,10 @@
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 import { makeProject } from '../../data/__tests__/make-project'
-import { projectItemToContents } from './project-item-to-contents'
-import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
+import { projectToContents } from './project-to-contents'
+import { ProjectTechnologiesComponent } from './project-technologies/project-technologies.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 
-describe('projectItemToContents', () => {
+describe('projectToContents', () => {
   describe('when description is present', () => {
     const description = 'Very cool thing and does awesome things'
 
@@ -40,10 +40,10 @@ describe('projectItemToContents', () => {
 
       expect(technologiesContents).toHaveSize(1)
       const technologiesContent =
-        technologiesContents[0] as ChippedContent<ProjectItemTechnologiesComponent>
+        technologiesContents[0] as ChippedContent<ProjectTechnologiesComponent>
 
       expect(technologiesContent.component).toEqual(
-        ProjectItemTechnologiesComponent,
+        ProjectTechnologiesComponent,
       )
 
       expect(technologiesContent.inputs).toEqual({
@@ -53,4 +53,4 @@ describe('projectItemToContents', () => {
   })
 })
 
-const makeSut = () => projectItemToContents
+const makeSut = () => projectToContents

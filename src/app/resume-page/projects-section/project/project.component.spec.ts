@@ -1,10 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing'
 
-import {
-  ATTRIBUTE,
-  ProjectItemComponent,
-  STACK_CONTENT,
-} from './project-item.component'
+import { ATTRIBUTE, ProjectComponent, STACK_CONTENT } from './project.component'
 import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
@@ -27,16 +23,16 @@ import { LinkComponent } from '../../link/link.component'
 import { textContent } from '@/test/helpers/text-content'
 import { setFixtureInputsAndDetectChanges } from '@/test/helpers/set-fixture-inputs'
 
-describe('ProjectItemComponent', () => {
-  let component: ProjectItemComponent
-  let fixture: ComponentFixture<ProjectItemComponent>
+describe('ProjectComponent', () => {
+  let component: ProjectComponent
+  let fixture: ComponentFixture<ProjectComponent>
 
   beforeEach(() => {
     ;[fixture, component] = makeSut()
   })
 
   it('should create', () => {
-    setProjectItem(fixture)
+    setProject(fixture)
 
     expect(component).toBeTruthy()
   })
@@ -44,7 +40,7 @@ describe('ProjectItemComponent', () => {
   describe('when image does not exist', () => {
     it('should not contain image component neither its link', () => {
       const imageSrc = undefined
-      setProjectItem(fixture, { imageSrc })
+      setProject(fixture, { imageSrc })
 
       const linkElement = fixture.debugElement.query(byTestId('image'))
 
@@ -57,7 +53,7 @@ describe('ProjectItemComponent', () => {
       const imageSrc = 'https://example.org/logo.png'
       const website = new URL('https://example.org')
 
-      setProjectItem(fixture, { imageSrc, website })
+      setProject(fixture, { imageSrc, website })
 
       const anchorElement = fixture.debugElement
         .query(byTestId('image'))
@@ -81,7 +77,7 @@ describe('ProjectItemComponent', () => {
     const name = 'Cool project name'
     const website = new URL('https://example.org')
 
-    setProjectItem(fixture, { name, website })
+    setProject(fixture, { name, website })
 
     const titleElement = fixture.debugElement.query(byTestId('name'))
 
@@ -91,7 +87,7 @@ describe('ProjectItemComponent', () => {
   describe('when no roles exist', () => {
     it('should not contain role', () => {
       const roles: Project['roles'] = []
-      setProjectItem(fixture, { roles })
+      setProject(fixture, { roles })
 
       const roleElement = fixture.debugElement.query(byTestId('role'))
 
@@ -103,7 +99,7 @@ describe('ProjectItemComponent', () => {
     it('should contain first role', () => {
       const roles = ['Role 1', 'Role 2']
 
-      setProjectItem(fixture, { roles })
+      setProject(fixture, { roles })
 
       const roleElement = fixture.debugElement.query(byTestId('role'))
 
@@ -115,7 +111,7 @@ describe('ProjectItemComponent', () => {
   it('should contain dates range', () => {
     const startDate = new Date('2022-02-14')
 
-    setProjectItem(fixture, { dateRange: new DateRange(startDate) })
+    setProject(fixture, { dateRange: new DateRange(startDate) })
 
     const dateRangeElement = fixture.debugElement.query(
       By.directive(DateRangeComponent),
@@ -128,7 +124,7 @@ describe('ProjectItemComponent', () => {
     it('should not include attribute', () => {
       const stack = undefined
 
-      setProjectItem(fixture, { stack })
+      setProject(fixture, { stack })
 
       const stackAttributeElement = fixture.debugElement.query(
         byTestId(ATTRIBUTE.Stack),
@@ -143,7 +139,7 @@ describe('ProjectItemComponent', () => {
       const stack = Stack.Front
       const stackContent = STACK_CONTENT[stack]
 
-      setProjectItem(fixture, { stack })
+      setProject(fixture, { stack })
 
       const stackAttributeElement = fixture.debugElement.query(
         byTestId(ATTRIBUTE.Stack),
@@ -162,7 +158,7 @@ describe('ProjectItemComponent', () => {
 })
 
 function makeSut() {
-  return componentTestSetup(ProjectItemComponent, {
+  return componentTestSetup(ProjectComponent, {
     imports: [
       TestIdDirective,
       LinkComponent,
@@ -181,11 +177,11 @@ function makeSut() {
   })
 }
 
-function setProjectItem(
-  fixture: ComponentFixture<ProjectItemComponent>,
+function setProject(
+  fixture: ComponentFixture<ProjectComponent>,
   overrides?: Partial<Project>,
 ) {
   setFixtureInputsAndDetectChanges(fixture, {
-    item: makeProject(overrides),
+    project: makeProject(overrides),
   })
 }

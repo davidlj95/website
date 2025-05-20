@@ -4,9 +4,9 @@ import { EducationCoursesComponent } from './education-courses/education-courses
 import { isNotUndefined } from '@/common/is-not-undefined'
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
 
-export const educationToContents: (
+export const educationToContents = (
   education: Education,
-) => readonly ChippedContent[] = (education) =>
+): readonly ChippedContent[] =>
   [
     education.score
       ? new ChippedContent({
