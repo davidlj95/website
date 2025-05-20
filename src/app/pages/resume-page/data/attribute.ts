@@ -40,7 +40,8 @@ export const FULLSTACK_ATTRIBUTE = {
   text: 'Full stack',
   symbol: FullStackedBarChart,
 }
-const TAG_TO_ATTRIBUTE: Record<string, Attribute> = {
+/** @visibleForTesting */
+export const TAG_TO_ATTRIBUTE: Record<string, Attribute> = {
   [FREELANCE_TAG]: FREELANCE_ATTRIBUTE,
   [EMPLOYEE_TAG]: EMPLOYEE_ATTRIBUTE,
   internship: {
