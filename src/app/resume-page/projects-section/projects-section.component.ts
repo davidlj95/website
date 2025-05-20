@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { ProjectItem } from '../data/project-item'
+import { Project } from '../data/project'
 import { ProjectItemComponent } from './project-item/project-item.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
@@ -13,7 +13,7 @@ import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
   imports: [SectionTitleComponent, CardGridComponent, ProjectItemComponent],
 })
 export class ProjectsSectionComponent {
-  protected readonly _items: readonly ProjectItem[]
+  protected readonly _items: readonly Project[]
 
   constructor(@Inject(GET_PROJECT_ITEMS) getProjectItems: GetProjectItems) {
     this._items = getProjectItems()

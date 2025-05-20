@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core'
-import { ProjectItem, Stack } from '../../data/project-item'
+import { Project, Stack } from '../../data/project'
 import { Apps, Dns, FullStackedBarChart } from '@/data/material-symbols'
 import { ChippedContent } from '../../chipped-content/chipped-content'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
@@ -34,7 +34,7 @@ import { projectItemToContents } from './project-item-to-contents'
   ],
 })
 export class ProjectItemComponent {
-  readonly item = input.required<ProjectItem>()
+  readonly item = input.required<Project>()
   protected readonly _contents = computed<readonly ChippedContent[]>(() =>
     projectItemToContents(this.item()),
   )

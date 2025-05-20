@@ -1,6 +1,6 @@
 import { Organization } from './organization'
 import { DateRange } from './date-range'
-import { ProjectItem } from './project-item'
+import { Project } from './project'
 
 export interface Experience {
   readonly company: Organization
@@ -9,5 +9,5 @@ export interface Experience {
   readonly summary: string
   readonly highlights: readonly string[]
   readonly tags: readonly string[]
-  readonly projects: readonly ProjectItem[]
+  readonly projects: readonly Project[]
 }

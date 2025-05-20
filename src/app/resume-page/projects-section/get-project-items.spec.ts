@@ -4,7 +4,7 @@ import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
 } from './adapt-json-resume-project'
-import { ProjectItem } from '../data/project-item'
+import { Project } from '../data/project'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   JSON_RESUME_PROJECTS,
@@ -23,7 +23,7 @@ describe('GetProjectItems', () => {
       'item-2' as unknown as JsonResumeProject,
     ]
     const expectedProjectItems =
-      jsonResumeProjects as unknown as readonly ProjectItem[]
+      jsonResumeProjects as unknown as readonly Project[]
     const adaptJsonResumeProject = jasmine
       .createSpy<AdaptJsonResumeProject>()
       .and.returnValues(...expectedProjectItems)

@@ -4,7 +4,7 @@ import {
   InvalidStackValueError,
 } from './adapt-json-resume-project'
 import { MockProvider } from 'ng-mocks'
-import { Stack } from '../data/project-item'
+import { Stack } from '../data/project'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import {
   RELATIVIZE_PRODUCTION_URL,

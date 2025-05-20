@@ -1,11 +1,11 @@
-import { ProjectItem } from '../../data/project-item'
+import { Project } from '../../data/project'
 import { DateRange } from '../../data/date-range'
 import { makeItemFactory } from '@/test/helpers/make-item-factory'
 
 export const makeProjectItem = makeItemFactory<
-  ProjectItem,
-  ConstructorParameters<typeof ProjectItem>[0]
->(ProjectItem, {
+  Project,
+  ConstructorParameters<typeof Project>[0]
+>(Project, {
   name: 'Sample project item',
   entity: 'Project entity',
   description: 'Project item',

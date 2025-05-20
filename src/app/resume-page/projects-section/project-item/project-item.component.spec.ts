@@ -9,7 +9,7 @@ import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
-import { ProjectItem, Stack } from '../../data/project-item'
+import { Project, Stack } from '../../data/project'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
 import { DateRangeComponent } from '../../date-range/date-range.component'
@@ -184,7 +184,7 @@ function makeSut() {
 
 function setProjectItem(
   fixture: ComponentFixture<ProjectItemComponent>,
-  overrides?: ItemFactoryOverrides<typeof ProjectItem>,
+  overrides?: ItemFactoryOverrides<typeof Project>,
 ) {
   setFixtureInputsAndDetectChanges(fixture, {
     item: makeProjectItem(overrides),

@@ -1,6 +1,6 @@
 import { DateRange } from './date-range'
 
-export class ProjectItem {
+export class Project {
   readonly name: string
   readonly description: string
   readonly dateRange: DateRange

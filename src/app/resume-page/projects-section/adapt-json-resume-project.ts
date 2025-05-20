@@ -1,11 +1,11 @@
 import { inject, InjectionToken } from '@angular/core'
-import { ProjectItem, Stack } from '../data/project-item'
+import { Project, Stack } from '../data/project'
 import { DateRange } from '../data/date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JsonResumeProject } from './json-resume-projects'
 
 /** @visibleForTesting */
-export type AdaptJsonResumeProject = (project: JsonResumeProject) => ProjectItem
+export type AdaptJsonResumeProject = (project: JsonResumeProject) => Project
 export const ADAPT_JSON_RESUME_PROJECT =
   new InjectionToken<AdaptJsonResumeProject>(
     /* istanbul ignore next */
@@ -14,7 +14,7 @@ export const ADAPT_JSON_RESUME_PROJECT =
       factory: () => {
         const relativizeUrl = inject(RELATIVIZE_PRODUCTION_URL)
         return (project) =>
-          new ProjectItem({
+          new Project({
             name: project.name,
             description: project.description,
             dateRange: new DateRange(

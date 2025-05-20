@@ -2,7 +2,7 @@ import { TextContentComponent } from '../../chipped-content/text-content/text-co
 import { experienceToContents } from './experience-to-contents'
 import { makeExperience } from '../../data/__tests__/make-experience'
 import { ExperienceHighlightsComponent } from './experience-highlights/experience-highlights.component'
-import { ProjectItem } from '../../data/project-item'
+import { Project } from '../../data/project'
 import { makeProjectItem } from '../../projects-section/__tests__/make-project-item'
 import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
@@ -57,7 +57,7 @@ describe('experienceToContents', () => {
     const aTechnology = 'foo-tech'
     const anotherTechnology = 'bar-tech'
     const technologies = [aTechnology, anotherTechnology]
-    const projects: readonly ProjectItem[] = [
+    const projects: readonly Project[] = [
       makeProjectItem({ technologies: [aTechnology], name: 'project A' }),
       makeProjectItem({
         technologies: [aTechnology, anotherTechnology],
