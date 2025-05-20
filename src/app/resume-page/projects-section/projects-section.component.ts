@@ -1,10 +1,10 @@
-import { Component, Inject } from '@angular/core'
-import { ProjectItem } from './project-item/project-item'
+import { Component, inject } from '@angular/core'
 import { ProjectItemComponent } from './project-item/project-item.component'
 
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '../card-grid/card-grid.component'
-import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
+import { PROJECT_SERVICE } from '../data/project-service'
+import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -13,9 +13,5 @@ import { GET_PROJECT_ITEMS, GetProjectItems } from './get-project-items'
   imports: [SectionTitleComponent, CardGridComponent, ProjectItemComponent],
 })
 export class ProjectsSectionComponent {
-  protected readonly _items: readonly ProjectItem[]
-
-  constructor(@Inject(GET_PROJECT_ITEMS) getProjectItems: GetProjectItems) {
-    this._items = getProjectItems()
-  }
+  protected readonly _projects = toSignal(inject(PROJECT_SERVICE).getAll())
 }

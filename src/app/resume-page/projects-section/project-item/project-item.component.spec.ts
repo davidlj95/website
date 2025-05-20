@@ -9,7 +9,7 @@ import { MockComponents } from 'ng-mocks'
 import { CardComponent } from '../../card/card.component'
 import { CardHeaderImageComponent } from '../../card/card-header/card-header-image/card-header-image.component'
 import { CardHeaderComponent } from '../../card/card-header/card-header.component'
-import { ProjectItem, Stack } from './project-item'
+import { Project, Stack } from '../../data/project'
 import { CardHeaderTextsComponent } from '../../card/card-header/card-header-texts/card-header-texts.component'
 import { CardHeaderDetailComponent } from '../../card/card-header/card-header-detail/card-header-detail.component'
 import { DateRangeComponent } from '../../date-range/date-range.component'
@@ -20,8 +20,7 @@ import { CardHeaderAttributesComponent } from '../../card/card-header/card-heade
 import { AttributeComponent } from '../../attribute/attribute.component'
 import { ChippedContentComponent } from '../../chipped-content/chipped-content.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
-import { makeProjectItem } from '../__tests__/make-project-item'
-import { ItemFactoryOverrides } from '@/test/helpers/make-item-factory'
+import { makeProject } from '../../data/__tests__/make-project'
 import { getComponentInstance } from '@/test/helpers/get-component-instance'
 import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../link/link.component'
@@ -91,7 +90,7 @@ describe('ProjectItemComponent', () => {
 
   describe('when no roles exist', () => {
     it('should not contain role', () => {
-      const roles = undefined
+      const roles: Project['roles'] = []
       setProjectItem(fixture, { roles })
 
       const roleElement = fixture.debugElement.query(byTestId('role'))
@@ -184,9 +183,9 @@ function makeSut() {
 
 function setProjectItem(
   fixture: ComponentFixture<ProjectItemComponent>,
-  overrides?: ItemFactoryOverrides<typeof ProjectItem>,
+  overrides?: Partial<Project>,
 ) {
   setFixtureInputsAndDetectChanges(fixture, {
-    item: makeProjectItem(overrides),
+    item: makeProject(overrides),
   })
 }

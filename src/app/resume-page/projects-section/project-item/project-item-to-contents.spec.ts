@@ -1,5 +1,5 @@
 import { TextContentComponent } from '../../chipped-content/text-content/text-content.component'
-import { makeProjectItem } from '../__tests__/make-project-item'
+import { makeProject } from '../../data/__tests__/make-project'
 import { projectItemToContents } from './project-item-to-contents'
 import { ProjectItemTechnologiesComponent } from './project-item-technologies/project-item-technologies.component'
 import { ChippedContent } from '../../chipped-content/chipped-content'
@@ -11,7 +11,7 @@ describe('projectItemToContents', () => {
     it('should include description content', () => {
       const sut = makeSut()
 
-      const contents = sut(makeProjectItem({ description }))
+      const contents = sut(makeProject({ description }))
       const descriptionContents = contents.filter(
         (content) => content.displayName === 'Description',
       )
@@ -33,7 +33,7 @@ describe('projectItemToContents', () => {
     it('should include technologies content', () => {
       const sut = makeSut()
 
-      const contents = sut(makeProjectItem({ technologies }))
+      const contents = sut(makeProject({ technologies }))
       const technologiesContents = contents.filter(
         (content) => content.displayName === 'Tech',
       )

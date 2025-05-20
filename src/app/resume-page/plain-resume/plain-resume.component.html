@@ -92,19 +92,19 @@
     </section>
     <section>
       <h2>Projects</h2>
-      @for (item of _projects; track item) {
+      @for (project of _projects(); track project) {
         <article>
           <header>
             <h3>
-              <app-link [href]="item.website?.toString()">{{
-                item.name
+              <app-link [href]="project.website?.toString()">{{
+                project.name
               }}</app-link>
-              &#64; {{ item.entity }}
+              &#64; {{ project.entity }}
             </h3>
-            <app-date-range [range]="item.dateRange"></app-date-range>
+            <app-date-range [range]="project.dateRange"></app-date-range>
           </header>
           <main>
-            {{ item.description }}
+            {{ project.description }}
           </main>
         </article>
       }

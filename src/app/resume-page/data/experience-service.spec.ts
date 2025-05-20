@@ -15,7 +15,7 @@ describe('ExperienceService', () => {
     expect(makeSut()).toBeTruthy()
   })
 
-  it('should return adapted items from JSON Resume', async () => {
+  it('should return adapted experiences from JSON Resume', async () => {
     const work = [
       'item-1' as unknown as JsonResumeWorkItem,
       'item-2' as unknown as JsonResumeWorkItem,

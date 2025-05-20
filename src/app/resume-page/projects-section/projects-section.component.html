@@ -1,6 +1,6 @@
 <h2 appSectionTitle id="projects">Projects</h2>
 <app-card-grid>
-  @for (item of _items; track item) {
-    <app-project-item [item]="item"></app-project-item>
+  @for (project of _projects(); track project) {
+    <app-project-item [item]="project"></app-project-item>
   }
 </app-card-grid>

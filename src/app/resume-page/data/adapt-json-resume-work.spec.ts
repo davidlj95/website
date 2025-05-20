@@ -7,17 +7,14 @@ import {
 } from '@/common/relativize-production-url'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { MockProvider } from 'ng-mocks'
-import { makeJsonResumeProject } from '../projects-section/__tests__/make-json-resume-project'
+import { makeJsonResumeProject } from './__tests__/make-json-resume-project'
 import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
-} from '../projects-section/adapt-json-resume-project'
-import { makeProjectItem } from '../projects-section/__tests__/make-project-item'
-import {
-  JSON_RESUME_PROJECTS,
-  JsonResumeProjects,
-} from '../projects-section/json-resume-projects'
-import { JsonResumeWorkItem } from '../json-resume/types'
+} from './adapt-json-resume-project'
+import { makeProject } from './__tests__/make-project'
+import { JSON_RESUME_PROJECTS } from './json-resume-projects'
+import { JsonResumeProjects, JsonResumeWorkItem } from '../json-resume/types'
 
 describe('AdaptJsonResumeWork', () => {
   it('should be created', () => {
@@ -110,7 +107,7 @@ describe('AdaptJsonResumeWork', () => {
   it('should add projects whose entity matches company name', () => {
     const companyName = 'ACME Intl.'
     const project = makeJsonResumeProject({ entity: companyName })
-    const projectItem = makeProjectItem({ name: project.name })
+    const projectItem = makeProject({ name: project.name })
     const adaptJsonResumeProject = jasmine
       .createSpy<AdaptJsonResumeProject>()
       .and.returnValue(projectItem)
