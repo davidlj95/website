@@ -26,5 +26,8 @@
       }
     </app-card-header-attributes>
   </header>
-  <app-chipped-content [contents]="_contents()"></app-chipped-content>
+  @let contents = _contents();
+  @if (contents) {
+    <app-chipped-content [contents]="contents"></app-chipped-content>
+  }
 </article>

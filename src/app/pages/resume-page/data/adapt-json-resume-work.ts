@@ -1,8 +1,6 @@
 import { inject, InjectionToken } from '@angular/core'
 import { DateRange } from './date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
-import { JSON_RESUME_PROJECTS } from './json-resume-projects'
-import { ADAPT_JSON_RESUME_PROJECT } from './adapt-json-resume-project'
 import { JsonResumeWorkItem } from '../json-resume/types'
 import { Experience } from './experience'
 
@@ -13,8 +11,6 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
   isDevMode ? 'AdaptJsonResumeWork' : 'AJRW',
   {
     factory: () => {
-      const projects = inject(JSON_RESUME_PROJECTS)
-      const adaptProject = inject(ADAPT_JSON_RESUME_PROJECT)
       const relativizeUrl = inject(RELATIVIZE_PRODUCTION_URL)
       // 👇 JSON Resume Schema of "work"
       // https://github.com/jsonresume/resume-schema/blob/v1.0.0/schema.json#L100-L149
@@ -43,9 +39,6 @@ export const ADAPT_JSON_RESUME_WORK = new InjectionToken<AdaptJsonResumeWork>(
           new Date(startDate),
           !endDate ? undefined : new Date(endDate),
         ),
-        projects: projects
-          .filter((project) => project.entity === name)
-          .map((project) => adaptProject(project)),
       })
     },
   },
