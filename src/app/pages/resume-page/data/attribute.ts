@@ -9,15 +9,7 @@ import {
   ToolsLadder,
   Work,
 } from '@/data/material-symbols'
-import {
-  STACK_BACKEND_TAG,
-  STACK_FRONTEND_TAG,
-  STACK_FULLSTACK_TAG,
-} from './projects/adapt-json-resume-project'
-import {
-  EMPLOYEE_TAG,
-  FREELANCE_TAG,
-} from './experience/adapt-json-resume-work'
+import { isNotUndefined } from '@/common/is-not-undefined'
 
 export interface Attribute {
   readonly text: string
@@ -25,10 +17,14 @@ export interface Attribute {
 }
 
 /** @visibleForTesting */
+export const FREELANCE_TAG = 'freelance'
+/** @visibleForTesting */
 export const FREELANCE_ATTRIBUTE = {
   text: 'Freelance',
   symbol: Work,
 }
+/** @visibleForTesting */
+export const EMPLOYEE_TAG = 'employee'
 /** @visibleForTesting */
 export const EMPLOYEE_ATTRIBUTE = {
   text: 'Employee',
@@ -44,6 +40,7 @@ export const FULLSTACK_ATTRIBUTE = {
   text: 'Full stack',
   symbol: FullStackedBarChart,
 }
+/** @visibleForTesting */
 export const TAG_TO_ATTRIBUTE: Record<string, Attribute> = {
   [FREELANCE_TAG]: FREELANCE_ATTRIBUTE,
   [EMPLOYEE_TAG]: EMPLOYEE_ATTRIBUTE,
@@ -60,13 +57,16 @@ export const TAG_TO_ATTRIBUTE: Record<string, Attribute> = {
     symbol: ToolsLadder,
   },
   'cum-laude': CUM_LAUDE_ATTRIBUTE,
-  [STACK_FRONTEND_TAG]: {
+  'stack-front': {
     text: 'Frontend',
     symbol: Apps,
   },
-  [STACK_BACKEND_TAG]: {
+  'stack-back': {
     text: 'Backend',
     symbol: Dns,
   },
-  [STACK_FULLSTACK_TAG]: FULLSTACK_ATTRIBUTE,
+  'stack-full': FULLSTACK_ATTRIBUTE,
 }
+
+export const tagsToAttributes = (tags: readonly string[]): Attribute[] =>
+  tags.map((tag) => TAG_TO_ATTRIBUTE[tag]).filter(isNotUndefined)

@@ -3,8 +3,7 @@ import { Project } from './project'
 import { DateRange } from '../date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JsonResumeProject } from '../json-resume/types'
-import { TAG_TO_ATTRIBUTE } from '../attribute'
-import { isNotUndefined } from '@/common/is-not-undefined'
+import { tagsToAttributes } from '../attribute'
 
 /** @visibleForTesting */
 export type AdaptJsonResumeProject = (project: JsonResumeProject) => Project
@@ -37,15 +36,9 @@ export const ADAPT_JSON_RESUME_PROJECT =
           roles,
           entity,
           imageSrc: image ? relativizeUrl(new URL(image)) : undefined,
-          attributes: (tags ?? [])
-            .map((tag) => TAG_TO_ATTRIBUTE[tag])
-            .filter(isNotUndefined),
+          attributes: tagsToAttributes(tags ?? []),
           technologies: technologies,
         })
       },
     },
   )
-
-export const STACK_FRONTEND_TAG = 'stack-front'
-export const STACK_BACKEND_TAG = 'stack-back'
-export const STACK_FULLSTACK_TAG = 'stack-full'

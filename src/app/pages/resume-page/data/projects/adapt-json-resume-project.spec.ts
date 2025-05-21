@@ -1,7 +1,6 @@
 import {
   ADAPT_JSON_RESUME_PROJECT,
   AdaptJsonResumeProject,
-  STACK_BACKEND_TAG,
 } from './adapt-json-resume-project'
 import { MockProvider } from 'ng-mocks'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
@@ -9,7 +8,6 @@ import {
   RELATIVIZE_PRODUCTION_URL,
   RelativizeProductionUrl,
 } from '@/common/relativize-production-url'
-import { TAG_TO_ATTRIBUTE } from '../attribute'
 import resume from '@/data/resume.json'
 import { JsonResumeProject } from '../json-resume/types'
 
@@ -117,14 +115,6 @@ describe('AdaptJsonResumeProject', () => {
       expect(relativizeProductionUrl).not.toHaveBeenCalled()
       expect(item.imageSrc).toBeUndefined()
     })
-  })
-
-  it('should map tags to attributes', () => {
-    const tags = [STACK_BACKEND_TAG]
-
-    const item = makeSut()(makeJsonResumeProject({ tags }))
-
-    expect(item.attributes).toEqual([TAG_TO_ATTRIBUTE[tags[0]]])
   })
 
   it('should map technologies', () => {

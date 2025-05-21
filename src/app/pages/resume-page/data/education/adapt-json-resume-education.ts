@@ -3,8 +3,7 @@ import { Education } from './education'
 import { DateRange } from '../date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { JsonResumeEducationItem } from '../json-resume/types'
-import { TAG_TO_ATTRIBUTE } from '../attribute'
-import { isNotUndefined } from '@/common/is-not-undefined'
+import { tagsToAttributes } from '../attribute'
 
 /** @visibleForTesting */
 export type AdaptJsonResumeEducation = (
@@ -47,9 +46,7 @@ export const ADAPT_JSON_RESUME_EDUCATION =
           ),
           score,
           courses,
-          attributes: (tags ?? [])
-            .map((tag) => TAG_TO_ATTRIBUTE[tag])
-            .filter(isNotUndefined),
+          attributes: tagsToAttributes(tags ?? []),
         })
       },
     },
