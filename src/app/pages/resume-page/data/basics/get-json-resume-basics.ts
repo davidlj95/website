@@ -61,7 +61,7 @@ export const GET_JSON_RESUME_BASICS = new InjectionToken<GetJsonResumeBasics>(
                         `Icon not found for social network '${profile.network}'`,
                       )
                     }
-                    return undefined
+                    return
                   }
                   return {
                     label: `${profile.username} at ${profile.network}`,

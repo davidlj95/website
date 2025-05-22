@@ -6,6 +6,7 @@ import { tagsToAttributes } from '../attribute'
 import { combineLatestWith, map, Observable } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 import { GET_JSON_RESUME_PROJECTS } from '../projects/get-json-resume-projects'
+import { urlOrUndefined } from '../url-or-undefined'
 
 type GetJsonResumeExperiences = () => Observable<readonly Experience[]>
 export const GET_JSON_RESUME_EXPERIENCES =
@@ -50,7 +51,7 @@ export const GET_JSON_RESUME_EXPERIENCES =
                     company: {
                       name,
                       imageSrc: relativizeUrl(new URL(image)),
-                      website: url ? new URL(url) : undefined,
+                      website: urlOrUndefined(url),
                     },
                     position,
                     summary,

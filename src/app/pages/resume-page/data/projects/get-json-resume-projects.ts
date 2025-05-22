@@ -5,6 +5,7 @@ import { tagsToAttributes } from '../attribute'
 import { map, Observable } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 import { dateRangeFromStrings } from '../date-range'
+import { urlOrUndefined } from '../url-or-undefined'
 
 /** @visibleForTesting */
 export type GetJsonResumeProjects = () => Observable<readonly Project[]>
@@ -35,7 +36,7 @@ export const GET_JSON_RESUME_PROJECTS =
                   name,
                   description,
                   dateRange: dateRangeFromStrings(startDate, endDate),
-                  website: url ? new URL(url) : undefined,
+                  website: urlOrUndefined(url),
                   roles,
                   entity,
                   imageSrc: image ? relativizeUrl(new URL(image)) : undefined,
