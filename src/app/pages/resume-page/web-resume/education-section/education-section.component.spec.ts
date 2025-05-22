@@ -10,7 +10,7 @@ import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 import { of } from 'rxjs'
 import { Education } from '../../data/education/education'
-import { EDUCATION_SERVICE } from '../../data/education/education-service'
+import { EDUCATION_SERVICE } from '../../data/education/education.service'
 
 describe('EducationSectionComponent', () => {
   let component: EducationSectionComponent

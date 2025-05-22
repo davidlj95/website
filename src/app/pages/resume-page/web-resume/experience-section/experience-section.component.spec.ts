@@ -8,8 +8,8 @@ import { makeExperience } from '../../data/experience/__tests__/make-experience'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 import { of } from 'rxjs'
-import { GET_JSON_RESUME_EXPERIENCES } from '../../data/experience/get-json-resume-experiences'
 import { Experience } from '../../data/experience/experience'
+import { EXPERIENCE_SERVICE } from '../../data/experience/experience.service'
 
 describe('ExperienceSectionComponent', () => {
   let component: ExperienceSectionComponent
@@ -47,7 +47,9 @@ function makeSut({
       ),
     ],
     providers: [
-      MockProvider(GET_JSON_RESUME_EXPERIENCES, () => of(experiences ?? [])),
+      MockProvider(EXPERIENCE_SERVICE, {
+        getAll: () => of(experiences ?? []),
+      }),
     ],
   })
 }

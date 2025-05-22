@@ -5,7 +5,7 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 
 import { toSignal } from '@angular/core/rxjs-interop'
-import { EDUCATION_SERVICE } from '../../data/education/education-service'
+import { EDUCATION_SERVICE } from '../../data/education/education.service'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
