@@ -77,6 +77,27 @@ describe('GetJsonResumeBasics', () => {
       },
     ])
   })
+
+  it('should not map unknown profiles and log about it (in dev mode)', async () => {
+    const unknownProfile = {
+      network: 'unknown-network',
+      username: 'foo',
+      url: 'https://example.net/foo',
+    } satisfies JsonResumeBasics['profiles'][number]
+
+    const consoleErrorSpy = spyOn(console, 'error')
+    const { socials } = await callSut({
+      jsonResumeBasics: makeJsonResumeBasics({
+        profiles: [unknownProfile],
+      }),
+    })
+
+    expect(socials).toEqual([])
+
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      jasmine.stringContaining('Icon not found'),
+    )
+  })
 })
 
 const makeSut = ({
