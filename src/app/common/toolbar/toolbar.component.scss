@@ -1,11 +1,13 @@
-@use '../../../sass/animations';
-@use '../../../sass/margins';
-@use '../../../sass/toolbar';
+@use 'animations';
+@use 'margins';
+@use 'toolbar';
 
 :host {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  gap: margins.$s;
 
   background-color: var(--app-color-toolbar-background);
   color: var(--ui-text);

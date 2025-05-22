@@ -10,12 +10,18 @@ import { By } from '@angular/platform-browser'
 import { WebResumeComponent } from './web-resume/web-resume.component'
 import { ActivatedRoute, provideRouter } from '@angular/router'
 import { PlainResumeComponent } from './plain-resume/plain-resume.component'
-import { MockComponents } from 'ng-mocks'
+import { MockComponents, MockProvider } from 'ng-mocks'
 import { ToolbarButtonComponent } from '@/common/toolbar-button/toolbar-button.component'
 import { ToolbarComponent } from '@/common/toolbar/toolbar.component'
 import { TestBed } from '@angular/core/testing'
 import { SelectorComponent } from '@/common/selector/selector.component'
 import { tick } from '@/test/helpers/tick'
+import {
+  RESUME_CONFIG_SERVICE,
+  ResumeConfigService,
+} from './data/resume-config.service'
+import { CheckboxComponent } from '@/common/checkbox/checkbox.component'
+import { CheckboxLabelComponent } from '@/common/checkbox-label/checkbox-label.component'
 
 describe('ResumePageComponent', () => {
   it('should create', () => {
@@ -70,20 +76,42 @@ describe('ResumePageComponent', () => {
 
     expect(route.snapshot.queryParamMap.has(PLAIN_QUERY_PARAM)).toBeFalse()
   })
+
+  it('should set compact mode when checking it', () => {
+    const isCompact = true
+    const setCompact = jasmine.createSpy<ResumeConfigService['setCompact']>()
+    const [fixture] = makeSut({ setCompact })
+
+    fixture.componentInstance.onCompactModeChange({
+      target: { checked: isCompact } as HTMLInputElement,
+    } satisfies Partial<Event> as unknown as Event)
+
+    expect(setCompact).toHaveBeenCalledWith(isCompact)
+  })
 })
 
-const makeSut = () => {
+const makeSut = ({
+  setCompact,
+}: { setCompact?: ResumeConfigService['setCompact'] } = {}) => {
   const [fixture, component] = componentTestSetup(ResumePageComponent, {
     imports: [
       MockComponents(
         WebResumeComponent,
         PlainResumeComponent,
         SelectorComponent,
+        CheckboxComponent,
+        CheckboxLabelComponent,
       ),
       ToolbarComponent,
       ToolbarButtonComponent,
     ],
-    providers: [provideRouter([])],
+    providers: [
+      provideRouter([]),
+      MockProvider(RESUME_CONFIG_SERVICE, {
+        // eslint-disable-next-line jasmine/no-unsafe-spy
+        setCompact: setCompact ?? jasmine.createSpy(),
+      }),
+    ],
   })
   fixture.detectChanges()
   return [fixture, component] as const
