@@ -3,10 +3,9 @@ import { MockProvider } from 'ng-mocks'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { firstValueFrom, of } from 'rxjs'
 import { makeProject } from './__tests__/make-project'
-import {
-  GET_JSON_RESUME_PROJECTS,
-  GetJsonResumeProjects,
-} from './get-json-resume-projects'
+import { GET_JSON_RESUME_PROJECTS } from './get-json-resume-projects'
+import { Project } from './project'
+import { RESUME_CONFIG_SERVICE } from '../resume-config.service'
 
 describe('ProjectService', () => {
   it('should be created', () => {
@@ -14,33 +13,42 @@ describe('ProjectService', () => {
   })
 
   it('should return JSON Resume projects', async () => {
-    const projects = [makeProject(), makeProject()]
+    const projects = [makeProject({ name: 'a' }), makeProject({ name: 'b' })]
 
-    const getJsonResumeProjects = jasmine
-      .createSpy<GetJsonResumeProjects>()
-      .and.returnValue(of(projects))
-
-    const sut = makeSut({ getJsonResumeProjects })
+    const sut = makeSut({ jsonResumeProjects: projects })
 
     const actual = await firstValueFrom(sut.getAll())
 
-    expect(actual).toEqual(actual)
-    expect(getJsonResumeProjects).toHaveBeenCalledOnceWith()
+    expect(actual).toEqual(projects)
+  })
+
+  it('should return no projects when compact mode is enabled', async () => {
+    const sut = makeSut({
+      jsonResumeProjects: [
+        makeProject({ name: 'a' }),
+        makeProject({ name: 'b' }),
+      ],
+      isCompact: true,
+    })
+
+    const actual = await firstValueFrom(sut.getAll())
+
+    expect(actual).toEqual([])
   })
 })
 
 const makeSut = ({
-  getJsonResumeProjects,
+  jsonResumeProjects,
+  isCompact,
 }: {
-  getJsonResumeProjects?: GetJsonResumeProjects
+  jsonResumeProjects?: readonly Project[]
+  isCompact?: boolean
 } = {}) =>
   serviceTestSetup(PROJECT_SERVICE, {
     providers: [
-      MockProvider(
-        GET_JSON_RESUME_PROJECTS,
-        getJsonResumeProjects ??
-          // eslint-disable-next-line jasmine/no-unsafe-spy
-          jasmine.createSpy<GetJsonResumeProjects>().and.returnValue(of([])),
+      MockProvider(GET_JSON_RESUME_PROJECTS, () =>
+        of(jsonResumeProjects ?? []),
       ),
+      MockProvider(RESUME_CONFIG_SERVICE, { compact$: of(isCompact ?? false) }),
     ],
   })
