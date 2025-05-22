@@ -23,6 +23,7 @@ import {
 import { CheckboxComponent } from '@/common/checkbox/checkbox.component'
 import { CheckboxLabelComponent } from '@/common/checkbox-label/checkbox-label.component'
 import { firstValueFrom, of } from 'rxjs'
+import { NgIcon } from '@ng-icons/core'
 
 describe('ResumePageComponent', () => {
   it('should create', () => {
@@ -111,6 +112,7 @@ const makeSut = ({
         SelectorComponent,
         CheckboxComponent,
         CheckboxLabelComponent,
+        NgIcon,
       ),
       ToolbarComponent,
       ToolbarButtonComponent,
