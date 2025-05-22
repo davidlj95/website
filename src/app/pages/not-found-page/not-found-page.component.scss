@@ -1,8 +1,8 @@
-@use '../../../sass/borders';
-@use '../../../sass/page';
-@use '../../../sass/margins';
-@use '../../../sass/material-symbols';
-@use '../../../sass/paddings';
+@use 'borders';
+@use 'page';
+@use 'margins';
+@use 'material-symbols';
+@use 'paddings';
 
 :host {
   display: flex;
