@@ -44,6 +44,7 @@
         // 👇 Unlisted, but hoisted via pnpm config
         "@eslint/js",
         // 👇 In SCSS files, which are not parsed yet
+        "@fontsource/noto-sans",
         "@fontsource/roboto",
         "@fontsource/roboto-mono",
         // 👇 Used by script, but not imported directly

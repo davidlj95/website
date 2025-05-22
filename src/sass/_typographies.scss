@@ -5,8 +5,9 @@
   @import '@fontsource/roboto-mono/400.css';
 }
 
+$body-font-family: 'Roboto', 'Helvetica', sans-serif;
 @mixin body-font {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-family: $body-font-family;
 }
 
 @mixin monospace-font {
@@ -22,10 +23,14 @@
   h6 {
     font-weight: 300;
   }
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.75rem;
-  }
+}
+
+@mixin print-imports {
+  @import '@fontsource/noto-sans/400.css';
+}
+
+@mixin print-font {
+  font-family: 'Noto Sans', $body-font-family;
+  font-optical-sizing: auto;
+  font-weight: normal;
 }
