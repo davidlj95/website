@@ -1,8 +1,8 @@
 import { MockProvider } from 'ng-mocks'
 import {
-  GET_JSON_RESUME_EDUCATION,
-  GetJsonResumeEducation,
-} from './get-json-resume-education'
+  GET_JSON_RESUME_EDUCATIONS,
+  GetJsonResumeEducations,
+} from './get-json-resume-educations'
 import {
   RELATIVIZE_PRODUCTION_URL,
   RelativizeProductionUrl,
@@ -13,7 +13,7 @@ import { lastValueFrom, of } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 import { JsonResumeEducation } from '../json-resume/json-resume-types'
 
-describe('GetJsonResumeEducation', () => {
+describe('GetJsonResumeEducations', () => {
   it('should be created', () => {
     expect(makeSut()).toBeTruthy()
   })
@@ -98,8 +98,8 @@ const makeSut = ({
 }: {
   jsonResumeEducation?: JsonResumeEducation
   relativizeProductionUrl?: RelativizeProductionUrl
-} = {}): GetJsonResumeEducation =>
-  serviceTestSetup(GET_JSON_RESUME_EDUCATION, {
+} = {}): GetJsonResumeEducations =>
+  serviceTestSetup(GET_JSON_RESUME_EDUCATIONS, {
     providers: [
       MockProvider(JsonResumeService, {
         getEducation: () => of(jsonResumeEducation ?? []),

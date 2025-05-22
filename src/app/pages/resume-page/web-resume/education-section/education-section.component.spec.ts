@@ -10,7 +10,7 @@ import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
 import { of } from 'rxjs'
 import { Education } from '../../data/education/education'
-import { GET_JSON_RESUME_EDUCATION } from '../../data/education/get-json-resume-education'
+import { GET_JSON_RESUME_EDUCATIONS } from '../../data/education/get-json-resume-educations'
 
 describe('EducationSectionComponent', () => {
   let component: EducationSectionComponent
@@ -46,7 +46,7 @@ function makeSut({ educations }: { educations?: readonly Education[] } = {}) {
       ),
     ],
     providers: [
-      MockProvider(GET_JSON_RESUME_EDUCATION, () => of(educations ?? [])),
+      MockProvider(GET_JSON_RESUME_EDUCATIONS, () => of(educations ?? [])),
     ],
   })
 }

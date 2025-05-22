@@ -7,12 +7,12 @@ import { map, Observable } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 
 /** @visibleForTesting */
-export type GetJsonResumeEducation = () => Observable<readonly Education[]>
+export type GetJsonResumeEducations = () => Observable<readonly Education[]>
 /** @visibleForTesting */
-export const GET_JSON_RESUME_EDUCATION =
-  new InjectionToken<GetJsonResumeEducation>(
+export const GET_JSON_RESUME_EDUCATIONS =
+  new InjectionToken<GetJsonResumeEducations>(
     /* istanbul ignore next */
-    isDevMode ? 'GetJsonResumeEducation' : 'GJRE',
+    isDevMode ? 'GetJsonResumeEducations' : 'GJRE',
     {
       factory: () => {
         const jsonResumeService = inject(JsonResumeService)

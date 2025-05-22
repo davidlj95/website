@@ -10,7 +10,7 @@ import { EnergySavingsLeaf } from '@/data/material-symbols'
 import { toSignal } from '@angular/core/rxjs-interop'
 import { GET_JSON_RESUME_BASICS } from '../data/basics/get-json-resume-basics'
 import { GET_JSON_RESUME_LANGUAGES } from '../data/languages/get-json-resume-languages'
-import { GET_JSON_RESUME_EDUCATION } from '../data/education/get-json-resume-education'
+import { GET_JSON_RESUME_EDUCATIONS } from '../data/education/get-json-resume-educations'
 import { GET_JSON_RESUME_EXPERIENCES } from '../data/experience/get-json-resume-experiences'
 
 @Component({
@@ -32,7 +32,9 @@ export class PlainResumeComponent {
   protected readonly _experiences = toSignal(
     inject(GET_JSON_RESUME_EXPERIENCES)(),
   )
-  protected readonly _educations = toSignal(inject(GET_JSON_RESUME_EDUCATION)())
+  protected readonly _educations = toSignal(
+    inject(GET_JSON_RESUME_EDUCATIONS)(),
+  )
   protected readonly _projects = toSignal(inject(PROJECT_SERVICE).getAll())
   protected readonly _languages = toSignal(inject(GET_JSON_RESUME_LANGUAGES)())
   protected readonly _materialSymbols = { EnergySavingsLeaf }
