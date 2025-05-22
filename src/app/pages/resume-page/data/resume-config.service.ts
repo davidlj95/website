@@ -1,6 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs'
 import { InjectionToken } from '@angular/core'
 
+/** @visibleForTesting */
 export interface ResumeConfigService {
   compact$: Observable<boolean>
   setCompact(compact: boolean): void
