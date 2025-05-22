@@ -63,7 +63,7 @@
       "summary": "Took a planned break from corporate work to focus on deepening technical knowledge in areas previously limited by time constraints during full-time roles. Explored topics such as semantic release, in-depth Angular, JavaScript/Typescript bundling optimizations and the maintenance of open source (npm) libraries. Complemented technical growth with learning on team culture and engineering management, reading several key books on leadership and collaboration.",
       "highlights": [
         "Created an open-source library for Angular for managing meta tags: [@davidlj95/ngx-meta](https://www.npmjs.com/package/@davidlj95/ngx-meta)",
-        "Built a [responsive fashion stylist portfolio](https://christianlazaro.es) featuring optimized image delivery via multiple CDN providers",
+        "Built a [fashion stylist portfolio](https://christianlazaro.es) featuring optimized responsive images delivery",
         "Contributed to open source projects through many [pull requests](https://github.com/pulls?q=author%3A%40me+-user%3A%40me+created%3A%3E2023-05-15) and [issues](https://github.com/search?q=is%3Aissue+author%3Adavidlj95+-user%3Adavidlj95&type=issues&s=created&o=desc). Plus other kinds of [public contributions](https://www.notion.so/davidlj95/9f766c2fe57e4a9ebf0bc571b62ec446?v=9db04a3147ec4323883403873a13c05d&pvs=4)",
         "Designed and launched a [personal website](https://davidlj95.com) on the internet"
       ],
@@ -76,13 +76,13 @@
       "url": "https://www.vestoapp.com",
       "startDate": "2022-10-10",
       "endDate": "2023-07-14",
-      "summary": "Backend: web APIs and background processing. Led, engineered and assisted many product features. Planned robustness proposal to improve the app stability by reducing error rates. Focusing on gaining observability to push for data-driven decisions. Optimized processes to reduce customer support workload",
+      "summary": "Backend: web APIs and background processing. Led, engineered and assisted many product features. Proposed and implemented a strategy to improve app stability by reducing error rates. Focused on enhancing observability to enable for data-driven decision-making. Optimized internal processes to reduce customer support workload",
       "highlights": [
-        "Led initiative to observe & reduce wallet synchronization issues from 69% to 6%",
-        "Built direct batch buy feature to buy multiple stocks at once",
-        "Produced continuous proposals to improve company's processes. Backend team side and company wide. For instance pushing for technical refinements, differentiating between bugs and complaints or tracking estimations accuracy",
-        "Introduced 'learning fridays' to enable knowledge sharing amongst engineering team",
-        "Implemented New Relic as observability tool"
+        "Led initiative that reduced wallet synchronization issues from 69% to 6%",
+        "Developed direct batch buy feature to allow purchasing multiple stocks at once",
+        "Authored several backend and company-wide initiatives—e.g., promoting technical refinements, distinguishing bugs from complaints, and tracking estimation accuracy",
+        "Introduced 'Learning Fridays' to foster knowledge sharing within the engineering team",
+        "Integrated New Relic to improve system observability and monitoring"
       ],
       "image": "https://davidlj95.com/images/companies/vesto.png",
       "tags": ["freelance"]
@@ -93,14 +93,14 @@
       "url": "https://www.koahealth.com",
       "startDate": "2020-10-01",
       "endDate": "2022-05-01",
-      "summary": "Full stack: web APIs backend, web app and mobile app. Led, engineered and assisted several features. Coordinated with product, design, QA, DevOps, cybersecurity, research & other products' engineering teams. Enhanced the company's design system library. Supported several squad's processes improvements",
+      "summary": "Full stack: web APIs backend, web and mobile app. Led, developed and supported several product features. Worked cross-functionally with product, design, QA, DevOps, cybersecurity, research and other products teams. Enhanced the company's design system library",
       "highlights": [
-        "Started as mid. Promoted to senior in 1st year's performance review",
-        "Led some features: audio exercises, push notifications in mobile app. Messaging in web and mobile app. For the Mindset product",
-        "Maintained backend infrastructure collaborating with DevOps team",
-        "Maintained CI/CD pipelines",
-        "Handled many authZ/N features. Created proof of concept of Single Sign On (SSO) by federating with 3rd party identity providers using AWS Cognito",
-        "Assisted company spin off by programmatically setting up new email signatures for all employees"
+        "Joined as mid-level engineer; promoted to senior after first year's performance review",
+        "Led development of key features such as audio exercises and push notifications in the mobile app and messaging in both web and mobile apps for the Mindset product",
+        "Maintained backend infrastructure in collaboration with the DevOps team",
+        "Developed and maintain many authZ/N features. Created a proof of concept for Single Sign-On (SSO) using AWS Cognito to federate with third-party identity providers",
+        "Managed CI/CD pipelines",
+        "Supported company spin-off by automating the setup of new email signatures for all employees"
       ],
       "image": "https://davidlj95.com/images/companies/koa-health.png",
       "tags": ["employee", "promotions"]
@@ -111,7 +111,7 @@
       "position": "Software Engineer",
       "startDate": "2020-03-01",
       "endDate": "2020-10-01",
-      "summary": "Part of the health moonshot unit. Which would later spin off to become its own company: Koa Health. Check that position for more information about both periods",
+      "summary": "Belonged to the health moonshot unit, which later spun off into a standalone company. For more details on projects and responsibilities during this period, please refer to the Koa Health entry",
       "image": "https://davidlj95.com/images/companies/telefonica-alpha.png",
       "tags": ["employee"]
     },
@@ -121,12 +121,12 @@
       "position": "Software Engineer",
       "startDate": "2018-06-01",
       "endDate": "2019-12-31",
-      "summary": "Full stack: web apps and peer to peer / web API backends. Lead software engineer for all company's projects. Blockchain / DLT consultant and researcher. Board member of the company's own cryptocurrency investment fund as technical advisor",
+      "summary": "Full stack: web apps and peer to peer / web API backends. Served as the lead software engineer across all company projects. Acted as blockchain/distributed ledger technologies (DLT) consultant and researcher. Served as a board member in a technical advisor role for a planned in-house cryptocurrency investment fund",
       "highlights": [
-        "Headed many software development projects in the company. For instance a Bitcoin library and wallet and a verifiable credentials platform",
-        "Advised technically our customers about Bitcoin, blockchain or DLT technologies",
-        "Spoke in several talks about Bitcoin and blockchain technologies",
-        "Facilitated software project management"
+        "Led multiple software projects, including a Bitcoin library and wallet and a verifiable credentials platform",
+        "Provided technical consulting on Bitcoin, blockchain and DLT technologies to clients",
+        "Delivered several talks and presentations about Bitcoin and blockchain technologies",
+        "Supported project management and delivery across several software initiatives"
       ],
       "image": "https://davidlj95.com/images/companies/btc-assessors.png",
       "tags": ["employee", "more-positions"]
@@ -137,7 +137,7 @@
       "position": "Software Engineer",
       "startDate": "2017-03-13",
       "endDate": "2017-06-19",
-      "summary": "Organized integration of IBC Biomechanics software within SEAT IT systems. In order to be used for its internal biomechanical laboratory in the CARS center inside Martorell headquarters",
+      "summary": "Coordinated integration of IBC Biomechanics software into SEAT's internal IT systems for use in their biomechanical laboratory at the CARS center, located within the Martorell headquarters",
       "image": "https://davidlj95.com/images/companies/seat.png",
       "tags": ["freelance", "internship"]
     },
@@ -147,13 +147,13 @@
       "position": "IT Manager",
       "startDate": "2015-01-15",
       "endDate": "2018-06-01",
-      "summary": "Administered IT systems and infrastructure of each of the three company branches. Performing systems administration tasks and general IT consultancy",
+      "summary": "Managed IT systems and infrastructure across all three company branches. Responsible for systems administration and general IT consulting, ensuring smooth operation of hardware, software, and network resources",
       "highlights": [
-        "Maintained local and wireless area networks and its devices. Including cybersecurity tasks such as traffic filtering",
-        "Operated company's servers: shared file systems management via Samba, Microsoft SQL / Borland (BDE) databases. Data backups",
-        "Maintained network printers and scanners",
-        "Maintained workstations: company software management, endpoint protection and permissions management",
-        "Maintained labor risk prevention and medical equipment hardware and services. Like audiometers, X-Ray machines and ECGs"
+        "Maintained local and wireless area networks of devices, including cybersecurity measures such as traffic filtering",
+        "Operated on-premises company servers, including shared file systems (Samba), databases (Microsoft SQL and Borland BDE); ensured regular data backups",
+        "Supported and maintained network-connected printers and scanners",
+        "Managed workstations, including software installation, endpoint protection, and user permissions",
+        "Oversaw hardware and service maintenance for occupational risk prevention and medical devices, such as audiometers, X-ray machines and ECGs"
       ],
       "image": "https://davidlj95.com/images/companies/meditrauma.png",
       "tags": ["freelance"]
@@ -164,11 +164,11 @@
       "position": "Software Engineer",
       "startDate": "2014-09-15",
       "endDate": "2018-06-01",
-      "summary": "Developed a reporting application. Created several proofs of concept apps to connect to biomechanical devices using Bluetooth. Managed the IT systems of the company",
+      "summary": "Developed a reporting application and several proof-of-concept apps for interfacing with biomechanical using Bluetooth. Also managed the IT systems of the company, supporting day-to-day operations",
       "highlights": [
-        "Accelerated reporting process. From a manual process taking hours into an automatic process taking seconds",
-        "Conducted several tests to develop in-house biomechanical data capture and processing software. To remove third party software dependencies and provide a holistic study experience",
-        "Managed and maintained company's IT infrastructure: workstations, office software, endpoint protection and backups"
+        "Automated the reporting process, reducing turnaround time from several hours to just seconds",
+        "Developed and tested in-house biomechanical data capture and processing software to eliminate third-party software dependencies and enable a more integrated analysis experience",
+        "Managed the company IT infrastructure, including workstations, office software, endpoint protection and data backup systems"
       ],
       "image": "https://davidlj95.com/images/companies/ibc-biomechanics.png",
       "tags": ["freelance", "more-positions"]
@@ -182,7 +182,7 @@
       "studyType": "Master's degree",
       "startDate": "2017-09-20",
       "endDate": "2018-09-20",
-      "score": "Unfinished. 8.14 over 10 (3.38 over 4 GPA)",
+      "score": "Completed coursework with a 8.14/10 grade (3.38 over 4 GPA). Unfinished degree",
       "courses": [
         "Digital Identity",
         "Legislation and Regulation",
@@ -200,7 +200,7 @@
       "studyType": "University degree",
       "startDate": "2013-09-13",
       "endDate": "2017-06-20",
-      "score": "Cum laude. 8.86 over 10 (3.85 over 4 GPA)",
+      "score": "Graduated Cum laude with an 8.86 / 10 grade (3.85 over 4 GPA)",
       "courses": [
         "Algebra and Calculus",
         "Electricity and Electronics",
@@ -231,7 +231,7 @@
       "studyType": "High school",
       "startDate": "2011-09-13",
       "endDate": "2013-06-01",
-      "score": "Cum laude. 9.76 over 10 (3.96 over 4 GPA)",
+      "score": "Graduated Cum laude with a 9.76 over 10 grade (3.96 over 4 GPA)",
       "courses": [
         "Catalan",
         "Spanish",
@@ -355,7 +355,7 @@
   "projects": [
     {
       "name": "Vesto app",
-      "description": "Worked on backend stack. Mobile app to introduce users to the world of financial investments. Allows to easily invest in US stock market with card or Bizum. Focused for Spanish market",
+      "description": "Worked on backend stack. Mobile app to introduce users to the world of financial investments. Enables seamless investing in US stock market via card or Bizum payments. Targeted specifically at the Spanish market",
       "startDate": "2022-10-10",
       "endDate": "2023-07-14",
       "url": "https://vestoapp.com",
@@ -398,7 +398,7 @@
     },
     {
       "name": "Mindset",
-      "description": "Worked in full stack. Mobile app for patients to treat depression using Cognitive Behavioral Therapy (CBT) exercises. Web app for therapists to track patients' progress",
+      "description": "Worked in full stack. Mobile app providing Cognitive Behavioral Therapy (CBT) exercises to help patients manage depression. Web app enabling therapists to track and improve patient outcomes",
       "startDate": "2020-03-01",
       "endDate": "2022-06-07",
       "url": "https://apps.apple.com/us/app/koa-mindset-depression/id1497894017",
@@ -454,7 +454,7 @@
     },
     {
       "name": "Cowstamp",
-      "description": "Worked in full stack. Web SaaS app to create, issue and receive verifiable credentials digitally signed using blockchain technologies with a user-centric design. Uses a custom ad hoc library to canonize JSON-LD graphs",
+      "description": "Worked in full stack. SaaS web app for creating, issuing, receiving and verifying blockchain-signed credentials with a user-centric design. Leverages an in-house Java library to canonize JSON-LD graphs",
       "startDate": "2019-07-29",
       "endDate": "2019-12-17",
       "url": "https://cowstamp.com",
@@ -493,7 +493,7 @@
     },
     {
       "name": "Kowbucha",
-      "description": "Web app to allow an independent verification of Blockcerts verifiable credentials based upon users' trust decisions. Uses a companion NodeJS & browser Javascript library created ad hoc to perform the verifications.",
+      "description": "Web app enabling independent verification of Blockcerts verifiable credentials based on user trust decisions. Uses a custom companion Node.js & browser Javascript library created to perform the verifications.",
       "startDate": "2019-11-14",
       "endDate": "2019-12-17",
       "url": "https://kowbucha.org",
@@ -526,7 +526,7 @@
     },
     {
       "name": "NodeCenter",
-      "description": "Worked in full stack. Application to manage blockchain / DLT nodes deployments in few clicks with an easy to use web interface, based on an Open API documented REST API exposed by a companion app daemon",
+      "description": "Worked in full stack. App to manage blockchain / DLT node deployments via an easy to use web interface that uses a REST API exposed by a companion daemon",
       "startDate": "2019-01-15",
       "endDate": "2019-09-10",
       "url": "https://github.com/nodecenter/app",
@@ -552,7 +552,7 @@
     },
     {
       "name": "Bitcoin Framework",
-      "description": "Bitcoin library to create transactions with smart contracts (scripts) based on puzzle-friendliness and object oriented programming (OOP)",
+      "description": "Bitcoin library to create transactions with smart contracts (scripts) using puzzle-friendly design and object-oriented programming (OOP)",
       "keywords": ["cryptography"],
       "startDate": "2017-07-04",
       "endDate": "2018-12-03",
@@ -576,7 +576,7 @@
     },
     {
       "name": "IBC Report Generator",
-      "description": "Worked in full stack. Desktop application to generate biomechanics reports out of data extracted from third party applications and devices using user-created report templates",
+      "description": "Worked in full stack. Desktop app that generates biomechanics reports using data from third-party applications and devices and customizable user-defined report templates",
       "startDate": "2015-09-25",
       "endDate": "2018-02-17",
       "roles": ["Lead Software Engineer"],
@@ -599,7 +599,7 @@
     },
     {
       "name": "Police Translator",
-      "description": "Worked in full stack. Hybrid mobile application with a collection of useful phrases for police officers translated between English and Catalan. Includes audio pronunciations and supports offline mode. Custom contents manager as web application",
+      "description": "Worked in full stack. Hybrid mobile application offering English-Catalan police phrases with audio pronunciation and offline support. Web-based content management system",
       "keywords": ["jQuery", "Apache Cordova", "HTML4", "CSS2", "JavaScript"],
       "startDate": "2014-06-27",
       "endDate": "2015-11-18",
