@@ -42,7 +42,7 @@
   @include material-symbols.variation-settings($fill: false);
 }
 
-header {
+.profile {
   .label {
     font-size: 1.15em;
     margin-block: 0.7rem;
@@ -69,27 +69,25 @@ hr {
   margin-block: 1em;
 }
 
-article article {
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: margins.$m;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: margins.$m;
 
-    > :first-child {
-      flex: 2;
-    }
-    > :last-child {
-      flex: 1;
-      text-align: right;
-    }
-
-    break-after: avoid;
+  > :first-child {
+    flex: 2;
+  }
+  > :last-child {
+    flex: 1;
+    text-align: right;
   }
 
-  .two-col {
-    columns: 2;
-  }
+  break-after: avoid;
+}
+
+.two-col {
+  columns: 2;
 }
 
 app-date-range {

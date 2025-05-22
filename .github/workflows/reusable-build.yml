@@ -33,6 +33,8 @@ jobs:
         run: pnpm run app-data
       - name: Build app (with SSG)
         run: pnpm run ${{ github.event_name == 'pull_request' && 'build:pull-request' || 'build' }}
+      - name: Resume PDF
+        run: pnpm run --filter scripts resume-pdf
       - name: Upload built app
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

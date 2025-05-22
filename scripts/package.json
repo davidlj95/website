@@ -11,6 +11,7 @@
     "app-data:techs": "pnpm run script dist/src/app-data/techs.js",
     "app-data:templated-files": "pnpm run script dist/src/app-data/templated-files.js",
     "build": "tsc",
+    "resume-pdf": "pnpm run script dist/src/resume-pdf.js",
     "script": "node --import=extensionless/register",
     "security.txt": "pnpm run script dist/src/security-txt.js",
     "watch": "tsc --watch"

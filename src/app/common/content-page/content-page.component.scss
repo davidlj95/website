@@ -1,12 +1,37 @@
 @use 'margins';
+@use 'paddings';
 @use 'page';
 @use 'print';
+@use 'typographies';
+@include typographies.print-imports;
 
 :host {
   display: block;
 
   @include print.except {
     padding: page.$padding;
+  }
+
+  @mixin print-style {
+    @include typographies.print-font;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: normal;
+    }
+  }
+
+  @include print.only {
+    padding: paddings.$xs;
+    @include print-style;
+    font-size: 14px;
+  }
+
+  &.print-preview {
+    @include print-style;
   }
 
   ::ng-deep {
