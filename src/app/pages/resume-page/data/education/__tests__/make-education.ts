@@ -1,4 +1,4 @@
-import { DateRange } from '../../date-range'
+import { dateRangeFromStrings } from '../../date-range'
 import { Education } from '../education'
 
 export const makeEducation = (
@@ -14,6 +14,6 @@ export const makeEducation = (
   score: 'Score',
   courses: [],
   attributes: [],
-  dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-12-31')),
+  dateRange: dateRangeFromStrings('2023-01-01', '2023-12-31'),
   ...overrides,
 })

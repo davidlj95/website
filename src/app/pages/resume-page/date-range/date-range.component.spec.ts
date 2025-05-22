@@ -26,11 +26,11 @@ describe('DateRangeComponent', () => {
 
   const [structuredStartDate, humanStartDate] = ['2022-10', 'Oct 2022']
   const [structuredEndDate, humanEndDate] = ['2023-04', 'Apr 2023']
-  const startDate = new Date(`${structuredStartDate}-10`)
-  const endDate = new Date(`${structuredEndDate}-15`)
+  const start = new Date(`${structuredStartDate}-10`)
+  const end = new Date(`${structuredEndDate}-15`)
 
   it('should display start and end date formatted as month abbreviation and separated in some way', () => {
-    setRangeAndDetectChanges(new DateRange(startDate, endDate))
+    setRangeAndDetectChanges({ start, end })
 
     expect(textContent(fixture.debugElement)?.replaceAll('\n', ' ')).toEqual(
       `${humanStartDate} → ${humanEndDate}`,
@@ -40,7 +40,7 @@ describe('DateRangeComponent', () => {
   const endDateSelector = By.css('time:last-child')
 
   it('should specify proper datetime attribute in time elements', () => {
-    setRangeAndDetectChanges(new DateRange(startDate, endDate))
+    setRangeAndDetectChanges({ start, end })
 
     const startDateTimeElement = fixture.debugElement.query(
       By.css('time:first-child'),
@@ -57,7 +57,7 @@ describe('DateRangeComponent', () => {
 
   describe('when no end date exists', () => {
     beforeEach(() => {
-      setRangeAndDetectChanges(new DateRange(new Date()))
+      setRangeAndDetectChanges({ start })
     })
 
     it('should display present as end date', () => {

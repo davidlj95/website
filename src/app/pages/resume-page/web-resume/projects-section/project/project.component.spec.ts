@@ -11,7 +11,6 @@ import { CardHeaderDetailComponent } from '@/common/card/card-header/card-header
 import { DateRangeComponent } from '../../../date-range/date-range.component'
 import { byTestId } from '@/test/helpers/test-id'
 import { By } from '@angular/platform-browser'
-import { DateRange } from '../../../data/date-range'
 import { AttributesComponent } from '../../attributes/attributes.component'
 import { AttributeComponent } from '../../attributes/attribute/attribute.component'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
@@ -110,9 +109,9 @@ describe('ProjectComponent', () => {
   })
 
   it('should contain dates range', () => {
-    const startDate = new Date('2022-02-14')
+    const start = new Date('2022-02-14')
 
-    setProject(fixture, { dateRange: new DateRange(startDate) })
+    setProject(fixture, { dateRange: { start } })
 
     const dateRangeElement = fixture.debugElement.query(
       By.directive(DateRangeComponent),
