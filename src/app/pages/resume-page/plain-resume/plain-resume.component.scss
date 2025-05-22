@@ -8,8 +8,16 @@
   color: black;
 
   h2 {
-    margin-block-start: margins.$m;
-    margin-block-end: 0;
+    margin-block: margins.$m;
+  }
+
+  h3 {
+    margin-block: margins.$s;
+  }
+
+  ul,
+  p {
+    margin-block: margins.$s;
   }
 
   ::ng-deep a,
@@ -35,12 +43,9 @@
 }
 
 header {
-  a {
-    text-decoration-line: none;
-  }
-
   .label {
     font-size: 1.15em;
+    margin-block: 0.7rem;
   }
 
   ul {
@@ -55,6 +60,7 @@ header {
       display: flex;
       align-items: center;
       gap: margins.$xs;
+      text-decoration-line: none;
     }
   }
 }
@@ -79,14 +85,6 @@ article article {
     }
   }
 
-  main {
-    margin-block-end: margins.$s;
-  }
-
-  h3 {
-    margin-block-start: margins.$m;
-  }
-
   .two-col {
     columns: 2;
   }
@@ -101,8 +99,6 @@ dl.langs {
   flex-wrap: wrap;
   align-items: center;
   gap: margins.$m;
-
-  margin-block-start: margins.$s;
 
   > div {
     display: flex;
