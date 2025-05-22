@@ -15,8 +15,7 @@
       </h3>
       @if (item.roles.length) {
         <h4 appTestId="role">
-          <!-- TODO: display all roles, for current case just 1 is enough -->
-          {{ item.roles[0] }}
+          {{ item.roles.join(', ') }}
         </h4>
       }
       <app-card-header-detail>

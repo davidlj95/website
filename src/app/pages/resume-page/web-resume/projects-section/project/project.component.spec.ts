@@ -97,7 +97,7 @@ describe('ProjectComponent', () => {
   })
 
   describe('when at least one role exists', () => {
-    it('should contain first role', () => {
+    it('should contain roles separated by comma', () => {
       const roles = ['Role 1', 'Role 2']
 
       setProject(fixture, { roles })
@@ -105,7 +105,7 @@ describe('ProjectComponent', () => {
       const roleElement = fixture.debugElement.query(byTestId('role'))
 
       expect(roleElement).toBeTruthy()
-      expect(textContent(roleElement)).toEqual(roles[0])
+      expect(textContent(roleElement)).toEqual(roles.join(', '))
     })
   })
 
