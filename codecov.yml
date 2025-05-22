@@ -2,10 +2,10 @@ coverage:
   status:
     patch:
       default:
-        threshold: 5%
+        target: 80%
     project:
       default:
-        threshold: 5%
+        target: 80%
 comment:
   hide_project_coverage: false
 
