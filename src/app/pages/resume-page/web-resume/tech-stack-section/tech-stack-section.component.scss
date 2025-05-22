@@ -1,6 +1,6 @@
-@use '../../../../../sass/borders';
-@use '../../../../../sass/breakpoints';
-@use '../../../../../sass/animations';
+@use 'borders';
+@use 'breakpoints';
+@use 'animations';
 
 app-tech-tags-selector {
   @include borders.panel(bottom);

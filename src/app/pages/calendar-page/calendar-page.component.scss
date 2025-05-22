@@ -1,7 +1,7 @@
-@use '../../../sass/animations';
+@use 'animations';
 @use 'sass:map';
-@use '../../../sass/page';
-@use '../../../sass/paddings';
+@use 'page';
+@use 'paddings';
 
 :host {
   display: flex;

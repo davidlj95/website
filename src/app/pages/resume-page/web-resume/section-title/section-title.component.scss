@@ -1,9 +1,9 @@
-@use '../../../../../sass/borders';
-@use '../../../../../sass/header';
-@use '../../../../../sass/paddings';
-@use '../../../../../sass/z-index';
-@use '../../../../../sass/animations';
-@use '../../../../../sass/quirks';
+@use 'borders';
+@use 'header';
+@use 'paddings';
+@use 'z-index';
+@use 'animations';
+@use 'quirks';
 
 :host {
   display: block;

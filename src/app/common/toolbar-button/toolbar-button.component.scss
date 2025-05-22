@@ -1,7 +1,7 @@
-@use '../../../sass/toolbar';
-@use '../../../sass/touch-or-pointer';
-@use '../../../sass/material-symbols';
-@use '../../../sass/animations';
+@use 'toolbar';
+@use 'touch-or-pointer';
+@use 'material-symbols';
+@use 'animations';
 
 :host {
   display: inline flex;
