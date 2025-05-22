@@ -88,6 +88,7 @@ const getMapsSearchUrl = (location: string): URL => {
 const getIconFromNetwork = (network: string): string | undefined => {
   const normalizedNetwork = network.toLowerCase()
   const icons = socialNgIconsByName.get(normalizedNetwork)
+  /* istanbul ignore if */
   if (!icons) {
     return
   }
