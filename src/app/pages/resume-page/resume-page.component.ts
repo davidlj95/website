@@ -3,7 +3,7 @@ import { ToolbarComponent } from '@/common/toolbar/toolbar.component'
 import { ActivatedRoute, Router } from '@angular/router'
 import { WebResumeComponent } from './web-resume/web-resume.component'
 import { toSignal } from '@angular/core/rxjs-interop'
-import { map } from 'rxjs'
+import { map, tap } from 'rxjs'
 import { PlainResumeComponent } from './plain-resume/plain-resume.component'
 import {
   SelectorComponent,
@@ -36,6 +36,10 @@ export class ResumePageComponent {
   protected readonly _displayMode = toSignal<DisplayMode>(
     inject(ActivatedRoute).queryParamMap.pipe(
       map((route) => (route.has(PLAIN_QUERY_PARAM) ? PLAIN : WEB)),
+      tap((displayMode) => {
+        const isPlain = displayMode === PLAIN
+        this._resumeConfigService.setCompact(isPlain)
+      }),
     ),
   )
   protected readonly _isPlainDisplayMode = computed(
@@ -55,6 +59,8 @@ export class ResumePageComponent {
       queryParams,
     })
   }
+
+  protected _isCompact = toSignal(this._resumeConfigService.compact$)
 
   onCompactModeChange(event: Event) {
     const isCompact = (event.target as HTMLInputElement).checked
