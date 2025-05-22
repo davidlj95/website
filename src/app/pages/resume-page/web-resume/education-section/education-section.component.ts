@@ -5,7 +5,7 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 
 import { toSignal } from '@angular/core/rxjs-interop'
-import { GET_JSON_RESUME_EDUCATIONS } from '../../data/education/get-json-resume-educations'
+import { EDUCATION_SERVICE } from '../../data/education/education-service'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -14,7 +14,5 @@ import { GET_JSON_RESUME_EDUCATIONS } from '../../data/education/get-json-resume
   imports: [SectionTitleComponent, CardGridComponent, EducationComponent],
 })
 export class EducationSectionComponent {
-  protected readonly _educations = toSignal(
-    inject(GET_JSON_RESUME_EDUCATIONS)(),
-  )
+  protected readonly _educations = toSignal(inject(EDUCATION_SERVICE).getAll())
 }

@@ -11,6 +11,9 @@ import {
 } from '@/common/selector/selector.component'
 import { ToolbarButtonComponent } from '@/common/toolbar-button/toolbar-button.component'
 import { Print } from '@/data/material-symbols'
+import { CheckboxLabelComponent } from '@/common/checkbox-label/checkbox-label.component'
+import { CheckboxComponent } from '@/common/checkbox/checkbox.component'
+import { RESUME_CONFIG_SERVICE } from './data/resume-config.service'
 
 @Component({
   templateUrl: './resume-page.component.html',
@@ -21,11 +24,14 @@ import { Print } from '@/data/material-symbols'
     PlainResumeComponent,
     SelectorComponent,
     ToolbarButtonComponent,
+    CheckboxLabelComponent,
+    CheckboxComponent,
   ],
 })
 export class ResumePageComponent {
   private _router = inject(Router)
   private _route = inject(ActivatedRoute)
+  private _resumeConfigService = inject(RESUME_CONFIG_SERVICE)
 
   protected readonly _displayMode = toSignal<DisplayMode>(
     inject(ActivatedRoute).queryParamMap.pipe(
@@ -48,6 +54,11 @@ export class ResumePageComponent {
       relativeTo: this._route,
       queryParams,
     })
+  }
+
+  onCompactModeChange(event: Event) {
+    const isCompact = (event.target as HTMLInputElement).checked
+    this._resumeConfigService.setCompact(isCompact)
   }
 
   protected readonly _materialSymbols = { Print }
