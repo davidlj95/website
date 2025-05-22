@@ -1,14 +1,18 @@
-import { JsonResumeService } from '../json-resume/json-resume.service'
-import RESUME from '@/data/resume.json'
+import { JsonResumeBasics } from '../json-resume/json-resume-types'
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import { BASICS_SERVICE } from './basics-service'
-import { MockProvider } from 'ng-mocks'
-import { firstValueFrom, of } from 'rxjs'
+import { GET_JSON_RESUME_BASICS } from './get-json-resume-basics'
 import { Call, Email, MyLocation } from '@/data/material-symbols'
 import { faBrandGithub } from '@ng-icons/font-awesome/brands'
-import { JsonResumeBasics } from '../json-resume/types'
+import { makeJsonResumeBasics } from './__tests__/make-json-resume-basics'
+import { MockProvider } from 'ng-mocks'
+import { JsonResumeService } from '../json-resume/json-resume.service'
+import { lastValueFrom, of } from 'rxjs'
 
-describe('BasicsService', () => {
+describe('GetJsonResumeBasics', () => {
+  it('should be created', () => {
+    expect(makeSut()).toBeTruthy()
+  })
+
   it('should map email, phone and location as contacts', async () => {
     const email = 'foo@example.org'
     const phone = '+34 666 666 666'
@@ -19,13 +23,11 @@ describe('BasicsService', () => {
       region: 'Madrid',
       countryCode: 'ES',
     }
-    const basics = makeJsonResumeBasics({ email, phone, location })
+    const { contacts } = await callSut({
+      jsonResumeBasics: makeJsonResumeBasics({ email, phone, location }),
+    })
 
-    const sut = makeSut({ basics })
-
-    const actual = await firstValueFrom(sut.getContacts())
-
-    expect(actual).toEqual([
+    expect(contacts).toEqual([
       {
         label: 'Email',
         icon: Email,
@@ -41,7 +43,13 @@ describe('BasicsService', () => {
       {
         label: 'Location',
         icon: MyLocation,
-        text: `${basics.location.city}, ${basics.location.countryCode}`,
+        text: `${makeJsonResumeBasics({ email, phone, location }).location.city}, ${
+          makeJsonResumeBasics({
+            email,
+            phone,
+            location,
+          }).location.countryCode
+        }`,
         url: new URL(
           `https://www.google.com/maps/search/?api=1&query=${location.city}`,
         ),
@@ -56,13 +64,11 @@ describe('BasicsService', () => {
       url: 'https://github.com/foo',
     } satisfies JsonResumeBasics['profiles'][number]
 
-    const basics = makeJsonResumeBasics({ profiles: [github] })
+    const { socials } = await callSut({
+      jsonResumeBasics: makeJsonResumeBasics({ profiles: [github] }),
+    })
 
-    const sut = makeSut({ basics })
-
-    const actual = await firstValueFrom(sut.getSocials())
-
-    expect(actual).toEqual([
+    expect(socials).toEqual([
       {
         label: `${github.username} at ${github.network}`,
         icon: faBrandGithub,
@@ -79,12 +85,14 @@ describe('BasicsService', () => {
       url: 'https://example.net/foo',
     } satisfies JsonResumeBasics['profiles'][number]
 
-    const basics = makeJsonResumeBasics({ profiles: [unknownProfile] })
     const consoleErrorSpy = spyOn(console, 'error')
-    const sut = makeSut({ basics })
-    const actual = await firstValueFrom(sut.getSocials())
+    const { socials } = await callSut({
+      jsonResumeBasics: makeJsonResumeBasics({
+        profiles: [unknownProfile],
+      }),
+    })
 
-    expect(actual).toEqual([])
+    expect(socials).toEqual([])
 
     expect(consoleErrorSpy).toHaveBeenCalledWith(
       jasmine.stringContaining('Icon not found'),
@@ -92,16 +100,16 @@ describe('BasicsService', () => {
   })
 })
 
-const makeJsonResumeBasics = (overrides: Partial<JsonResumeBasics>) => ({
-  ...RESUME.basics,
-  ...overrides,
-})
-
-const makeSut = ({ basics }: { basics?: JsonResumeBasics } = {}) =>
-  serviceTestSetup(BASICS_SERVICE, {
+const makeSut = ({
+  jsonResumeBasics,
+}: { jsonResumeBasics?: JsonResumeBasics } = {}) =>
+  serviceTestSetup(GET_JSON_RESUME_BASICS, {
     providers: [
-      basics
-        ? MockProvider(JsonResumeService, { getBasics: () => of(basics) })
-        : [],
+      MockProvider(JsonResumeService, {
+        getBasics: () => of(jsonResumeBasics ?? makeJsonResumeBasics()),
+      }),
     ],
   })
+
+const callSut = async (opts: Parameters<typeof makeSut>[0] = {}) =>
+  await lastValueFrom(makeSut(opts)())

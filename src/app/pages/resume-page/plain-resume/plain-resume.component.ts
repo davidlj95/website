@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { LinkComponent } from '../link/link.component'
 import { DateRangeComponent } from '../date-range/date-range.component'
-import { EDUCATION_SERVICE } from '../data/education/education-service'
 import { PROJECT_SERVICE } from '../data/projects/project-service'
 import { ContentPageComponent } from '@/common/content-page/content-page.component'
 import { MdLinksPipe } from '../md-links.pipe'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 import { NgIcon } from '@ng-icons/core'
-import { LANGUAGE_SERVICE } from '../data/languages/language-service'
 import { EnergySavingsLeaf } from '@/data/material-symbols'
-import { BASICS_SERVICE } from '../data/basics/basics-service'
 import { toSignal } from '@angular/core/rxjs-interop'
-import { EXPERIENCE_SERVICE } from '../data/experience/experience-service'
+import { GET_JSON_RESUME_BASICS } from '../data/basics/get-json-resume-basics'
+import { GET_JSON_RESUME_LANGUAGES } from '../data/languages/get-json-resume-languages'
+import { GET_JSON_RESUME_EDUCATIONS } from '../data/education/get-json-resume-educations'
+import { GET_JSON_RESUME_EXPERIENCES } from '../data/experience/get-json-resume-experiences'
 
 @Component({
   selector: 'app-plain-resume',
@@ -28,16 +28,14 @@ import { EXPERIENCE_SERVICE } from '../data/experience/experience-service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlainResumeComponent {
-  private readonly _basicsService = inject(BASICS_SERVICE)
-  protected readonly _profile = toSignal(this._basicsService.getProfile())
-  protected readonly _contacts = toSignal(this._basicsService.getContacts())
-  protected readonly _socials = toSignal(this._basicsService.getSocials())
-
+  protected readonly _basics = toSignal(inject(GET_JSON_RESUME_BASICS)())
   protected readonly _experiences = toSignal(
-    inject(EXPERIENCE_SERVICE).getAll(),
+    inject(GET_JSON_RESUME_EXPERIENCES)(),
   )
-  protected readonly _educations = toSignal(inject(EDUCATION_SERVICE).getAll())
+  protected readonly _educations = toSignal(
+    inject(GET_JSON_RESUME_EDUCATIONS)(),
+  )
   protected readonly _projects = toSignal(inject(PROJECT_SERVICE).getAll())
-  protected readonly _languages = toSignal(inject(LANGUAGE_SERVICE).getAll())
+  protected readonly _languages = toSignal(inject(GET_JSON_RESUME_LANGUAGES)())
   protected readonly _materialSymbols = { EnergySavingsLeaf }
 }
