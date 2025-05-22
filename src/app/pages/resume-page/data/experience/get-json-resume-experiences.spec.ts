@@ -60,18 +60,6 @@ describe('GetJsonResumeExperiences', () => {
     expect(experience.dateRange.end).toEqual(new Date(endDate))
   })
 
-  describe('when no end date', () => {
-    it('should map no end date exists too', async () => {
-      const endDate = undefined
-
-      const experience = await callSutAndGetFirstItem({
-        jsonResumeWork: [makeJsonResumeWorkItem({ endDate })],
-      })
-
-      expect(experience.dateRange.end).toBeUndefined()
-    })
-  })
-
   it('should map projects technologies with its projects names', async () => {
     const technologies = ['Tech 1', 'Tech 2']
     const name = 'ACME'

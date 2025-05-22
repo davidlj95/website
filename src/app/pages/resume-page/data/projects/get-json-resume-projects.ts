@@ -1,10 +1,10 @@
 import { inject, InjectionToken } from '@angular/core'
 import { Project } from './project'
-import { DateRange } from '../date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { tagsToAttributes } from '../attribute'
 import { map, Observable } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
+import { dateRangeFromStrings } from '../date-range'
 
 /** @visibleForTesting */
 export type GetJsonResumeProjects = () => Observable<readonly Project[]>
@@ -34,10 +34,7 @@ export const GET_JSON_RESUME_PROJECTS =
                 }) => ({
                   name,
                   description,
-                  dateRange: new DateRange(
-                    new Date(startDate),
-                    endDate ? new Date(endDate) : undefined,
-                  ),
+                  dateRange: dateRangeFromStrings(startDate, endDate),
                   website: url ? new URL(url) : undefined,
                   roles,
                   entity,

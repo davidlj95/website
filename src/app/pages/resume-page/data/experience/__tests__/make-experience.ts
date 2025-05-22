@@ -1,4 +1,4 @@
-import { DateRange } from '../../date-range'
+import { dateRangeFromStrings } from '../../date-range'
 import { Experience } from '../experience'
 
 export const makeExperience = (
@@ -12,7 +12,7 @@ export const makeExperience = (
   attributes: [],
   summary: 'Dummy summary',
   position: 'Dummy position',
-  dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
+  dateRange: dateRangeFromStrings('2023-01-01', '2023-10-10'),
   relatedProjects: [],
   technologies: [],
   ...overrides,
