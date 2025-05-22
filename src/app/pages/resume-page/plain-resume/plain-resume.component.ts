@@ -14,6 +14,7 @@ import { EDUCATION_SERVICE } from '../data/education/education.service'
 import { EXPERIENCE_SERVICE } from '../data/experience/experience.service'
 import { APP_BASE_URL_PRODUCTION } from '@/common/relativize-production-url'
 import { RESUME_PATH } from '../resume-page.paths'
+import { TechnologyComponent } from '../technology/technology.component'
 
 @Component({
   selector: 'app-plain-resume',
@@ -24,6 +25,7 @@ import { RESUME_PATH } from '../resume-page.paths'
     MdLinksPipe,
     MaterialSymbolDirective,
     NgIcon,
+    TechnologyComponent,
   ],
   templateUrl: './plain-resume.component.html',
   styleUrl: './plain-resume.component.scss',

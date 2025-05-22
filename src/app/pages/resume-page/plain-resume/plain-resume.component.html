@@ -64,6 +64,16 @@
                 }
               </ul>
             }
+            @let technologies = experience.technologies;
+            @if (technologies && technologies.length) {
+              <ul class="techs">
+                @for (tech of technologies; track tech) {
+                  <li>
+                    <app-technology [tech]="tech"></app-technology>
+                  </li>
+                }
+              </ul>
+            }
           </main>
         </article>
       }

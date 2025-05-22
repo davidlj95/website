@@ -9,4 +9,6 @@ export interface Experience {
   readonly summary: string
   readonly highlights: readonly string[]
   readonly attributes: readonly Attribute[]
+  readonly relatedProjects: readonly string[]
+  readonly technologies: readonly string[]
 }

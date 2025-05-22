@@ -1,25 +1,16 @@
 import { TextContentComponent } from '@/common/chipped-content/text-content/text-content.component'
-import { EXPERIENCE_TO_CONTENTS } from './experience-to-contents'
 import { makeExperience } from '../../../data/experience/__tests__/make-experience'
 import { ExperienceHighlightsComponent } from './experience-highlights/experience-highlights.component'
-import { Project } from '../../../data/projects/project'
-import { makeProject } from '../../../data/projects/__tests__/make-project'
 import { ExperienceTechComponent } from './experience-tech/experience-tech.component'
 import { ChippedContent } from '@/common/chipped-content/chipped-content'
-import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import {
-  PROJECT_SERVICE,
-  ProjectService,
-} from '../../../data/projects/project-service'
-import { MockProvider } from 'ng-mocks'
-import { lastValueFrom, of } from 'rxjs'
+import { experienceToContents } from './experience-to-contents'
 
 describe('experienceToContents', () => {
-  it('should include summary content', async () => {
+  it('should include summary content', () => {
     const summary = 'Did amazing things and rocked 100% of time'
     const sut = makeSut()
 
-    const contents = await lastValueFrom(sut(makeExperience({ summary })))
+    const contents = sut(makeExperience({ summary }))
     const summaryContents = contents.filter(
       (content) => content.displayName === 'Summary',
     )
@@ -34,11 +25,11 @@ describe('experienceToContents', () => {
     })
   })
 
-  it('should include highlights content', async () => {
+  it('should include highlights content', () => {
     const highlights = ['Highlight 1', 'Highlight 2']
     const sut = makeSut()
 
-    const contents = await lastValueFrom(sut(makeExperience({ highlights })))
+    const contents = sut(makeExperience({ highlights }))
     const highlightsContents = contents.filter(
       (content) => content.displayName === 'Highlights',
     )
@@ -54,28 +45,13 @@ describe('experienceToContents', () => {
     })
   })
 
-  it('should include technologies content with the set of technologies of all projects', async () => {
-    const aTechnology = 'foo-tech'
-    const anotherTechnology = 'bar-tech'
-    const technologies = [aTechnology, anotherTechnology]
-    const projects: readonly Project[] = [
-      makeProject({ technologies: [aTechnology], name: 'project A' }),
-      makeProject({
-        technologies: [aTechnology, anotherTechnology],
-        name: 'project B',
-      }),
-    ]
-    const projectService = {
-      getByCompanyName: jasmine
-        .createSpy<ProjectService['getByCompanyName']>()
-        .and.returnValue(of(projects)),
-    } satisfies Partial<ProjectService>
+  it('should include technologies content', () => {
+    const technologies = ['super-cool-tech', 'another-super-cool-tech']
+    const relatedProjects = ['project-1', 'project-2']
 
-    const sut = makeSut({
-      projectService,
-    })
-
-    const contents = await lastValueFrom(sut(makeExperience()))
+    const contents = makeSut()(
+      makeExperience({ technologies, relatedProjects }),
+    )
     const techContents = contents.filter(
       (content) => content.displayName === 'Tech',
     )
@@ -87,21 +63,9 @@ describe('experienceToContents', () => {
     expect(techContent.component).toEqual(ExperienceTechComponent)
     expect(techContent.inputs).toEqual({
       technologies,
-      projectNames: projects.map((project) => project.name),
+      projectNames: relatedProjects,
     })
   })
 })
 
-const makeSut = ({
-  projectService,
-}: { projectService?: Partial<ProjectService> } = {}) =>
-  serviceTestSetup(EXPERIENCE_TO_CONTENTS, {
-    providers: [
-      MockProvider(
-        PROJECT_SERVICE,
-        projectService ?? {
-          getByCompanyName: () => of([]),
-        },
-      ),
-    ],
-  })
+const makeSut = () => experienceToContents

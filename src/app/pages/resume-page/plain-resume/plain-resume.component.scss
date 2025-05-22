@@ -63,7 +63,7 @@
     list-style: none;
     margin-inline-start: 0;
     padding-inline-start: 0;
-    gap: 8px;
+    gap: margins.$s;
 
     a {
       display: flex;
@@ -72,10 +72,6 @@
       text-decoration-line: none;
     }
   }
-}
-
-hr {
-  margin-block: 1em;
 }
 
 header {
@@ -97,6 +93,19 @@ header {
 
 .two-col {
   columns: 2;
+}
+
+ul.techs {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline-start: 0;
+  padding-inline-start: 0;
+  gap: margins.$s;
+}
+
+app-technology {
+  color: #222222;
 }
 
 app-date-range {

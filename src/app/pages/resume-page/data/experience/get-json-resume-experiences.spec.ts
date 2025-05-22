@@ -6,9 +6,14 @@ import {
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
 import { MockProvider } from 'ng-mocks'
 import { makeJsonResumeWorkItem } from './__tests__/make-json-resume-work-item'
-import { JsonResumeWork } from '../json-resume/json-resume-types'
+import {
+  JsonResumeProjects,
+  JsonResumeWork,
+} from '../json-resume/json-resume-types'
 import { JsonResumeService } from '../json-resume/json-resume.service'
 import { lastValueFrom, of } from 'rxjs'
+import { GET_JSON_RESUME_PROJECTS } from '../projects/get-json-resume-projects'
+import { makeJsonResumeProject } from '../projects/__tests__/make-json-resume-project'
 
 describe('GetJsonResumeExperiences', () => {
   it('should be created', () => {
@@ -67,6 +72,33 @@ describe('GetJsonResumeExperiences', () => {
     })
   })
 
+  it('should map projects technologies with its projects names', async () => {
+    const technologies = ['Tech 1', 'Tech 2']
+    const name = 'ACME'
+    const aProject = makeJsonResumeProject({
+      name: 'project 1',
+      entity: name,
+      technologies,
+    })
+    const anotherProject = makeJsonResumeProject({
+      name: 'project 2',
+      entity: name,
+      technologies,
+    })
+
+    const experience = await callSutAndGetFirstItem({
+      jsonResumeWork: [makeJsonResumeWorkItem({ name })],
+      jsonResumeProjects: [aProject, anotherProject],
+    })
+
+    expect(experience.relatedProjects).toEqual([
+      aProject.name,
+      anotherProject.name,
+    ])
+
+    expect(experience.technologies).toEqual(technologies)
+  })
+
   // Non JSON Resume standard!
   it('should relativize image URL', async () => {
     const dummyImagePath = '/images/companies/foo.png'
@@ -88,9 +120,11 @@ describe('GetJsonResumeExperiences', () => {
 const makeSut = ({
   jsonResumeWork,
   relativizeProductionUrl,
+  jsonResumeProjects,
 }: {
   jsonResumeWork?: JsonResumeWork
   relativizeProductionUrl?: RelativizeProductionUrl
+  jsonResumeProjects?: JsonResumeProjects
 } = {}) =>
   serviceTestSetup(GET_JSON_RESUME_EXPERIENCES, {
     providers: [
@@ -100,6 +134,9 @@ const makeSut = ({
       MockProvider(
         RELATIVIZE_PRODUCTION_URL,
         relativizeProductionUrl ?? (() => '/fake/path'),
+      ),
+      MockProvider(GET_JSON_RESUME_PROJECTS, () =>
+        of(jsonResumeProjects ?? []),
       ),
     ],
   })
