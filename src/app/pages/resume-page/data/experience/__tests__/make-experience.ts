@@ -13,5 +13,7 @@ export const makeExperience = (
   summary: 'Dummy summary',
   position: 'Dummy position',
   dateRange: new DateRange(new Date('2023-01-01'), new Date('2023-10-10')),
+  relatedProjects: [],
+  technologies: [],
   ...overrides,
 })

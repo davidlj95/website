@@ -14,6 +14,7 @@ import { EDUCATION_SERVICE } from '../data/education/education.service'
 import { EXPERIENCE_SERVICE } from '../data/experience/experience.service'
 import { APP_BASE_URL_PRODUCTION } from '@/common/relativize-production-url'
 import { RESUME_PATH } from '../resume-page.paths'
+import { TechnologyComponent } from '../technology/technology.component'
 
 @Component({
   selector: 'app-plain-resume',
@@ -24,6 +25,7 @@ import { RESUME_PATH } from '../resume-page.paths'
     MdLinksPipe,
     MaterialSymbolDirective,
     NgIcon,
+    TechnologyComponent,
   ],
   templateUrl: './plain-resume.component.html',
   styleUrl: './plain-resume.component.scss',
@@ -31,11 +33,12 @@ import { RESUME_PATH } from '../resume-page.paths'
 })
 export class PlainResumeComponent {
   protected readonly _basics = toSignal(inject(GET_JSON_RESUME_BASICS)())
+  private readonly _projectService = inject(PROJECT_SERVICE)
   protected readonly _experiences = toSignal(
     inject(EXPERIENCE_SERVICE).getAll(),
   )
   protected readonly _educations = toSignal(inject(EDUCATION_SERVICE).getAll())
-  protected readonly _projects = toSignal(inject(PROJECT_SERVICE).getAll())
+  protected readonly _projects = toSignal(this._projectService.getAll())
   protected readonly _languages = toSignal(inject(GET_JSON_RESUME_LANGUAGES)())
   protected readonly _materialSymbols = { EnergySavingsLeaf }
   protected readonly _resumeUrl = new URL(

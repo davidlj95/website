@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 import { ChippedContentComponent } from '@/common/chipped-content/chipped-content.component'
 
 import { AttributesComponent } from '../../attributes/attributes.component'
@@ -10,10 +10,8 @@ import { TestIdDirective } from '@/common/test-id.directive'
 import { LinkComponent } from '../../../link/link.component'
 import { CardHeaderComponent } from '@/common/card/card-header/card-header.component'
 import { CardComponent } from '@/common/card/card.component'
-import { EXPERIENCE_TO_CONTENTS } from './experience-to-contents'
+import { experienceToContents } from './experience-to-contents'
 import { Experience } from '../../../data/experience/experience'
-import { toObservable, toSignal } from '@angular/core/rxjs-interop'
-import { switchMap } from 'rxjs'
 
 @Component({
   selector: 'app-experience',
@@ -33,11 +31,8 @@ import { switchMap } from 'rxjs'
 })
 export class ExperienceComponent {
   readonly experience = input.required<Experience>()
-  private readonly _experienceToContents = inject(EXPERIENCE_TO_CONTENTS)
 
-  protected readonly _contents = toSignal(
-    toObservable(this.experience).pipe(
-      switchMap((experience) => this._experienceToContents(experience)),
-    ),
+  protected readonly _contents = computed(() =>
+    experienceToContents(this.experience()),
   )
 }
