@@ -1,5 +1,5 @@
 import { serviceTestSetup } from '@/test/helpers/service-test-setup'
-import { EDUCATION_SERVICE } from './education-service'
+import { EDUCATION_SERVICE } from './education.service'
 import { MockProvider } from 'ng-mocks'
 import { firstValueFrom, of } from 'rxjs'
 import { makeEducation } from './__tests__/make-education'

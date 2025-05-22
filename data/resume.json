@@ -80,8 +80,8 @@
       "highlights": [
         "Led initiative that reduced wallet synchronization issues from 69% to 6%",
         "Developed direct batch buy feature to allow purchasing multiple stocks at once",
-        "Authored several backend and company-wide initiatives—e.g., promoting technical refinements, distinguishing bugs from complaints, and tracking estimation accuracy",
         "Introduced 'Learning Fridays' to foster knowledge sharing within the engineering team",
+        "Authored several backend and company-wide initiatives—e.g., promoting technical refinements, distinguishing bugs from complaints, and tracking estimation accuracy",
         "Integrated New Relic to improve system observability and monitoring"
       ],
       "image": "https://davidlj95.com/images/companies/vesto.png",
@@ -97,8 +97,8 @@
       "highlights": [
         "Joined as mid-level engineer; promoted to senior after first year's performance review",
         "Led development of key features such as audio exercises and push notifications in the mobile app and messaging in both web and mobile apps for the Mindset product",
-        "Maintained backend infrastructure in collaboration with the DevOps team",
         "Developed and maintain many authZ/N features. Created a proof of concept for Single Sign-On (SSO) using AWS Cognito to federate with third-party identity providers",
+        "Maintained backend infrastructure in collaboration with the DevOps team",
         "Managed CI/CD pipelines",
         "Supported company spin-off by automating the setup of new email signatures for all employees"
       ],
