@@ -33,7 +33,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## To start
 
-First, run the `data` command, to generate data files that are required for the app to work
+First, run the `app-data` command, to generate data files that are required for the app to work
 
 ```shell
 pnpm run data
@@ -120,7 +120,7 @@ In order to embed release information in the app, a script runs to export that k
 To generate the release info, go to `scripts` directory and run
 
 ```shell
-pnpm run generate:release-info
+pnpm run app-data:release-info
 ```
 
 It will generate a `release.json` file in the source directory of the app containing the:
@@ -129,7 +129,7 @@ It will generate a `release.json` file in the source directory of the app contai
 - Current release version & CHANGELOG
 - Unreleased changes CHANGELOG
 
-Checkout the [script](scripts/src/generate-release-info.ts) for more information.
+Checkout the [script](scripts/src/app-data/release-info.ts) for more information.
 
 ## Git hooks
 
@@ -172,7 +172,7 @@ See https://github.com/davidlj95/website/pull/289 for more info.
 Some fonts included are a subset of a big font file. Before doing anything, please go to `scripts` directory and run
 
 ```shell
-pnpm run generate:font-subsets
+pnpm run app-data:font-subsets
 ```
 
 To generate them. Otherwise, those fonts won't be found and you may get some errors. Also, remember to run it if

@@ -20,12 +20,12 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Generate data
+      - name: Generate app data
         run: |
           pnpm run --filter scripts build
-          pnpm run --filter scripts generate:font-subsets
-          pnpm run --filter scripts generate:techs
-          pnpm run --filter scripts generate:templated-files
+          pnpm run --filter scripts app-data:font-subsets
+          pnpm run --filter scripts app-data:techs
+          pnpm run --filter scripts app-data:templated-files
           touch data/generated/release.json
       - name: Run tests
         run: cd .ci && make unit-test
@@ -72,9 +72,9 @@ jobs:
       - name: Generate data
         run: |
           pnpm run --filter scripts build
-          pnpm run --filter scripts generate:font-subsets
-          pnpm run --filter scripts generate:techs
-          pnpm run --filter scripts generate:templated-files
+          pnpm run --filter scripts app-data:font-subsets
+          pnpm run --filter scripts app-data:techs
+          pnpm run --filter scripts app-data:templated-files
           touch data/generated/release.json
       - name: Cypress run
         uses: cypress-io/github-action@v6
