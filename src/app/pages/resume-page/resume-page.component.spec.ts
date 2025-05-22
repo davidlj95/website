@@ -22,6 +22,7 @@ import {
 } from './data/resume-config.service'
 import { CheckboxComponent } from '@/common/checkbox/checkbox.component'
 import { CheckboxLabelComponent } from '@/common/checkbox-label/checkbox-label.component'
+import { firstValueFrom, of } from 'rxjs'
 
 describe('ResumePageComponent', () => {
   it('should create', () => {
@@ -30,7 +31,7 @@ describe('ResumePageComponent', () => {
     expect(fixture.componentInstance).toBeTruthy()
   })
 
-  it('should display web resume by default', async () => {
+  it('should display web resume and unset compact mode by default', async () => {
     const [fixture] = makeSut()
     await RouterTestingHarness.create('/')
 
@@ -39,9 +40,12 @@ describe('ResumePageComponent', () => {
     )
 
     expect(webResume).toBeTruthy()
+    expect(
+      await firstValueFrom(TestBed.inject(RESUME_CONFIG_SERVICE).compact$),
+    ).toBeFalse()
   })
 
-  it('should display plain resume when plain query param is present', async () => {
+  it('should display plain resume and set compact mode when plain query param is present', async () => {
     const [fixture] = makeSut()
     await RouterTestingHarness.create(`/?${PLAIN_QUERY_PARAM}`)
     fixture.detectChanges()
@@ -51,6 +55,10 @@ describe('ResumePageComponent', () => {
     )
 
     expect(plainResume).toBeTruthy()
+
+    expect(
+      await firstValueFrom(TestBed.inject(RESUME_CONFIG_SERVICE).compact$),
+    ).toBeTrue()
   })
 
   it('should navigate to plain version when selecting it', async () => {
@@ -80,7 +88,9 @@ describe('ResumePageComponent', () => {
   it('should set compact mode when checking it', () => {
     const isCompact = true
     const setCompact = jasmine.createSpy<ResumeConfigService['setCompact']>()
-    const [fixture] = makeSut({ setCompact })
+    const [fixture] = makeSut({
+      resumeConfigService: { compact$: of(false), setCompact },
+    })
 
     fixture.componentInstance.onCompactModeChange({
       target: { checked: isCompact } as HTMLInputElement,
@@ -91,8 +101,8 @@ describe('ResumePageComponent', () => {
 })
 
 const makeSut = ({
-  setCompact,
-}: { setCompact?: ResumeConfigService['setCompact'] } = {}) => {
+  resumeConfigService,
+}: { resumeConfigService?: Partial<ResumeConfigService> } = {}) => {
   const [fixture, component] = componentTestSetup(ResumePageComponent, {
     imports: [
       MockComponents(
@@ -107,10 +117,9 @@ const makeSut = ({
     ],
     providers: [
       provideRouter([]),
-      MockProvider(RESUME_CONFIG_SERVICE, {
-        // eslint-disable-next-line jasmine/no-unsafe-spy
-        setCompact: setCompact ?? jasmine.createSpy(),
-      }),
+      resumeConfigService
+        ? MockProvider(RESUME_CONFIG_SERVICE, resumeConfigService)
+        : [],
     ],
   })
   fixture.detectChanges()
