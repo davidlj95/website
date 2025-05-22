@@ -33,12 +33,11 @@ import { TechnologyComponent } from '../technology/technology.component'
 })
 export class PlainResumeComponent {
   protected readonly _basics = toSignal(inject(GET_JSON_RESUME_BASICS)())
-  private readonly _projectService = inject(PROJECT_SERVICE)
   protected readonly _experiences = toSignal(
     inject(EXPERIENCE_SERVICE).getAll(),
   )
   protected readonly _educations = toSignal(inject(EDUCATION_SERVICE).getAll())
-  protected readonly _projects = toSignal(this._projectService.getAll())
+  protected readonly _projects = toSignal(inject(PROJECT_SERVICE).getAll())
   protected readonly _languages = toSignal(inject(GET_JSON_RESUME_LANGUAGES)())
   protected readonly _materialSymbols = { EnergySavingsLeaf }
   protected readonly _resumeUrl = new URL(
