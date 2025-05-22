@@ -17,6 +17,7 @@
   }
 
   @include touch-or-pointer.primaryInputCanHover {
+    &:hover,
     &:enabled:hover {
       color: var(--icon-default-hover);
     }
@@ -28,4 +29,14 @@
 
   @include material-symbols.font-size(toolbar.$icons-height);
   @include material-symbols.variation-settings($fill: false, $weight: 200);
+
+  ::ng-deep ng-icon {
+    display: flex;
+    align-items: center;
+
+    ::ng-deep svg {
+      height: 20px !important;
+      width: 20px !important;
+    }
+  }
 }

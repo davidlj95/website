@@ -7,6 +7,7 @@
   flex-wrap: wrap;
   align-items: center;
 
+  padding: 0 margins.$s;
   gap: margins.$s;
 
   background-color: var(--app-color-toolbar-background);
@@ -15,8 +16,8 @@
   min-height: toolbar.$icons-height;
 
   @include animations.when-motion {
-    @include animations.single-transition(
-      (background-color),
+    @include animations.multiple-transitions(
+      (background-color, color),
       animations.$emphasized-style
     );
   }
