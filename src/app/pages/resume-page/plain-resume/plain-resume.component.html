@@ -41,92 +41,105 @@
     </header>
   }
   <main>
-    <section>
-      <h2>Experience</h2>
-      @for (experience of _experiences(); track experience) {
-        <article>
-          <header>
-            @let name = experience.company.shortName || experience.company.name;
-            <h3>
-              {{ experience.position }} &#64;
-              <app-link [href]="experience.company.website?.toString()"
-                >{{ name }}
-              </app-link>
-            </h3>
-            <app-date-range [range]="experience.dateRange"></app-date-range>
-          </header>
-          <main>
-            <p>{{ experience.summary }}</p>
-            @if (experience.highlights.length) {
-              <ul>
-                @for (highlight of experience.highlights; track highlight) {
-                  <li [innerHTML]="highlight | mdLinks"></li>
-                }
-              </ul>
-            }
-          </main>
-        </article>
-      }
-    </section>
-    <section>
-      <h2>Education</h2>
-      @for (education of _educations(); track education) {
-        <article>
-          <header>
-            @let name =
-              education.institution.shortName || education.institution.name;
-            <h3>
-              {{ education.studyType }} - {{ education.area }} &#64;
-              <app-link [href]="education.institution.website?.toString()"
-                >{{ name }}
-              </app-link>
-            </h3>
-            <app-date-range [range]="education.dateRange"></app-date-range>
-          </header>
-          <main>
-            <p>{{ education.score }}</p>
-            @if (education.courses.length) {
-              <ul class="two-col">
-                @for (course of education.courses; track course) {
-                  <li>{{ course }}</li>
-                }
-              </ul>
-            }
-          </main>
-        </article>
-      }
-    </section>
-    <section>
-      <h2>Projects</h2>
-      @for (project of _projects(); track project) {
-        <article>
-          <header>
-            <h3>
-              <app-link [href]="project.website?.toString()">{{
-                project.name
-              }}</app-link>
-              &#64; {{ project.entity }}
-            </h3>
-            <app-date-range [range]="project.dateRange"></app-date-range>
-          </header>
-          <main>
-            {{ project.description }}
-          </main>
-        </article>
-      }
-    </section>
-    <section>
-      <h2>Languages</h2>
-      <dl class="langs">
-        @for (language of _languages(); track language) {
-          <div>
-            <dt>
-              <code>({{ language.tag }})</code> {{ language.name }}
-            </dt>
-            <dd>{{ language.fluency }}</dd>
-          </div>
+    @let experiences = _experiences();
+    @if (experiences && experiences.length) {
+      <section>
+        <h2>Experience</h2>
+        @for (experience of experiences; track experience) {
+          <article>
+            <header>
+              @let name =
+                experience.company.shortName || experience.company.name;
+              <h3>
+                {{ experience.position }} &#64;
+                <app-link [href]="experience.company.website?.toString()"
+                  >{{ name }}
+                </app-link>
+              </h3>
+              <app-date-range [range]="experience.dateRange"></app-date-range>
+            </header>
+            <main>
+              <p>{{ experience.summary }}</p>
+              @if (experience.highlights.length) {
+                <ul>
+                  @for (highlight of experience.highlights; track highlight) {
+                    <li [innerHTML]="highlight | mdLinks"></li>
+                  }
+                </ul>
+              }
+            </main>
+          </article>
         }
-      </dl>
-    </section>
+      </section>
+    }
+    @let educations = _educations();
+    @if (educations && educations.length) {
+      <section>
+        <h2>Education</h2>
+        @for (education of educations; track education) {
+          <article>
+            <header>
+              @let name =
+                education.institution.shortName || education.institution.name;
+              <h3>
+                {{ education.studyType }} - {{ education.area }} &#64;
+                <app-link [href]="education.institution.website?.toString()"
+                  >{{ name }}
+                </app-link>
+              </h3>
+              <app-date-range [range]="education.dateRange"></app-date-range>
+            </header>
+            <main>
+              <p>{{ education.score }}</p>
+              @if (education.courses.length) {
+                <ul class="two-col">
+                  @for (course of education.courses; track course) {
+                    <li>{{ course }}</li>
+                  }
+                </ul>
+              }
+            </main>
+          </article>
+        }
+      </section>
+    }
+    @let projects = _projects();
+    @if (projects && projects.length) {
+      <section>
+        <h2>Projects</h2>
+        @for (project of _projects(); track project) {
+          <article>
+            <header>
+              <h3>
+                <app-link [href]="project.website?.toString()">{{
+                  project.name
+                }}</app-link>
+                &#64; {{ project.entity }}
+              </h3>
+              <app-date-range [range]="project.dateRange"></app-date-range>
+            </header>
+            <main>
+              {{ project.description }}
+            </main>
+          </article>
+        }
+      </section>
+    }
+    @let languages = _languages();
+    @if (languages && languages.length) {
+      <section>
+        <h2>Languages</h2>
+        <dl class="langs">
+          @for (language of _languages(); track language) {
+            <div>
+              <dt>
+                <code>({{ language.tag }})</code> {{ language.name }}
+              </dt>
+              <dd>{{ language.fluency }}</dd>
+            </div>
+          }
+        </dl>
+      </section>
+    }
   </main>
 </article>
