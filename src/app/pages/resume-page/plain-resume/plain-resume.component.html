@@ -1,5 +1,5 @@
 <app-content-page class="print-preview">
-  <div role="note">
+  <div role="note" class="header environment">
     <span appMaterialSymbol>{{ _materialSymbols.EnergySavingsLeaf }}</span>
     Let's be environmentally friendly: please avoid printing this document
   </div>
@@ -138,4 +138,8 @@
       </dl>
     </section>
   }
+  <div role="note" class="footer">
+    This is a compact version of the resume. View the complete one at
+    <a [href]="_resumeUrl">{{ _resumeUrl }}</a>
+  </div>
 </app-content-page>
