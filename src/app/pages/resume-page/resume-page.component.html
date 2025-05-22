@@ -1,6 +1,7 @@
 <app-toolbar>
   <app-selector
     label="Display mode"
+    name="displayMode"
     [options]="_displayModeOptions"
     [selected]="_displayMode()"
     (selectedChange)="onDisplayModeChange($event)"
@@ -11,6 +12,7 @@
     </button>
     <label appCheckboxLabel>
       <input
+        name="compactMode"
         type="checkbox"
         appCheckbox
         [checked]="_isCompact()"
