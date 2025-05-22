@@ -5,6 +5,7 @@ import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { tagsToAttributes } from '../attribute'
 import { map, Observable } from 'rxjs'
 import { JsonResumeService } from '../json-resume/json-resume.service'
+import { urlOrUndefined } from '../url-or-undefined'
 
 /** @visibleForTesting */
 export type GetJsonResumeEducations = () => Observable<readonly Education[]>
@@ -38,7 +39,7 @@ export const GET_JSON_RESUME_EDUCATIONS =
                 }) => ({
                   institution: {
                     name: institution,
-                    website: new URL(url),
+                    website: urlOrUndefined(url),
                     imageSrc: relativizeUrl(new URL(image)),
                     shortName,
                   },
