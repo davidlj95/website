@@ -52,7 +52,11 @@ export const DATA_TAG = 'data'
 /** @knipIgnore **/
 export const PACKAGING_TAG = 'packaging'
 /** @knipIgnore **/
-export const PACKAGE_MANAGEMENT = 'package-mgmt'
+export const PACKAGE_MANAGEMENT_TAG = 'package-mgmt'
+/** @knipIgnore **/
+export const OPEN_SOURCE_TAG = 'open-source'
+/** @knipIgnore **/
+export const RELEASE_TAG = 'release'
 
 export const TECH_TAGS = [
   BACKEND_TAG,
@@ -80,7 +84,9 @@ export const TECH_TAGS = [
   QUEUING_TAG,
   DATA_TAG,
   PACKAGING_TAG,
-  PACKAGE_MANAGEMENT,
+  PACKAGE_MANAGEMENT_TAG,
+  OPEN_SOURCE_TAG,
+  RELEASE_TAG,
 ] as const
 
 export type TechTag = (typeof TECH_TAGS)[number]
@@ -111,7 +117,9 @@ const TECH_TAG_NAMES: Record<TechTag, string> = {
   [QUEUING_TAG]: 'Queuing',
   [DATA_TAG]: 'Data',
   [PACKAGING_TAG]: 'Packaging',
-  [PACKAGE_MANAGEMENT]: 'Package management',
+  [PACKAGE_MANAGEMENT_TAG]: 'Package management',
+  [OPEN_SOURCE_TAG]: 'Open source',
+  [RELEASE_TAG]: 'Release',
 }
 
 export const getTechTagName = (tag: TechTag): string => TECH_TAG_NAMES[tag]
@@ -127,7 +135,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   amazoniam: [INFRA_TAG, CLOUD_TAG, SECURITY_TAG],
   amazonrds: [BACKEND_TAG, CLOUD_TAG],
   amazons3: [INFRA_TAG, CLOUD_TAG, BACKEND_TAG],
-  anaconda: [PACKAGE_MANAGEMENT, DATA_TAG],
+  anaconda: [PACKAGE_MANAGEMENT_TAG, DATA_TAG],
   android: [FRONTEND_TAG, PLATFORM_TAG, MOBILE_TAG],
   androidstudio: [FRONTEND_TAG, EDITOR_TAG, MOBILE_TAG],
   angular: [FRONTEND_TAG, FRAMEWORK_TAG],
@@ -139,10 +147,16 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   bitcoin: [BACKEND_TAG, CRYPTO_TAG, SECURITY_TAG],
   blockcerts: [BACKEND_TAG, FRONTEND_TAG, CRYPTO_TAG, SECURITY_TAG],
   bluetooth: [FRONTEND_TAG, COMMS_TAG, MOBILE_TAG],
+  cloudflarepages: [INFRA_TAG, CLOUD_TAG],
+  cloudinary: [INFRA_TAG, CLOUD_TAG],
+  codecov: [TEST_TAG],
+  contributorcovenant: [OPEN_SOURCE_TAG],
+  conventionalcommits: [],
   css: [FRONTEND_TAG, LANGUAGE_TAG],
   cypress: [FRONTEND_TAG, TEST_TAG],
   datadog: [BACKEND_TAG, INFRA_TAG, CLOUD_TAG, MONITORING_TAG],
   docker: [INFRA_TAG, PACKAGING_TAG],
+  eslint: [],
   ethereum: [BACKEND_TAG, FRONTEND_TAG, CRYPTO_TAG],
   express: [BACKEND_TAG, FRAMEWORK_TAG],
   flask: [BACKEND_TAG, FRAMEWORK_TAG],
@@ -154,13 +168,14 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   gitlabcicd: [INFRA_TAG, CICD_TAG],
   gitlabpages: [INFRA_TAG, FRONTEND_TAG, CLOUD_TAG],
   googleworkspace: [PRODUCTIVITY_TAG],
-  gradle: [PACKAGE_MANAGEMENT, PACKAGING_TAG],
+  gradle: [PACKAGE_MANAGEMENT_TAG, PACKAGING_TAG],
   graphite: [],
   helm: [INFRA_TAG],
   heroku: [INFRA_TAG, CLOUD_TAG],
   html: [FRONTEND_TAG, LANGUAGE_TAG],
   http: [BACKEND_TAG, FRONTEND_TAG, COMMS_TAG],
   httprest: [BACKEND_TAG, FRONTEND_TAG, COMMS_TAG],
+  imagekit: [INFRA_TAG, CLOUD_TAG],
   ios: [FRONTEND_TAG, PLATFORM_TAG, MOBILE_TAG],
   jasmine: [FRONTEND_TAG, TEST_TAG],
   java: [BACKEND_TAG, FRONTEND_TAG, LANGUAGE_TAG, MOBILE_TAG],
@@ -179,19 +194,22 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   linux: [INFRA_TAG, PLATFORM_TAG],
   liquibase: [BACKEND_TAG, DATABASE_TAG],
   mariadb: [BACKEND_TAG, DATABASE_TAG],
+  materialformkdocs: [DOCS_TAG],
   microsoftword: [PRODUCTIVITY_TAG],
   mongodb: [BACKEND_TAG, DATABASE_TAG],
   mysql: [BACKEND_TAG, DATABASE_TAG],
   newrelic: [BACKEND_TAG, INFRA_TAG, CLOUD_TAG, MONITORING_TAG],
   nodedotjs: [BACKEND_TAG, FRONTEND_TAG, RUNTIME_TAG],
   notion: [PRODUCTIVITY_TAG],
-  npm: [PACKAGE_MANAGEMENT, FRONTEND_TAG, BACKEND_TAG, PACKAGING_TAG],
+  npm: [PACKAGE_MANAGEMENT_TAG, FRONTEND_TAG, BACKEND_TAG, PACKAGING_TAG],
   oauth2: [SECURITY_TAG, COMMS_TAG],
   openapiinitiative: [BACKEND_TAG, FRONTEND_TAG, COMMS_TAG],
   php: [BACKEND_TAG, FRONTEND_TAG, LANGUAGE_TAG],
+  pnpm: [PACKAGE_MANAGEMENT_TAG],
   postgresql: [BACKEND_TAG, DATABASE_TAG],
+  prettier: [FRONTEND_TAG],
   pwa: [FRONTEND_TAG, FRAMEWORK_TAG, MOBILE_TAG],
-  pypi: [PACKAGE_MANAGEMENT],
+  pypi: [PACKAGE_MANAGEMENT_TAG],
   pyqt: [FRONTEND_TAG, FRAMEWORK_TAG],
   python: [BACKEND_TAG, FRONTEND_TAG, DATA_TAG, LANGUAGE_TAG],
   'python-unittest': [BACKEND_TAG, FRONTEND_TAG, TEST_TAG],
@@ -200,11 +218,13 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   redis: [BACKEND_TAG, DATABASE_TAG],
   redsys: [BACKEND_TAG, SECURITY_TAG],
   redux: [FRONTEND_TAG, FRAMEWORK_TAG],
+  renovate: [PACKAGE_MANAGEMENT_TAG],
   rollupdotjs: [FRONTEND_TAG, PACKAGING_TAG],
   rspec: [BACKEND_TAG, TEST_TAG],
   ruby: [BACKEND_TAG, LANGUAGE_TAG],
   rubymine: [BACKEND_TAG, EDITOR_TAG],
   rubyonrails: [BACKEND_TAG, FRAMEWORK_TAG],
+  semanticrelease: [RELEASE_TAG],
   sentry: [BACKEND_TAG, INFRA_TAG, CLOUD_TAG, MONITORING_TAG],
   sidekiq: [BACKEND_TAG, QUEUING_TAG],
   slack: [PRODUCTIVITY_TAG],
@@ -270,7 +290,7 @@ const TECHS_RELEVANCE_SCORE: Record<string, number> = (() => {
     techs: readonly string[]
   }>((project) => ({
     start: new Date(project.startDate).getTime(),
-    end: new Date(project.endDate).getTime(),
+    end: (project.endDate ? new Date(project.endDate) : new Date()).getTime(),
     techs: project.technologies,
   }))
   const techsAndTimes = projects.flatMap<readonly [string, number, number]>(
