@@ -4,13 +4,16 @@ import {
   input,
   output,
 } from '@angular/core'
-import { getTechTagName, TechTag } from '../tags' // Assuming '@/data/tags' is the correct path
+import { getTechTagName, TechTag } from '../tags'
+import { CheckboxLabelComponent } from '@/common/checkbox-label/checkbox-label.component'
+import { CheckboxComponent } from '@/common/checkbox/checkbox.component' // Assuming '@/data/tags' is the correct path
 
 @Component({
   selector: 'app-tech-tags-selector',
   templateUrl: './tech-tags-selector.component.html',
   styleUrl: './tech-tags-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CheckboxLabelComponent, CheckboxComponent],
 })
 export class TechTagsSelectorComponent {
   available = input.required<readonly TechTag[]>()

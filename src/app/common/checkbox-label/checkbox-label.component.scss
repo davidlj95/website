@@ -1,0 +1,7 @@
+@use 'margins';
+
+:host {
+  display: flex;
+  align-items: center;
+  gap: margins.$xs;
+}
