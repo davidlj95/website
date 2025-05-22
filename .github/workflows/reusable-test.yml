@@ -76,6 +76,7 @@ jobs:
           pnpm run --filter scripts app-data:techs
           pnpm run --filter scripts app-data:templated-files
           touch data/generated/release.json
+          touch data/generated/resume.pdf
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
