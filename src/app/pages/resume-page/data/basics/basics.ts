@@ -1,4 +1,10 @@
-export interface Profile {
+export interface Basics {
+  readonly profile: Profile
+  readonly contacts: readonly Contact[]
+  readonly socials: readonly Social[]
+}
+
+interface Profile {
   readonly name: string
   readonly label: string
   readonly image: string

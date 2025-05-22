@@ -24,7 +24,6 @@ describe('ProfileSectionComponent', () => {
   beforeEach(() => {
     ;[fixture, component] = componentTestSetup(ProfileSectionComponent, {
       imports: [
-        ProfileSectionComponent,
         MockComponents(
           SectionTitleComponent,
           ProfilePictureComponent,

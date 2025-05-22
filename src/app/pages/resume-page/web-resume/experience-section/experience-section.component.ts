@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core'
 import { ExperienceComponent } from './experience/experience.component'
 import { SectionTitleComponent } from '../section-title/section-title.component'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
-import { EXPERIENCE_SERVICE } from '../../data/experience/experience-service'
 import { toSignal } from '@angular/core/rxjs-interop'
+import { GET_JSON_RESUME_EXPERIENCES } from '../../data/experience/get-json-resume-experiences'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -13,6 +13,6 @@ import { toSignal } from '@angular/core/rxjs-interop'
 })
 export class ExperienceSectionComponent {
   protected readonly _experiences = toSignal(
-    inject(EXPERIENCE_SERVICE).getAll(),
+    inject(GET_JSON_RESUME_EXPERIENCES)(),
   )
 }

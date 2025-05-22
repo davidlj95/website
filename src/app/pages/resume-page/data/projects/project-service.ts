@@ -1,9 +1,7 @@
 import { inject, InjectionToken } from '@angular/core'
 import { Project } from './project'
-import { ADAPT_JSON_RESUME_PROJECT } from './adapt-json-resume-project'
+import { GET_JSON_RESUME_PROJECTS } from './get-json-resume-projects'
 import { map, Observable } from 'rxjs'
-import { JsonResumeService } from '../json-resume/json-resume.service'
-import { JsonResumeProjects } from '../json-resume/types'
 
 /** @visibleForTesting */
 export interface ProjectService {
@@ -16,21 +14,15 @@ export const PROJECT_SERVICE = new InjectionToken<ProjectService>(
   isDevMode ? 'ProjectService' : 'rPS',
   {
     factory: () => {
-      const jsonResumeService = inject(JsonResumeService)
-      const adapter = inject(ADAPT_JSON_RESUME_PROJECT)
-      const mapJsonResumeProjects = map((projects: JsonResumeProjects) =>
-        projects.map((project) => adapter(project)),
-      )
+      const jsonResumeProjects$ = inject(GET_JSON_RESUME_PROJECTS)()
       return {
         getByCompanyName: (name) =>
-          jsonResumeService.getProjects().pipe(
+          jsonResumeProjects$.pipe(
             map((projects) =>
               projects.filter((project) => project.entity === name),
             ),
-            mapJsonResumeProjects,
           ),
-        getAll: () =>
-          jsonResumeService.getProjects().pipe(mapJsonResumeProjects),
+        getAll: () => jsonResumeProjects$,
       }
     },
   },

@@ -7,7 +7,7 @@ import {
   JsonResumeLanguages,
   JsonResumeProjects,
   JsonResumeWork,
-} from './types'
+} from './json-resume-types'
 
 @Injectable({ providedIn: 'root' })
 export class JsonResumeService {

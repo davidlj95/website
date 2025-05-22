@@ -7,11 +7,9 @@ import { MockComponents, MockProvider } from 'ng-mocks'
 import { makeExperience } from '../../data/experience/__tests__/make-experience'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
-import {
-  EXPERIENCE_SERVICE,
-  ExperienceService,
-} from '../../data/experience/experience-service'
 import { of } from 'rxjs'
+import { GET_JSON_RESUME_EXPERIENCES } from '../../data/experience/get-json-resume-experiences'
+import { Experience } from '../../data/experience/experience'
 
 describe('ExperienceSectionComponent', () => {
   let component: ExperienceSectionComponent
@@ -25,13 +23,8 @@ describe('ExperienceSectionComponent', () => {
 
   it('should display all experiences', () => {
     const experiences = [makeExperience(), makeExperience()]
-    const experienceService: ExperienceService = {
-      getAll: jasmine
-        .createSpy<ExperienceService['getAll']>()
-        .and.returnValue(of(experiences)),
-    }
 
-    ;[fixture, component] = makeSut({ experienceService })
+    ;[fixture] = makeSut({ experiences })
     fixture.detectChanges()
 
     const experienceElements = fixture.debugElement.queryAll(
@@ -43,21 +36,18 @@ describe('ExperienceSectionComponent', () => {
 })
 
 function makeSut({
-  experienceService,
-}: { experienceService?: ExperienceService } = {}) {
+  experiences,
+}: { experiences?: readonly Experience[] } = {}) {
   return componentTestSetup(ExperienceSectionComponent, {
     imports: [
-      ExperienceSectionComponent,
       MockComponents(
         SectionTitleComponent,
-        ExperienceComponent,
         CardGridComponent,
+        ExperienceComponent,
       ),
     ],
     providers: [
-      experienceService
-        ? MockProvider(EXPERIENCE_SERVICE, experienceService)
-        : [],
+      MockProvider(GET_JSON_RESUME_EXPERIENCES, () => of(experiences ?? [])),
     ],
   })
 }

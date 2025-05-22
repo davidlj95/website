@@ -3,37 +3,43 @@
     <span appMaterialSymbol>{{ _materialSymbols.EnergySavingsLeaf }}</span>
     Let's be environmentally friendly: please avoid printing this document
   </div>
-  <header>
-    @let profile = _profile();
-    @if (profile) {
+  @let basics = _basics();
+  @if (basics) {
+    <header>
+      @let profile = basics.profile;
       <h1>{{ profile.name }}</h1>
       <span class="label">{{ profile.label }}</span>
       <p>{{ profile.summary }}</p>
-    }
-    @let contacts = _contacts() ?? [];
-    @let socials = _socials() ?? [];
-    @if (contacts.length || socials.length) {
-      <ul>
-        @for (contact of contacts; track contact) {
-          <li>
-            <a [href]="contact.url.toString()" [attr.aria-label]="contact.label"
-              ><span appMaterialSymbol>{{ contact.icon }}</span>
-              {{ contact.text }}</a
-            >
-          </li>
-        }
-        @for (social of socials; track social) {
-          <li>
-            <a [href]="social.url.toString()" [attr.aria-label]="social.label">
-              <ng-icon [svg]="social.icon"></ng-icon>
-              {{ social.text }}</a
-            >
-          </li>
-        }
-      </ul>
-    }
-    <hr />
-  </header>
+      @let contacts = basics.contacts;
+      @let socials = basics.socials;
+      @if (contacts.length || socials.length) {
+        <ul>
+          @for (contact of contacts; track contact) {
+            <li>
+              <a
+                [href]="contact.url.toString()"
+                [attr.aria-label]="contact.label"
+                ><span appMaterialSymbol>{{ contact.icon }}</span>
+                {{ contact.text }}</a
+              >
+            </li>
+          }
+          @for (social of socials; track social) {
+            <li>
+              <a
+                [href]="social.url.toString()"
+                [attr.aria-label]="social.label"
+              >
+                <ng-icon [svg]="social.icon"></ng-icon>
+                {{ social.text }}</a
+              >
+            </li>
+          }
+        </ul>
+      }
+      <hr />
+    </header>
+  }
   <main>
     <section>
       <h2>Experience</h2>

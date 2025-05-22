@@ -3,13 +3,11 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
 import { componentTestSetup } from '@/test/helpers/component-test-setup'
 import { MockComponents, MockProvider } from 'ng-mocks'
 import { makeLanguage } from '../../data/languages/__tests__/make-language'
-import {
-  LANGUAGE_SERVICE,
-  LanguageService,
-} from '../../data/languages/language-service'
 import { LanguageComponent } from './language/language.component'
 import { CardGridComponent } from '@/common/card-grid/card-grid.component'
 import { By } from '@angular/platform-browser'
+import { GET_JSON_RESUME_LANGUAGES } from '../../data/languages/get-json-resume-languages'
+import { Language } from '../../data/languages/language'
 import { of } from 'rxjs'
 
 describe('LanguagesSectionComponent', () => {
@@ -21,34 +19,29 @@ describe('LanguagesSectionComponent', () => {
 
   it('should display all languages', () => {
     const languages = [makeLanguage(), makeLanguage()]
-    const languageService = {
-      getAll: jasmine
-        .createSpy<LanguageService['getAll']>()
-        .and.returnValue(of(languages)),
-    } satisfies LanguageService
 
-    const [fixture] = makeSut({ languageService })
+    const [fixture] = makeSut({ languages })
     fixture.detectChanges()
 
-    const itemElements = fixture.debugElement.queryAll(
+    const languageElements = fixture.debugElement.queryAll(
       By.directive(LanguageComponent),
     )
 
-    expect(itemElements.length).toBe(languages.length)
+    expect(languageElements.length).toBe(languages.length)
   })
 })
 
-function makeSut(opts: { languageService?: LanguageService } = {}) {
+function makeSut({ languages }: { languages?: readonly Language[] } = {}) {
   return componentTestSetup(LanguagesSectionComponent, {
     imports: [
-      CardGridComponent,
-      LanguagesSectionComponent,
-      MockComponents(SectionTitleComponent, LanguageComponent),
+      MockComponents(
+        SectionTitleComponent,
+        CardGridComponent,
+        LanguageComponent,
+      ),
     ],
     providers: [
-      opts.languageService
-        ? MockProvider(LANGUAGE_SERVICE, opts.languageService)
-        : [],
+      MockProvider(GET_JSON_RESUME_LANGUAGES, () => of(languages ?? [])),
     ],
   })
 }
