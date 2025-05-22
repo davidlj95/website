@@ -1,4 +1,4 @@
-import { RESUME_PATH } from '../pages/resume-page/resume-page.routes'
+import { RESUME_PATH } from '../pages/resume-page/resume-page.paths'
 import { CALENDAR_PATH } from '../pages/calendar-page/calendar-page.routes'
 import { SPORTS_PATH } from '../pages/sports-page/sports-page.routes'
 import { GIFTS_PATH } from '../pages/gifts-page/gifts-page.routes'

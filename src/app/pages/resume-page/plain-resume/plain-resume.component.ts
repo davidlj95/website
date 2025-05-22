@@ -12,6 +12,8 @@ import { GET_JSON_RESUME_BASICS } from '../data/basics/get-json-resume-basics'
 import { GET_JSON_RESUME_LANGUAGES } from '../data/languages/get-json-resume-languages'
 import { EDUCATION_SERVICE } from '../data/education/education.service'
 import { EXPERIENCE_SERVICE } from '../data/experience/experience.service'
+import { APP_BASE_URL_PRODUCTION } from '@/common/relativize-production-url'
+import { RESUME_PATH } from '../resume-page.paths'
 
 @Component({
   selector: 'app-plain-resume',
@@ -36,4 +38,8 @@ export class PlainResumeComponent {
   protected readonly _projects = toSignal(inject(PROJECT_SERVICE).getAll())
   protected readonly _languages = toSignal(inject(GET_JSON_RESUME_LANGUAGES)())
   protected readonly _materialSymbols = { EnergySavingsLeaf }
+  protected readonly _resumeUrl = new URL(
+    `${RESUME_PATH}/`,
+    inject(APP_BASE_URL_PRODUCTION),
+  )
 }

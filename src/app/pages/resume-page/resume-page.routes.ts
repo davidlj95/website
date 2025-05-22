@@ -2,8 +2,8 @@ import { ResumePageComponent } from './resume-page.component'
 import { METADATA } from '@/data/metadata'
 import { environment } from '../../../environments'
 import { Routes } from '@angular/router'
+import { RESUME_PATH } from './resume-page.paths'
 
-export const RESUME_PATH = 'resume'
 export const resumePageRoutes: Routes = [
   { path: '', redirectTo: `/${RESUME_PATH}`, pathMatch: 'full' },
   {
