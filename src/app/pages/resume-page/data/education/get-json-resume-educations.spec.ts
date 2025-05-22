@@ -64,16 +64,6 @@ describe('GetJsonResumeEducations', () => {
     expect(education.dateRange.end).toEqual(new Date(endDate))
   })
 
-  it('should map no end date when not given', async () => {
-    const endDate = undefined
-
-    const education = await callSutAndGetFirstItem({
-      jsonResumeEducation: [makeJsonResumeEducationItem({ endDate })],
-    })
-
-    expect(education.dateRange.end).toBeUndefined()
-  })
-
   // Non standard fields
   it('should relativize image URL', async () => {
     const dummyImagePath = '/images/education/foo.png'

@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core'
-import { DateRange } from '../date-range'
+import { dateRangeFromStrings } from '../date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { Experience } from './experience'
 import { tagsToAttributes } from '../attribute'
@@ -56,10 +56,7 @@ export const GET_JSON_RESUME_EXPERIENCES =
                     summary,
                     highlights: highlights ?? [],
                     attributes: tagsToAttributes(tags ?? []),
-                    dateRange: new DateRange(
-                      new Date(startDate),
-                      !endDate ? undefined : new Date(endDate),
-                    ),
+                    dateRange: dateRangeFromStrings(startDate, endDate),
                     relatedProjects: relatedProjects.map(({ name }) => name),
                     technologies,
                   }

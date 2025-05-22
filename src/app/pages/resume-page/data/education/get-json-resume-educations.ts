@@ -1,6 +1,6 @@
 import { inject, InjectionToken } from '@angular/core'
 import { Education } from './education'
-import { DateRange } from '../date-range'
+import { dateRangeFromStrings } from '../date-range'
 import { RELATIVIZE_PRODUCTION_URL } from '@/common/relativize-production-url'
 import { tagsToAttributes } from '../attribute'
 import { map, Observable } from 'rxjs'
@@ -44,10 +44,7 @@ export const GET_JSON_RESUME_EDUCATIONS =
                   },
                   area,
                   studyType,
-                  dateRange: new DateRange(
-                    new Date(startDate),
-                    !endDate ? undefined : new Date(endDate),
-                  ),
+                  dateRange: dateRangeFromStrings(startDate, endDate),
                   score,
                   courses,
                   attributes: tagsToAttributes(tags ?? []),

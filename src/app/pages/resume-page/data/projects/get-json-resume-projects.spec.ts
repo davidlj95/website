@@ -44,21 +44,14 @@ describe('GetJsonResumeProjects', () => {
     expect(project.technologies).toEqual(technologies)
   })
 
-  it('should map start date', async () => {
+  it('should map date range', async () => {
     const startDate = '2022-12-31'
+    const endDate = '2023-12-31'
     const project = await callSutAndGetFirstItem({
-      jsonResumeProjects: [makeJsonResumeProject({ startDate })],
+      jsonResumeProjects: [makeJsonResumeProject({ startDate, endDate })],
     })
 
     expect(project.dateRange.start).toEqual(new Date(startDate))
-  })
-
-  it('should map end date', async () => {
-    const endDate = '2023-12-31'
-    const project = await callSutAndGetFirstItem({
-      jsonResumeProjects: [makeJsonResumeProject({ endDate })],
-    })
-
     expect(project.dateRange.end).toEqual(new Date(endDate))
   })
 
