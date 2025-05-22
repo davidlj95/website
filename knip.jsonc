@@ -25,7 +25,7 @@
       },
       "ignore": [
         // 👇 Maybe used at some point though
-        "scripts/src/data/extra-tech-icons.ts",
+        "scripts/src/app-data/data/extra-tech-icons.ts",
       ],
       "ignoreBinaries": [
         // 👇 Unlisted
@@ -56,7 +56,7 @@
       "ignoreMembers": ["STANDARD_DURATION_MS"],
     },
     "scripts": {
-      "entry": ["src/*.ts"],
+      "entry": ["src/*.ts", "src/app-data/*.ts"],
       // 👇 Needed as default is that all files are production:
       //    Which is almost same but with `!` suffix
       "project": ["**/*.ts"],

@@ -3,10 +3,10 @@ import * as MaterialSymbols from 'data/material-symbols'
 import { readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { mkdir } from 'fs/promises'
-import { isMain } from './utils/is-main'
-import { Log } from './utils/log'
-import { getRepositoryRootDir } from './utils/get-repository-root-dir'
-import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
+import { isMain } from '../utils/is-main'
+import { Log } from '../utils/log'
+import { getRepositoryRootDir } from '../utils/get-repository-root-dir'
+import { getAndCreateGeneratedDataDir } from '../utils/get-and-create-generated-data-dir'
 
 async function generateFonts() {
   Log.info('Generating font subset for Material Symbols Outlined')
@@ -40,7 +40,7 @@ async function generateFonts() {
   Log.item("Base filepath: '%s'", baseFilepath)
   Log.item('Formats:       %s', formats)
 
-  await generateFontSubsets(fontBuffer, {
+  await fontSubsets(fontBuffer, {
     text: glyphText,
     // https://caniuse.com/woff2
     // woff, ttf just to support IE users
@@ -52,7 +52,7 @@ async function generateFonts() {
   Log.ok('Done')
 }
 
-async function generateFontSubsets(
+async function fontSubsets(
   fontBuffer: Buffer,
   {
     text,

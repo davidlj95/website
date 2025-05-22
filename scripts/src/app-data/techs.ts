@@ -3,14 +3,14 @@ import * as icons from 'simple-icons'
 import { SimpleIcon } from 'simple-icons'
 import { mkdir, writeFile } from 'fs/promises'
 import { join, resolve } from 'path'
-import { objectToJson } from './utils/object-to-json'
-import { isMain } from './utils/is-main'
-import { Log } from './utils/log'
-import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
+import { objectToJson } from '../utils/object-to-json'
+import { isMain } from '../utils/is-main'
+import { Log } from '../utils/log'
+import { getAndCreateGeneratedDataDir } from '../utils/get-and-create-generated-data-dir'
 import { EXTRA_TECH_TITLES } from './data/extra-tech-titles'
 import { Tech, TechsIndex } from 'data/techs'
 
-async function generateTechs() {
+async function techs() {
   Log.info('Generating techs exports')
   const usedTechnologies = findUsedTechs(JSON_RESUME.projects)
   await Promise.all([createIndex, createIcons].map((f) => f(usedTechnologies)))
@@ -95,5 +95,5 @@ async function createIcons(icons: readonly TechWithIcon[]) {
 }
 
 if (isMain(import.meta.url)) {
-  await generateTechs()
+  await techs()
 }

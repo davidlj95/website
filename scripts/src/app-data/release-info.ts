@@ -4,10 +4,10 @@ import { createReleaseItConfig, ExtraConfig } from 'data/release-it'
 import { execSync } from 'child_process'
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
-import { objectToJson } from './utils/object-to-json'
-import { isMain } from './utils/is-main'
-import { getRepositoryRootDir } from './utils/get-repository-root-dir'
-import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
+import { objectToJson } from '../utils/object-to-json'
+import { isMain } from '../utils/is-main'
+import { getRepositoryRootDir } from '../utils/get-repository-root-dir'
+import { getAndCreateGeneratedDataDir } from '../utils/get-and-create-generated-data-dir'
 
 interface ReleaseData {
   commitSha: string
@@ -28,7 +28,7 @@ const releaseIt = release as (config: Config) => Promise<{
   version: string | undefined
 }>
 
-const generateReleaseInfo = async (): Promise<ReleaseData> => {
+const releaseInfo = async (): Promise<ReleaseData> => {
   const dryRunReleaseResult = await dryRunReleaseIt()
   const commitSha = execSync('git rev-parse HEAD').toString().trim()
   if (dryRunReleaseResult.version) {
@@ -116,15 +116,15 @@ const getVersionPlaceHolder = async (): Promise<string> => {
 }
 
 if (isMain(import.meta.url)) {
-  //👇 Otherwise version field for unreleased changes CHANGELOG is empty
+  //👇 Otherwise the version field for unreleased changes CHANGELOG is empty
   process.chdir(getRepositoryRootDir())
 
   await writeFile(
     join(await getAndCreateGeneratedDataDir(), 'release.json'),
-    objectToJson(await generateReleaseInfo()),
+    objectToJson(await releaseInfo()),
   )
 
-  // 👇 37 handles open at this point😅 So Node.js doesn't exit
+  // 👇 37 handles open at this point 😅. So Node.js doesn't exit
   // Mainly due to `conventional-changelog`'s monorepo libs
   // Maybe that's why `semantic-release` also hangs
   // Use `why-is-node-running` for more info. In the meantime, ...

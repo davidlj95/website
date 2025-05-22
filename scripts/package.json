@@ -4,15 +4,15 @@
   "description": "Scripts to power website generation",
   "type": "module",
   "scripts": {
+    "preapp-data": "pnpm run build",
+    "app-data": "pnpm run '/^app-data:.*/'",
+    "app-data:font-subsets": "pnpm run script dist/src/app-data/font-subsets.js",
+    "app-data:release-info": "pnpm run script dist/src/app-data/release-info.js",
+    "app-data:techs": "pnpm run script dist/src/app-data/techs.js",
+    "app-data:templated-files": "pnpm run script dist/src/app-data/templated-files.js",
     "build": "tsc",
-    "pregenerate": "pnpm run build",
-    "generate": "pnpm run '/^generate:.*/'",
-    "generate:font-subsets": "pnpm run script dist/src/generate-font-subsets.js",
-    "generate:release-info": "pnpm run script dist/src/generate-release-info.js",
-    "generate:techs": "pnpm run script dist/src/generate-techs.js",
-    "generate:templated-files": "pnpm run script dist/src/generate-templated-files.js",
     "script": "node --import=extensionless/register",
-    "update-security.txt": "pnpm run script dist/src/update-security-txt.js",
+    "security.txt": "pnpm run script dist/src/security-txt.js",
     "watch": "tsc --watch"
   },
   "devDependencies": {

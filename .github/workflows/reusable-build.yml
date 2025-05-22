@@ -29,8 +29,8 @@ jobs:
           key: ${{ env.cache-name }}-${{ env.week-of-year }}
           restore-keys: |
             ${{ env.cache-name }}
-      - name: Data tasks
-        run: pnpm run data
+      - name: App data
+        run: pnpm run app-data
       - name: Build app (with SSG)
         run: pnpm run ${{ github.event_name == 'pull_request' && 'build:pull-request' || 'build' }}
       - name: Upload built app

@@ -13,10 +13,10 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
         # 👇 Needed for typed linting
-      - name: Generate data
+      - name: Generate app data
         run: |
           pnpm run --filter scripts build
-          pnpm run --filter scripts generate:techs
+          pnpm run --filter scripts app-data:techs
       - name: Run linter
         run: pnpm run lint:code:typed
 

@@ -3,14 +3,14 @@ import { METADATA } from 'data/metadata'
 import { join } from 'path'
 import { mkdir, readdir, writeFile } from 'fs/promises'
 import { execSync } from 'child_process'
-import { isMain } from './utils/is-main'
-import { Log } from './utils/log'
-import { getRepositoryRootDir } from './utils/get-repository-root-dir'
-import { getAndCreateGeneratedDataDir } from './utils/get-and-create-generated-data-dir'
+import { isMain } from '../utils/is-main'
+import { Log } from '../utils/log'
+import { getRepositoryRootDir } from '../utils/get-repository-root-dir'
+import { getAndCreateGeneratedDataDir } from '../utils/get-and-create-generated-data-dir'
 
 export const LIQUID_EXTENSION = '.liquid'
 
-async function generateTemplatedFiles() {
+async function templatedFiles() {
   Log.info('Looking for Liquid files...')
   Log.item("Extension: '%s'", LIQUID_EXTENSION)
 
@@ -81,5 +81,5 @@ async function getAndCreateOutputDir() {
 }
 
 if (isMain(import.meta.url)) {
-  await generateTemplatedFiles()
+  await templatedFiles()
 }
