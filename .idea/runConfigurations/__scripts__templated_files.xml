@@ -3,7 +3,7 @@
     <package-json value="$PROJECT_DIR$/scripts/package.json" />
     <command value="run" />
     <scripts>
-      <script value="generate:templated-files" />
+      <script value="app-data:templated-files" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

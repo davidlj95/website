@@ -3,7 +3,7 @@
     <package-json value="$PROJECT_DIR$/scripts/package.json" />
     <command value="run" />
     <scripts>
-      <script value="generate:font-subsets" />
+      <script value="app-data:font-subsets" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="@/scripts: generate" type="js.build_tools.npm">
+  <configuration default="false" name="@/scripts: app-data" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/scripts/package.json" />
     <command value="run" />
     <scripts>
-      <script value="generate" />
+      <script value="app-data" />
     </scripts>
     <node-interpreter value="project" />
     <envs />
