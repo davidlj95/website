@@ -6,8 +6,8 @@
     (selectedChange)="onDisplayModeChange($event)"
   ></app-selector>
   @if (_isPlainDisplayMode()) {
-    <button appToolbarButton [icon]="_materialSymbols.Print" onclick="print()">
-      Print
+    <button appToolbarButton onclick="print()" aria-label="Print">
+      {{ _materialSymbols.Print }}
     </button>
     <label appCheckboxLabel>
       <input
@@ -19,6 +19,9 @@
       Compact
     </label>
   }
+  <a appToolbarButton aria-label="PDF" href="/resume.pdf">
+    <ng-icon [svg]="_ngIcons.faFilePdf"></ng-icon>
+  </a>
 </app-toolbar>
 @if (_isPlainDisplayMode()) {
   <app-plain-resume></app-plain-resume>

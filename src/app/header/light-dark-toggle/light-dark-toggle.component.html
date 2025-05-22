@@ -1,14 +1,16 @@
 <button
   appToolbarButton
-  [icon]="_materialSymbol.DarkMode"
   (click)="_colorSchemeService.toggleDarkLight()"
   aria-label="Switch to dark mode"
   class="light-only"
-></button>
+>
+  {{ _materialSymbol.DarkMode }}
+</button>
 <button
   appToolbarButton
-  [icon]="_materialSymbol.LightMode"
   (click)="_colorSchemeService.toggleDarkLight()"
   aria-label="Switch to light mode"
   class="dark-only"
-></button>
+>
+  {{ _materialSymbol.LightMode }}
+</button>

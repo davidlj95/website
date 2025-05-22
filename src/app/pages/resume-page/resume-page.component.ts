@@ -14,7 +14,10 @@ import { Print } from '@/data/material-symbols'
 import { CheckboxLabelComponent } from '@/common/checkbox-label/checkbox-label.component'
 import { CheckboxComponent } from '@/common/checkbox/checkbox.component'
 import { RESUME_CONFIG_SERVICE } from './data/resume-config.service'
+import { NgIcon, provideIcons } from '@ng-icons/core'
+import { faFilePdf } from '@ng-icons/font-awesome/regular'
 
+const ngIcons = { faFilePdf }
 @Component({
   templateUrl: './resume-page.component.html',
   styleUrls: ['./resume-page.component.scss'],
@@ -26,7 +29,9 @@ import { RESUME_CONFIG_SERVICE } from './data/resume-config.service'
     ToolbarButtonComponent,
     CheckboxLabelComponent,
     CheckboxComponent,
+    NgIcon,
   ],
+  providers: [provideIcons(ngIcons)],
 })
 export class ResumePageComponent {
   private _router = inject(Router)
@@ -68,6 +73,7 @@ export class ResumePageComponent {
   }
 
   protected readonly _materialSymbols = { Print }
+  protected readonly _ngIcons = ngIcons
 }
 
 /** @visibleForTesting */

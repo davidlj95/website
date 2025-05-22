@@ -4,6 +4,7 @@
 @use 'animations';
 @use 'quirks';
 @use 'print';
+@use 'margins';
 
 :host {
   position: sticky;
@@ -28,6 +29,7 @@
 app-toolbar {
   flex-wrap: nowrap;
   height: 100%;
+  padding-left: 0;
 }
 
 nav {
