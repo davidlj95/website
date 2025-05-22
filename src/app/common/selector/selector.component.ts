@@ -14,6 +14,7 @@ import {
 })
 export class SelectorComponent<Value extends string = string> {
   readonly label = input.required<string>()
+  readonly name = input<string>()
   readonly options = input.required<readonly SelectorOption<Value>[]>()
   readonly selected = input<Value>()
   readonly selectedChange = output<Value>()
