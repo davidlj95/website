@@ -9,6 +9,10 @@
   justify-content: center;
 
   color: var(--icon-default);
+  &:visited,
+  &:active {
+    color: var(--icon-default);
+  }
   border-style: none;
   background: transparent;
 
@@ -17,8 +21,7 @@
   }
 
   @include touch-or-pointer.primaryInputCanHover {
-    &:hover,
-    &:enabled:hover {
+    &:not(:disabled):hover {
       color: var(--icon-default-hover);
     }
   }
