@@ -1,5 +1,7 @@
 <app-content-page>
-  <h1>👟 Sports</h1>
+  <h1>
+    <span appMaterialSymbol>{{ _materialSymbols.Sports }}</span> Sports
+  </h1>
   <p>
     Physical activity is crucial for a healthy lifestyle. Sports are fun (some
     are subjectively more than others 😜). So:
@@ -17,7 +19,10 @@
     ones I play.
   </p>
   <p>Come on, let's play a padel match, or go running together! 🏃</p>
-  <h2>🎾 Padel</h2>
+  <h2>
+    <span [innerHTML]="_padelSvg"></span>
+    Padel
+  </h2>
   <p>It's the sport I play the most lately. Twice or three times a week.</p>
   <p>
     It's like tennis, but
@@ -56,14 +61,16 @@
     [ngTemplateOutlet]="playtomicCard"
     [ngTemplateOutletContext]="{ sport: 'Padel' }"
   ></ng-container>
-  <h2>🏃 Running</h2>
+  <h2>
+    <span appMaterialSymbol>{{ _materialSymbols.DirectionsRun }}</span> Running
+  </h2>
   <p>Started on summer 2023 as a way to do some cardio ❤️</p>
   <p>
     Better than running on a gym's treadmill: I'm under a roof most of the day
-    🧑‍💻 So it's a healthy way to get some sunlight ☀️
+    🧑💻 So it's a healthy way to get some sunlight ☀️
   </p>
   <p>Plus I challenge myself 💪 Whilst being quite cheap 🤑</p>
-  <p>
+  <p style="font-weight: bold">
     👇 Checkout here my latest runs on
     <a href="https://www.strava.com">Strava</a> 😳
   </p>
@@ -73,7 +80,10 @@
     allowtransparency="true"
     src="https://www.strava.com/athletes/116896062/latest-rides/2258b4e99aeb51898175a798dc9a4a15067dfc26"
   ></iframe>
-  <h2>🎾 Tennis</h2>
+
+  <h2>
+    <span appMaterialSymbol>{{ _materialSymbols.SportsTennis }}</span> Tennis
+  </h2>
   <p>
     Used to play it when I was a kid. 6+ years training every week. Some
     competitions
@@ -83,11 +93,21 @@
     [ngTemplateOutlet]="playtomicCard"
     [ngTemplateOutletContext]="{ sport: 'Tennis' }"
   ></ng-container>
-  <h2>🏊 Swimming</h2>
+
+  <h2>
+    <span appMaterialSymbol>{{ _materialSymbols.Pool }}</span
+    >Swimming
+  </h2>
   <p>Spent many years swimming as a school's extracurricular activity</p>
   <p>But don't fancy it much 🤷</p>
   <p>
     Nowadays I prefer a bathing in a swimming pool, hot tube or in the sea 🌊😌
     🍹
   </p>
+  <aside>
+    <a href="https://www.freepik.com/icon/paddle-tennis-racket_6814699"
+      >Padel icon</a
+    >
+    designed by <a href="https://freepik.com">FreePik</a>
+  </aside>
 </app-content-page>

@@ -1,5 +1,8 @@
 @use 'theming';
 @use 'animations';
+@use 'margins';
+@use 'paddings';
+@use 'borders';
 
 img.sports-equation {
   @include theming.when-dark-mode {
@@ -10,10 +13,32 @@ img.sports-equation {
   }
 }
 
+h2 {
+  span {
+    width: 1em;
+  }
+  &::ng-deep svg {
+    height: 100%;
+    fill: var(--sys-color-on-surface);
+  }
+}
+
 .card-wrapper {
   display: flex;
+  margin-block: margins.$l;
+}
+
+iframe {
+  margin-block: margins.$m;
 }
 
 form {
   text-align: center;
+}
+
+aside {
+  @include borders.panel(top);
+  margin-block-start: margins.$l;
+  padding-block-start: paddings.$m;
+  font-style: italic;
 }

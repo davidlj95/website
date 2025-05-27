@@ -1,3 +1,8 @@
+@use 'margins';
+@use 'material-symbols';
+@use 'borders';
+@use 'animations';
+
 @mixin imports {
   @import '@fontsource/roboto/300.css';
   @import '@fontsource/roboto/400.css';
@@ -21,7 +26,24 @@ $body-font-family: 'Roboto', 'Helvetica', sans-serif;
   h4,
   h5,
   h6 {
-    font-weight: 300;
+    font-weight: bold;
+  }
+  h1 {
+    padding-bottom: 0.25em;
+    @include borders.panel(bottom);
+    border-bottom-width: 2px;
+    @include animations.single-transition(border-bottom);
+  }
+
+  h1,
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: margins.$s;
+    @include material-symbols.class {
+      height: 1em;
+      font-size: inherit;
+    }
   }
 }
 
