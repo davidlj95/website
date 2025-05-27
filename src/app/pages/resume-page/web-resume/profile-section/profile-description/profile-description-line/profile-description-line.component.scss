@@ -13,10 +13,5 @@
 
 @include material-symbols.class {
   @include material-symbols.font-size(1em);
-  @include material-symbols.variation-settings(
-    //$fill: true,
-    //$weight: 700,
-    $grade: -300,
-    $size: 24
-  );
+  @include material-symbols.variation-settings($grade: 200, $size: 20);
 }
