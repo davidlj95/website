@@ -11,6 +11,9 @@
   top: header.$height;
   transform: translateY(-#{borders.$panel-width});
   z-index: z-index.$headers;
+
+  font-weight: normal;
+
   @include quirks.leftBorderDisappearance;
   @include borders.panel(bottom, top);
 

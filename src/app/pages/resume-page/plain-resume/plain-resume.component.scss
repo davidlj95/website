@@ -7,6 +7,11 @@
   background: white;
   color: black;
 
+  h1 {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
   h2 {
     margin-block: margins.$m;
     border-bottom: 1px solid black;

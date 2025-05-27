@@ -40,11 +40,12 @@
     }
 
     h2 {
-      margin-block: margins.$m;
+      margin-block-start: margins.$l;
+      margin-block-end: margins.$m;
     }
 
     h3 {
-      margin-block: margins.$s;
+      margin-block: margins.$m;
     }
 
     p {

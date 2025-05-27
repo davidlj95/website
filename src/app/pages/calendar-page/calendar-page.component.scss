@@ -2,6 +2,7 @@
 @use 'sass:map';
 @use 'page';
 @use 'paddings';
+@use 'margins';
 
 :host {
   display: flex;
@@ -23,6 +24,13 @@
 
 header {
   padding: page.$padding page.$padding 0;
+
+  h1 {
+    margin-block-end: margins.$m;
+  }
+  h2 {
+    font-weight: normal;
+  }
 }
 
 .fader {
