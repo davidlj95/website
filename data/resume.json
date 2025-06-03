@@ -402,6 +402,9 @@
         "githubactions",
         "cloudinary",
         "imagekit",
+        "html",
+        "css",
+        "sass",
         "cloudflarepages",
         "webstorm",
         "git",
@@ -488,6 +491,7 @@
         "xcode",
         "html",
         "css",
+        "sass",
         "pwa",
         "cypress",
         "amazoneks",
@@ -562,17 +566,19 @@
       "tags": ["stack-front"],
       "technologies": [
         "angular",
+        "typescript",
+        "webcomponents",
+        "rollupdotjs",
+        "redux",
+        "jsonld",
         "html",
         "css",
-        "typescript",
+        "sass",
         "pwa",
-        "webcomponents",
-        "redux",
         "karmarunner",
         "jasmine",
         "jest",
         "nodedotjs",
-        "rollupdotjs",
         "npm",
         "gitlab",
         "gitlabcicd",
@@ -580,7 +586,6 @@
         "bitcoin",
         "ethereum",
         "blockcerts",
-        "jsonld",
         "git"
       ]
     },
@@ -604,6 +609,7 @@
         "angular",
         "html",
         "css",
+        "sass",
         "typescript",
         "gitlabcicd",
         "gitlab",
@@ -679,12 +685,5 @@
         "jquery"
       ]
     }
-  ],
-  "meta": {
-    "canonical": "https://resume.davidlj95.com",
-    "print": {
-      "hiddenSections": ["awards", "languages"]
-    },
-    "pdfUrl": "https://resume.davidlj95.com/davidlj95_Resume.pdf"
-  }
+  ]
 }
