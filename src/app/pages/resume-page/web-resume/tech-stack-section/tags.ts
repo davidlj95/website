@@ -224,6 +224,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   ruby: [BACKEND_TAG, LANGUAGE_TAG],
   rubymine: [BACKEND_TAG, EDITOR_TAG],
   rubyonrails: [BACKEND_TAG, FRAMEWORK_TAG],
+  sass: [FRONTEND_TAG],
   semanticrelease: [RELEASE_TAG],
   sentry: [BACKEND_TAG, INFRA_TAG, CLOUD_TAG, MONITORING_TAG],
   sidekiq: [BACKEND_TAG, QUEUING_TAG],
