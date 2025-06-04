@@ -8,7 +8,8 @@ import {
 import { ContentChipListComponent } from '@/common/content-chip-list/content-chip-list.component'
 import { ContentChipComponent } from '@/common/content-chip/content-chip.component'
 import { TechnologyComponent } from '../../../technology/technology.component'
-import { FIND_TECHS_BY_TAG, getTechTagName, TechTag } from '../tags'
+import { getTechTagName, TechTag } from '../tags'
+import { TECHS_SERVICE } from '../techs.service'
 
 @Component({
   selector: 'app-filtered-techs',
@@ -22,14 +23,14 @@ import { FIND_TECHS_BY_TAG, getTechTagName, TechTag } from '../tags'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilteredTechsComponent {
-  private readonly _findTechsByTag = inject(FIND_TECHS_BY_TAG)
+  private readonly _techsService = inject(TECHS_SERVICE)
   protected readonly _getTechTagName = getTechTagName
 
   readonly tag = input.required<TechTag>()
   readonly includeTags = input<readonly TechTag[]>([])
   readonly excludeTags = input<readonly TechTag[]>([])
   protected readonly _techsForTag = computed<readonly string[]>(() =>
-    this._findTechsByTag(this.tag(), {
+    this._techsService.findTechsByTag(this.tag(), {
       includes: this.includeTags(),
       excludes: this.excludeTags(),
     }),
