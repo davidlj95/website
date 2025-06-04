@@ -1,4 +1,3 @@
-import { InjectionToken } from '@angular/core'
 import RESUME_JSON from '@/data/resume.json'
 
 /** @knipIgnore **/
@@ -255,36 +254,7 @@ export const TECHS_BY_TAG = Object.fromEntries(
   ),
 ) as unknown as Record<TechTag, readonly string[]>
 
-export const FIND_TECHS_BY_TAG = new InjectionToken<FindTechsByTag>(
-  isDevMode ? 'findTechsByTag' : 'FTBT',
-  {
-    factory: () => findTechsByTag,
-  },
-)
-/** @visibleForTesting **/
-export type FindTechsByTag = typeof findTechsByTag
-const findTechsByTag = (
-  tag: TechTag,
-  opts: { excludes?: readonly TechTag[]; includes?: readonly TechTag[] } = {},
-) => {
-  const techsWithTag = TECHS_BY_TAG[tag]
-  const { includes, excludes } = opts
-  const withIncludes = includes?.length
-    ? techsWithTag.filter((tech) =>
-        includes.some((tag) => TECHS_TAGS[tech].includes(tag)),
-      )
-    : techsWithTag
-  const withoutExcludes = excludes?.length
-    ? withIncludes.filter((tech) =>
-        excludes.every((tag) => !TECHS_TAGS[tech].includes(tag)),
-      )
-    : withIncludes
-  return [...withoutExcludes].sort(
-    (a, b) => TECHS_RELEVANCE_SCORE[b] - TECHS_RELEVANCE_SCORE[a],
-  )
-}
-
-const TECHS_RELEVANCE_SCORE: Record<string, number> = (() => {
+export const TECHS_RELEVANCE_SCORE: Record<string, number> = (() => {
   const projects = RESUME_JSON.projects.map<{
     start: number
     end: number
