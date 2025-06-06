@@ -1,6 +1,6 @@
 import type RESUME from '@/data/resume.json'
 
-export type JsonResume = typeof RESUME
+type JsonResume = typeof RESUME
 export type JsonResumeBasics = JsonResume['basics']
 export type JsonResumeWork = JsonResume['work']
 /** @visibleForTesting */
