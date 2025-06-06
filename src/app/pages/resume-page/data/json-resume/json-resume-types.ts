@@ -1,15 +1,16 @@
 import type RESUME from '@/data/resume.json'
 
-export type JsonResumeBasics = typeof RESUME.basics
-export type JsonResumeWork = typeof RESUME.work
+type JsonResume = typeof RESUME
+export type JsonResumeBasics = JsonResume['basics']
+export type JsonResumeWork = JsonResume['work']
 /** @visibleForTesting */
 export type JsonResumeWorkItem = JsonResumeWork[number]
-export type JsonResumeEducation = typeof RESUME.education
+export type JsonResumeEducation = JsonResume['education']
 /** @visibleForTesting */
 export type JsonResumeEducationItem = JsonResumeEducation[number]
-export type JsonResumeProjects = typeof RESUME.projects
+export type JsonResumeProjects = JsonResume['projects']
 /** @visibleForTesting */
 export type JsonResumeProject = JsonResumeProjects[number]
-export type JsonResumeLanguages = typeof RESUME.languages
+export type JsonResumeLanguages = JsonResume['languages']
 /** @visibleForTesting */
 export type JsonResumeLanguage = JsonResumeLanguages[number]
