@@ -57,14 +57,14 @@
   ],
   "work": [
     {
-      "name": "Open-sourcing & freelancing",
+      "name": "Self-employed",
       "position": "Software Engineer",
       "startDate": "2023-05-15",
-      "summary": "Took a planned break from corporate work to focus on deepening technical knowledge in areas previously limited by time constraints during full-time roles. Explored topics such as semantic release, in-depth Angular, JavaScript/Typescript bundling optimizations and the maintenance of open source (npm) libraries. Complemented technical growth with learning on team culture and engineering management, reading several key books on leadership and collaboration.",
+      "summary": "Stepped away from full-time corporate roles to focus on in-depth technical knowledge. Explored topics such as deepening my Angular expertise, Semantic Release, creation and maintenance of JS libraries and JS/TS bundling optimizations. Complemented this technical growth with learning about team culture and engineering management, reading several key books on leadership and collaboration.",
       "highlights": [
-        "Created an open-source library for Angular for managing meta tags: [@davidlj95/ngx-meta](https://www.npmjs.com/package/@davidlj95/ngx-meta)",
-        "Built a [fashion stylist portfolio](https://christianlazaro.es) featuring optimized responsive images delivery",
-        "Contributed to open source projects through many [pull requests](https://github.com/pulls?q=author%3A%40me+-user%3A%40me+created%3A%3E2023-05-15) and [issues](https://github.com/search?q=is%3Aissue+author%3Adavidlj95+-user%3Adavidlj95&type=issues&s=created&o=desc). Plus other kinds of [public contributions](https://www.notion.so/davidlj95/9f766c2fe57e4a9ebf0bc571b62ec446?v=9db04a3147ec4323883403873a13c05d&pvs=4)",
+        "Created an [open-source library](https://www.npmjs.com/package/@davidlj95/ngx-meta) for managing site metadata (SEO, social sharing) [publicly endorsed by an Angular Google Developer Expert](https://x.com/Enea_Jahollari/status/1872579775732310502)",
+        "Built a high-performance [fashion stylist portfolio](https://christianlazaro.es), leveraging images CDNs to optimize loading speed and [achieve 95%+ scores in Core Web Vitals](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fchristianlazaro.es%2F)",
+        "Actively contributed to open source through numerous [pull requests](https://github.com/pulls?q=author%3A%40me+-user%3A%40me+created%3A%3E2023-05-15+created%3A%3C2025-09-01), [issue reports](https://github.com/search?q=is%3Aissue+author%3Adavidlj95+-user%3Adavidlj95&type=issues&s=created&o=desc), and [other public contributions](https://www.notion.so/davidlj95/9f766c2fe57e4a9ebf0bc571b62ec446?v=9db04a3147ec4323883403873a13c05d), including technical writing, documentation improvements, and community discussions",
         "Designed and launched a [personal website](https://davidlj95.com) on the internet"
       ],
       "image": "https://davidlj95.com/images/companies/davidlj95.png",
