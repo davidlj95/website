@@ -93,10 +93,11 @@
       "url": "https://www.koahealth.com",
       "startDate": "2020-10-01",
       "endDate": "2022-05-01",
-      "summary": "Full stack: web APIs backend, web and mobile app. Led, developed and supported several product features. Worked cross-functionally with product, design, QA, DevOps, cybersecurity, research and other products teams. Enhanced the company's design system library",
+      "summary": "Full stack: web APIs backend, web and mobile app. Joined to build the Mindset product within a small squad from the ground up. Led, developed and supported several of its features. Worked cross-functionally with product, design, QA, DevOps, cybersecurity, research and other products teams. Enhanced the company's design system library",
       "highlights": [
         "Joined as mid-level engineer; promoted to senior after first year's performance review",
-        "Led development of key features such as audio exercises and push notifications in the mobile app and messaging in both web and mobile apps for the Mindset product",
+        "Led development of key features such as in-app messaging between the web and mobile app, push notifications and guided audio exercises",
+        "Two years later, the product was licensed for a €1M clinical trial with a major customer",
         "Developed and maintain many authZ/N features. Created a proof of concept for Single Sign-On (SSO) using AWS Cognito to federate with third-party identity providers",
         "Maintained backend infrastructure in collaboration with the DevOps team",
         "Managed CI/CD pipelines",
