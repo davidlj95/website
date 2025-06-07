@@ -190,8 +190,8 @@ importers:
         specifier: 15.5.2
         version: 15.5.2
       liquidjs:
-        specifier: 10.21.0
-        version: 10.21.0
+        specifier: 10.21.1
+        version: 10.21.1
       ng-mocks:
         specifier: 14.13.4
         version: 14.13.4(@angular/common@19.2.9(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(@angular/forms@19.2.9(@angular/common@19.2.9(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(@angular/platform-browser@19.2.9(@angular/animations@19.2.9(@angular/common@19.2.9(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@19.2.9(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0)))(rxjs@7.8.2))(@angular/platform-browser@19.2.9(@angular/animations@19.2.9(@angular/common@19.2.9(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@19.2.9(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0)))
@@ -4882,8 +4882,8 @@ packages:
     engines: {node: '>=18.12.0'}
     hasBin: true
 
-  liquidjs@10.21.0:
-    resolution: {integrity: sha512-DouqxNU2jfoZzb1LinVjOc/f6ssitGIxiDJT+kEKyYqPSSSd+WmGOAhtWbVm1/n75svu4aQ+FyQ3ctd3wh1bbw==}
+  liquidjs@10.21.1:
+    resolution: {integrity: sha512-NZXmCwv3RG5nire3fmIn9HsOyJX3vo+ptp0yaXUHAMzSNBhx74Hm+dAGJvscUA6lNqbLuYfXgNavRQ9UbUJhQQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -13195,7 +13195,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  liquidjs@10.21.0:
+  liquidjs@10.21.1:
     dependencies:
       commander: 10.0.1
 
