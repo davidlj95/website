@@ -199,7 +199,7 @@ export const TECHS_TAGS: Record<string, readonly TechTag[]> = {
   mongodb: [BACKEND_TAG, DATABASE_TAG],
   mysql: [BACKEND_TAG, DATABASE_TAG],
   newrelic: [BACKEND_TAG, INFRA_TAG, CLOUD_TAG, MONITORING_TAG],
-  nodedotjs: [BACKEND_TAG, FRONTEND_TAG, RUNTIME_TAG],
+  nodedotjs: [BACKEND_TAG, RUNTIME_TAG],
   notion: [PRODUCTIVITY_TAG],
   npm: [PACKAGE_MANAGEMENT_TAG, FRONTEND_TAG, PACKAGING_TAG],
   oauth2: [SECURITY_TAG, COMMS_TAG],
