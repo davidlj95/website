@@ -94,7 +94,7 @@
     "@lhci/cli": "0.14.0",
     "@release-it/conventional-changelog": "10.0.1",
     "@types/compression": "1.7.5",
-    "@types/express": "5.0.1",
+    "@types/express": "5.0.3",
     "@types/http-server": "0.12.4",
     "@types/jasmine": "5.1.7",
     "@types/node": "22.15.3",
