@@ -42,8 +42,8 @@ importers:
         specifier: 5.2.5
         version: 5.2.5
       '@fontsource/roboto-mono':
-        specifier: 5.2.5
-        version: 5.2.5
+        specifier: 5.2.6
+        version: 5.2.6
       '@ng-icons/core':
         specifier: 27.5.2
         version: 27.5.2
@@ -208,8 +208,8 @@ importers:
         specifier: 19.0.3
         version: 19.0.3(@types/node@22.15.3)
       simple-icons:
-        specifier: 14.12.3
-        version: 14.12.3
+        specifier: 14.15.0
+        version: 14.15.0
       subset-font:
         specifier: 2.4.0
         version: 2.4.0
@@ -1346,8 +1346,8 @@ packages:
   '@fontsource/noto-sans@5.2.7':
     resolution: {integrity: sha512-mTpMSMft6Nb+ZSF4DSiJVYnLzKCRjHNFieZ/swuxSDQK+v1hjUeDTBxLHKUdfmC+ZPg6TUEWw4oRq2ltnDbSjQ==}
 
-  '@fontsource/roboto-mono@5.2.5':
-    resolution: {integrity: sha512-P1wrUBMFWfr+tuUIY10MzdRTBcl9f011CbZV1fXqcCk40Xmtn91l1V1daVuQ+JPctYEVYazabvaK+sUEThgnyw==}
+  '@fontsource/roboto-mono@5.2.6':
+    resolution: {integrity: sha512-fLCa3zs9XruKE8Fdbq0UWB0wqTi5dzi09QsnW7HgTwwnSVDZ3nH+X7Qg7l0yeIZs+E472cKE3RUD21ZnaXk4Zg==}
 
   '@fontsource/roboto@5.2.5':
     resolution: {integrity: sha512-70r2UZ0raqLn5W+sPeKhqlf8wGvUXFWlofaDlcbt/S3d06+17gXKr3VNqDODB0I1ASme3dGT5OJj9NABt7OTZQ==}
@@ -6396,8 +6396,8 @@ packages:
     resolution: {integrity: sha512-PHMifhh3EN4loMcHCz6l3v/luzgT3za+9f8subGgeMNjbJjzH4Ij/YoX3Gvu+kaouJRIlVdTHHCREADYf+ZteA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  simple-icons@14.12.3:
-    resolution: {integrity: sha512-P85Pqak4picfTzdujmGL7+pFfsd32K/tDjHPQ8vvJcr2Xk380A9kBVIW5QH86qWqa+YJgFa5huLcUuwmW+YBPQ==}
+  simple-icons@14.15.0:
+    resolution: {integrity: sha512-yjlJ8skP4isCd4dQTDGFbv0hQgDIr57DbWaovEeHADPAZa5DBEAs+3ZnBb76ti+yz7/OzFI3SqTP1SKku1uhCw==}
     engines: {node: '>=0.12.18'}
 
   slash@3.0.0:
@@ -9269,7 +9269,7 @@ snapshots:
 
   '@fontsource/noto-sans@5.2.7': {}
 
-  '@fontsource/roboto-mono@5.2.5': {}
+  '@fontsource/roboto-mono@5.2.6': {}
 
   '@fontsource/roboto@5.2.5': {}
 
@@ -15018,7 +15018,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  simple-icons@14.12.3: {}
+  simple-icons@14.15.0: {}
 
   slash@3.0.0: {}
 

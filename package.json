@@ -70,7 +70,7 @@
     "@angular/ssr": "19.2.14",
     "@davidlj95/ngx-meta": "19.0.0",
     "@fontsource/roboto": "5.2.5",
-    "@fontsource/roboto-mono": "5.2.5",
+    "@fontsource/roboto-mono": "5.2.6",
     "@ng-icons/core": "27.5.2",
     "@ng-icons/font-awesome": "27.5.2",
     "compression": "1.8.0",
@@ -127,7 +127,7 @@
     "prettier": "3.5.3",
     "puppeteer-core": "24.9.0",
     "release-it": "19.0.3",
-    "simple-icons": "14.12.3",
+    "simple-icons": "14.15.0",
     "subset-font": "2.4.0",
     "typescript": "5.8.3",
     "typescript-eslint": "8.31.1"
