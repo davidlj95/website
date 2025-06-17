@@ -20,4 +20,16 @@ export const EXTRA_TECH_TITLES: readonly [string, string][] = [
   // 👇 https://github.com/simple-icons/simple-icons/issues/11236
   ['visualstudiocode', 'Visual Studio Code'],
   ['imagekit', 'ImageKit'],
+  //👇 https://github.com/simple-icons/simple-icons/pull/13056
+  ['amazonrds', 'Amazon RDS'],
+  ['amazonec2', 'Amazon EC2'],
+  ['amazonecs', 'Amazon ECS'],
+  ['amazonelasticache', 'Amazon ElastiCache'],
+  ['amazons3', 'Amazon S3'],
+  ['awselasticloadbalancing', 'Amazon ELB'],
+  ['amazoneks', 'Amazon EKS'],
+  ['amazoncognito', 'Amazon Cognito'],
+  ['amazonapigateway', 'Amazon API Gateway'],
+  ['amazoniam', 'Amazon IAM'],
+  ['awssecretsmanager', 'AWS Secrets Manager'],
 ]
