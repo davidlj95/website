@@ -3,8 +3,8 @@ import {
   DestroyRef,
   effect,
   ElementRef,
-  Inject,
   input,
+  inject,
 } from '@angular/core'
 import {
   SIMPLE_ICON_LOADER,
@@ -25,11 +25,11 @@ export class SimpleIconComponent {
   readonly slug = input.required<string>()
   readonly hex = input<string>()
 
-  constructor(
-    @Inject(SIMPLE_ICON_LOADER) loader: SimpleIconLoader,
-    elRef: ElementRef,
-    destroyRef: DestroyRef,
-  ) {
+  constructor() {
+    const loader = inject<SimpleIconLoader>(SIMPLE_ICON_LOADER)
+    const elRef = inject(ElementRef)
+    const destroyRef = inject(DestroyRef)
+
     effect(() => {
       loader(this.slug())
         .pipe(

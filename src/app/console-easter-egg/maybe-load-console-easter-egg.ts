@@ -1,5 +1,5 @@
-import { afterNextRender, inject } from '@angular/core'
-import { DOCUMENT } from '@angular/common'
+import { afterNextRender, inject, DOCUMENT } from '@angular/core'
+
 import { IS_MOBILE } from '@/common/is-mobile'
 
 export const maybeLoadConsoleEasterEgg = () => {
