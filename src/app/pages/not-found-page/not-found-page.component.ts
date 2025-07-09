@@ -18,11 +18,8 @@ export class NotFoundPageComponent {
   }
 
   constructor() {
-    const appBaseUrl = inject<URL>(APP_BASE_URL)
-    const router = inject(Router)
-
     this._currentUrlInWaybackMachine = new URL(
-      `${WAYBACK_MACHINE_URL_PREFIX}${new URL(router.url, appBaseUrl)}`,
+      `${WAYBACK_MACHINE_URL_PREFIX}${new URL(inject(Router).url, inject<URL>(APP_BASE_URL))}`,
     )
   }
 }

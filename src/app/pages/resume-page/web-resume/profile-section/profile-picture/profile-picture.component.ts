@@ -19,9 +19,7 @@ export class ProfilePictureComponent {
   protected _hasBeenFocused = false
 
   constructor() {
-    const metadata = inject<Metadata>(METADATA)
-
-    this.realName = metadata.realName
+    this.realName = inject<Metadata>(METADATA).realName
   }
 
   onFocus() {

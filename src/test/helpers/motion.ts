@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
+import { DOCUMENT } from '@angular/core'
 
 const NO_MOTION_ATTRIBUTE = 'data-reduced-motion'
 

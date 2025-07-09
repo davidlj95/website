@@ -3,8 +3,8 @@ import {
   DestroyRef,
   effect,
   ElementRef,
-  input,
   inject,
+  input,
 } from '@angular/core'
 import {
   SIMPLE_ICON_LOADER,
@@ -27,14 +27,14 @@ export class SimpleIconComponent {
 
   constructor() {
     const loader = inject<SimpleIconLoader>(SIMPLE_ICON_LOADER)
-    const elRef = inject(ElementRef)
+    const el = inject<ElementRef<Element>>(ElementRef).nativeElement
     const destroyRef = inject(DestroyRef)
 
     effect(() => {
       loader(this.slug())
         .pipe(
           takeUntilDestroyed(destroyRef),
-          tap((svg) => ((elRef.nativeElement as Element).innerHTML = svg)),
+          tap((svg) => (el.innerHTML = svg)),
         )
         .subscribe()
     })
