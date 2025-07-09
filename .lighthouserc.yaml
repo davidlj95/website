@@ -10,5 +10,11 @@ ci:
       image-delivery-insight: warn
       # 👇 Difficult to avoid using Angular
       network-dependency-tree-insight: warn
+      # --- 👇 Not seen locally, but appear on CI/CD ---
+      # 👇 Triggers for the Material Symbols. No fallback, so forced to block
+      font-display-insight: warn
+      # 👇 Probably the non-JS enabled collapsible tree re-rendering.
+      #    However, the source is unattributed, so can't know for sure
+      forced-reflow-insight: warn
   upload:
     target: temporary-public-storage
