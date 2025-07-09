@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core'
+import { Component, ElementRef, Input, inject } from '@angular/core'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -12,17 +12,8 @@ import { Component, ElementRef, Input } from '@angular/core'
   },
 })
 export class TabComponent {
+  readonly elRef = inject<ElementRef<Element>>(ElementRef)
+
   // Can't be migrated yet: https://github.com/davidlj95/website/pull/886
   @Input() isSelected = false
-
-  constructor(
-    /**
-     * 👇 Useful for {@link TabsComponent} to access the HTML native element.
-     *
-     * Same as Angular Material does for tabs pagination
-     * https://github.com/angular/components/blob/18.0.5/src/material/tabs/paginated-tab-header.ts#L515
-     * https://github.com/angular/components/blob/18.0.5/src/material/tabs/tab-label-wrapper.ts#L29
-     */
-    readonly elRef: ElementRef<Element>,
-  ) {}
 }

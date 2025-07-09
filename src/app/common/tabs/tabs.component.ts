@@ -11,6 +11,7 @@ import {
   signal,
   viewChild,
   WritableSignal,
+  inject,
 } from '@angular/core'
 import { ToolbarButtonComponent } from '@/common/toolbar-button/toolbar-button.component'
 import {
@@ -45,7 +46,9 @@ export class TabsComponent implements OnDestroy {
   protected readonly _nextButtonDisabled = signal(true)
   private _intersectionObserver?: IntersectionObserver
 
-  constructor(elRef: ElementRef<Element>) {
+  constructor() {
+    const elRef = inject<ElementRef<Element>>(ElementRef)
+
     // 👇 If tabs change, observe new first and last tab elements.
     effect(() => this._resetIntersectionObserverTargets())
     // 👇 Listen to `selectedIndex` input and update selected tab

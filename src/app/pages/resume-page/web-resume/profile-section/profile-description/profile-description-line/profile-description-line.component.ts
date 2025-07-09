@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core'
+import { Component, input, inject } from '@angular/core'
 import { MaterialSymbolDirective } from '@/common/material-symbol.directive'
 
 import { DescriptionLineData } from '@/data/metadata'
@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser'
   styleUrl: './profile-description-line.component.scss',
 })
 export class ProfileDescriptionLineComponent {
-  readonly data = input.required<DescriptionLineData>()
+  protected readonly _domSanitizer = inject(DomSanitizer)
 
-  constructor(protected readonly _domSanitizer: DomSanitizer) {}
+  readonly data = input.required<DescriptionLineData>()
 }
