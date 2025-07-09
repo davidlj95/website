@@ -37,13 +37,6 @@ jobs:
           # https://github.com/GoogleChrome/lighthouse-ci/issues/859#issuecomment-1574205125
           LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.event.pull_request.head.sha || github.sha }}
         run: pnpm run test:lighthouseci
-      - name: Report results (as status check)
-        if: github.ref == 'refs/heads/main'
-        # noinspection SpellCheckingInspection
-        uses: manrueda/lighthouse-report-action@731523717dc2a4a92b3c1f67e2710a8261f3ccbb # v1.1.2
-        with:
-          reports: '.lighthouseci'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
   bundlewatch:
     name: Bundlewatch
     runs-on: ubuntu-latest
