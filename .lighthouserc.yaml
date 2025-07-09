@@ -6,8 +6,9 @@ ci:
   assert:
     preset: 'lighthouse:no-pwa'
     assertions:
-      bf-cache: warn
-      csp-xss: warn
-      uses-responsive-images: warn
+      # 👇 Just the profile picture when adding this
+      image-delivery-insight: warn
+      # 👇 Difficult to avoid using Angular
+      network-dependency-tree-insight: warn
   upload:
     target: temporary-public-storage
