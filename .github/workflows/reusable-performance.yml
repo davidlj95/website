@@ -36,7 +36,7 @@ jobs:
           # Needed for status checks to appear on PR
           # https://github.com/GoogleChrome/lighthouse-ci/issues/859#issuecomment-1574205125
           LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: pnpm run lighthouseci
+        run: pnpm run test:lighthouseci
       - name: Report results (as status check)
         if: github.ref == 'refs/heads/main'
         # noinspection SpellCheckingInspection
