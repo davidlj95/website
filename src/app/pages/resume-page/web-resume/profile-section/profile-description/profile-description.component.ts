@@ -30,11 +30,11 @@ export class ProfileDescriptionComponent {
   ) => node.depth() > 1
 
   constructor() {
-    const metadata = inject<Metadata>(METADATA)
-
     this._rootNode = new CollapsibleTreeNode(
       undefined,
-      metadata.descriptionLines.map(descriptionLineToCollapsibleTreeNode),
+      inject<Metadata>(METADATA).descriptionLines.map(
+        descriptionLineToCollapsibleTreeNode,
+      ),
     )
   }
 }
