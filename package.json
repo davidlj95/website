@@ -91,7 +91,7 @@
     "@eslint/compat": "1.2.9",
     "@fontsource-variable/material-symbols-outlined": "5.2.11",
     "@fontsource/noto-sans": "5.2.7",
-    "@lhci/cli": "0.14.0",
+    "@lhci/cli": "0.15.1",
     "@release-it/conventional-changelog": "10.0.1",
     "@types/compression": "1.7.5",
     "@types/express": "5.0.3",
