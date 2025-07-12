@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common'
-import { VERSION } from '@angular/core'
+import { VERSION, DOCUMENT } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { EmptyComponent } from './helpers/empty-component'
 import { RouterTestingHarness } from '@angular/router/testing'

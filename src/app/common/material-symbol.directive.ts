@@ -1,10 +1,12 @@
-import { Directive, ElementRef } from '@angular/core'
+import { Directive, ElementRef, inject } from '@angular/core'
 
 @Directive({
   selector: '[appMaterialSymbol]',
 })
 export class MaterialSymbolDirective {
-  constructor(elRef: ElementRef<Element>) {
+  constructor() {
+    const elRef = inject<ElementRef<Element>>(ElementRef)
+
     elRef.nativeElement.classList.add(MATERIAL_SYMBOLS_CLASS)
   }
 }

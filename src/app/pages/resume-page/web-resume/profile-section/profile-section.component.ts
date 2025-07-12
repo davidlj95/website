@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { Metadata } from '@/data/metadata'
 import { METADATA } from '@/common/injection-tokens'
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component'
@@ -27,7 +27,9 @@ export class ProfileSectionComponent {
 
   protected readonly _basics = toSignal(inject(GET_JSON_RESUME_BASICS)())
 
-  constructor(@Inject(METADATA) metadata: Metadata) {
+  constructor() {
+    const metadata = inject<Metadata>(METADATA)
+
     this.realName = metadata.realName
     this.nickname = metadata.nickname
     this.title = metadata.title

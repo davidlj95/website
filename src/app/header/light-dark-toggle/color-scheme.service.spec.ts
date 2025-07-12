@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common'
-import { EventEmitter } from '@angular/core'
+import { EventEmitter, DOCUMENT } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Subscription } from 'rxjs'

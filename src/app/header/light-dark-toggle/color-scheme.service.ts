@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common'
-import { Inject, Injectable } from '@angular/core'
+import { DOCUMENT, inject, Injectable } from '@angular/core'
 import { WINDOW } from '@/common/injection-tokens'
 
 // Ensure in SCSS styles that these values alter the color scheme
@@ -14,13 +13,12 @@ export enum Scheme {
   providedIn: 'root',
 })
 export class ColorSchemeService {
+  private _window = inject<Window>(WINDOW)
+
   private _htmlElement: HTMLElement
 
-  constructor(
-    @Inject(DOCUMENT) document: Document,
-    @Inject(WINDOW) private _window: Window,
-  ) {
-    this._htmlElement = document.documentElement
+  constructor() {
+    this._htmlElement = inject<Document>(DOCUMENT).documentElement
     this._listenForMatchMediaPreferenceChanges()
   }
 

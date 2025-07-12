@@ -1,7 +1,7 @@
 import { maybeLoadConsoleEasterEgg } from './maybe-load-console-easter-egg'
 import { TestBed } from '@angular/core/testing'
-import { DOCUMENT } from '@angular/common'
-import { Component } from '@angular/core'
+
+import { Component, DOCUMENT } from '@angular/core'
 import { MockProvider } from 'ng-mocks'
 import { IS_MOBILE } from '@/common/is-mobile'
 import AngularJson from '../../../angular.json'

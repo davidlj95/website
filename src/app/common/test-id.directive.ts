@@ -1,10 +1,12 @@
-import { Directive, effect, ElementRef, input } from '@angular/core'
+import { Directive, effect, ElementRef, input, inject } from '@angular/core'
 
 @Directive({ selector: '[appTestId]' })
 export class TestIdDirective {
   readonly appTestId = input.required<string>()
 
-  constructor(elRef: ElementRef<Element>) {
+  constructor() {
+    const elRef = inject<ElementRef<Element>>(ElementRef)
+
     effect(() => {
       if (isDevMode) {
         elRef.nativeElement.setAttribute(TEST_ID_ATTRIBUTE, this.appTestId())
