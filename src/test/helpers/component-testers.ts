@@ -21,8 +21,9 @@ export function shouldProjectContent(
     // TODO: this could be random to ensure component doesn't include that HTML by mistake
     const contentToProject = '<b>Foo</b><i>bar</i>42'
     const componentSelector = 'component-under-test'
+    const template = `<${componentSelector}>${contentToProject}</${componentSelector}>`
     @Component({
-      template: `<${componentSelector}>${contentToProject}</${componentSelector}>`,
+      template,
       imports: [component],
     })
     class HostComponent {}
@@ -32,7 +33,7 @@ export function shouldProjectContent(
     const [fixture] = componentTestSetup(HostComponent)
     // No change detection triggered given nothing may have changed
 
-    // Ensure component is there
+    // Ensure the component is there
     const componentElement = fixture.debugElement.query(By.directive(component))
     expect(componentElement).toBeTruthy()
 

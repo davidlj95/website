@@ -89,13 +89,14 @@ const makeHostComponent = (
     template: `
       <app-tabs [selectedIndex]="selectedIndex">
         @for (tab of tabs; track $index) {
-          <a appTab [style.width.px]="${TAB_WIDTH_PX}">{{ tab }}</a>
+          <a appTab [style.width.px]="_TAB_WIDTH_PX">{{ tab }}</a>
         }
       </app-tabs>
     `,
     imports: [TabsComponent, TabComponent],
   })
   class HostComponent {
+    _TAB_WIDTH_PX = TAB_WIDTH_PX
     tabs = opts.tabs ?? []
     selectedIndex = opts.selectedIndex
   }

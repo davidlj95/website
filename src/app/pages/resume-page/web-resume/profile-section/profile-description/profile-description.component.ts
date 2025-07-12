@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { METADATA } from '@/common/injection-tokens'
 import { DescriptionLine, Metadata } from '@/data/metadata'
 import {
@@ -29,10 +29,12 @@ export class ProfileDescriptionComponent {
     node: CollapsibleTreeComponent,
   ) => node.depth() > 1
 
-  constructor(@Inject(METADATA) metadata: Metadata) {
+  constructor() {
     this._rootNode = new CollapsibleTreeNode(
       undefined,
-      metadata.descriptionLines.map(descriptionLineToCollapsibleTreeNode),
+      inject<Metadata>(METADATA).descriptionLines.map(
+        descriptionLineToCollapsibleTreeNode,
+      ),
     )
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { METADATA } from '@/common/injection-tokens'
 import { Metadata } from '@/data/metadata'
 import { NgOptimizedImage } from '@angular/common'
@@ -18,8 +18,8 @@ export class ProfilePictureComponent {
   readonly realName: string
   protected _hasBeenFocused = false
 
-  constructor(@Inject(METADATA) metadata: Metadata) {
-    this.realName = metadata.realName
+  constructor() {
+    this.realName = inject<Metadata>(METADATA).realName
   }
 
   onFocus() {

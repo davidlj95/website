@@ -5,6 +5,7 @@ import {
   input,
   model,
   viewChildren,
+  inject,
 } from '@angular/core'
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
 import {
@@ -47,6 +48,8 @@ let nextId = 0
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CollapsibleTreeComponent {
+  private readonly _cdRef = inject(ChangeDetectorRef)
+
   readonly node = input.required<CollapsibleTreeNode>()
   readonly depth = input(0)
   readonly parent = input<CollapsibleTreeComponent>()
@@ -56,8 +59,6 @@ export class CollapsibleTreeComponent {
   readonly _children = viewChildren(CollapsibleTreeComponent)
 
   private readonly _id = nextId++
-
-  constructor(private readonly _cdRef: ChangeDetectorRef) {}
 
   get isCollapsible(): boolean {
     const isCollapsibleFn =

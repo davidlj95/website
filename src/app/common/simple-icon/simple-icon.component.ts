@@ -3,7 +3,7 @@ import {
   DestroyRef,
   effect,
   ElementRef,
-  Inject,
+  inject,
   input,
 } from '@angular/core'
 import {
@@ -25,16 +25,16 @@ export class SimpleIconComponent {
   readonly slug = input.required<string>()
   readonly hex = input<string>()
 
-  constructor(
-    @Inject(SIMPLE_ICON_LOADER) loader: SimpleIconLoader,
-    elRef: ElementRef,
-    destroyRef: DestroyRef,
-  ) {
+  constructor() {
+    const loader = inject<SimpleIconLoader>(SIMPLE_ICON_LOADER)
+    const el = inject<ElementRef<Element>>(ElementRef).nativeElement
+    const destroyRef = inject(DestroyRef)
+
     effect(() => {
       loader(this.slug())
         .pipe(
           takeUntilDestroyed(destroyRef),
-          tap((svg) => ((elRef.nativeElement as Element).innerHTML = svg)),
+          tap((svg) => (el.innerHTML = svg)),
         )
         .subscribe()
     })

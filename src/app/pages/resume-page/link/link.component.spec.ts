@@ -57,10 +57,11 @@ function makeHostComponent(
   href: string | undefined,
 ): Type<unknown> {
   @Component({
-    template: `<app-link [href]="href">${textContent}</app-link>`,
+    template: `<app-link [href]="href">{{ textContent }}</app-link>`,
     imports: [LinkComponent],
   })
   class TestHostComponent {
+    textContent = textContent
     href = href
   }
   return TestHostComponent
