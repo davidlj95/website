@@ -42,13 +42,14 @@ describe('TabsComponent', () => {
         [style.max-width.%]="100"
         [selectedIndex]="selectedIndex()"
       >
-        @for (tab of ${JSON.stringify(TABS)}; track $index) {
+        @for (tab of tabs; track $index) {
           <a appTab style="white-space: nowrap"> Tab {{ tab }} </a>
         }
       </app-tabs>`,
       imports: [TabsComponent, TabComponent],
     })
     class HostComponent {
+      tabs = TABS
       readonly selectedIndex = input<number>()
     }
 

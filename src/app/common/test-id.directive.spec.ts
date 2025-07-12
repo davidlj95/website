@@ -29,8 +29,9 @@ function makeComponentWithChildElementHavingTestIdDirectiveSetTo({
   elementTag: string
   testId: string
 }): Type<unknown> {
+  const template = `<${elementTag} [appTestId]="testId"></${elementTag}>`
   @Component({
-    template: `<${elementTag} [appTestId]="testId"></${elementTag}>`,
+    template,
     imports: [TestIdDirective],
   })
   class TestIdComponent {
