@@ -126,7 +126,7 @@
     "nyc": "17.1.0",
     "prettier": "3.5.3",
     "puppeteer-core": "24.10.2",
-    "release-it": "19.0.3",
+    "release-it": "19.0.4",
     "simple-icons": "15.2.0",
     "subset-font": "2.4.0",
     "typescript": "5.8.3",
