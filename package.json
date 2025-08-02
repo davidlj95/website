@@ -127,7 +127,7 @@
     "prettier": "3.6.2",
     "puppeteer-core": "24.15.0",
     "release-it": "19.0.4",
-    "simple-icons": "15.2.0",
+    "simple-icons": "15.8.0",
     "subset-font": "2.4.0",
     "typescript": "5.8.3",
     "typescript-eslint": "8.31.1"
