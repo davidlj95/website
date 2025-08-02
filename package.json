@@ -124,7 +124,7 @@
     "liquidjs": "10.21.1",
     "ng-mocks": "14.13.5",
     "nyc": "17.1.0",
-    "prettier": "3.5.3",
+    "prettier": "3.6.2",
     "puppeteer-core": "24.10.2",
     "release-it": "19.0.4",
     "simple-icons": "15.2.0",
