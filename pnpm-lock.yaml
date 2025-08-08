@@ -145,14 +145,14 @@ importers:
         specifier: 10.1.8
         version: 10.1.8(eslint@9.32.0(jiti@2.4.2))
       eslint-plugin-cypress:
-        specifier: 4.3.0
-        version: 4.3.0(eslint@9.32.0(jiti@2.4.2))
+        specifier: 5.1.0
+        version: 5.1.0(eslint@9.32.0(jiti@2.4.2))
       eslint-plugin-jasmine:
         specifier: 4.2.2
         version: 4.2.2
       eslint-plugin-json-files:
-        specifier: 4.4.2
-        version: 4.4.2(eslint@9.32.0(jiti@2.4.2))
+        specifier: 5.1.0
+        version: 5.1.0(eslint@9.32.0(jiti@2.4.2))
       extensionless:
         specifier: 1.9.9
         version: 1.9.9
@@ -579,10 +579,6 @@ packages:
       '@angular/platform-server':
         optional: true
 
-  '@babel/code-frame@7.24.7':
-    resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
-    engines: {node: '>=6.9.0'}
-
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
     engines: {node: '>=6.9.0'}
@@ -700,10 +696,6 @@ packages:
 
   '@babel/helpers@7.27.6':
     resolution: {integrity: sha512-muE8Tt8M22638HU31A3CgfSUciwz1fhATfoVai05aPXGor//CdWDCbnlY1yvBPo07njuVOCNGCSp/GTt12lIug==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/highlight@7.24.7':
-    resolution: {integrity: sha512-EStJpq4OuY8xYfhGVXngigBJRWxftKX9ksiGDnmlY3o7B/V7KIAc9X4oiK87uPJSc/vs5L869bem5fhZa8caZw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/parser@7.24.5':
@@ -2946,9 +2938,9 @@ packages:
   before-after-hook@3.0.2:
     resolution: {integrity: sha512-Nik3Sc0ncrMK4UUdXQmAnRtzmNQTAAXmXIopizwZ1W1t8QmfJj+zL4OA2I7XPTPW5z5TDqv4hRo/JzouDJnX3A==}
 
-  better-ajv-errors@1.2.0:
-    resolution: {integrity: sha512-UW+IsFycygIo7bclP9h5ugkNH8EjCSgqyFB/yQ4Hqqa1OEYDtb0uFIkYE0b6+CjkgJYVM5UKI/pJPxjYe9EZlA==}
-    engines: {node: '>= 12.13.0'}
+  better-ajv-errors@2.0.2:
+    resolution: {integrity: sha512-1cLrJXEq46n0hjV8dDYwg9LKYjDb3KbeW7nZTv4kvfoDD9c2DXHIE31nxM+Y/cIfXMggLUfmxbm6h/JoM/yotA==}
+    engines: {node: '>= 18.20.6'}
     peerDependencies:
       ajv: 4.11.8 - 8
 
@@ -3803,8 +3795,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-plugin-cypress@4.3.0:
-    resolution: {integrity: sha512-CgS/S940MJlT8jtnWGKI0LvZQBGb/BB0QCpgBOxFMM/Z6znD+PZUwBhCTwHKN2GEr5AOny3xB92an0QfzBGooQ==}
+  eslint-plugin-cypress@5.1.0:
+    resolution: {integrity: sha512-tdLXm4aq9vX2hTtKJTUFD3gdNseMKqsf8+P6hI4TtOPdz1LU4xvTpQBd1++qPAsPZP2lyYh71B5mvzu2lBr4Ow==}
     peerDependencies:
       eslint: '>=9'
 
@@ -3812,9 +3804,9 @@ packages:
     resolution: {integrity: sha512-nALbewRk63uz28UGNhUTJyd6GofXxVNFpWFNAwr9ySc6kpSRIoO4suwZqIYz3cfJmCacilmjp7+1Ocjr7zRagA==}
     engines: {node: '>=8', npm: '>=6'}
 
-  eslint-plugin-json-files@4.4.2:
-    resolution: {integrity: sha512-P+bNyzNmz/ia5JmEAjZAwsnMjrm/Zffxlpj3fz+LgF/Ka8qm2bopJIvqiCaBly0wjdy3XYOGQVZzfjefPsHClw==}
-    engines: {node: '>=18.12'}
+  eslint-plugin-json-files@5.1.0:
+    resolution: {integrity: sha512-OFXfiNV3hvCT5F9C77OR4KHZZAgpezI6oSvaRP4CcHgv2R0kPr+hctn4dCKbrKSggjr7YK7nn+ErWB68x4BB3w==}
+    engines: {node: '>=20.9'}
     peerDependencies:
       eslint: '>=5'
 
@@ -3965,10 +3957,6 @@ packages:
 
   fast-fifo@1.3.2:
     resolution: {integrity: sha512-/d9sfos4yxzpwkDkuN7k2SqFKtYNmCTzgfEpz82x34IM9/zc8KGxQoXg1liNC/izpRM/MBdt44Nmx41ZWqk+FQ==}
-
-  fast-glob@3.3.2:
-    resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
-    engines: {node: '>=8.6.0'}
 
   fast-glob@3.3.3:
     resolution: {integrity: sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==}
@@ -4247,10 +4235,6 @@ packages:
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
-    engines: {node: '>=18'}
-
-  globals@15.15.0:
-    resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
     engines: {node: '>=18'}
 
   globals@16.3.0:
@@ -6202,11 +6186,6 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.6.3:
-    resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
-    engines: {node: '>=10'}
-    hasBin: true
-
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
     engines: {node: '>=10'}
@@ -7321,7 +7300,7 @@ snapshots:
       '@ngtools/webpack': 20.1.4(@angular/compiler-cli@20.1.4(@angular/compiler@20.1.4)(typescript@5.8.3))(typescript@5.8.3)(webpack@5.99.9(esbuild@0.25.5))
       ansi-colors: 4.1.3
       autoprefixer: 10.4.21(postcss@8.5.6)
-      babel-loader: 10.0.0(@babel/core@7.27.7)(webpack@5.99.9)
+      babel-loader: 10.0.0(@babel/core@7.27.7)(webpack@5.99.9(esbuild@0.25.5))
       browserslist: 4.24.4
       copy-webpack-plugin: 13.0.0(webpack@5.99.9(esbuild@0.25.5))
       css-loader: 7.1.2(webpack@5.99.9(esbuild@0.25.5))
@@ -7685,11 +7664,6 @@ snapshots:
     optionalDependencies:
       '@angular/platform-server': 20.1.4(@angular/common@20.1.4(@angular/core@20.1.4(@angular/compiler@20.1.4)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@20.1.4)(@angular/core@20.1.4(@angular/compiler@20.1.4)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.1.4(@angular/animations@20.1.4(@angular/common@20.1.4(@angular/core@20.1.4(@angular/compiler@20.1.4)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.1.4(@angular/compiler@20.1.4)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@20.1.4(@angular/core@20.1.4(@angular/compiler@20.1.4)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.1.4(@angular/compiler@20.1.4)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
 
-  '@babel/code-frame@7.24.7':
-    dependencies:
-      '@babel/highlight': 7.24.7
-      picocolors: 1.1.1
-
   '@babel/code-frame@7.27.1':
     dependencies:
       '@babel/helper-validator-identifier': 7.27.1
@@ -7935,13 +7909,6 @@ snapshots:
     dependencies:
       '@babel/template': 7.27.2
       '@babel/types': 7.28.0
-
-  '@babel/highlight@7.24.7':
-    dependencies:
-      '@babel/helper-validator-identifier': 7.27.1
-      chalk: 2.4.2
-      js-tokens: 4.0.0
-      picocolors: 1.1.1
 
   '@babel/parser@7.24.5':
     dependencies:
@@ -10723,7 +10690,7 @@ snapshots:
 
   b4a@1.6.6: {}
 
-  babel-loader@10.0.0(@babel/core@7.27.7)(webpack@5.99.9):
+  babel-loader@10.0.0(@babel/core@7.27.7)(webpack@5.99.9(esbuild@0.25.5)):
     dependencies:
       '@babel/core': 7.27.7
       find-up: 5.0.0
@@ -10849,9 +10816,9 @@ snapshots:
 
   before-after-hook@3.0.2: {}
 
-  better-ajv-errors@1.2.0(ajv@8.17.1):
+  better-ajv-errors@2.0.2(ajv@8.17.1):
     dependencies:
-      '@babel/code-frame': 7.24.7
+      '@babel/code-frame': 7.27.1
       '@humanwhocodes/momoa': 2.0.4
       ajv: 8.17.1
       chalk: 4.1.2
@@ -11793,21 +11760,21 @@ snapshots:
     dependencies:
       eslint: 9.32.0(jiti@2.4.2)
 
-  eslint-plugin-cypress@4.3.0(eslint@9.32.0(jiti@2.4.2)):
+  eslint-plugin-cypress@5.1.0(eslint@9.32.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.32.0(jiti@2.4.2)
-      globals: 15.15.0
+      globals: 16.3.0
 
   eslint-plugin-jasmine@4.2.2: {}
 
-  eslint-plugin-json-files@4.4.2(eslint@9.32.0(jiti@2.4.2)):
+  eslint-plugin-json-files@5.1.0(eslint@9.32.0(jiti@2.4.2)):
     dependencies:
       ajv: 8.17.1
-      better-ajv-errors: 1.2.0(ajv@8.17.1)
+      better-ajv-errors: 2.0.2(ajv@8.17.1)
       eslint: 9.32.0(jiti@2.4.2)
-      fast-glob: 3.3.2
+      fast-glob: 3.3.3
       requireindex: 1.2.0
-      semver: 7.6.3
+      semver: 7.7.2
       sort-package-json: 1.57.0
 
   eslint-scope@5.1.1:
@@ -12042,14 +12009,6 @@ snapshots:
   fast-deep-equal@3.1.3: {}
 
   fast-fifo@1.3.2: {}
-
-  fast-glob@3.3.2:
-    dependencies:
-      '@nodelib/fs.stat': 2.0.5
-      '@nodelib/fs.walk': 1.2.8
-      glob-parent: 5.1.2
-      merge2: 1.4.1
-      micromatch: 4.0.8
 
   fast-glob@3.3.3:
     dependencies:
@@ -12375,8 +12334,6 @@ snapshots:
       ini: 2.0.0
 
   globals@14.0.0: {}
-
-  globals@15.15.0: {}
 
   globals@16.3.0: {}
 
@@ -14543,8 +14500,6 @@ snapshots:
   semver@5.7.2: {}
 
   semver@6.3.1: {}
-
-  semver@7.6.3: {}
 
   semver@7.7.1: {}
 
