@@ -94,8 +94,8 @@ importers:
         specifier: 1.3.1
         version: 1.3.1(eslint@9.32.0(jiti@2.4.2))
       '@fontsource-variable/material-symbols-outlined':
-        specifier: 5.2.17
-        version: 5.2.17
+        specifier: 5.2.20
+        version: 5.2.20
       '@fontsource/noto-sans':
         specifier: 5.2.7
         version: 5.2.7
@@ -1430,8 +1430,8 @@ packages:
     resolution: {integrity: sha512-Ul5l+lHEcw3L5+k8POx6r74mxEYKG5kOb6Xpy2gCRW6zweT6TEhAf8vhxGgjhqrd/VO/Dirhsb+1hNpD1ue9hw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/material-symbols-outlined@5.2.17':
-    resolution: {integrity: sha512-ZpJ1DSJX1eJIOQppYILwTuJEiE/UKJqviNMHfyZRXsU5NAGFEoCeRPRMRnvmj2qw2VN79GY2v5oxY5u+Xp+m4g==}
+  '@fontsource-variable/material-symbols-outlined@5.2.20':
+    resolution: {integrity: sha512-mYcaw+pC1wk1DPAoFlVzfvTloDallctmP4Wk1NTKIPe5fCpfBXT02bT9C5lpTqb6McYCkMAaLF+Y1mBouWlSqg==}
 
   '@fontsource/noto-sans@5.2.7':
     resolution: {integrity: sha512-mTpMSMft6Nb+ZSF4DSiJVYnLzKCRjHNFieZ/swuxSDQK+v1hjUeDTBxLHKUdfmC+ZPg6TUEWw4oRq2ltnDbSjQ==}
@@ -7300,7 +7300,7 @@ snapshots:
       '@ngtools/webpack': 20.1.4(@angular/compiler-cli@20.1.4(@angular/compiler@20.1.4)(typescript@5.8.3))(typescript@5.8.3)(webpack@5.99.9(esbuild@0.25.5))
       ansi-colors: 4.1.3
       autoprefixer: 10.4.21(postcss@8.5.6)
-      babel-loader: 10.0.0(@babel/core@7.27.7)(webpack@5.99.9(esbuild@0.25.5))
+      babel-loader: 10.0.0(@babel/core@7.27.7)(webpack@5.99.9)
       browserslist: 4.24.4
       copy-webpack-plugin: 13.0.0(webpack@5.99.9(esbuild@0.25.5))
       css-loader: 7.1.2(webpack@5.99.9(esbuild@0.25.5))
@@ -9212,7 +9212,7 @@ snapshots:
       '@eslint/core': 0.15.1
       levn: 0.4.1
 
-  '@fontsource-variable/material-symbols-outlined@5.2.17': {}
+  '@fontsource-variable/material-symbols-outlined@5.2.20': {}
 
   '@fontsource/noto-sans@5.2.7': {}
 
@@ -10690,7 +10690,7 @@ snapshots:
 
   b4a@1.6.6: {}
 
-  babel-loader@10.0.0(@babel/core@7.27.7)(webpack@5.99.9(esbuild@0.25.5)):
+  babel-loader@10.0.0(@babel/core@7.27.7)(webpack@5.99.9):
     dependencies:
       '@babel/core': 7.27.7
       find-up: 5.0.0
