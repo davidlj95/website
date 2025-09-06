@@ -68,7 +68,7 @@
     "@angular/platform-server": "20.1.4",
     "@angular/router": "20.1.4",
     "@angular/ssr": "20.1.4",
-    "@davidlj95/ngx-meta": "20.0.0",
+    "@davidlj95/ngx-meta": "20.0.1",
     "@fontsource/roboto": "5.2.6",
     "@fontsource/roboto-mono": "5.2.6",
     "@ng-icons/core": "27.5.2",
