@@ -97,8 +97,8 @@ importers:
         specifier: 5.2.20
         version: 5.2.20
       '@fontsource/noto-sans':
-        specifier: 5.2.7
-        version: 5.2.7
+        specifier: 5.2.8
+        version: 5.2.8
       '@lhci/cli':
         specifier: 0.15.1
         version: 0.15.1(encoding@0.1.13)
@@ -208,8 +208,8 @@ importers:
         specifier: 19.0.4
         version: 19.0.4(@types/node@22.18.1)
       simple-icons:
-        specifier: 15.13.0
-        version: 15.13.0
+        specifier: 15.14.0
+        version: 15.14.0
       subset-font:
         specifier: 2.4.0
         version: 2.4.0
@@ -1477,8 +1477,8 @@ packages:
   '@fontsource-variable/material-symbols-outlined@5.2.20':
     resolution: {integrity: sha512-mYcaw+pC1wk1DPAoFlVzfvTloDallctmP4Wk1NTKIPe5fCpfBXT02bT9C5lpTqb6McYCkMAaLF+Y1mBouWlSqg==}
 
-  '@fontsource/noto-sans@5.2.7':
-    resolution: {integrity: sha512-mTpMSMft6Nb+ZSF4DSiJVYnLzKCRjHNFieZ/swuxSDQK+v1hjUeDTBxLHKUdfmC+ZPg6TUEWw4oRq2ltnDbSjQ==}
+  '@fontsource/noto-sans@5.2.8':
+    resolution: {integrity: sha512-Gqsp0q7sL4G+KL7PRFy4eteeJad9Q3Ef8qlBVabT406e57vdbDH7fAQeiVn0ILGMQ/UDyj6j/SVK+VYzVzxE9w==}
 
   '@fontsource/roboto-mono@5.2.6':
     resolution: {integrity: sha512-fLCa3zs9XruKE8Fdbq0UWB0wqTi5dzi09QsnW7HgTwwnSVDZ3nH+X7Qg7l0yeIZs+E472cKE3RUD21ZnaXk4Zg==}
@@ -6464,8 +6464,8 @@ packages:
     resolution: {integrity: sha512-PHMifhh3EN4loMcHCz6l3v/luzgT3za+9f8subGgeMNjbJjzH4Ij/YoX3Gvu+kaouJRIlVdTHHCREADYf+ZteA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  simple-icons@15.13.0:
-    resolution: {integrity: sha512-Tk3p1Lgmji+8kdUOIvvU3f0loYtWVo/bvO1T82Whpb6BhQ+wM2JR8BaVLQT+TiqqF25DVGrVYXeXrsPo6YDOvg==}
+  simple-icons@15.14.0:
+    resolution: {integrity: sha512-eTBZiiwDFN8RPkcmHKoUz1+sckeqNQXv5ujQcgQddDzp3xuDIFWeZh/i0oEv1StOPsf9NPMC0gTBxUzhPqHzag==}
     engines: {node: '>=0.12.18'}
 
   slash@3.0.0:
@@ -8984,7 +8984,7 @@ snapshots:
 
   '@fontsource-variable/material-symbols-outlined@5.2.20': {}
 
-  '@fontsource/noto-sans@5.2.7': {}
+  '@fontsource/noto-sans@5.2.8': {}
 
   '@fontsource/roboto-mono@5.2.6': {}
 
@@ -14505,7 +14505,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  simple-icons@15.13.0: {}
+  simple-icons@15.14.0: {}
 
   slash@3.0.0: {}
 
