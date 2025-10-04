@@ -39,11 +39,11 @@ importers:
         specifier: 20.0.1
         version: 20.0.1(@angular/common@20.2.4(@angular/core@20.2.4(@angular/compiler@20.2.4)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.2.4(@angular/compiler@20.2.4)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/router@20.2.4(@angular/common@20.2.4(@angular/core@20.2.4(@angular/compiler@20.2.4)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.2.4(@angular/compiler@20.2.4)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.2.4(@angular/animations@20.2.4(@angular/core@20.2.4(@angular/compiler@20.2.4)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@20.2.4(@angular/core@20.2.4(@angular/compiler@20.2.4)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.2.4(@angular/compiler@20.2.4)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))
       '@fontsource/roboto':
-        specifier: 5.2.6
-        version: 5.2.6
+        specifier: 5.2.8
+        version: 5.2.8
       '@fontsource/roboto-mono':
-        specifier: 5.2.6
-        version: 5.2.6
+        specifier: 5.2.8
+        version: 5.2.8
       '@ng-icons/core':
         specifier: 27.5.2
         version: 27.5.2
@@ -97,8 +97,8 @@ importers:
         specifier: 5.2.24
         version: 5.2.24
       '@fontsource/noto-sans':
-        specifier: 5.2.8
-        version: 5.2.8
+        specifier: 5.2.10
+        version: 5.2.10
       '@lhci/cli':
         specifier: 0.15.1
         version: 0.15.1(encoding@0.1.13)
@@ -208,8 +208,8 @@ importers:
         specifier: 19.0.5
         version: 19.0.5(@types/node@22.18.8)
       simple-icons:
-        specifier: 15.14.0
-        version: 15.14.0
+        specifier: 15.16.0
+        version: 15.16.0
       subset-font:
         specifier: 2.4.0
         version: 2.4.0
@@ -1477,14 +1477,14 @@ packages:
   '@fontsource-variable/material-symbols-outlined@5.2.24':
     resolution: {integrity: sha512-DmXzT3+erCJRECqW9YpJ5rGgr8PlpeSsM1+fK5BpT4TUca3VvoIuwfomWWplebOiFG5FVFWqLa6KAUqsJUNK8Q==}
 
-  '@fontsource/noto-sans@5.2.8':
-    resolution: {integrity: sha512-Gqsp0q7sL4G+KL7PRFy4eteeJad9Q3Ef8qlBVabT406e57vdbDH7fAQeiVn0ILGMQ/UDyj6j/SVK+VYzVzxE9w==}
+  '@fontsource/noto-sans@5.2.10':
+    resolution: {integrity: sha512-J58RVfS/C0Z2VBF+PoU260Tx8cdRGYuS+e3yQe4hYaIYDl0sEVn5CzlLo5zVRvQD0HaIUTV8AZMfqR7rtdEpqQ==}
 
-  '@fontsource/roboto-mono@5.2.6':
-    resolution: {integrity: sha512-fLCa3zs9XruKE8Fdbq0UWB0wqTi5dzi09QsnW7HgTwwnSVDZ3nH+X7Qg7l0yeIZs+E472cKE3RUD21ZnaXk4Zg==}
+  '@fontsource/roboto-mono@5.2.8':
+    resolution: {integrity: sha512-M0XPRcvkOKiTPooXwX7yJSNpuad3CPcQwsADBfnopz3apBs+VKI47pc42mlvAxJjNTRauu5rndSxHc8F52bR7Q==}
 
-  '@fontsource/roboto@5.2.6':
-    resolution: {integrity: sha512-hzarG7yAhMoP418smNgfY4fO7UmuUEm5JUtbxCoCcFHT0hOJB+d/qAEyoNjz7YkPU5OjM2LM8rJnW8hfm0JLaA==}
+  '@fontsource/roboto@5.2.8':
+    resolution: {integrity: sha512-oh9g4Cg3loVMz9MWeKWfDI+ooxxG1aRVetkiKIb2ESS2rrryGecQ/y4pAj4z5A5ebyw450dYRi/c4k/I3UBhHA==}
 
   '@formatjs/ecma402-abstract@2.3.4':
     resolution: {integrity: sha512-qrycXDeaORzIqNhBOx0btnhpD1c+/qFIHAN9znofuMJX6QBwtbrmlpWfD4oiUUD2vJUOIYFA/gYtg2KAMGG7sA==}
@@ -6580,8 +6580,8 @@ packages:
     resolution: {integrity: sha512-PHMifhh3EN4loMcHCz6l3v/luzgT3za+9f8subGgeMNjbJjzH4Ij/YoX3Gvu+kaouJRIlVdTHHCREADYf+ZteA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  simple-icons@15.14.0:
-    resolution: {integrity: sha512-eTBZiiwDFN8RPkcmHKoUz1+sckeqNQXv5ujQcgQddDzp3xuDIFWeZh/i0oEv1StOPsf9NPMC0gTBxUzhPqHzag==}
+  simple-icons@15.16.0:
+    resolution: {integrity: sha512-AeyYdQ5BsFe7ONruVRClZ+2921tQIEcHuP9AZdNUR0in1jFeakH0pA9Rkjj0T/RkTH7Icx2jprXxWWY3aaCDJQ==}
     engines: {node: '>=0.12.18'}
 
   slash@3.0.0:
@@ -9116,11 +9116,11 @@ snapshots:
 
   '@fontsource-variable/material-symbols-outlined@5.2.24': {}
 
-  '@fontsource/noto-sans@5.2.8': {}
+  '@fontsource/noto-sans@5.2.10': {}
 
-  '@fontsource/roboto-mono@5.2.6': {}
+  '@fontsource/roboto-mono@5.2.8': {}
 
-  '@fontsource/roboto@5.2.6': {}
+  '@fontsource/roboto@5.2.8': {}
 
   '@formatjs/ecma402-abstract@2.3.4':
     dependencies:
@@ -14743,7 +14743,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  simple-icons@15.14.0: {}
+  simple-icons@15.16.0: {}
 
   slash@3.0.0: {}
 
