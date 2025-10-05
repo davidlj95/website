@@ -94,8 +94,8 @@ importers:
         specifier: 1.3.2
         version: 1.3.2(eslint@9.35.0(jiti@2.5.1))
       '@fontsource-variable/material-symbols-outlined':
-        specifier: 5.2.24
-        version: 5.2.24
+        specifier: 5.2.25
+        version: 5.2.25
       '@fontsource/noto-sans':
         specifier: 5.2.10
         version: 5.2.10
@@ -1437,8 +1437,8 @@ packages:
     resolution: {integrity: sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/material-symbols-outlined@5.2.24':
-    resolution: {integrity: sha512-DmXzT3+erCJRECqW9YpJ5rGgr8PlpeSsM1+fK5BpT4TUca3VvoIuwfomWWplebOiFG5FVFWqLa6KAUqsJUNK8Q==}
+  '@fontsource-variable/material-symbols-outlined@5.2.25':
+    resolution: {integrity: sha512-SEUmtSiqxVpLcOd1S5tVCnTXy3I2PBm/dZH/rvpfEady6Ab+l+rwIqdbjEqb6NrggcX8usGJfGYpN9cY6QCuJg==}
 
   '@fontsource/noto-sans@5.2.10':
     resolution: {integrity: sha512-J58RVfS/C0Z2VBF+PoU260Tx8cdRGYuS+e3yQe4hYaIYDl0sEVn5CzlLo5zVRvQD0HaIUTV8AZMfqR7rtdEpqQ==}
@@ -8759,7 +8759,7 @@ snapshots:
       '@eslint/core': 0.15.2
       levn: 0.4.1
 
-  '@fontsource-variable/material-symbols-outlined@5.2.24': {}
+  '@fontsource-variable/material-symbols-outlined@5.2.25': {}
 
   '@fontsource/noto-sans@5.2.10': {}
 
