@@ -125,7 +125,7 @@
     "ng-mocks": "14.13.5",
     "nyc": "17.1.0",
     "prettier": "3.6.2",
-    "puppeteer-core": "24.19.0",
+    "puppeteer-core": "24.23.0",
     "release-it": "19.0.5",
     "simple-icons": "15.16.0",
     "subset-font": "2.4.0",
