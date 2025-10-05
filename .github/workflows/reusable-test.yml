@@ -59,7 +59,7 @@ jobs:
           # https://docs.cypress.io/guides/continuous-integration/introduction#Caching
           echo "CYPRESS_CACHE_FOLDER=$HOME/.cache/Cypress" >> "$GITHUB_ENV"
       - name: Cypress cache
-        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         env:
           CACHE_NAME: cypress
         with:
