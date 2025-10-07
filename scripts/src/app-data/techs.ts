@@ -86,7 +86,7 @@ async function createIcons(icons: readonly TechWithIcon[]) {
   Log.item(ICONS_DIR)
   await mkdir(ICONS_DIR, { recursive: true })
   await Promise.all(
-    icons.map((icon) => {
+    icons.map(async (icon) => {
       if (icon.svg) {
         return writeFile(join(ICONS_DIR, `${icon.slug}.svg`), icon.svg)
       }
