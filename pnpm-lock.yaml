@@ -39,8 +39,8 @@ importers:
         specifier: 20.0.1
         version: 20.0.1(@angular/common@20.3.14(@angular/core@20.3.3(@angular/compiler@20.3.15)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.3(@angular/compiler@20.3.15)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/router@20.3.3(@angular/common@20.3.14(@angular/core@20.3.3(@angular/compiler@20.3.15)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.3(@angular/compiler@20.3.15)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.3.3(@angular/animations@20.3.3(@angular/core@20.3.3(@angular/compiler@20.3.15)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@20.3.14(@angular/core@20.3.3(@angular/compiler@20.3.15)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.3(@angular/compiler@20.3.15)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))
       '@fontsource/roboto':
-        specifier: 5.2.8
-        version: 5.2.8
+        specifier: 5.2.9
+        version: 5.2.9
       '@fontsource/roboto-mono':
         specifier: 5.2.8
         version: 5.2.8
@@ -208,8 +208,8 @@ importers:
         specifier: 19.0.6
         version: 19.0.6(@types/node@22.18.8)
       simple-icons:
-        specifier: 15.16.1
-        version: 15.16.1
+        specifier: 15.22.0
+        version: 15.22.0
       subset-font:
         specifier: 2.4.0
         version: 2.4.0
@@ -1427,8 +1427,8 @@ packages:
   '@fontsource/roboto-mono@5.2.8':
     resolution: {integrity: sha512-M0XPRcvkOKiTPooXwX7yJSNpuad3CPcQwsADBfnopz3apBs+VKI47pc42mlvAxJjNTRauu5rndSxHc8F52bR7Q==}
 
-  '@fontsource/roboto@5.2.8':
-    resolution: {integrity: sha512-oh9g4Cg3loVMz9MWeKWfDI+ooxxG1aRVetkiKIb2ESS2rrryGecQ/y4pAj4z5A5ebyw450dYRi/c4k/I3UBhHA==}
+  '@fontsource/roboto@5.2.9':
+    resolution: {integrity: sha512-ZTkyHiPk74B/aj8BZWbsxD5Yu+Lq+nR64eV4wirlrac2qXR7jYk2h6JlLYuOuoruTkGQWNw2fMuKNavw7/rg0w==}
 
   '@formatjs/ecma402-abstract@2.3.4':
     resolution: {integrity: sha512-qrycXDeaORzIqNhBOx0btnhpD1c+/qFIHAN9znofuMJX6QBwtbrmlpWfD4oiUUD2vJUOIYFA/gYtg2KAMGG7sA==}
@@ -6235,8 +6235,8 @@ packages:
     resolution: {integrity: sha512-PHMifhh3EN4loMcHCz6l3v/luzgT3za+9f8subGgeMNjbJjzH4Ij/YoX3Gvu+kaouJRIlVdTHHCREADYf+ZteA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  simple-icons@15.16.1:
-    resolution: {integrity: sha512-UpT6dslPDUfl+9xAjxHAh4ralefkrAqBe8o4cN+HtBOa2HjYZnEAiQsUkAdkaMfW05rU/rc/MWaKxF/cpUllCg==}
+  simple-icons@15.22.0:
+    resolution: {integrity: sha512-i/w5Ie4tENfGYbdCo2iJ+oies0vOFd8QXWHopKOUzudfLCvnmeheF2PpHp89Z2azpc+c2su3lMiWO/SpP+429A==}
     engines: {node: '>=0.12.18'}
 
   slash@3.0.0:
@@ -8642,7 +8642,7 @@ snapshots:
 
   '@fontsource/roboto-mono@5.2.8': {}
 
-  '@fontsource/roboto@5.2.8': {}
+  '@fontsource/roboto@5.2.9': {}
 
   '@formatjs/ecma402-abstract@2.3.4':
     dependencies:
@@ -13991,7 +13991,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  simple-icons@15.16.1: {}
+  simple-icons@15.22.0: {}
 
   slash@3.0.0: {}
 
