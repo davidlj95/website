@@ -88,8 +88,8 @@ importers:
         specifier: 20.0.0
         version: 20.0.0
       '@cypress/code-coverage':
-        specifier: 3.14.6
-        version: 3.14.6(@babel/core@7.28.3)(@babel/preset-env@7.28.3(@babel/core@7.28.3))(babel-loader@10.0.0(@babel/core@7.28.3)(webpack@5.101.2))(cypress@15.3.0)(webpack@5.101.2)
+        specifier: 3.14.7
+        version: 3.14.7(@babel/core@7.28.3)(@babel/preset-env@7.28.3(@babel/core@7.28.3))(babel-loader@10.0.0(@babel/core@7.28.3)(webpack@5.101.2))(cypress@15.7.1)(webpack@5.101.2)
       '@eslint/compat':
         specifier: 1.4.1
         version: 1.4.1(eslint@9.39.1(jiti@2.6.1))
@@ -136,8 +136,8 @@ importers:
         specifier: 0.4.1
         version: 0.4.1
       cypress:
-        specifier: 15.3.0
-        version: 15.3.0
+        specifier: 15.7.1
+        version: 15.7.1
       eslint:
         specifier: 9.39.1
         version: 9.39.1(jiti@2.6.1)
@@ -1168,8 +1168,8 @@ packages:
       conventional-commits-parser:
         optional: true
 
-  '@cypress/code-coverage@3.14.6':
-    resolution: {integrity: sha512-aGDJG89uR5CRFbAIs+uFb3f6yPQTf/cMD6D9BZBo/gJRS1vZXli4lIGYU2DoJK4gMP+x9mAQSRexN91oizCusg==}
+  '@cypress/code-coverage@3.14.7':
+    resolution: {integrity: sha512-0qk2aNKmrB0AwJtYSyK2+MWl/3NqDgZQ1OBSEh6oFnJwl/H2u3NTatV+FTCap22HTm+uxUS6SarU8gP9gFZ6Tw==}
     peerDependencies:
       '@babel/core': ^7.0.1
       '@babel/preset-env': ^7.0.0
@@ -3491,8 +3491,8 @@ packages:
   custom-event@1.0.1:
     resolution: {integrity: sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==}
 
-  cypress@15.3.0:
-    resolution: {integrity: sha512-g9rDhoK9y8wW4Vx3Ppr8dtfvThXxPL3mJsV5e98fG+6EerrhXKmeRT2sL86cvNRtEZouXJfsuVL1lqiMuGNGcg==}
+  cypress@15.7.1:
+    resolution: {integrity: sha512-U3sYnJ+Cnpgr6IPycxsznTg//mGVXfPGeGV+om7VQCyp5XyVkhG4oPr3X3hTq1+OB0Om0O5DxusYmt7cbvwqMQ==}
     engines: {node: ^20.1.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
 
@@ -4280,10 +4280,6 @@ packages:
   globby@10.0.0:
     resolution: {integrity: sha512-3LifW9M4joGZasyYPz2A1U74zbC/45fvpXUvO/9KbSa+VV0aGZarWkfdgKyR9sExNP0t0x0ss/UMJpNpcaTspw==}
     engines: {node: '>=8'}
-
-  globby@11.1.0:
-    resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==}
-    engines: {node: '>=10'}
 
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
@@ -8503,21 +8499,21 @@ snapshots:
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.0.0
 
-  '@cypress/code-coverage@3.14.6(@babel/core@7.28.3)(@babel/preset-env@7.28.3(@babel/core@7.28.3))(babel-loader@10.0.0(@babel/core@7.28.3)(webpack@5.101.2))(cypress@15.3.0)(webpack@5.101.2)':
+  '@cypress/code-coverage@3.14.7(@babel/core@7.28.3)(@babel/preset-env@7.28.3(@babel/core@7.28.3))(babel-loader@10.0.0(@babel/core@7.28.3)(webpack@5.101.2))(cypress@15.7.1)(webpack@5.101.2)':
     dependencies:
       '@babel/core': 7.28.3
       '@babel/preset-env': 7.28.3(@babel/core@7.28.3)
       '@cypress/webpack-preprocessor': 6.0.2(@babel/core@7.28.3)(@babel/preset-env@7.28.3(@babel/core@7.28.3))(babel-loader@10.0.0(@babel/core@7.28.3)(webpack@5.101.2))(webpack@5.101.2)
       babel-loader: 10.0.0(@babel/core@7.28.3)(webpack@5.101.2)
       chalk: 4.1.2
-      cypress: 15.3.0
+      cypress: 15.7.1
       dayjs: 1.11.13
       debug: 4.4.0
       execa: 4.1.0
-      globby: 11.1.0
       istanbul-lib-coverage: 3.2.2
       js-yaml: 4.1.0
       nyc: 15.1.0
+      tinyglobby: 0.2.15
       webpack: 5.101.2(esbuild@0.25.9)
     transitivePeerDependencies:
       - supports-color
@@ -8549,7 +8545,7 @@ snapshots:
       '@babel/preset-env': 7.28.3(@babel/core@7.28.3)
       babel-loader: 10.0.0(@babel/core@7.28.3)(webpack@5.101.2)
       bluebird: 3.7.1
-      debug: 4.4.1(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@8.1.1)
       lodash: 4.17.21
       webpack: 5.101.2(esbuild@0.25.9)
     transitivePeerDependencies:
@@ -8703,7 +8699,7 @@ snapshots:
       globals: 14.0.0
       ignore: 5.3.2
       import-fresh: 3.3.0
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       minimatch: 3.1.2
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -8981,7 +8977,7 @@ snapshots:
       '@lhci/utils': 0.15.1(encoding@0.1.13)
       chrome-launcher: 0.13.4
       compression: 1.8.1
-      debug: 4.4.1(supports-color@8.1.1)
+      debug: 4.4.1
       express: 4.21.2
       inquirer: 6.5.2
       isomorphic-fetch: 3.0.0(encoding@0.1.13)
@@ -10898,7 +10894,7 @@ snapshots:
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.0
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       parse-json: 5.2.0
     optionalDependencies:
       typescript: 5.8.3
@@ -10940,7 +10936,7 @@ snapshots:
 
   custom-event@1.0.1: {}
 
-  cypress@15.3.0:
+  cypress@15.7.1:
     dependencies:
       '@cypress/request': 3.0.9
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
@@ -10959,7 +10955,7 @@ snapshots:
       commander: 6.2.1
       common-tags: 1.8.2
       dayjs: 1.11.13
-      debug: 4.4.1(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@8.1.1)
       enquirer: 2.4.1
       eventemitter2: 6.4.7
       execa: 4.1.0
@@ -10978,7 +10974,6 @@ snapshots:
       process: 0.11.10
       proxy-from-env: 1.0.0
       request-progress: 3.0.0
-      semver: 7.7.2
       supports-color: 8.1.1
       systeminformation: 5.27.7
       tmp: 0.2.5
@@ -11016,11 +11011,9 @@ snapshots:
     dependencies:
       ms: 2.1.3
 
-  debug@4.4.1(supports-color@8.1.1):
+  debug@4.4.1:
     dependencies:
       ms: 2.1.3
-    optionalDependencies:
-      supports-color: 8.1.1
 
   debug@4.4.3(supports-color@8.1.1):
     dependencies:
@@ -11861,15 +11854,6 @@ snapshots:
       dir-glob: 3.0.1
       fast-glob: 3.3.3
       glob: 7.2.3
-      ignore: 5.3.2
-      merge2: 1.4.1
-      slash: 3.0.0
-
-  globby@11.1.0:
-    dependencies:
-      array-union: 2.1.0
-      dir-glob: 3.0.1
-      fast-glob: 3.3.3
       ignore: 5.3.2
       merge2: 1.4.1
       slash: 3.0.0
