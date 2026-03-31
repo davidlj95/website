@@ -121,7 +121,7 @@
     "karma-jasmine-html-reporter": "2.1.0",
     "knip": "5.71.0",
     "lint-staged": "16.2.7",
-    "liquidjs": "10.24.0",
+    "liquidjs": "10.25.0",
     "ng-mocks": "14.14.0",
     "nyc": "17.1.0",
     "prettier": "3.6.2",
