@@ -154,8 +154,8 @@ importers:
         specifier: 5.1.2
         version: 5.1.2(eslint@9.39.1(jiti@2.6.1))
       extensionless:
-        specifier: 1.9.9
-        version: 1.9.9
+        specifier: 2.0.6
+        version: 2.0.6
       globals:
         specifier: 16.5.0
         version: 16.5.0
@@ -438,6 +438,7 @@ packages:
   '@angular/animations@20.3.15':
     resolution: {integrity: sha512-ikyKfhkxoqQA6JcBN0B9RaN6369sM1XYX81Id0lI58dmWCe7gYfrTp8ejqxxKftl514psQO3pkW8Gn1nJ131Gw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+    deprecated: '@angular/animations is deprecated. Use `animate.enter` and `animate.leave` instead. For more information see: https://v22.angular.dev/guide/animations.'
     peerDependencies:
       '@angular/core': 20.3.15
 
@@ -3961,8 +3962,8 @@ packages:
   extend@3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
 
-  extensionless@1.9.9:
-    resolution: {integrity: sha512-fz0cWfLA4pgc2nwmg6lc2UH+g+NlFuD63VWqp8n1wGAZSSbPNoARkA54BxXRjYCYW9LvhBnA3NyJaGS2KudkWw==}
+  extensionless@2.0.6:
+    resolution: {integrity: sha512-Kri4UehTAnQzYpM2gySya2nsCBEChxstgtKtOqR1nqZpF0HYM+BZXaeua9uUhE4Z0CE4kfZp+0JFhKL3SsuKFA==}
 
   external-editor@3.1.0:
     resolution: {integrity: sha512-hMQ4CX1p1izmuLYyZqLMO/qGNw10wSv9QDCPfzXfyFrOaCSSoRfqE1Kf1s5an66J5JZC62NewG+mK49jOCtQew==}
@@ -11454,7 +11455,7 @@ snapshots:
 
   extend@3.0.2: {}
 
-  extensionless@1.9.9: {}
+  extensionless@2.0.6: {}
 
   external-editor@3.1.0:
     dependencies:
