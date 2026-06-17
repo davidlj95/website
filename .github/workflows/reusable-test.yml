@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
       - name: Setup
         uses: ./.github/actions/setup
       - name: Generate app data
@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         run: cd .ci && make unit-test
       - name: Upload coverage results
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}${{ github.job }}
           path: ${{ env.COVERAGE_DIR }}
@@ -42,7 +42,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         # 👇 Needed in order for the Cypress GitHub Action to work
         #    Action uses Cypress Module API to work & later report the result in check summary
         #    https://docs.cypress.io/guides/guides/module-api
@@ -59,7 +59,7 @@ jobs:
           # https://docs.cypress.io/guides/continuous-integration/introduction#Caching
           echo "CYPRESS_CACHE_FOLDER=$HOME/.cache/Cypress" >> "$GITHUB_ENV"
       - name: Cypress cache
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         env:
           CACHE_NAME: cypress
         with:
@@ -78,7 +78,7 @@ jobs:
           touch data/generated/release.json
           touch data/generated/resume.pdf
       - name: Cypress run
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@f790eee7a50d9505912f50c2095510be7de06aa7 # v6.10.9
         with:
           browser: chrome
           # 👇 Action doesn't support pnpm caching right now
@@ -87,7 +87,7 @@ jobs:
           install: false
           component: true
       - name: Upload coverage results
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}${{ github.job }}
           path: ${{ env.COVERAGE_DIR }}
@@ -100,11 +100,11 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
       - name: Setup
         uses: ./.github/actions/setup
       - name: Download code coverage reports
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
         with:
           pattern: ${{ env.COVERAGE_ARTIFACT_NAME_PREFIX }}*
           path: ${{ env.COVERAGE_DIR }}
@@ -112,7 +112,7 @@ jobs:
       - name: Merge coverage reports
         run: pnpm run coverage:report:all
       - name: Upload to Codecov
-        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
+        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5.5.5
         with:
           directory: ${{ env.COVERAGE_DIR }}
           token: ${{ secrets.codecov-token }}
