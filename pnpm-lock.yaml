@@ -154,8 +154,8 @@ importers:
         specifier: 5.1.2
         version: 5.1.2(eslint@9.39.1(jiti@2.6.1))
       extensionless:
-        specifier: 1.9.9
-        version: 1.9.9
+        specifier: 2.0.6
+        version: 2.0.6
       globals:
         specifier: 16.5.0
         version: 16.5.0
@@ -3964,8 +3964,8 @@ packages:
   extend@3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
 
-  extensionless@1.9.9:
-    resolution: {integrity: sha512-fz0cWfLA4pgc2nwmg6lc2UH+g+NlFuD63VWqp8n1wGAZSSbPNoARkA54BxXRjYCYW9LvhBnA3NyJaGS2KudkWw==}
+  extensionless@2.0.6:
+    resolution: {integrity: sha512-Kri4UehTAnQzYpM2gySya2nsCBEChxstgtKtOqR1nqZpF0HYM+BZXaeua9uUhE4Z0CE4kfZp+0JFhKL3SsuKFA==}
 
   external-editor@3.1.0:
     resolution: {integrity: sha512-hMQ4CX1p1izmuLYyZqLMO/qGNw10wSv9QDCPfzXfyFrOaCSSoRfqE1Kf1s5an66J5JZC62NewG+mK49jOCtQew==}
@@ -6573,8 +6573,8 @@ packages:
   third-party-web@0.26.7:
     resolution: {integrity: sha512-buUzX4sXC4efFX6xg2bw6/eZsCUh8qQwSavC4D9HpONMFlRbcHhD8Je5qwYdCpViR6q0qla2wPP+t91a2vgolg==}
 
-  third-party-web@0.29.2:
-    resolution: {integrity: sha512-fegtha91tq2DHphyoiBXVHjVi2YG9zFaRnboT9C28tO1en9Y3wJsfspuy40F+u5wl3hHVbw7cnd1b67kEGHb8g==}
+  third-party-web@0.30.0:
+    resolution: {integrity: sha512-p+PfyL5U0ediGzvwPzMSdD9MnC8rHW6nWJJVLIQvqN7RsSqfaZ+7n4c9GILqH36EYR0eXB9CzAeCRnKFr/9uJg==}
 
   throttleit@1.0.1:
     resolution: {integrity: sha512-vDZpf9Chs9mAdfY046mcPt8fg5QSZr37hEH4TXYBnDF+izxgrbRGUAAaBvIk/fJm9aOFCGFd1EsNg5AZCbnQCQ==}
@@ -9432,7 +9432,7 @@ snapshots:
   '@paulirish/trace_engine@0.0.53':
     dependencies:
       legacy-javascript: 0.0.1
-      third-party-web: 0.29.2
+      third-party-web: 0.30.0
 
   '@phun-ky/typeof@2.0.3': {}
 
@@ -11457,7 +11457,7 @@ snapshots:
 
   extend@3.0.2: {}
 
-  extensionless@1.9.9: {}
+  extensionless@2.0.6: {}
 
   external-editor@3.1.0:
     dependencies:
@@ -14425,7 +14425,7 @@ snapshots:
 
   third-party-web@0.26.7: {}
 
-  third-party-web@0.29.2: {}
+  third-party-web@0.30.0: {}
 
   throttleit@1.0.1: {}
 
