@@ -57,9 +57,27 @@
   ],
   "work": [
     {
+      "name": "Glovo",
+      "position": "Software Engineer",
+      "startDate": "2025-10-20",
+      "summary": "Backend mainly. With occasional frontend work. Can't share more due to confidentiality agreements.",
+      "tags": ["employee"],
+      "image": "https://davidlj95.com/images/companies/glovo.png"
+    },
+    {
+      "name": "Rakuten International",
+      "position": "Software Engineer",
+      "startDate": "2025-07-15",
+      "endDate": "2025-10-17",
+      "summary": "Full stack engineer in the Europe's auth platform team. Why did it last so short? Expectations on tech status for the projects of our team weren't met. Changes would require a massive change in tech leadership. That I wouldn't be able to perform from my position",
+      "tags": ["employee"],
+      "image": "https://davidlj95.com/images/companies/rakuten.png"
+    },
+    {
       "name": "Self-employed",
       "position": "Software Engineer",
       "startDate": "2023-05-15",
+      "endDate": "2025-07-15",
       "summary": "Stepped away from full-time corporate roles to focus on in-depth technical knowledge. Explored topics such as deepening my Angular expertise, Semantic Release, creation and maintenance of JS libraries and JS/TS bundling optimizations. Complemented this technical growth with learning about team culture and engineering management, reading several key books on leadership and collaboration.",
       "highlights": [
         "Created an [open-source library](https://www.npmjs.com/package/@davidlj95/ngx-meta) for managing site metadata (SEO, social sharing) [publicly endorsed by an Angular Google Developer Expert](https://x.com/Enea_Jahollari/status/1872579775732310502)",
