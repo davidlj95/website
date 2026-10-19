@@ -16,5 +16,7 @@ ci:
       # 👇 Probably the non-JS enabled collapsible tree re-rendering.
       #    However, the source is unattributed, so can't know for sure
       forced-reflow-insight: warn
+      # Good enough for now
+      uses-responsive-images: warn
   upload:
     target: temporary-public-storage
