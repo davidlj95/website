@@ -109,7 +109,7 @@
     "eslint-plugin-cypress": "5.2.0",
     "eslint-plugin-jasmine": "4.2.2",
     "eslint-plugin-json-files": "5.1.2",
-    "extensionless": "1.9.9",
+    "extensionless": "2.0.6",
     "globals": "16.5.0",
     "http-server": "14.1.1",
     "husky": "9.1.7",
